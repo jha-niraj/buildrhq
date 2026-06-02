@@ -38,7 +38,7 @@ A load balancer distributes traffic across multiple servers. Know the difference
 **Caching**
 Caching is the most impactful optimization in most system designs. Know where caches sit (client, CDN, application, database). Know cache invalidation strategies (TTL, write-through, write-behind, cache-aside). Know what cache eviction policies are (LRU, LFU). Know Redis vs Memcached trade-offs.
 
-![System design components: load balancer, cache, database — architecture diagram](/og/blog/system-design-inline-1.png)
+![System design components: load balancer, cache, database — architecture diagram](/og/blog/system-design-inline-1.webp)
 
 **Database Fundamentals**
 Know when to use SQL vs NoSQL. The short answer: SQL for structured relational data with ACID requirements, NoSQL for scale, flexibility, or specific access patterns. Know what database sharding, replication, and read replicas mean. Understand eventual consistency vs strong consistency and when each is acceptable.
@@ -110,7 +110,7 @@ Understand why you use a message queue instead of direct service calls. The shor
 
 Know Kafka vs RabbitMQ at a conceptual level. Kafka is a distributed log — messages are retained and can be replayed. RabbitMQ is a traditional message broker — messages are consumed and deleted. Kafka is better for event streaming and audit logs. RabbitMQ is better for task queues and work distribution.
 
-![Kafka message queue architecture: producers, topics, partitions, consumers](/og/blog/system-design-inline-2.png)
+![Kafka message queue architecture: producers, topics, partitions, consumers](/og/blog/system-design-inline-2.webp)
 
 ### Consistency and Availability
 

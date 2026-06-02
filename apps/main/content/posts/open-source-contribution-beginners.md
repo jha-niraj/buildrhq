@@ -48,7 +48,7 @@ The right first project has these characteristics:
 
 **Your own dependencies:** Look at the packages you use in your own projects. If you ever hit a limitation or found a bug, there is a contribution waiting for you.
 
-![GitHub repository showing good-first-issue labels with clear, approachable tasks](/og/blog/opensource-inline-1.png)
+![GitHub repository showing good-first-issue labels with clear, approachable tasks](/og/blog/opensource-inline-1.webp)
 
 ## The First Contribution: What to Look For
 
@@ -130,7 +130,7 @@ Make the smallest possible change that fixes the issue or improves the documenta
 
 Read the surrounding code before writing a single line. Match the existing code style. If the project uses tabs, use tabs. If they use `interface` instead of `type`, use `interface`. Reviewers notice inconsistency and it signals carelessness.
 
-![GitHub pull request open with clear title, description, and linked issue](/og/blog/opensource-inline-2.png)
+![GitHub pull request open with clear title, description, and linked issue](/og/blog/opensource-inline-2.webp)
 
 ### Step 6: Write Tests (If Applicable)
 

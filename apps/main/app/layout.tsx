@@ -54,7 +54,7 @@ export const metadata: Metadata = {
 		description: "AI-powered platform for CS students and software engineers. Build your portfolio, ace interviews, practice DSA, and land your dream engineering job.",
 		images: [
 			{
-				url: "/og/home.png",
+				url: "/og/home.webp",
 				width: 1200,
 				height: 630,
 				alt: "BuildrHQ — The Engineering Intelligence Suite for Developers",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "BuildrHQ — The Engineering Intelligence Suite",
 		description: "AI-powered platform for CS students and software engineers. Build your portfolio, ace interviews, practice DSA, and land your dream engineering job.",
-		images: ["/og/home.png"],
+		images: ["/og/home.webp"],
 		creator: "@buildrhq",
 		site: "@buildrhq",
 	},

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'BuildrHQ Blog — Career, Interviews & Engineering',
         description: 'Deep dives into software engineering careers, technical interview prep, portfolio building, DSA, and system design.',
-        images: [{ url: '/og/blog/blog-index-hero.png', width: 1200, height: 630 }],
+        images: [{ url: '/og/blog/blog-index-hero.webp', width: 1200, height: 630 }],
     },
     alternates: { canonical: '/blogs' },
 }

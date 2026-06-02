@@ -31,7 +31,7 @@ The most technically skilled engineers often have the worst-performing resumes. 
 
 **They describe responsibilities instead of outcomes.** "Responsible for backend development" does not match the keywords in a job description that says "designed and implemented REST APIs." Specificity matters for both human readers and keyword matching.
 
-![A resume before and after ATS optimization — left version with formatting issues, right version clean and parseable](/og/blog/resume-inline-1.png)
+![A resume before and after ATS optimization — left version with formatting issues, right version clean and parseable](/og/blog/resume-inline-1.webp)
 
 ## The ATS-Optimized Resume Format
 
@@ -115,7 +115,7 @@ Tools:        PostgreSQL, Redis, Kafka, Elasticsearch, Git
 
 Listing skills this way ensures every technology you know appears as an exact keyword match.
 
-![A well-structured skills section in a software engineering resume](/og/blog/resume-inline-2.png)
+![A well-structured skills section in a software engineering resume](/og/blog/resume-inline-2.webp)
 
 ## The Metrics Problem
 

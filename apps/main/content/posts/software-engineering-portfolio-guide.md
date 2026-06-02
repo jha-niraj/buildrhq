@@ -8,7 +8,7 @@ Recruiters spend an average of 7 seconds on a resume before deciding to move for
 
 A degree says you sat in classes. A portfolio says you built things. In a market where CS graduates are applying to the same 50 companies, a strong portfolio is the single most controllable variable between you and an interview.
 
-![A clean software engineering portfolio displayed on a laptop screen](/og/blog/portfolio-inline-1.png)
+![A clean software engineering portfolio displayed on a laptop screen](/og/blog/portfolio-inline-1.webp)
 
 The developers landing jobs at top companies in 2025 are not always the smartest in the room. They are the ones who documented their work, made their GitHub look like they care, and built projects that solve real problems.
 
@@ -87,7 +87,7 @@ Every project README should have these sections in this order:
 
 The architecture decisions section is what separates a junior portfolio from a mid-level one. "I chose Postgres over MongoDB because the data has clear relational structure and I wanted to practice writing raw SQL joins" tells a recruiter far more than listing your tech stack alone.
 
-![A well-structured GitHub README with clear sections and live demo link](/og/blog/portfolio-inline-2.png)
+![A well-structured GitHub README with clear sections and live demo link](/og/blog/portfolio-inline-2.webp)
 
 ## Making Your GitHub Profile Work for You
 

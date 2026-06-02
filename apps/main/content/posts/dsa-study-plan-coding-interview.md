@@ -75,7 +75,7 @@ Hash maps are the single most powerful tool in your interview arsenal. When you 
 
 **Key insight:** If you find yourself writing O(n²) for any array problem, ask yourself: "Can I precompute something into a hash map to eliminate the inner loop?" The answer is yes more often than you think.
 
-![Data structure cheat sheet: arrays, hash maps, trees, graphs complexity comparison](/og/blog/dsa-inline-1.png)
+![Data structure cheat sheet: arrays, hash maps, trees, graphs complexity comparison](/og/blog/dsa-inline-1.webp)
 
 ### Week 3: Linked Lists and Stacks/Queues
 
@@ -212,7 +212,7 @@ Dynamic programming is where most developers spend too long and learn too little
 7. Word Break
 8. Unique Paths
 
-![Dynamic programming table visualization: grid showing subproblem solutions building toward the final answer](/og/blog/dsa-inline-2.png)
+![Dynamic programming table visualization: grid showing subproblem solutions building toward the final answer](/og/blog/dsa-inline-2.webp)
 
 ## Month 3: Advanced and Interview Simulation (Weeks 9–12)
 

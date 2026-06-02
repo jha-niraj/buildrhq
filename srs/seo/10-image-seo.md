@@ -55,6 +55,76 @@ openGraph: {
 
 ---
 
+## BuildrHQ OG Image Implementation (as of June 2026)
+
+### How it works in BuildrHQ (apps/main)
+
+**Two-layer system:**
+
+**Layer 1 — Global fallback** (`apps/main/app/layout.tsx`)
+```typescript
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.buildrhq.com'
+
+openGraph: {
+  images: [{ url: "/og/home.webp", width: 1200, height: 630, alt: "..." }],
+}
+twitter: {
+  card: "summary_large_image",
+  images: ["/og/home.webp"],
+}
+```
+File location: `apps/main/public/og/home.webp`
+
+**Layer 2 — Per-blog override** (`apps/main/app/(home)/blogs/[slug]/page.tsx`)
+```typescript
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = getPostBySlug(slug)
+  return {
+    openGraph: {
+      type: 'article',
+      images: [{ url: post.ogImage, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: [post.ogImage],
+    },
+  }
+}
+```
+
+**Blog post data** (`apps/main/content/blog.ts`)
+```typescript
+{
+  slug: 'my-post',
+  ogImage: '/og/blog/my-post-hero.webp',   // used in <meta> tags
+  heroImage: '/og/blog/my-post-hero.webp', // used in the page hero image
+}
+```
+
+File location: `apps/main/public/og/blog/[post-slug]-hero.webp`
+
+### WebP for OG images
+
+BuildrHQ uses **WebP** for all OG images (not PNG). Modern crawlers on WhatsApp, LinkedIn, Twitter/X, iMessage, and Slack all support WebP. The savings are significant: WebP files are 25–50% smaller than equivalent PNGs, which means social crawlers fetch and cache them faster.
+
+Scripts to convert: `scripts/to-webp.sh` (single file) and `scripts/convert-og-to-webp.sh` (batch all PNGs in `apps/main/public/og/`).
+
+### Missing OG images — action required
+
+| App | Status | File needed | Priority |
+|---|---|---|---|
+| `apps/main` | ✅ Done | `public/og/home.webp` + blog images | — |
+| `apps/hiring` | ❌ Missing | `public/hiring-og.png` (referenced in layout.tsx but not in public/) | High |
+| `apps/uni` | ❌ Wrong format | Uses `mainlogo.jpeg` (1024×1024 logo, not 1200×630 OG image) | High |
+
+To fix hiring and uni:
+1. Design a 1200×630 image in Figma (brand colors, product name, tagline)
+2. Export as PNG, save to the respective `public/` folder
+3. Run `scripts/to-webp.sh` on it
+4. Update the `url` in the metadata to the `.webp` path
+
+---
+
 ## WebP Conversion
 
 **Why WebP:**
@@ -67,6 +137,7 @@ openGraph: {
 - All hero images
 - All blog post images
 - All case study images
+- All OG images (WhatsApp, LinkedIn, Twitter, iMessage all support WebP)
 - Any image over 100KB
 
 **How to convert:**
@@ -242,7 +313,7 @@ Most blog content columns are 672px wide. Retina displays (2x DPR) need 1344px t
 [ ] Alt text is descriptive and includes keyword where natural
 [ ] Hero/LCP image has loading="eager" and fetchPriority="high"
 [ ] Inline images have loading="lazy"
-[ ] OG image is exactly 1200×630px PNG
-[ ] OG image referenced correctly in metadata
+[ ] OG image is exactly 1200×630px (PNG for design, then convert to WebP with scripts/to-webp.sh)
+[ ] OG image referenced correctly in metadata (use .webp path)
 [ ] No images served through /_next/image on Cloudflare Workers (use unoptimized)
 ```
