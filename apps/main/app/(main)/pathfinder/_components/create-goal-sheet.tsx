@@ -297,7 +297,7 @@ export function CreateGoalSheet({ open, onOpenChange, onSuccess, groups = [], on
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             {
                                                 progressPercent === 100 ? (
-                                                    <CheckCircle className="w-8 h-8 text-emerald-500" />
+                                                    <CheckCircle className="w-8 h-8 text-amber-500" />
                                                 ) : (
                                                     <Brain className="w-8 h-8 text-neutral-400" />
                                                 )
@@ -333,7 +333,7 @@ export function CreateGoalSheet({ open, onOpenChange, onSuccess, groups = [], on
                                                     <div key={s.id} className="flex-1 text-center">
                                                         <div className={cn(
                                                             "w-8 h-8 rounded-full mx-auto mb-1 flex items-center justify-center text-xs font-medium transition-all",
-                                                            index < step ? "bg-emerald-500 text-white" :
+                                                            index < step ? "bg-amber-500 text-white" :
                                                                 index === step ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900" :
                                                                     "bg-neutral-200 dark:bg-neutral-700 text-neutral-400"
                                                         )}>
@@ -533,7 +533,7 @@ export function CreateGoalSheet({ open, onOpenChange, onSuccess, groups = [], on
                                                                             <span className="text-sm text-neutral-900 dark:text-white">{focus.label}</span>
                                                                             {
                                                                                 formData.focusAreas.includes(focus.id) && (
-                                                                                    <Check className="w-4 h-4 text-emerald-500" />
+                                                                                    <Check className="w-4 h-4 text-amber-500" />
                                                                                 )
                                                                             }
                                                                         </button>
@@ -584,7 +584,7 @@ export function CreateGoalSheet({ open, onOpenChange, onSuccess, groups = [], on
                                                                     className={cn(
                                                                         "p-3 rounded-lg border text-left transition-all",
                                                                         formData.isPublic
-                                                                            ? "border-violet-500 bg-violet-50 dark:bg-violet-950/30"
+                                                                            ? "border-orange-500 bg-orange-50 dark:bg-orange-950/30"
                                                                             : "border-neutral-200 dark:border-neutral-700"
                                                                     )}
                                                                 >
@@ -597,7 +597,7 @@ export function CreateGoalSheet({ open, onOpenChange, onSuccess, groups = [], on
                                                                     className={cn(
                                                                         "p-3 rounded-lg border text-left transition-all",
                                                                         !formData.isPublic
-                                                                            ? "border-violet-500 bg-violet-50 dark:bg-violet-950/30"
+                                                                            ? "border-orange-500 bg-orange-50 dark:bg-orange-950/30"
                                                                             : "border-neutral-200 dark:border-neutral-700"
                                                                     )}
                                                                 >
@@ -634,7 +634,7 @@ export function CreateGoalSheet({ open, onOpenChange, onSuccess, groups = [], on
                                                                             <p className="text-sm font-medium text-neutral-900 dark:text-white">No Group</p>
                                                                             <p className="text-xs text-neutral-500">Keep ungrouped</p>
                                                                         </div>
-                                                                        {formData.groupId === null && <Check className="w-4 h-4 text-emerald-500" />}
+                                                                        {formData.groupId === null && <Check className="w-4 h-4 text-amber-500" />}
                                                                     </button>
 
                                                                     {
@@ -658,7 +658,7 @@ export function CreateGoalSheet({ open, onOpenChange, onSuccess, groups = [], on
                                                                                 <div className="flex-1">
                                                                                     <p className="text-sm font-medium text-neutral-900 dark:text-white">{group.name}</p>
                                                                                 </div>
-                                                                                {formData.groupId === group.id && <Check className="w-4 h-4 text-emerald-500" />}
+                                                                                {formData.groupId === group.id && <Check className="w-4 h-4 text-amber-500" />}
                                                                             </button>
                                                                         ))
                                                                     }

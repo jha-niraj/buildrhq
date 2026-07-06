@@ -123,13 +123,13 @@ function SignUpForm() {
                     >
                         <div className="flex items-center gap-3 mb-8">
                             <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center">
-                                <GraduationCap className="h-6 w-6 text-violet-600" />
+                                <GraduationCap className="h-6 w-6 text-orange-600" />
                             </div>
                             <span className="text-2xl font-bold text-white">Coder&apos;z University</span>
                         </div>
                         <h1 className="text-4xl font-bold text-white tracking-tight mb-4">
                             Transform Your <br />
-                            <span className="text-violet-400">Technical Education.</span>
+                            <span className="text-orange-400">Technical Education.</span>
                         </h1>
                         <p className="text-neutral-400 text-lg mb-8">
                             Initialize your university portal and empower students with industry-ready skills.
@@ -168,7 +168,7 @@ function SignUpForm() {
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-6 p-6 rounded-2xl border border-violet-800/50 bg-violet-900/20">
+                        <div className="mt-6 p-6 rounded-2xl border border-orange-800/50 bg-orange-900/20">
                             <p className="text-neutral-300 italic">
                                 &quot;Our students&apos; placement rates increased by 40% after integrating with Coder&apos;z.&quot;
                             </p>
@@ -187,11 +187,11 @@ function SignUpForm() {
                     className="w-full max-w-md"
                 >
                     <div className="lg:hidden flex items-center gap-2 mb-8 justify-center">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-600 to-orange-600 flex items-center justify-center">
                             <GraduationCap className="h-5 w-5 text-white" />
                         </div>
                         <span className="text-lg font-bold text-neutral-900 dark:text-white">
-                            Coder&apos;z <span className="text-violet-600 font-mono font-normal">UNIVERSITY</span>
+                            Coder&apos;z <span className="text-orange-600 font-mono font-normal">UNIVERSITY</span>
                         </span>
                     </div>
                     <div className="lg:hidden p-3 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 mb-6">

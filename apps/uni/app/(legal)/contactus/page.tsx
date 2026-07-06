@@ -40,11 +40,11 @@ export default function ContactPage() {
                         className="text-center mb-16"
                     >
                         <Link href="/" className="inline-flex items-center gap-2 mb-6">
-                            <div className="w-10 h-10 rounded-xl bg-violet-600 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-xl bg-orange-600 flex items-center justify-center">
                                 <GraduationCap className="w-5 h-5 text-white" />
                             </div>
                             <span className="text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
-                                CODER&apos;Z <span className="text-violet-500 font-mono font-normal">UNI</span>
+                                CODER&apos;Z <span className="text-orange-500 font-mono font-normal">UNI</span>
                             </span>
                         </Link>
                         <span className="inline-block text-[10px] font-mono uppercase tracking-widest text-neutral-500 bg-neutral-100 dark:bg-neutral-900 px-4 py-2 rounded-full mb-6">
@@ -52,7 +52,7 @@ export default function ContactPage() {
                         </span>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-6">
                             Let&apos;s Transform <br />
-                            <span className="text-violet-500">Education Together.</span>
+                            <span className="text-orange-500">Education Together.</span>
                         </h1>
                         <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
                             Whether you have questions about our platform, need a demo for your university, or want to discuss enterprise solutions — we&apos;re here to help.
@@ -65,12 +65,12 @@ export default function ContactPage() {
                         className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20"
                     >
                         <Link href="https://cal.com/coderzai" target="_blank">
-                            <div className="group bg-gradient-to-br from-violet-600 to-purple-600 rounded-2xl p-8 text-white hover:scale-105 transition-transform cursor-pointer">
+                            <div className="group bg-gradient-to-br from-orange-600 to-orange-600 rounded-2xl p-8 text-white hover:scale-105 transition-transform cursor-pointer">
                                 <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                                     <Calendar className="w-7 h-7" />
                                 </div>
                                 <h3 className="text-xl font-bold mb-2">Schedule a Demo</h3>
-                                <p className="text-violet-200 text-sm mb-4">
+                                <p className="text-orange-200 text-sm mb-4">
                                     See Coder&apos;z Uni in action with a personalized walkthrough for your university.
                                 </p>
                                 <div className="flex items-center gap-2 font-medium text-sm">
@@ -78,27 +78,27 @@ export default function ContactPage() {
                                 </div>
                             </div>
                         </Link>
-                        <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 hover:border-violet-300 dark:hover:border-violet-700 transition-colors">
+                        <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 hover:border-orange-300 dark:hover:border-orange-700 transition-colors">
                             <div className="w-14 h-14 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 flex items-center justify-center mb-6">
-                                <GraduationCap className="w-7 h-7 text-violet-600 dark:text-violet-400" />
+                                <GraduationCap className="w-7 h-7 text-orange-600 dark:text-orange-400" />
                             </div>
                             <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">University Sales</h3>
                             <p className="text-neutral-500 text-sm mb-4">
                                 Custom solutions for universities and educational institutions.
                             </p>
-                            <a href="mailto:sales@coderzai.xyz" className="flex items-center gap-2 font-medium text-sm text-violet-600 dark:text-violet-400 hover:underline">
+                            <a href="mailto:sales@coderzai.xyz" className="flex items-center gap-2 font-medium text-sm text-orange-600 dark:text-orange-400 hover:underline">
                                 sales@coderzai.xyz <ArrowRight className="w-4 h-4" />
                             </a>
                         </div>
-                        <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 hover:border-violet-300 dark:hover:border-violet-700 transition-colors">
+                        <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 hover:border-orange-300 dark:hover:border-orange-700 transition-colors">
                             <div className="w-14 h-14 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 flex items-center justify-center mb-6">
-                                <MessageCircle className="w-7 h-7 text-violet-600 dark:text-violet-400" />
+                                <MessageCircle className="w-7 h-7 text-orange-600 dark:text-orange-400" />
                             </div>
                             <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">Technical Support</h3>
                             <p className="text-neutral-500 text-sm mb-4">
                                 Get help with platform issues and technical questions.
                             </p>
-                            <a href="mailto:support@coderzai.xyz" className="flex items-center gap-2 font-medium text-sm text-violet-600 dark:text-violet-400 hover:underline">
+                            <a href="mailto:support@coderzai.xyz" className="flex items-center gap-2 font-medium text-sm text-orange-600 dark:text-orange-400 hover:underline">
                                 support@coderzai.xyz <ArrowRight className="w-4 h-4" />
                             </a>
                         </div>
@@ -125,10 +125,10 @@ export default function ContactPage() {
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.95 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-8 text-center"
+                                        className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-8 text-center"
                                     >
-                                        <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center mx-auto mb-4">
-                                            <Mail className="w-8 h-8 text-green-600 dark:text-green-400" />
+                                        <div className="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mx-auto mb-4">
+                                            <Mail className="w-8 h-8 text-amber-600 dark:text-amber-400" />
                                         </div>
                                         <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
                                             Message Sent!
@@ -205,7 +205,7 @@ export default function ContactPage() {
                                         <Button
                                             type="submit"
                                             disabled={loading}
-                                            className="w-full rounded-xl h-12 bg-violet-600 hover:bg-violet-700 text-white font-bold cursor-pointer"
+                                            className="w-full rounded-xl h-12 bg-orange-600 hover:bg-orange-700 text-white font-bold cursor-pointer"
                                         >
                                             {loading ? "Sending..." : "Send Message"}
                                             <ArrowRight className="w-4 h-4 ml-2" />
@@ -228,19 +228,19 @@ export default function ContactPage() {
                             </p>
                             <div className="space-y-8">
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center shrink-0">
-                                        <Mail className="w-5 h-5 text-violet-600 dark:text-violet-400" />
+                                    <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0">
+                                        <Mail className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                                     </div>
                                     <div>
                                         <p className="font-bold text-neutral-900 dark:text-white mb-1">Email</p>
-                                        <a href="mailto:university@coderzai.xyz" className="text-neutral-500 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+                                        <a href="mailto:university@coderzai.xyz" className="text-neutral-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
                                             university@coderzai.xyz
                                         </a>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center shrink-0">
-                                        <Phone className="w-5 h-5 text-violet-600 dark:text-violet-400" />
+                                    <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0">
+                                        <Phone className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                                     </div>
                                     <div>
                                         <p className="font-bold text-neutral-900 dark:text-white mb-1">Phone</p>
@@ -248,8 +248,8 @@ export default function ContactPage() {
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center shrink-0">
-                                        <MapPin className="w-5 h-5 text-violet-600 dark:text-violet-400" />
+                                    <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0">
+                                        <MapPin className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                                     </div>
                                     <div>
                                         <p className="font-bold text-neutral-900 dark:text-white mb-1">Office</p>
@@ -261,8 +261,8 @@ export default function ContactPage() {
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center shrink-0">
-                                        <Clock className="w-5 h-5 text-violet-600 dark:text-violet-400" />
+                                    <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0">
+                                        <Clock className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                                     </div>
                                     <div>
                                         <p className="font-bold text-neutral-900 dark:text-white mb-1">Business Hours</p>
@@ -273,8 +273,8 @@ export default function ContactPage() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="mt-12 h-64 rounded-2xl bg-violet-50 dark:bg-violet-900/20 border border-violet-200 dark:border-violet-800 flex items-center justify-center">
-                                <p className="text-violet-500 dark:text-violet-400 text-sm">Map Integration</p>
+                            <div className="mt-12 h-64 rounded-2xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 flex items-center justify-center">
+                                <p className="text-orange-500 dark:text-orange-400 text-sm">Map Integration</p>
                             </div>
                         </motion.div>
                     </div>

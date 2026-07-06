@@ -41,7 +41,7 @@ function UniversityLayoutContent({ children }: { children: React.ReactNode }) {
         return (
             <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 flex items-center justify-center">
                 <div className="flex flex-col items-center gap-4">
-                    <Loader2 className="w-8 h-8 animate-spin text-violet-500" />
+                    <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
                     <p className="text-sm text-neutral-500 font-mono">Initializing university portal...</p>
                 </div>
             </div>

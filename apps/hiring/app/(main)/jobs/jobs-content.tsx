@@ -119,11 +119,11 @@ export function JobsContent({ initialJobs, stats, interviewProcesses: _interview
 
     const getStatusBadge = (status: string) => {
         const styles: Record<string, string> = {
-            ACTIVE: "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400",
+            ACTIVE: "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400",
             PAUSED: "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400",
             DRAFT: "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400",
             CLOSED: "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400",
-            FILLED: "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
+            FILLED: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400"
         }
         return styles[status] || styles.DRAFT
     }
@@ -179,10 +179,10 @@ export function JobsContent({ initialJobs, stats, interviewProcesses: _interview
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4"
                         >
                             <div className="flex items-center gap-2 mb-2">
-                                <CheckCircle className="w-4 h-4 text-green-500" />
+                                <CheckCircle className="w-4 h-4 text-amber-500" />
                                 <span className="text-xs text-neutral-500">Active</span>
                             </div>
-                            <span className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.active}</span>
+                            <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">{stats.active}</span>
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -215,10 +215,10 @@ export function JobsContent({ initialJobs, stats, interviewProcesses: _interview
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4"
                         >
                             <div className="flex items-center gap-2 mb-2">
-                                <Eye className="w-4 h-4 text-blue-500" />
+                                <Eye className="w-4 h-4 text-orange-500" />
                                 <span className="text-xs text-neutral-500">Total Views</span>
                             </div>
-                            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.totalViews}</span>
+                            <span className="text-2xl font-bold text-orange-600 dark:text-orange-400">{stats.totalViews}</span>
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -227,10 +227,10 @@ export function JobsContent({ initialJobs, stats, interviewProcesses: _interview
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4"
                         >
                             <div className="flex items-center gap-2 mb-2">
-                                <Users className="w-4 h-4 text-purple-500" />
+                                <Users className="w-4 h-4 text-orange-500" />
                                 <span className="text-xs text-neutral-500">Applications</span>
                             </div>
-                            <span className="text-2xl font-bold text-purple-600 dark:text-purple-400">{stats.totalApplications}</span>
+                            <span className="text-2xl font-bold text-orange-600 dark:text-orange-400">{stats.totalApplications}</span>
                         </motion.div>
                     </div>
                 )

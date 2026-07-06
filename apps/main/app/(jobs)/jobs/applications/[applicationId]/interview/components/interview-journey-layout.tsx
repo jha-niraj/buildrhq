@@ -124,13 +124,13 @@ const roundTypeLabels: Record<string, string> = {
 }
 
 const statusConfig: Record<string, { label: string; color: string }> = {
-    SHORTLISTED: { label: "Shortlisted", color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" },
-    ASSIGNMENT_SENT: { label: "Assignment Pending", color: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400" },
-    ASSIGNMENT_SUBMITTED: { label: "Assignment Submitted", color: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400" },
-    INTERVIEW_SCHEDULED: { label: "Interview Scheduled", color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400" },
-    INTERVIEWED: { label: "Interviewed", color: "bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400" },
-    OFFER_EXTENDED: { label: "Offer Extended", color: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400" },
-    HIRED: { label: "Hired", color: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-400" },
+    SHORTLISTED: { label: "Shortlisted", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
+    ASSIGNMENT_SENT: { label: "Assignment Pending", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
+    ASSIGNMENT_SUBMITTED: { label: "Assignment Submitted", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
+    INTERVIEW_SCHEDULED: { label: "Interview Scheduled", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
+    INTERVIEWED: { label: "Interviewed", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
+    OFFER_EXTENDED: { label: "Offer Extended", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
+    HIRED: { label: "Hired", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
 }
 
 export function InterviewJourneyLayout({ application }: InterviewJourneyLayoutProps) {
@@ -265,7 +265,7 @@ export function InterviewJourneyLayout({ application }: InterviewJourneyLayoutPr
                                                     !isAssignmentUnlocked ? (
                                                         <Lock className="w-4 h-4" />
                                                     ) : isAssignmentCompleted ? (
-                                                        <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                                        <CheckCircle2 className="w-4 h-4 text-amber-500" />
                                                     ) : null
                                                 }
                                             </button>
@@ -303,9 +303,9 @@ export function InterviewJourneyLayout({ application }: InterviewJourneyLayoutPr
                                                             disabled={!isUnlocked}
                                                         >
                                                             <div className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-semibold ${isCompleted
-                                                                    ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                                                                    ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
                                                                     : isUnlocked
-                                                                        ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
+                                                                        ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400"
                                                                         : "bg-neutral-200 text-neutral-500 dark:bg-neutral-700"
                                                                 }`}>
                                                                 {round.roundNumber}
@@ -320,7 +320,7 @@ export function InterviewJourneyLayout({ application }: InterviewJourneyLayoutPr
                                                                 !isUnlocked ? (
                                                                     <Lock className="w-4 h-4 shrink-0" />
                                                                 ) : isCompleted ? (
-                                                                    <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" />
+                                                                    <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" />
                                                                 ) : (
                                                                     <ChevronRight className="w-4 h-4 shrink-0" />
                                                                 )
@@ -406,16 +406,16 @@ export function InterviewJourneyLayout({ application }: InterviewJourneyLayoutPr
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             className={`relative pl-8 pb-6 border-l-2 ${isAssignmentCompleted
-                                                    ? "border-green-500"
+                                                    ? "border-amber-500"
                                                     : isAssignmentUnlocked
-                                                        ? "border-blue-500"
+                                                        ? "border-orange-500"
                                                         : "border-neutral-300 dark:border-neutral-700"
                                                 }`}
                                         >
                                             <div className={`absolute -left-3 w-6 h-6 rounded-full flex items-center justify-center ${isAssignmentCompleted
-                                                    ? "bg-green-500 text-white"
+                                                    ? "bg-amber-500 text-white"
                                                     : isAssignmentUnlocked
-                                                        ? "bg-blue-500 text-white"
+                                                        ? "bg-orange-500 text-white"
                                                         : "bg-neutral-300 dark:bg-neutral-700 text-neutral-500"
                                                 }`}>
                                                 {
@@ -433,11 +433,11 @@ export function InterviewJourneyLayout({ application }: InterviewJourneyLayoutPr
                                                     </h4>
                                                     {
                                                         isAssignmentCompleted ? (
-                                                            <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                                            <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
                                                                 Completed
                                                             </Badge>
                                                         ) : isAssignmentUnlocked ? (
-                                                            <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                                                            <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
                                                                 In Progress
                                                             </Badge>
                                                         ) : (
@@ -476,16 +476,16 @@ export function InterviewJourneyLayout({ application }: InterviewJourneyLayoutPr
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: index * 0.1 }}
                                                 className={`relative pl-8 ${index < rounds.length - 1 ? "pb-6 border-l-2" : ""} ${isCompleted
-                                                        ? "border-green-500"
+                                                        ? "border-amber-500"
                                                         : isUnlocked
-                                                            ? "border-blue-500"
+                                                            ? "border-orange-500"
                                                             : "border-neutral-300 dark:border-neutral-700"
                                                     }`}
                                             >
                                                 <div className={`absolute -left-3 w-6 h-6 rounded-full flex items-center justify-center ${isCompleted
-                                                        ? "bg-green-500 text-white"
+                                                        ? "bg-amber-500 text-white"
                                                         : isUnlocked
-                                                            ? "bg-blue-500 text-white"
+                                                            ? "bg-orange-500 text-white"
                                                             : "bg-neutral-300 dark:bg-neutral-700 text-neutral-500"
                                                     }`}>
                                                     {
@@ -507,11 +507,11 @@ export function InterviewJourneyLayout({ application }: InterviewJourneyLayoutPr
                                                         </div>
                                                         {
                                                             isCompleted ? (
-                                                                <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                                                <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
                                                                     Completed
                                                                 </Badge>
                                                             ) : isUnlocked ? (
-                                                                <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                                                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
                                                                     Up Next
                                                                 </Badge>
                                                             ) : (

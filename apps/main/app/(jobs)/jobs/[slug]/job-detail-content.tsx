@@ -105,15 +105,15 @@ const roundTypeIcons: Record<string, LucideIcon> = {
 }
 
 const roundTypeColors: Record<string, string> = {
-    PHONE_SCREEN: "bg-blue-500",
-    TECHNICAL_CODING: "bg-purple-500",
+    PHONE_SCREEN: "bg-orange-500",
+    TECHNICAL_CODING: "bg-orange-500",
     SYSTEM_DESIGN: "bg-orange-500",
-    BEHAVIORAL: "bg-green-500",
+    BEHAVIORAL: "bg-amber-500",
     TAKE_HOME: "bg-yellow-500",
     PANEL: "bg-pink-500",
-    HIRING_MANAGER: "bg-indigo-500",
-    CULTURE_FIT: "bg-teal-500",
-    HR_FINAL: "bg-cyan-500",
+    HIRING_MANAGER: "bg-orange-500",
+    CULTURE_FIT: "bg-amber-500",
+    HR_FINAL: "bg-amber-500",
     CUSTOM: "bg-neutral-500",
 }
 
@@ -273,12 +273,12 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                 </h1>
                                 <Link
                                     href={`/companies/${job.company.slug}`}
-                                    className="text-lg text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors inline-flex items-center gap-1"
+                                    className="text-lg text-neutral-600 dark:text-neutral-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors inline-flex items-center gap-1"
                                 >
                                     {job.company.name}
                                     {
                                         job.company.verificationStatus === "VERIFIED" && (
-                                            <CheckCircle2 className="w-4 h-4 text-blue-500" />
+                                            <CheckCircle2 className="w-4 h-4 text-orange-500" />
                                         )
                                     }
                                 </Link>
@@ -336,11 +336,11 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                             }
                             {
                                 job.salaryDisclosed && formatSalary(job.salaryMin, job.salaryMax, job.salaryCurrency) && (
-                                    <div className="flex items-center gap-3 p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
-                                        <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
+                                    <div className="flex items-center gap-3 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+                                        <TrendingUp className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                                         <div>
-                                            <p className="text-xs text-green-600 dark:text-green-400">Salary</p>
-                                            <p className="font-medium text-green-700 dark:text-green-300 text-sm">
+                                            <p className="text-xs text-amber-600 dark:text-amber-400">Salary</p>
+                                            <p className="font-medium text-amber-700 dark:text-amber-300 text-sm">
                                                 {formatSalary(job.salaryMin, job.salaryMax, job.salaryCurrency)}
                                             </p>
                                         </div>
@@ -400,14 +400,14 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                     transition={{ delay: 0.4 }}
                                 >
                                     <h2 className="text-lg font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                        <Target className="w-5 h-5 text-blue-500" />
+                                        <Target className="w-5 h-5 text-orange-500" />
                                         Responsibilities
                                     </h2>
                                     <ul className="space-y-2">
                                         {
                                             job.responsibilities.map((item, i) => (
                                                 <li key={i} className="flex items-start gap-3 text-neutral-600 dark:text-neutral-400">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0" />
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-2 shrink-0" />
                                                     {item}
                                                 </li>
                                             ))
@@ -424,14 +424,14 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                     transition={{ delay: 0.5 }}
                                 >
                                     <h2 className="text-lg font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                        <Award className="w-5 h-5 text-purple-500" />
+                                        <Award className="w-5 h-5 text-orange-500" />
                                         Requirements
                                     </h2>
                                     <ul className="space-y-2">
                                         {
                                             job.requirements.map((item, i) => (
                                                 <li key={i} className="flex items-start gap-3 text-neutral-600 dark:text-neutral-400">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 shrink-0" />
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-2 shrink-0" />
                                                     {item}
                                                 </li>
                                             ))
@@ -472,7 +472,7 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                     transition={{ delay: 0.7 }}
                                 >
                                     <h2 className="text-lg font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                        <Star className="w-5 h-5 text-green-500" />
+                                        <Star className="w-5 h-5 text-amber-500" />
                                         Benefits & Perks
                                     </h2>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -480,7 +480,7 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                             job.benefits.map((benefit, i) => (
                                                 <div
                                                     key={i}
-                                                    className="flex items-center gap-3 p-3 rounded-xl bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300"
+                                                    className="flex items-center gap-3 p-3 rounded-xl bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300"
                                                 >
                                                     <CheckCircle2 className="w-4 h-4 shrink-0" />
                                                     <span className="text-sm">{benefit}</span>
@@ -503,11 +503,11 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                 job.interviewProcess ? (
                                     <div>
                                         <div className="flex items-center gap-2 mb-4">
-                                            <CheckCircle2 className="w-6 h-6 text-green-600 dark:text-green-400" />
+                                            <CheckCircle2 className="w-6 h-6 text-amber-600 dark:text-amber-400" />
                                             <h2 className="text-xl font-semibold text-neutral-900 dark:text-white">
                                                 Interview Process
                                             </h2>
-                                            <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                            <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
                                                 Transparent
                                             </Badge>
                                         </div>
@@ -532,7 +532,7 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                             This company has shared their interview process. Practice for each round with AI mock interviews!
                                         </p>
                                         <div className="relative pl-10 space-y-6">
-                                            <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-gradient-to-b from-green-500 via-blue-500 to-purple-500" />
+                                            <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-gradient-to-b from-amber-500 via-orange-500 to-orange-500" />
 
                                             {
                                                 job.interviewProcess.rounds.map((round, index) => {
@@ -583,11 +583,11 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                                                         }
                                                                         {
                                                                             round.tipsForCandidates && round.tipsForCandidates.length > 0 && (
-                                                                                <div className="p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
-                                                                                    <p className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1">
+                                                                                <div className="p-3 rounded-lg bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
+                                                                                    <p className="text-xs font-medium text-orange-700 dark:text-orange-300 mb-1">
                                                                                         💡 Tips from the team
                                                                                     </p>
-                                                                                    <ul className="text-sm text-blue-600 dark:text-blue-400 space-y-1">
+                                                                                    <ul className="text-sm text-orange-600 dark:text-orange-400 space-y-1">
                                                                                         {
                                                                                             round.tipsForCandidates.map((tip, i) => (
                                                                                                 <li key={i}>• {tip}</li>
@@ -619,9 +619,9 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                                 })
                                             }
                                         </div>
-                                        <div className="mt-8 p-5 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200 dark:border-blue-800">
+                                        <div className="mt-8 p-5 rounded-2xl bg-gradient-to-r from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 border border-orange-200 dark:border-orange-800">
                                             <div className="flex items-start gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shrink-0">
+                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-500 flex items-center justify-center shrink-0">
                                                     <Mic className="w-6 h-6 text-white" />
                                                 </div>
                                                 <div className="flex-1">
@@ -676,7 +676,7 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                             {
                                 hasApplied ? (
                                     <>
-                                        <div className="flex items-center gap-2 text-green-600 dark:text-green-400 mb-4">
+                                        <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400 mb-4">
                                             <CheckCircle2 className="w-5 h-5" />
                                             <span className="font-semibold">Already Applied</span>
                                         </div>
@@ -742,11 +742,11 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                         }
                                     </div>
                                     <div>
-                                        <p className="font-medium text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center gap-1">
+                                        <p className="font-medium text-neutral-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors flex items-center gap-1">
                                             {job.company.name}
                                             {
                                                 job.company.verificationStatus === "VERIFIED" && (
-                                                    <CheckCircle2 className="w-4 h-4 text-blue-500" />
+                                                    <CheckCircle2 className="w-4 h-4 text-orange-500" />
                                                 )
                                             }
                                         </p>
@@ -782,7 +782,7 @@ export function JobDetailContent({ job }: JobDetailContentProps) {
                                             href={job.company.website}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                                            className="flex items-center gap-2 text-sm text-orange-600 dark:text-orange-400 hover:underline"
                                         >
                                             <Globe className="w-4 h-4" />
                                             <span>Visit Website</span>

@@ -155,11 +155,11 @@ export function ProjectSettingsTab({
                 {/* Team Tab */}
                 <TabsContent value="team" className="space-y-6 mt-6">
                     {/* Team Mode Toggle */}
-                    <Card className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border-indigo-200 dark:border-indigo-800">
+                    <Card className="bg-gradient-to-r from-orange-50 to-orange-50 dark:from-orange-950/30 dark:to-orange-950/30 border-orange-200 dark:border-orange-800">
                         <CardContent className="pt-6">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
                                         <Users className="w-5 h-5 text-white" />
                                     </div>
                                     <div>
@@ -342,7 +342,7 @@ export function ProjectSettingsTab({
                         <CardHeader>
                             <CardTitle className="text-base flex items-center gap-2">
                                 {visibility === 'PUBLIC' ? (
-                                    <Eye className="w-5 h-5 text-green-500" />
+                                    <Eye className="w-5 h-5 text-amber-500" />
                                 ) : (
                                     <EyeOff className="w-5 h-5 text-amber-500" />
                                 )}

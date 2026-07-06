@@ -60,13 +60,13 @@ export default function ActivityCalendar({ data }: ActivityCalendarProps) {
             case 0:
                 return "bg-muted";
             case 1:
-                return "bg-green-200 dark:bg-green-900";
+                return "bg-amber-200 dark:bg-amber-900";
             case 2:
-                return "bg-green-400 dark:bg-green-700";
+                return "bg-amber-400 dark:bg-amber-700";
             case 3:
-                return "bg-green-500 dark:bg-green-500";
+                return "bg-amber-500 dark:bg-amber-500";
             case 4:
-                return "bg-green-600 dark:bg-green-400";
+                return "bg-amber-600 dark:bg-amber-400";
             default:
                 return "bg-muted";
         }
@@ -138,8 +138,8 @@ export default function ActivityCalendar({ data }: ActivityCalendarProps) {
             <div className="h-full rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
                 <div className="flex items-center justify-between mb-5">
                     <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-                            <CalendarDays className="h-4 w-4 text-emerald-500" />
+                        <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                            <CalendarDays className="h-4 w-4 text-amber-500" />
                         </div>
                         <span className="font-semibold text-sm">Activity</span>
                     </div>

@@ -59,14 +59,14 @@ const ENDORSEMENT_LEVELS = [
         label: "Intermediate",
         description: "Good working knowledge",
         icon: ThumbsUp,
-        color: "text-blue-500 bg-blue-100 dark:bg-blue-900/30",
+        color: "text-orange-500 bg-orange-100 dark:bg-orange-900/30",
     },
     {
         id: "ADVANCED",
         label: "Advanced",
         description: "Highly skilled",
         icon: Award,
-        color: "text-purple-500 bg-purple-100 dark:bg-purple-900/30",
+        color: "text-orange-500 bg-orange-100 dark:bg-orange-900/30",
     },
     {
         id: "EXPERT",

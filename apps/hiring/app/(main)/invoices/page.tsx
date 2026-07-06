@@ -34,8 +34,8 @@ const statusConfig = {
     PAID: { 
         label: "Paid", 
         icon: CheckCircle, 
-        color: "text-emerald-600 dark:text-emerald-400",
-        bg: "bg-emerald-100 dark:bg-emerald-900/30"
+        color: "text-amber-600 dark:text-amber-400",
+        bg: "bg-amber-100 dark:bg-amber-900/30"
     },
     PENDING: { 
         label: "Pending", 
@@ -295,7 +295,7 @@ function InvoiceDetailDialog({
                                 </div>
                             )}
                             {invoice.discount > 0 && (
-                                <div className="flex justify-between text-emerald-600">
+                                <div className="flex justify-between text-amber-600">
                                     <span>Discount</span>
                                     <span>
                                         -{invoice.currency === "INR" ? "₹" : "$"}
@@ -470,7 +470,7 @@ export default function InvoicesPage() {
                         <CardDescription>Paid</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-2xl font-bold text-emerald-600">{paidInvoices.length}</p>
+                        <p className="text-2xl font-bold text-amber-600">{paidInvoices.length}</p>
                     </CardContent>
                 </Card>
                 <Card>

@@ -265,7 +265,7 @@ export function CreateMockSheet({
                 <div className="max-w-2xl mx-auto">
                     <SheetHeader className="mb-6">
                         <SheetTitle className="text-2xl flex items-center gap-3">
-                            <div className="p-2 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl">
+                            <div className="p-2 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl">
                                 <Brain className="w-6 h-6 text-white" />
                             </div>
                             Create Mock Interview
@@ -285,11 +285,11 @@ export function CreateMockSheet({
                                     className="flex flex-col items-center justify-center py-20"
                                 >
                                     <div className="relative mb-8">
-                                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 blur-2xl opacity-30 animate-pulse" />
+                                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-500 blur-2xl opacity-30 animate-pulse" />
                                         <motion.div
                                             animate={{ rotate: 360 }}
                                             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                                            className="relative w-32 h-32 rounded-full bg-gradient-to-br from-purple-500 via-indigo-600 to-blue-500 flex items-center justify-center"
+                                            className="relative w-32 h-32 rounded-full bg-gradient-to-br from-orange-500 via-orange-600 to-orange-500 flex items-center justify-center"
                                         >
                                             <div className="w-28 h-28 rounded-full bg-white dark:bg-neutral-950 flex items-center justify-center">
                                                 <motion.div
@@ -298,9 +298,9 @@ export function CreateMockSheet({
                                                 >
                                                     {
                                                         progressPercent === 100 ? (
-                                                            <CheckCircle className="w-12 h-12 text-green-500" />
+                                                            <CheckCircle className="w-12 h-12 text-amber-500" />
                                                         ) : (
-                                                            <Brain className="w-12 h-12 text-purple-500" />
+                                                            <Brain className="w-12 h-12 text-orange-500" />
                                                         )
                                                     }
                                                 </motion.div>
@@ -337,9 +337,9 @@ export function CreateMockSheet({
                                                     >
                                                         {
                                                             progressPercent >= item.threshold + 20 ? (
-                                                                <Check className="w-5 h-5 text-green-500" />
+                                                                <Check className="w-5 h-5 text-amber-500" />
                                                             ) : progressPercent >= item.threshold ? (
-                                                                <Loader2 className="w-5 h-5 text-purple-500 animate-spin" />
+                                                                <Loader2 className="w-5 h-5 text-orange-500 animate-spin" />
                                                             ) : (
                                                                 <div className="w-5 h-5 rounded-full border-2 border-neutral-300 dark:border-neutral-700" />
                                                             )
@@ -371,8 +371,8 @@ export function CreateMockSheet({
                                                     <div key={s.id} className="flex-1 text-center">
                                                         <div className={cn(
                                                             "w-10 h-10 rounded-full mx-auto mb-1 flex items-center justify-center text-sm font-medium transition-all",
-                                                            index < step ? "bg-green-500 text-white" :
-                                                                index === step ? "bg-purple-500 text-white" :
+                                                            index < step ? "bg-amber-500 text-white" :
+                                                                index === step ? "bg-orange-500 text-white" :
                                                                     "bg-neutral-200 dark:bg-neutral-700 text-neutral-500"
                                                         )}>
                                                             {index < step ? <Check className="w-5 h-5" /> : index + 1}
@@ -384,13 +384,13 @@ export function CreateMockSheet({
                                         </div>
                                         <Progress value={((step + 1) / steps.length) * 100} className="h-2" />
                                     </div>
-                                    <div className="flex items-center gap-3 mb-6 p-3 rounded-xl bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800">
-                                        <Sparkles className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                    <div className="flex items-center gap-3 mb-6 p-3 rounded-xl bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800">
+                                        <Sparkles className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                                         <div className="flex-1">
-                                            <span className="text-sm font-medium text-purple-900 dark:text-purple-100">
+                                            <span className="text-sm font-medium text-orange-900 dark:text-orange-100">
                                                 {totalCredits} Credits Required
                                             </span>
-                                            <span className="text-sm text-purple-600 dark:text-purple-400 ml-2">
+                                            <span className="text-sm text-orange-600 dark:text-orange-400 ml-2">
                                                 (You have {userCredits})
                                             </span>
                                         </div>
@@ -523,12 +523,12 @@ export function CreateMockSheet({
                                                             </h3>
                                                             <p className="text-neutral-500">Add study materials for focused questions</p>
                                                         </div>
-                                                        <div className="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-xl">
+                                                        <div className="p-4 bg-orange-50 dark:bg-orange-950/20 border border-orange-200 dark:border-orange-800 rounded-xl">
                                                             <div className="flex gap-2">
-                                                                <BookOpen className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                                                                <div className="text-sm text-blue-900 dark:text-blue-100">
+                                                                <BookOpen className="w-5 h-5 text-orange-600 dark:text-orange-400 flex-shrink-0 mt-0.5" />
+                                                                <div className="text-sm text-orange-900 dark:text-orange-100">
                                                                     <p className="font-medium mb-1">Pro Tip</p>
-                                                                    <p className="text-blue-700 dark:text-blue-300">
+                                                                    <p className="text-orange-700 dark:text-orange-300">
                                                                         Adding your syllabus helps the AI ask more targeted questions.
                                                                     </p>
                                                                 </div>
@@ -545,7 +545,7 @@ export function CreateMockSheet({
                                                             <span>{formData.knowledgeBase.length} characters</span>
                                                             {
                                                                 formData.knowledgeBase.length > 0 && (
-                                                                    <Check className="w-4 h-4 text-green-500" />
+                                                                    <Check className="w-4 h-4 text-amber-500" />
                                                                 )
                                                             }
                                                         </div>
@@ -564,7 +564,7 @@ export function CreateMockSheet({
                                                         <div className="p-4 border border-neutral-200 dark:border-neutral-800 rounded-xl">
                                                             <div className="flex items-center justify-between">
                                                                 <div className="flex items-start gap-3">
-                                                                    <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5" />
+                                                                    <FileText className="w-5 h-5 text-orange-600 dark:text-orange-400 mt-0.5" />
                                                                     <div>
                                                                         <div className="font-medium text-neutral-900 dark:text-white">
                                                                             Include Resume Context
@@ -588,7 +588,7 @@ export function CreateMockSheet({
                                                                 className={cn(
                                                                     "p-4 rounded-xl border-2 transition-all text-left",
                                                                     !formData.isPublic
-                                                                        ? "border-purple-500 bg-purple-50 dark:bg-purple-950/30"
+                                                                        ? "border-orange-500 bg-orange-50 dark:bg-orange-950/30"
                                                                         : "border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
                                                                 )}
                                                             >
@@ -602,13 +602,13 @@ export function CreateMockSheet({
                                                                 className={cn(
                                                                     "p-4 rounded-xl border-2 transition-all text-left",
                                                                     formData.isPublic
-                                                                        ? "border-green-500 bg-green-50 dark:bg-green-950/30"
+                                                                        ? "border-amber-500 bg-amber-50 dark:bg-amber-950/30"
                                                                         : "border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
                                                                 )}
                                                             >
-                                                                <Globe className="w-5 h-5 text-green-500 mb-2" />
+                                                                <Globe className="w-5 h-5 text-amber-500 mb-2" />
                                                                 <div className="font-medium text-neutral-900 dark:text-white">Public</div>
-                                                                <div className="text-xs text-green-600">50% discount!</div>
+                                                                <div className="text-xs text-amber-600">50% discount!</div>
                                                             </motion.button>
                                                         </div>
                                                         <div className="p-5 bg-neutral-50 dark:bg-neutral-900/50 rounded-xl border border-neutral-200 dark:border-neutral-800">
@@ -624,7 +624,7 @@ export function CreateMockSheet({
                                                                 </div>
                                                                 {
                                                                     formData.isPublic && (
-                                                                        <div className="flex justify-between text-green-600">
+                                                                        <div className="flex justify-between text-amber-600">
                                                                             <span>Public discount</span>
                                                                             <span>-50%</span>
                                                                         </div>
@@ -641,7 +641,7 @@ export function CreateMockSheet({
                                                                 <div className="h-px bg-neutral-200 dark:bg-neutral-800 my-2" />
                                                                 <div className="flex justify-between font-bold text-lg">
                                                                     <span>Total</span>
-                                                                    <span className="text-purple-600 dark:text-purple-400">{totalCredits} credits</span>
+                                                                    <span className="text-orange-600 dark:text-orange-400">{totalCredits} credits</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -676,7 +676,7 @@ export function CreateMockSheet({
                                         <Button
                                             onClick={nextStep}
                                             disabled={!canProceed() || (step === 2 && userCredits < totalCredits)}
-                                            className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white"
+                                            className="bg-gradient-to-r from-orange-600 to-orange-600 hover:opacity-90 text-white"
                                         >
                                             {
                                                 step === steps.length - 1 ? (

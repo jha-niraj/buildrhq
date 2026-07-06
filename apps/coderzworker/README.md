@@ -1,103 +1,15 @@
-# CoderzWorker
+# CoderzWorker — Cloudflare Container code executor
 
-A Node.js/Express/TypeScript microservice that executes user-submitted code in isolated Docker containers. Used by the BuildrHQ learning platform for DSA/practice session code execution.
+Runs user code (JS, TS, Python, Java, C, C++) for BuildrHQ practice. A Cloudflare
+Worker + Durable Object owns a Cloudflare Container (Linux sandbox with the runtimes);
+the code runs inside the container (Workers can't run Docker/child_process).
 
-## How It Works
+- `src/index.ts` — Worker: `Bearer WORKER_SECRET` auth, proxies `/api/v1/execute` to a pooled container.
+- `src/executor-container.ts` — `CodeExecutor` DO (`@cloudflare/containers`), port 8080.
+- `container/server.mjs` — executor server running inside the container.
+- `Dockerfile` — image with node/tsx/python3/gcc/g++/jdk.
+- `wrangler.jsonc` — containers + durable_objects + migrations.
 
-1. The main app (`apps/main`) calls this service via `NEXT_PUBLIC_WORKER_URL` from a server action.
-2. This service validates and runs the code inside a sandboxed Docker container with:
-   - No network access
-   - Memory limit (default 128MB)
-   - CPU quota (50% of one core)
-   - Strict timeout (default 10s)
-3. Results (stdout, stderr, exit code, timing) are returned immediately (sync) or polled (async).
+API: `POST /api/v1/execute` `{ code, language, testCases? }` -> `{ success, stdout, stderr, exitCode, executionTimeMs, testResults?, allTestsPassed? }`.
 
-## Supported Languages
-
-| Language   | Docker Image              |
-|------------|--------------------------|
-| JavaScript | `node:20-alpine`          |
-| TypeScript | `node:20-alpine`          |
-| Python     | `python:3.12-alpine`      |
-| Java       | `eclipse-temurin:21-jdk-alpine` |
-| C++        | `gcc:13-alpine`           |
-| C          | `gcc:13-alpine`           |
-
-## Running
-
-```bash
-# Install dependencies
-npm install
-
-# Development (hot-reload)
-npm run dev
-
-# Production build
-npm run build
-npm start
-```
-
-## Environment Variables
-
-Copy `.env.example` to `.env` and configure:
-
-| Variable              | Default                     | Description                              |
-|-----------------------|-----------------------------|------------------------------------------|
-| `PORT`                | `3004`                      | Port the service listens on              |
-| `REDIS_URL`           | `redis://localhost:6379`    | Redis URL for BullMQ async queue         |
-| `JWT_SECRET`          | —                           | Secret for verifying JWT tokens          |
-| `NODE_ENV`            | `development`               | `development` or `production`            |
-| `DOCKER_ENABLED`      | `true`                      | Set to `false` for JS/Python-only local dev |
-| `EXECUTION_TIMEOUT_MS`| `10000`                     | Max execution time per container (ms)    |
-| `MAX_MEMORY_MB`       | `128`                       | Memory limit per container (MB)          |
-| `ALLOWED_ORIGINS`     | —                           | Comma-separated CORS origins (prod only) |
-
-## API Endpoints
-
-All `POST` endpoints require `Authorization: Bearer <jwt>` header.
-
-### `POST /api/v1/execute`
-Synchronous execution. Waits up to 15 seconds for result.
-
-**Request body:**
-```json
-{
-  "code": "console.log('hello world')",
-  "language": "javascript",
-  "stdin": "",
-  "testCases": [
-    { "input": "", "expectedOutput": "hello world", "description": "basic output" }
-  ]
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "executionId": "uuid",
-  "result": { "stdout": "hello world", "stderr": "", "exitCode": 0, "executionTimeMs": 312 },
-  "testResults": [{ "passed": true, "input": "", "expectedOutput": "hello world", "actualOutput": "hello world" }],
-  "allTestsPassed": true
-}
-```
-
-### `POST /api/v1/run`
-Async execution. Returns job ID immediately.
-
-**Response:** `{ "success": true, "executionId": "uuid" }`
-
-### `GET /api/v1/execution/:id`
-Poll for async result.
-
-**Response:** Includes `status` (`pending | running | completed | failed | timeout`) plus `result` and `testResults` when done.
-
-### `GET /api/v1/languages`
-List all supported languages (no auth required).
-
-### `GET /health`
-Service health check. Returns uptime, memory, Docker status.
-
-## Development Without Docker
-
-Set `DOCKER_ENABLED=false` in `.env`. Only JavaScript and Python will work via direct `child_process` execution. **Not safe for production.**
+Deploy (paid Workers plan + Containers): `wrangler secret put WORKER_SECRET` (match the main app), then `pnpm --filter coderzworker deploy`. Point `NEXT_PUBLIC_WORKER_URL` at the deployed URL.

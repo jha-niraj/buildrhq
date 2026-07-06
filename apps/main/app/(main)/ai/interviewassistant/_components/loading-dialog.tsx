@@ -14,7 +14,7 @@ export function LoadingDialog({ open, title, description }: LoadingDialogProps) 
         <Dialog open={open}>
             <DialogContent className="sm:max-w-md">
                 <div className="flex flex-col items-center justify-center py-8">
-                    <Loader2 className="h-8 w-8 animate-spin text-emerald-600 mb-4" />
+                    <Loader2 className="h-8 w-8 animate-spin text-amber-600 mb-4" />
                     <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
                         {title}
                     </h3>

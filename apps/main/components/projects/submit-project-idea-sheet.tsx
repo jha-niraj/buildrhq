@@ -366,11 +366,11 @@ export function SubmitProjectIdeaSheet({ open, onOpenChange }: SubmitProjectIdea
                                     </button>
                                     <button
                                         onClick={() => setIdeaType('technology')}
-                                        className="cursor-pointer group text-left bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 hover:border-blue-400 dark:hover:border-blue-600 transition-all hover:shadow-lg"
+                                        className="cursor-pointer group text-left bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-6 hover:border-orange-400 dark:hover:border-orange-600 transition-all hover:shadow-lg"
                                     >
                                         <div className="flex items-center gap-3 mb-4">
-                                            <div className="p-3 bg-blue-100 dark:bg-blue-900/50 rounded-xl">
-                                                <Code2 className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                                            <div className="p-3 bg-orange-100 dark:bg-orange-900/50 rounded-xl">
+                                                <Code2 className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                                             </div>
                                             <div>
                                                 <h3 className="text-lg font-bold text-neutral-900 dark:text-white">Technology Specific</h3>
@@ -381,7 +381,7 @@ export function SubmitProjectIdeaSheet({ open, onOpenChange }: SubmitProjectIdea
                                             Submit a project idea with a specific technology stack.
                                             Best for tutorials, guided projects, and learning paths.
                                         </p>
-                                        <div className="mt-4 flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:gap-2 transition-all">
+                                        <div className="mt-4 flex items-center text-sm font-medium text-orange-600 dark:text-orange-400 group-hover:gap-2 transition-all">
                                             Choose this
                                             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                                         </div>
@@ -565,7 +565,7 @@ export function SubmitProjectIdeaSheet({ open, onOpenChange }: SubmitProjectIdea
                                         </Button>
                                         <div>
                                             <SheetTitle className="flex items-center gap-2">
-                                                <Code2 className="w-5 h-5 text-blue-600" />
+                                                <Code2 className="w-5 h-5 text-orange-600" />
                                                 Submit Technology-Specific Idea
                                             </SheetTitle>
                                             <SheetDescription>

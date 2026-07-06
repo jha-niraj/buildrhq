@@ -109,7 +109,7 @@ export function VerificationPageClient({ goal: initialGoal, verification }: Veri
                         Back to Goal
                     </Link>
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
                             <Target className="w-6 h-6 text-white" />
                         </div>
                         <div>
@@ -126,8 +126,8 @@ export function VerificationPageClient({ goal: initialGoal, verification }: Veri
                         animate={{ opacity: 1, y: 0 }}
                         className="max-w-lg text-center"
                     >
-                        <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center">
-                            <Trophy className="w-10 h-10 text-violet-500" />
+                        <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                            <Trophy className="w-10 h-10 text-orange-500" />
                         </div>
                         <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
                             Ready to Verify Your Knowledge?
@@ -138,19 +138,19 @@ export function VerificationPageClient({ goal: initialGoal, verification }: Veri
                         </p>
                         <div className="grid grid-cols-2 gap-3 text-left mb-8">
                             <div className="p-3 rounded-lg border border-neutral-200 dark:border-neutral-700 flex items-center gap-3">
-                                <Brain className="w-5 h-5 text-violet-500" />
+                                <Brain className="w-5 h-5 text-orange-500" />
                                 <span className="text-sm">20-25 Quiz Questions</span>
                             </div>
                             <div className="p-3 rounded-lg border border-neutral-200 dark:border-neutral-700 flex items-center gap-3">
-                                <Code className="w-5 h-5 text-violet-500" />
+                                <Code className="w-5 h-5 text-orange-500" />
                                 <span className="text-sm">3-8 Coding Challenges</span>
                             </div>
                             <div className="p-3 rounded-lg border border-neutral-200 dark:border-neutral-700 flex items-center gap-3">
-                                <Mic className="w-5 h-5 text-violet-500" />
+                                <Mic className="w-5 h-5 text-orange-500" />
                                 <span className="text-sm">Mock Interview</span>
                             </div>
                             <div className="p-3 rounded-lg border border-neutral-200 dark:border-neutral-700 flex items-center gap-3">
-                                <Wrench className="w-5 h-5 text-violet-500" />
+                                <Wrench className="w-5 h-5 text-orange-500" />
                                 <span className="text-sm">Project Verification</span>
                             </div>
                         </div>

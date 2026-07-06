@@ -131,7 +131,7 @@ export function ProfileHeader({
 									user.userProfile?.completionScore === 100 && (
 										<Badge
 											variant="secondary"
-											className="bg-green-500/10 text-green-600 border-green-500/20"
+											className="bg-amber-500/10 text-amber-600 border-amber-500/20"
 										>
 											<Check className="w-3 h-3 mr-1" />
 											Verified

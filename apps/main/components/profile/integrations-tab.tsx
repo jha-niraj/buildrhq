@@ -164,7 +164,7 @@ export function IntegrationsTab({ isOwnProfile }: IntegrationsTabProps) {
                             </div>
                             {
                                 githubProfile ? (
-                                    <Badge variant="secondary" className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400">
+                                    <Badge variant="secondary" className="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">
                                         <Check className="w-3 h-3 mr-1" />
                                         Connected
                                     </Badge>
@@ -243,8 +243,8 @@ export function IntegrationsTab({ isOwnProfile }: IntegrationsTabProps) {
                                                     Open Source Contributions
                                                 </h4>
                                                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                                                    <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-xl">
-                                                        <div className="flex items-center gap-2 text-green-600 dark:text-green-400 mb-1">
+                                                    <div className="p-4 bg-gradient-to-br from-amber-50 to-amber-50 dark:from-amber-950/30 dark:to-amber-950/30 rounded-xl">
+                                                        <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400 mb-1">
                                                             <GitPullRequest className="w-4 h-4" />
                                                             <span className="text-xs font-medium">PRs Created</span>
                                                         </div>
@@ -252,8 +252,8 @@ export function IntegrationsTab({ isOwnProfile }: IntegrationsTabProps) {
                                                             {contributionSummary.totalPRs}
                                                         </p>
                                                     </div>
-                                                    <div className="p-4 bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-950/30 dark:to-violet-950/30 rounded-xl">
-                                                        <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 mb-1">
+                                                    <div className="p-4 bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-950/30 dark:to-orange-950/30 rounded-xl">
+                                                        <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400 mb-1">
                                                             <Check className="w-4 h-4" />
                                                             <span className="text-xs font-medium">PRs Merged</span>
                                                         </div>
@@ -270,8 +270,8 @@ export function IntegrationsTab({ isOwnProfile }: IntegrationsTabProps) {
                                                             {contributionSummary.openPRs}
                                                         </p>
                                                     </div>
-                                                    <div className="p-4 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 rounded-xl">
-                                                        <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-1">
+                                                    <div className="p-4 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 rounded-xl">
+                                                        <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400 mb-1">
                                                             <Star className="w-4 h-4" />
                                                             <span className="text-xs font-medium">Repos</span>
                                                         </div>
@@ -298,19 +298,19 @@ export function IntegrationsTab({ isOwnProfile }: IntegrationsTabProps) {
                                         </h4>
                                         <ul className="text-sm text-neutral-600 dark:text-neutral-400 space-y-1.5">
                                             <li className="flex items-center gap-2">
-                                                <Check className="w-4 h-4 text-green-500" />
+                                                <Check className="w-4 h-4 text-amber-500" />
                                                 Track your open source contributions automatically
                                             </li>
                                             <li className="flex items-center gap-2">
-                                                <Check className="w-4 h-4 text-green-500" />
+                                                <Check className="w-4 h-4 text-amber-500" />
                                                 Claim and submit issues directly from the platform
                                             </li>
                                             <li className="flex items-center gap-2">
-                                                <Check className="w-4 h-4 text-green-500" />
+                                                <Check className="w-4 h-4 text-amber-500" />
                                                 Get notified about PR reviews and merge status
                                             </li>
                                             <li className="flex items-center gap-2">
-                                                <Check className="w-4 h-4 text-green-500" />
+                                                <Check className="w-4 h-4 text-amber-500" />
                                                 Showcase your contributions on your profile
                                             </li>
                                         </ul>
@@ -323,7 +323,7 @@ export function IntegrationsTab({ isOwnProfile }: IntegrationsTabProps) {
                                     </p>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="p-4 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl">
-                                            <GitPullRequest className="w-6 h-6 text-green-600 mb-2" />
+                                            <GitPullRequest className="w-6 h-6 text-amber-600 mb-2" />
                                             <h4 className="font-medium text-neutral-900 dark:text-white text-sm">
                                                 Track PRs
                                             </h4>
@@ -332,7 +332,7 @@ export function IntegrationsTab({ isOwnProfile }: IntegrationsTabProps) {
                                             </p>
                                         </div>
                                         <div className="p-4 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl">
-                                            <Link2 className="w-6 h-6 text-blue-600 mb-2" />
+                                            <Link2 className="w-6 h-6 text-orange-600 mb-2" />
                                             <h4 className="font-medium text-neutral-900 dark:text-white text-sm">
                                                 Claim Issues
                                             </h4>
@@ -350,7 +350,7 @@ export function IntegrationsTab({ isOwnProfile }: IntegrationsTabProps) {
                                             </p>
                                         </div>
                                         <div className="p-4 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl">
-                                            <GitBranch className="w-6 h-6 text-purple-600 mb-2" />
+                                            <GitBranch className="w-6 h-6 text-orange-600 mb-2" />
                                             <h4 className="font-medium text-neutral-900 dark:text-white text-sm">
                                                 Profile Integration
                                             </h4>

@@ -373,48 +373,48 @@ function SignUpForm() {
                                             <div className="flex items-center gap-2">
                                                 {
                                                     hasMinLength ? (
-                                                        <Check className="h-3.5 w-3.5 text-green-500" />
+                                                        <Check className="h-3.5 w-3.5 text-amber-500" />
                                                     ) : (
                                                         <X className="h-3.5 w-3.5 text-zinc-400" />
                                                     )
                                                 }
-                                                <span className={`text-xs ${hasMinLength ? "text-green-500" : "text-zinc-500 dark:text-zinc-400"}`}>
+                                                <span className={`text-xs ${hasMinLength ? "text-amber-500" : "text-zinc-500 dark:text-zinc-400"}`}>
                                                     8+ characters
                                                 </span>
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 {
                                                     hasCapital ? (
-                                                        <Check className="h-3.5 w-3.5 text-green-500" />
+                                                        <Check className="h-3.5 w-3.5 text-amber-500" />
                                                     ) : (
                                                         <X className="h-3.5 w-3.5 text-zinc-400" />
                                                     )
                                                 }
-                                                <span className={`text-xs ${hasCapital ? "text-green-500" : "text-zinc-500 dark:text-zinc-400"}`}>
+                                                <span className={`text-xs ${hasCapital ? "text-amber-500" : "text-zinc-500 dark:text-zinc-400"}`}>
                                                     Uppercase letter
                                                 </span>
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 {
                                                     hasNumber ? (
-                                                        <Check className="h-3.5 w-3.5 text-green-500" />
+                                                        <Check className="h-3.5 w-3.5 text-amber-500" />
                                                     ) : (
                                                         <X className="h-3.5 w-3.5 text-zinc-400" />
                                                     )
                                                 }
-                                                <span className={`text-xs ${hasNumber ? "text-green-500" : "text-zinc-500 dark:text-zinc-400"}`}>
+                                                <span className={`text-xs ${hasNumber ? "text-amber-500" : "text-zinc-500 dark:text-zinc-400"}`}>
                                                     Number
                                                 </span>
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 {
                                                     hasSpecial ? (
-                                                        <Check className="h-3.5 w-3.5 text-green-500" />
+                                                        <Check className="h-3.5 w-3.5 text-amber-500" />
                                                     ) : (
                                                         <X className="h-3.5 w-3.5 text-zinc-400" />
                                                     )
                                                 }
-                                                <span className={`text-xs ${hasSpecial ? "text-green-500" : "text-zinc-500 dark:text-zinc-400"}`}>
+                                                <span className={`text-xs ${hasSpecial ? "text-amber-500" : "text-zinc-500 dark:text-zinc-400"}`}>
                                                     Special character
                                                 </span>
                                             </div>

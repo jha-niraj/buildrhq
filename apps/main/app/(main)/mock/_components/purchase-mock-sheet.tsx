@@ -48,9 +48,9 @@ interface SessionInfo {
 }
 
 const levelColors: Record<string, string> = {
-    BEGINNER: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
-    INTERMEDIATE: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-    ADVANCED: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',
+    BEGINNER: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
+    INTERMEDIATE: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
+    ADVANCED: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
     EXPERT: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
 }
 
@@ -124,7 +124,7 @@ export function PurchaseMockSheet({ isOpen, onClose, mock, userCredits }: Purcha
                                 {mock.level}
                             </Badge>
                             {mock.byAdmin && (
-                                <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-xs">
+                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs">
                                     Official
                                 </Badge>
                             )}
@@ -140,12 +140,12 @@ export function PurchaseMockSheet({ isOpen, onClose, mock, userCredits }: Purcha
                     {/* Quick stats row */}
                     <div className="grid grid-cols-3 gap-3">
                         <div className="flex flex-col items-center gap-1 p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                            <Clock className="w-4 h-4 text-blue-500" />
+                            <Clock className="w-4 h-4 text-orange-500" />
                             <span className="text-lg font-bold">{mock.duration}</span>
                             <span className="text-[10px] text-neutral-500 uppercase tracking-wide">min</span>
                         </div>
                         <div className="flex flex-col items-center gap-1 p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                            <Brain className="w-4 h-4 text-purple-500" />
+                            <Brain className="w-4 h-4 text-orange-500" />
                             <span className="text-lg font-bold">{mock.questionsCount ?? '—'}</span>
                             <span className="text-[10px] text-neutral-500 uppercase tracking-wide">questions</span>
                         </div>
@@ -191,7 +191,7 @@ export function PurchaseMockSheet({ isOpen, onClose, mock, userCredits }: Purcha
                                 />
                             </div>
                             {sessionInfo.isCreator && sessionInfo.freeSessionsRemaining > 0 && (
-                                <div className="flex items-center gap-2 px-3 py-2.5 bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-900/30 rounded-lg text-xs text-green-700 dark:text-green-300">
+                                <div className="flex items-center gap-2 px-3 py-2.5 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/30 rounded-lg text-xs text-amber-700 dark:text-amber-300">
                                     <CheckCircle className="w-3.5 h-3.5 flex-shrink-0" />
                                     {sessionInfo.freeSessionsRemaining} free session{sessionInfo.freeSessionsRemaining > 1 ? 's' : ''} remaining — you created this mock
                                 </div>
@@ -218,9 +218,9 @@ export function PurchaseMockSheet({ isOpen, onClose, mock, userCredits }: Purcha
                             )}
                         </div>
                         <div className="flex items-center gap-1.5">
-                            <Sparkles className="w-4 h-4 text-purple-500" />
+                            <Sparkles className="w-4 h-4 text-orange-500" />
                             {isFreeSession ? (
-                                <span className="text-2xl font-bold text-green-600">Free</span>
+                                <span className="text-2xl font-bold text-amber-600">Free</span>
                             ) : (
                                 <span className="text-2xl font-bold text-neutral-900 dark:text-white">{creditsNeeded}</span>
                             )}

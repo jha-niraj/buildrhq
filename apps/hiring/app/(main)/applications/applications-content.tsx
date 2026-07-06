@@ -52,9 +52,9 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                 const Icon = stat.icon
                                 const value = stats[stat.key as keyof ApplicationStats]
                                 const colorClasses = {
-                                    violet: "bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400",
-                                    blue: "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400",
-                                    green: "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400",
+                                    violet: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400",
+                                    blue: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400",
+                                    green: "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400",
                                     red: "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
                                 }
 
@@ -72,7 +72,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                             </div>
                                             {
                                                 stat.key === "new" && stats.thisWeek > 0 && (
-                                                    <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                                                    <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
                                                         <TrendingUp className="w-3 h-3 mr-1" />
                                                         +{stats.thisWeek} this week
                                                     </Badge>
@@ -118,11 +118,11 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                     transition={{ delay: index * 0.05 }}
                                 >
                                     <Link href={`/applications/${job.jobSlug}`}>
-                                        <div className="bg-white dark:bg-neutral-950 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 hover:border-violet-300 dark:hover:border-violet-700 transition-colors cursor-pointer">
+                                        <div className="bg-white dark:bg-neutral-950 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-colors cursor-pointer">
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-4">
-                                                    <div className="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center">
-                                                        <Briefcase className="w-6 h-6 text-violet-600 dark:text-violet-400" />
+                                                    <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                                                        <Briefcase className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                                                     </div>
                                                     <div>
                                                         <h3 className="font-semibold text-neutral-900 dark:text-white">
@@ -137,21 +137,21 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                     <div className="hidden sm:flex items-center gap-2">
                                                         {
                                                             job.new > 0 && (
-                                                                <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+                                                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
                                                                     {job.new} new
                                                                 </Badge>
                                                             )
                                                         }
                                                         {
                                                             job.shortlisted > 0 && (
-                                                                <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                                                                <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
                                                                     {job.shortlisted} shortlisted
                                                                 </Badge>
                                                             )
                                                         }
                                                         {
                                                             job.interviewing > 0 && (
-                                                                <Badge className="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
+                                                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
                                                                     {job.interviewing} interviewing
                                                                 </Badge>
                                                             )
@@ -167,7 +167,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                         {
                                                             job.new > 0 && (
                                                                 <div
-                                                                    className="bg-blue-500"
+                                                                    className="bg-orange-500"
                                                                     style={{ width: `${(job.new / job.total) * 100}%` }}
                                                                 />
                                                             )
@@ -183,7 +183,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                         {
                                                             job.shortlisted > 0 && (
                                                                 <div
-                                                                    className="bg-green-500"
+                                                                    className="bg-amber-500"
                                                                     style={{ width: `${(job.shortlisted / job.total) * 100}%` }}
                                                                 />
                                                             )
@@ -191,7 +191,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                         {
                                                             job.interviewing > 0 && (
                                                                 <div
-                                                                    className="bg-purple-500"
+                                                                    className="bg-orange-500"
                                                                     style={{ width: `${(job.interviewing / job.total) * 100}%` }}
                                                                 />
                                                             )
@@ -199,7 +199,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                         {
                                                             job.hired > 0 && (
                                                                 <div
-                                                                    className="bg-emerald-500"
+                                                                    className="bg-amber-500"
                                                                     style={{ width: `${(job.hired / job.total) * 100}%` }}
                                                                 />
                                                             )
@@ -258,7 +258,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                 filteredJobs.some(j => j.total > 0) && (
                     <div className="mt-6 flex flex-wrap gap-4 text-sm text-neutral-500">
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-blue-500" />
+                            <div className="w-3 h-3 rounded-full bg-orange-500" />
                             <span>New</span>
                         </div>
                         <div className="flex items-center gap-2">
@@ -266,15 +266,15 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                             <span>Under Review</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-green-500" />
+                            <div className="w-3 h-3 rounded-full bg-amber-500" />
                             <span>Shortlisted</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-purple-500" />
+                            <div className="w-3 h-3 rounded-full bg-orange-500" />
                             <span>Interviewing</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-emerald-500" />
+                            <div className="w-3 h-3 rounded-full bg-amber-500" />
                             <span>Hired</span>
                         </div>
                         <div className="flex items-center gap-2">

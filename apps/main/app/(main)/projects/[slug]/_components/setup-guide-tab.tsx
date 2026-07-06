@@ -80,7 +80,7 @@ export function SetupGuideTab({ setupGuide }: SetupGuideTabProps) {
                 <Card className="bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <CardHeader>
                         <CardTitle className="text-lg flex items-center gap-2">
-                            <Download className="w-5 h-5 text-indigo-500" />
+                            <Download className="w-5 h-5 text-orange-500" />
                             Prerequisites
                         </CardTitle>
                     </CardHeader>
@@ -91,8 +91,8 @@ export function SetupGuideTab({ setupGuide }: SetupGuideTabProps) {
                         <ul className="space-y-3">
                             {setupGuide.prerequisites.map((prereq, idx) => (
                                 <li key={idx} className="flex items-start gap-3">
-                                    <div className="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center flex-shrink-0">
-                                        <CheckCircle2 className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                                    <div className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
+                                        <CheckCircle2 className="w-4 h-4 text-orange-600 dark:text-orange-400" />
                                     </div>
                                     <span className="text-sm text-neutral-700 dark:text-neutral-300">
                                         {prereq}
@@ -138,7 +138,7 @@ export function SetupGuideTab({ setupGuide }: SetupGuideTabProps) {
                                     {setupGuide.environmentVariables.map((env, idx) => (
                                         <TableRow key={idx}>
                                             <TableCell>
-                                                <code className="text-sm font-mono text-indigo-600 dark:text-indigo-400">
+                                                <code className="text-sm font-mono text-orange-600 dark:text-orange-400">
                                                     {env.name}
                                                 </code>
                                             </TableCell>
@@ -162,7 +162,7 @@ export function SetupGuideTab({ setupGuide }: SetupGuideTabProps) {
                                                     onClick={() => handleCopyEnv(env.name, env.exampleValue)}
                                                 >
                                                     {copiedEnv === env.name ? (
-                                                        <Check className="w-4 h-4 text-green-500" />
+                                                        <Check className="w-4 h-4 text-amber-500" />
                                                     ) : (
                                                         <Copy className="w-4 h-4" />
                                                     )}
@@ -182,7 +182,7 @@ export function SetupGuideTab({ setupGuide }: SetupGuideTabProps) {
                 <Card className="bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <CardHeader>
                         <CardTitle className="text-lg flex items-center gap-2">
-                            <Terminal className="w-5 h-5 text-green-500" />
+                            <Terminal className="w-5 h-5 text-amber-500" />
                             Installation Steps
                         </CardTitle>
                     </CardHeader>
@@ -193,12 +193,12 @@ export function SetupGuideTab({ setupGuide }: SetupGuideTabProps) {
                         <ol className="space-y-4">
                             {setupGuide.installationSteps.map((step, idx) => (
                                 <li key={idx} className="flex gap-4">
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm">
                                         {idx + 1}
                                     </div>
                                     <div className="flex-1 min-w-0">
                                         <div className="flex items-center gap-2 p-3 bg-neutral-900 dark:bg-black rounded-lg group">
-                                            <code className="flex-1 text-sm text-green-400 font-mono break-all">
+                                            <code className="flex-1 text-sm text-amber-400 font-mono break-all">
                                                 {step}
                                             </code>
                                             <Button
@@ -208,7 +208,7 @@ export function SetupGuideTab({ setupGuide }: SetupGuideTabProps) {
                                                 className="text-neutral-400 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity"
                                             >
                                                 {copiedStep === idx ? (
-                                                    <Check className="w-4 h-4 text-green-500" />
+                                                    <Check className="w-4 h-4 text-amber-500" />
                                                 ) : (
                                                     <Copy className="w-4 h-4" />
                                                 )}
@@ -227,7 +227,7 @@ export function SetupGuideTab({ setupGuide }: SetupGuideTabProps) {
                 <Card className="bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
                     <CardHeader>
                         <CardTitle className="text-lg flex items-center gap-2">
-                            <PlayCircle className="w-5 h-5 text-blue-500" />
+                            <PlayCircle className="w-5 h-5 text-orange-500" />
                             Verification
                         </CardTitle>
                     </CardHeader>
@@ -238,7 +238,7 @@ export function SetupGuideTab({ setupGuide }: SetupGuideTabProps) {
                         <ul className="space-y-3">
                             {setupGuide.verificationSteps.map((step, idx) => (
                                 <li key={idx} className="flex items-start gap-3">
-                                    <div className="w-5 h-5 rounded border-2 border-blue-300 dark:border-blue-700 flex-shrink-0 mt-0.5" />
+                                    <div className="w-5 h-5 rounded border-2 border-orange-300 dark:border-orange-700 flex-shrink-0 mt-0.5" />
                                     <span className="text-sm text-neutral-700 dark:text-neutral-300">
                                         {step}
                                     </span>

@@ -124,7 +124,7 @@ function ExploreGoalCard({
                 className={`
                     p-3 rounded-xl border transition-all cursor-pointer group
                     ${isSelected
-                        ? 'border-violet-500 bg-violet-50 dark:bg-violet-950/30 dark:border-violet-600'
+                        ? 'border-orange-500 bg-orange-50 dark:bg-orange-950/30 dark:border-orange-600'
                         : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-900/50'
                     }
                 `}
@@ -139,7 +139,7 @@ function ExploreGoalCard({
                     <div className="flex-1 min-w-0">
                         <h3 className={cn(
                             "text-sm font-medium truncate",
-                            isSelected ? "text-violet-900 dark:text-violet-100" : "text-neutral-900 dark:text-white"
+                            isSelected ? "text-orange-900 dark:text-orange-100" : "text-neutral-900 dark:text-white"
                         )}>
                             {goal.title}
                         </h3>

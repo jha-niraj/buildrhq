@@ -373,15 +373,15 @@ export const STUDIO_CATEGORIES: { value: StudioCategory; label: string }[] = [
 
 export const getCategoryColor = (category: StudioCategory): string => {
     const colors: Record<StudioCategory, string> = {
-        PROGRAMMING: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
-        WEB_DEVELOPMENT: "bg-purple-500/10 text-purple-600 dark:text-purple-400",
-        DATA_SCIENCE: "bg-green-500/10 text-green-600 dark:text-green-400",
+        PROGRAMMING: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
+        WEB_DEVELOPMENT: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
+        DATA_SCIENCE: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
         MOBILE_DEVELOPMENT: "bg-pink-500/10 text-pink-600 dark:text-pink-400",
-        DEVOPS: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400",
+        DEVOPS: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
         SYSTEM_DESIGN: "bg-yellow-500/10 text-yellow-600 dark:text-yellow-400",
-        INTERVIEW_PREP: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
+        INTERVIEW_PREP: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
         PROJECT_NOTES: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
-        TUTORIAL: "bg-teal-500/10 text-teal-600 dark:text-teal-400",
+        TUTORIAL: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
         COURSE_NOTES: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
         GENERAL: "bg-neutral-500/10 text-neutral-600 dark:text-neutral-400",
         OTHER: "bg-neutral-500/10 text-neutral-600 dark:text-neutral-400",

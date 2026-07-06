@@ -1,0 +1,41 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "buildrhq-coderzworker",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-05-07",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true
+	},
+	// The code executor runs inside a Cloudflare Container (a real Linux sandbox with
+	// node / python / gcc / jdk). A Worker + Durable Object owns the container lifecycle
+	// and proxies each execution request to it. Workers themselves can't run Docker /
+	// child_process, so the actual code runs in the container.
+	"containers": [
+		{
+			"class_name": "CodeExecutor",
+			"image": "./Dockerfile",
+			"max_instances": 5,
+			"name": "buildrhq-code-executor"
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "CODE_EXECUTOR",
+				"class_name": "CodeExecutor"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["CodeExecutor"]
+		}
+	],
+	// WORKER_SECRET (shared with the main app's Bearer token) is set via
+	// `wrangler secret put WORKER_SECRET`.
+	"vars": {
+		"NODE_ENV": "production"
+	}
+}

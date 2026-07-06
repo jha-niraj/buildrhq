@@ -11,9 +11,9 @@ import { Loader2, Building2, LayoutDashboard, Shield, Briefcase } from "lucide-r
 const hiringPlatformConfig = {
     name: "Hiring Platform",
     icon: Building2,
-    color: "bg-emerald-500",
-    bgColor: "bg-gradient-to-br from-emerald-500 to-emerald-600",
-    textColor: "text-emerald-600 dark:text-emerald-400",
+    color: "bg-amber-500",
+    bgColor: "bg-gradient-to-br from-amber-500 to-amber-600",
+    textColor: "text-amber-600 dark:text-amber-400",
     overviewHref: "/hiring",
     navItems: [
         { name: "Hiring Dashboard", path: "hiring", icon: LayoutDashboard },

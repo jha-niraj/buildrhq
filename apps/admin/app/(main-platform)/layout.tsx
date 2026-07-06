@@ -11,9 +11,9 @@ import { Loader2, LayoutDashboard, Users, CreditCard, MessageCircle, BarChart3, 
 const mainPlatformConfig = {
     name: "Main Platform",
     icon: LayoutDashboard,
-    color: "bg-blue-500",
-    bgColor: "bg-gradient-to-br from-blue-500 to-blue-600",
-    textColor: "text-blue-600 dark:text-blue-400",
+    color: "bg-orange-500",
+    bgColor: "bg-gradient-to-br from-orange-500 to-orange-600",
+    textColor: "text-orange-600 dark:text-orange-400",
     overviewHref: "/dashboard",
     navItems: [
         { name: "Dashboard", path: "dashboard", icon: LayoutDashboard },

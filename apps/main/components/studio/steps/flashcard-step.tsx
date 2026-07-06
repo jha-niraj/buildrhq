@@ -90,7 +90,7 @@ export function FlashcardStep({ step }: FlashcardStepProps) {
 						</p>
 						<div className="flex items-center justify-center gap-8 mb-8">
 							<div className="text-center">
-								<p className="text-3xl font-bold text-green-600">{knownCount}</p>
+								<p className="text-3xl font-bold text-amber-600">{knownCount}</p>
 								<p className="text-sm text-neutral-500">Known</p>
 							</div>
 							<div className="h-12 w-px bg-neutral-200 dark:bg-neutral-700" />
@@ -231,7 +231,7 @@ export function FlashcardStep({ step }: FlashcardStepProps) {
 								</Button>
 								<Button
 									size="sm"
-									className="gap-2 bg-green-600 hover:bg-green-700"
+									className="gap-2 bg-amber-600 hover:bg-amber-700"
 									onClick={handleKnow}
 								>
 									<CheckCircle className="h-4 w-4" />

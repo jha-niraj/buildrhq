@@ -145,7 +145,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                         </div>
                         {
                             isSubmitted ? (
-                                <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
                                     <CheckCircle2 className="w-3 h-3 mr-1" />
                                     Submitted
                                 </Badge>
@@ -155,7 +155,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                     Overdue
                                 </Badge>
                             ) : hasStarted ? (
-                                <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
                                     <Clock className="w-3 h-3 mr-1" />
                                     In Progress
                                 </Badge>
@@ -239,7 +239,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                                 {
                                                     assignment.requirements.map((req, index) => (
                                                         <li key={index} className="flex items-start gap-2">
-                                                            <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
+                                                            <CheckCircle2 className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
                                                             <span className="text-neutral-700 dark:text-neutral-300">{req}</span>
                                                         </li>
                                                     ))
@@ -259,7 +259,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                                 {
                                                     assignment.deliverables.map((del, index) => (
                                                         <li key={index} className="flex items-start gap-2">
-                                                            <div className="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-xs font-semibold text-blue-700 dark:text-blue-400 mt-0.5 shrink-0">
+                                                            <div className="w-5 h-5 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-xs font-semibold text-orange-700 dark:text-orange-400 mt-0.5 shrink-0">
                                                                 {index + 1}
                                                             </div>
                                                             <span className="text-neutral-700 dark:text-neutral-300">{del}</span>
@@ -287,8 +287,8 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                                             rel="noopener noreferrer"
                                                             className="flex items-center gap-2 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors"
                                                         >
-                                                            <LinkIcon className="w-4 h-4 text-blue-500" />
-                                                            <span className="text-sm text-blue-600 dark:text-blue-400 truncate flex-1">
+                                                            <LinkIcon className="w-4 h-4 text-orange-500" />
+                                                            <span className="text-sm text-orange-600 dark:text-orange-400 truncate flex-1">
                                                                 {resource}
                                                             </span>
                                                             <ExternalLink className="w-4 h-4 text-neutral-400" />
@@ -304,7 +304,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                     {
                                         isSubmitted ? (
                                             <div className="text-center py-4">
-                                                <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto mb-3" />
+                                                <CheckCircle2 className="w-12 h-12 text-amber-500 mx-auto mb-3" />
                                                 <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
                                                     Assignment Submitted
                                                 </h4>
@@ -314,7 +314,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                                 </p>
                                                 {
                                                     application.assignmentScore !== null && (
-                                                        <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-lg px-4 py-2">
+                                                        <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-lg px-4 py-2">
                                                             Score: {application.assignmentScore}%
                                                         </Badge>
                                                     )

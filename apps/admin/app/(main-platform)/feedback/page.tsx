@@ -159,16 +159,16 @@ export default function FeedbackPage() {
     const getCategoryColor = (category: string) => {
         switch (category) {
             case "BUG": return "bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400"
-            case "FEATURE": return "bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400"
-            case "UI": return "bg-purple-100 text-purple-700 dark:bg-purple-900/20 dark:text-purple-400"
+            case "FEATURE": return "bg-orange-100 text-orange-700 dark:bg-orange-900/20 dark:text-orange-400"
+            case "UI": return "bg-orange-100 text-orange-700 dark:bg-orange-900/20 dark:text-orange-400"
             default: return "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-400"
         }
     }
 
     const getStatusIcon = (status: string) => {
         switch (status) {
-            case "COMPLETED": return <CheckCircle className="w-4 h-4 text-emerald-500" />
-            case "PLANNED": return <Clock className="w-4 h-4 text-blue-500" />
+            case "COMPLETED": return <CheckCircle className="w-4 h-4 text-amber-500" />
+            case "PLANNED": return <Clock className="w-4 h-4 text-orange-500" />
             default: return <AlertCircle className="w-4 h-4 text-amber-500" />
         }
     }
@@ -300,7 +300,7 @@ export default function FeedbackPage() {
                                                 item.isVerified && (
                                                     <>
                                                         <span>•</span>
-                                                        <span className="text-emerald-500 flex items-center gap-1">
+                                                        <span className="text-amber-500 flex items-center gap-1">
                                                             <CheckCircle className="w-4 h-4" />
                                                             Verified
                                                         </span>
@@ -325,7 +325,7 @@ export default function FeedbackPage() {
                                                             setSelectedFeedback(item)
                                                             setShowRewardDialog(true)
                                                         }}
-                                                        className="px-3 py-1.5 text-sm font-medium text-white bg-gradient-to-r from-emerald-500 to-green-500 rounded-lg hover:from-emerald-600 hover:to-green-600 transition-colors flex items-center gap-2"
+                                                        className="px-3 py-1.5 text-sm font-medium text-white bg-gradient-to-r from-amber-500 to-amber-500 rounded-lg hover:from-amber-600 hover:to-amber-600 transition-colors flex items-center gap-2"
                                                     >
                                                         <Award className="w-4 h-4" />
                                                         Assign Reward
@@ -334,7 +334,7 @@ export default function FeedbackPage() {
                                             }
                                             {
                                                 item.rewards && (
-                                                    <span className="px-3 py-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 rounded-lg flex items-center gap-2">
+                                                    <span className="px-3 py-1.5 text-sm font-medium text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-500/10 rounded-lg flex items-center gap-2">
                                                         <Award className="w-4 h-4" />
                                                         {item.rewards.credits} credits{typeof item.rewards.xp === 'number' ? `, ${item.rewards.xp} XP` : ''}
                                                     </span>

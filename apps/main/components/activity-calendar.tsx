@@ -282,12 +282,12 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                         <div className="flex items-center justify-between">
                             <div>
                                 <p className="text-muted-foreground text-sm font-medium">Next Milestone</p>
-                                <p className="text-3xl font-bold text-emerald-600">
+                                <p className="text-3xl font-bold text-amber-600">
                                     {Math.max(0, Math.ceil((stats?.streak.currentStreak || 0 + 1) / 7) * 7 - (stats?.streak.currentStreak || 0)) || '365+'}
                                 </p>
                                 <p className="text-muted-foreground text-xs">days</p>
                             </div>
-                            <Trophy className="w-8 h-8 text-emerald-500" />
+                            <Trophy className="w-8 h-8 text-amber-500" />
                         </div>
                     </CardContent>
                 </Card>
@@ -339,9 +339,9 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                                         className={`
                                         h-8 w-8 rounded border-2 text-xs font-medium transition-all duration-200
                                         ${getIntensityColor(intensity)}
-                                        ${isToday ? 'ring-2 ring-blue-500' : ''}
+                                        ${isToday ? 'ring-2 ring-orange-500' : ''}
                                         ${isFuture ? 'opacity-30' : 'hover:scale-110 cursor-pointer'}
-                                        ${selectedDay?.date.getTime() === dayData.date.getTime() ? 'ring-2 ring-purple-500' : ''}
+                                        ${selectedDay?.date.getTime() === dayData.date.getTime() ? 'ring-2 ring-orange-500' : ''}
                                     `}
                                         onClick={() => setSelectedDay(dayData)}
                                         disabled={isFuture}
@@ -393,7 +393,7 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                                     {
                                         loadingDailySummary ? (
                                             <div className="flex items-center justify-center py-12">
-                                                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+                                                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div>
                                             </div>
                                         ) : selectedDay.hasActivity && dailySummary ? (
                                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -416,19 +416,19 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    <Clock className="w-4 h-4 text-blue-600" />
+                                                    <Clock className="w-4 h-4 text-orange-600" />
                                                     <div>
                                                         <p className="text-sm text-muted-foreground">Time Spent</p>
-                                                        <p className="font-bold text-blue-600">
+                                                        <p className="font-bold text-orange-600">
                                                             {dailySummary.totalTimeSpent}m
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    <ActivityIcon className="w-4 h-4 text-emerald-600" />
+                                                    <ActivityIcon className="w-4 h-4 text-amber-600" />
                                                     <div>
                                                         <p className="text-sm text-muted-foreground">Activities</p>
-                                                        <p className="font-bold text-emerald-600">
+                                                        <p className="font-bold text-amber-600">
                                                             {dailySummary.activitiesCount}
                                                         </p>
                                                     </div>
@@ -442,14 +442,14 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                                                                     const getActivityCategory = (type: ActivityType) => {
                                                                         switch (type) {
                                                                             case ActivityType.DAILY_QUIZ_COMPLETED:
-                                                                                return { category: 'Quiz', color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300' };
+                                                                                return { category: 'Quiz', color: 'bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300' };
                                                                             case ActivityType.LEARN_COMPLETED:
                                                                                 return { category: 'Learn', color: 'bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300' };
                                                                             case ActivityType.STARTED_INTERVIEW:
                                                                                 return { category: 'AI Interview', color: 'bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300' };
                                                                             case ActivityType.REFERRAL_BONUS:
                                                                             case ActivityType.REWARD_RECEIVED:
-                                                                                return { category: 'Reward', color: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300' };
+                                                                                return { category: 'Reward', color: 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300' };
                                                                             default:
                                                                                 return { category: 'Activity', color: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300' };
                                                                         }
@@ -509,7 +509,7 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                                                                             <div className="flex flex-col gap-1 ml-4">
                                                                                 {
                                                                                     activity.xpEarned > 0 && (
-                                                                                        <Badge variant="secondary" className="text-xs bg-blue-600 text-white border-0">
+                                                                                        <Badge variant="secondary" className="text-xs bg-orange-600 text-white border-0">
                                                                                             +{activity.xpEarned} XP
                                                                                         </Badge>
                                                                                     )

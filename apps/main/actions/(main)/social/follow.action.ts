@@ -104,7 +104,7 @@ export async function acceptFollowRequest(requestId: string) {
                 followingId: req.receiverId,
             })
         })
-        revalidatePath("/inbox/requests")
+        revalidatePath("/profile")
         return { success: true }
     } catch {
         return { success: false, error: "Failed to accept request" }
@@ -119,7 +119,7 @@ export async function rejectFollowRequest(requestId: string) {
         await db.delete(followRequest).where(
             and(eq(followRequest.id, requestId), eq(followRequest.receiverId, session.user.id))
         )
-        revalidatePath("/inbox/requests")
+        revalidatePath("/profile")
         return { success: true }
     } catch {
         return { success: false, error: "Failed to reject request" }

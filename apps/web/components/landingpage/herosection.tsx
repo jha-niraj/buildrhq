@@ -185,9 +185,9 @@ export default function HeroSection() {
                             className="mt-5 max-w-[480px] text-[15px] leading-relaxed text-neutral-500 dark:text-white/45"
                             variants={reduced ? undefined : item}
                         >
-                            Master system design, open source contribution, and full-stack
-                            architecture with a suite of specialized AI agents designed for
-                            serious developers.
+                            Build real projects, practice DSA & system design, ace AI mock
+                            interviews, and get matched to jobs — with a suite of specialized
+                            AI agents designed for serious developers.
                         </motion.p>
 
                         <motion.div

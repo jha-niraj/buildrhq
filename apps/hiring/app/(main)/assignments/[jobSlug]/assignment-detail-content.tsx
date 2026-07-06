@@ -56,12 +56,12 @@ function StatusBadge({ status }: { status: string }) {
         },
         ASSIGNMENT_SUBMITTED: {
             label: "Submitted",
-            color: "bg-green-50 text-green-700 border-green-200",
+            color: "bg-amber-50 text-amber-700 border-amber-200",
             icon: <CheckCircle2 className="h-3 w-3" />
         },
         SHORTLISTED: {
             label: "Shortlisted",
-            color: "bg-blue-50 text-blue-700 border-blue-200",
+            color: "bg-orange-50 text-orange-700 border-orange-200",
             icon: <Star className="h-3 w-3" />
         }
     }
@@ -171,7 +171,7 @@ function CandidateCard({
                 {
                     application.assignmentSubmittedAt && (
                         <div className="flex items-center gap-1.5">
-                            <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />
+                            <CheckCircle2 className="h-3.5 w-3.5 text-amber-600" />
                             <span>Submitted: {formatDate(application.assignmentSubmittedAt)}</span>
                         </div>
                     )
@@ -204,7 +204,7 @@ function CandidateCard({
                         <Button
                             size="sm"
                             onClick={() => onScoreAssignment(application)}
-                            className="bg-emerald-600 hover:bg-emerald-700 text-white"
+                            className="bg-amber-600 hover:bg-amber-700 text-white"
                         >
                             <Star className="h-3.5 w-3.5 mr-1.5" />
                             Score Submission
@@ -376,7 +376,7 @@ export default function AssignmentDetailContent({ job, submissions }: Assignment
                         </div>
                         <Badge
                             variant="outline"
-                            className={job.status === "PUBLISHED" ? "bg-green-50 text-green-700 border-green-200" : ""}
+                            className={job.status === "PUBLISHED" ? "bg-amber-50 text-amber-700 border-amber-200" : ""}
                         >
                             {job.status}
                         </Badge>
@@ -387,7 +387,7 @@ export default function AssignmentDetailContent({ job, submissions }: Assignment
                             <span>{awaitingCount} awaiting</span>
                         </div>
                         <div className="flex items-center gap-2 text-[#64748B]">
-                            <CheckCircle2 className="h-4 w-4 text-green-600" />
+                            <CheckCircle2 className="h-4 w-4 text-amber-600" />
                             <span>{submittedCount} submitted</span>
                         </div>
                         <div className="flex items-center gap-2 text-[#64748B]">

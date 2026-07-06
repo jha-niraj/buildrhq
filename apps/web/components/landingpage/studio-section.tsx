@@ -55,7 +55,7 @@ export default function StudioSection() {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: -16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
@@ -81,10 +81,10 @@ export default function StudioSection() {
                             studioFeatures.map((feature, index) => (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: -16 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
+                                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                     className={`${feature.span} group relative p-6 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300`}
                                 >
                                     <div className="absolute top-4 right-4 text-neutral-300 dark:text-neutral-700 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors">
@@ -103,10 +103,10 @@ export default function StudioSection() {
                         }
                     </div>
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: -16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         className="lg:col-span-5 h-full flex flex-col gap-6"
                     >
                         <div className="bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-3xl p-8 flex flex-col justify-between min-h-[300px] shadow-2xl shadow-neutral-900/10 relative overflow-hidden">
@@ -116,8 +116,8 @@ export default function StudioSection() {
                             <div className="relative z-10">
                                 <div className="flex items-center gap-2 mb-6">
                                     <span className="relative flex h-3 w-3">
-                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
                                     </span>
                                     <span className="text-xs font-mono uppercase tracking-widest opacity-70">System Active</span>
                                 </div>

@@ -349,12 +349,12 @@ export default function OnboardingPage() {
                                         />
                                         <div className="absolute inset-y-0 right-3 flex items-center">
                                             {usernameCheck.checking && <Loader2 className="h-4 w-4 animate-spin text-neutral-400" />}
-                                            {!usernameCheck.checking && usernameCheck.available === true && <CheckCircle2 className="h-4 w-4 text-emerald-500" />}
+                                            {!usernameCheck.checking && usernameCheck.available === true && <CheckCircle2 className="h-4 w-4 text-amber-500" />}
                                             {!usernameCheck.checking && usernameCheck.available === false && <XCircle className="h-4 w-4 text-red-500" />}
                                         </div>
                                     </div>
                                     {usernameCheck.message && (
-                                        <p className={cn("text-xs", usernameCheck.available ? "text-emerald-500" : "text-red-400")}>
+                                        <p className={cn("text-xs", usernameCheck.available ? "text-amber-500" : "text-red-400")}>
                                             {usernameCheck.message}
                                         </p>
                                     )}

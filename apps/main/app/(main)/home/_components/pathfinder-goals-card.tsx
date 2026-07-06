@@ -28,8 +28,8 @@ export default function PathfinderGoalsCard({ goals }: PathfinderGoalsCardProps)
                 <div className="pb-4">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-lg bg-violet-500/10 flex items-center justify-center">
-                                <Target className="h-4 w-4 text-violet-500" />
+                            <div className="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+                                <Target className="h-4 w-4 text-orange-500" />
                             </div>
                             <span className="font-semibold text-sm">Learning Goals</span>
                         </div>
@@ -65,8 +65,8 @@ export default function PathfinderGoalsCard({ goals }: PathfinderGoalsCardProps)
                                 animate={{ opacity: 1, y: 0 }}
                                 className="text-center py-6 space-y-3"
                             >
-                                <div className="mx-auto w-12 h-12 rounded-full bg-violet-500/10 flex items-center justify-center">
-                                    <Target className="h-5 w-5 text-violet-400" />
+                                <div className="mx-auto w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center">
+                                    <Target className="h-5 w-5 text-orange-400" />
                                 </div>
                                 <div>
                                     <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300">No active goals</p>
@@ -74,7 +74,7 @@ export default function PathfinderGoalsCard({ goals }: PathfinderGoalsCardProps)
                                 </div>
                                 <button
                                     onClick={() => router.push("/pathfinder")}
-                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-violet-500 hover:text-violet-600 transition-colors"
+                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-orange-500 hover:text-orange-600 transition-colors"
                                 >
                                     <Plus className="h-3 w-3" />
                                     Create your first goal

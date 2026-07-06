@@ -125,7 +125,7 @@ export default function CreditsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6">
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-amber-500 flex items-center justify-center">
                             <CreditCard className="w-5 h-5 text-white" />
                         </div>
                     </div>
@@ -134,7 +134,7 @@ export default function CreditsPage() {
                 </div>
                 <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6">
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-orange-500 flex items-center justify-center">
                             <ArrowUpRight className="w-5 h-5 text-white" />
                         </div>
                     </div>
@@ -143,7 +143,7 @@ export default function CreditsPage() {
                 </div>
                 <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6">
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center">
                             <ArrowDownRight className="w-5 h-5 text-white" />
                         </div>
                     </div>
@@ -209,11 +209,11 @@ export default function CreditsPage() {
                                                 <div className={cn(
                                                     "w-8 h-8 rounded-full flex items-center justify-center",
                                                     txn.amount > 0
-                                                        ? "bg-emerald-50 dark:bg-emerald-500/10"
+                                                        ? "bg-amber-50 dark:bg-amber-500/10"
                                                         : "bg-red-50 dark:bg-red-500/10"
                                                 )}>
                                                     {txn.amount > 0
-                                                        ? <ArrowUpRight className="w-4 h-4 text-emerald-500" />
+                                                        ? <ArrowUpRight className="w-4 h-4 text-amber-500" />
                                                         : <ArrowDownRight className="w-4 h-4 text-red-500" />
                                                     }
                                                 </div>
@@ -224,7 +224,7 @@ export default function CreditsPage() {
                                             </div>
                                             <span className={cn(
                                                 "font-semibold",
-                                                txn.amount > 0 ? "text-emerald-600" : "text-red-600"
+                                                txn.amount > 0 ? "text-amber-600" : "text-red-600"
                                             )}>
                                                 {txn.amount > 0 ? "+" : ""}{txn.amount}
                                             </span>
@@ -251,7 +251,7 @@ export default function CreditsPage() {
                                             <div className="flex items-center gap-3">
                                                 <span className="font-semibold text-neutral-900 dark:text-white">{req.requestedCredits}</span>
                                                 <div className="flex gap-1">
-                                                    <button className="p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 hover:bg-emerald-100 dark:hover:bg-emerald-500/20 transition-colors">
+                                                    <button className="p-1.5 rounded-lg bg-amber-50 dark:bg-amber-500/10 text-amber-600 hover:bg-amber-100 dark:hover:bg-amber-500/20 transition-colors">
                                                         <CheckCircle className="w-4 h-4" />
                                                     </button>
                                                     <button className="p-1.5 rounded-lg bg-red-50 dark:bg-red-500/10 text-red-600 hover:bg-red-100 dark:hover:bg-red-500/20 transition-colors">
@@ -320,10 +320,10 @@ export default function CreditsPage() {
                                                     <span className={cn(
                                                         "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium",
                                                         {
-                                                            "bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400": txn.type === "PURCHASE",
+                                                            "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400": txn.type === "PURCHASE",
                                                             "bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400": txn.type === "SPEND",
-                                                            "bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400": txn.type === "BONUS",
-                                                            "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400": txn.type === "REWARD",
+                                                            "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400": txn.type === "BONUS",
+                                                            "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400": txn.type === "REWARD",
                                                         }
                                                     )}>
                                                         {txn.type}
@@ -332,7 +332,7 @@ export default function CreditsPage() {
                                                 <td className="p-4">
                                                     <span className={cn(
                                                         "font-semibold",
-                                                        txn.amount > 0 ? "text-emerald-600" : "text-red-600"
+                                                        txn.amount > 0 ? "text-amber-600" : "text-red-600"
                                                     )}>
                                                         {txn.amount > 0 ? "+" : ""}{txn.amount}
                                                     </span>
@@ -389,7 +389,7 @@ export default function CreditsPage() {
                                                         href={req.linkedinPostUrl}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 underline underline-offset-2"
+                                                        className="text-sm text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 underline underline-offset-2"
                                                     >
                                                         View Post
                                                     </Link>
@@ -399,7 +399,7 @@ export default function CreditsPage() {
                                                 </td>
                                                 <td className="p-4">
                                                     <div className="flex items-center gap-2">
-                                                        <button className="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 hover:bg-emerald-100 dark:hover:bg-emerald-500/20 text-sm font-medium transition-colors flex items-center gap-1">
+                                                        <button className="px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-500/10 text-amber-600 hover:bg-amber-100 dark:hover:bg-amber-500/20 text-sm font-medium transition-colors flex items-center gap-1">
                                                             <CheckCircle className="w-4 h-4" />
                                                             Approve
                                                         </button>

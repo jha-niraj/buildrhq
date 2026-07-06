@@ -56,7 +56,7 @@ export default function CandidateIntelligence() {
                                         <div className="h-3 w-24 bg-neutral-100 dark:bg-neutral-900 rounded" />
                                     </div>
                                 </div>
-                                <div className="px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-mono font-bold uppercase">
+                                <div className="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-[10px] font-mono font-bold uppercase">
                                     Top 1% Match
                                 </div>
                             </div>

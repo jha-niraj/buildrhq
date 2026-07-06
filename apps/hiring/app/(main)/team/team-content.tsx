@@ -121,7 +121,7 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
     const getRoleBadge = (role: string) => {
         if (role === "FOUNDER") {
             return (
-                <Badge className="bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 gap-1">
+                <Badge className="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 gap-1">
                     <Crown className="w-3 h-3" />
                     Founder
                 </Badge>
@@ -129,7 +129,7 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
         }
         if (role === "ADMIN") {
             return (
-                <Badge className="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400">
+                <Badge className="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
                     Admin
                 </Badge>
             )
@@ -259,10 +259,10 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4"
                         >
                             <div className="flex items-center gap-2 mb-2">
-                                <Briefcase className="w-4 h-4 text-blue-500" />
+                                <Briefcase className="w-4 h-4 text-orange-500" />
                                 <span className="text-xs text-neutral-500">Jobs Posted</span>
                             </div>
-                            <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.jobsPosted}</span>
+                            <span className="text-2xl font-bold text-orange-600 dark:text-orange-400">{stats.jobsPosted}</span>
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -271,10 +271,10 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4"
                         >
                             <div className="flex items-center gap-2 mb-2">
-                                <CheckCircle className="w-4 h-4 text-green-500" />
+                                <CheckCircle className="w-4 h-4 text-amber-500" />
                                 <span className="text-xs text-neutral-500">Processed</span>
                             </div>
-                            <span className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.candidatesProcessed}</span>
+                            <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">{stats.candidatesProcessed}</span>
                         </motion.div>
                     </div>
                 )
@@ -379,7 +379,7 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
                                                         {member.user.name || member.user.email}
                                                         {
                                                             isCurrentUser && (
-                                                                <Badge className="bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs">
+                                                                <Badge className="bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs">
                                                                     You
                                                                 </Badge>
                                                             )

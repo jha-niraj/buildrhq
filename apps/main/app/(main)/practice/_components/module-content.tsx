@@ -17,13 +17,13 @@ import Image from "next/image";
 import { AddProblemSheet } from "./add-problem-sheet";
 
 const DIFFICULTY_COLORS = {
-    EASY: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800",
+    EASY: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800",
     MEDIUM: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800",
     HARD: "text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800",
 };
 
 const STATUS_ICON = {
-    COMPLETED: <CheckCircle2 className="h-4 w-4 text-emerald-500" />,
+    COMPLETED: <CheckCircle2 className="h-4 w-4 text-amber-500" />,
     IN_PROGRESS: <Clock className="h-4 w-4 text-amber-500" />,
     NOT_STARTED: <Circle className="h-4 w-4 text-neutral-300 dark:text-neutral-600" />,
 };
@@ -298,18 +298,18 @@ function ModeSelectionDialog({
                 <div className="p-5 space-y-3">
                     <button
                         onClick={() => selectMode("assist")}
-                        className="w-full p-4 rounded-xl border-2 border-blue-200 dark:border-blue-800/50 bg-blue-50/50 dark:bg-blue-900/10 hover:border-blue-400 dark:hover:border-blue-600 transition-all text-left group"
+                        className="w-full p-4 rounded-xl border-2 border-orange-200 dark:border-orange-800/50 bg-orange-50/50 dark:bg-orange-900/10 hover:border-orange-400 dark:hover:border-orange-600 transition-all text-left group"
                     >
                         <div className="flex items-start gap-3">
-                            <div className="h-10 w-10 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0">
-                                <Sparkles className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                            <div className="h-10 w-10 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
+                                <Sparkles className="h-5 w-5 text-orange-600 dark:text-orange-400" />
                             </div>
                             <div>
                                 <div className="flex items-center gap-2">
                                     <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">
                                         Assist Mode
                                     </h3>
-                                    <Badge className="text-[9px] bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-0">
+                                    <Badge className="text-[9px] bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 border-0">
                                         Recommended
                                     </Badge>
                                 </div>

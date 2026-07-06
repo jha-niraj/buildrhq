@@ -43,15 +43,15 @@ interface JobApplicationsContentProps {
 const statusConfig: Record<string, { label: string; color: string }> = {
     INTERESTED: { label: "Interested", color: "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400" },
     PREPARING: { label: "Preparing", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
-    APPLIED: { label: "Applied", color: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400" },
+    APPLIED: { label: "Applied", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
     UNDER_REVIEW: { label: "Under Review", color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400" },
-    SHORTLISTED: { label: "Shortlisted", color: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400" },
-    ASSIGNMENT_SENT: { label: "Assignment Sent", color: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400" },
-    ASSIGNMENT_SUBMITTED: { label: "Assignment Done", color: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400" },
-    INTERVIEW_SCHEDULED: { label: "Interview Set", color: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400" },
-    INTERVIEWED: { label: "Interviewed", color: "bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400" },
-    OFFER_EXTENDED: { label: "Offer Extended", color: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400" },
-    HIRED: { label: "Hired", color: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-400" },
+    SHORTLISTED: { label: "Shortlisted", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
+    ASSIGNMENT_SENT: { label: "Assignment Sent", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
+    ASSIGNMENT_SUBMITTED: { label: "Assignment Done", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
+    INTERVIEW_SCHEDULED: { label: "Interview Set", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
+    INTERVIEWED: { label: "Interviewed", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
+    OFFER_EXTENDED: { label: "Offer Extended", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
+    HIRED: { label: "Hired", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
     REJECTED: { label: "Rejected", color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
     WITHDRAWN: { label: "Withdrawn", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-900/30 dark:text-neutral-400" },
 }
@@ -205,7 +205,7 @@ export function JobApplicationsContent({
                 {
                     isPending ? (
                         <div className="flex items-center justify-center py-20">
-                            <Loader2 className="w-6 h-6 animate-spin text-violet-600" />
+                            <Loader2 className="w-6 h-6 animate-spin text-orange-600" />
                         </div>
                     ) : applications.applications.length > 0 ? (
                         <div className="divide-y divide-neutral-200 dark:divide-neutral-800">
@@ -313,8 +313,8 @@ function ApplicationRow({
                             fill
                         />
                     ) : (
-                        <div className="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center">
-                            <span className="text-sm font-medium text-violet-600 dark:text-violet-400">
+                        <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                            <span className="text-sm font-medium text-orange-600 dark:text-orange-400">
                                 {initials}
                             </span>
                         </div>
@@ -346,7 +346,7 @@ function ApplicationRow({
                         <div className="flex items-center gap-2">
                             <div className="w-20 h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
                                 <div
-                                    className={`h-full ${application.matchScore >= 80 ? "bg-green-500" :
+                                    className={`h-full ${application.matchScore >= 80 ? "bg-amber-500" :
                                             application.matchScore >= 60 ? "bg-yellow-500" : "bg-red-500"
                                         }`}
                                     style={{ width: `${application.matchScore}%` }}

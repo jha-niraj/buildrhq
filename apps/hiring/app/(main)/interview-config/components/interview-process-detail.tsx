@@ -62,15 +62,15 @@ const roundTypeIcons: Record<string, React.ElementType> = {
 }
 
 const roundTypeColors: Record<string, string> = {
-    PHONE_SCREEN: "bg-blue-500",
-    TECHNICAL_CODING: "bg-purple-500",
+    PHONE_SCREEN: "bg-orange-500",
+    TECHNICAL_CODING: "bg-orange-500",
     SYSTEM_DESIGN: "bg-orange-500",
-    BEHAVIORAL: "bg-green-500",
+    BEHAVIORAL: "bg-amber-500",
     TAKE_HOME: "bg-yellow-500",
     PANEL: "bg-pink-500",
-    HIRING_MANAGER: "bg-indigo-500",
-    CULTURE_FIT: "bg-teal-500",
-    HR_FINAL: "bg-cyan-500",
+    HIRING_MANAGER: "bg-orange-500",
+    CULTURE_FIT: "bg-amber-500",
+    HR_FINAL: "bg-amber-500",
     CUSTOM: "bg-neutral-500",
 }
 
@@ -172,7 +172,7 @@ export function InterviewProcessDetail({ process, onClose }: InterviewProcessDet
                                                         </span>
                                                         {
                                                             round.hasMockInterview && (
-                                                                <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs">
+                                                                <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-xs">
                                                                     <Mic className="w-3 h-3 mr-1" />
                                                                     Mock Available
                                                                 </Badge>
@@ -208,7 +208,7 @@ export function InterviewProcessDetail({ process, onClose }: InterviewProcessDet
                                                         {
                                                             round.passRatePercent && (
                                                                 <div className="flex items-center gap-1.5 text-sm">
-                                                                    <TrendingUp className="w-4 h-4 text-green-500" />
+                                                                    <TrendingUp className="w-4 h-4 text-amber-500" />
                                                                     <span className="text-neutral-600 dark:text-neutral-400">
                                                                         {round.passRatePercent}% pass rate
                                                                     </span>
@@ -218,7 +218,7 @@ export function InterviewProcessDetail({ process, onClose }: InterviewProcessDet
                                                         {
                                                             round.daysToNextRound && (
                                                                 <div className="flex items-center gap-1.5 text-sm">
-                                                                    <Clock className="w-4 h-4 text-blue-500" />
+                                                                    <Clock className="w-4 h-4 text-orange-500" />
                                                                     <span className="text-neutral-600 dark:text-neutral-400">
                                                                         ~{round.daysToNextRound} days to next
                                                                     </span>

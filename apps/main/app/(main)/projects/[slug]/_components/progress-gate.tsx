@@ -51,8 +51,8 @@ export function ProgressGate({ type, currentProgress, requiredProgress, projectS
                     <Card className="p-4 max-w-lg w-full bg-white dark:bg-neutral-900 shadow-2xl rounded-xl border border-neutral-200 dark:border-neutral-800">
                         <CardHeader className="text-center pb-4">
                             <div className="flex justify-center mb-4">
-                                <div className="p-4 bg-purple-100 dark:bg-purple-900/30 rounded-full">
-                                    <Lock className="w-12 h-12 text-purple-600 dark:text-purple-400" />
+                                <div className="p-4 bg-orange-100 dark:bg-orange-900/30 rounded-full">
+                                    <Lock className="w-12 h-12 text-orange-600 dark:text-orange-400" />
                                 </div>
                             </div>
                             <CardTitle className="text-2xl flex items-center justify-center gap-2">
@@ -74,7 +74,7 @@ export function ProgressGate({ type, currentProgress, requiredProgress, projectS
                                 <Progress value={currentProgress} className="h-3" />
                                 <div className="flex items-center justify-between text-sm">
                                     <span className="text-neutral-600 dark:text-neutral-400">Required to Unlock</span>
-                                    <span className="font-semibold text-purple-600 dark:text-purple-400">
+                                    <span className="font-semibold text-orange-600 dark:text-orange-400">
                                         {requiredProgress}%
                                     </span>
                                 </div>

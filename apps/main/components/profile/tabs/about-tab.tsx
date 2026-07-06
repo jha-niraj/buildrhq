@@ -75,7 +75,7 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 							<CardHeader className="pb-2">
 								<div className="flex items-center justify-between">
 									<CardTitle className="text-lg flex items-center gap-2">
-										<User className="w-5 h-5 text-blue-500" />
+										<User className="w-5 h-5 text-orange-500" />
 										About
 									</CardTitle>
 									{
@@ -109,8 +109,8 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 							{
 								user.name && (
 									<div className="flex items-center gap-3">
-										<div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
-											<User className="w-5 h-5 text-blue-500" />
+										<div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center">
+											<User className="w-5 h-5 text-orange-500" />
 										</div>
 										<div>
 											<p className="text-xs text-muted-foreground">Full Name</p>
@@ -122,8 +122,8 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 							{
 								showEmail && user.email && (
 									<div className="flex items-center gap-3">
-										<div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
-											<Mail className="w-5 h-5 text-green-500" />
+										<div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+											<Mail className="w-5 h-5 text-amber-500" />
 										</div>
 										<div>
 											<p className="text-xs text-muted-foreground">Email</p>
@@ -140,8 +140,8 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 							{
 								isOwnProfile && user.phone && (
 									<div className="flex items-center gap-3">
-										<div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
-											<Phone className="w-5 h-5 text-purple-500" />
+										<div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center">
+											<Phone className="w-5 h-5 text-orange-500" />
 										</div>
 										<div>
 											<p className="text-xs text-muted-foreground">Phone</p>
@@ -177,8 +177,8 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 								)
 							}
 							<div className="flex items-center gap-3">
-								<div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center">
-									<Calendar className="w-5 h-5 text-cyan-500" />
+								<div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+									<Calendar className="w-5 h-5 text-amber-500" />
 								</div>
 								<div>
 									<p className="text-xs text-muted-foreground">Member Since</p>
@@ -208,8 +208,8 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 							{
 								user.occupation && (
 									<div className="flex items-center gap-3">
-										<div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
-											<Briefcase className="w-5 h-5 text-blue-500" />
+										<div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center">
+											<Briefcase className="w-5 h-5 text-orange-500" />
 										</div>
 										<div>
 											<p className="text-xs text-muted-foreground">Role</p>
@@ -221,8 +221,8 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 							{
 								user.company && (
 									<div className="flex items-center gap-3">
-										<div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
-											<Building className="w-5 h-5 text-green-500" />
+										<div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+											<Building className="w-5 h-5 text-amber-500" />
 										</div>
 										<div>
 											<p className="text-xs text-muted-foreground">Company</p>
@@ -234,8 +234,8 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 							{
 								user.university && (
 									<div className="flex items-center gap-3">
-										<div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
-											<GraduationCap className="w-5 h-5 text-purple-500" />
+										<div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center">
+											<GraduationCap className="w-5 h-5 text-orange-500" />
 										</div>
 										<div>
 											<p className="text-xs text-muted-foreground">University</p>
@@ -267,8 +267,8 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 							{
 								isOwnProfile && user.expectedSalary && (
 									<div className="flex items-center gap-3">
-										<div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-											<Banknote className="w-5 h-5 text-emerald-500" />
+										<div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
+											<Banknote className="w-5 h-5 text-amber-500" />
 										</div>
 										<div>
 											<p className="text-xs text-muted-foreground">Expected Salary</p>
@@ -293,8 +293,8 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 							{
 								user.website && (
 									<div className="flex items-center gap-3">
-										<div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-											<Globe className="w-5 h-5 text-indigo-500" />
+										<div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center">
+											<Globe className="w-5 h-5 text-orange-500" />
 										</div>
 										<div>
 											<p className="text-xs text-muted-foreground">Website</p>
@@ -354,7 +354,7 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 						<Card>
 							<CardHeader className="pb-2">
 								<CardTitle className="text-lg flex items-center gap-2">
-									<Target className="w-5 h-5 text-green-500" />
+									<Target className="w-5 h-5 text-amber-500" />
 									Career Goals
 								</CardTitle>
 							</CardHeader>
@@ -362,7 +362,7 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 								<div className="flex flex-wrap gap-2">
 									{
 										user.careerGoals.map((goal, index) => (
-											<Badge key={index} variant="outline" className="bg-green-500/5">
+											<Badge key={index} variant="outline" className="bg-amber-500/5">
 												{goal}
 											</Badge>
 										))
@@ -383,7 +383,7 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 						<Card>
 							<CardHeader className="pb-2">
 								<CardTitle className="text-lg flex items-center gap-2">
-									<Building className="w-5 h-5 text-blue-500" />
+									<Building className="w-5 h-5 text-orange-500" />
 									Target Companies
 								</CardTitle>
 							</CardHeader>
@@ -412,7 +412,7 @@ export function AboutTab({ user, isOwnProfile, onEditProfile }: AboutTabProps) {
 						<Card>
 							<CardHeader className="pb-2">
 								<CardTitle className="text-lg flex items-center gap-2">
-									<Globe className="w-5 h-5 text-indigo-500" />
+									<Globe className="w-5 h-5 text-orange-500" />
 									Social Links
 								</CardTitle>
 							</CardHeader>

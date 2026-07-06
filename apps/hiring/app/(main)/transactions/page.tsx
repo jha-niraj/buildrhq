@@ -26,8 +26,8 @@ const statusConfig = {
     SUCCEEDED: {
         label: "Succeeded",
         icon: CheckCircle,
-        color: "text-emerald-600 dark:text-emerald-400",
-        bg: "bg-emerald-100 dark:bg-emerald-900/30"
+        color: "text-amber-600 dark:text-amber-400",
+        bg: "bg-amber-100 dark:bg-amber-900/30"
     },
     PENDING: {
         label: "Pending",
@@ -38,8 +38,8 @@ const statusConfig = {
     PROCESSING: {
         label: "Processing",
         icon: RefreshCcw,
-        color: "text-blue-600 dark:text-blue-400",
-        bg: "bg-blue-100 dark:bg-blue-900/30"
+        color: "text-orange-600 dark:text-orange-400",
+        bg: "bg-orange-100 dark:bg-orange-900/30"
     },
     FAILED: {
         label: "Failed",
@@ -108,7 +108,7 @@ function TransactionCard({ payment }: { payment: PaymentRecord }) {
                         {
                             payment.paidAt ? (
                                 <span className="flex items-center gap-1 justify-end">
-                                    <CheckCircle className="h-3 w-3 text-emerald-500" />
+                                    <CheckCircle className="h-3 w-3 text-amber-500" />
                                     Paid {new Date(payment.paidAt).toLocaleDateString()}
                                 </span>
                             ) : (
@@ -245,7 +245,7 @@ export default function TransactionsPage() {
                         <CardDescription>Successful</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-2xl font-bold text-emerald-600">{successfulPayments.length}</p>
+                        <p className="text-2xl font-bold text-amber-600">{successfulPayments.length}</p>
                     </CardContent>
                 </Card>
                 <Card>

@@ -61,13 +61,13 @@ const formatExperience = (min: number | null, max: number | null) => {
 }
 
 const getMatchScoreColor = (score: number) => {
-    if (score >= 90) return "from-green-500 to-emerald-500"
+    if (score >= 90) return "from-amber-500 to-amber-500"
     if (score >= 70) return "from-yellow-500 to-amber-500"
     return "from-orange-500 to-red-400"
 }
 
 const getMatchScoreBadge = (score: number) => {
-    if (score >= 90) return { label: "Perfect Match", icon: Target, color: "text-green-500 bg-green-100 dark:bg-green-900/30" }
+    if (score >= 90) return { label: "Perfect Match", icon: Target, color: "text-amber-500 bg-amber-100 dark:bg-amber-900/30" }
     if (score >= 70) return { label: "Good Match", icon: Zap, color: "text-yellow-500 bg-yellow-100 dark:bg-yellow-900/30" }
     return { label: "Explore", icon: Sparkles, color: "text-orange-500 bg-orange-100 dark:bg-orange-900/30" }
 }
@@ -134,10 +134,10 @@ export function SwipeCard({
                     </div>
                 </motion.div>
                 <motion.div 
-                    className="absolute inset-0 bg-green-500/20 rounded-3xl flex items-center justify-center z-20 pointer-events-none"
+                    className="absolute inset-0 bg-amber-500/20 rounded-3xl flex items-center justify-center z-20 pointer-events-none"
                     style={{ opacity: rightOverlayOpacity }}
                 >
-                    <div className="bg-green-500 text-white px-6 py-3 rounded-2xl font-bold text-xl rotate-[15deg]">
+                    <div className="bg-amber-500 text-white px-6 py-3 rounded-2xl font-bold text-xl rotate-[15deg]">
                         INTERESTED
                     </div>
                 </motion.div>
@@ -164,7 +164,7 @@ export function SwipeCard({
                             </h2>
                             <p className="text-neutral-500 font-medium">{job.company.name}</p>
                             {job.isFollowingCompany && (
-                                <Badge className="mt-1 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-xs">
+                                <Badge className="mt-1 bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs">
                                     Following
                                 </Badge>
                             )}
@@ -192,7 +192,7 @@ export function SwipeCard({
                             </div>
                         )}
                         {job.salaryDisclosed && formatSalary(job.salaryMin, job.salaryMax, job.salaryCurrency) && (
-                            <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 font-medium">
+                            <div className="flex items-center gap-2 text-sm text-amber-600 dark:text-amber-400 font-medium">
                                 <TrendingUp className="w-4 h-4" />
                                 <span>{formatSalary(job.salaryMin, job.salaryMax, job.salaryCurrency)}</span>
                             </div>
@@ -206,7 +206,7 @@ export function SwipeCard({
                         </p>
                         <div className="flex flex-wrap gap-1.5">
                             {job.matchedSkills.slice(0, 5).map((skill, i) => (
-                                <Badge key={i} className="text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                <Badge key={i} className="text-xs bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
                                     <CheckCircle2 className="w-3 h-3 mr-1" />
                                     {skill}
                                 </Badge>
@@ -221,23 +221,23 @@ export function SwipeCard({
 
                     {/* Interview Process */}
                     {job.interviewProcess && (
-                        <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-4 mb-5">
+                        <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 mb-5">
                             <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2 text-sm text-green-700 dark:text-green-400">
+                                <div className="flex items-center gap-2 text-sm text-amber-700 dark:text-amber-400">
                                     <CheckCircle2 className="w-4 h-4" />
                                     <span className="font-medium">Transparent Process</span>
                                 </div>
-                                <div className="flex items-center gap-3 text-sm text-green-600 dark:text-green-400">
+                                <div className="flex items-center gap-3 text-sm text-amber-600 dark:text-amber-400">
                                     <span>{job.interviewProcess.rounds.length} rounds</span>
                                     {job.interviewProcess.estimatedDurationWeeks && (
                                         <>
-                                            <span className="text-green-300 dark:text-green-700">•</span>
+                                            <span className="text-amber-300 dark:text-amber-700">•</span>
                                             <span>~{job.interviewProcess.estimatedDurationWeeks}w</span>
                                         </>
                                     )}
                                     {job.interviewProcess.rounds.some(r => r.hasMockInterview) && (
                                         <>
-                                            <span className="text-green-300 dark:text-green-700">•</span>
+                                            <span className="text-amber-300 dark:text-amber-700">•</span>
                                             <Mic className="w-4 h-4" />
                                         </>
                                     )}
@@ -254,7 +254,7 @@ export function SwipeCard({
                         </div>
                         <button 
                             onClick={onViewDetails}
-                            className="text-blue-600 dark:text-blue-400 font-medium hover:underline flex items-center gap-1"
+                            className="text-orange-600 dark:text-orange-400 font-medium hover:underline flex items-center gap-1"
                         >
                             View Details
                             <ChevronDown className="w-4 h-4" />
@@ -311,10 +311,10 @@ export function SwipeCard({
                                     <Button
                                         variant="outline"
                                         size="icon"
-                                        className="w-14 h-14 rounded-full border-2 border-green-200 dark:border-green-900 hover:bg-green-50 dark:hover:bg-green-900/20 hover:border-green-300"
+                                        className="w-14 h-14 rounded-full border-2 border-amber-200 dark:border-amber-900 hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:border-amber-300"
                                         onClick={onSwipeRight}
                                     >
-                                        <Heart className="w-6 h-6 text-green-500" />
+                                        <Heart className="w-6 h-6 text-amber-500" />
                                     </Button>
                                 </TooltipTrigger>
                                 <TooltipContent>I&apos;m Interested!</TooltipContent>

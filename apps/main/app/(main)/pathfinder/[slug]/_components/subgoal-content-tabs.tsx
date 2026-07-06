@@ -50,7 +50,7 @@ export function SubGoalContentTabs({
                                     <CheckCircle2
                                         className={cn(
                                             'w-3 h-3',
-                                            codingPassed ? 'text-green-500' : 'text-red-500'
+                                            codingPassed ? 'text-amber-500' : 'text-red-500'
                                         )}
                                     />
                                 )

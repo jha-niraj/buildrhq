@@ -2,8 +2,8 @@
 
 import { getSession } from '@repo/auth'
 import { headers } from 'next/headers'
-import { db, users, backgroundJobs, creditTransactions } from '@repo/db'
-import { eq, sql } from 'drizzle-orm'
+import { db, users, backgroundJobs } from '@repo/db'
+import { eq } from 'drizzle-orm'
 import { z } from "zod"
 import { ProjectEchoSchema } from "../schemas/projects.schema"
 import crypto from 'crypto'
@@ -17,241 +17,102 @@ async function getCurrentUser() {
     return user
 }
 
-// Helper to get signed token directly (no fetch needed)
+// Signed HMAC token the generation worker verifies (Web Crypto on the worker side).
 export async function issueWorkerToken(action: 'generate_project' | 'check_job' | 'run_code' | 'check_execution', jobId?: string) {
     const user = await getCurrentUser()
     const secret = process.env.WORKER_SECRET
-
     if (!secret) throw new Error("Worker secret not configured")
 
     const now = Math.floor(Date.now() / 1000)
-    const payload = {
-        userId: user.id,
-        action,
-        jobId,
-        iat: now,
-        exp: now + 300 // 5 minutes
-    }
-
+    const payload = { userId: user.id, action, jobId, iat: now, exp: now + 300 }
     const data = JSON.stringify(payload)
     const signature = crypto.createHmac('sha256', secret).update(data).digest('base64url')
     const encodedPayload = Buffer.from(data).toString('base64url')
-
     return `${encodedPayload}.${signature}`
 }
 
-async function deductCredits(userId: string, amount: number, description: string) {
-    await db.transaction(async (tx) => {
-        await tx
-            .update(users)
-            .set({ credits: sql`${users.credits} - ${amount}` })
-            .where(eq(users.id, userId))
-
-        await tx.insert(creditTransactions).values({
-            userId,
-            amount: -amount,
-            type: 'SPEND',
-            currency: 'INR',
-            description,
-        })
-    })
+function generationWorkerUrl() {
+    return process.env.GENERATION_WORKER_URL || process.env.WORKER_API_URL || "http://localhost:8787"
 }
 
-// ========================================
-// WORKER JOB MANAGEMENT
-// ========================================
-
 /**
- * Create a project generation job and call the external worker API
- * This is the new entry point for project generation
+ * Start a project-generation job on the Cloudflare generation worker.
+ * The worker's Durable Object schedules an Alarm and runs the 1–1.5 min pipeline,
+ * writing status/progress to the BackgroundJob table server-side. The client just
+ * polls `getGenerationStatus(jobId)`.
  */
-export async function initiateProjectGeneration(
+export async function startProjectGeneration(
     input: z.infer<typeof ProjectEchoSchema>,
-    workerToken: string
-): Promise<{ success: boolean, jobId?: string, error?: string }> {
+): Promise<{ success: boolean; jobId?: string; error?: string }> {
     try {
         const user = await getCurrentUser()
+        const validated = ProjectEchoSchema.parse(input)
 
-        // Validate input
-        const validatedInput = ProjectEchoSchema.parse(input)
-        console.log('✅ [VALIDATION] Input validated successfully')
-
-        // Calculate costs
-        const baseCost = validatedInput.visibility === "PUBLIC" ? 13 : 25
-        const assessmentCost = validatedInput.includeAssessment ? 30 : 0
-        const totalCost = baseCost + assessmentCost
-        console.log(`💰 [CREDITS] Total cost: ${totalCost} (Base: ${baseCost}, Assessment: ${assessmentCost})`)
-
-        // Check user credits (don't deduct yet - wait for worker success)
-        if ((user.credits ?? 0) < totalCost) {
-            console.log(`❌ [CREDITS] Insufficient credits. User has ${user.credits}, needs ${totalCost}`)
-            return {
-                success: false,
-                error: `Insufficient credits. You need ${totalCost} credits to generate this project.`,
-            }
+        const cost = (validated.visibility === "PUBLIC" ? 13 : 25) + (validated.includeAssessment ? 30 : 0)
+        if ((user.credits ?? 0) < cost) {
+            return { success: false, error: `Insufficient credits. You need ${cost} credits to generate this project.` }
         }
 
-        // Transform data for worker API
-        const stacksArray: Array<{ name: string; category: string }> = []
-        if (validatedInput.stacks?.frontend) stacksArray.push({ name: validatedInput.stacks.frontend, category: 'FRONTEND' })
-        if (validatedInput.stacks?.backend) stacksArray.push({ name: validatedInput.stacks.backend, category: 'BACKEND' })
-        if (validatedInput.stacks?.database) stacksArray.push({ name: validatedInput.stacks.database, category: 'DATABASE' })
-        if (validatedInput.stacks?.deployment) stacksArray.push({ name: validatedInput.stacks.deployment, category: 'DEPLOYMENT' })
-        if (validatedInput.stacks?.aiProvider) stacksArray.push({ name: validatedInput.stacks.aiProvider, category: 'AI' })
+        const jobId = crypto.randomUUID()
 
-        const workerPayload = {
-            projectTitle: validatedInput.projectTitle,
-            description: validatedInput.projectDescription,
-            generationType: validatedInput.generationType,
-            visibility: validatedInput.visibility,
-            includeAssessment: validatedInput.includeAssessment || false,
-            stacks: stacksArray,
-            userId: user.id
-        }
-
-        // Call worker API to create job
-        const response = await fetch(`${process.env.WORKER_API_URL}/api/v1/generateproject`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${workerToken}`,
-            },
-            body: JSON.stringify(workerPayload),
-        })
-
-        if (!response.ok) {
-            const error = await response.text()
-            throw new Error(`Worker API error: ${error}`)
-        }
-
-        const result = await response.json() as {
-            success: boolean
-            jobId: string
-            message: string
-        }
-
-        if (!result.success || !result.jobId) {
-            throw new Error('Failed to create job in worker')
-        }
-
-        // Create job record in database
+        // Persist the job first so the UI can poll immediately.
         await db.insert(backgroundJobs).values({
-            jobId: result.jobId,
+            jobId,
             status: 'waiting',
             progress: 0,
             userId: user.id,
-            input: validatedInput as any,
+            input: validated as unknown as Record<string, unknown>,
         })
 
-        console.log(`✅ [JOB CREATED] Job ID: ${result.jobId}`)
+        const now = Math.floor(Date.now() / 1000)
+        const tokenPayload = JSON.stringify({ userId: user.id, action: 'generate_project', jobId, iat: now, exp: now + 300 })
+        const signature = crypto.createHmac('sha256', process.env.WORKER_SECRET!).update(tokenPayload).digest('base64url')
+        const token = `${Buffer.from(tokenPayload).toString('base64url')}.${signature}`
 
-        return {
-            success: true,
-            jobId: result.jobId,
+        const res = await fetch(`${generationWorkerUrl()}/api/v1/generateproject`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+            body: JSON.stringify({ jobId, input: validated }),
+        })
+
+        if (!res.ok) {
+            const err = await res.text()
+            await db.update(backgroundJobs).set({ status: 'failed', error: `Worker error: ${err}` }).where(eq(backgroundJobs.jobId, jobId))
+            return { success: false, error: 'Failed to start generation. Please try again.' }
         }
-    } catch (error: any) {
-        console.error(`❌ [JOB CREATE] Failed:`, error)
-        return {
-            success: false,
-            error: error.message || "Failed to create generation job",
-        }
+
+        return { success: true, jobId }
+    } catch (error) {
+        console.error('startProjectGeneration failed:', error)
+        return { success: false, error: error instanceof Error ? error.message : 'Failed to start generation' }
     }
 }
 
 /**
- * Update job status in database
- * Called from client after polling worker API
+ * Read the current generation status from the DB (written server-side by the worker's DO).
  */
-export async function syncJobStatus(
-    jobId: string,
-    status: string,
-    progress: number,
-    data?: any,
+export async function getGenerationStatus(jobId: string): Promise<{
+    success: boolean
+    status?: string
+    progress?: number
+    phaseLabel?: string
+    slug?: string
     error?: string
-) {
+}> {
     try {
-        const [dbJob] = await db
-            .update(backgroundJobs)
-            .set({
-                status,
-                progress,
-                result: data ? (data as any) : null,
-                error: error || null,
-                updatedAt: new Date(),
-            })
-            .where(eq(backgroundJobs.jobId, jobId))
-            .returning()
+        const [job] = await db.select().from(backgroundJobs).where(eq(backgroundJobs.jobId, jobId)).limit(1)
+        if (!job) return { success: false, error: 'Job not found' }
 
+        const result = (job.result ?? {}) as { slug?: string; phaseLabel?: string }
         return {
             success: true,
-            data: dbJob,
+            status: job.status,
+            progress: job.progress,
+            phaseLabel: result.phaseLabel,
+            slug: result.slug,
+            error: job.error ?? undefined,
         }
-    } catch (error: any) {
-        console.error('Failed to update job status:', error)
-        return {
-            success: false,
-            error: error.message || 'Failed to update job status',
-        }
-    }
-}
-
-export async function finalizeGeneratedProject(jobId: string, workerData: any) {
-    try {
-        const user = await getCurrentUser()
-
-        // Get the job from database to get original input
-        const [job] = await db
-            .select()
-            .from(backgroundJobs)
-            .where(eq(backgroundJobs.jobId, jobId))
-            .limit(1)
-
-        if (!job) {
-            return {
-                success: false,
-                error: 'Job not found',
-            }
-        }
-
-        const inputData = job.input as any
-
-        // Calculate costs and deduct credits
-        const baseCost = inputData.visibility === "PUBLIC" ? 13 : 25
-        const assessmentCost = inputData.includeAssessment ? 30 : 0
-        const totalCost = baseCost + assessmentCost
-
-        // Data from worker is now minimal: { projectId, slug, title, saved: true }
-        if (!workerData.projectId || !workerData.slug) {
-            throw new Error('Invalid worker response: Missing project ID or slug')
-        }
-
-        // Deduct credits
-        await deductCredits(user.id, totalCost, `Generated project: ${workerData.title || 'Project'}`)
-
-        // Update job status
-        await db
-            .update(backgroundJobs)
-            .set({
-                status: 'completed',
-                progress: 100,
-            })
-            .where(eq(backgroundJobs.jobId, jobId))
-
-        console.log(`✅ [PROJECT GENERATION COMPLETED] Project: ${workerData.slug}`)
-
-        return {
-            success: true,
-            message: 'Project generation finalized',
-            data: {
-                projectSlug: workerData.slug,
-                projectId: workerData.projectId,
-            },
-        }
-    } catch (err: any) {
-        console.error('Failed to finalize project generation:', err)
-        return {
-            success: false,
-            error: err.message || 'Failed to finalize project',
-        }
+    } catch (error) {
+        return { success: false, error: error instanceof Error ? error.message : 'Failed to read status' }
     }
 }

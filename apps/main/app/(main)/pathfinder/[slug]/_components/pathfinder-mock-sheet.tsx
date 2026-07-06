@@ -133,7 +133,7 @@ export function PathfinderMockSheet({
             <SheetContent side="right" className="w-full sm:max-w-md">
                 <SheetHeader>
                     <SheetTitle className="flex items-center gap-2">
-                        <Mic className="w-5 h-5 text-violet-500" />
+                        <Mic className="w-5 h-5 text-orange-500" />
                         Start Mock Interview
                     </SheetTitle>
                     <SheetDescription>
@@ -143,7 +143,7 @@ export function PathfinderMockSheet({
                 <div className="mt-6 space-y-4">
                     {loading ? (
                         <div className="flex items-center justify-center py-12">
-                            <Loader2 className="w-8 h-8 animate-spin text-violet-500" />
+                            <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
                         </div>
                     ) : allSubGoals.length === 0 ? (
                         <p className="text-sm text-neutral-500 text-center py-8">

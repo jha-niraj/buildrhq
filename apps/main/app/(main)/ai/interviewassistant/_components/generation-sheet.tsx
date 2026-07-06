@@ -81,9 +81,9 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 			icon: Brain,
 			title: 'Technical Questions',
 			description: 'Role-specific technical knowledge',
-			color: 'from-purple-500 to-indigo-600',
-			bgColor: 'bg-purple-50 dark:bg-purple-900/20',
-			borderColor: 'border-purple-200 dark:border-purple-800',
+			color: 'from-orange-500 to-orange-600',
+			bgColor: 'bg-orange-50 dark:bg-orange-900/20',
+			borderColor: 'border-orange-200 dark:border-orange-800',
 			min: 3,
 			max: 15,
 			value: counts.technical
@@ -93,9 +93,9 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 			icon: Users,
 			title: 'Behavioral Questions',
 			description: 'Soft skills and cultural fit',
-			color: 'from-emerald-500 to-teal-600',
-			bgColor: 'bg-emerald-50 dark:bg-emerald-900/20',
-			borderColor: 'border-emerald-200 dark:border-emerald-800',
+			color: 'from-amber-500 to-amber-600',
+			bgColor: 'bg-amber-50 dark:bg-amber-900/20',
+			borderColor: 'border-amber-200 dark:border-amber-800',
 			min: 3,
 			max: 15,
 			value: counts.behavioral
@@ -105,9 +105,9 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 			icon: Code,
 			title: 'Coding Challenges',
 			description: 'Algorithm and problem solving',
-			color: 'from-blue-500 to-cyan-600',
-			bgColor: 'bg-blue-50 dark:bg-blue-900/20',
-			borderColor: 'border-blue-200 dark:border-blue-800',
+			color: 'from-orange-500 to-amber-600',
+			bgColor: 'bg-orange-50 dark:bg-orange-900/20',
+			borderColor: 'border-orange-200 dark:border-orange-800',
 			min: 1,
 			max: 8,
 			value: counts.coding
@@ -123,7 +123,7 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 				<SheetHeader className="pb-6">
 					<div className="flex items-center justify-between">
 						<div className="flex items-center gap-4">
-							<div className="p-3 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl shadow-lg">
+							<div className="p-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl shadow-lg">
 								<Sparkles className="h-6 w-6 text-white" />
 							</div>
 							<div>
@@ -249,11 +249,11 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.3 }}
 					>
-						<Card className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border-emerald-200 dark:border-emerald-800 shadow-lg">
+						<Card className="bg-gradient-to-r from-amber-50 to-amber-50 dark:from-amber-900/20 dark:to-amber-900/20 border-amber-200 dark:border-amber-800 shadow-lg">
 							<CardContent className="p-6">
 								<div className="flex items-center justify-between">
 									<div className="flex items-center gap-4">
-										<div className="p-3 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl shadow-lg">
+										<div className="p-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl shadow-lg">
 											<GraduationCap className="h-6 w-6 text-white" />
 										</div>
 										<div>
@@ -266,26 +266,26 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 										</div>
 									</div>
 									<div className="flex items-center gap-3">
-										<Badge className="bg-emerald-100 hover:text-white text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+										<Badge className="bg-amber-100 hover:text-white text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
 											+{Math.ceil(totalQuestions / 2)} credits
 										</Badge>
 										<Switch
 											checked={includePractice}
 											onCheckedChange={setIncludePractice}
-											className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-emerald-500 data-[state=checked]:to-teal-600"
+											className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-amber-500 data-[state=checked]:to-amber-600"
 										/>
 									</div>
 								</div>
 								{
 									includePractice && (
-										<div className="mt-4 p-4 bg-emerald-100/50 dark:bg-emerald-900/10 rounded-lg">
+										<div className="mt-4 p-4 bg-amber-100/50 dark:bg-amber-900/10 rounded-lg">
 											<div className="flex items-center gap-2 mb-2">
-												<Play className="h-4 w-4 text-emerald-600" />
-												<span className="text-sm font-medium text-emerald-800 dark:text-emerald-300">
+												<Play className="h-4 w-4 text-amber-600" />
+												<span className="text-sm font-medium text-amber-800 dark:text-amber-300">
 													Practice Features Included:
 												</span>
 											</div>
-											<ul className="text-sm text-left text-emerald-700 dark:text-emerald-300 space-y-1">
+											<ul className="text-sm text-left text-amber-700 dark:text-amber-300 space-y-1">
 												<li>• Voice recording and transcription</li>
 												<li>• AI-powered answer evaluation</li>
 												<li>• Detailed feedback and improvement suggestions</li>
@@ -302,11 +302,11 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ delay: 0.35 }}
 					>
-						<Card className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-blue-200 dark:border-blue-800 shadow-lg">
+						<Card className="bg-gradient-to-r from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 border-orange-200 dark:border-orange-800 shadow-lg">
 							<CardContent className="p-6">
 								<div className="flex items-center justify-between">
 									<div className="flex items-center gap-4">
-										<div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl shadow-lg">
+										<div className="p-3 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg">
 											{makePublic ? <Globe className="h-6 w-6 text-white" /> : <Lock className="h-6 w-6 text-white" />}
 										</div>
 										<div>
@@ -323,26 +323,26 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 									</div>
 									<div className="flex items-center gap-3">
 										{makePublic && originalCost > totalCredits && (
-											<Badge className="bg-green-100 hover:text-white text-green-800 dark:bg-green-900/30 dark:text-green-400">
+											<Badge className="bg-amber-100 hover:text-white text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
 												50% OFF
 											</Badge>
 										)}
 										<Switch
 											checked={makePublic}
 											onCheckedChange={setMakePublic}
-											className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-blue-500 data-[state=checked]:to-indigo-600"
+											className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-orange-500 data-[state=checked]:to-orange-600"
 										/>
 									</div>
 								</div>
 								{makePublic && (
-									<div className="mt-4 p-4 bg-blue-100/50 dark:bg-blue-900/10 rounded-lg">
+									<div className="mt-4 p-4 bg-orange-100/50 dark:bg-orange-900/10 rounded-lg">
 										<div className="flex items-center gap-2 mb-2">
-											<Globe className="h-4 w-4 text-blue-600" />
-											<span className="text-sm font-medium text-blue-800 dark:text-blue-300">
+											<Globe className="h-4 w-4 text-orange-600" />
+											<span className="text-sm font-medium text-orange-800 dark:text-orange-300">
 												Public Plan Benefits:
 											</span>
 										</div>
-										<ul className="text-sm text-left text-blue-700 dark:text-blue-300 space-y-1">
+										<ul className="text-sm text-left text-orange-700 dark:text-orange-300 space-y-1">
 											<li>• 50% cost reduction for creation</li>
 											<li>• Help other developers in their interview prep</li>
 											<li>• Build your reputation in the community</li>
@@ -372,7 +372,7 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 									</div>
 									<Badge
 										className={`text-lg px-4 py-2 ${canAfford
-											? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400'
+											? 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400'
 											: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
 											}`}
 									>
@@ -395,7 +395,7 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 										<span className="text-slate-600 dark:text-slate-400">
 											{totalQuestions} questions{makePublic ? ' (public - 50% off)' : ' (2 per credit)'}
 										</span>
-										<span className={`font-medium ${makePublic && originalCost > totalCredits ? 'text-green-600 dark:text-green-400' : 'text-slate-900 dark:text-white'}`}>
+										<span className={`font-medium ${makePublic && originalCost > totalCredits ? 'text-amber-600 dark:text-amber-400' : 'text-slate-900 dark:text-white'}`}>
 											{Math.ceil(totalQuestions / 2)}{makePublic ? ` → ${Math.ceil(Math.ceil(totalQuestions / 2) / 2)}` : ''} credits
 										</span>
 									</div>
@@ -440,7 +440,7 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 											After Generation
 										</span>
 										<span className={`font-bold ${canAfford
-											? 'text-emerald-600 dark:text-emerald-400'
+											? 'text-amber-600 dark:text-amber-400'
 											: 'text-red-600 dark:text-red-400'
 											}`}>
 											{userCredits - totalCredits} credits
@@ -487,7 +487,7 @@ export function GenerationSheet({ open, onClose, onConfirm, userCredits }: Gener
 							onClick={handleConfirm}
 							disabled={!canAfford}
 							className={`flex-1 h-12 font-bold ${canAfford
-								? 'bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 hover:from-emerald-700 hover:via-teal-700 hover:to-blue-700 shadow-lg hover:shadow-xl'
+								? 'bg-gradient-to-r from-amber-600 via-amber-600 to-orange-600 hover:from-amber-700 hover:via-amber-700 hover:to-orange-700 shadow-lg hover:shadow-xl'
 								: 'bg-slate-300 dark:bg-slate-600 cursor-not-allowed'
 								} transition-all`}
 						>

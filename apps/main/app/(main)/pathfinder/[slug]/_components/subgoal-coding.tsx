@@ -82,12 +82,12 @@ export function SubGoalCoding({ subGoal, onComplete }: SubGoalCodingProps) {
                 <div className={cn(
                     "w-20 h-20 rounded-full flex items-center justify-center mb-4",
                     subGoal.codingPassed
-                        ? "bg-green-100 dark:bg-green-900/30"
+                        ? "bg-amber-100 dark:bg-amber-900/30"
                         : "bg-orange-100 dark:bg-orange-900/30"
                 )}>
                     {
                         subGoal.codingPassed ? (
-                            <CheckCircle2 className="w-10 h-10 text-green-500" />
+                            <CheckCircle2 className="w-10 h-10 text-amber-500" />
                         ) : (
                             <XCircle className="w-10 h-10 text-orange-500" />
                         )
@@ -147,7 +147,7 @@ export function SubGoalCoding({ subGoal, onComplete }: SubGoalCodingProps) {
     }
 
     const difficultyColors = {
-        EASY: 'bg-green-100 text-green-700',
+        EASY: 'bg-amber-100 text-amber-700',
         MEDIUM: 'bg-orange-100 text-orange-700',
         HARD: 'bg-red-100 text-red-700',
     }
@@ -163,17 +163,17 @@ export function SubGoalCoding({ subGoal, onComplete }: SubGoalCodingProps) {
                             className={cn(
                                 "p-6 rounded-xl text-center",
                                 feedback.passed
-                                    ? "bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800"
+                                    ? "bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800"
                                     : "bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800"
                             )}
                         >
                             <div className={cn(
                                 "w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-3",
-                                feedback.passed ? "bg-green-100" : "bg-orange-100"
+                                feedback.passed ? "bg-amber-100" : "bg-orange-100"
                             )}>
                                 {
                                     feedback.passed ? (
-                                        <CheckCircle2 className="w-8 h-8 text-green-500" />
+                                        <CheckCircle2 className="w-8 h-8 text-amber-500" />
                                     ) : (
                                         <XCircle className="w-8 h-8 text-orange-500" />
                                     )
@@ -181,14 +181,14 @@ export function SubGoalCoding({ subGoal, onComplete }: SubGoalCodingProps) {
                             </div>
                             <h3 className={cn(
                                 "text-lg font-bold mb-1",
-                                feedback.passed ? "text-green-700" : "text-orange-700"
+                                feedback.passed ? "text-amber-700" : "text-orange-700"
                             )}>
                                 {feedback.passed ? 'Solution Accepted!' : 'Needs Improvement'}
                             </h3>
                             <Badge variant="secondary" className={cn(
                                 "text-sm px-3 py-0.5",
                                 feedback.passed
-                                    ? "bg-green-100 text-green-700"
+                                    ? "bg-amber-100 text-amber-700"
                                     : "bg-orange-100 text-orange-700"
                             )}>
                                 Score: {feedback.score}%
@@ -205,16 +205,16 @@ export function SubGoalCoding({ subGoal, onComplete }: SubGoalCodingProps) {
 
                         {
                             feedback.suggestions.length > 0 && (
-                                <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800">
-                                    <h4 className="font-medium text-blue-700 dark:text-blue-400 mb-2 flex items-center gap-2">
+                                <div className="p-4 rounded-xl bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800">
+                                    <h4 className="font-medium text-orange-700 dark:text-orange-400 mb-2 flex items-center gap-2">
                                         <Lightbulb className="w-4 h-4" />
                                         Suggestions
                                     </h4>
                                     <ul className="space-y-1">
                                         {
                                             feedback.suggestions.map((suggestion, i) => (
-                                                <li key={i} className="text-sm text-blue-600 dark:text-blue-400 flex items-start gap-2">
-                                                    <span className="text-blue-400">•</span>
+                                                <li key={i} className="text-sm text-orange-600 dark:text-orange-400 flex items-start gap-2">
+                                                    <span className="text-orange-400">•</span>
                                                     {suggestion}
                                                 </li>
                                             ))
@@ -264,7 +264,7 @@ export function SubGoalCoding({ subGoal, onComplete }: SubGoalCodingProps) {
                 <div className="p-4 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
                     <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center gap-2">
-                            <Code2 className="w-5 h-5 text-violet-500" />
+                            <Code2 className="w-5 h-5 text-orange-500" />
                             <h3 className="font-semibold text-neutral-900 dark:text-white">
                                 {p.title}
                             </h3>
@@ -303,17 +303,17 @@ export function SubGoalCoding({ subGoal, onComplete }: SubGoalCodingProps) {
                     {
                         p.hints.length > 0 && (
                             <Collapsible open={hintsOpen} onOpenChange={setHintsOpen}>
-                                <CollapsibleTrigger className="flex items-center gap-2 text-sm text-violet-600 hover:text-violet-700 transition-colors">
+                                <CollapsibleTrigger className="flex items-center gap-2 text-sm text-orange-600 hover:text-orange-700 transition-colors">
                                     <Lightbulb className="w-4 h-4" />
                                     <span>Hints ({p.hints.length})</span>
                                     {hintsOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                                 </CollapsibleTrigger>
                                 <CollapsibleContent className="mt-2">
-                                    <div className="p-3 rounded bg-violet-50 dark:bg-violet-950/30 space-y-1">
+                                    <div className="p-3 rounded bg-orange-50 dark:bg-orange-950/30 space-y-1">
                                         {
                                             p.hints.map((hint, i) => (
-                                                <p key={i} className="text-xs text-violet-700 dark:text-violet-400 flex items-start gap-2">
-                                                    <span className="text-violet-400">{i + 1}.</span>
+                                                <p key={i} className="text-xs text-orange-700 dark:text-orange-400 flex items-start gap-2">
+                                                    <span className="text-orange-400">{i + 1}.</span>
                                                     {hint}
                                                 </p>
                                             ))

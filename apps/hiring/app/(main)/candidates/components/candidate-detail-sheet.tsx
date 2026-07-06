@@ -44,15 +44,15 @@ interface CandidateDetailSheetProps {
 }
 
 const statusColors: Record<string, string> = {
-    INTERESTED: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+    INTERESTED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     PREPARING: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
-    APPLIED: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
+    APPLIED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     UNDER_REVIEW: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    SHORTLISTED: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-    INTERVIEW_SCHEDULED: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
-    INTERVIEWED: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
-    OFFER_EXTENDED: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
-    HIRED: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+    SHORTLISTED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    INTERVIEW_SCHEDULED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    INTERVIEWED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    OFFER_EXTENDED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    HIRED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
     REJECTED: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
     WITHDRAWN: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-400",
 }
@@ -187,15 +187,15 @@ export function CandidateDetailSheet({ candidate, onClose }: CandidateDetailShee
 
                 {
                     candidate.matchScore && (
-                        <div className="p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+                        <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                    <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
-                                    <span className="font-medium text-green-700 dark:text-green-300">
+                                    <TrendingUp className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                                    <span className="font-medium text-amber-700 dark:text-amber-300">
                                         Profile Match Score
                                     </span>
                                 </div>
-                                <span className="text-2xl font-bold text-green-600 dark:text-green-400">
+                                <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">
                                     {candidate.matchScore}%
                                 </span>
                             </div>
@@ -206,7 +206,7 @@ export function CandidateDetailSheet({ candidate, onClose }: CandidateDetailShee
                     candidate.coverLetter && (
                         <div>
                             <h4 className="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                <FileText className="w-5 h-5 text-blue-500" />
+                                <FileText className="w-5 h-5 text-orange-500" />
                                 Cover Letter
                             </h4>
                             <p className="text-neutral-600 dark:text-neutral-400 whitespace-pre-line bg-neutral-50 dark:bg-neutral-800 p-4 rounded-xl">
@@ -219,7 +219,7 @@ export function CandidateDetailSheet({ candidate, onClose }: CandidateDetailShee
                     candidate.resumeUrl && (
                         <div>
                             <h4 className="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                <FileText className="w-5 h-5 text-purple-500" />
+                                <FileText className="w-5 h-5 text-orange-500" />
                                 Resume
                             </h4>
                             <Link

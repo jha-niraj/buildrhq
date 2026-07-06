@@ -36,15 +36,15 @@ interface CandidatesContentProps {
 }
 
 const statusColors: Record<string, string> = {
-    INTERESTED: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+    INTERESTED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     PREPARING: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
-    APPLIED: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
+    APPLIED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     UNDER_REVIEW: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    SHORTLISTED: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-    INTERVIEW_SCHEDULED: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
-    INTERVIEWED: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
-    OFFER_EXTENDED: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
-    HIRED: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+    SHORTLISTED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    INTERVIEW_SCHEDULED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    INTERVIEWED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    OFFER_EXTENDED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    HIRED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
     REJECTED: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
     WITHDRAWN: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-400",
 }
@@ -175,25 +175,25 @@ export function CandidatesContent({ initialCandidates, stats, jobs }: Candidates
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">{stats.total}</p>
                             <p className="text-xs text-neutral-500">Total</p>
                         </div>
-                        <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
-                            <p className="text-2xl font-bold text-blue-700 dark:text-blue-400">{stats.new}</p>
-                            <p className="text-xs text-blue-600 dark:text-blue-500">New</p>
+                        <div className="p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
+                            <p className="text-2xl font-bold text-orange-700 dark:text-orange-400">{stats.new}</p>
+                            <p className="text-xs text-orange-600 dark:text-orange-500">New</p>
                         </div>
                         <div className="p-4 rounded-xl bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800">
                             <p className="text-2xl font-bold text-yellow-700 dark:text-yellow-400">{stats.screening}</p>
                             <p className="text-xs text-yellow-600 dark:text-yellow-500">Screening</p>
                         </div>
-                        <div className="p-4 rounded-xl bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800">
-                            <p className="text-2xl font-bold text-purple-700 dark:text-purple-400">{stats.interviewing}</p>
-                            <p className="text-xs text-purple-600 dark:text-purple-500">Interviewing</p>
+                        <div className="p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
+                            <p className="text-2xl font-bold text-orange-700 dark:text-orange-400">{stats.interviewing}</p>
+                            <p className="text-xs text-orange-600 dark:text-orange-500">Interviewing</p>
                         </div>
-                        <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800">
-                            <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-400">{stats.offered}</p>
-                            <p className="text-xs text-emerald-600 dark:text-emerald-500">Offered</p>
+                        <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+                            <p className="text-2xl font-bold text-amber-700 dark:text-amber-400">{stats.offered}</p>
+                            <p className="text-xs text-amber-600 dark:text-amber-500">Offered</p>
                         </div>
-                        <div className="p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
-                            <p className="text-2xl font-bold text-green-700 dark:text-green-400">{stats.hired}</p>
-                            <p className="text-xs text-green-600 dark:text-green-500">Hired</p>
+                        <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+                            <p className="text-2xl font-bold text-amber-700 dark:text-amber-400">{stats.hired}</p>
+                            <p className="text-xs text-amber-600 dark:text-amber-500">Hired</p>
                         </div>
                         <div className="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
                             <p className="text-2xl font-bold text-red-700 dark:text-red-400">{stats.rejected}</p>
@@ -272,9 +272,9 @@ export function CandidatesContent({ initialCandidates, stats, jobs }: Candidates
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex items-center gap-4 p-4 mb-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl"
+                        className="flex items-center gap-4 p-4 mb-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl"
                     >
-                        <span className="text-sm font-medium text-blue-700 dark:text-blue-400">
+                        <span className="text-sm font-medium text-orange-700 dark:text-orange-400">
                             {selectedIds.size} selected
                         </span>
                         <div className="flex gap-2">
@@ -283,7 +283,7 @@ export function CandidatesContent({ initialCandidates, stats, jobs }: Candidates
                                 variant="outline"
                                 onClick={() => handleBulkAction("SHORTLISTED")}
                                 disabled={isPending}
-                                className="rounded-lg text-green-600 border-green-300 hover:bg-green-50"
+                                className="rounded-lg text-amber-600 border-amber-300 hover:bg-amber-50"
                             >
                                 <CheckCircle2 className="w-4 h-4 mr-1" />
                                 Shortlist
@@ -360,7 +360,7 @@ export function CandidatesContent({ initialCandidates, stats, jobs }: Candidates
                                                             </div>
                                                             {
                                                                 candidate.matchScore && (
-                                                                    <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs">
+                                                                    <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-xs">
                                                                         {candidate.matchScore}%
                                                                     </Badge>
                                                                 )
@@ -436,7 +436,7 @@ export function CandidatesContent({ initialCandidates, stats, jobs }: Candidates
                                                         </div>
                                                         <div className="flex-1 min-w-0">
                                                             <div className="flex items-center gap-2">
-                                                                <h3 className="font-semibold text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                                                <h3 className="font-semibold text-neutral-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                                                                     {candidate.name}
                                                                 </h3>
                                                                 <Badge className={statusColors[candidate.status]}>
@@ -462,7 +462,7 @@ export function CandidatesContent({ initialCandidates, stats, jobs }: Candidates
                                                         {
                                                             candidate.matchScore && (
                                                                 <div className="text-center px-4">
-                                                                    <div className="text-lg font-bold text-green-600 dark:text-green-400">
+                                                                    <div className="text-lg font-bold text-amber-600 dark:text-amber-400">
                                                                         {candidate.matchScore}%
                                                                     </div>
                                                                     <div className="text-xs text-neutral-500">Match</div>
@@ -491,7 +491,7 @@ export function CandidatesContent({ initialCandidates, stats, jobs }: Candidates
                                                                 </DropdownMenuItem>
                                                                 <DropdownMenuSeparator />
                                                                 <DropdownMenuItem>
-                                                                    <CheckCircle2 className="w-4 h-4 mr-2 text-green-500" />
+                                                                    <CheckCircle2 className="w-4 h-4 mr-2 text-amber-500" />
                                                                     Shortlist
                                                                 </DropdownMenuItem>
                                                                 <DropdownMenuItem className="text-red-600 dark:text-red-400">

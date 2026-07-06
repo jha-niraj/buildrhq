@@ -108,12 +108,12 @@ export default function MyPlansPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br dark:from-black dark:via-emerald-850 dark:to-black">
+        <div className="min-h-screen bg-gradient-to-br dark:from-black dark:via-amber-850 dark:to-black">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 max-w-7xl">
                 <div className="mb-8 lg:mb-12">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                         <div>
-                            <Link href="/ai/jobinterviewassistant" className="flex items-center border w-fit p-2 rounded-lg mb-2 border-teal-200 hover:border-teal-300 text-teal-700 dark:text-teal-300 shadow-md hover:shadow-lg transition-all">
+                            <Link href="/ai/jobinterviewassistant" className="flex items-center border w-fit p-2 rounded-lg mb-2 border-amber-200 hover:border-amber-300 text-amber-700 dark:text-amber-300 shadow-md hover:shadow-lg transition-all">
                                 <ArrowLeft className="h-4 w-4" />
                                 Back
                             </Link>
@@ -126,7 +126,7 @@ export default function MyPlansPage() {
                         </div>
                         <Button
                             asChild
-                            className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg"
+                            className="bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 shadow-lg"
                         >
                             <Link href="/ai/jobinterviewassistant" className="flex items-center gap-2">
                                 <Plus className="h-4 w-4" />
@@ -169,7 +169,7 @@ export default function MyPlansPage() {
                         <div className="flex justify-end items-center">
                             <Link
                                 href="/ai/jobinterviewassistant/publicgenerations"
-                                className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 text-sm font-medium transition-colors"
+                                className="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 text-sm font-medium transition-colors"
                             >
                                 Browse Public Plans →
                             </Link>
@@ -192,8 +192,8 @@ export default function MyPlansPage() {
                         className="text-center py-16 lg:py-24"
                     >
                         <div className="max-w-md mx-auto">
-                            <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <Briefcase className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
+                            <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <Briefcase className="h-8 w-8 text-amber-600 dark:text-amber-400" />
                             </div>
                             <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
                                 {search || visibility !== "all" ? "No plans found" : "No plans yet"}
@@ -204,7 +204,7 @@ export default function MyPlansPage() {
                                     : "Start by generating your first interview plan."}
                             </p>
                             <Button
-                                className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg"
+                                className="bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 shadow-lg"
                                 asChild
                             >
                                 <Link href="/ai/jobinterviewassistant" className="flex items-center gap-2">

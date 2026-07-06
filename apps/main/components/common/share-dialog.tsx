@@ -74,7 +74,7 @@ export function ShareDialog({
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
-                        <Share2 className="w-5 h-5 text-blue-500" />
+                        <Share2 className="w-5 h-5 text-orange-500" />
                         Share {typeLabel}
                     </DialogTitle>
                     <DialogDescription>Share this {type} with others</DialogDescription>
@@ -85,7 +85,7 @@ export function ShareDialog({
                     <div className="flex gap-2">
                         <Input value={url} readOnly className="flex-1 bg-neutral-50 dark:bg-neutral-900 text-sm" />
                         <Button onClick={handleCopyLink} variant="outline" size="icon">
-                            {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                            {copied ? <Check className="w-4 h-4 text-amber-500" /> : <Copy className="w-4 h-4" />}
                         </Button>
                     </div>
                     <p className="text-xs text-muted-foreground">Copy this link to share anywhere</p>
@@ -113,9 +113,9 @@ export function ShareDialog({
 
                 <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900 mt-4">
                     <div className="flex items-center gap-3">
-                        <div className={cn("p-2 rounded-lg", visibility === "PUBLIC" ? "bg-green-100 dark:bg-green-900/30" : "bg-neutral-200 dark:bg-neutral-800")}>
+                        <div className={cn("p-2 rounded-lg", visibility === "PUBLIC" ? "bg-amber-100 dark:bg-amber-900/30" : "bg-neutral-200 dark:bg-neutral-800")}>
                             {visibility === "PUBLIC"
-                                ? <Globe className="w-4 h-4 text-green-600 dark:text-green-400" />
+                                ? <Globe className="w-4 h-4 text-amber-600 dark:text-amber-400" />
                                 : <User className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />}
                         </div>
                         <div>

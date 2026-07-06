@@ -70,13 +70,13 @@ function JobsSidebarContent() {
                                 className={cn(
                                     "flex items-center justify-center p-2.5 rounded-xl transition-all duration-200",
                                     "hover:bg-neutral-100 dark:hover:bg-neutral-800",
-                                    active && "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400",
+                                    active && "bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400",
                                     item.comingSoon && "opacity-50 pointer-events-none"
                                 )}
                             >
                                 <Icon className={cn(
                                     "w-5 h-5",
-                                    active ? "text-blue-600 dark:text-blue-400" : "text-neutral-600 dark:text-neutral-400"
+                                    active ? "text-orange-600 dark:text-orange-400" : "text-neutral-600 dark:text-neutral-400"
                                 )} />
                             </Link>
                         </TooltipTrigger>
@@ -96,17 +96,17 @@ function JobsSidebarContent() {
                 className={cn(
                     "flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200",
                     "hover:bg-neutral-100 dark:hover:bg-neutral-800",
-                    active && "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400",
+                    active && "bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400",
                     item.comingSoon && "opacity-50 pointer-events-none"
                 )}
             >
                 <Icon className={cn(
                     "w-5 h-5",
-                    active ? "text-blue-600 dark:text-blue-400" : "text-neutral-600 dark:text-neutral-400"
+                    active ? "text-orange-600 dark:text-orange-400" : "text-neutral-600 dark:text-neutral-400"
                 )} />
                 <span className={cn(
                     "text-sm font-medium",
-                    active ? "text-blue-600 dark:text-blue-400" : "text-neutral-700 dark:text-neutral-300"
+                    active ? "text-orange-600 dark:text-orange-400" : "text-neutral-700 dark:text-neutral-300"
                 )}>
                     {item.name}
                 </span>
@@ -116,7 +116,7 @@ function JobsSidebarContent() {
                     </span>
                 )}
                 {item.badge && (
-                    <span className="ml-auto text-xs px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium">
+                    <span className="ml-auto text-xs px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 font-medium">
                         {item.badge}
                     </span>
                 )}
@@ -137,14 +137,14 @@ function JobsSidebarContent() {
             <div className="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-800">
                 {!isCollapsed && (
                     <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
                             <Briefcase className="w-4 h-4 text-white" />
                         </div>
                         <span className="font-bold text-neutral-900 dark:text-white">Jobs</span>
                     </div>
                 )}
                 {isCollapsed && (
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mx-auto">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mx-auto">
                         <Briefcase className="w-4 h-4 text-white" />
                     </div>
                 )}

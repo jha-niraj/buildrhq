@@ -29,16 +29,16 @@ export function PageOverviewCard({ page, difficultyColors }: PageOverviewCardPro
     return (
         <>
             <Card
-                className="bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 cursor-pointer hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-lg transition-all duration-200 group"
+                className="bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 cursor-pointer hover:border-orange-300 dark:hover:border-orange-700 hover:shadow-lg transition-all duration-200 group"
                 onClick={() => setIsSheetOpen(true)}
             >
                 <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-xs font-bold">
                                 {page.orderIndex !== undefined ? page.orderIndex + 1 : '#'}
                             </div>
-                            <CardTitle className="text-base group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{page.name}</CardTitle>
+                            <CardTitle className="text-base group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">{page.name}</CardTitle>
                         </div>
                         <Badge className={difficultyColors[page.difficulty as keyof typeof difficultyColors] || ''}>
                             {page.difficulty}
@@ -71,14 +71,14 @@ export function PageOverviewCard({ page, difficultyColors }: PageOverviewCardPro
                 <SheetContent side="bottom" className="h-[90vh] w-full overflow-y-auto">
                     <SheetHeader className="max-w-7xl mx-auto text-left pb-6 border-b border-neutral-200 dark:border-neutral-800">
                         <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-lg font-bold">
+                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white text-lg font-bold">
                                 {page.orderIndex !== undefined ? page.orderIndex + 1 : '#'}
                             </div>
                             <div>
                                 <SheetTitle className="text-xl">{page.name}</SheetTitle>
                                 {
                                     page.route && (
-                                        <code className="text-sm text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded">
+                                        <code className="text-sm text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/30 px-2 py-0.5 rounded">
                                             {page.route}
                                         </code>
                                     )
@@ -153,7 +153,7 @@ export function PageOverviewCard({ page, difficultyColors }: PageOverviewCardPro
                                         {
                                             page.coreFeatures.map((feature: string, idx: number) => (
                                                 <li key={idx} className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-                                                    <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
+                                                    <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
                                                     {feature}
                                                 </li>
                                             ))
@@ -183,7 +183,7 @@ export function PageOverviewCard({ page, difficultyColors }: PageOverviewCardPro
                                                             <div className="flex flex-wrap gap-1">
                                                                 {
                                                                     comp.interactivity.map((action: string, aIdx: number) => (
-                                                                        <span key={aIdx} className="text-[10px] px-1.5 py-0.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 rounded">
+                                                                        <span key={aIdx} className="text-[10px] px-1.5 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded">
                                                                             {action}
                                                                         </span>
                                                                     ))
@@ -242,7 +242,7 @@ export function PageOverviewCard({ page, difficultyColors }: PageOverviewCardPro
                                         {
                                             page.dataNeeded.map((data: string, idx: number) => (
                                                 <li key={idx} className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
                                                     {data}
                                                 </li>
                                             ))

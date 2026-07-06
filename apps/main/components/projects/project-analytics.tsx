@@ -165,7 +165,7 @@ export function ProjectAnalytics({ stats, className }: AnalyticsComponentProps) 
 									stats.technologyPopularity.slice(0, 5).map((tech, index) => (
 										<div key={tech.name} className="flex items-center justify-between">
 											<div className="flex items-center gap-3">
-												<div className="w-6 h-6 rounded bg-gradient-to-br from-purple-500 to-blue-600 text-white flex items-center justify-center text-xs font-bold">
+												<div className="w-6 h-6 rounded bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center text-xs font-bold">
 													{index + 1}
 												</div>
 												<span className="font-medium text-gray-900 dark:text-white">
@@ -265,7 +265,7 @@ export function UserProjectAnalytics({ userStats, className }: UserStatsComponen
 						</div>
 						<div className="flex items-center justify-between">
 							<span className="text-gray-600 dark:text-gray-400">Global Rank</span>
-							<Badge className="bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400">
+							<Badge className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400">
 								#{userStats.rank}
 							</Badge>
 						</div>
@@ -345,7 +345,7 @@ export function ProjectProgressAnalytics({ progress, className }: ProgressCompon
 					<Progress value={progress.progressPercentage} className="h-3" />
 					<div className="grid grid-cols-2 gap-4 mt-4">
 						<div className="flex items-center gap-2">
-							<Clock className="h-4 w-4 text-blue-600" />
+							<Clock className="h-4 w-4 text-orange-600" />
 							<span className="text-sm text-gray-600 dark:text-gray-400">
 								{Math.round(progress.timeSpent / 60)}h spent
 							</span>
@@ -367,7 +367,7 @@ export function ProjectProgressAnalytics({ progress, className }: ProgressCompon
 						</CardHeader>
 						<CardContent>
 							<div className="flex items-center gap-3">
-								<div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+								<div className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center">
 									<Code2 className="h-5 w-5 text-white" />
 								</div>
 								<div>
@@ -456,9 +456,9 @@ function StatCard({
 	trend?: number
 }) {
 	const colorClasses = {
-		blue: "from-blue-500 to-blue-600",
-		green: "from-green-500 to-green-600",
-		purple: "from-purple-500 to-purple-600",
+		blue: "from-orange-500 to-orange-600",
+		green: "from-amber-500 to-amber-600",
+		purple: "from-orange-500 to-orange-600",
 		yellow: "from-yellow-500 to-yellow-600",
 		red: "from-red-500 to-red-600"
 	}
@@ -472,7 +472,7 @@ function StatCard({
 					</div>
 					{
 						trend !== undefined && (
-							<div className={`flex items-center gap-1 text-xs ${trend >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+							<div className={`flex items-center gap-1 text-xs ${trend >= 0 ? 'text-amber-600' : 'text-red-600'}`}>
 								{trend >= 0 ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
 								{Math.abs(trend)}%
 							</div>
@@ -517,7 +517,7 @@ function CompletionRateChart({ completionRate }: { completionRate: number }) {
 							strokeWidth="8"
 							fill="none"
 							strokeDasharray={`${completionRate * 2.51} 251`}
-							className="text-purple-600"
+							className="text-orange-600"
 						/>
 					</svg>
 					<div className="absolute inset-0 flex items-center justify-center">
@@ -551,9 +551,9 @@ function DifficultyDistributionChart({
 					Object.entries(distribution).map(([level, count]) => {
 						const percentage = total > 0 ? Math.round((count / total) * 100) : 0
 						const colors = {
-							beginner: "bg-green-500",
-							intermediate: "bg-blue-500",
-							advanced: "bg-purple-500"
+							beginner: "bg-amber-500",
+							intermediate: "bg-orange-500",
+							advanced: "bg-orange-500"
 						}
 
 						return (
@@ -599,15 +599,15 @@ function WeeklyTrendsChart({ weeklyStats }: { weeklyStats: { week: string; views
 								</div>
 								<div className="flex gap-1 h-2">
 									<div
-										className="bg-blue-500 rounded-sm flex-grow"
+										className="bg-orange-500 rounded-sm flex-grow"
 										style={{ flex: week.views }}
 									></div>
 									<div
-										className="bg-green-500 rounded-sm flex-grow"
+										className="bg-amber-500 rounded-sm flex-grow"
 										style={{ flex: week.started }}
 									></div>
 									<div
-										className="bg-purple-500 rounded-sm flex-grow"
+										className="bg-orange-500 rounded-sm flex-grow"
 										style={{ flex: week.completed }}
 									></div>
 								</div>
@@ -636,7 +636,7 @@ function TopPerformersLeaderboard({ performers }: { performers: { username: stri
 							<div key={performer.username} className="flex items-center gap-3">
 								<div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm ${index === 0 ? 'bg-yellow-500' :
 									index === 1 ? 'bg-gray-400' :
-										index === 2 ? 'bg-orange-500' : 'bg-purple-500'
+										index === 2 ? 'bg-orange-500' : 'bg-orange-500'
 									}`}>
 									{index + 1}
 								</div>

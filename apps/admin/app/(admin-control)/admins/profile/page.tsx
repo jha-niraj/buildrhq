@@ -56,7 +56,7 @@ export default function AdminProfilePage() {
                         <div key={mod} className="border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 bg-white dark:bg-neutral-900">
                             <div className="flex items-center justify-between mb-2">
                                 <span className="font-medium text-neutral-900 dark:text-white capitalize">{mod}</span>
-                                <BadgeCheck className="w-4 h-4 text-emerald-500" />
+                                <BadgeCheck className="w-4 h-4 text-amber-500" />
                             </div>
                             <div className="flex flex-wrap gap-2">
                                 {

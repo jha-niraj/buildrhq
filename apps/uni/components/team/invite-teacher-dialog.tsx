@@ -127,7 +127,7 @@ export function InviteTeacherDialog({ departments, onSuccess }: InviteTeacherDia
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white">
+                <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
                     <UserPlus className="w-4 h-4 mr-2" />
                     Invite Faculty
                 </Button>
@@ -135,8 +135,8 @@ export function InviteTeacherDialog({ departments, onSuccess }: InviteTeacherDia
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center">
-                            <UserPlus className="w-4 h-4 text-violet-600" />
+                        <div className="w-8 h-8 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                            <UserPlus className="w-4 h-4 text-orange-600" />
                         </div>
                         Invite Faculty Member
                     </DialogTitle>
@@ -152,8 +152,8 @@ export function InviteTeacherDialog({ departments, onSuccess }: InviteTeacherDia
                         className="py-6"
                     >
                         <div className="text-center">
-                            <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mx-auto mb-4">
-                                <Check className="w-8 h-8 text-green-600" />
+                            <div className="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mx-auto mb-4">
+                                <Check className="w-8 h-8 text-amber-600" />
                             </div>
                             <h3 className="font-bold text-lg text-neutral-900 dark:text-white mb-2">
                                 Invitation Sent!
@@ -178,7 +178,7 @@ export function InviteTeacherDialog({ departments, onSuccess }: InviteTeacherDia
                                             className="shrink-0"
                                         >
                                             {copied ? (
-                                                <Check className="w-4 h-4 text-green-600" />
+                                                <Check className="w-4 h-4 text-amber-600" />
                                             ) : (
                                                 <Copy className="w-4 h-4" />
                                             )}
@@ -311,7 +311,7 @@ export function InviteTeacherDialog({ departments, onSuccess }: InviteTeacherDia
                             <Button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700"
+                                className="w-full rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700"
                             >
                                 {loading ? (
                                     <>

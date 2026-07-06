@@ -288,7 +288,7 @@ export function InterviewProcessForm({ onClose, initialTemplate }: InterviewProc
                                         <div className="flex items-center gap-2">
                                             {
                                                 round.hasMockInterview && (
-                                                    <div className="flex items-center gap-1 px-2 py-1 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs">
+                                                    <div className="flex items-center gap-1 px-2 py-1 rounded-lg bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs">
                                                         <Mic className="w-3 h-3" />
                                                         Mock
                                                     </div>
@@ -421,7 +421,7 @@ export function InterviewProcessForm({ onClose, initialTemplate }: InterviewProc
                                                                 Candidates can practice for this round with an AI interviewer
                                                             </p>
                                                         </div>
-                                                        <Mic className="w-5 h-5 text-green-600 dark:text-green-400" />
+                                                        <Mic className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                                                     </div>
                                                 </motion.div>
                                             )

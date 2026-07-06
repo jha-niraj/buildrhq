@@ -66,7 +66,7 @@ export function TeamMembersDisplay({
                                 >
                                     <Avatar className="w-8 h-8 border-2 border-white dark:border-neutral-900 cursor-pointer hover:z-10 transition-transform hover:scale-110">
                                         <AvatarImage src={member.user.image || ''} />
-                                        <AvatarFallback className="text-xs bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
+                                        <AvatarFallback className="text-xs bg-gradient-to-br from-orange-500 to-orange-600 text-white">
                                             {(member.user.name ?? member.user.username ?? '?').charAt(0).toUpperCase()}
                                         </AvatarFallback>
                                     </Avatar>
@@ -135,7 +135,7 @@ export function TeamCollaborationBadge({ memberCount }: TeamCollaborationBadgePr
     return (
         <Badge
             variant="secondary"
-            className="bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900/30 dark:to-purple-900/30 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800"
+            className="bg-gradient-to-r from-orange-100 to-orange-100 dark:from-orange-900/30 dark:to-orange-900/30 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800"
         >
             <Users className="w-3 h-3 mr-1" />
             Team Project ({memberCount})

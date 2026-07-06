@@ -54,8 +54,8 @@ export function ProjectVerification({
         return (
             <div className="flex-1 flex items-center justify-center p-8">
                 <div className="text-center">
-                    <div className="w-20 h-20 mx-auto rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4">
-                        <CheckCircle2 className="w-10 h-10 text-green-500" />
+                    <div className="w-20 h-20 mx-auto rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4">
+                        <CheckCircle2 className="w-10 h-10 text-amber-500" />
                     </div>
                     <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">Project Submitted!</h3>
                     <p className="text-neutral-500">Your project has been verified.</p>
@@ -113,11 +113,11 @@ export function ProjectVerification({
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                     <motion.div
                         whileHover={{ scale: 1.02 }}
-                        className="p-6 rounded-2xl border-2 border-violet-200 dark:border-violet-800 bg-violet-50 dark:bg-violet-950/30"
+                        className="p-6 rounded-2xl border-2 border-orange-200 dark:border-orange-800 bg-orange-50 dark:bg-orange-950/30"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-violet-500/10">
-                                <Rocket className="w-6 h-6 text-violet-500" />
+                            <div className="p-2 rounded-lg bg-orange-500/10">
+                                <Rocket className="w-6 h-6 text-orange-500" />
                             </div>
                             <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">Build with Coderz</h3>
                         </div>
@@ -138,7 +138,7 @@ export function ProjectVerification({
                                     {
                                         majorProject && (
                                             <div className="p-3 rounded-lg bg-white dark:bg-neutral-900">
-                                                <Badge className="mb-1 bg-violet-500">Major</Badge>
+                                                <Badge className="mb-1 bg-orange-500">Major</Badge>
                                                 <div className="font-medium text-sm">{majorProject.title}</div>
                                             </div>
                                         )
@@ -147,7 +147,7 @@ export function ProjectVerification({
                             )
                         }
                         <Link href="/projects">
-                            <Button className="w-full bg-gradient-to-r from-violet-600 to-purple-600">
+                            <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-600">
                                 <Rocket className="w-4 h-4 mr-2" />
                                 Start Building
                             </Button>
@@ -168,15 +168,15 @@ export function ProjectVerification({
                         </p>
                         <div className="space-y-2 mb-4 text-sm text-neutral-500">
                             <div className="flex items-center gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                <CheckCircle2 className="w-4 h-4 text-amber-500" />
                                 <span>Add GitHub repository</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                <CheckCircle2 className="w-4 h-4 text-amber-500" />
                                 <span>Include demo link</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                <CheckCircle2 className="w-4 h-4 text-amber-500" />
                                 <span>Showcase in your portfolio</span>
                             </div>
                         </div>
@@ -211,10 +211,10 @@ export function ProjectVerification({
                                 }
                                 {
                                     majorProject && (
-                                        <div className="p-4 rounded-xl border border-violet-200 dark:border-violet-800 bg-violet-50/50 dark:bg-violet-950/20">
+                                        <div className="p-4 rounded-xl border border-orange-200 dark:border-orange-800 bg-orange-50/50 dark:bg-orange-950/20">
                                             <div className="flex items-start justify-between">
                                                 <div>
-                                                    <Badge className="mb-2 bg-violet-500">Major Project (Recommended)</Badge>
+                                                    <Badge className="mb-2 bg-orange-500">Major Project (Recommended)</Badge>
                                                     <h4 className="font-semibold text-neutral-900 dark:text-white">{majorProject.title}</h4>
                                                     <p className="text-sm text-neutral-500 mt-1">{majorProject.description}</p>
                                                 </div>

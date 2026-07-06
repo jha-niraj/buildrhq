@@ -28,7 +28,7 @@ const MODULE_PATHS: Record<PracticeModule, string> = {
 };
 
 const DIFFICULTY_COLORS = {
-    EASY: "text-emerald-600 dark:text-emerald-400",
+    EASY: "text-amber-600 dark:text-amber-400",
     MEDIUM: "text-amber-600 dark:text-amber-400",
     HARD: "text-red-600 dark:text-red-400",
 };
@@ -95,7 +95,7 @@ export function PracticeDashboard({ stats, dailyChallenge }: PracticeDashboardPr
                         label="Easy"
                         completed={stats.difficultyBreakdown.easy.completed}
                         total={stats.difficultyBreakdown.easy.total}
-                        color="bg-emerald-500"
+                        color="bg-amber-500"
                     />
                     <DifficultyBar
                         label="Medium"
@@ -338,7 +338,7 @@ function RecentSessionRow({ session }: { session: PracticeRecentSession }) {
             </div>
             {
                 session.status === "COMPLETED" ? (
-                    <Badge variant="outline" className="text-[10px] border-emerald-200 text-emerald-600 dark:border-emerald-800 dark:text-emerald-400">
+                    <Badge variant="outline" className="text-[10px] border-amber-200 text-amber-600 dark:border-amber-800 dark:text-amber-400">
                         {session.bestScore}%
                     </Badge>
                 ) : (

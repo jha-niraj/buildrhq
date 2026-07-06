@@ -109,7 +109,7 @@ export function AtAGlanceTab({
 							<CardHeader className="pb-2">
 								<div className="flex items-center justify-between">
 									<CardTitle className="text-lg flex items-center gap-2">
-										<User className="w-5 h-5 text-blue-500" />
+										<User className="w-5 h-5 text-orange-500" />
 										About
 									</CardTitle>
 									{
@@ -144,8 +144,8 @@ export function AtAGlanceTab({
 							{
 								user.name && (
 									<div className="flex items-center gap-3 py-1.5">
-										<div className="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-											<User className="w-4 h-4 text-blue-500" />
+										<div className="w-9 h-9 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+											<User className="w-4 h-4 text-orange-500" />
 										</div>
 										<div className="min-w-0 flex-1">
 											<p className="text-xs text-muted-foreground">Full Name</p>
@@ -157,8 +157,8 @@ export function AtAGlanceTab({
 							{
 								showEmail && user.email && (
 									<div className="flex items-center gap-3 py-1.5">
-										<div className="w-9 h-9 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-											<Mail className="w-4 h-4 text-green-500" />
+										<div className="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+											<Mail className="w-4 h-4 text-amber-500" />
 										</div>
 										<div className="min-w-0 flex-1 overflow-hidden">
 											<p className="text-xs text-muted-foreground">Email</p>
@@ -172,8 +172,8 @@ export function AtAGlanceTab({
 							{
 								isOwnProfile && user.phone && (
 									<div className="flex items-center gap-3 py-1.5">
-										<div className="w-9 h-9 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-											<Phone className="w-4 h-4 text-purple-500" />
+										<div className="w-9 h-9 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+											<Phone className="w-4 h-4 text-orange-500" />
 										</div>
 										<div className="min-w-0 flex-1">
 											<p className="text-xs text-muted-foreground">Phone</p>
@@ -209,8 +209,8 @@ export function AtAGlanceTab({
 								)
 							}
 							<div className="flex items-center gap-3 py-1.5">
-								<div className="w-9 h-9 rounded-lg bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
-									<Calendar className="w-4 h-4 text-cyan-500" />
+								<div className="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+									<Calendar className="w-4 h-4 text-amber-500" />
 								</div>
 								<div className="min-w-0 flex-1">
 									<p className="text-xs text-muted-foreground">Member Since</p>
@@ -256,8 +256,8 @@ export function AtAGlanceTab({
 							{
 								user.occupation && (
 									<div className="flex items-center gap-3 py-1.5">
-										<div className="w-9 h-9 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-											<Briefcase className="w-4 h-4 text-blue-500" />
+										<div className="w-9 h-9 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+											<Briefcase className="w-4 h-4 text-orange-500" />
 										</div>
 										<div className="min-w-0 flex-1">
 											<p className="text-xs text-muted-foreground">Role</p>
@@ -269,8 +269,8 @@ export function AtAGlanceTab({
 							{
 								user.company && (
 									<div className="flex items-center gap-3 py-1.5">
-										<div className="w-9 h-9 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-											<Building className="w-4 h-4 text-green-500" />
+										<div className="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+											<Building className="w-4 h-4 text-amber-500" />
 										</div>
 										<div className="min-w-0 flex-1">
 											<p className="text-xs text-muted-foreground">Company</p>
@@ -282,8 +282,8 @@ export function AtAGlanceTab({
 							{
 								user.university && (
 									<div className="flex items-center gap-3 py-1.5">
-										<div className="w-9 h-9 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-											<GraduationCap className="w-4 h-4 text-purple-500" />
+										<div className="w-9 h-9 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+											<GraduationCap className="w-4 h-4 text-orange-500" />
 										</div>
 										<div className="min-w-0 flex-1">
 											<p className="text-xs text-muted-foreground">University</p>
@@ -296,8 +296,8 @@ export function AtAGlanceTab({
 							{
 								isOwnProfile && user.expectedSalary && (
 									<div className="flex items-center gap-3 py-1.5">
-										<div className="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-											<Banknote className="w-4 h-4 text-emerald-500" />
+										<div className="w-9 h-9 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+											<Banknote className="w-4 h-4 text-amber-500" />
 										</div>
 										<div className="min-w-0 flex-1">
 											<p className="text-xs text-muted-foreground">Expected Salary</p>
@@ -322,8 +322,8 @@ export function AtAGlanceTab({
 							{
 								user.website && (
 									<div className="flex items-center gap-3 py-1.5">
-										<div className="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center flex-shrink-0">
-											<Globe className="w-4 h-4 text-indigo-500" />
+										<div className="w-9 h-9 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
+											<Globe className="w-4 h-4 text-orange-500" />
 										</div>
 										<div className="min-w-0 flex-1 overflow-hidden">
 											<p className="text-xs text-muted-foreground">Website</p>

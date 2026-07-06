@@ -50,13 +50,13 @@ const categoryConfig: Record<
 	string,
 	{ icon: React.ComponentType<{ className?: string }>; color: string }
 > = {
-	FRONTEND: { icon: Globe, color: "text-blue-500 bg-blue-500/10" },
-	LANGUAGES: { icon: Code2, color: "text-purple-500 bg-purple-500/10" },
-	BACKEND: { icon: Server, color: "text-green-500 bg-green-500/10" },
+	FRONTEND: { icon: Globe, color: "text-orange-500 bg-orange-500/10" },
+	LANGUAGES: { icon: Code2, color: "text-orange-500 bg-orange-500/10" },
+	BACKEND: { icon: Server, color: "text-amber-500 bg-amber-500/10" },
 	API: { icon: Wrench, color: "text-orange-500 bg-orange-500/10" },
 	DATABASE: { icon: Database, color: "text-red-500 bg-red-500/10" },
 	DEVOPS: { icon: Wrench, color: "text-yellow-500 bg-yellow-500/10" },
-	CLOUD: { icon: Cloud, color: "text-cyan-500 bg-cyan-500/10" },
+	CLOUD: { icon: Cloud, color: "text-amber-500 bg-amber-500/10" },
 };
 
 // Level to percentage

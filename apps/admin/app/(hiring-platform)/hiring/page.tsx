@@ -23,7 +23,7 @@ function StatCard({ title, value, icon: Icon, href, color }: StatCardProps) {
         <Link href={href}>
             <motion.div
                 whileHover={{ y: -2 }}
-                className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 hover:border-emerald-300 dark:hover:border-emerald-700 transition-all cursor-pointer group"
+                className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 hover:border-amber-300 dark:hover:border-amber-700 transition-all cursor-pointer group"
             >
                 <div className="flex items-center justify-between mb-3">
                     <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center", color)}>
@@ -32,7 +32,7 @@ function StatCard({ title, value, icon: Icon, href, color }: StatCardProps) {
                 </div>
                 <p className="text-2xl font-bold text-neutral-900 dark:text-white">{value}</p>
                 <p className="text-sm text-neutral-500 mt-1">{title}</p>
-                <div className="mt-3 flex items-center text-sm text-emerald-600 dark:text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-3 flex items-center text-sm text-amber-600 dark:text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity">
                     <span>View details</span>
                     <ArrowRight className="w-4 h-4 ml-1" />
                 </div>
@@ -53,20 +53,20 @@ interface ModuleCardProps {
 function ModuleCard({ title, description, icon: Icon, href, stats, badge }: ModuleCardProps) {
     const badgeColors = {
         warning: "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400",
-        success: "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400",
-        info: "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400",
+        success: "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400",
+        info: "bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400",
     }
 
     return (
         <Link href={href}>
             <motion.div
                 whileHover={{ y: -2 }}
-                className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 hover:border-emerald-300 dark:hover:border-emerald-700 transition-all cursor-pointer group h-full"
+                className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 hover:border-amber-300 dark:hover:border-amber-700 transition-all cursor-pointer group h-full"
             >
                 <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center">
-                            <Icon className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                        <div className="w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center">
+                            <Icon className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                         </div>
                         <div>
                             <h3 className="font-semibold text-neutral-900 dark:text-white">{title}</h3>
@@ -91,7 +91,7 @@ function ModuleCard({ title, description, icon: Icon, href, stats, badge }: Modu
                         ))
                     }
                 </div>
-                <div className="mt-4 flex items-center text-sm text-emerald-600 dark:text-emerald-400">
+                <div className="mt-4 flex items-center text-sm text-amber-600 dark:text-amber-400">
                     <span>Manage</span>
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -136,7 +136,7 @@ export default function HiringPlatformPage() {
         return (
             <div className="p-6 lg:p-8 flex items-center justify-center min-h-[400px]">
                 <div className="text-center">
-                    <Activity className="w-12 h-12 animate-spin text-emerald-400 mx-auto mb-4" />
+                    <Activity className="w-12 h-12 animate-spin text-amber-400 mx-auto mb-4" />
                     <p className="text-neutral-500">Loading Hiring Platform...</p>
                 </div>
             </div>
@@ -159,7 +159,7 @@ export default function HiringPlatformPage() {
         <div className="p-6 lg:p-8 w-full mx-auto">
             <div className="mb-8">
                 <div className="flex items-center gap-3 mb-2">
-                    <div className="w-3 h-8 rounded-full bg-emerald-500" />
+                    <div className="w-3 h-8 rounded-full bg-amber-500" />
                     <div>
                         <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">
                             Hiring Platform
@@ -193,21 +193,21 @@ export default function HiringPlatformPage() {
                     value={displayStats.totalCompanies.toLocaleString()}
                     icon={Building2}
                     href="/hiring/companies"
-                    color="bg-emerald-500"
+                    color="bg-amber-500"
                 />
                 <StatCard
                     title="Active Jobs"
                     value={displayStats.activeJobs.toLocaleString()}
                     icon={Briefcase}
                     href="/hiring/jobs"
-                    color="bg-blue-500"
+                    color="bg-orange-500"
                 />
                 <StatCard
                     title="Total Members"
                     value={displayStats.totalMembers.toLocaleString()}
                     icon={UserCheck}
                     href="/hiring/members"
-                    color="bg-violet-500"
+                    color="bg-orange-500"
                 />
                 <StatCard
                     title="Applications"

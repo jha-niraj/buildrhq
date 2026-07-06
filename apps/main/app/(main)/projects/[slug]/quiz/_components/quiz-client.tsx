@@ -105,7 +105,7 @@ export default function QuizClient({ project, existingQuiz, userCredits, previou
                         className="space-y-6"
                     >
                         <div className="text-center">
-                            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mb-4">
+                            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-pink-500 rounded-2xl mb-4">
                                 <Brain className="w-8 h-8 text-white" />
                             </div>
                             <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-900 to-neutral-500 dark:from-neutral-50 dark:to-neutral-400 mb-2">
@@ -144,19 +144,19 @@ export default function QuizClient({ project, existingQuiz, userCredits, previou
                                     <p className="font-semibold text-neutral-900 dark:text-white">What you&apos;ll get:</p>
                                     <ul className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
                                         <li className="flex items-start gap-2">
-                                            <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                            <CheckCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                                             <span>20 AI-generated questions tailored to this project</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                            <CheckCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                                             <span>Questions spanning beginner, intermediate, and advanced levels</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                            <CheckCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                                             <span>Detailed explanations for each answer</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                            <CheckCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                                             <span>Unlimited retakes to improve your score</span>
                                         </li>
                                     </ul>
@@ -195,7 +195,7 @@ export default function QuizClient({ project, existingQuiz, userCredits, previou
                                     <Button
                                         onClick={handleGenerateQuiz}
                                         disabled={generating || userCredits < 25}
-                                        className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:opacity-90 rounded-xl"
+                                        className="w-full bg-gradient-to-r from-orange-600 to-pink-600 text-white hover:opacity-90 rounded-xl"
                                         size="lg"
                                     >
                                         {

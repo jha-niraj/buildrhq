@@ -265,7 +265,7 @@ export function ResumeTab({
                     <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
                             <CardTitle className="text-lg flex items-center gap-2">
-                                <Briefcase className="w-5 h-5 text-blue-500" />
+                                <Briefcase className="w-5 h-5 text-orange-500" />
                                 Work Experience
                             </CardTitle>
                             {
@@ -355,7 +355,7 @@ export function ResumeTab({
                                                                         exp.isCurrentlyWorking && (
                                                                             <Badge
                                                                                 variant="outline"
-                                                                                className="text-xs bg-green-500/10 text-green-600 border-green-500/20"
+                                                                                className="text-xs bg-amber-500/10 text-amber-600 border-amber-500/20"
                                                                             >
                                                                                 Current
                                                                             </Badge>
@@ -409,7 +409,7 @@ export function ResumeTab({
                     <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
                             <CardTitle className="text-lg flex items-center gap-2">
-                                <GraduationCap className="w-5 h-5 text-purple-500" />
+                                <GraduationCap className="w-5 h-5 text-orange-500" />
                                 Education
                             </CardTitle>
                             {
@@ -427,8 +427,8 @@ export function ResumeTab({
                                 <div className="space-y-4">
                                     {user.educations.map((edu) => (
                                         <div key={edu.id} className="flex items-start gap-4">
-                                            <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center shrink-0">
-                                                <GraduationCap className="w-6 h-6 text-purple-500" />
+                                            <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center shrink-0">
+                                                <GraduationCap className="w-6 h-6 text-orange-500" />
                                             </div>
                                             <div>
                                                 <h4 className="font-semibold">
@@ -445,8 +445,8 @@ export function ResumeTab({
                                 </div>
                             ) : user.university ? (
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                                        <GraduationCap className="w-6 h-6 text-purple-500" />
+                                    <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center">
+                                        <GraduationCap className="w-6 h-6 text-orange-500" />
                                     </div>
                                     <div>
                                         <h4 className="font-semibold">{user.university}</h4>

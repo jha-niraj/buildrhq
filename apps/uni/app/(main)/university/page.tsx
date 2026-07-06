@@ -40,14 +40,14 @@ export default function UniversityProfilePage() {
                     className="max-w-3xl space-y-8"
                 >
                     {/* Verification Status */}
-                    <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-2xl p-6">
+                    <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-6">
                         <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
-                                <Shield className="w-6 h-6 text-emerald-600" />
+                            <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
+                                <Shield className="w-6 h-6 text-amber-600" />
                             </div>
                             <div>
-                                <h3 className="font-bold text-emerald-800 dark:text-emerald-300">Verified University</h3>
-                                <p className="text-sm text-emerald-600/80 dark:text-emerald-400/80">
+                                <h3 className="font-bold text-amber-800 dark:text-amber-300">Verified University</h3>
+                                <p className="text-sm text-amber-600/80 dark:text-amber-400/80">
                                     Your university has been verified by the platform.
                                 </p>
                             </div>
@@ -57,12 +57,12 @@ export default function UniversityProfilePage() {
                     {/* Logo & Branding */}
                     <div className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <h2 className="font-bold text-lg text-neutral-900 dark:text-white mb-6 flex items-center gap-2">
-                            <GraduationCap className="w-5 h-5 text-violet-600" />
+                            <GraduationCap className="w-5 h-5 text-orange-600" />
                             Branding
                         </h2>
                         <div className="flex items-start gap-6">
-                            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/30 dark:to-indigo-900/30 border-2 border-dashed border-violet-300 dark:border-violet-700 flex items-center justify-center">
-                                <Upload className="w-8 h-8 text-violet-400" />
+                            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-100 dark:from-orange-900/30 dark:to-orange-900/30 border-2 border-dashed border-orange-300 dark:border-orange-700 flex items-center justify-center">
+                                <Upload className="w-8 h-8 text-orange-400" />
                             </div>
                             <div className="flex-1">
                                 <h3 className="font-medium text-neutral-900 dark:text-white mb-1">University Logo</h3>
@@ -79,7 +79,7 @@ export default function UniversityProfilePage() {
                     {/* Basic Info */}
                     <div className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <h2 className="font-bold text-lg text-neutral-900 dark:text-white mb-6 flex items-center gap-2">
-                            <Building2 className="w-5 h-5 text-violet-600" />
+                            <Building2 className="w-5 h-5 text-orange-600" />
                             University Information
                         </h2>
                         <div className="space-y-4">
@@ -158,7 +158,7 @@ export default function UniversityProfilePage() {
                     {/* Contact Info */}
                     <div className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <h2 className="font-bold text-lg text-neutral-900 dark:text-white mb-6 flex items-center gap-2">
-                            <Mail className="w-5 h-5 text-violet-600" />
+                            <Mail className="w-5 h-5 text-orange-600" />
                             Contact Information
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -188,7 +188,7 @@ export default function UniversityProfilePage() {
                     {/* Location */}
                     <div className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <h2 className="font-bold text-lg text-neutral-900 dark:text-white mb-6 flex items-center gap-2">
-                            <MapPin className="w-5 h-5 text-violet-600" />
+                            <MapPin className="w-5 h-5 text-orange-600" />
                             Location
                         </h2>
                         <div className="space-y-4">
@@ -241,7 +241,7 @@ export default function UniversityProfilePage() {
                     {/* Invite Codes */}
                     <div className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <h2 className="font-bold text-lg text-neutral-900 dark:text-white mb-6 flex items-center gap-2">
-                            <Globe className="w-5 h-5 text-violet-600" />
+                            <Globe className="w-5 h-5 text-orange-600" />
                             Invite Codes
                         </h2>
                         <div className="space-y-4">
@@ -287,7 +287,7 @@ export default function UniversityProfilePage() {
                         <Button
                             type="submit"
                             disabled={loading}
-                            className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white"
+                            className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white"
                         >
                             <Save className="w-4 h-4 mr-2" />
                             {loading ? "Saving..." : "Save Changes"}

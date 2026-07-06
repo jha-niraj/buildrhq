@@ -1,0 +1,25 @@
+{
+  "name": "generationworker",
+  "version": "1.0.0",
+  "description": "BuildrHQ project-generation worker (Cloudflare Worker + Durable Object + Alarms)",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check-types": "tsc --noEmit",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@repo/db": "workspace:*",
+    "drizzle-orm": "^0.45.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250510.0",
+    "typescript": "5.9.2",
+    "wrangler": "^4.88.0"
+  }
+}

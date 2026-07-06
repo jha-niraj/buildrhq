@@ -30,7 +30,7 @@ export default function SubmitConfirmDialog({
 			<DialogContent className="max-w-2xl">
 				<DialogHeader>
 					<DialogTitle className="flex items-center gap-2">
-						<Code2 className="h-5 w-5 text-blue-600" />
+						<Code2 className="h-5 w-5 text-orange-600" />
 						Confirm Code Submission
 					</DialogTitle>
 					<DialogDescription>
@@ -78,7 +78,7 @@ export default function SubmitConfirmDialog({
 					<Button
 						onClick={onConfirm}
 						disabled={isSubmitting}
-						className="bg-emerald-600 hover:bg-emerald-700 text-white"
+						className="bg-amber-600 hover:bg-amber-700 text-white"
 					>
 						{
 							isSubmitting ? (

@@ -41,7 +41,7 @@ interface GeneratedProblem {
 }
 
 const DIFFICULTY_STYLES: Record<string, string> = {
-    EASY: "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border-emerald-800",
+    EASY: "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800",
     MEDIUM: "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800",
     HARD: "bg-red-50 text-red-700 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800",
 };
@@ -338,7 +338,7 @@ export function AddProblemSheet({ module, onProblemAdded }: AddProblemSheetProps
                                             <ul className="space-y-1">
                                                 {preview.requirements.slice(0, 4).map((req, i) => (
                                                     <li key={i} className="flex items-start gap-1.5 text-[11px] text-neutral-500 dark:text-neutral-400">
-                                                        <Check className="h-3 w-3 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                                        <Check className="h-3 w-3 text-amber-500 mt-0.5 flex-shrink-0" />
                                                         <span className="line-clamp-1">{req}</span>
                                                     </li>
                                                 ))}

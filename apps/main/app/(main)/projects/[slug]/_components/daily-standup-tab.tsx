@@ -270,12 +270,12 @@ Keep responses brief and natural.`,
                     />
                 </div>
 
-                <div className="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
-                    <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-2 flex items-center gap-2">
+                <div className="bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-800 rounded-xl p-4">
+                    <h4 className="font-medium text-orange-900 dark:text-orange-100 mb-2 flex items-center gap-2">
                         <Mic className="w-4 h-4" />
                         Tips for a Great Standup
                     </h4>
-                    <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1">
+                    <ul className="text-sm text-orange-800 dark:text-orange-200 space-y-1">
                         <li>• Be specific about what you worked on</li>
                         <li>• Mention any challenges or blockers</li>
                         <li>• Keep it concise (2-3 minutes)</li>
@@ -295,16 +295,16 @@ Keep responses brief and natural.`,
 
         return (
             <div className="space-y-6">
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 border border-green-200 dark:border-green-900/30 rounded-xl p-5">
+                <div className="bg-gradient-to-r from-amber-50 to-amber-50 dark:from-amber-950/20 dark:to-amber-950/20 border border-amber-200 dark:border-amber-900/30 rounded-xl p-5">
                     <div className="flex items-start gap-3">
-                        <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                            <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+                        <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg">
+                            <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                         </div>
                         <div>
-                            <h3 className="font-semibold text-green-900 dark:text-green-100 mb-1">
+                            <h3 className="font-semibold text-amber-900 dark:text-amber-100 mb-1">
                                 Daily Standup Active
                             </h3>
-                            <p className="text-sm text-green-800 dark:text-green-200">
+                            <p className="text-sm text-amber-800 dark:text-amber-200">
                                 Your voice standup schedule for {projectTitle} is active.
                             </p>
                         </div>
@@ -419,13 +419,13 @@ Keep responses brief and natural.`,
                                     className={cn(
                                         "flex items-center justify-between p-3 rounded-lg border",
                                         standup.status === 'SUBMITTED'
-                                            ? "bg-green-50/50 dark:bg-green-950/10 border-green-200 dark:border-green-900/30"
+                                            ? "bg-amber-50/50 dark:bg-amber-950/10 border-amber-200 dark:border-amber-900/30"
                                             : "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800"
                                     )}
                                 >
                                     <div className="flex items-center gap-3">
                                         {standup.status === 'SUBMITTED' ? (
-                                            <CheckCircle2 className="w-4 h-4 text-green-600" />
+                                            <CheckCircle2 className="w-4 h-4 text-amber-600" />
                                         ) : (
                                             <Calendar className="w-4 h-4 text-neutral-400" />
                                         )}
@@ -442,7 +442,7 @@ Keep responses brief and natural.`,
                                         className={cn(
                                             "text-xs",
                                             standup.status === 'SUBMITTED'
-                                                ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                                                ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
                                                 : "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
                                         )}
                                     >
@@ -472,14 +472,14 @@ Keep responses brief and natural.`,
                 </p>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-900/30 rounded-xl p-4">
-                <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
+            <div className="bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-900/30 rounded-xl p-4">
+                <h3 className="font-semibold text-orange-900 dark:text-orange-100 mb-2">
                     🎙️ Voice-Powered Standups
                 </h3>
-                <p className="text-sm text-blue-800 dark:text-blue-200 mb-3">
+                <p className="text-sm text-orange-800 dark:text-orange-200 mb-3">
                     Practice real-world standup meetings with our AI interviewer. Just like in a real team!
                 </p>
-                <ul className="space-y-1 text-sm text-blue-800 dark:text-blue-200">
+                <ul className="space-y-1 text-sm text-orange-800 dark:text-orange-200">
                     <li className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" />
                         <span>Talk through what you worked on yesterday</span>

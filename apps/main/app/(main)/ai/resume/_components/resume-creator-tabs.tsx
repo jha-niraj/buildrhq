@@ -164,7 +164,7 @@ export function ResumeCreatorTabs({ defaultTab = "experience", onSaved: _onSaved
                                     /resume/{profile.username}
                                 </code>
                                 <Button variant="outline" size="sm" onClick={copyShareUrl}>
-                                    {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                                    {copied ? <Check className="w-4 h-4 text-amber-500" /> : <Copy className="w-4 h-4" />}
                                 </Button>
                                 <Button variant="outline" size="sm" asChild>
                                     <Link href={shareUrl} target="_blank" rel="noopener noreferrer">

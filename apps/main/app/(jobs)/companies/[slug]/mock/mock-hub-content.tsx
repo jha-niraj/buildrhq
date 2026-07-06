@@ -102,15 +102,15 @@ const roundTypeIcons: Record<string, LucideIcon> = {
 }
 
 const roundTypeColors: Record<string, string> = {
-    PHONE_SCREEN: "from-blue-500 to-blue-600",
-    TECHNICAL_CODING: "from-purple-500 to-purple-600",
+    PHONE_SCREEN: "from-orange-500 to-orange-600",
+    TECHNICAL_CODING: "from-orange-500 to-orange-600",
     SYSTEM_DESIGN: "from-orange-500 to-orange-600",
-    BEHAVIORAL: "from-green-500 to-green-600",
+    BEHAVIORAL: "from-amber-500 to-amber-600",
     TAKE_HOME: "from-yellow-500 to-yellow-600",
     PANEL: "from-pink-500 to-pink-600",
-    HIRING_MANAGER: "from-indigo-500 to-indigo-600",
-    CULTURE_FIT: "from-teal-500 to-teal-600",
-    HR_FINAL: "from-cyan-500 to-cyan-600",
+    HIRING_MANAGER: "from-orange-500 to-orange-600",
+    CULTURE_FIT: "from-amber-500 to-amber-600",
+    HR_FINAL: "from-amber-500 to-amber-600",
     CUSTOM: "from-neutral-500 to-neutral-600",
 }
 
@@ -186,7 +186,7 @@ export function CompanyMockHubContent({ company, mockHub }: CompanyMockHubConten
     return (
         <div className="min-h-screen flex flex-col">
             {/* Header */}
-            <div className="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 text-white">
+            <div className="bg-gradient-to-r from-orange-600 via-orange-600 to-orange-600 text-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                     <Button
                         variant="ghost"
@@ -212,7 +212,7 @@ export function CompanyMockHubContent({ company, mockHub }: CompanyMockHubConten
                                 {company.name} Mock Interview Hub
                                 {
                                     company.isVerified && (
-                                        <CheckCircle2 className="w-5 h-5 text-blue-300" />
+                                        <CheckCircle2 className="w-5 h-5 text-orange-300" />
                                     )
                                 }
                             </h1>
@@ -311,7 +311,7 @@ export function CompanyMockHubContent({ company, mockHub }: CompanyMockHubConten
                                                         <Badge className={cn(
                                                             "text-[10px] shrink-0",
                                                             isSelected
-                                                                ? "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400"
+                                                                ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400"
                                                                 : "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
                                                         )}>
                                                             {mockCount} mocks
@@ -322,7 +322,7 @@ export function CompanyMockHubContent({ company, mockHub }: CompanyMockHubConten
                                             {
                                                 job.interviewProcess && (
                                                     <div className="flex items-center gap-1 mt-2 text-xs text-neutral-400">
-                                                        <CheckCircle2 className="w-3 h-3 text-green-500" />
+                                                        <CheckCircle2 className="w-3 h-3 text-amber-500" />
                                                         <span>{job.interviewProcess.rounds.length} interview rounds</span>
                                                     </div>
                                                 )
@@ -433,7 +433,7 @@ export function CompanyMockHubContent({ company, mockHub }: CompanyMockHubConten
                                                                                     progress && progress.bestScore !== null && (
                                                                                         <Badge className={cn(
                                                                                             progress.bestScore >= 75
-                                                                                                ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                                                                                                ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
                                                                                                 : "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
                                                                                         )}>
                                                                                             Best: {progress.bestScore}%
@@ -470,7 +470,7 @@ export function CompanyMockHubContent({ company, mockHub }: CompanyMockHubConten
                                                                             }
                                                                             {
                                                                                 round.tipsForCandidates && round.tipsForCandidates.length > 0 && (
-                                                                                    <div className="flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400">
+                                                                                    <div className="flex items-center gap-2 text-xs text-orange-600 dark:text-orange-400">
                                                                                         <Sparkles className="w-3 h-3" />
                                                                                         <span>{round.tipsForCandidates.length} tips from the team</span>
                                                                                     </div>
@@ -481,7 +481,7 @@ export function CompanyMockHubContent({ company, mockHub }: CompanyMockHubConten
                                                                             {
                                                                                 round.hasMockInterview ? (
                                                                                     <Button
-                                                                                        className="rounded-xl bg-purple-600 hover:bg-purple-700 text-white gap-2"
+                                                                                        className="rounded-xl bg-orange-600 hover:bg-orange-700 text-white gap-2"
                                                                                         onClick={() => router.push(`/mock/company/${company.slug}?job=${selectedJob.id}&round=${round.id}`)}
                                                                                     >
                                                                                         <Play className="w-4 h-4 fill-current" />
@@ -507,10 +507,10 @@ export function CompanyMockHubContent({ company, mockHub }: CompanyMockHubConten
                                                     initial={{ opacity: 0, y: 20 }}
                                                     animate={{ opacity: 1, y: 0 }}
                                                     transition={{ delay: 0.3 }}
-                                                    className="mt-8 p-5 rounded-2xl bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800"
+                                                    className="mt-8 p-5 rounded-2xl bg-gradient-to-r from-amber-50 to-amber-50 dark:from-amber-900/20 dark:to-amber-900/20 border border-amber-200 dark:border-amber-800"
                                                 >
                                                     <div className="flex items-start gap-4">
-                                                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shrink-0">
+                                                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-500 flex items-center justify-center shrink-0">
                                                             <Award className="w-6 h-6 text-white" />
                                                         </div>
                                                         <div className="flex-1">
@@ -522,7 +522,7 @@ export function CompanyMockHubContent({ company, mockHub }: CompanyMockHubConten
                                                                 visible to {company.name}&apos;s recruiters, giving you an edge.
                                                             </p>
                                                             <Link href={`/jobs/${selectedJob.slug}`}>
-                                                                <Button className="rounded-xl bg-green-600 hover:bg-green-700 text-white">
+                                                                <Button className="rounded-xl bg-amber-600 hover:bg-amber-700 text-white">
                                                                     Apply to {selectedJob.title}
                                                                     <ChevronRight className="w-4 h-4 ml-1" />
                                                                 </Button>

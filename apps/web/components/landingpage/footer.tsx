@@ -18,32 +18,29 @@ export default function Footer() {
         {
             title: "Platform",
             links: [
-                { name: "Explore", href: "/explore" },
-                { name: "AI Tools", href: "/ai" },
                 { name: "Projects", href: "/projects" },
-                { name: "Pricing", href: "/#pricing" },
-                { name: "Assessments", href: "/assessments" },
+                { name: "Practice", href: "/practice" },
+                { name: "Mock Interviews", href: "/mock" },
+                { name: "AI Tools", href: "/ai" },
+                { name: "Jobs", href: "/jobs" },
+                { name: "Pricing", href: "/pricing" },
             ]
         },
         {
             title: "Resources",
             links: [
+                { name: "Blog", href: "/blogs" },
                 { name: "Documentation", href: "/docs", dev: true },
-                { name: "API Reference", href: "/api", dev: true },
-                { name: "Community", href: "/communities" },
-                { name: "Blog", href: "/blog", dev: true },
                 { name: "Help Center", href: "/help", dev: true },
             ]
         },
         {
             title: "Company",
             links: [
-                { name: "About", href: "/about" },
+                { name: "About", href: "/aboutus" },
                 { name: "Careers", href: "/careers", dev: true },
-                { name: "Partners", href: "/partners", dev: true },
                 { name: "Terms of Service", href: "/termsofservice" },
                 { name: "Privacy Policy", href: "/privacypolicy" },
-                { name: "Contact", href: "/contactus" },
             ]
         }
     ];
@@ -114,8 +111,8 @@ export default function Footer() {
                         </p>
                         <div className="flex items-center gap-2">
                             <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
                             </span>
                             <span className="text-xs font-mono text-neutral-500 uppercase">All Systems Normal</span>
                         </div>

@@ -141,8 +141,8 @@ export function ProjectLeaderboardClient({
                     <Card>
                         <CardContent className="pt-6">
                             <div className="flex items-center gap-3">
-                                <div className="p-3 bg-blue-500/10 rounded-lg">
-                                    <Users className="w-6 h-6 text-blue-500" />
+                                <div className="p-3 bg-orange-500/10 rounded-lg">
+                                    <Users className="w-6 h-6 text-orange-500" />
                                 </div>
                                 <div>
                                     <p className="text-2xl font-bold">{project.totalStarted}</p>
@@ -154,8 +154,8 @@ export function ProjectLeaderboardClient({
                     <Card>
                         <CardContent className="pt-6">
                             <div className="flex items-center gap-3">
-                                <div className="p-3 bg-green-500/10 rounded-lg">
-                                    <Trophy className="w-6 h-6 text-green-500" />
+                                <div className="p-3 bg-amber-500/10 rounded-lg">
+                                    <Trophy className="w-6 h-6 text-amber-500" />
                                 </div>
                                 <div>
                                     <p className="text-2xl font-bold">{project.totalCompleted}</p>
@@ -167,8 +167,8 @@ export function ProjectLeaderboardClient({
                     <Card>
                         <CardContent className="pt-6">
                             <div className="flex items-center gap-3">
-                                <div className="p-3 bg-purple-500/10 rounded-lg">
-                                    <TrendingUp className="w-6 h-6 text-purple-500" />
+                                <div className="p-3 bg-orange-500/10 rounded-lg">
+                                    <TrendingUp className="w-6 h-6 text-orange-500" />
                                 </div>
                                 <div>
                                     <p className="text-2xl font-bold">{pagination?.total || 0}</p>

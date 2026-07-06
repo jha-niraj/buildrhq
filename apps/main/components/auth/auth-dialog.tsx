@@ -166,7 +166,7 @@ export function AuthDialog() {
 												type="email"
 												value={email}
 												onChange={(e) => setEmail(e.target.value)}
-												className="pl-11 h-12 bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 backdrop-blur-sm text-gray-900 dark:text-gray-100"
+												className="pl-11 h-12 bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500/50 backdrop-blur-sm text-gray-900 dark:text-gray-100"
 												placeholder="Enter your email"
 												required
 											/>
@@ -182,7 +182,7 @@ export function AuthDialog() {
 												type={showPw ? "text" : "password"}
 												value={password}
 												onChange={(e) => setPassword(e.target.value)}
-												className="pr-11 h-12 bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 rounded-xl focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 backdrop-blur-sm text-gray-900 dark:text-gray-100"
+												className="pr-11 h-12 bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500/50 backdrop-blur-sm text-gray-900 dark:text-gray-100"
 												placeholder="Enter your password"
 												required
 											/>

@@ -91,25 +91,25 @@ export default function DatabaseHealthPage() {
                 health && (
                     <div className="mb-8">
                         <div className={`p-6 rounded-xl border ${health.databaseStatus === 'healthy'
-                            ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800'
+                            ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
                             : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
                             }`}>
                             <div className="flex items-center gap-3 mb-4">
                                 {
                                     health.databaseStatus === 'healthy' ? (
-                                        <CheckCircle className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
+                                        <CheckCircle className="w-8 h-8 text-amber-600 dark:text-amber-400" />
                                     ) : (
                                         <AlertCircle className="w-8 h-8 text-red-600 dark:text-red-400" />
                                     )}
                                 <div>
                                     <h2 className={`text-xl font-bold ${health.databaseStatus === 'healthy'
-                                        ? 'text-emerald-900 dark:text-emerald-200'
+                                        ? 'text-amber-900 dark:text-amber-200'
                                         : 'text-red-900 dark:text-red-200'
                                         }`}>
                                         System Status: {health.databaseStatus === 'healthy' ? 'Healthy' : 'Unhealthy'}
                                     </h2>
                                     <p className={`text-sm ${health.databaseStatus === 'healthy'
-                                        ? 'text-emerald-700 dark:text-emerald-300'
+                                        ? 'text-amber-700 dark:text-amber-300'
                                         : 'text-red-700 dark:text-red-300'
                                         }`}>
                                         Last checked: {health.timestamp ? format(new Date(health.timestamp), "MMM dd, yyyy HH:mm:ss") : 'N/A'}
@@ -123,7 +123,7 @@ export default function DatabaseHealthPage() {
                                     }`}>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Database Connection</p>
                                     <p className={`text-lg font-semibold ${health.databaseStatus === 'healthy'
-                                        ? 'text-emerald-600 dark:text-emerald-400'
+                                        ? 'text-amber-600 dark:text-amber-400'
                                         : 'text-red-600 dark:text-red-400'
                                         }`}>
                                         {health.databaseStatus === 'healthy' ? 'Connected' : 'Disconnected'}
@@ -205,12 +205,12 @@ export default function DatabaseHealthPage() {
                     </>
                 )
             }
-            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6">
-                <h3 className="text-sm font-semibold text-blue-900 dark:text-blue-200 mb-2 flex items-center gap-2">
+            <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-6">
+                <h3 className="text-sm font-semibold text-orange-900 dark:text-orange-200 mb-2 flex items-center gap-2">
                     <Activity className="w-4 h-4" />
                     System Monitoring
                 </h3>
-                <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
+                <ul className="text-sm text-orange-800 dark:text-orange-300 space-y-1">
                     <li>• Page auto-refreshes every 30 seconds</li>
                     <li>• Database health checks connection status</li>
                     <li>• Statistics show real-time record counts</li>
@@ -223,15 +223,15 @@ export default function DatabaseHealthPage() {
 
 function StatCard({ label, value, icon, color }: { label: string; value: number; icon: string; color: string }) {
     const colorClasses = {
-        blue: 'from-blue-500 to-blue-600',
-        purple: 'from-purple-500 to-purple-600',
-        emerald: 'from-emerald-500 to-emerald-600',
+        blue: 'from-orange-500 to-orange-600',
+        purple: 'from-orange-500 to-orange-600',
+        emerald: 'from-amber-500 to-amber-600',
         amber: 'from-amber-500 to-amber-600',
         red: 'from-red-500 to-red-600',
-        indigo: 'from-indigo-500 to-indigo-600',
+        indigo: 'from-orange-500 to-orange-600',
         pink: 'from-pink-500 to-pink-600',
         orange: 'from-orange-500 to-orange-600',
-        cyan: 'from-cyan-500 to-cyan-600',
+        cyan: 'from-amber-500 to-amber-600',
     }
 
     return (

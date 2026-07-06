@@ -21,11 +21,11 @@ export function MockInterviewStep({ step }: MockInterviewStepProps) {
       animate={{ opacity: 1, y: 0 }}
       className="py-8"
     >
-      <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/20 dark:to-blue-950/20 border border-cyan-200 dark:border-cyan-800">
+      <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 border border-amber-200 dark:border-amber-800">
         {/* Header */}
         <div className="p-6 pb-4">
           <div className="flex items-center gap-3 mb-2">
-            <div className="h-10 w-10 rounded-xl bg-cyan-500 flex items-center justify-center">
+            <div className="h-10 w-10 rounded-xl bg-amber-500 flex items-center justify-center">
               <Mic className="h-5 w-5 text-white" />
             </div>
             <div>
@@ -38,7 +38,7 @@ export function MockInterviewStep({ step }: MockInterviewStepProps) {
             </div>
           </div>
           {metadata.difficulty && (
-            <span className="inline-block px-2 py-1 text-xs rounded-full bg-cyan-100 dark:bg-cyan-950/30 text-cyan-700 dark:text-cyan-300 capitalize">
+            <span className="inline-block px-2 py-1 text-xs rounded-full bg-amber-100 dark:bg-amber-950/30 text-amber-700 dark:text-amber-300 capitalize">
               {metadata.difficulty}
             </span>
           )}
@@ -55,7 +55,7 @@ export function MockInterviewStep({ step }: MockInterviewStepProps) {
                   opacity: [0.7, 1, 0.7],
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="h-24 w-24 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 mx-auto mb-6 flex items-center justify-center shadow-lg shadow-cyan-500/30"
+                className="h-24 w-24 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 mx-auto mb-6 flex items-center justify-center shadow-lg shadow-amber-500/30"
               >
                 <Mic className="h-10 w-10 text-white" />
               </motion.div>
@@ -65,7 +65,7 @@ export function MockInterviewStep({ step }: MockInterviewStepProps) {
               </p>
               <Button
                 onClick={() => setIsStarted(true)}
-                className="gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
+                className="gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600"
               >
                 <Play className="h-4 w-4" />
                 Start Interview
@@ -84,7 +84,7 @@ export function MockInterviewStep({ step }: MockInterviewStepProps) {
                   ],
                 }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className="h-24 w-24 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 mx-auto mb-6 flex items-center justify-center"
+                className="h-24 w-24 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 mx-auto mb-6 flex items-center justify-center"
               >
                 <Mic className="h-10 w-10 text-white" />
               </motion.div>
@@ -114,7 +114,7 @@ export function MockInterviewStep({ step }: MockInterviewStepProps) {
         </div>
 
         {/* Info footer */}
-        <div className="px-6 py-3 bg-cyan-100/50 dark:bg-cyan-950/30 border-t border-cyan-200 dark:border-cyan-800 flex items-center gap-4 text-xs text-neutral-600 dark:text-neutral-400">
+        <div className="px-6 py-3 bg-amber-100/50 dark:bg-amber-950/30 border-t border-amber-200 dark:border-amber-800 flex items-center gap-4 text-xs text-neutral-600 dark:text-neutral-400">
           <span className="flex items-center gap-1">
             <Clock className="h-3 w-3" />
             {metadata.durationMinutes || 10} min session

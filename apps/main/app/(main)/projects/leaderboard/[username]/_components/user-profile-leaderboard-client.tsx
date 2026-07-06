@@ -90,9 +90,9 @@ export function UserProfileLeaderboardClient({
     const recentTasks = userProfile.UserTaskV2Status
 
     const difficultyColors = {
-        BEGINNER: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
-        INTERMEDIATE: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400',
-        ADVANCED: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400',
+        BEGINNER: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
+        INTERMEDIATE: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
+        ADVANCED: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
     }
 
     return (
@@ -147,8 +147,8 @@ export function UserProfileLeaderboardClient({
                     <Card className="p-4">
                         <CardContent className="pt-0 px-0">
                             <div className="flex items-center gap-3">
-                                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                                    <Target className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                                <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
+                                    <Target className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                                 </div>
                                 <div>
                                     <p className="text-2xl font-bold">{stats.totalProjects}</p>
@@ -160,8 +160,8 @@ export function UserProfileLeaderboardClient({
                     <Card className="p-4">
                         <CardContent className="pt-0 px-0">
                             <div className="flex items-center gap-3">
-                                <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-                                    <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+                                <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg">
+                                    <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                                 </div>
                                 <div>
                                     <p className="text-2xl font-bold">{stats.completedProjects}</p>
@@ -186,8 +186,8 @@ export function UserProfileLeaderboardClient({
                     <Card className="p-4">
                         <CardContent className="pt-0 px-0">
                             <div className="flex items-center gap-3">
-                                <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                                    <Trophy className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
+                                    <Trophy className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                                 </div>
                                 <div>
                                     <p className="text-2xl font-bold">{stats.totalTasksCompleted}</p>
@@ -215,7 +215,7 @@ export function UserProfileLeaderboardClient({
                                         {
                                             recentTasks.map((taskProgress) => (
                                                 <div key={taskProgress.id} className="flex items-start gap-3 p-3 bg-neutral-50 dark:bg-neutral-900 rounded-lg">
-                                                    <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                                                    <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 mt-0.5 flex-shrink-0" />
                                                     <div className="flex-1 min-w-0">
                                                         <p className="text-sm font-medium truncate">{taskProgress.task.title}</p>
                                                         <p className="text-xs text-muted-foreground">{taskProgress.task.project.title}</p>
@@ -299,7 +299,7 @@ export function UserProfileLeaderboardClient({
                                                             {progress.project.difficulty}
                                                         </Badge>
                                                     </div>
-                                                    <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
+                                                    <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" />
                                                 </div>
                                                 {
                                                     progress.project.shortDescription && (

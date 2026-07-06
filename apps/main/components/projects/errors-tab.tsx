@@ -76,19 +76,19 @@ const categoryConfig: Record<string, { icon: typeof Bug; color: string; label: s
     SETUP: { icon: Settings, color: 'bg-slate-500', label: 'Setup' },
     CONFIGURATION: { icon: Settings, color: 'bg-gray-500', label: 'Configuration' },
     DATABASE: { icon: Database, color: 'bg-orange-500', label: 'Database' },
-    API: { icon: Globe, color: 'bg-blue-500', label: 'API' },
+    API: { icon: Globe, color: 'bg-orange-500', label: 'API' },
     UI: { icon: Layers, color: 'bg-pink-500', label: 'UI' },
     STATE: { icon: Zap, color: 'bg-yellow-500', label: 'State' },
-    DEPLOYMENT: { icon: Globe, color: 'bg-green-500', label: 'Deployment' },
+    DEPLOYMENT: { icon: Globe, color: 'bg-amber-500', label: 'Deployment' },
     SECURITY: { icon: Shield, color: 'bg-red-500', label: 'Security' },
-    PERFORMANCE: { icon: Zap, color: 'bg-purple-500', label: 'Performance' },
+    PERFORMANCE: { icon: Zap, color: 'bg-orange-500', label: 'Performance' },
     OTHER: { icon: Bug, color: 'bg-neutral-500', label: 'Other' },
 }
 
 const severityConfig = {
     HIGH: { color: 'bg-red-100 text-red-700 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800', label: 'Common' },
     MEDIUM: { color: 'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800', label: 'Occasional' },
-    LOW: { color: 'bg-green-100 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-400 dark:border-green-800', label: 'Rare' },
+    LOW: { color: 'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800', label: 'Rare' },
 }
 
 // ============================================================================
@@ -152,8 +152,8 @@ function ErrorCard({
                                     className={cn(
                                         'flex items-center gap-1 px-2 py-1 rounded-lg text-xs transition-colors',
                                         error.hasVotedHelpful
-                                            ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
-                                            : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-green-100 dark:hover:bg-green-900/30'
+                                            ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400'
+                                            : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-amber-100 dark:hover:bg-amber-900/30'
                                     )}
                                 >
                                     <ThumbsUp className="w-3 h-3" />
@@ -174,7 +174,7 @@ function ErrorCard({
                             </div>
                             <button
                                 onClick={() => setIsExpanded(!isExpanded)}
-                                className="text-xs text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
+                                className="text-xs text-orange-600 dark:text-orange-400 hover:underline flex items-center gap-1"
                             >
                                 {isExpanded ? 'Hide' : 'View'} Solution
                                 <ChevronDown className={cn('w-3 h-3 transition-transform', isExpanded && 'rotate-180')} />
@@ -195,7 +195,7 @@ function ErrorCard({
                         >
                             <div className="px-4 pb-4 pt-2 border-t border-neutral-200 dark:border-neutral-800 space-y-4">
                                 <div>
-                                    <h5 className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 flex items-center gap-2">
+                                    <h5 className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-2">
                                         <CheckCircle2 className="w-4 h-4" />
                                         Solution
                                     </h5>
@@ -219,12 +219,12 @@ function ErrorCard({
                                 {
                                     error.fixedCode && (
                                         <div>
-                                            <h5 className="text-sm font-semibold text-green-700 dark:text-green-400 mb-2 flex items-center gap-2">
+                                            <h5 className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-2">
                                                 <CheckCircle2 className="w-4 h-4" />
                                                 Corrected Code
                                             </h5>
-                                            <pre className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-3 text-xs overflow-x-auto">
-                                                <code className="text-green-800 dark:text-green-200">{error.fixedCode}</code>
+                                            <pre className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-3 text-xs overflow-x-auto">
+                                                <code className="text-amber-800 dark:text-amber-200">{error.fixedCode}</code>
                                             </pre>
                                         </div>
                                     )
@@ -562,16 +562,16 @@ export default function ErrorsTab({ projectId, isEnrolled, isCreator }: ErrorsTa
                                 <div className="text-xs text-red-600 dark:text-red-500">Common</div>
                             </CardContent>
                         </Card>
-                        <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-blue-200 dark:border-blue-800">
+                        <Card className="bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 border-orange-200 dark:border-orange-800">
                             <CardContent className="p-4">
-                                <div className="text-2xl font-bold text-blue-700 dark:text-blue-400">{stats.bySeverity?.MEDIUM || 0}</div>
-                                <div className="text-xs text-blue-600 dark:text-blue-500">Occasional</div>
+                                <div className="text-2xl font-bold text-orange-700 dark:text-orange-400">{stats.bySeverity?.MEDIUM || 0}</div>
+                                <div className="text-xs text-orange-600 dark:text-orange-500">Occasional</div>
                             </CardContent>
                         </Card>
-                        <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-green-200 dark:border-green-800">
+                        <Card className="bg-gradient-to-br from-amber-50 to-amber-50 dark:from-amber-900/20 dark:to-amber-900/20 border-amber-200 dark:border-amber-800">
                             <CardContent className="p-4">
-                                <div className="text-2xl font-bold text-green-700 dark:text-green-400">{stats.bySeverity?.LOW || 0}</div>
-                                <div className="text-xs text-green-600 dark:text-green-500">Rare</div>
+                                <div className="text-2xl font-bold text-amber-700 dark:text-amber-400">{stats.bySeverity?.LOW || 0}</div>
+                                <div className="text-xs text-amber-600 dark:text-amber-500">Rare</div>
                             </CardContent>
                         </Card>
                     </div>

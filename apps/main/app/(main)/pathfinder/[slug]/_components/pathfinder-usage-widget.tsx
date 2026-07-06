@@ -40,7 +40,7 @@ export function PathfinderUsageWidget({ goalId, className }: PathfinderUsageWidg
             )}
         >
             <div className="flex items-center gap-2">
-                <Coins className="w-4 h-4 text-violet-500" />
+                <Coins className="w-4 h-4 text-orange-500" />
                 <span className="text-sm font-medium">{credits ?? 0} credits</span>
             </div>
             <div className="h-4 w-px bg-neutral-200 dark:bg-neutral-700" />

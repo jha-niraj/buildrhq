@@ -3,54 +3,32 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import {
-    Briefcase, LayoutTemplate, GitPullRequest, ShieldCheck,
-    ScanSearch, BrainCircuit, ArrowRight, Lock, Sparkles, Clock
+    Briefcase, FileText, PenLine, ArrowRight, Sparkles
 } from "lucide-react"
 import { Badge } from "@repo/ui/components/ui/badge"
 import { Button } from "@repo/ui/components/ui/button"
 
 const tools = [
     {
+        icon: FileText,
+        title: "Resume Creator",
+        description: "Build an ATS-friendly resume with AI. Sync your work, education, skills and projects from your profile and export a polished PDF.",
+        status: "Live",
+        href: "/ai/resume"
+    },
+    {
         icon: Briefcase,
         title: "Interview Assistant",
-        description: "Context-aware simulation that ingests your specific resume and job description to generate high-probability questions.",
+        description: "Context-aware simulation that ingests your specific resume and the target job description to generate high-probability technical questions.",
         status: "Live",
-        href: "/ai/interview-assistant"
+        href: "/ai/jobinterviewassistant"
     },
     {
-        icon: LayoutTemplate,
-        title: "System Architect",
-        description: "Input a project idea and get a complete database schema, API endpoint structure, and tech stack recommendation.",
-        status: "Coming Soon",
-        href: "#"
-    },
-    {
-        icon: GitPullRequest,
-        title: "Open Source Scout",
-        description: "Analyze your tech stack to find 'Good First Issues' in reputable repositories that actually match your skill level.",
-        status: "Coming Soon",
-        href: "#"
-    },
-    {
-        icon: ShieldCheck,
-        title: "Tech Stack Defender",
-        description: "A hostile AI Senior Architect that ruthlessly questions your technology choices to prepare you for defense.",
-        status: "Coming Soon",
-        href: "#"
-    },
-    {
-        icon: ScanSearch,
-        title: "Portfolio Audit",
-        description: "Scans your GitHub and Portfolio site to identify red flags, missing projects, and weak case studies.",
-        status: "Coming Soon",
-        href: "#"
-    },
-    {
-        icon: BrainCircuit,
-        title: "Project Scoper",
-        description: "Turns a vague startup idea into a structured 4-week Sprint plan with user stories and MVP requirements.",
-        status: "Coming Soon",
-        href: "#"
+        icon: PenLine,
+        title: "Cover Letter",
+        description: "Generate a tailored, role-specific cover letter in seconds — grounded in your profile and the job you're applying to.",
+        status: "Live",
+        href: "/ai/resume/cover-letter"
     }
 ]
 
@@ -62,7 +40,7 @@ export default function AIToolsSection() {
 
             <div className="max-w-7xl mx-auto px-6">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: -16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
@@ -77,7 +55,7 @@ export default function AIToolsSection() {
                             Tools that make you <span className="text-neutral-400 dark:text-neutral-600">dangerous.</span>
                         </h2>
                         <p className="text-lg text-neutral-600 dark:text-neutral-400 font-light leading-relaxed max-w-2xl">
-                            We don&apos;t build generic wrappers. We build specialized agents that help you architect systems, contribute to open source, and land high-impact roles.
+                            We don&apos;t build generic wrappers. We build specialized agents that help you write a standout resume, ace technical interviews, and land high-impact roles.
                         </p>
                     </div>
                     <div>
@@ -93,10 +71,10 @@ export default function AIToolsSection() {
                         tools.map((tool, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: -16 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
+                                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                 className="group relative h-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-neutral-900/5 dark:hover:shadow-black/50 transition-all duration-500 flex flex-col justify-between"
                             >
                                 <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neutral-200 via-neutral-900 to-neutral-200 dark:from-neutral-800 dark:via-white dark:to-neutral-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -106,17 +84,9 @@ export default function AIToolsSection() {
                                         <div className="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center text-neutral-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
                                             <tool.icon className="w-6 h-6" />
                                         </div>
-                                        {
-                                            tool.status === "Live" ? (
-                                                <Badge variant="secondary" className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-0 px-3">
-                                                    Live
-                                                </Badge>
-                                            ) : (
-                                                <Badge variant="secondary" className="bg-neutral-100 dark:bg-neutral-800 text-neutral-500 border-0 px-3">
-                                                    Dev
-                                                </Badge>
-                                            )
-                                        }
+                                        <Badge variant="secondary" className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-0 px-3">
+                                            Live
+                                        </Badge>
                                     </div>
                                     <div className="mb-4">
                                         <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-3 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors">
@@ -128,28 +98,19 @@ export default function AIToolsSection() {
                                     </div>
                                 </div>
                                 <div className="px-8 pb-8 pt-0">
-                                    {
-                                        tool.status === "Live" ? (
-                                            <Link href={tool.href} className="inline-flex items-center text-sm font-bold text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-1 hover:border-neutral-900 dark:hover:border-white transition-all">
-                                                Launch Tool <ArrowRight className="ml-2 w-4 h-4" />
-                                            </Link>
-                                        ) : (
-                                            <div className="flex items-center text-sm font-medium text-neutral-400 cursor-not-allowed">
-                                                <Lock className="w-3.5 h-3.5 mr-2" />
-                                                Notify Me <Clock className="w-3.5 h-3.5 ml-auto opacity-50" />
-                                            </div>
-                                        )
-                                    }
+                                    <Link href={tool.href} className="inline-flex items-center text-sm font-bold text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-1 hover:border-neutral-900 dark:hover:border-white transition-all">
+                                        Launch Tool <ArrowRight className="ml-2 w-4 h-4" />
+                                    </Link>
                                 </div>
                             </motion.div>
                         ))
                     }
                 </div>
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: -16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     className="mt-16 relative rounded-3xl overflow-hidden border border-neutral-200 dark:border-neutral-800"
                 >
                     <div className="absolute inset-0 bg-neutral-900 dark:bg-white/5"></div>

@@ -148,7 +148,7 @@ export default function MyProjectsPage() {
 						transition={{ duration: 0.6 }}
 					>
 						<div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
-							<Link href="/projects" className="hover:text-purple-600 dark:hover:text-purple-400">
+							<Link href="/projects" className="hover:text-orange-600 dark:hover:text-orange-400">
 								Projects
 							</Link>
 							<ArrowRight className="w-4 h-4" />
@@ -181,7 +181,7 @@ export default function MyProjectsPage() {
 							>
 								<Card className="bg-white dark:bg-neutral-900 shadow-2xl p-5 rounded-xl border border-neutral-200 dark:border-neutral-800">
 									<CardContent className="pt-6 text-center">
-										<Code2 className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+										<Code2 className="w-8 h-8 text-orange-600 mx-auto mb-2" />
 										<div className="text-2xl font-bold text-gray-900 dark:text-white">
 											{stats.totalProjects}
 										</div>
@@ -190,7 +190,7 @@ export default function MyProjectsPage() {
 								</Card>
 								<Card className="bg-white dark:bg-neutral-900 shadow-2xl p-5 rounded-xl border border-neutral-200 dark:border-neutral-800">
 									<CardContent className="pt-6 text-center">
-										<CheckCircle2 className="w-8 h-8 text-green-600 mx-auto mb-2" />
+										<CheckCircle2 className="w-8 h-8 text-amber-600 mx-auto mb-2" />
 										<div className="text-2xl font-bold text-gray-900 dark:text-white">
 											{stats.completedProjects}
 										</div>
@@ -199,7 +199,7 @@ export default function MyProjectsPage() {
 								</Card>
 								<Card className="bg-white dark:bg-neutral-900 shadow-2xl p-5 rounded-xl border border-neutral-200 dark:border-neutral-800">
 									<CardContent className="pt-6 text-center">
-										<Play className="w-8 h-8 text-blue-600 mx-auto mb-2" />
+										<Play className="w-8 h-8 text-orange-600 mx-auto mb-2" />
 										<div className="text-2xl font-bold text-gray-900 dark:text-white">
 											{stats.inProgressProjects}
 										</div>

@@ -117,10 +117,10 @@ export default function ContactPage() {
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.95 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-8 text-center"
+                                        className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-8 text-center"
                                     >
-                                        <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center mx-auto mb-4">
-                                            <Mail className="w-8 h-8 text-green-600 dark:text-green-400" />
+                                        <div className="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mx-auto mb-4">
+                                            <Mail className="w-8 h-8 text-amber-600 dark:text-amber-400" />
                                         </div>
                                         <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
                                             Message Sent!

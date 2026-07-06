@@ -18,7 +18,6 @@ import {
     roleEnum,
     mockCategoryEnum,
 } from "./schema/schema";
-import { featureNotifySectionEnum } from "./schema/profile";
 import {
     pathfinderCategoryEnum,
     pathfinderLevelEnum,
@@ -41,8 +40,6 @@ function makeEnum<T extends readonly [string, ...string[]]>(
     ) as { [K in T[number]]: K };
 }
 
-export const FeatureNotifySection = makeEnum(featureNotifySectionEnum);
-export type FeatureNotifySection = typeof featureNotifySectionEnum.enumValues[number];
 
 export const SkillCategory = makeEnum(skillCategoryEnum);
 export type SkillCategory = typeof skillCategoryEnum.enumValues[number];

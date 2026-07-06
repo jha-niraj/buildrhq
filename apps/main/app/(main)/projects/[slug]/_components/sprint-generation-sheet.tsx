@@ -76,9 +76,9 @@ export function SprintGenerationSheet({
     const [step, setStep] = useState<'input' | 'generating' | 'preview'>('input')
 
     const difficultyColors = {
-        BEGINNER: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
-        INTERMEDIATE: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400',
-        ADVANCED: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400',
+        BEGINNER: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
+        INTERMEDIATE: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
+        ADVANCED: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
     }
 
     const handleGenerate = async () => {
@@ -158,7 +158,7 @@ export function SprintGenerationSheet({
             <SheetContent side="bottom" className="h-[85vh] w-full overflow-y-auto">
                 <SheetHeader className="text-left pb-6 max-w-5xl mx-auto space-y-6">
                     <SheetTitle className="flex items-center gap-2 text-xl">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
                             <Sparkles className="w-5 h-5 text-white" />
                         </div>
                         Generate New Sprint
@@ -251,7 +251,7 @@ export function SprintGenerationSheet({
                                     className="flex flex-col items-center justify-center py-16 space-y-6"
                                 >
                                     <div className="relative">
-                                        <div className="w-24 h-24 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 animate-pulse" />
+                                        <div className="w-24 h-24 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 animate-pulse" />
                                         <div className="absolute inset-0 flex items-center justify-center">
                                             <Loader2 className="w-10 h-10 text-white animate-spin" />
                                         </div>
@@ -298,7 +298,7 @@ export function SprintGenerationSheet({
                                     exit={{ opacity: 0, x: -20 }}
                                     className="space-y-6"
                                 >
-                                    <Card className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border-indigo-200 dark:border-indigo-800">
+                                    <Card className="bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-950/30 dark:to-orange-950/30 border-orange-200 dark:border-orange-800">
                                         <CardHeader className="pb-2">
                                             <div className="flex items-start justify-between">
                                                 <CardTitle className="text-lg">{generatedSprint.name}</CardTitle>
@@ -310,7 +310,7 @@ export function SprintGenerationSheet({
                                         </CardHeader>
                                         <CardContent>
                                             <p className="text-sm text-neutral-600 dark:text-neutral-400 flex items-start gap-2">
-                                                <Target className="w-4 h-4 flex-shrink-0 mt-0.5 text-indigo-600" />
+                                                <Target className="w-4 h-4 flex-shrink-0 mt-0.5 text-orange-600" />
                                                 {generatedSprint.goal}
                                             </p>
                                         </CardContent>
@@ -332,7 +332,7 @@ export function SprintGenerationSheet({
                                                     >
                                                         <div className="flex items-center justify-between mb-1">
                                                             <div className="flex items-center gap-2">
-                                                                <span className="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xs font-medium">
+                                                                <span className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xs font-medium">
                                                                     {idx + 1}
                                                                 </span>
                                                                 <h5 className="text-sm font-medium text-neutral-800 dark:text-neutral-200">
@@ -376,7 +376,7 @@ export function SprintGenerationSheet({
                                         <Button
                                             onClick={handleAddSprint}
                                             disabled={isAdding}
-                                            className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+                                            className="flex-1 bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700"
                                         >
                                             {
                                                 isAdding ? (

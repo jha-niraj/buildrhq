@@ -83,21 +83,21 @@ interface ApplicationsContentProps {
 }
 
 const statusColors: Record<string, string> = {
-    INTERESTED: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+    INTERESTED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     PREPARING: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
-    APPLIED: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
+    APPLIED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     UNDER_REVIEW: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    SCREENING: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
-    SHORTLISTED: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-    ASSIGNMENT_SENT: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
-    ASSIGNMENT_SUBMITTED: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
-    INTERVIEW_SCHEDULED: "bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400",
-    INTERVIEWED: "bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/30 dark:text-fuchsia-400",
+    SCREENING: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    SHORTLISTED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    ASSIGNMENT_SENT: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    ASSIGNMENT_SUBMITTED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    INTERVIEW_SCHEDULED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    INTERVIEWED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     INTERVIEWING: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    OFFER_EXTENDED: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
-    OFFERED: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-    HIRED: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-400",
-    ACCEPTED: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+    OFFER_EXTENDED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    OFFERED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    HIRED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    ACCEPTED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
     REJECTED: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
     WITHDRAWN: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-400",
 }
@@ -249,7 +249,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                 </Button>
                 <div className="flex-1">
                     <h1 className="text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-white flex items-center gap-3">
-                        <FileText className="w-7 h-7 text-blue-500" />
+                        <FileText className="w-7 h-7 text-orange-500" />
                         My Applications
                     </h1>
                     <p className="text-neutral-500 mt-1">
@@ -279,11 +279,11 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-100 dark:border-blue-800"
+                    className="p-4 rounded-2xl bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 border border-orange-100 dark:border-orange-800"
                 >
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                            <Briefcase className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                        <div className="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                            <Briefcase className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                         </div>
                         <div>
                             <div className="text-2xl font-bold text-neutral-900 dark:text-white">{applications.length}</div>
@@ -311,11 +311,11 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="p-4 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-100 dark:border-green-800"
+                    className="p-4 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-50 dark:from-amber-900/20 dark:to-amber-900/20 border border-amber-100 dark:border-amber-800"
                 >
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                            <Star className="w-5 h-5 text-green-600 dark:text-green-400" />
+                        <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
+                            <Star className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                         </div>
                         <div>
                             <div className="text-2xl font-bold text-neutral-900 dark:text-white">{offersCount}</div>
@@ -392,7 +392,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                     <div className="flex items-start justify-between gap-4 mb-2">
                                                         <div className="flex-1">
                                                             <Link href={`/jobs/${application.job.slug}`}>
-                                                                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                                                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
                                                                     {application.job.title}
                                                                 </h3>
                                                             </Link>
@@ -473,7 +473,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                             <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800 mb-4">
                                                                 <div className="flex items-center justify-between mb-3">
                                                                     <div className="flex items-center gap-2">
-                                                                        <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                                                        <CheckCircle2 className="w-4 h-4 text-amber-500" />
                                                                         <span className="text-sm font-medium text-neutral-900 dark:text-white">
                                                                             {application.job.interviewProcess.rounds.length} Interview Rounds
                                                                         </span>
@@ -507,7 +507,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                                                 <div
                                                                                     key={round.id}
                                                                                     className={`flex items-center gap-1.5 text-xs px-2 py-1 rounded-lg ${isCompleted
-                                                                                        ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                                                                                        ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
                                                                                         : "bg-neutral-200 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-400"
                                                                                         }`}
                                                                                 >
@@ -515,7 +515,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                                                     <span>R{round.roundNumber}: {round.title}</span>
                                                                                     {
                                                                                         round.hasMockInterview && !isCompleted && (
-                                                                                            <Mic className="w-3 h-3 text-blue-500" />
+                                                                                            <Mic className="w-3 h-3 text-orange-500" />
                                                                                         )
                                                                                     }
                                                                                 </div>
@@ -535,12 +535,12 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                     }
                                                     {
                                                         application.feedback && (
-                                                            <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 mb-4">
+                                                            <div className="p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800 mb-4">
                                                                 <div className="flex items-start gap-2">
-                                                                    <Bell className="w-4 h-4 text-blue-500 mt-0.5" />
+                                                                    <Bell className="w-4 h-4 text-orange-500 mt-0.5" />
                                                                     <div>
-                                                                        <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Recruiter Feedback</span>
-                                                                        <p className="text-sm text-blue-600 dark:text-blue-400 mt-1">{application.feedback}</p>
+                                                                        <span className="text-sm font-medium text-orange-700 dark:text-orange-300">Recruiter Feedback</span>
+                                                                        <p className="text-sm text-orange-600 dark:text-orange-400 mt-1">{application.feedback}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -552,7 +552,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                         {
                                                             ["SHORTLISTED", "ASSIGNMENT_SENT", "ASSIGNMENT_SUBMITTED", "INTERVIEW_SCHEDULED", "INTERVIEWED", "OFFER_EXTENDED", "HIRED"].includes(application.status) && (
                                                                 <Button
-                                                                    className="rounded-xl bg-violet-600 hover:bg-violet-700 text-white gap-2"
+                                                                    className="rounded-xl bg-orange-600 hover:bg-orange-700 text-white gap-2"
                                                                     onClick={() => router.push(`/jobs/applications/${application.id}/interview`)}
                                                                 >
                                                                     <Play className="w-4 h-4" />
@@ -594,7 +594,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                             </div>
                         ) : (
                             <div className="relative">
-                                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-green-500 dark:from-blue-400 dark:via-purple-400 dark:to-green-400" />
+                                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500 via-orange-500 to-amber-500 dark:from-orange-400 dark:via-orange-400 dark:to-amber-400" />
                                 <div className="space-y-6">
                                     {
                                         filteredApplications.map((application, index) => (
@@ -607,10 +607,10 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                 className="relative pl-16"
                                             >
                                                 <div className={`absolute left-5 w-6 h-6 rounded-full flex items-center justify-center ${["OFFERED", "ACCEPTED"].includes(application.status)
-                                                    ? "bg-green-500"
+                                                    ? "bg-amber-500"
                                                     : ["REJECTED", "WITHDRAWN"].includes(application.status)
                                                         ? "bg-red-500"
-                                                        : "bg-blue-500"
+                                                        : "bg-orange-500"
                                                     }`}>
                                                     {getStatusIcon(application.status)}
                                                 </div>
@@ -640,7 +640,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                                 </span>
                                                             </div>
                                                             <Link href={`/jobs/${application.job.slug}`}>
-                                                                <h3 className="font-semibold text-neutral-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                                                <h3 className="font-semibold text-neutral-900 dark:text-white hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
                                                                     {application.job.title}
                                                                 </h3>
                                                             </Link>
@@ -763,7 +763,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                 ["INTERESTED", "PREPARING", "APPLIED", "SCREENING", "INTERVIEWING", "OFFERED"].map((step, i) => (
                                                     <div key={step} className="flex-1 flex items-center">
                                                         <div className={`h-2 flex-1 rounded-full ${i <= getStatusStep(selectedApplication.status)
-                                                            ? "bg-gradient-to-r from-blue-500 to-green-500"
+                                                            ? "bg-gradient-to-r from-orange-500 to-amber-500"
                                                             : "bg-neutral-200 dark:bg-neutral-700"
                                                             }`} />
                                                     </div>
@@ -790,7 +790,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                     {
                                                         selectedApplication.statusHistory.map((history, index) => (
                                                             <div key={history.id} className="relative">
-                                                                <div className={`absolute -left-4 w-4 h-4 rounded-full border-2 border-white dark:border-neutral-900 ${index === 0 ? "bg-blue-500" : "bg-neutral-400"
+                                                                <div className={`absolute -left-4 w-4 h-4 rounded-full border-2 border-white dark:border-neutral-900 ${index === 0 ? "bg-orange-500" : "bg-neutral-400"
                                                                     }`} />
                                                                 <div className="bg-neutral-50 dark:bg-neutral-800 rounded-lg p-3">
                                                                     <div className="flex items-center justify-between mb-1">
@@ -823,8 +823,8 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                     <Bell className="w-4 h-4" />
                                                     Recruiter Feedback
                                                 </h4>
-                                                <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
-                                                    <p className="text-sm text-blue-700 dark:text-blue-300">
+                                                <div className="p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800">
+                                                    <p className="text-sm text-orange-700 dark:text-orange-300">
                                                         {selectedApplication.feedback}
                                                     </p>
                                                 </div>
@@ -849,7 +849,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                                 <div
                                                                     key={round.id}
                                                                     className={`p-3 rounded-xl border ${isCompleted
-                                                                        ? "bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800"
+                                                                        ? "bg-amber-50 border-amber-200 dark:bg-amber-900/20 dark:border-amber-800"
                                                                         : "bg-neutral-50 border-neutral-200 dark:bg-neutral-800 dark:border-neutral-700"
                                                                         }`}
                                                                 >
@@ -857,7 +857,7 @@ export function ApplicationsContent({ applications: initialApplications }: Appli
                                                                         <div className="flex items-center gap-2">
                                                                             {
                                                                                 isCompleted ? (
-                                                                                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                                                                    <CheckCircle2 className="w-4 h-4 text-amber-500" />
                                                                                 ) : (
                                                                                     <div className="w-4 h-4 rounded-full border-2 border-neutral-300 dark:border-neutral-600" />
                                                                                 )

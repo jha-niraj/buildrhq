@@ -91,23 +91,23 @@ export function AnalyticsContent({ analytics, recruiterPerformance }: AnalyticsC
             label: "Total Views",
             value: overview.totalViews.toLocaleString(),
             icon: <Eye className="w-5 h-5" />,
-            color: "text-blue-500",
-            bgColor: "bg-blue-100 dark:bg-blue-900/30"
+            color: "text-orange-500",
+            bgColor: "bg-orange-100 dark:bg-orange-900/30"
         },
         {
             label: "Applications",
             value: overview.totalApplications.toLocaleString(),
             change: overview.applicationChange,
             icon: <Users className="w-5 h-5" />,
-            color: "text-purple-500",
-            bgColor: "bg-purple-100 dark:bg-purple-900/30"
+            color: "text-orange-500",
+            bgColor: "bg-orange-100 dark:bg-orange-900/30"
         },
         {
             label: "Active Jobs",
             value: overview.activeJobs.toString(),
             icon: <Briefcase className="w-5 h-5" />,
-            color: "text-green-500",
-            bgColor: "bg-green-100 dark:bg-green-900/30"
+            color: "text-amber-500",
+            bgColor: "bg-amber-100 dark:bg-amber-900/30"
         },
         {
             label: "Avg. Time to Hire",
@@ -120,25 +120,25 @@ export function AnalyticsContent({ analytics, recruiterPerformance }: AnalyticsC
             label: "Total Hired",
             value: overview.hiredCount.toString(),
             icon: <CheckCircle className="w-5 h-5" />,
-            color: "text-emerald-500",
-            bgColor: "bg-emerald-100 dark:bg-emerald-900/30"
+            color: "text-amber-500",
+            bgColor: "bg-amber-100 dark:bg-amber-900/30"
         },
         {
             label: "Conversion Rate",
             value: `${overview.conversionRate}%`,
             icon: <Target className="w-5 h-5" />,
-            color: "text-indigo-500",
-            bgColor: "bg-indigo-100 dark:bg-indigo-900/30"
+            color: "text-orange-500",
+            bgColor: "bg-orange-100 dark:bg-orange-900/30"
         },
     ]
 
     const pipelineStages = [
-        { label: "Applied", count: pipeline.applied, color: "bg-blue-500" },
+        { label: "Applied", count: pipeline.applied, color: "bg-orange-500" },
         { label: "Reviewing", count: pipeline.reviewing, color: "bg-yellow-500" },
-        { label: "Shortlisted", count: pipeline.shortlisted, color: "bg-purple-500" },
+        { label: "Shortlisted", count: pipeline.shortlisted, color: "bg-orange-500" },
         { label: "Interviewing", count: pipeline.interviewing, color: "bg-orange-500" },
-        { label: "Offered", count: pipeline.offered, color: "bg-indigo-500" },
-        { label: "Hired", count: pipeline.hired, color: "bg-green-500" },
+        { label: "Offered", count: pipeline.offered, color: "bg-orange-500" },
+        { label: "Hired", count: pipeline.hired, color: "bg-amber-500" },
         { label: "Rejected", count: pipeline.rejected, color: "bg-red-500" },
     ]
 
@@ -173,7 +173,7 @@ export function AnalyticsContent({ analytics, recruiterPerformance }: AnalyticsC
                                     <span className="text-xs text-neutral-500">{stat.label}</span>
                                     {
                                         stat.change !== undefined && (
-                                            <span className={`text-xs flex items-center gap-0.5 ${stat.change >= 0 ? "text-green-600" : "text-red-600"}`}>
+                                            <span className={`text-xs flex items-center gap-0.5 ${stat.change >= 0 ? "text-amber-600" : "text-red-600"}`}>
                                                 {stat.change >= 0 ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
                                                 {Math.abs(stat.change)}%
                                             </span>

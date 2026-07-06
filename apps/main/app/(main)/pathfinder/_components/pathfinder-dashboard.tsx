@@ -46,9 +46,9 @@ interface PathfinderDashboardProps {
 const categoryConfig = PATHFINDER_CATEGORIES
 
 const statusConfig: Record<PathfinderStatus, { label: string; icon: React.ReactNode; color: string; bg: string }> = {
-    ACTIVE: { label: 'Active', icon: <Play className="w-3 h-3" />, color: 'text-emerald-600', bg: 'bg-emerald-500/10' },
+    ACTIVE: { label: 'Active', icon: <Play className="w-3 h-3" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
     VERIFICATION: { label: 'Verifying', icon: <Zap className="w-3 h-3" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
-    COMPLETED: { label: 'Completed', icon: <CheckCircle className="w-3 h-3" />, color: 'text-blue-600', bg: 'bg-blue-500/10' },
+    COMPLETED: { label: 'Completed', icon: <CheckCircle className="w-3 h-3" />, color: 'text-orange-600', bg: 'bg-orange-500/10' },
     FAILED: { label: 'Retry', icon: <XCircle className="w-3 h-3" />, color: 'text-red-600', bg: 'bg-red-500/10' },
     ABANDONED: { label: 'Paused', icon: <PauseCircle className="w-3 h-3" />, color: 'text-neutral-600', bg: 'bg-neutral-500/10' },
 }
@@ -96,15 +96,15 @@ function GoalCard({ goal, onAssign }: { goal: Goal; onAssign: () => void }) {
                     </div>
                     <div className="flex items-center gap-3 text-[11px] text-neutral-500 mb-3">
                         <div className="flex items-center gap-1">
-                            <CheckCircle2 className="w-3 h-3 text-emerald-500" />
+                            <CheckCircle2 className="w-3 h-3 text-amber-500" />
                             <span>{goal.completedSubGoals}/{goal.totalSubGoals}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                            <Brain className="w-3 h-3 text-violet-500" />
+                            <Brain className="w-3 h-3 text-orange-500" />
                             <span>{goal.totalQuizAnswered}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                            <Code2 className="w-3 h-3 text-blue-500" />
+                            <Code2 className="w-3 h-3 text-orange-500" />
                             <span>{goal.totalCodingSolved}</span>
                         </div>
                         {goal.streakDays > 0 && (
@@ -180,11 +180,11 @@ function StatsSection({ goals }: { goals: Goal[] }) {
     const maxStreak = Math.max(...goals.map(g => g.streakDays), 0)
 
     const stats = [
-        { label: 'Active', value: activeGoals.length, icon: <Target className="w-4 h-4" />, color: 'text-emerald-600', bg: 'bg-emerald-500/10' },
+        { label: 'Active', value: activeGoals.length, icon: <Target className="w-4 h-4" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
         { label: 'Done', value: completedGoals.length, icon: <Trophy className="w-4 h-4" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
-        { label: 'Tasks', value: `${completedTasks}/${totalTasks}`, icon: <CheckCircle2 className="w-4 h-4" />, color: 'text-blue-600', bg: 'bg-blue-500/10' },
-        { label: 'Quiz', value: totalQuiz, icon: <Brain className="w-4 h-4" />, color: 'text-violet-600', bg: 'bg-violet-500/10' },
-        { label: 'Code', value: totalCoding, icon: <Code2 className="w-4 h-4" />, color: 'text-cyan-600', bg: 'bg-cyan-500/10' },
+        { label: 'Tasks', value: `${completedTasks}/${totalTasks}`, icon: <CheckCircle2 className="w-4 h-4" />, color: 'text-orange-600', bg: 'bg-orange-500/10' },
+        { label: 'Quiz', value: totalQuiz, icon: <Brain className="w-4 h-4" />, color: 'text-orange-600', bg: 'bg-orange-500/10' },
+        { label: 'Code', value: totalCoding, icon: <Code2 className="w-4 h-4" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
         { label: 'Streak', value: `${maxStreak}d`, icon: <Flame className="w-4 h-4" />, color: 'text-orange-600', bg: 'bg-orange-500/10' },
     ]
 
@@ -235,9 +235,9 @@ function ActivityChart({ goals }: { goals: Goal[] }) {
                     </BarChart>
                 </ResponsiveContainer>
                 <div className="flex items-center justify-center gap-4 mt-2">
-                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-emerald-500" />Tasks</span>
-                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-violet-500" />Quiz</span>
-                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-blue-500" />Code</span>
+                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-amber-500" />Tasks</span>
+                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-orange-500" />Quiz</span>
+                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-orange-500" />Code</span>
                 </div>
             </div>
         </div>

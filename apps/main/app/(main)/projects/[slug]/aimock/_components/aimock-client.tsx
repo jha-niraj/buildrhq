@@ -293,7 +293,7 @@ export default function AIMockInterviewClient({
                         className="space-y-6"
                     >
                         <div className="text-center">
-                            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl mb-4">
+                            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-500 rounded-2xl mb-4">
                                 <Brain className="w-8 h-8 text-white" />
                             </div>
                             <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-900 to-neutral-500 dark:from-neutral-50 dark:to-neutral-400 mb-2">
@@ -333,19 +333,19 @@ export default function AIMockInterviewClient({
                                     <p className="font-semibold text-neutral-900 dark:text-white">What you&apos;ll get:</p>
                                     <ul className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
                                         <li className="flex items-start gap-2">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                            <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                                             <span>Voice-based interview with AI interviewer</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                            <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                                             <span>Questions tailored to your project and technologies</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                            <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                                             <span>Detailed feedback on communication & technical skills</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                            <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                                             <span>Unlimited retakes to improve your score</span>
                                         </li>
                                     </ul>
@@ -382,7 +382,7 @@ export default function AIMockInterviewClient({
                                     <Button
                                         onClick={handleGenerateKnowledgeBase}
                                         disabled={generating || userCredits < 30}
-                                        className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:opacity-90 rounded-xl"
+                                        className="w-full bg-gradient-to-r from-orange-600 to-orange-600 text-white hover:opacity-90 rounded-xl"
                                         size="lg"
                                     >
                                         {
@@ -463,7 +463,7 @@ export default function AIMockInterviewClient({
                         className="text-center space-y-8"
                     >
                         <div>
-                            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full mb-6">
+                            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-500 rounded-full mb-6">
                                 <Brain className="w-10 h-10 text-white" />
                             </div>
                             <h1 className="text-4xl font-bold text-neutral-900 dark:text-white mb-2">
@@ -493,7 +493,7 @@ export default function AIMockInterviewClient({
                             <Button
                                 onClick={handleStartInterview}
                                 size="lg"
-                                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:opacity-90 px-12 py-6 text-lg"
+                                className="bg-gradient-to-r from-orange-600 to-orange-600 text-white hover:opacity-90 px-12 py-6 text-lg"
                             >
                                 <Phone className="w-5 h-5 mr-2" />
                                 Start Interview
@@ -603,7 +603,7 @@ export default function AIMockInterviewClient({
                                 !hasStarted ? (
                                     <Button
                                         size="lg"
-                                        className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:opacity-90 text-white px-8 py-6 text-lg"
+                                        className="bg-gradient-to-r from-orange-600 to-orange-600 hover:opacity-90 text-white px-8 py-6 text-lg"
                                         onClick={startConversation}
                                     >
                                         <Phone className="w-5 h-5 mr-2" />
@@ -648,7 +648,7 @@ export default function AIMockInterviewClient({
                                 {
                                     processingStatus === 'processing' && (
                                         <>
-                                            <Loader2 className="w-5 h-5 animate-spin text-indigo-600" />
+                                            <Loader2 className="w-5 h-5 animate-spin text-orange-600" />
                                             Processing Your Interview
                                         </>
                                     )
@@ -656,7 +656,7 @@ export default function AIMockInterviewClient({
                                 {
                                     processingStatus === 'success' && (
                                         <>
-                                            <CheckCircle2 className="w-5 h-5 text-green-600" />
+                                            <CheckCircle2 className="w-5 h-5 text-amber-600" />
                                             Interview Completed!
                                         </>
                                     )
@@ -706,7 +706,7 @@ export default function AIMockInterviewClient({
                                 </CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <div className="text-4xl font-bold text-indigo-600">
+                                <div className="text-4xl font-bold text-orange-600">
                                     {feedback.overallScore}/100
                                 </div>
                             </CardContent>
@@ -714,7 +714,7 @@ export default function AIMockInterviewClient({
                         <Card>
                             <CardHeader>
                                 <CardTitle className="text-lg flex items-center gap-2">
-                                    <MessageSquare className="w-5 h-5 text-green-600" />
+                                    <MessageSquare className="w-5 h-5 text-amber-600" />
                                     Communication
                                 </CardTitle>
                             </CardHeader>
@@ -725,7 +725,7 @@ export default function AIMockInterviewClient({
                         <Card>
                             <CardHeader>
                                 <CardTitle className="text-lg flex items-center gap-2">
-                                    <Target className="w-5 h-5 text-purple-600" />
+                                    <Target className="w-5 h-5 text-orange-600" />
                                     Technical
                                 </CardTitle>
                             </CardHeader>
@@ -786,7 +786,7 @@ export default function AIMockInterviewClient({
                     <div className="grid md:grid-cols-2 gap-6 mb-8">
                         <Card>
                             <CardHeader>
-                                <CardTitle className="flex items-center gap-2 text-green-600">
+                                <CardTitle className="flex items-center gap-2 text-amber-600">
                                     <CheckCircle2 className="w-5 h-5" />
                                     Strengths
                                 </CardTitle>
@@ -796,7 +796,7 @@ export default function AIMockInterviewClient({
                                     {
                                         feedback.strengths?.map((strength: string, idx: number) => (
                                             <li key={idx} className="flex items-start gap-2">
-                                                <CheckCircle2 className="w-4 h-4 text-green-600 mt-1 flex-shrink-0" />
+                                                <CheckCircle2 className="w-4 h-4 text-amber-600 mt-1 flex-shrink-0" />
                                                 <span className="text-sm">{strength}</span>
                                             </li>
                                         ))

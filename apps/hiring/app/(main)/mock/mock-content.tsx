@@ -40,9 +40,9 @@ interface MockInterviewsContentProps {
 }
 
 const statusColors: Record<string, string> = {
-    SCHEDULED: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+    SCHEDULED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     IN_PROGRESS: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
-    COMPLETED: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+    COMPLETED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
     CANCELLED: "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
     FAILED: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
 }
@@ -95,7 +95,7 @@ export function MockInterviewsContent({ initialSessions, stats }: MockInterviews
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
                 <div>
                     <h1 className="text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-white flex items-center gap-3">
-                        <div className="p-2 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500">
+                        <div className="p-2 rounded-xl bg-gradient-to-br from-orange-500 to-pink-500">
                             <Mic className="w-6 h-6 text-white" />
                         </div>
                         Mock Interviews
@@ -115,8 +115,8 @@ export function MockInterviewsContent({ initialSessions, stats }: MockInterviews
                             className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800"
                         >
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
-                                    <Video className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                                <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                                    <Video className="w-4 h-4 text-orange-600 dark:text-orange-400" />
                                 </div>
                             </div>
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">{stats.totalSessions}</p>
@@ -129,8 +129,8 @@ export function MockInterviewsContent({ initialSessions, stats }: MockInterviews
                             className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800"
                         >
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
-                                    <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400" />
+                                <div className="p-2 rounded-lg bg-amber-100 dark:bg-amber-900/30">
+                                    <CheckCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
                                 </div>
                             </div>
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">{stats.completedSessions}</p>
@@ -143,8 +143,8 @@ export function MockInterviewsContent({ initialSessions, stats }: MockInterviews
                             className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800"
                         >
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
-                                    <BarChart3 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                                <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                                    <BarChart3 className="w-4 h-4 text-orange-600 dark:text-orange-400" />
                                 </div>
                             </div>
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">{stats.averageScore}%</p>
@@ -256,7 +256,7 @@ export function MockInterviewsContent({ initialSessions, stats }: MockInterviews
                                         className="group bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-4 hover:shadow-lg hover:border-neutral-300 dark:hover:border-neutral-700 transition-all"
                                     >
                                         <div className="flex items-center gap-4">
-                                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center overflow-hidden shrink-0">
+                                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center overflow-hidden shrink-0">
                                                 {
                                                     session.userImage ? (
                                                         <Image
@@ -301,7 +301,7 @@ export function MockInterviewsContent({ initialSessions, stats }: MockInterviews
                                             {
                                                 session.status === "COMPLETED" && session.overallScore != null && (
                                                     <div className="text-center px-4">
-                                                        <div className={`text-xl font-bold ${(session.overallScore ?? 0) >= 80 ? "text-green-600 dark:text-green-400" :
+                                                        <div className={`text-xl font-bold ${(session.overallScore ?? 0) >= 80 ? "text-amber-600 dark:text-amber-400" :
                                                                 (session.overallScore ?? 0) >= 60 ? "text-yellow-600 dark:text-yellow-400" :
                                                                     "text-red-600 dark:text-red-400"
                                                             }`}>
@@ -354,8 +354,8 @@ export function MockInterviewsContent({ initialSessions, stats }: MockInterviews
                             animate={{ opacity: 1, y: 0 }}
                             className="text-center py-16"
                         >
-                            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 flex items-center justify-center mx-auto mb-6">
-                                <Mic className="w-10 h-10 text-purple-500" />
+                            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-100 to-pink-100 dark:from-orange-900/30 dark:to-pink-900/30 flex items-center justify-center mx-auto mb-6">
+                                <Mic className="w-10 h-10 text-orange-500" />
                             </div>
                             <h3 className="font-bold text-xl text-neutral-900 dark:text-white mb-2">
                                 No mock sessions yet

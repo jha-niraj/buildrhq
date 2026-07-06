@@ -70,7 +70,7 @@ function UsageCard({
                 </div>
                 <span className={`text-sm font-semibold ${
                     isUnlimited 
-                        ? 'text-emerald-600 dark:text-emerald-400' 
+                        ? 'text-amber-600 dark:text-amber-400' 
                         : isNearLimit 
                             ? 'text-amber-600 dark:text-amber-400' 
                             : 'text-neutral-900 dark:text-neutral-100'
@@ -89,8 +89,8 @@ function UsageCard({
                 />
             )}
             {isUnlimited && (
-                <div className="h-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-full">
-                    <div className="h-full bg-emerald-500 rounded-full w-full" />
+                <div className="h-2 bg-amber-100 dark:bg-amber-900/30 rounded-full">
+                    <div className="h-full bg-amber-500 rounded-full w-full" />
                 </div>
             )}
         </div>
@@ -169,10 +169,10 @@ function PricingCard({
                     {plan.features.slice(0, 6).map((feature, j) => (
                         <li key={j} className="flex items-start gap-2.5">
                             <div className={`p-1 rounded-full mt-0.5 ${
-                                isPro ? 'bg-white/20 dark:bg-neutral-200' : 'bg-emerald-100 dark:bg-emerald-900/30'
+                                isPro ? 'bg-white/20 dark:bg-neutral-200' : 'bg-amber-100 dark:bg-amber-900/30'
                             }`}>
                                 <Check className={`h-3 w-3 ${
-                                    isPro ? 'text-white dark:text-neutral-900' : 'text-emerald-600 dark:text-emerald-400'
+                                    isPro ? 'text-white dark:text-neutral-900' : 'text-amber-600 dark:text-amber-400'
                                 }`} />
                             </div>
                             <span className={`text-sm ${
@@ -213,7 +213,7 @@ function PricingCard({
 
 function InvoiceRow({ invoice }: { invoice: InvoiceDetails }) {
     const statusColors = {
-        PAID: 'text-emerald-600 bg-emerald-100 dark:text-emerald-400 dark:bg-emerald-900/30',
+        PAID: 'text-amber-600 bg-amber-100 dark:text-amber-400 dark:bg-amber-900/30',
         PENDING: 'text-amber-600 bg-amber-100 dark:text-amber-400 dark:bg-amber-900/30',
         DRAFT: 'text-neutral-600 bg-neutral-100 dark:text-neutral-400 dark:bg-neutral-800',
         VOID: 'text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/30',
@@ -260,10 +260,10 @@ function InvoiceRow({ invoice }: { invoice: InvoiceDetails }) {
 
 function PaymentRow({ payment }: { payment: PaymentRecord }) {
     const statusColors = {
-        SUCCEEDED: 'text-emerald-600 bg-emerald-100 dark:text-emerald-400 dark:bg-emerald-900/30',
+        SUCCEEDED: 'text-amber-600 bg-amber-100 dark:text-amber-400 dark:bg-amber-900/30',
         PENDING: 'text-amber-600 bg-amber-100 dark:text-amber-400 dark:bg-amber-900/30',
         FAILED: 'text-red-600 bg-red-100 dark:text-red-400 dark:bg-red-900/30',
-        PROCESSING: 'text-blue-600 bg-blue-100 dark:text-blue-400 dark:bg-blue-900/30',
+        PROCESSING: 'text-orange-600 bg-orange-100 dark:text-orange-400 dark:bg-orange-900/30',
         REFUNDED: 'text-neutral-600 bg-neutral-100 dark:text-neutral-400 dark:bg-neutral-800',
         CANCELLED: 'text-neutral-600 bg-neutral-100 dark:text-neutral-400 dark:bg-neutral-800',
     }
@@ -714,7 +714,7 @@ export default function BillingPage() {
                         </div>
                         <div>
                             <p className="text-sm text-neutral-500 mb-1">Status</p>
-                            <Badge className={subscription.status === 'ACTIVE' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}>
+                            <Badge className={subscription.status === 'ACTIVE' ? 'bg-amber-100 text-amber-700' : 'bg-amber-100 text-amber-700'}>
                                 {subscription.status}
                             </Badge>
                         </div>

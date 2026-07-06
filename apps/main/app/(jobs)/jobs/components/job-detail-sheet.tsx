@@ -83,15 +83,15 @@ const roundTypeIcons: Record<string, LucideIcon> = {
 }
 
 const roundTypeColors: Record<string, string> = {
-    PHONE_SCREEN: "bg-blue-500",
-    TECHNICAL_CODING: "bg-purple-500",
+    PHONE_SCREEN: "bg-orange-500",
+    TECHNICAL_CODING: "bg-orange-500",
     SYSTEM_DESIGN: "bg-orange-500",
-    BEHAVIORAL: "bg-green-500",
+    BEHAVIORAL: "bg-amber-500",
     TAKE_HOME: "bg-yellow-500",
     PANEL: "bg-pink-500",
-    HIRING_MANAGER: "bg-indigo-500",
-    CULTURE_FIT: "bg-teal-500",
-    HR_FINAL: "bg-cyan-500",
+    HIRING_MANAGER: "bg-orange-500",
+    CULTURE_FIT: "bg-amber-500",
+    HR_FINAL: "bg-amber-500",
     CUSTOM: "bg-neutral-500",
 }
 
@@ -159,7 +159,7 @@ export function JobDetailSheet({ job }: JobDetailSheetProps) {
                         </h2>
                         <Link
                             href={`/companies/${job.company.id}`}
-                            className="text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                            className="text-neutral-600 dark:text-neutral-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                         >
                             {job.company.name}
                         </Link>
@@ -239,11 +239,11 @@ export function JobDetailSheet({ job }: JobDetailSheetProps) {
                     }
                     {
                         job.salaryDisclosed && formatSalary(job.salaryMin, job.salaryMax, job.salaryCurrency) && (
-                            <div className="flex items-center gap-3 p-3 rounded-xl bg-green-50 dark:bg-green-900/20">
-                                <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
+                            <div className="flex items-center gap-3 p-3 rounded-xl bg-amber-50 dark:bg-amber-900/20">
+                                <TrendingUp className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                                 <div>
-                                    <p className="text-xs text-green-600 dark:text-green-400">Salary</p>
-                                    <p className="font-medium text-green-700 dark:text-green-300">
+                                    <p className="text-xs text-amber-600 dark:text-amber-400">Salary</p>
+                                    <p className="font-medium text-amber-700 dark:text-amber-300">
                                         {formatSalary(job.salaryMin, job.salaryMax, job.salaryCurrency)}
                                     </p>
                                 </div>
@@ -279,11 +279,11 @@ export function JobDetailSheet({ job }: JobDetailSheetProps) {
                     job.interviewProcess ? (
                         <div>
                             <div className="flex items-center gap-2 mb-4">
-                                <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+                                <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                                 <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
                                     Interview Process
                                 </h3>
-                                <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs">
+                                <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-xs">
                                     Transparent
                                 </Badge>
                             </div>
@@ -342,8 +342,8 @@ export function JobDetailSheet({ job }: JobDetailSheetProps) {
                                     }
                                 </div>
                             </div>
-                            <div className="mt-6 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
-                                <p className="text-sm text-blue-700 dark:text-blue-300">
+                            <div className="mt-6 p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
+                                <p className="text-sm text-orange-700 dark:text-orange-300">
                                     <strong>Pro tip:</strong> Companies with transparent processes tend to have higher candidate satisfaction.
                                     Click &quot;Practice&quot; on any round to start an AI mock interview!
                                 </p>

@@ -67,8 +67,8 @@ export default function QuizResults({
 
     // Get score color
     const getScoreColor = (score: number) => {
-        if (score >= 80) return "text-green-600 dark:text-green-400";
-        if (score >= 60) return "text-blue-600 dark:text-blue-400";
+        if (score >= 80) return "text-amber-600 dark:text-amber-400";
+        if (score >= 60) return "text-orange-600 dark:text-orange-400";
         if (score >= 40) return "text-amber-600 dark:text-amber-400";
         return "text-red-600 dark:text-red-400";
     };
@@ -85,8 +85,8 @@ export default function QuizResults({
 
     // Get score icon bg
     const getScoreIconBg = (score: number) => {
-        if (score >= 80) return "from-green-500 to-emerald-500";
-        if (score >= 60) return "from-blue-500 to-cyan-500";
+        if (score >= 80) return "from-amber-500 to-amber-500";
+        if (score >= 60) return "from-orange-500 to-amber-500";
         if (score >= 40) return "from-amber-500 to-yellow-500";
         return "from-red-500 to-orange-500";
     };
@@ -163,7 +163,7 @@ export default function QuizResults({
                             }
                             {
                                 onRetake && (
-                                    <Button onClick={onRetake} className="bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90">
+                                    <Button onClick={onRetake} className="bg-gradient-to-r from-orange-600 to-pink-600 hover:opacity-90">
                                         <RotateCcw className="w-4 h-4 mr-2" />
                                         Retake Quiz
                                     </Button>
@@ -203,7 +203,7 @@ export default function QuizResults({
                             <TabsContent value="overall" className="space-y-4">
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                     <div className="p-4 bg-neutral-50 dark:bg-neutral-800/50 rounded-lg text-center">
-                                        <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                                        <p className="text-2xl font-bold text-amber-600 dark:text-amber-400">
                                             {result.correctCount}
                                         </p>
                                         <p className="text-sm text-muted-foreground">Correct</p>
@@ -221,7 +221,7 @@ export default function QuizResults({
                                         <p className="text-sm text-muted-foreground">Flagged</p>
                                     </div>
                                     <div className="p-4 bg-neutral-50 dark:bg-neutral-800/50 rounded-lg text-center">
-                                        <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                                        <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
                                             {formatTime(result.totalTimeTaken)}
                                         </p>
                                         <p className="text-sm text-muted-foreground">Time Taken</p>
@@ -241,7 +241,7 @@ export default function QuizResults({
                                                     className={cn(
                                                         "w-8 h-8 rounded-full text-xs font-medium flex items-center justify-center relative",
                                                         answer.isCorrect
-                                                            ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                                                            ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
                                                             : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
                                                         "hover:ring-2 hover:ring-offset-2 hover:ring-primary transition-all"
                                                     )}
@@ -297,14 +297,14 @@ export default function QuizResults({
                                                                 <span className={cn(
                                                                     "w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium",
                                                                     selectedAnswer.isCorrect
-                                                                        ? "bg-green-500 text-white"
+                                                                        ? "bg-amber-500 text-white"
                                                                         : "bg-red-500 text-white"
                                                                 )}>
                                                                     {selectedQuestionIndex + 1}
                                                                 </span>
                                                                 <Badge className={cn(
                                                                     selectedAnswer.isCorrect
-                                                                        ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
+                                                                        ? "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400"
                                                                         : "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400"
                                                                 )}>
                                                                     {
@@ -370,14 +370,14 @@ export default function QuizResults({
                                                                             key={option.id}
                                                                             className={cn(
                                                                                 "p-3 rounded-lg border-2 flex items-center gap-3",
-                                                                                isCorrect && "border-green-500 bg-green-50 dark:bg-green-900/20",
+                                                                                isCorrect && "border-amber-500 bg-amber-50 dark:bg-amber-900/20",
                                                                                 isSelected && !isCorrect && "border-red-500 bg-red-50 dark:bg-red-900/20",
                                                                                 !isSelected && !isCorrect && "border-neutral-200 dark:border-neutral-700"
                                                                             )}
                                                                         >
                                                                             <span className={cn(
                                                                                 "w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium",
-                                                                                isCorrect && "bg-green-500 text-white",
+                                                                                isCorrect && "bg-amber-500 text-white",
                                                                                 isSelected && !isCorrect && "bg-red-500 text-white",
                                                                                 !isSelected && !isCorrect && "bg-muted text-muted-foreground"
                                                                             )}>
@@ -389,7 +389,7 @@ export default function QuizResults({
                                                                             </span>
                                                                             <span className={cn(
                                                                                 "flex-1",
-                                                                                isCorrect && "text-green-800 dark:text-green-200 font-medium",
+                                                                                isCorrect && "text-amber-800 dark:text-amber-200 font-medium",
                                                                                 isSelected && !isCorrect && "text-red-800 dark:text-red-200"
                                                                             )}>
                                                                                 {option.text}
@@ -402,11 +402,11 @@ export default function QuizResults({
 
                                                         {
                                                             selectedQuestion.explanation && (
-                                                                <div className="p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-                                                                    <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">
+                                                                <div className="p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg">
+                                                                    <h5 className="font-medium text-orange-800 dark:text-orange-200 mb-2">
                                                                         Explanation
                                                                     </h5>
-                                                                    <p className="text-sm text-blue-700 dark:text-blue-300">
+                                                                    <p className="text-sm text-orange-700 dark:text-orange-300">
                                                                         {selectedQuestion.explanation}
                                                                     </p>
                                                                 </div>

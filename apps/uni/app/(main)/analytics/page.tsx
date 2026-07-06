@@ -5,10 +5,10 @@ import { BarChart3, Users, BookOpen, GraduationCap, Award, TrendingUp, Clock } f
 
 export default function AnalyticsPage() {
     const stats = [
-        { label: "Active Students", value: "0", change: "+0%", icon: <Users className="w-5 h-5 text-violet-600" /> },
-        { label: "Assignments", value: "0", change: "+0%", icon: <BookOpen className="w-5 h-5 text-violet-600" /> },
-        { label: "Completion Rate", value: "0%", change: "+0%", icon: <TrendingUp className="w-5 h-5 text-violet-600" /> },
-        { label: "Placements", value: "0", change: "+0%", icon: <Award className="w-5 h-5 text-violet-600" /> },
+        { label: "Active Students", value: "0", change: "+0%", icon: <Users className="w-5 h-5 text-orange-600" /> },
+        { label: "Assignments", value: "0", change: "+0%", icon: <BookOpen className="w-5 h-5 text-orange-600" /> },
+        { label: "Completion Rate", value: "0%", change: "+0%", icon: <TrendingUp className="w-5 h-5 text-orange-600" /> },
+        { label: "Placements", value: "0", change: "+0%", icon: <Award className="w-5 h-5 text-orange-600" /> },
     ]
 
     return (
@@ -34,14 +34,14 @@ export default function AnalyticsPage() {
                         className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6"
                     >
                         <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-violet-50 dark:bg-violet-900/30">
+                            <div className="p-2 rounded-lg bg-orange-50 dark:bg-orange-900/30">
                                 {stat.icon}
                             </div>
                             <span className="text-sm text-neutral-500">{stat.label}</span>
                         </div>
                         <div className="flex items-baseline gap-2">
                             <span className="text-3xl font-bold text-neutral-900 dark:text-white">{stat.value}</span>
-                            <span className="text-sm text-green-600 dark:text-green-400">{stat.change}</span>
+                            <span className="text-sm text-amber-600 dark:text-amber-400">{stat.change}</span>
                         </div>
                     </motion.div>
                 ))}
@@ -56,7 +56,7 @@ export default function AnalyticsPage() {
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6"
                 >
                     <h3 className="font-bold text-lg text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
-                        <GraduationCap className="w-5 h-5 text-violet-600" />
+                        <GraduationCap className="w-5 h-5 text-orange-600" />
                         Student Engagement
                     </h3>
                     <div className="space-y-4">
@@ -82,7 +82,7 @@ export default function AnalyticsPage() {
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6"
                 >
                     <h3 className="font-bold text-lg text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
-                        <Clock className="w-5 h-5 text-violet-600" />
+                        <Clock className="w-5 h-5 text-orange-600" />
                         Credit Usage
                     </h3>
                     <div className="space-y-4">
@@ -96,7 +96,7 @@ export default function AnalyticsPage() {
                         </div>
                         <div className="flex items-center justify-between">
                             <span className="text-sm text-neutral-600 dark:text-neutral-400">Remaining</span>
-                            <span className="font-bold text-emerald-600">0</span>
+                            <span className="font-bold text-amber-600">0</span>
                         </div>
                     </div>
                 </motion.div>
@@ -110,8 +110,8 @@ export default function AnalyticsPage() {
                 className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8"
             >
                 <div className="text-center py-16">
-                    <div className="w-20 h-20 rounded-2xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center mx-auto mb-6">
-                        <BarChart3 className="w-10 h-10 text-violet-600" />
+                    <div className="w-20 h-20 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mx-auto mb-6">
+                        <BarChart3 className="w-10 h-10 text-orange-600" />
                     </div>
                     <h3 className="font-bold text-xl text-neutral-900 dark:text-white mb-2">
                         No data to display

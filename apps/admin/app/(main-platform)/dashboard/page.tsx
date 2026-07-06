@@ -93,7 +93,7 @@ function QuickStat({ title, value, change, icon: Icon, color }: QuickStatProps) 
                     <span className={cn(
                         "text-xs font-medium px-2 py-0.5 rounded-full",
                         change >= 0
-                            ? "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400"
+                            ? "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400"
                             : "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400"
                     )}>
                         {change >= 0 ? "+" : ""}{change}%
@@ -119,8 +119,8 @@ function PendingAction({ title, count, type, href, platform }: PendingActionProp
 
     const colors = {
         warning: "bg-amber-50 dark:bg-amber-500/10 border-amber-200 dark:border-amber-500/20 text-amber-700 dark:text-amber-400",
-        info: "bg-blue-50 dark:bg-blue-500/10 border-blue-200 dark:border-blue-500/20 text-blue-700 dark:text-blue-400",
-        success: "bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/20 text-emerald-700 dark:text-emerald-400"
+        info: "bg-orange-50 dark:bg-orange-500/10 border-orange-200 dark:border-orange-500/20 text-orange-700 dark:text-orange-400",
+        success: "bg-amber-50 dark:bg-amber-500/10 border-amber-200 dark:border-amber-500/20 text-amber-700 dark:text-amber-400"
     }
     const icons = { warning: AlertCircle, info: Bell, success: CheckCircle }
     const platformColors = { main: "border-l-blue-500", hiring: "border-l-emerald-500", uni: "border-l-violet-500" }
@@ -248,19 +248,19 @@ export default function AdminDashboard() {
                     value={main?.totalUsers?.toLocaleString() ?? "0"}
                     change={main?.growthRate as number}
                     icon={Users}
-                    color="bg-blue-500"
+                    color="bg-orange-500"
                 />
                 <QuickStat
                     title="Active Admins"
                     value={main?.totalAdmins?.toString() ?? "0"}
                     icon={Shield}
-                    color="bg-purple-500"
+                    color="bg-orange-500"
                 />
                 <QuickStat
                     title="Total Credits"
                     value={main?.totalCredits?.toLocaleString() ?? "0"}
                     icon={CreditCard}
-                    color="bg-emerald-500"
+                    color="bg-amber-500"
                 />
                 <QuickStat
                     title="New This Month"
@@ -278,8 +278,8 @@ export default function AdminDashboard() {
                         title="Main Platform"
                         description="Coder'z learning platform"
                         icon={Code}
-                        color="text-blue-600 dark:text-blue-400"
-                        bgColor="bg-blue-500"
+                        color="text-orange-600 dark:text-orange-400"
+                        bgColor="bg-orange-500"
                         href="/dashboard"
                         stats={[
                             { label: "Total Users", value: main?.totalUsers?.toLocaleString() ?? "0" },
@@ -293,8 +293,8 @@ export default function AdminDashboard() {
                         title="Hiring Platform"
                         description="Coder'z Hiring platform"
                         icon={Building2}
-                        color="text-emerald-600 dark:text-emerald-400"
-                        bgColor="bg-emerald-500"
+                        color="text-amber-600 dark:text-amber-400"
+                        bgColor="bg-amber-500"
                         href="/hiring"
                         stats={[
                             { label: "Companies", value: hiring?.totalCompanies?.toLocaleString() ?? "0" },
@@ -308,8 +308,8 @@ export default function AdminDashboard() {
                         title="University Platform"
                         description="Coder'z University platform"
                         icon={GraduationCap}
-                        color="text-violet-600 dark:text-violet-400"
-                        bgColor="bg-violet-500"
+                        color="text-orange-600 dark:text-orange-400"
+                        bgColor="bg-orange-500"
                         href="/uni"
                         stats={[
                             { label: "Universities", value: uni?.totalUniversities?.toLocaleString() ?? "0" },
@@ -332,7 +332,7 @@ export default function AdminDashboard() {
                     </div>
                     <div className="space-y-3">
                         {pendingActions.length === 0 ? (
-                            <div className="flex items-center gap-3 p-4 rounded-lg bg-emerald-50 dark:bg-emerald-900/10 text-emerald-600 dark:text-emerald-400">
+                            <div className="flex items-center gap-3 p-4 rounded-lg bg-amber-50 dark:bg-amber-900/10 text-amber-600 dark:text-amber-400">
                                 <CheckCircle className="w-5 h-5" />
                                 <span className="font-medium">All caught up — no pending actions</span>
                             </div>
@@ -350,19 +350,19 @@ export default function AdminDashboard() {
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                         <Link href="/users" className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
-                            <Users className="w-5 h-5 text-blue-500" />
+                            <Users className="w-5 h-5 text-orange-500" />
                             <span className="text-sm font-medium text-neutral-900 dark:text-white">Manage Users</span>
                         </Link>
                         <Link href="/hiring/companies" className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
-                            <Building2 className="w-5 h-5 text-emerald-500" />
+                            <Building2 className="w-5 h-5 text-amber-500" />
                             <span className="text-sm font-medium text-neutral-900 dark:text-white">Companies</span>
                         </Link>
                         <Link href="/uni/universities" className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
-                            <GraduationCap className="w-5 h-5 text-violet-500" />
+                            <GraduationCap className="w-5 h-5 text-orange-500" />
                             <span className="text-sm font-medium text-neutral-900 dark:text-white">Universities</span>
                         </Link>
                         <Link href="/credits" className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
-                            <CreditCard className="w-5 h-5 text-purple-500" />
+                            <CreditCard className="w-5 h-5 text-orange-500" />
                             <span className="text-sm font-medium text-neutral-900 dark:text-white">Credits</span>
                         </Link>
                         <Link href="/feedback" className="flex items-center gap-3 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">

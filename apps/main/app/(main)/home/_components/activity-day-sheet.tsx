@@ -57,14 +57,14 @@ function getActivityColor(type: string) {
         case "project":
         case "project_completed":
         case "project_started":
-            return "text-blue-500 bg-blue-500/10";
+            return "text-orange-500 bg-orange-500/10";
         case "studio":
         case "studio_created":
         case "note_created":
-            return "text-purple-500 bg-purple-500/10";
+            return "text-orange-500 bg-orange-500/10";
         case "dsa":
         case "problem_solved":
-            return "text-green-500 bg-green-500/10";
+            return "text-amber-500 bg-amber-500/10";
         case "chat":
         case "ai_chat":
             return "text-orange-500 bg-orange-500/10";

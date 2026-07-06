@@ -77,13 +77,13 @@ export const formatExperience = (min: number | null, max: number | null) => {
 // MATCH SCORE HELPERS
 // ============================================
 export const getMatchScoreColor = (score: number) => {
-    if (score >= 90) return "text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30"
+    if (score >= 90) return "text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30"
     if (score >= 70) return "text-yellow-600 dark:text-yellow-400 bg-yellow-100 dark:bg-yellow-900/30"
     return "text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30"
 }
 
 export const getMatchScoreBadge = (score: number) => {
-    if (score >= 90) return { label: "Perfect Match", icon: Target, color: "text-green-600 dark:text-green-400" }
+    if (score >= 90) return { label: "Perfect Match", icon: Target, color: "text-amber-600 dark:text-amber-400" }
     if (score >= 70) return { label: "Good Match", icon: Zap, color: "text-yellow-600 dark:text-yellow-400" }
     return { label: "Explore", icon: Sparkles, color: "text-orange-600 dark:text-orange-400" }
 }
@@ -129,7 +129,7 @@ export function JobCard({
                         )}
                     </div>
                     <div className="flex-1 min-w-0">
-                        <h3 className="font-medium text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                        <h3 className="font-medium text-neutral-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors truncate">
                             {job.title}
                         </h3>
                         <p className="text-sm text-neutral-500 truncate">{job.company.name}</p>
@@ -138,7 +138,7 @@ export function JobCard({
                         <Button
                             variant="ghost"
                             size="sm"
-                            className="h-7 px-2 text-xs text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 shrink-0"
+                            className="h-7 px-2 text-xs text-orange-600 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/20 shrink-0"
                             onClick={(e) => {
                                 e.stopPropagation()
                                 if (onPractice) {
@@ -173,7 +173,7 @@ export function JobCard({
             {/* Match score indicator bar */}
             <div className={cn(
                 "absolute top-0 left-0 right-0 h-1",
-                job.matchScore >= 90 ? "bg-gradient-to-r from-green-500 to-emerald-500" :
+                job.matchScore >= 90 ? "bg-gradient-to-r from-amber-500 to-amber-500" :
                     job.matchScore >= 70 ? "bg-gradient-to-r from-yellow-500 to-amber-500" :
                         "bg-gradient-to-r from-orange-500 to-red-400"
             )} />
@@ -198,14 +198,14 @@ export function JobCard({
                     <div className="flex items-start justify-between gap-4 mb-2">
                         <div>
                             <div className="flex items-center gap-2 mb-0.5">
-                                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors truncate">
                                     {job.title}
                                 </h3>
                                 {job.isFollowingCompany && (
                                     <TooltipProvider>
                                         <Tooltip>
                                             <TooltipTrigger>
-                                                <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[10px] px-1.5 py-0">
+                                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-[10px] px-1.5 py-0">
                                                     <UserCheck className="w-3 h-3 mr-0.5" />
                                                     Following
                                                 </Badge>
@@ -272,7 +272,7 @@ export function JobCard({
                             </div>
                         )}
                         {job.salaryDisclosed && formatSalary(job.salaryMin, job.salaryMax, job.salaryCurrency) && (
-                            <div className="flex items-center gap-1 text-green-600 dark:text-green-400">
+                            <div className="flex items-center gap-1 text-amber-600 dark:text-amber-400">
                                 <TrendingUp className="w-4 h-4" />
                                 <span>{formatSalary(job.salaryMin, job.salaryMax, job.salaryCurrency)}</span>
                             </div>
@@ -282,7 +282,7 @@ export function JobCard({
                     {/* Skills */}
                     <div className="flex flex-wrap gap-1.5 mb-3">
                         {job.matchedSkills.slice(0, 4).map((skill, i) => (
-                            <Badge key={i} className="text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                            <Badge key={i} className="text-xs bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
                                 <CheckCircle2 className="w-3 h-3 mr-1" />
                                 {skill}
                             </Badge>
@@ -303,7 +303,7 @@ export function JobCard({
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             {job.interviewProcess ? (
-                                <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400">
+                                <div className="flex items-center gap-2 text-sm text-amber-600 dark:text-amber-400">
                                     <CheckCircle2 className="w-4 h-4" />
                                     <span>{job.interviewProcess.rounds.length} rounds</span>
                                     {job.interviewProcess.estimatedDurationWeeks && (
@@ -324,7 +324,7 @@ export function JobCard({
                                 <span className="text-sm text-neutral-400">Interview process not disclosed</span>
                             )}
                             {job.company.hasTransparentProcess && (
-                                <Badge className="text-[10px] px-1.5 py-0 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                <Badge className="text-[10px] px-1.5 py-0 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
                                     Transparent
                                 </Badge>
                             )}
@@ -338,7 +338,7 @@ export function JobCard({
                                             <Button
                                                 variant="outline"
                                                 size="sm"
-                                                className="h-8 px-3 text-xs bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/30"
+                                                className="h-8 px-3 text-xs bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300 hover:bg-orange-100 dark:hover:bg-orange-900/30"
                                                 onClick={(e) => {
                                                     e.stopPropagation()
                                                     if (onPractice) {
@@ -372,8 +372,8 @@ export function JobCard({
 
             {/* Applied Banner */}
             {job.hasApplied && (
-                <div className="absolute bottom-0 left-0 right-0 bg-blue-50 dark:bg-blue-900/20 px-5 py-2 border-t border-blue-100 dark:border-blue-900/30">
-                    <span className="text-sm text-blue-600 dark:text-blue-400 font-medium flex items-center gap-2">
+                <div className="absolute bottom-0 left-0 right-0 bg-orange-50 dark:bg-orange-900/20 px-5 py-2 border-t border-orange-100 dark:border-orange-900/30">
+                    <span className="text-sm text-orange-600 dark:text-orange-400 font-medium flex items-center gap-2">
                         <CheckCircle2 className="w-4 h-4" />
                         You&apos;ve applied to this job
                     </span>

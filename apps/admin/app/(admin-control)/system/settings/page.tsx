@@ -234,11 +234,11 @@ export default function SystemSettingsPage() {
                     </div>
                 )
             }
-            <div className="mt-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6">
-                <h3 className="text-sm font-semibold text-blue-900 dark:text-blue-200 mb-2">
+            <div className="mt-8 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-6">
+                <h3 className="text-sm font-semibold text-orange-900 dark:text-orange-200 mb-2">
                     ℹ️ Important Notes
                 </h3>
-                <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
+                <ul className="text-sm text-orange-800 dark:text-orange-300 space-y-1">
                     <li>• Changes take effect immediately across the platform</li>
                     <li>• Maintenance mode will show a maintenance page to all users</li>
                     <li>• Credit rewards apply to new actions after the change</li>

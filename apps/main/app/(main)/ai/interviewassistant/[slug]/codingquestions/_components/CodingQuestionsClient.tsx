@@ -251,7 +251,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 
 	// const getDifficultyColor = (difficulty: string) => {
 	// 	switch (difficulty) {
-	// 		case "Easy": return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 hover:text-white"
+	// 		case "Easy": return "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 hover:text-white"
 	// 		case "Medium": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 hover:text-white"
 	// 		case "Hard": return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 hover:text-white"
 	// 		default: return "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400 hover:text-white"
@@ -357,7 +357,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 							</div>
 							<div className="w-full flex-1 flex items-center gap-2 overflow-auto">
 								<div className="flex items-center gap-2 shrink-0">
-									<Target className="h-4 w-4 text-blue-600" />
+									<Target className="h-4 w-4 text-orange-600" />
 									<span className="font-medium text-sm">Problems</span>
 								</div>
 								<div className="w-full flex gap-2">
@@ -468,7 +468,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 									runResults.length > 0 && (
 										<div className="mt-6" ref={testResultsRef}>
 											<h3 className="font-semibold mb-3 text-gray-900 dark:text-gray-100 flex items-center gap-2">
-												<Play className="h-4 w-4 text-blue-500" />
+												<Play className="h-4 w-4 text-orange-500" />
 												Test Results
 												<Badge variant="outline" className="text-xs ml-2">
 													{runResults.filter(r => r.passed).length}/{runResults.length} passed
@@ -478,7 +478,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 												{
 													runResults.map((result, index) => (
 														<div key={index} className={`text-xs p-3 rounded border ${result.passed
-															? 'bg-green-50 border-green-200 text-green-800 dark:bg-green-900/20 dark:border-green-800 dark:text-green-400'
+															? 'bg-amber-50 border-amber-200 text-amber-800 dark:bg-amber-900/20 dark:border-amber-800 dark:text-amber-400'
 															: 'bg-red-50 border-red-200 text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400'
 															}`}>
 															<div className="flex items-center gap-2 mb-1">
@@ -510,17 +510,17 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 								{
 									generatedAnswer ? (
 										<div className="space-y-6">
-											<div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+											<div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-6">
 												<div className="flex items-center gap-3">
-													<CheckCircle className="h-6 w-6 text-green-600" />
-													<h3 className="font-semibold text-lg text-green-800 dark:text-green-200">
+													<CheckCircle className="h-6 w-6 text-amber-600" />
+													<h3 className="font-semibold text-lg text-amber-800 dark:text-amber-200">
 														Expert Solution Available
 													</h3>
 													<Badge variant="outline" className="text-xs">
 														{selectedLanguage}
 													</Badge>
 												</div>
-												<p className="text-sm text-green-700 dark:text-green-300 mt-2">
+												<p className="text-sm text-amber-700 dark:text-amber-300 mt-2">
 													Generated solution with detailed explanation and analysis
 												</p>
 											</div>
@@ -592,7 +592,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 																{
 																	generatedAnswer.answer.keyPoints.map((point: string, index: number) => (
 																		<li key={index} className="flex items-start gap-2">
-																			<span className="text-blue-500 font-semibold mt-1">•</span>
+																			<span className="text-orange-500 font-semibold mt-1">•</span>
 																			<span className="text-gray-700 dark:text-gray-300">{point}</span>
 																		</li>
 																	))
@@ -652,7 +652,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 																<div className="flex items-center gap-2">
 																	{
 																		submission.passed ? (
-																			<CheckCircle className="h-4 w-4 text-green-500" />
+																			<CheckCircle className="h-4 w-4 text-amber-500" />
 																		) : (
 																			<XCircle className="h-4 w-4 text-red-500" />
 																		)
@@ -694,12 +694,12 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 													<div className="flex items-center gap-2">
 														{
 															submissionResults.passed ? (
-																<CheckCircle className="h-4 w-4 text-green-500" />
+																<CheckCircle className="h-4 w-4 text-amber-500" />
 															) : (
 																<XCircle className="h-4 w-4 text-red-500" />
 															)
 														}
-														<span className={submissionResults.passed ? "text-green-600" : "text-red-600"}>
+														<span className={submissionResults.passed ? "text-amber-600" : "text-red-600"}>
 															{submissionResults.passed ? "Accepted" : "Wrong Answer"}
 														</span>
 													</div>

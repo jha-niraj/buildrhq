@@ -127,7 +127,7 @@ export function FeatureSuggestionsList({
                 )
             case "ENROLLED_USER":
                 return (
-                    <Badge variant="outline" className="gap-1 bg-blue-500/10 text-blue-500 border-blue-500/20">
+                    <Badge variant="outline" className="gap-1 bg-orange-500/10 text-orange-500 border-orange-500/20">
                         <Users2 className="h-3 w-3" />
                         Enrolled
                     </Badge>
@@ -145,11 +145,11 @@ export function FeatureSuggestionsList({
     const getStatusColor = (status: string) => {
         switch (status) {
             case "APPROVED":
-                return "bg-green-500/10 text-green-500 border-green-500/20"
+                return "bg-amber-500/10 text-amber-500 border-amber-500/20"
             case "REJECTED":
                 return "bg-red-500/10 text-red-500 border-red-500/20"
             case "IMPLEMENTED":
-                return "bg-blue-500/10 text-blue-500 border-blue-500/20"
+                return "bg-orange-500/10 text-orange-500 border-orange-500/20"
             case "UNDER_REVIEW":
                 return "bg-yellow-500/10 text-yellow-500 border-yellow-500/20"
             default:
@@ -160,11 +160,11 @@ export function FeatureSuggestionsList({
     const getTypeColor = (type: string) => {
         switch (type) {
             case "FEATURE":
-                return "bg-purple-500/10 text-purple-500"
+                return "bg-orange-500/10 text-orange-500"
             case "BUG_FIX":
                 return "bg-red-500/10 text-red-500"
             case "IMPROVEMENT":
-                return "bg-blue-500/10 text-blue-500"
+                return "bg-orange-500/10 text-orange-500"
             case "UI_UX":
                 return "bg-pink-500/10 text-pink-500"
             case "PERFORMANCE":
@@ -361,7 +361,7 @@ export function FeatureSuggestionsList({
                                                             </Button>
                                                         </div>
                                                     ) : (
-                                                        <div className="flex items-center gap-2 text-sm text-green-500 bg-green-500/10 p-3 rounded-lg">
+                                                        <div className="flex items-center gap-2 text-sm text-amber-500 bg-amber-500/10 p-3 rounded-lg">
                                                             <CheckCircle className="h-4 w-4" />
                                                             This task is already in your list
                                                         </div>
@@ -396,7 +396,7 @@ export function FeatureSuggestionsList({
                                                                 Add to My Tasks
                                                             </Button>
                                                         ) : (
-                                                            <div className="flex items-center gap-2 text-sm text-green-500 bg-green-500/10 p-3 rounded-lg">
+                                                            <div className="flex items-center gap-2 text-sm text-amber-500 bg-amber-500/10 p-3 rounded-lg">
                                                                 <CheckCircle className="h-4 w-4" />
                                                                 This task is already in your list
                                                             </div>
@@ -433,7 +433,7 @@ export function FeatureSuggestionsList({
                                                             </Button>
                                                         </div>
                                                     ) : (
-                                                        <div className="flex items-center gap-2 text-sm text-green-500 bg-green-500/10 p-3 rounded-lg">
+                                                        <div className="flex items-center gap-2 text-sm text-amber-500 bg-amber-500/10 p-3 rounded-lg">
                                                             <CheckCircle className="h-4 w-4" />
                                                             This task is already in your list
                                                         </div>
@@ -452,7 +452,7 @@ export function FeatureSuggestionsList({
                                     {
                                         !isEnrolled && !isCreator && (selectedSuggestion.suggestedBy === "CREATOR" || selectedSuggestion.suggestedBy === "ENROLLED_USER") && (
                                             <div className="pt-4 border-t">
-                                                <div className="flex items-start gap-2 text-sm text-blue-500 bg-blue-500/10 p-3 rounded-lg">
+                                                <div className="flex items-start gap-2 text-sm text-orange-500 bg-orange-500/10 p-3 rounded-lg">
                                                     <Lightbulb className="h-4 w-4 mt-0.5" />
                                                     <div>
                                                         <p className="font-medium">Enroll to access this task</p>

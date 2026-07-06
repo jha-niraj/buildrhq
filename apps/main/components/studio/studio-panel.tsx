@@ -186,7 +186,7 @@ export function StudioPanel({
                     >
                         <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-200 dark:border-neutral-800 shrink-0">
                             <div className="flex items-center gap-2">
-                                <PenLine className="w-4 h-4 text-purple-500" />
+                                <PenLine className="w-4 h-4 text-orange-500" />
                                 <span className="text-sm font-semibold">Studio</span>
                             </div>
                             <div className="flex items-center gap-1">
@@ -225,7 +225,7 @@ export function StudioPanel({
                                     <Button
                                         onClick={handleCreateStudio}
                                         disabled={isCreatingStudio}
-                                        className="bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700"
+                                        className="bg-gradient-to-r from-orange-600 to-orange-600 text-white hover:from-orange-700 hover:to-orange-700"
                                     >
                                         {
                                             isCreatingStudio ? (

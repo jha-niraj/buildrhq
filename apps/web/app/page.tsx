@@ -6,7 +6,6 @@ import StudioSection from "@/components/landingpage/studio-section";
 import FeaturesSection from "@/components/landingpage/featuressection";
 import AIToolsSection from "@/components/landingpage/aitoolssection";
 import ProjectsSection from "@/components/landingpage/projects-section";
-import OpenSourceSection from "@/components/landingpage/opensource";
 import AssessmentsSection from "@/components/landingpage/assessments-section";
 import CreditsSection from "@/components/landingpage/credits-section";
 import Testimonials from "@/components/landingpage/testimonials-section";
@@ -44,9 +43,6 @@ export default function LandingPage() {
                     <AIToolsSection />
                 </section>
                 <ProjectsSection />
-                <section id="opensource">
-                    <OpenSourceSection />
-                </section>
                 <section id="assessments">
                     <AssessmentsSection />
                 </section>

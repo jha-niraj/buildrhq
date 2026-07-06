@@ -18,9 +18,9 @@ type AdminRole = "SUPER_ADMIN" | "CONTENT_ADMIN" | "FINANCE_ADMIN" | "COMMUNITY_
 
 const roleColors: Record<AdminRole, string> = {
     SUPER_ADMIN: "bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400",
-    CONTENT_ADMIN: "bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400",
-    FINANCE_ADMIN: "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-    COMMUNITY_ADMIN: "bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400",
+    CONTENT_ADMIN: "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400",
+    FINANCE_ADMIN: "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400",
+    COMMUNITY_ADMIN: "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400",
     MODULE_MANAGER: "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400",
     VIEWER: "bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400",
 }
@@ -230,12 +230,12 @@ export default function AdminManagementPage() {
                                                             <span className={cn(
                                                                 "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium",
                                                                 admin.status === "ACTIVE"
-                                                                    ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                                                                    ? "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400"
                                                                     : "bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400"
                                                             )}>
                                                                 <span className={cn(
                                                                     "w-1.5 h-1.5 rounded-full mr-1.5",
-                                                                    admin.status === "ACTIVE" ? "bg-emerald-500" : "bg-neutral-400"
+                                                                    admin.status === "ACTIVE" ? "bg-amber-500" : "bg-neutral-400"
                                                                 )} />
                                                                 {admin.status}
                                                             </span>
@@ -329,7 +329,7 @@ export default function AdminManagementPage() {
                                                                 "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium",
                                                                 {
                                                                     "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400": invite.status === "PENDING",
-                                                                    "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400": invite.status === "USED",
+                                                                    "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400": invite.status === "USED",
                                                                     "bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400": invite.status === "EXPIRED",
                                                                 }
                                                             )}>

@@ -93,7 +93,7 @@ export function ImportClient() {
             {/* Hero */}
             <div className="mb-8">
                 <div className="flex items-center gap-3 mb-2">
-                    <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center">
+                    <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
                         <Sparkles className="w-5 h-5 text-white" />
                     </div>
                     <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">AI Profile Import</h1>
@@ -103,7 +103,7 @@ export function ImportClient() {
                     No manual entry required.
                 </p>
                 <div className="flex gap-2 mt-3">
-                    <Badge variant="outline" className="text-xs gap-1 text-blue-600 border-blue-200">
+                    <Badge variant="outline" className="text-xs gap-1 text-orange-600 border-orange-200">
                         <Linkedin className="w-3 h-3" /> LinkedIn
                     </Badge>
                     <Badge variant="outline" className="text-xs gap-1 text-neutral-700 dark:text-neutral-300">
@@ -117,8 +117,8 @@ export function ImportClient() {
                 /* ── Loading state ── */
                 <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-10 text-center space-y-6">
                     <div className="flex justify-center">
-                        <div className="h-16 w-16 rounded-full bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/30 dark:to-indigo-900/30 flex items-center justify-center">
-                            <Loader2 className="w-8 h-8 text-violet-600 dark:text-violet-400 animate-spin" />
+                        <div className="h-16 w-16 rounded-full bg-gradient-to-br from-orange-100 to-orange-100 dark:from-orange-900/30 dark:to-orange-900/30 flex items-center justify-center">
+                            <Loader2 className="w-8 h-8 text-orange-600 dark:text-orange-400 animate-spin" />
                         </div>
                     </div>
                     <div>
@@ -130,7 +130,7 @@ export function ImportClient() {
                     {/* Progress bar */}
                     <div className="w-full bg-neutral-100 dark:bg-neutral-800 rounded-full h-1.5 overflow-hidden">
                         <div
-                            className="h-full bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full transition-all duration-1000"
+                            className="h-full bg-gradient-to-r from-orange-500 to-orange-500 rounded-full transition-all duration-1000"
                             style={{ width: `${Math.round(((stageIdx + 1) / STAGES.length) * 100)}%` }}
                         />
                     </div>
@@ -138,9 +138,9 @@ export function ImportClient() {
                         {STAGES.map((s, i) => (
                             <div key={s} className={`flex items-center gap-2 text-xs transition-colors ${i <= stageIdx ? "text-neutral-700 dark:text-neutral-300" : "text-neutral-300 dark:text-neutral-600"}`}>
                                 {i < stageIdx ? (
-                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                                 ) : i === stageIdx ? (
-                                    <Loader2 className="w-3.5 h-3.5 text-violet-500 animate-spin shrink-0" />
+                                    <Loader2 className="w-3.5 h-3.5 text-orange-500 animate-spin shrink-0" />
                                 ) : (
                                     <div className="w-3.5 h-3.5 rounded-full border border-neutral-200 dark:border-neutral-700 shrink-0" />
                                 )}
@@ -158,7 +158,7 @@ export function ImportClient() {
 
                         <div className="space-y-1.5">
                             <Label className="text-sm font-medium flex items-center gap-1.5">
-                                <Linkedin className="w-3.5 h-3.5 text-blue-600" />
+                                <Linkedin className="w-3.5 h-3.5 text-orange-600" />
                                 LinkedIn Profile URL
                                 <span className="text-red-500 text-xs">*</span>
                             </Label>
@@ -199,7 +199,7 @@ export function ImportClient() {
 
                         <div className="space-y-1.5">
                             <Label className="text-sm font-medium flex items-center gap-1.5 text-neutral-600 dark:text-neutral-400">
-                                <Twitter className="w-3.5 h-3.5 text-sky-500" />
+                                <Twitter className="w-3.5 h-3.5 text-orange-500" />
                                 Twitter / X Handle
                             </Label>
                             <div className="flex items-center">
@@ -217,7 +217,7 @@ export function ImportClient() {
 
                         <div className="space-y-1.5">
                             <Label className="text-sm font-medium flex items-center gap-1.5 text-neutral-600 dark:text-neutral-400">
-                                <Globe className="w-3.5 h-3.5 text-emerald-500" />
+                                <Globe className="w-3.5 h-3.5 text-amber-500" />
                                 Portfolio URL
                             </Label>
                             <Input
@@ -238,7 +238,7 @@ export function ImportClient() {
                                 "Technical skills", "Education", "Professional summary",
                             ].map((item) => (
                                 <div key={item} className="flex items-center gap-1.5 text-xs text-neutral-600 dark:text-neutral-400">
-                                    <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0" />
+                                    <CheckCircle2 className="w-3 h-3 text-amber-500 shrink-0" />
                                     {item}
                                 </div>
                             ))}

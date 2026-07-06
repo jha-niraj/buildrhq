@@ -22,12 +22,12 @@ export function DocumentStep({ step }: DocumentStepProps) {
   const getDocTypeIcon = (type?: string) => {
     switch (type || metadata.docType) {
       case "documentation":
-        return <BookOpen className="h-6 w-6 text-blue-600 dark:text-blue-400" />;
+        return <BookOpen className="h-6 w-6 text-orange-600 dark:text-orange-400" />;
       case "tutorial":
-        return <GraduationCap className="h-6 w-6 text-blue-600 dark:text-blue-400" />;
+        return <GraduationCap className="h-6 w-6 text-orange-600 dark:text-orange-400" />;
       case "article":
       default:
-        return <FileText className="h-6 w-6 text-blue-600 dark:text-blue-400" />;
+        return <FileText className="h-6 w-6 text-orange-600 dark:text-orange-400" />;
     }
   };
 
@@ -76,15 +76,15 @@ export function DocumentStep({ step }: DocumentStepProps) {
       {docs.map((doc, i) => (
         <div
           key={i}
-          className="rounded-2xl overflow-hidden bg-white dark:bg-neutral-900 shadow-sm border border-neutral-200 dark:border-neutral-800 hover:border-blue-300 dark:hover:border-blue-700 transition-colors group"
+          className="rounded-2xl overflow-hidden bg-white dark:bg-neutral-900 shadow-sm border border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-colors group"
         >
           <div className="p-6">
             <div className="flex items-start gap-4">
-              <div className="h-12 w-12 rounded-xl bg-blue-100 dark:bg-blue-950/30 flex items-center justify-center shrink-0">
+              <div className="h-12 w-12 rounded-xl bg-orange-100 dark:bg-orange-950/30 flex items-center justify-center shrink-0">
                 {getDocTypeIcon(doc.type)}
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-neutral-900 dark:text-white mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                <h3 className="font-semibold text-neutral-900 dark:text-white mb-1 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                   {doc.title || "Document"}
                 </h3>
                 {doc.description && (
@@ -93,7 +93,7 @@ export function DocumentStep({ step }: DocumentStepProps) {
                   </p>
                 )}
                 <div className="flex items-center gap-3 flex-wrap">
-                  <span className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-blue-100 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-full bg-orange-100 dark:bg-orange-950/30 text-orange-700 dark:text-orange-300">
                     {getDocTypeLabel(doc.type)}
                   </span>
                   {doc.url && (

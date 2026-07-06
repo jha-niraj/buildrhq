@@ -142,7 +142,7 @@ export function CreatorEarningsSheet({
                                                     key={e.id}
                                                     className="flex items-center justify-between p-2 rounded border border-neutral-200 dark:border-neutral-800 text-sm"
                                                 >
-                                                    <span className="text-emerald-600 dark:text-emerald-400">+{e.amount} credits</span>
+                                                    <span className="text-amber-600 dark:text-amber-400">+{e.amount} credits</span>
                                                     <span className="text-neutral-500 text-xs">
                                                         {new Date(e.createdAt).toLocaleDateString()}
                                                     </span>

@@ -104,7 +104,7 @@ const statusConfig: Record<string, { color: string; icon: typeof CheckCircle2; l
     PLANNED: defaultStatusConfig,
 };
 
-const defaultVisibilityConfig = { icon: Globe, label: "Public", color: "text-green-600" };
+const defaultVisibilityConfig = { icon: Globe, label: "Public", color: "text-amber-600" };
 
 const visibilityConfig: Record<string, { icon: typeof Globe; label: string; color: string }> = {
     PUBLIC: defaultVisibilityConfig,

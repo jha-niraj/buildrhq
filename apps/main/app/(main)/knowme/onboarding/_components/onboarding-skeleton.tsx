@@ -8,7 +8,7 @@ export default function OnboardingSkeleton() {
             <div className="w-full max-w-2xl space-y-8">
                 <div className="w-full h-2 bg-slate-200 dark:bg-neutral-800 rounded-full overflow-hidden">
                     <motion.div
-                        className="h-full bg-gradient-to-r from-blue-400 to-purple-400"
+                        className="h-full bg-gradient-to-r from-orange-400 to-orange-400"
                         initial={{ width: "0%" }}
                         animate={{ width: "40%" }}
                         transition={{ duration: 0.5 }}

@@ -82,7 +82,7 @@ export function QuizStep({ step, quizData }: QuizStepProps) {
 				animate={{ opacity: 1, scale: 1 }}
 				className="py-8"
 			>
-				<div className="rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20 p-8">
+				<div className="rounded-2xl bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-950/20 dark:to-pink-950/20 p-8">
 					<div className="text-center">
 						<motion.div
 							initial={{ scale: 0 }}
@@ -91,7 +91,7 @@ export function QuizStep({ step, quizData }: QuizStepProps) {
 							className={cn(
 								"h-20 w-20 rounded-full mx-auto mb-6 flex items-center justify-center",
 								percentage >= 80
-									? "bg-green-500"
+									? "bg-amber-500"
 									: percentage >= 50
 										? "bg-amber-500"
 										: "bg-red-500"
@@ -109,7 +109,7 @@ export function QuizStep({ step, quizData }: QuizStepProps) {
 
 						<div className="flex items-center justify-center gap-8 mb-8">
 							<div className="text-center">
-								<p className="text-4xl font-bold text-purple-600 dark:text-purple-400">
+								<p className="text-4xl font-bold text-orange-600 dark:text-orange-400">
 									{score}
 								</p>
 								<p className="text-sm text-neutral-500">Correct</p>
@@ -147,9 +147,9 @@ export function QuizStep({ step, quizData }: QuizStepProps) {
 			className="py-8"
 		>
 			<div className="rounded-2xl overflow-hidden bg-white dark:bg-neutral-900 shadow-sm">
-				<div className="px-6 py-4 bg-purple-50 dark:bg-purple-950/20 border-b border-purple-100 dark:border-purple-900/30">
+				<div className="px-6 py-4 bg-orange-50 dark:bg-orange-950/20 border-b border-orange-100 dark:border-orange-900/30">
 					<div className="flex items-center gap-3">
-						<div className="h-10 w-10 rounded-xl bg-purple-500 flex items-center justify-center">
+						<div className="h-10 w-10 rounded-xl bg-orange-500 flex items-center justify-center">
 							<FileQuestion className="h-5 w-5 text-white" />
 						</div>
 						<div>

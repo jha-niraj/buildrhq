@@ -33,8 +33,8 @@ const features: Feature[] = [
         description: "Build real-world projects with guidance",
         icon: FolderKanban,
         href: "/projects",
-        color: "text-blue-500",
-        bgColor: "bg-blue-500/10",
+        color: "text-orange-500",
+        bgColor: "bg-orange-500/10",
         status: "available",
     },
     {
@@ -51,8 +51,8 @@ const features: Feature[] = [
         description: "AI-powered interview preparation",
         icon: Briefcase,
         href: "/ai/jobinterviewassistant",
-        color: "text-violet-500",
-        bgColor: "bg-violet-500/10",
+        color: "text-orange-500",
+        bgColor: "bg-orange-500/10",
         status: "available",
     },
     {
@@ -69,8 +69,8 @@ const features: Feature[] = [
         description: "Learn Git & contribute to projects",
         icon: BookOpen,
         href: "/opensource/learn",
-        color: "text-emerald-500",
-        bgColor: "bg-emerald-500/10",
+        color: "text-amber-500",
+        bgColor: "bg-amber-500/10",
         status: "available",
     },
     {
@@ -78,8 +78,8 @@ const features: Feature[] = [
         description: "Get certified in Git",
         icon: ClipboardCheck,
         href: "/opensource/exam",
-        color: "text-cyan-500",
-        bgColor: "bg-cyan-500/10",
+        color: "text-amber-500",
+        bgColor: "bg-amber-500/10",
         status: "available",
     },
     {
@@ -87,8 +87,8 @@ const features: Feature[] = [
         description: "AI portfolio assistant",
         icon: Bot,
         href: "/knowme",
-        color: "text-indigo-500",
-        bgColor: "bg-indigo-500/10",
+        color: "text-orange-500",
+        bgColor: "bg-orange-500/10",
         status: "available",
     },
     {
@@ -96,8 +96,8 @@ const features: Feature[] = [
         description: "AI notes & dashboards",
         icon: Layout,
         href: "#",
-        color: "text-purple-500",
-        bgColor: "bg-purple-500/10",
+        color: "text-orange-500",
+        bgColor: "bg-orange-500/10",
         status: "locked",
     },
     {
@@ -173,7 +173,7 @@ export default function FeatureDiscovery({
                 <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                            <div className="p-2 rounded-lg bg-gradient-to-br from-primary/10 to-purple-500/10">
+                            <div className="p-2 rounded-lg bg-gradient-to-br from-primary/10 to-orange-500/10">
                                 <Sparkles className="h-4 w-4 text-primary" />
                             </div>
                             <CardTitle className="text-lg">Discover Features</CardTitle>

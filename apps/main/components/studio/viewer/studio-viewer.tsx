@@ -37,10 +37,10 @@ interface StudioViewerProps {
 function PendingStepSkeleton({ type, prompt }: { type: string; prompt: string }) {
 	const getIcon = () => {
 		switch (type) {
-			case "EXPLANATION": return <FileText className="h-5 w-5 text-purple-500" />;
-			case "QUIZ": return <FileQuestion className="h-5 w-5 text-blue-500" />;
+			case "EXPLANATION": return <FileText className="h-5 w-5 text-orange-500" />;
+			case "QUIZ": return <FileQuestion className="h-5 w-5 text-orange-500" />;
 			case "NOTE": return <StickyNote className="h-5 w-5 text-amber-500" />;
-			default: return <Sparkles className="h-5 w-5 text-purple-500" />;
+			default: return <Sparkles className="h-5 w-5 text-orange-500" />;
 		}
 	};
 
@@ -60,7 +60,7 @@ function PendingStepSkeleton({ type, prompt }: { type: string; prompt: string })
 			exit={{ opacity: 0, y: -10 }}
 			className="py-6"
 		>
-			<div className="rounded-2xl border border-purple-200 dark:border-purple-800/40 bg-gradient-to-br from-purple-50/80 to-pink-50/50 dark:from-purple-950/20 dark:to-pink-950/10 p-6 overflow-hidden relative">
+			<div className="rounded-2xl border border-orange-200 dark:border-orange-800/40 bg-gradient-to-br from-orange-50/80 to-pink-50/50 dark:from-orange-950/20 dark:to-pink-950/10 p-6 overflow-hidden relative">
 				{/* Animated shimmer overlay */}
 				<motion.div
 					className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 dark:via-white/5 to-transparent"
@@ -79,7 +79,7 @@ function PendingStepSkeleton({ type, prompt }: { type: string; prompt: string })
 								<span className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">
 									{getLabel()}...
 								</span>
-								<Loader2 className="h-4 w-4 animate-spin text-purple-500" />
+								<Loader2 className="h-4 w-4 animate-spin text-orange-500" />
 							</div>
 							<p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 line-clamp-1">
 								&quot;{prompt}&quot;
@@ -293,7 +293,7 @@ export function StudioViewer({
 	if (initialLoading) {
 		return (
 			<div className="flex items-center justify-center py-20">
-				<Loader2 className="h-8 w-8 animate-spin text-purple-500" />
+				<Loader2 className="h-8 w-8 animate-spin text-orange-500" />
 			</div>
 		);
 	}
@@ -303,7 +303,7 @@ export function StudioViewer({
 	if (hasNoContent) {
 		return (
 			<div className="flex flex-col items-center justify-center py-20 text-center">
-				<div className="h-20 w-20 rounded-full bg-purple-100 dark:bg-purple-950/30 flex items-center justify-center mb-4">
+				<div className="h-20 w-20 rounded-full bg-orange-100 dark:bg-orange-950/30 flex items-center justify-center mb-4">
 					<span className="text-4xl">📝</span>
 				</div>
 				<h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">

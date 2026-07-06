@@ -172,18 +172,18 @@ export function ProfileStrengthSheet({
 										className={cn(
 											"flex items-center gap-4 p-4 rounded-xl border transition-colors",
 											item.completed
-												? "bg-green-500/5 border-green-500/20"
+												? "bg-amber-500/5 border-amber-500/20"
 												: "bg-muted/30 border-border hover:bg-muted/50"
 										)}
 									>
 										<div
 											className={cn(
 												"w-10 h-10 rounded-lg flex items-center justify-center shrink-0",
-												item.completed ? "bg-green-500/20" : "bg-muted"
+												item.completed ? "bg-amber-500/20" : "bg-muted"
 											)}
 										>
 											{item.completed ? (
-												<Check className="w-5 h-5 text-green-600" />
+												<Check className="w-5 h-5 text-amber-600" />
 											) : (
 												<Icon className="w-5 h-5 text-muted-foreground" />
 											)}

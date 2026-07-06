@@ -295,11 +295,11 @@ export function CompaniesContent({
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-2">
-                                                <h3 className="font-semibold text-neutral-900 dark:text-white truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                                <h3 className="font-semibold text-neutral-900 dark:text-white truncate group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                                                     {company.name}
                                                 </h3>
                                                 {company.verificationStatus === "VERIFIED" && (
-                                                    <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0" />
+                                                    <CheckCircle2 className="w-4 h-4 text-orange-500 shrink-0" />
                                                 )}
                                             </div>
                                             {company.industry && (
@@ -323,7 +323,7 @@ export function CompaniesContent({
 
                                     {company.hasTransparentProcess && (
                                         <div className="flex items-center justify-between mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800">
-                                            <div className="flex items-center gap-2 text-xs text-green-600 dark:text-green-400">
+                                            <div className="flex items-center gap-2 text-xs text-amber-600 dark:text-amber-400">
                                                 <CheckCircle2 className="w-3.5 h-3.5" />
                                                 <span>Transparent Interview Process</span>
                                             </div>
@@ -395,11 +395,11 @@ export function CompaniesContent({
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center gap-2">
-                                                    <h3 className="font-semibold text-neutral-900 dark:text-white truncate group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                                    <h3 className="font-semibold text-neutral-900 dark:text-white truncate group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                                                         {company.name}
                                                     </h3>
                                                     {company.verificationStatus === "VERIFIED" && (
-                                                        <CheckCircle2 className="w-4 h-4 text-blue-500 shrink-0" />
+                                                        <CheckCircle2 className="w-4 h-4 text-orange-500 shrink-0" />
                                                     )}
                                                 </div>
                                                 {company.industry && (
@@ -435,7 +435,7 @@ export function CompaniesContent({
 
                                         {company.hasTransparentProcess && (
                                             <div className="flex items-center justify-between mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800">
-                                                <div className="flex items-center gap-2 text-xs text-green-600 dark:text-green-400">
+                                                <div className="flex items-center gap-2 text-xs text-amber-600 dark:text-amber-400">
                                                     <CheckCircle2 className="w-3.5 h-3.5" />
                                                     <span>Transparent Interview Process</span>
                                                 </div>

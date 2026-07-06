@@ -123,7 +123,7 @@ function PracticeHeader({ goal, onOpenEarnings, onOpenNotes }: { goal: Goal; onO
                     </Link>
                     <div>
                         <h1 className="text-base font-semibold text-neutral-900 dark:text-white flex items-center gap-2">
-                            <Target className="w-4 h-4 text-violet-500" />
+                            <Target className="w-4 h-4 text-orange-500" />
                             {goal.title}
                         </h1>
                         <p className="text-xs text-neutral-500 truncate max-w-[200px]">
@@ -138,7 +138,7 @@ function PracticeHeader({ goal, onOpenEarnings, onOpenNotes }: { goal: Goal; onO
                             <Button
                                 variant="outline"
                                 size="sm"
-                                className="h-8 text-xs gap-1.5 border-violet-200 dark:border-violet-800 text-violet-700 dark:text-violet-300 hover:bg-violet-50 dark:hover:bg-violet-950/30"
+                                className="h-8 text-xs gap-1.5 border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300 hover:bg-orange-50 dark:hover:bg-orange-950/30"
                                 onClick={onOpenNotes}
                             >
                                 <NotebookPen className="w-3 h-3" />
@@ -215,7 +215,7 @@ function SubGoalItem({
             className={cn(
                 "group flex items-start gap-3 p-3 rounded-lg cursor-pointer transition-all",
                 isSelected
-                    ? "bg-violet-50 dark:bg-violet-950/30 border border-violet-200 dark:border-violet-800"
+                    ? "bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800"
                     : "hover:bg-neutral-50 dark:hover:bg-neutral-900 border border-transparent"
             )}
         >
@@ -225,11 +225,11 @@ function SubGoalItem({
             >
                 {
                     subGoal.status === 'COMPLETED' ? (
-                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <CheckCircle2 className="w-5 h-5 text-amber-500" />
                     ) : (
                         <Circle className={cn(
                             "w-5 h-5 transition-colors",
-                            isSelected ? "text-violet-400" : "text-neutral-300"
+                            isSelected ? "text-orange-400" : "text-neutral-300"
                         )} />
                     )
                 }
@@ -278,7 +278,7 @@ function SubGoalItem({
                     }
                     {
                         hasContent && subGoal.quizCompleted && (
-                            <Badge variant="secondary" className="text-[10px] h-4 px-1 bg-green-100 text-green-700">
+                            <Badge variant="secondary" className="text-[10px] h-4 px-1 bg-amber-100 text-amber-700">
                                 <Brain className="w-2 h-2 mr-1" />
                                 Quiz: {subGoal.quizScore}%
                             </Badge>
@@ -289,7 +289,7 @@ function SubGoalItem({
                             <Badge variant="secondary" className={cn(
                                 "text-[10px] h-4 px-1",
                                 subGoal.codingPassed
-                                    ? "bg-green-100 text-green-700"
+                                    ? "bg-amber-100 text-amber-700"
                                     : "bg-red-100 text-red-700"
                             )}>
                                 <Code2 className="w-2 h-2 mr-1" />
@@ -321,7 +321,7 @@ function SubGoalItem({
             </button>
             <ChevronRight className={cn(
                 "w-4 h-4 transition-colors",
-                isSelected ? "text-violet-500" : "text-neutral-300"
+                isSelected ? "text-orange-500" : "text-neutral-300"
             )} />
         </motion.div>
     )
@@ -336,13 +336,13 @@ function SessionStats({ session }: { session: DailySession | null }) {
 
     return (
         <div className="grid grid-cols-3 gap-2 p-3 border-b border-neutral-200 dark:border-neutral-800">
-            <div className="text-center p-2 rounded-lg bg-green-50 dark:bg-green-950/30">
-                <div className="text-lg font-bold text-green-600">{session.completedSubGoals}/{session.totalSubGoals}</div>
-                <div className="text-[10px] text-green-600/70">Tasks</div>
+            <div className="text-center p-2 rounded-lg bg-amber-50 dark:bg-amber-950/30">
+                <div className="text-lg font-bold text-amber-600">{session.completedSubGoals}/{session.totalSubGoals}</div>
+                <div className="text-[10px] text-amber-600/70">Tasks</div>
             </div>
-            <div className="text-center p-2 rounded-lg bg-purple-50 dark:bg-purple-950/30">
-                <div className="text-lg font-bold text-purple-600">{quizPercent}%</div>
-                <div className="text-[10px] text-purple-600/70">Quiz Score</div>
+            <div className="text-center p-2 rounded-lg bg-orange-50 dark:bg-orange-950/30">
+                <div className="text-lg font-bold text-orange-600">{quizPercent}%</div>
+                <div className="text-[10px] text-orange-600/70">Quiz Score</div>
             </div>
             <div className="text-center p-2 rounded-lg bg-orange-50 dark:bg-orange-950/30">
                 <div className="text-lg font-bold text-orange-600">{session.solvedCodingProblems}/{session.totalCodingProblems}</div>
@@ -579,12 +579,12 @@ export function DailyPracticeView({ goal, initialSession, allSessions: initialAl
                                                             <AccordionTrigger className="py-3 px-4 hover:no-underline hover:bg-neutral-100/80 dark:hover:bg-neutral-800/50 rounded-lg [&[data-state=open]]:rounded-b-none">
                                                                 <div className="flex items-center justify-between w-full gap-3">
                                                                     <div className="flex items-center gap-2.5">
-                                                                        <Calendar className="w-4 h-4 text-violet-500 shrink-0" />
+                                                                        <Calendar className="w-4 h-4 text-orange-500 shrink-0" />
                                                                         <span className="text-sm font-medium text-neutral-800 dark:text-neutral-200">
                                                                             {dateStr}
                                                                             {
                                                                                 isToday && (
-                                                                                    <span className="ml-1.5 text-xs font-normal text-violet-600 dark:text-violet-400">(Today)</span>
+                                                                                    <span className="ml-1.5 text-xs font-normal text-orange-600 dark:text-orange-400">(Today)</span>
                                                                                 )
                                                                             }
                                                                         </span>

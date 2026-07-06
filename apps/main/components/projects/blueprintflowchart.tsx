@@ -40,20 +40,20 @@ interface MilestoneNodeData {
 function TaskNode({ data }: { data: TaskNodeData }) {
     const statusColors = {
         NOT_STARTED: 'border-neutral-300 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900',
-        IN_PROGRESS: 'border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/30 ring-2 ring-blue-500/20',
-        COMPLETED: 'border-green-500 dark:border-green-400 bg-green-50 dark:bg-green-900/30',
+        IN_PROGRESS: 'border-orange-500 dark:border-orange-400 bg-orange-50 dark:bg-orange-900/30 ring-2 ring-orange-500/20',
+        COMPLETED: 'border-amber-500 dark:border-amber-400 bg-amber-50 dark:bg-amber-900/30',
     }
 
     const difficultyColors = {
-        BEGINNER: 'bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-400',
-        INTERMEDIATE: 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-400',
-        ADVANCED: 'bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-400',
+        BEGINNER: 'bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-400',
+        INTERMEDIATE: 'bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-400',
+        ADVANCED: 'bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-400',
     }
 
     const statusIcons = {
         NOT_STARTED: <div className="w-4 h-4 rounded-full border-2 border-neutral-400" />,
-        IN_PROGRESS: <Play className="w-4 h-4 text-blue-600 fill-blue-600" />,
-        COMPLETED: <CheckCircle2 className="w-4 h-4 text-green-600" />,
+        IN_PROGRESS: <Play className="w-4 h-4 text-orange-600 fill-orange-600" />,
+        COMPLETED: <CheckCircle2 className="w-4 h-4 text-amber-600" />,
     }
 
     return (
@@ -111,8 +111,8 @@ function TaskNode({ data }: { data: TaskNodeData }) {
 // Custom Milestone Node Component
 function MilestoneNode({ data }: { data: MilestoneNodeData }) {
     const typeStyles = {
-        start: 'bg-gradient-to-br from-green-500 to-emerald-600 text-white',
-        milestone: 'bg-gradient-to-br from-purple-500 to-indigo-600 text-white',
+        start: 'bg-gradient-to-br from-amber-500 to-amber-600 text-white',
+        milestone: 'bg-gradient-to-br from-orange-500 to-orange-600 text-white',
         end: 'bg-gradient-to-br from-amber-500 to-orange-600 text-white',
     }
 
@@ -368,7 +368,7 @@ export default function BlueprintFlowchart({
                 className="w-full px-6 py-4 flex items-center justify-between bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors"
             >
                 <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
+                    <div className="p-2 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white">
                         <Layers className="w-5 h-5" />
                     </div>
                     <div className="text-left">
@@ -384,7 +384,7 @@ export default function BlueprintFlowchart({
                     <div className="hidden sm:flex items-center gap-2">
                         <div className="w-32 h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
                             <motion.div
-                                className="h-full bg-gradient-to-r from-indigo-500 to-purple-600"
+                                className="h-full bg-gradient-to-r from-orange-500 to-orange-600"
                                 initial={{ width: 0 }}
                                 animate={{ width: `${progressPercentage}%` }}
                                 transition={{ duration: 0.8, ease: 'easeOut' }}

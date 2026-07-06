@@ -27,7 +27,7 @@ export function AnswerDialog({ open, onClose, onConfirm, userCredits }: AnswerDi
                     </DialogDescription>
                 </DialogHeader>
                 <div className="flex items-center justify-center p-4 bg-slate-50 dark:bg-slate-900 rounded-lg">
-                    <div className="flex items-center gap-2 text-2xl font-semibold text-emerald-600 dark:text-emerald-400">
+                    <div className="flex items-center gap-2 text-2xl font-semibold text-amber-600 dark:text-amber-400">
                         <Coins className="h-6 w-6" />
                         <span>{requiredCredits}</span>
                     </div>
@@ -37,7 +37,7 @@ export function AnswerDialog({ open, onClose, onConfirm, userCredits }: AnswerDi
                     <Button 
                         onClick={onConfirm}
                         disabled={userCredits < requiredCredits}
-                        className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+                        className="bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700"
                     >
                         View Answer
                     </Button>

@@ -309,7 +309,7 @@ export function Voice({
                     sessionStatus === 'idle' ? (
                         <Button
                             size="lg"
-                            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg"
+                            className="bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white px-8 py-6 text-lg"
                             onClick={startSession}
                         >
                             <Phone className="w-5 h-5 mr-2" />
@@ -354,7 +354,7 @@ export function Voice({
                                     {
                                         processingStatus === 'processing' && (
                                             <>
-                                                <Loader2 className="w-5 h-5 animate-spin text-blue-600" />
+                                                <Loader2 className="w-5 h-5 animate-spin text-orange-600" />
                                                 {stateLabels.processing.title}
                                             </>
                                         )
@@ -362,7 +362,7 @@ export function Voice({
                                     {
                                         processingStatus === 'success' && (
                                             <>
-                                                <CheckCircle2 className="w-5 h-5 text-green-600" />
+                                                <CheckCircle2 className="w-5 h-5 text-amber-600" />
                                                 {stateLabels.completed.title}
                                             </>
                                         )

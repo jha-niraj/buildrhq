@@ -10,14 +10,9 @@ import {
 } from "lucide-react"
 import { Badge } from "@repo/ui/components/ui/badge"
 import { Button } from "@repo/ui/components/ui/button"
-import {
-    Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription
-} from "@repo/ui/components/ui/dialog"
 import { useRouter } from "next/navigation"
 import toast from "@repo/ui/components/ui/sonner"
-import { saveFeatureNotifyInterest } from "@/actions/(main)/feature-notify.action"
 import { purchaseResumeTemplate } from "@/actions/(main)/ai/resume-template.action"
-import { FeatureNotifySection } from "@repo/db"
 
 // Icon map for serialized icon names from server
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -142,35 +137,7 @@ export function ResumeHubClient({
     templates: Template[]
 }) {
     const router = useRouter()
-    const [dialogOpen, setDialogOpen] = useState(false)
-    const [selectedTool, setSelectedTool] = useState<typeof upcomingTools[0] | null>(null)
-    const [notifyLoading, setNotifyLoading] = useState(false)
     const [purchaseLoading, setPurchaseLoading] = useState<string | null>(null)
-
-    const handleLockedClick = (tool: typeof upcomingTools[0]) => {
-        setSelectedTool(tool)
-        setDialogOpen(true)
-    }
-
-    const handleNotifyMe = async () => {
-        if (!selectedTool) return
-        setNotifyLoading(true)
-        const res = await saveFeatureNotifyInterest({
-            section: selectedTool.section as FeatureNotifySection,
-            title: selectedTool.name,
-            description: selectedTool.description,
-        })
-        setNotifyLoading(false)
-        if (res.success) {
-            setDialogOpen(false)
-            setSelectedTool(null)
-            toast.success("You'll be notified at launch!", {
-                description: "We'll send you an email when this tool is ready.",
-            })
-        } else {
-            toast.error(res.error || "Failed. Please try again.")
-        }
-    }
 
     const handleTemplateClick = async (template: Template) => {
         if (template.isDemo) {
@@ -210,7 +177,7 @@ export function ResumeHubClient({
         <div className="min-h-screen bg-white dark:bg-neutral-950 font-sans">
             <section className="relative pt-20 pb-8 lg:pt-28 lg:pb-14 overflow-hidden border-b border-neutral-100 dark:border-neutral-800">
                 <div className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-neutral-950 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
-                <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-indigo-500/10 opacity-50 blur-[100px] dark:bg-indigo-500/20" />
+                <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-orange-500/10 opacity-50 blur-[100px] dark:bg-orange-500/20" />
 
                 <div className="max-w-5xl mx-auto px-6 relative z-10">
                     <motion.div
@@ -220,7 +187,7 @@ export function ResumeHubClient({
                         transition={{ duration: 0.6 }}
                     >
                         <Badge variant="outline" className="px-4 py-1.5 rounded-full border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 font-medium text-sm">
-                            <Sparkles className="w-3.5 h-3.5 mr-2 text-indigo-500" />
+                            <Sparkles className="w-3.5 h-3.5 mr-2 text-orange-500" />
                             Career Toolkit
                         </Badge>
                         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-neutral-950 dark:text-white max-w-3xl">
@@ -290,7 +257,7 @@ export function ResumeHubClient({
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <h3 className="text-sm font-bold text-neutral-900 dark:text-white">{tool.name}</h3>
-                                                    <Badge className="bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400 text-[10px] h-4 px-1.5">
+                                                    <Badge className="bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400 text-[10px] h-4 px-1.5">
                                                         {tool.status}
                                                     </Badge>
                                                 </div>
@@ -320,7 +287,7 @@ export function ResumeHubClient({
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="mb-8">
                         <div className="flex items-center gap-2 mb-2">
-                            <LayoutTemplate className="w-5 h-5 text-indigo-500" />
+                            <LayoutTemplate className="w-5 h-5 text-orange-500" />
                             <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">Resume Templates</h2>
                         </div>
                         <p className="text-neutral-500 dark:text-neutral-400 font-light">
@@ -349,7 +316,7 @@ export function ResumeHubClient({
                                             <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
                                                 {
                                                     template.isPurchased ? (
-                                                        <Badge className="bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400 text-[10px]">
+                                                        <Badge className="bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400 text-[10px]">
                                                             <CheckCircle2 className="w-3 h-3 mr-1" />
                                                             Unlocked
                                                         </Badge>
@@ -435,8 +402,7 @@ export function ResumeHubClient({
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.3, delay: i * 0.05 }}
-                                    onClick={() => handleLockedClick(tool)}
-                                    className="cursor-pointer group"
+                                    className="group"
                                 >
                                     <div className="relative h-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden hover:shadow-md hover:shadow-neutral-900/5 dark:hover:shadow-black/20 transition-all duration-300">
                                         <div className="p-4">
@@ -491,53 +457,11 @@ export function ResumeHubClient({
                         </Button>
                     </div>
                     <div className="pt-3 flex items-center justify-center gap-6 text-xs text-neutral-400">
-                        <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-green-500" /> 100% Free</span>
-                        <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-green-500" /> No signup wall</span>
+                        <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500" /> 100% Free</span>
+                        <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500" /> No signup wall</span>
                     </div>
                 </div>
             </section>
-
-            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-                <DialogContent className="sm:max-w-[425px] bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
-                    <DialogHeader>
-                        <DialogTitle className="flex items-center gap-2 text-xl font-bold">
-                            <Lock className="w-5 h-5 text-neutral-400" />
-                            Coming Soon
-                        </DialogTitle>
-                        <DialogDescription>
-                            Get notified when this tool launches. We&apos;ll send you an email.
-                        </DialogDescription>
-                    </DialogHeader>
-                    <div className="py-4">
-                        {
-                            selectedTool && (
-                                <div className="rounded-xl bg-neutral-50 dark:bg-neutral-900 p-4 border border-neutral-100 dark:border-neutral-800 space-y-3">
-                                    <div className="flex items-center gap-3">
-                                        <div className="p-2 bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-                                            <selectedTool.icon className="w-5 h-5" />
-                                        </div>
-                                        <span className="font-semibold text-lg">{selectedTool.name}</span>
-                                    </div>
-                                    <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                                        {selectedTool.description}
-                                    </p>
-                                    <p className="text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 rounded-md px-3 py-2">
-                                        📊 {selectedTool.pain}
-                                    </p>
-                                </div>
-                            )
-                        }
-                    </div>
-                    <div className="flex gap-3">
-                        <Button onClick={() => setDialogOpen(false)} variant="outline" className="flex-1 rounded-full">
-                            Close
-                        </Button>
-                        <Button onClick={handleNotifyMe} disabled={notifyLoading} className="flex-1 rounded-full bg-neutral-900 dark:bg-white dark:text-neutral-900">
-                            {notifyLoading ? "Saving..." : "Notify Me"}
-                        </Button>
-                    </div>
-                </DialogContent>
-            </Dialog>
         </div>
     )
 }

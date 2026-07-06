@@ -282,15 +282,15 @@ function AIToolsSheet({ draftId, open, onClose, onContentUpdated }: {
                     {tailorResult && (
                         <div className="space-y-3 border-t border-neutral-200 dark:border-neutral-800 pt-4">
                             {tailorResult.summary && (
-                                <p className="text-xs text-neutral-600 dark:text-neutral-400 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-900/40">
+                                <p className="text-xs text-neutral-600 dark:text-neutral-400 bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3 border border-amber-200 dark:border-amber-900/40">
                                     ✓ {tailorResult.summary}
                                 </p>
                             )}
                             {tailorResult.keywordsAdded.length > 0 && (
                                 <div>
-                                    <p className="text-xs font-medium text-emerald-600 mb-1.5">Keywords added/emphasised</p>
+                                    <p className="text-xs font-medium text-amber-600 mb-1.5">Keywords added/emphasised</p>
                                     <div className="flex flex-wrap gap-1">
-                                        {tailorResult.keywordsAdded.map(k => <Badge key={k} className="text-[10px] bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-400">{k}</Badge>)}
+                                        {tailorResult.keywordsAdded.map(k => <Badge key={k} className="text-[10px] bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">{k}</Badge>)}
                                     </div>
                                 </div>
                             )}
@@ -314,7 +314,7 @@ function AIToolsSheet({ draftId, open, onClose, onContentUpdated }: {
                         <div className="space-y-3 border-t border-neutral-200 dark:border-neutral-800 pt-4">
                             <div className="flex items-center justify-between">
                                 <span className="text-sm font-semibold">ATS Score</span>
-                                <span className={cn('text-2xl font-black', scoreResult.score >= 80 ? 'text-emerald-600' : scoreResult.score >= 60 ? 'text-amber-600' : 'text-red-600')}>
+                                <span className={cn('text-2xl font-black', scoreResult.score >= 80 ? 'text-amber-600' : scoreResult.score >= 60 ? 'text-amber-600' : 'text-red-600')}>
                                     {scoreResult.score}/100
                                 </span>
                             </div>

@@ -31,13 +31,13 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
     <Link href={href}>
         <motion.div
             whileHover={{ y: -2 }}
-            className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-green-300 dark:hover:border-green-700 transition-all cursor-pointer group"
+            className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-amber-300 dark:hover:border-amber-700 transition-all cursor-pointer group"
         >
             <div className="flex items-start justify-between mb-4">
                 <div className="p-3 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 group-hover:scale-105 transition-transform">
                     {icon}
                 </div>
-                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors" />
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors" />
             </div>
             <div className="space-y-1">
                 <p className="text-3xl font-bold text-neutral-900 dark:text-white">{value}</p>
@@ -45,7 +45,7 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
             </div>
             {change && (
                 <div className={`mt-3 text-xs font-medium ${
-                    changeType === "positive" ? "text-green-600 dark:text-green-400" :
+                    changeType === "positive" ? "text-amber-600 dark:text-amber-400" :
                     changeType === "negative" ? "text-red-600 dark:text-red-400" :
                     "text-neutral-500"
                 }`}>
@@ -70,21 +70,21 @@ export function FinanceOfficerDashboard({ userName, stats }: FinanceOfficerDashb
             title: "Credit Balance", 
             value: stats?.currentBalance || 0, 
             change: "Available credits",
-            icon: <Coins className="w-5 h-5 text-green-600" />, 
+            icon: <Coins className="w-5 h-5 text-amber-600" />, 
             href: "/billing" 
         },
         { 
             title: "Total Spent", 
             value: stats?.totalSpent ? formatCurrency(stats.totalSpent) : "₹0", 
             change: "All time spending",
-            icon: <DollarSign className="w-5 h-5 text-green-600" />, 
+            icon: <DollarSign className="w-5 h-5 text-amber-600" />, 
             href: "/billing/history" 
         },
         { 
             title: "Monthly Spend", 
             value: stats?.monthlySpend ? formatCurrency(stats.monthlySpend) : "₹0", 
             change: "This month",
-            icon: <TrendingUp className="w-5 h-5 text-green-600" />, 
+            icon: <TrendingUp className="w-5 h-5 text-amber-600" />, 
             href: "/billing/analytics" 
         },
         { 
@@ -92,7 +92,7 @@ export function FinanceOfficerDashboard({ userName, stats }: FinanceOfficerDashb
             value: stats?.pendingInvoices || 0, 
             change: stats?.pendingInvoices ? "Needs attention" : "All clear",
             changeType: stats?.pendingInvoices ? "negative" as const : "positive" as const,
-            icon: <Receipt className="w-5 h-5 text-green-600" />, 
+            icon: <Receipt className="w-5 h-5 text-amber-600" />, 
             href: "/billing/invoices" 
         },
     ]
@@ -108,8 +108,8 @@ export function FinanceOfficerDashboard({ userName, stats }: FinanceOfficerDashb
                 >
                     <div>
                         <div className="flex items-center gap-2 mb-2">
-                            <DollarSign className="w-5 h-5 text-green-500" />
-                            <span className="text-xs font-bold text-green-600 dark:text-green-400 uppercase tracking-wider">
+                            <DollarSign className="w-5 h-5 text-amber-500" />
+                            <span className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
                                 Finance Officer
                             </span>
                         </div>
@@ -128,7 +128,7 @@ export function FinanceOfficerDashboard({ userName, stats }: FinanceOfficerDashb
                             </Button>
                         </Link>
                         <Link href="/billing">
-                            <Button className="rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white">
+                            <Button className="rounded-xl bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 text-white">
                                 <Coins className="w-4 h-4 mr-2" />
                                 Buy Credits
                             </Button>
@@ -168,8 +168,8 @@ export function FinanceOfficerDashboard({ userName, stats }: FinanceOfficerDashb
                     </div>
                     
                     <div className="text-center py-12">
-                        <div className="w-16 h-16 rounded-2xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center mx-auto mb-4">
-                            <AlertCircle className="w-8 h-8 text-green-500" />
+                        <div className="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mx-auto mb-4">
+                            <AlertCircle className="w-8 h-8 text-amber-500" />
                         </div>
                         <h3 className="font-semibold text-neutral-900 dark:text-white mb-2">No transactions yet</h3>
                         <p className="text-sm text-neutral-500 mb-4 max-w-sm mx-auto">
@@ -192,22 +192,22 @@ export function FinanceOfficerDashboard({ userName, stats }: FinanceOfficerDashb
                     className="space-y-4"
                 >
                     {/* Financial Summary */}
-                    <div className="bg-gradient-to-br from-green-600 to-emerald-700 rounded-2xl p-6 text-white">
+                    <div className="bg-gradient-to-br from-amber-600 to-amber-700 rounded-2xl p-6 text-white">
                         <h3 className="font-bold text-lg mb-2">Financial Summary</h3>
-                        <p className="text-green-200 text-sm mb-4">
+                        <p className="text-amber-200 text-sm mb-4">
                             Current billing period.
                         </p>
                         <div className="space-y-3">
                             <div className="flex items-center justify-between text-sm">
-                                <span className="text-green-200">Plan</span>
+                                <span className="text-amber-200">Plan</span>
                                 <span className="font-bold">Starter</span>
                             </div>
                             <div className="flex items-center justify-between text-sm">
-                                <span className="text-green-200">Credits Remaining</span>
+                                <span className="text-amber-200">Credits Remaining</span>
                                 <span className="font-bold">{stats?.currentBalance || 0}</span>
                             </div>
                             <div className="flex items-center justify-between text-sm">
-                                <span className="text-green-200">Next Billing</span>
+                                <span className="text-amber-200">Next Billing</span>
                                 <span className="font-bold">-</span>
                             </div>
                         </div>
@@ -217,7 +217,7 @@ export function FinanceOfficerDashboard({ userName, stats }: FinanceOfficerDashb
                     <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
-                                <BarChart3 className="w-4 h-4 text-green-600" />
+                                <BarChart3 className="w-4 h-4 text-amber-600" />
                             </div>
                             <h3 className="font-bold text-neutral-900 dark:text-white">Reports</h3>
                         </div>

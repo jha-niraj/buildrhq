@@ -1393,8 +1393,8 @@ export default function JobFormContent({ interviewProcesses }: JobFormContentPro
                                 </p>
                             </div>
                         </div>
-                        <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-800/50">
-                            <p className="text-sm text-blue-800 dark:text-blue-300">
+                        <div className="mb-4 p-3 bg-orange-50 dark:bg-orange-950/30 rounded-lg border border-orange-200 dark:border-orange-800/50">
+                            <p className="text-sm text-orange-800 dark:text-orange-300">
                                 <span className="font-medium">Tip:</span> Use custom questions to gather information not covered in the standard application form.
                                 Examples: availability date, portfolio links, specific experience questions.
                             </p>

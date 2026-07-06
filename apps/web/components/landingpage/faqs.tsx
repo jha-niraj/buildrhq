@@ -28,7 +28,7 @@ const faqData = [
     {
         id: "item-4",
         question: "Can I ask questions or get help if I am stuck?",
-        answer: "Yes, you can reach out to our support team or community forums for help. Additionally, we offer occasional live Q&A sessions and are planning a mentorship program to help learners with personalized guidance."
+        answer: "Yes — you can reach our support team any time, and the AI tools (mock interviews, resume, project mentor) give you personalized, on-demand guidance as you build."
     },
     {
         id: "item-5",
@@ -48,7 +48,7 @@ const faqData = [
     {
         id: "item-8",
         question: "Are there any costs associated with using BuildrHQ?",
-        answer: "BuildrHQ offers many free resources, and we also have premium content available for those looking for in-depth tutorials, hands-on projects, and mentorship opportunities. You can explore our pricing options on our site."
+        answer: "BuildrHQ is credit-based — new accounts start with free credits, and you can top up whenever you want to run more AI generations, mock interviews, or assessments. See the pricing page for details."
     },
     {
         id: "item-9",
@@ -67,8 +67,8 @@ export default function FaqsAccrodian() {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: -16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                         className="lg:col-span-4"
@@ -96,13 +96,13 @@ export default function FaqsAccrodian() {
                     <div className="lg:col-span-8">
                         <div className="space-y-4">
                             {
-                                faqData.map((faq, index) => (
+                                faqData.map((faq, _index) => (
                                     <motion.div
                                         key={faq.id}
-                                        initial={{ opacity: 0, y: 20 }}
+                                        initial={{ opacity: 0, y: -16 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
-                                        transition={{ delay: index * 0.05 }}
+                                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                         className="group border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 rounded-xl overflow-hidden hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors"
                                     >
                                         <button

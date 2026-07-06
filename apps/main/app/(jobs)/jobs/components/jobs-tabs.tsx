@@ -55,7 +55,7 @@ const tabs: TabConfig[] = [
         href: "/jobs/following",
         icon: UserCheck,
         countKey: "following",
-        color: "text-blue-500",
+        color: "text-orange-500",
         requiresAuth: true
     },
     {
@@ -73,7 +73,7 @@ const tabs: TabConfig[] = [
         href: "/jobs/applications",
         icon: FileText,
         countKey: "applied",
-        color: "text-green-500",
+        color: "text-amber-500",
         requiresAuth: true
     },
     {
@@ -202,7 +202,7 @@ export function JobsTabs({ counts, isAuthenticated }: JobsTabsProps) {
                                             </Badge>
                                         )}
                                         {isActive && (
-                                            <Check className="w-4 h-4 text-green-500" />
+                                            <Check className="w-4 h-4 text-amber-500" />
                                         )}
                                     </span>
                                 </DropdownMenuItem>

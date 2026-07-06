@@ -389,8 +389,8 @@ export const LANGUAGE_CONFIG: Record<AssessmentLanguage, { label: string; icon: 
 export const DIFFICULTY_CONFIG: Record<QuestionDifficulty, { label: string; bg: string; text: string }> = {
     EASY: {
         label: 'Easy',
-        bg: 'bg-green-100 dark:bg-green-900/30',
-        text: 'text-green-700 dark:text-green-400'
+        bg: 'bg-amber-100 dark:bg-amber-900/30',
+        text: 'text-amber-700 dark:text-amber-400'
     },
     INTERMEDIATE: {
         label: 'Intermediate',

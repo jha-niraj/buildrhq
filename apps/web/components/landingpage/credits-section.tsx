@@ -20,8 +20,8 @@ export default function CreditsSection() {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-start">
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: -16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                         className="flex-1 sticky top-24"
@@ -42,10 +42,10 @@ export default function CreditsSection() {
                                 benefits.map((item, i) => (
                                     <motion.div
                                         key={i}
-                                        initial={{ opacity: 0, x: -10 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
+                                        initial={{ opacity: 0, y: -16 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
-                                        transition={{ delay: i * 0.1 }}
+                                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                         className="flex gap-4"
                                     >
                                         <div className="w-6 h-6 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -68,10 +68,10 @@ export default function CreditsSection() {
                         </div>
                     </motion.div>
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: -16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         className="flex-1 w-full max-w-md"
                     >
                         <div className="bg-white dark:bg-neutral-900 rounded-3xl border border-neutral-200 dark:border-neutral-800 shadow-2xl shadow-neutral-200/50 dark:shadow-black/20 p-8">
@@ -127,7 +127,7 @@ export default function CreditsSection() {
                                     </div>
                                     <div className="flex justify-between items-center text-sm">
                                         <span className="text-neutral-600 dark:text-neutral-300">PR Merge Bonus</span>
-                                        <span className="font-mono text-green-600 dark:text-green-400">+100 CR</span>
+                                        <span className="font-mono text-orange-600 dark:text-orange-400">+100 CR</span>
                                     </div>
                                 </div>
                             </div>

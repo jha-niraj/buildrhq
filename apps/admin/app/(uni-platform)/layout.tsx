@@ -11,9 +11,9 @@ import { Loader2, GraduationCap, LayoutDashboard, Shield, Users, School } from "
 const uniPlatformConfig = {
     name: "University Platform",
     icon: GraduationCap,
-    color: "bg-violet-500",
-    bgColor: "bg-gradient-to-br from-violet-500 to-violet-600",
-    textColor: "text-violet-600 dark:text-violet-400",
+    color: "bg-orange-500",
+    bgColor: "bg-gradient-to-br from-orange-500 to-orange-600",
+    textColor: "text-orange-600 dark:text-orange-400",
     overviewHref: "/uni",
     navItems: [
         { name: "Uni Dashboard", path: "uni", icon: LayoutDashboard },

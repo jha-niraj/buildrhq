@@ -42,13 +42,13 @@ interface TeacherAssessmentCreateSheetProps {
 
 const ASSESSMENT_MODES = [
     { value: 'QUIZ', label: 'Quiz', icon: Brain, description: 'MCQ, True/False, Multi-select', color: 'from-amber-500 to-orange-500' },
-    { value: 'CODE', label: 'Coding', icon: Code2, description: 'Write code challenges', color: 'from-blue-500 to-cyan-500' },
-    { value: 'MIXED', label: 'Mixed', icon: Zap, description: 'Both quiz and coding', color: 'from-purple-500 to-pink-500' },
+    { value: 'CODE', label: 'Coding', icon: Code2, description: 'Write code challenges', color: 'from-orange-500 to-amber-500' },
+    { value: 'MIXED', label: 'Mixed', icon: Zap, description: 'Both quiz and coding', color: 'from-orange-500 to-pink-500' },
 ] as const
 
 const DIFFICULTY_LEVELS = [
-    { value: 'EASY', label: 'Easy', color: 'text-green-500 bg-green-100 dark:bg-green-900/30' },
-    { value: 'MEDIUM', label: 'Medium', color: 'text-blue-500 bg-blue-100 dark:bg-blue-900/30' },
+    { value: 'EASY', label: 'Easy', color: 'text-amber-500 bg-amber-100 dark:bg-amber-900/30' },
+    { value: 'MEDIUM', label: 'Medium', color: 'text-orange-500 bg-orange-100 dark:bg-orange-900/30' },
     { value: 'HARD', label: 'Hard', color: 'text-red-500 bg-red-100 dark:bg-red-900/30' },
 ] as const
 
@@ -535,16 +535,16 @@ export default function TeacherAssessmentCreateSheet({
                                 </div>
 
                                 {questionMode === 'ai' ? (
-                                    <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 text-center">
-                                        <Zap className="w-10 h-10 text-blue-500 mx-auto mb-3" />
-                                        <h4 className="font-medium text-blue-900 dark:text-blue-100">
+                                    <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-6 text-center">
+                                        <Zap className="w-10 h-10 text-orange-500 mx-auto mb-3" />
+                                        <h4 className="font-medium text-orange-900 dark:text-orange-100">
                                             AI Question Generation
                                         </h4>
-                                        <p className="text-sm text-blue-700 dark:text-blue-300 mt-2">
+                                        <p className="text-sm text-orange-700 dark:text-orange-300 mt-2">
                                             Questions will be automatically generated based on your selected topic ({formData.language}), 
                                             difficulty ({formData.difficulty}), and mode ({formData.mode}).
                                         </p>
-                                        <p className="text-xs text-blue-600 dark:text-blue-400 mt-3">
+                                        <p className="text-xs text-orange-600 dark:text-orange-400 mt-3">
                                             {formData.questionCount} questions will be generated when you create the assessment.
                                         </p>
                                     </div>

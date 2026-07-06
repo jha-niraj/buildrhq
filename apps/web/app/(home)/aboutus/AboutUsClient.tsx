@@ -28,7 +28,7 @@ const leadership = [
     {
         name: "Harsh Pandey",
         role: "Head of Operations & PR",
-        bio: "Driving community growth and strategic partnerships across the tech ecosystem.",
+        bio: "Driving growth and strategic partnerships across the tech ecosystem.",
         img: harsh,
         links: {
             linkedin: "https://www.linkedin.com/in/harsh-pandey0504",
@@ -39,7 +39,7 @@ const leadership = [
 ]
 
 const stats = [
-    { label: "Community Members", value: "10K+" },
+    { label: "Active Developers", value: "10K+" },
     { label: "Projects Shipped", value: "500+" },
     { label: "Countries Reached", value: "12" },
     { label: "Lines of Code", value: "1M+" },
@@ -75,8 +75,8 @@ export default function AboutUs() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
                         {
                             [
-                                { icon: Target, title: "Our Mission", desc: "To democratize access to high-level engineering tools and mentorship." },
-                                { icon: Users, title: "Community", desc: "Fostering a peer-to-peer network of ambitious developers." },
+                                { icon: Target, title: "Our Mission", desc: "To democratize access to high-level engineering tools and AI guidance." },
+                                { icon: Users, title: "Growth", desc: "Helping developers build real projects, practice, and get hired." },
                                 { icon: Cpu, title: "Technology", desc: "Leveraging AI to simulate real-world technical interviews and tasks." },
                                 { icon: Globe, title: "Impact", desc: "Helping students land roles at top product companies globally." }
                             ].map((item, i) => (

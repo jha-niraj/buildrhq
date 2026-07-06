@@ -282,13 +282,13 @@ export default function ProfilePage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden mb-8"
                 >
-                    <div className="relative bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 h-32">
+                    <div className="relative bg-gradient-to-br from-orange-500 via-orange-500 to-orange-500 h-32">
                         <div className="absolute inset-0 bg-black/10" />
                     </div>
                     <div className="relative px-6 pb-6 -mt-12">
                         <div className="flex flex-col sm:flex-row sm:items-end gap-4">
                             <div className="relative shrink-0">
-                                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-violet-100 to-purple-100 dark:from-violet-900/30 dark:to-purple-900/30 border-4 border-white dark:border-neutral-950 flex items-center justify-center overflow-hidden shadow-lg">
+                                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-100 dark:from-orange-900/30 dark:to-orange-900/30 border-4 border-white dark:border-neutral-950 flex items-center justify-center overflow-hidden shadow-lg">
                                     {
                                         userProfile?.image ? (
                                             <Image
@@ -299,7 +299,7 @@ export default function ProfilePage() {
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
-                                            <User className="w-10 h-10 text-violet-500 dark:text-violet-400" />
+                                            <User className="w-10 h-10 text-orange-500 dark:text-orange-400" />
                                         )
                                     }
                                 </div>
@@ -317,7 +317,7 @@ export default function ProfilePage() {
                                 </h2>
                                 <p className="text-neutral-500 truncate">{userProfile?.email}</p>
                                 <div className="flex flex-wrap items-center gap-2 mt-2">
-                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300">
+                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
                                         <Briefcase className="w-3 h-3" />
                                         {
                                             memberJobTitle === "OTHER" && memberJobTitleCustom
@@ -464,7 +464,7 @@ export default function ProfilePage() {
                                             </Button>
                                             {
                                                 profileMessage && (
-                                                    <span className={`text-sm flex items-center gap-1 ${profileMessage.type === "success" ? "text-green-500" : "text-red-500"
+                                                    <span className={`text-sm flex items-center gap-1 ${profileMessage.type === "success" ? "text-amber-500" : "text-red-500"
                                                         }`}>
                                                         {
                                                             profileMessage.type === "success" ? (
@@ -704,7 +704,7 @@ export default function ProfilePage() {
                                             </Button>
                                             {
                                                 companyMessage && (
-                                                    <span className={`text-sm flex items-center gap-1 ${companyMessage.type === "success" ? "text-green-500" : "text-red-500"
+                                                    <span className={`text-sm flex items-center gap-1 ${companyMessage.type === "success" ? "text-amber-500" : "text-red-500"
                                                         }`}>
                                                         {
                                                             companyMessage.type === "success" ? (
@@ -746,7 +746,7 @@ export default function ProfilePage() {
                                                                     href={companyDetails.website}
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
-                                                                    className="text-sm font-medium text-violet-600 dark:text-violet-400 hover:underline truncate block"
+                                                                    className="text-sm font-medium text-orange-600 dark:text-orange-400 hover:underline truncate block"
                                                                 >
                                                                     {companyDetails.website}
                                                                 </Link>
@@ -854,14 +854,14 @@ export default function ProfilePage() {
                                                         }
                                                     </div>
                                                     <div className="mt-4 grid grid-cols-2 gap-4">
-                                                        <div className="p-4 rounded-xl bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20 border border-violet-100 dark:border-violet-800/30">
-                                                            <p className="text-2xl font-bold text-violet-600 dark:text-violet-400">
+                                                        <div className="p-4 rounded-xl bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 border border-orange-100 dark:border-orange-800/30">
+                                                            <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
                                                                 {companyDetails?.memberCount || 0}
                                                             </p>
                                                             <p className="text-sm text-neutral-600 dark:text-neutral-400">Team Members</p>
                                                         </div>
-                                                        <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border border-emerald-100 dark:border-emerald-800/30">
-                                                            <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                                                        <div className="p-4 rounded-xl bg-gradient-to-br from-amber-50 to-amber-50 dark:from-amber-900/20 dark:to-amber-900/20 border border-amber-100 dark:border-amber-800/30">
+                                                            <p className="text-2xl font-bold text-amber-600 dark:text-amber-400">
                                                                 {companyDetails?.jobCount || 0}
                                                             </p>
                                                             <p className="text-sm text-neutral-600 dark:text-neutral-400">Active Jobs</p>
@@ -970,7 +970,7 @@ export default function ProfilePage() {
                                     </Button>
                                     {
                                         passwordMessage && (
-                                            <span className={`text-sm flex items-center gap-1 ${passwordMessage.type === "success" ? "text-green-500" : "text-red-500"
+                                            <span className={`text-sm flex items-center gap-1 ${passwordMessage.type === "success" ? "text-amber-500" : "text-red-500"
                                                 }`}>
                                                 {
                                                     passwordMessage.type === "success" ? (
@@ -1007,7 +1007,7 @@ export default function ProfilePage() {
                                             memberPermissions.map((permission) => (
                                                 <span
                                                     key={permission}
-                                                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300"
+                                                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
                                                 >
                                                     <Check className="w-3 h-3" />
                                                     {permission.replace(/_/g, " ")}

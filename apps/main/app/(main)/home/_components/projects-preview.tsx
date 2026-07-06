@@ -21,7 +21,7 @@ interface ProjectsPreviewProps {
 }
 
 const difficultyConfig: Record<string, { color: string; dot: string }> = {
-    easy:   { color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20", dot: "bg-emerald-500" },
+    easy:   { color: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20", dot: "bg-amber-500" },
     medium: { color: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",         dot: "bg-amber-500"   },
     hard:   { color: "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20",                 dot: "bg-red-500"     },
 };
@@ -34,8 +34,8 @@ export default function ProjectsPreview({ projects }: ProjectsPreviewProps) {
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                        <FolderKanban className="h-4 w-4 text-blue-500" />
+                    <div className="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
+                        <FolderKanban className="h-4 w-4 text-orange-500" />
                     </div>
                     <span className="font-semibold text-sm">My Projects</span>
                 </div>
@@ -75,14 +75,14 @@ export default function ProjectsPreview({ projects }: ProjectsPreviewProps) {
                     </div>
                 ) : (
                     <div className="text-center py-6 space-y-3">
-                        <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto">
-                            <Layers className="h-5 w-5 text-blue-400" />
+                        <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center mx-auto">
+                            <Layers className="h-5 w-5 text-orange-400" />
                         </div>
                         <div>
                             <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300">No active projects</p>
                             <p className="text-xs text-neutral-500 mt-0.5">Pick a project to start building</p>
                         </div>
-                        <Link href="/projects" className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-500 hover:text-blue-600 transition-colors">
+                        <Link href="/projects" className="inline-flex items-center gap-1.5 text-xs font-medium text-orange-500 hover:text-orange-600 transition-colors">
                             Browse projects <ArrowRight className="h-3 w-3" />
                         </Link>
                     </div>

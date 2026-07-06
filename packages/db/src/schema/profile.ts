@@ -24,13 +24,6 @@ export const portfolioProjectSourceEnum = pgEnum("PortfolioProjectSource", [
     "PROFILE", "CONCEPTS", "RESUMECREATOR",
 ]);
 
-export const featureNotifySectionEnum = pgEnum("FeatureNotifySection", [
-    "AI_TOOLS", "MOCK_VIDEO", "MOCK_COMPANYWISE", "MOCK_PEERTOPEER",
-    "MOCK_CONNECT", "AI_PORTFOLIO_AUDIT", "AI_SYSTEM_ARCHITECT",
-    "AI_PROJECT_SCOPER", "AI_OSS_SCOUT", "AI_DOCUSMITH",
-    "AI_CODE_SENTINEL", "AI_TEST_FORGE",
-]);
-
 // ─── Work Experience ──────────────────────────────────────────────────────────
 
 export const workExperiences = pgTable("WorkExperience", {
@@ -255,23 +248,6 @@ export const contactMessages = pgTable("contact_submissions", {
     createdAt: timestamp("createdAt").notNull().defaultNow(),
 });
 
-// ─── Feature Notify Interest ──────────────────────────────────────────────────
-
-export const featureNotifyInterests = pgTable("FeatureNotifyInterest", {
-    id: text("id").primaryKey().$defaultFn(() => createId()),
-    userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-    email: text("email").notNull(),
-    section: featureNotifySectionEnum("section").notNull(),
-    title: text("title").notNull(),
-    description: text("description"),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-}, (t) => [
-    uniqueIndex("uq_featureNotify_userId_section_title").on(t.userId, t.section, t.title),
-    index("idx_featureNotify_userId").on(t.userId),
-    index("idx_featureNotify_section").on(t.section),
-    index("idx_featureNotify_createdAt").on(t.createdAt),
-]);
-
 // ─── Config (system-level key-value) ─────────────────────────────────────────
 
 export const configs = pgTable("Config", {
@@ -352,10 +328,6 @@ export const userProfilesRelations = relations(userProfiles, ({ one, many }) => 
 
 export const profileViewsRelations = relations(profileViews, ({ one }) => ({
     profile: one(userProfiles, { fields: [profileViews.profileId], references: [userProfiles.id] }),
-}));
-
-export const featureNotifyInterestsRelations = relations(featureNotifyInterests, ({ one }) => ({
-    user: one(users, { fields: [featureNotifyInterests.userId], references: [users.id] }),
 }));
 
 export const userDSATrackingEntriesRelations = relations(userDSATrackingEntries, ({ one }) => ({

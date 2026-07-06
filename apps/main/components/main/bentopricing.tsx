@@ -23,7 +23,7 @@ type PricingCardProps = {
 
 function FilledCheck() {
     return (
-        <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-full p-0.5">
+        <div className="bg-gradient-to-r from-amber-500 to-amber-500 text-white rounded-full p-0.5">
             <CheckIcon className="size-3" strokeWidth={3} />
         </div>
     );
@@ -173,7 +173,7 @@ export function BentoPricing({
                             {prices.popular}
                         </span>
                         <span className="text-neutral-400 dark:text-neutral-600 text-sm ml-2">/one-time</span>
-                        <p className="text-emerald-400 dark:text-emerald-600 text-sm mt-2 font-medium">
+                        <p className="text-amber-400 dark:text-amber-600 text-sm mt-2 font-medium">
                             Save 12% vs regular
                         </p>
                     </div>
@@ -186,7 +186,7 @@ export function BentoPricing({
                                 'Credits never expire',
                             ].map((f, i) => (
                                 <li key={i} className="flex items-center gap-3">
-                                    <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-full p-0.5">
+                                    <div className="bg-gradient-to-r from-amber-500 to-amber-500 text-white rounded-full p-0.5">
                                         <CheckIcon className="size-3" strokeWidth={3} />
                                     </div>
                                     <span className="leading-relaxed">{f}</span>
@@ -262,15 +262,15 @@ export function BentoPricing({
                 showFreeCredits && (
                     <div
                         className={cn(
-                            'bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30',
-                            'border-emerald-200 dark:border-emerald-800 relative w-full overflow-hidden rounded-2xl border',
+                            'bg-gradient-to-br from-amber-50 to-amber-50 dark:from-amber-950/30 dark:to-amber-950/30',
+                            'border-amber-200 dark:border-amber-800 relative w-full overflow-hidden rounded-2xl border',
                             'lg:col-span-8',
                             'hover:shadow-xl transition-all duration-300'
                         )}
                     >
                         <div className="flex flex-col md:flex-row items-center justify-between p-6 gap-4">
                             <div className="flex items-center gap-4">
-                                <div className="p-3 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl">
+                                <div className="p-3 bg-gradient-to-r from-amber-500 to-amber-500 rounded-xl">
                                     <Gift className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
@@ -286,13 +286,13 @@ export function BentoPricing({
                                 onRequestFreeCredits ? (
                                     <Button
                                         onClick={onRequestFreeCredits}
-                                        className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white"
+                                        className="bg-gradient-to-r from-amber-500 to-amber-500 hover:from-amber-600 hover:to-amber-600 text-white"
                                     >
                                         <Gift className="mr-2 h-4 w-4" />
                                         Claim Free Credits
                                     </Button>
                                 ) : (
-                                    <Button asChild className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white">
+                                    <Button asChild className="bg-gradient-to-r from-amber-500 to-amber-500 hover:from-amber-600 hover:to-amber-600 text-white">
                                         <Link href="/purchase">
                                             <Gift className="mr-2 h-4 w-4" />
                                             Claim Free Credits

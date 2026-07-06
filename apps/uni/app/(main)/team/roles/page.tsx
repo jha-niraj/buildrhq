@@ -63,10 +63,10 @@ const ROLE_LABELS: Record<UniversityMemberRole, string> = {
 
 const ROLE_COLORS: Record<UniversityMemberRole, string> = {
     HEAD: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
-    DEPARTMENT_HEAD: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300",
-    PLACEMENT_OFFICER: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300",
-    FINANCE_OFFICER: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300",
-    FACULTY: "bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400",
+    DEPARTMENT_HEAD: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300",
+    PLACEMENT_OFFICER: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300",
+    FINANCE_OFFICER: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
+    FACULTY: "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400",
     TEACHING_ASSISTANT: "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
 }
 
@@ -404,7 +404,7 @@ export default function RolesPage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
                 <div>
                     <h1 className="text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                        <Users className="w-7 h-7 text-violet-500" />
+                        <Users className="w-7 h-7 text-orange-500" />
                         Team & Roles
                     </h1>
                     <p className="text-neutral-500 mt-1">
@@ -415,7 +415,7 @@ export default function RolesPage() {
                     isHead && (
                         <Button
                             onClick={() => setInviteSheetOpen(true)}
-                            className="rounded-xl bg-violet-600 hover:bg-violet-700 text-white cursor-pointer"
+                            className="rounded-xl bg-orange-600 hover:bg-orange-700 text-white cursor-pointer"
                         >
                             <UserPlus className="w-4 h-4 mr-2" />
                             Invite Member
@@ -433,7 +433,7 @@ export default function RolesPage() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             className={`mb-6 p-4 rounded-xl flex items-center gap-3 ${message.type === "success"
-                                ? "bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300"
+                                ? "bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300"
                                 : "bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300"
                                 }`}
                         >
@@ -513,7 +513,7 @@ export default function RolesPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.05 }}
                             className={`relative p-5 rounded-2xl border transition-all ${member.isActive
-                                ? "bg-white dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 hover:border-violet-300 dark:hover:border-violet-700"
+                                ? "bg-white dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700"
                                 : "bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 opacity-60"
                                 }`}
                         >
@@ -527,8 +527,8 @@ export default function RolesPage() {
                             }
 
                             <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-100 to-purple-100 dark:from-violet-900/30 dark:to-purple-900/30 flex items-center justify-center shrink-0">
-                                    <GraduationCap className="w-6 h-6 text-violet-600 dark:text-violet-400" />
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-100 to-orange-100 dark:from-orange-900/30 dark:to-orange-900/30 flex items-center justify-center shrink-0">
+                                    <GraduationCap className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <p className="font-bold text-neutral-900 dark:text-white truncate">
@@ -584,7 +584,7 @@ export default function RolesPage() {
                                                     ) : (
                                                         <DropdownMenuItem
                                                             onClick={() => handleReactivate(member.id)}
-                                                            className="text-green-600 cursor-pointer"
+                                                            className="text-amber-600 cursor-pointer"
                                                         >
                                                             <UserCheck className="w-4 h-4 mr-2" />
                                                             Reactivate
@@ -613,7 +613,7 @@ export default function RolesPage() {
                                     }
                                     {
                                         member.permissions.length > 4 && (
-                                            <span className="px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-900/30 text-xs text-violet-600 dark:text-violet-400">
+                                            <span className="px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-900/30 text-xs text-orange-600 dark:text-orange-400">
                                                 +{member.permissions.length - 4} more
                                             </span>
                                         )
@@ -630,7 +630,7 @@ export default function RolesPage() {
                 <SheetContent side="right" className="w-full sm:max-w-lg overflow-y-auto">
                     <SheetHeader>
                         <SheetTitle className="flex items-center gap-2">
-                            <UserPlus className="w-5 h-5 text-violet-500" />
+                            <UserPlus className="w-5 h-5 text-orange-500" />
                             Invite Team Member
                         </SheetTitle>
                         <SheetDescription>
@@ -776,7 +776,7 @@ export default function RolesPage() {
                         <Button
                             onClick={handleInviteSubmit}
                             disabled={saving || !inviteForm.email}
-                            className="w-full rounded-xl bg-violet-600 hover:bg-violet-700 text-white cursor-pointer"
+                            className="w-full rounded-xl bg-orange-600 hover:bg-orange-700 text-white cursor-pointer"
                         >
                             {
                                 saving ? (
@@ -801,7 +801,7 @@ export default function RolesPage() {
                 <SheetContent side="right" className="w-full sm:max-w-lg overflow-y-auto">
                     <SheetHeader>
                         <SheetTitle className="flex items-center gap-2">
-                            <Edit2 className="w-5 h-5 text-violet-500" />
+                            <Edit2 className="w-5 h-5 text-orange-500" />
                             Edit Member
                         </SheetTitle>
                         <SheetDescription>
@@ -913,7 +913,7 @@ export default function RolesPage() {
                         <Button
                             onClick={handleEditSubmit}
                             disabled={saving}
-                            className="w-full rounded-xl bg-violet-600 hover:bg-violet-700 text-white cursor-pointer"
+                            className="w-full rounded-xl bg-orange-600 hover:bg-orange-700 text-white cursor-pointer"
                         >
                             {
                                 saving ? (

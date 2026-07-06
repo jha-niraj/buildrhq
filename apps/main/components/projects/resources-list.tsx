@@ -52,14 +52,14 @@ const RESOURCE_ICONS: Record<ResourceType, React.ComponentType<{ className?: str
 
 const RESOURCE_COLORS: Record<ResourceType, string> = {
     YOUTUBE_VIDEO: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-    VIDEO: 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-    DOCUMENTATION: 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
-    BLOG_ARTICLE: 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400',
+    VIDEO: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
+    DOCUMENTATION: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
+    BLOG_ARTICLE: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
     COURSE: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400',
-    DISCORD_COMMUNITY: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400',
+    DISCORD_COMMUNITY: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
     TOOL_RECOMMENDATION: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
     DESIGN_MOCKUP: 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400',
-    DESIGN_INSPIRATION: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400',
+    DESIGN_INSPIRATION: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
     GITHUB_REPO: 'bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400',
     OTHER: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-900/30 dark:text-neutral-400',
 }
@@ -307,7 +307,7 @@ export default function ResourcesList({ projectId, currentUserId, isCreator }: R
                                                         variant="ghost"
                                                         size="sm"
                                                         onClick={() => handleToggleHelpful(resource.id)}
-                                                        className={markedHelpful[resource.id] ? 'text-blue-600' : ''}
+                                                        className={markedHelpful[resource.id] ? 'text-orange-600' : ''}
                                                     >
                                                         <ThumbsUp className={`w-4 h-4 ${markedHelpful[resource.id] ? 'fill-current' : ''}`} />
                                                         <span className="ml-1">{resource.helpfulCount}</span>

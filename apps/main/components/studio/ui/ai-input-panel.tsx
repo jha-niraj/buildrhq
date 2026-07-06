@@ -369,8 +369,8 @@ export function AIInputPanel({ studioId, onContentAdded, externalPrompt, onExter
 									className={cn(
 										"flex items-center gap-2 px-3 py-2 rounded-lg border transition-all",
 										isSelected
-											? "border-purple-500 bg-purple-50 dark:bg-purple-950/30 text-purple-700 dark:text-purple-300"
-											: "border-neutral-200 dark:border-neutral-800 hover:border-purple-300 dark:hover:border-purple-700 text-neutral-700 dark:text-neutral-300",
+											? "border-orange-500 bg-orange-50 dark:bg-orange-950/30 text-orange-700 dark:text-orange-300"
+											: "border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 text-neutral-700 dark:text-neutral-300",
 										option.comingSoon && "opacity-50 cursor-not-allowed"
 									)}
 								>
@@ -411,7 +411,7 @@ export function AIInputPanel({ studioId, onContentAdded, externalPrompt, onExter
 															? "e.g., TypeScript official documentation"
 															: `Ask AI to generate ${selectedOption?.label.toLowerCase()}...`
 							}
-							className="min-h-[60px] max-h-[120px] pr-12 resize-none rounded-xl border-neutral-200 dark:border-neutral-800 focus:border-purple-500 dark:focus:border-purple-500"
+							className="min-h-[60px] max-h-[120px] pr-12 resize-none rounded-xl border-neutral-200 dark:border-neutral-800 focus:border-orange-500 dark:focus:border-orange-500"
 							disabled={isGenerating}
 						/>
 						<div className="absolute bottom-2 right-2">
@@ -422,7 +422,7 @@ export function AIInputPanel({ studioId, onContentAdded, externalPrompt, onExter
 									(!prompt.trim() && selectedType !== "CODE" && selectedType !== "NOTE")
 								}
 								size="icon"
-								className="h-8 w-8 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+								className="h-8 w-8 rounded-lg bg-gradient-to-r from-orange-600 to-pink-600 hover:from-orange-700 hover:to-pink-700"
 							>
 								{isGenerating ? (
 									<Loader2 className="h-4 w-4 animate-spin" />

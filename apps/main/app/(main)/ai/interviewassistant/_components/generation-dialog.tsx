@@ -68,9 +68,9 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
             icon: Brain,
             title: 'Technical Questions',
             description: 'Role-specific technical knowledge',
-            color: 'from-purple-500 to-indigo-600',
-            bgColor: 'bg-purple-50 dark:bg-purple-900/20',
-            borderColor: 'border-purple-200 dark:border-purple-800',
+            color: 'from-orange-500 to-orange-600',
+            bgColor: 'bg-orange-50 dark:bg-orange-900/20',
+            borderColor: 'border-orange-200 dark:border-orange-800',
             min: 3,
             max: 15,
             value: counts.technical
@@ -80,9 +80,9 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
             icon: Users,
             title: 'Behavioral Questions',
             description: 'Soft skills and cultural fit',
-            color: 'from-emerald-500 to-teal-600',
-            bgColor: 'bg-emerald-50 dark:bg-emerald-900/20',
-            borderColor: 'border-emerald-200 dark:border-emerald-800',
+            color: 'from-amber-500 to-amber-600',
+            bgColor: 'bg-amber-50 dark:bg-amber-900/20',
+            borderColor: 'border-amber-200 dark:border-amber-800',
             min: 3,
             max: 15,
             value: counts.behavioral
@@ -92,9 +92,9 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
             icon: Code,
             title: 'Coding Challenges',
             description: 'Algorithm and problem solving',
-            color: 'from-blue-500 to-cyan-600',
-            bgColor: 'bg-blue-50 dark:bg-blue-900/20',
-            borderColor: 'border-blue-200 dark:border-blue-800',
+            color: 'from-orange-500 to-amber-600',
+            bgColor: 'bg-orange-50 dark:bg-orange-900/20',
+            borderColor: 'border-orange-200 dark:border-orange-800',
             min: 1,
             max: 8,
             value: counts.coding
@@ -106,7 +106,7 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-0 shadow-2xl">
                 <DialogHeader className="pb-6">
                     <div className="flex items-center gap-4">
-                        <div className="p-3 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl shadow-lg">
+                        <div className="p-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl shadow-lg">
                             <Sparkles className="h-6 w-6 text-white" />
                         </div>
                         <div>
@@ -235,7 +235,7 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
                                     <Badge 
                                         className={`text-lg px-4 py-2 ${
                                             canAfford 
-                                                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400' 
+                                                ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400' 
                                                 : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
                                         }`}
                                     >
@@ -282,7 +282,7 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
                                         </span>
                                         <span className={`font-bold ${
                                             canAfford 
-                                                ? 'text-emerald-600 dark:text-emerald-400' 
+                                                ? 'text-amber-600 dark:text-amber-400' 
                                                 : 'text-red-600 dark:text-red-400'
                                         }`}>
                                             {userCredits - totalCredits} credits
@@ -332,7 +332,7 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
                             disabled={!canAfford}
                             className={`flex-1 h-12 font-bold ${
                                 canAfford
-                                    ? 'bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 hover:from-emerald-700 hover:via-teal-700 hover:to-blue-700 shadow-lg hover:shadow-xl'
+                                    ? 'bg-gradient-to-r from-amber-600 via-amber-600 to-orange-600 hover:from-amber-700 hover:via-amber-700 hover:to-orange-700 shadow-lg hover:shadow-xl'
                                     : 'bg-slate-300 dark:bg-slate-600 cursor-not-allowed'
                             } transition-all`}
                         >

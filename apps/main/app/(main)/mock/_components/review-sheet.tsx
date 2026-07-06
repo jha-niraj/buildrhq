@@ -105,7 +105,7 @@ export function ReviewSheet({ isOpen, onClose, sessionId, existingRating }: Revi
                             >
                                 <SheetHeader className="mb-6">
                                     <SheetTitle className="flex items-center gap-2 text-2xl">
-                                        <MessageSquare className="w-6 h-6 text-blue-600" />
+                                        <MessageSquare className="w-6 h-6 text-orange-600" />
                                         How was your experience?
                                     </SheetTitle>
                                     <SheetDescription>
@@ -261,7 +261,7 @@ export function ReviewSheet({ isOpen, onClose, sessionId, existingRating }: Revi
                                 animate={{ opacity: 1, scale: 1 }}
                                 className="flex flex-col items-center justify-center py-20"
                             >
-                                <CheckCircle className="w-20 h-20 text-green-600 mb-6" />
+                                <CheckCircle className="w-20 h-20 text-amber-600 mb-6" />
                                 <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-3">
                                     Thank You!
                                 </h3>

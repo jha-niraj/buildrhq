@@ -186,7 +186,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 							<motion.span
 								initial={{ opacity: 0, scale: 0.8 }}
 								animate={{ opacity: 1, scale: 1 }}
-								className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1"
+								className="text-xs text-amber-600 dark:text-amber-400 flex items-center gap-1"
 							>
 								<Check className="h-3 w-3" />
 								Saved
@@ -322,8 +322,8 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 						className={cn(
 							"flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all",
 							isEnhancing
-								? "bg-purple-200 dark:bg-purple-800 text-purple-700 dark:text-purple-200 cursor-wait"
-								: "bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/40 dark:to-pink-900/40 text-purple-700 dark:text-purple-300 hover:from-purple-200 hover:to-pink-200 dark:hover:from-purple-900/60 dark:hover:to-pink-900/60"
+								? "bg-orange-200 dark:bg-orange-800 text-orange-700 dark:text-orange-200 cursor-wait"
+								: "bg-gradient-to-r from-orange-100 to-pink-100 dark:from-orange-900/40 dark:to-pink-900/40 text-orange-700 dark:text-orange-300 hover:from-orange-200 hover:to-pink-200 dark:hover:from-orange-900/60 dark:hover:to-pink-900/60"
 						)}
 					>
 						{isEnhancing ? (

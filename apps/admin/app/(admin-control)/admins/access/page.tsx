@@ -105,7 +105,7 @@ export default function AdminAccessPage() {
 											</div>
 										</div>
 										<div className="flex items-center gap-2">
-											<button onClick={() => setStatus(a.id, 'ACTIVE')} className="px-3 py-1.5 text-xs rounded-lg bg-emerald-600 text-white">Activate</button>
+											<button onClick={() => setStatus(a.id, 'ACTIVE')} className="px-3 py-1.5 text-xs rounded-lg bg-amber-600 text-white">Activate</button>
 											<button onClick={() => setStatus(a.id, 'INACTIVE')} className="px-3 py-1.5 text-xs rounded-lg bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">Inactive</button>
 											<button onClick={() => setStatus(a.id, 'SUSPENDED')} className="px-3 py-1.5 text-xs rounded-lg bg-red-600 text-white">Suspend</button>
 										</div>
@@ -134,7 +134,7 @@ export default function AdminAccessPage() {
 																		<td key={lvl} className="p-3 text-center">
 																			<button
 																				onClick={() => togglePerm(idx, key, lvl as Level)}
-																				className={`inline-flex items-center justify-center w-8 h-8 rounded-md border ${checked ? 'bg-emerald-50 dark:bg-emerald-900/30 border-emerald-300 dark:border-emerald-700 text-emerald-600' : 'bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-700 text-neutral-400'}`}
+																				className={`inline-flex items-center justify-center w-8 h-8 rounded-md border ${checked ? 'bg-amber-50 dark:bg-amber-900/30 border-amber-300 dark:border-amber-700 text-amber-600' : 'bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-700 text-neutral-400'}`}
 																				aria-pressed={checked}
 																			>
 																				{checked ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}

@@ -139,7 +139,7 @@ export default function CreditRequestsPage() {
                         </div>
                     ) : requests.length === 0 ? (
                         <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-12 text-center">
-                            <CheckCircle className="w-12 h-12 text-emerald-500 mx-auto mb-4" />
+                            <CheckCircle className="w-12 h-12 text-amber-500 mx-auto mb-4" />
                             <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2">
                                 All caught up!
                             </h3>
@@ -173,7 +173,7 @@ export default function CreditRequestsPage() {
                                             <div className="grid grid-cols-2 gap-4 text-sm">
                                                 <div>
                                                     <span className="text-neutral-500 dark:text-neutral-400">Amount:</span>
-                                                    <span className="ml-2 font-semibold text-emerald-600 dark:text-emerald-400">
+                                                    <span className="ml-2 font-semibold text-amber-600 dark:text-amber-400">
                                                         {request.amount} credits
                                                     </span>
                                                 </div>
@@ -197,7 +197,7 @@ export default function CreditRequestsPage() {
                                         <button
                                             onClick={() => handleApprove(request.id, request.amount)}
                                             disabled={processingId === request.id}
-                                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-lg hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-amber-600 rounded-lg hover:bg-amber-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                         >
                                             {
                                                 processingId === request.id ? (

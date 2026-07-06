@@ -156,12 +156,12 @@ export function RoundContent({ application, round }: RoundContentProps) {
                         </div>
                         {
                             isCompleted ? (
-                                <Badge className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
                                     <CheckCircle2 className="w-3 h-3 mr-1" />
                                     Completed
                                 </Badge>
                             ) : (
-                                <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
                                     Upcoming
                                 </Badge>
                             )
@@ -177,8 +177,8 @@ export function RoundContent({ application, round }: RoundContentProps) {
                 >
                     <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6">
                         <div className="flex items-start gap-4 mb-6">
-                            <div className="w-14 h-14 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                                <Icon className="w-7 h-7 text-blue-600 dark:text-blue-400" />
+                            <div className="w-14 h-14 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                                <Icon className="w-7 h-7 text-orange-600 dark:text-orange-400" />
                             </div>
                             <div className="flex-1">
                                 <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-1">
@@ -210,12 +210,12 @@ export function RoundContent({ application, round }: RoundContentProps) {
                             </div>
                             {
                                 round.hasMockInterview && (
-                                    <div className="p-3 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800">
-                                        <div className="flex items-center gap-2 text-green-600 dark:text-green-400 mb-1">
+                                    <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-800">
+                                        <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400 mb-1">
                                             <Mic className="w-4 h-4" />
                                             <span className="text-xs font-medium">Mock Available</span>
                                         </div>
-                                        <p className="text-green-700 dark:text-green-300 font-semibold">
+                                        <p className="text-amber-700 dark:text-amber-300 font-semibold">
                                             Practice Ready
                                         </p>
                                     </div>
@@ -236,14 +236,14 @@ export function RoundContent({ application, round }: RoundContentProps) {
                         round.whatToExpect && round.whatToExpect.length > 0 && (
                             <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6">
                                 <h3 className="font-semibold text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
-                                    <BookOpen className="w-5 h-5 text-blue-500" />
+                                    <BookOpen className="w-5 h-5 text-orange-500" />
                                     What to Expect
                                 </h3>
                                 <ul className="space-y-3">
                                     {
                                         round.whatToExpect.map((item, index) => (
                                             <li key={index} className="flex items-start gap-3">
-                                                <div className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-xs font-semibold text-blue-700 dark:text-blue-400 shrink-0">
+                                                <div className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-xs font-semibold text-orange-700 dark:text-orange-400 shrink-0">
                                                     {index + 1}
                                                 </div>
                                                 <span className="text-neutral-700 dark:text-neutral-300">{item}</span>
@@ -259,7 +259,7 @@ export function RoundContent({ application, round }: RoundContentProps) {
                         round.topicsCovered && round.topicsCovered.length > 0 && (
                             <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6">
                                 <h3 className="font-semibold text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
-                                    <Target className="w-5 h-5 text-purple-500" />
+                                    <Target className="w-5 h-5 text-orange-500" />
                                     Topics Covered
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
@@ -301,14 +301,14 @@ export function RoundContent({ application, round }: RoundContentProps) {
                         round.evaluationCriteria && round.evaluationCriteria.length > 0 && (
                             <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6">
                                 <h3 className="font-semibold text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
-                                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                                    <CheckCircle2 className="w-5 h-5 text-amber-500" />
                                     Evaluation Criteria
                                 </h3>
                                 <ul className="space-y-2">
                                     {
                                         round.evaluationCriteria.map((criteria, index) => (
                                             <li key={index} className="flex items-start gap-2">
-                                                <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
+                                                <CheckCircle2 className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
                                                 <span className="text-neutral-700 dark:text-neutral-300">{criteria}</span>
                                             </li>
                                         ))
@@ -320,7 +320,7 @@ export function RoundContent({ application, round }: RoundContentProps) {
 
                     {
                         round.tipsForCandidates && round.tipsForCandidates.length > 0 && (
-                            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl border border-blue-100 dark:border-blue-800 p-6">
+                            <div className="bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 rounded-2xl border border-orange-100 dark:border-orange-800 p-6">
                                 <h3 className="font-semibold text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
                                     <Lightbulb className="w-5 h-5 text-yellow-500" />
                                     Tips for Success

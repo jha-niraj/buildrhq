@@ -202,14 +202,14 @@ export function WorkExperienceTab({ user, isOwnProfile, onUploadResume, onRefres
                                 <Card className="p-5">
                                     <div className="flex items-start justify-between gap-3">
                                         <div className="flex items-start gap-3 flex-1 min-w-0">
-                                            <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                                <Building2 className="w-5 h-5 text-blue-500" />
+                                            <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                <Building2 className="w-5 h-5 text-orange-500" />
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center gap-2 flex-wrap">
                                                     <h4 className="font-semibold">{exp.roleTitle}</h4>
                                                     {exp.isCurrentlyWorking && (
-                                                        <Badge className="text-[10px] bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                                        <Badge className="text-[10px] bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
                                                             Current
                                                         </Badge>
                                                     )}

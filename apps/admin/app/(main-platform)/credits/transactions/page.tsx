@@ -71,7 +71,7 @@ export default function CreditTransactionsPage() {
 
     function getStatusBadge(status: string) {
         const styles = {
-            COMPLETED: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+            COMPLETED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
             PENDING: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
             FAILED: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
             CANCELLED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-400",
@@ -81,8 +81,8 @@ export default function CreditTransactionsPage() {
 
     function getTypeBadge(type: string) {
         const styles = {
-            PURCHASE: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-            REWARD: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
+            PURCHASE: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+            REWARD: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
             REFUND: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
             DEDUCTION: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
         }
@@ -195,7 +195,7 @@ export default function CreditTransactionsPage() {
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        <span className={`text-sm font-semibold ${transaction.amount > 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}`}>
+                                                        <span className={`text-sm font-semibold ${transaction.amount > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-red-600 dark:text-red-400'}`}>
                                                             {transaction.amount > 0 ? '+' : ''}{transaction.amount} credits
                                                         </span>
                                                     </td>

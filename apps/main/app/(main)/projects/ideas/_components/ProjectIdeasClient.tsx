@@ -158,7 +158,7 @@ export default function ProjectIdeasPage() {
 
     const getDifficultyColor = (d: string) => {
         switch (d) {
-            case 'BEGINNER': return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400'
+            case 'BEGINNER': return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400'
             case 'INTERMEDIATE': return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400'
             case 'ADVANCED': return 'bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-400'
             default: return 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-400'
@@ -171,7 +171,7 @@ export default function ProjectIdeasPage() {
                 <div className="max-w-[1400px] mx-auto px-4 md:px-6">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center gap-3">
-                            <div className="p-1.5 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600">
+                            <div className="p-1.5 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600">
                                 <Sparkles className="w-4 h-4 text-white" />
                             </div>
                             <div>
@@ -359,15 +359,15 @@ export default function ProjectIdeasPage() {
                                             <motion.div
                                                 initial={{ opacity: 0, y: -10 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                className="mb-6 p-4 rounded-xl bg-gradient-to-r from-violet-50 to-indigo-50 dark:from-violet-950/20 dark:to-indigo-950/20 border border-violet-100 dark:border-violet-900/30"
+                                                className="mb-6 p-4 rounded-xl bg-gradient-to-r from-orange-50 to-orange-50 dark:from-orange-950/20 dark:to-orange-950/20 border border-orange-100 dark:border-orange-900/30"
                                             >
                                                 <div className="flex items-center gap-2 mb-2">
-                                                    <BookOpen className="w-4 h-4 text-violet-600 dark:text-violet-400" />
-                                                    <span className="text-sm font-semibold text-violet-900 dark:text-violet-300">What you&apos;ll learn with {selectedTech.name}</span>
+                                                    <BookOpen className="w-4 h-4 text-orange-600 dark:text-orange-400" />
+                                                    <span className="text-sm font-semibold text-orange-900 dark:text-orange-300">What you&apos;ll learn with {selectedTech.name}</span>
                                                 </div>
                                                 <div className="flex flex-wrap gap-2">
                                                     {selectedTech.learningOutcomes.map((outcome, i) => (
-                                                        <span key={i} className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-white/70 dark:bg-neutral-800/70 text-violet-700 dark:text-violet-300">
+                                                        <span key={i} className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-white/70 dark:bg-neutral-800/70 text-orange-700 dark:text-orange-300">
                                                             <CheckCircle2 className="w-3 h-3" />
                                                             {outcome}
                                                         </span>
@@ -422,14 +422,14 @@ export default function ProjectIdeasPage() {
                                                                             {project.difficulty}
                                                                         </Badge>
                                                                         {project.guidedModeEnabled && (
-                                                                            <Badge className="bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400 text-[10px] border-0">
+                                                                            <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-[10px] border-0">
                                                                                 <Sparkles className="w-2.5 h-2.5 mr-0.5" />
                                                                                 AI Guided
                                                                             </Badge>
                                                                         )}
                                                                     </div>
 
-                                                                    <h4 className="text-base font-bold text-neutral-900 dark:text-white mb-2 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors line-clamp-1 pr-20">
+                                                                    <h4 className="text-base font-bold text-neutral-900 dark:text-white mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-1 pr-20">
                                                                         {project.title}
                                                                     </h4>
 
@@ -451,8 +451,8 @@ export default function ProjectIdeasPage() {
 
                                                                     {/* Recruiter Signal */}
                                                                     {project.recruiterSignal && (
-                                                                        <div className="mb-3 p-2 rounded-lg bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/30">
-                                                                            <p className="text-[10px] text-indigo-600 dark:text-indigo-400 line-clamp-1">
+                                                                        <div className="mb-3 p-2 rounded-lg bg-orange-50/50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30">
+                                                                            <p className="text-[10px] text-orange-600 dark:text-orange-400 line-clamp-1">
                                                                                 📡 {project.recruiterSignal}
                                                                             </p>
                                                                         </div>
@@ -465,7 +465,7 @@ export default function ProjectIdeasPage() {
                                                                             <span className="flex items-center gap-1"><Users className="w-3 h-3" />{project._count.progress} enrolled</span>
                                                                             <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{project.totalViews}</span>
                                                                         </div>
-                                                                        <div className="flex items-center gap-1 text-xs font-medium text-violet-600 dark:text-violet-400 group-hover:translate-x-0.5 transition-transform">
+                                                                        <div className="flex items-center gap-1 text-xs font-medium text-orange-600 dark:text-orange-400 group-hover:translate-x-0.5 transition-transform">
                                                                             <Play className="w-3 h-3" />
                                                                             Start
                                                                         </div>
@@ -481,9 +481,9 @@ export default function ProjectIdeasPage() {
                                         {/* Community Ideas (from the technology) */}
                                         <div>
                                             <div className="flex items-center gap-2 mb-4">
-                                                <Users className="w-4 h-4 text-blue-500" />
+                                                <Users className="w-4 h-4 text-orange-500" />
                                                 <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">Community Ideas</h3>
-                                                <Badge className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[10px] border-0">
+                                                <Badge className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-[10px] border-0">
                                                     User Submitted
                                                 </Badge>
                                             </div>
@@ -566,7 +566,7 @@ export default function ProjectIdeasPage() {
                                                 <span className="flex items-center gap-0.5"><Heart className="w-3 h-3" />{problem.upvotes || 0}</span>
                                             </div>
                                         </div>
-                                        <h3 className="text-base font-bold text-neutral-900 dark:text-white mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                        <h3 className="text-base font-bold text-neutral-900 dark:text-white mb-2 line-clamp-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
                                             {problem.projectTitle}
                                         </h3>
                                         <p className="text-xs text-neutral-500 mb-3 line-clamp-2 flex-grow">
@@ -574,7 +574,7 @@ export default function ProjectIdeasPage() {
                                         </p>
                                         {problem.coreRequirements?.slice(0, 2).map((req, i) => (
                                             <div key={i} className="flex items-center gap-1 text-[10px] text-neutral-500 mb-1">
-                                                <CheckCircle2 className="w-3 h-3 text-green-500" />
+                                                <CheckCircle2 className="w-3 h-3 text-amber-500" />
                                                 <span className="truncate">{req}</span>
                                             </div>
                                         ))}
@@ -616,9 +616,9 @@ export default function ProjectIdeasPage() {
                                     <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">{selectedProblem.overview || selectedProblem.projectDescription}</p>
                                 </div>
                                 {selectedProblem.recruiterSignal && (
-                                    <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-4 border border-indigo-100 dark:border-indigo-800">
-                                        <h4 className="text-sm font-semibold text-indigo-900 dark:text-indigo-300 mb-2 flex items-center gap-2">📡 Recruiter Signal</h4>
-                                        <p className="text-sm text-indigo-700 dark:text-indigo-400">{selectedProblem.recruiterSignal}</p>
+                                    <div className="bg-gradient-to-r from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-orange-100 dark:border-orange-800">
+                                        <h4 className="text-sm font-semibold text-orange-900 dark:text-orange-300 mb-2 flex items-center gap-2">📡 Recruiter Signal</h4>
+                                        <p className="text-sm text-orange-700 dark:text-orange-400">{selectedProblem.recruiterSignal}</p>
                                     </div>
                                 )}
                                 {selectedProblem.coreRequirements?.length > 0 && (
@@ -627,7 +627,7 @@ export default function ProjectIdeasPage() {
                                         <ul className="space-y-2">
                                             {selectedProblem.coreRequirements.map((req, i) => (
                                                 <li key={i} className="flex items-start gap-2">
-                                                    <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                                                    <CheckCircle2 className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
                                                     <span className="text-sm text-neutral-600 dark:text-neutral-400">{req}</span>
                                                 </li>
                                             ))}

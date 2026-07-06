@@ -118,7 +118,7 @@ const NOTIF_TYPES: {
     tint: string
 }[] = [
     { value: "INFO", label: "Updates", icon: Info, tint: "text-orange-500 bg-orange-500/10" },
-    { value: "SUCCESS", label: "Success", icon: CheckCircle2, tint: "text-emerald-500 bg-emerald-500/10" },
+    { value: "SUCCESS", label: "Success", icon: CheckCircle2, tint: "text-orange-600 bg-orange-600/10" },
     { value: "WARNING", label: "Warnings", icon: AlertTriangle, tint: "text-amber-500 bg-amber-500/10" },
     { value: "ERROR", label: "Alerts", icon: XCircle, tint: "text-red-500 bg-red-500/10" },
 ]

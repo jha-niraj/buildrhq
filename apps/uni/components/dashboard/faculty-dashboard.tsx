@@ -31,13 +31,13 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
     <Link href={href}>
         <motion.div
             whileHover={{ y: -2 }}
-            className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-violet-300 dark:hover:border-violet-700 transition-all cursor-pointer group"
+            className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-orange-300 dark:hover:border-orange-700 transition-all cursor-pointer group"
         >
             <div className="flex items-start justify-between mb-4">
                 <div className="p-3 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 group-hover:scale-105 transition-transform">
                     {icon}
                 </div>
-                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors" />
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors" />
             </div>
             <div className="space-y-1">
                 <p className="text-3xl font-bold text-neutral-900 dark:text-white">{value}</p>
@@ -45,7 +45,7 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
             </div>
             {change && (
                 <div className={`mt-3 text-xs font-medium ${
-                    changeType === "positive" ? "text-green-600 dark:text-green-400" :
+                    changeType === "positive" ? "text-amber-600 dark:text-amber-400" :
                     changeType === "negative" ? "text-red-600 dark:text-red-400" :
                     "text-neutral-500"
                 }`}>
@@ -62,21 +62,21 @@ export function FacultyDashboard({ userName, stats }: FacultyDashboardProps) {
             title: "My Classes", 
             value: stats?.myClasses || 0, 
             change: "View assigned classes",
-            icon: <School className="w-5 h-5 text-violet-600" />, 
+            icon: <School className="w-5 h-5 text-orange-600" />, 
             href: "/classes" 
         },
         { 
             title: "My Students", 
             value: stats?.totalStudents || 0, 
             change: "Across all classes",
-            icon: <Users className="w-5 h-5 text-violet-600" />, 
+            icon: <Users className="w-5 h-5 text-orange-600" />, 
             href: "/students" 
         },
         { 
             title: "Active Assignments", 
             value: stats?.activeAssignments || 0, 
             change: "View assignments",
-            icon: <BookOpen className="w-5 h-5 text-violet-600" />, 
+            icon: <BookOpen className="w-5 h-5 text-orange-600" />, 
             href: "/assignments" 
         },
         { 
@@ -84,7 +84,7 @@ export function FacultyDashboard({ userName, stats }: FacultyDashboardProps) {
             value: stats?.pendingGrading || 0, 
             change: stats?.pendingGrading ? "Needs attention" : "All caught up!",
             changeType: stats?.pendingGrading ? "negative" as const : "positive" as const,
-            icon: <FileText className="w-5 h-5 text-violet-600" />, 
+            icon: <FileText className="w-5 h-5 text-orange-600" />, 
             href: "/assignments?filter=pending" 
         },
     ]
@@ -100,8 +100,8 @@ export function FacultyDashboard({ userName, stats }: FacultyDashboardProps) {
                 >
                     <div>
                         <div className="flex items-center gap-2 mb-2">
-                            <GraduationCap className="w-5 h-5 text-violet-500" />
-                            <span className="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase tracking-wider">
+                            <GraduationCap className="w-5 h-5 text-orange-500" />
+                            <span className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">
                                 Faculty Member
                             </span>
                         </div>
@@ -120,7 +120,7 @@ export function FacultyDashboard({ userName, stats }: FacultyDashboardProps) {
                             </Button>
                         </Link>
                         <Link href="/assignments/new">
-                            <Button className="rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white">
+                            <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
                                 <Plus className="w-4 h-4 mr-2" />
                                 Create Assignment
                             </Button>
@@ -160,8 +160,8 @@ export function FacultyDashboard({ userName, stats }: FacultyDashboardProps) {
                     </div>
                     
                     <div className="text-center py-12">
-                        <div className="w-16 h-16 rounded-2xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center mx-auto mb-4">
-                            <AlertCircle className="w-8 h-8 text-violet-500" />
+                        <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mx-auto mb-4">
+                            <AlertCircle className="w-8 h-8 text-orange-500" />
                         </div>
                         <h3 className="font-semibold text-neutral-900 dark:text-white mb-2">No classes assigned yet</h3>
                         <p className="text-sm text-neutral-500 mb-4 max-w-sm mx-auto">
@@ -178,26 +178,26 @@ export function FacultyDashboard({ userName, stats }: FacultyDashboardProps) {
                     className="space-y-4"
                 >
                     {/* Quick Tips */}
-                    <div className="bg-gradient-to-br from-violet-600 to-indigo-700 rounded-2xl p-6 text-white">
+                    <div className="bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl p-6 text-white">
                         <h3 className="font-bold text-lg mb-2">Getting Started</h3>
-                        <p className="text-violet-200 text-sm mb-4">
+                        <p className="text-orange-200 text-sm mb-4">
                             Tips for using the platform effectively.
                         </p>
                         <div className="space-y-3">
                             <div className="flex items-center gap-3 text-sm">
-                                <CheckCircle2 className="w-4 h-4 text-green-300" />
+                                <CheckCircle2 className="w-4 h-4 text-amber-300" />
                                 <span>Profile completed</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-violet-200">
-                                <div className="w-4 h-4 rounded-full border-2 border-violet-300" />
+                            <div className="flex items-center gap-3 text-sm text-orange-200">
+                                <div className="w-4 h-4 rounded-full border-2 border-orange-300" />
                                 <span>Get assigned to classes</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-violet-200">
-                                <div className="w-4 h-4 rounded-full border-2 border-violet-300" />
+                            <div className="flex items-center gap-3 text-sm text-orange-200">
+                                <div className="w-4 h-4 rounded-full border-2 border-orange-300" />
                                 <span>Create your first assignment</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-violet-200">
-                                <div className="w-4 h-4 rounded-full border-2 border-violet-300" />
+                            <div className="flex items-center gap-3 text-sm text-orange-200">
+                                <div className="w-4 h-4 rounded-full border-2 border-orange-300" />
                                 <span>Grade student submissions</span>
                             </div>
                         </div>
@@ -207,7 +207,7 @@ export function FacultyDashboard({ userName, stats }: FacultyDashboardProps) {
                     <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
-                                <Clock className="w-4 h-4 text-violet-600" />
+                                <Clock className="w-4 h-4 text-orange-600" />
                             </div>
                             <h3 className="font-bold text-neutral-900 dark:text-white">Upcoming Deadlines</h3>
                         </div>

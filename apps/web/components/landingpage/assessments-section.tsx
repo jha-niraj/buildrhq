@@ -38,7 +38,7 @@ export default function AssessmentsSection() {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: -16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
@@ -75,10 +75,10 @@ export default function AssessmentsSection() {
                             features.map((feature, index) => (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: -16 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
+                                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                     className="group p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all duration-300"
                                 >
                                     <div className="w-10 h-10 rounded-lg bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center mb-4 text-neutral-900 dark:text-white group-hover:scale-110 transition-transform">
@@ -93,10 +93,10 @@ export default function AssessmentsSection() {
                         }
                     </div>
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: -16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         className="relative"
                     >
                         <div className="rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-2xl shadow-neutral-200/50 dark:shadow-black/50">
@@ -117,8 +117,8 @@ export default function AssessmentsSection() {
                                     <div className="text-neutral-400 mb-2">Task: Optimize array traversal</div>
                                     <div className="space-y-1">
                                         <div><span className="text-orange-600 dark:text-orange-400">interface</span> <span className="text-neutral-900 dark:text-white">User</span> {'{'}</div>
-                                        <div className="pl-4">id: <span className="text-emerald-600 dark:text-emerald-400">string</span>;</div>
-                                        <div className="pl-4">score: <span className="text-emerald-600 dark:text-emerald-400">number</span>;</div>
+                                        <div className="pl-4">id: <span className="text-amber-600 dark:text-amber-400">string</span>;</div>
+                                        <div className="pl-4">score: <span className="text-amber-600 dark:text-amber-400">number</span>;</div>
                                         <div>{'}'}</div>
                                         <br />
                                         <div><span className="text-orange-600 dark:text-orange-400">function</span> <span className="text-amber-600 dark:text-amber-400">rankUsers</span>(users: User[]): User[] {'{'}</div>
@@ -129,10 +129,10 @@ export default function AssessmentsSection() {
                                     <div className="mt-12 pt-4 border-t border-neutral-200 dark:border-neutral-800">
                                         <div className="text-xs text-neutral-400 mb-2">TERMINAL</div>
                                         <div className="text-xs font-mono space-y-1">
-                                            <div className="text-green-600 dark:text-green-400">➜  ~ npm run test</div>
+                                            <div className="text-orange-600 dark:text-orange-400">➜  ~ npm run test</div>
                                             <div>&gt; running 3 tests...</div>
-                                            <div className="text-green-600 dark:text-green-400">✓ large_dataset_performance (12ms)</div>
-                                            <div className="text-green-600 dark:text-green-400">✓ edge_cases_empty (2ms)</div>
+                                            <div className="text-orange-600 dark:text-orange-400">✓ large_dataset_performance (12ms)</div>
+                                            <div className="text-orange-600 dark:text-orange-400">✓ edge_cases_empty (2ms)</div>
                                             <div className="animate-pulse">_</div>
                                         </div>
                                     </div>
@@ -159,7 +159,7 @@ export default function AssessmentsSection() {
                                                 <span className="text-neutral-900 dark:text-white font-medium">3/5</span>
                                             </div>
                                             <div className="w-full bg-neutral-100 dark:bg-neutral-800 h-1.5 rounded-full overflow-hidden">
-                                                <div className="bg-green-500 h-full w-[60%]" />
+                                                <div className="bg-orange-500 h-full w-[60%]" />
                                             </div>
                                         </div>
                                     </div>

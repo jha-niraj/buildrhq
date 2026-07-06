@@ -69,9 +69,9 @@ export function UserProgressSheet({
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case 'BEGINNER': return 'bg-green-500/10 text-green-600 dark:text-green-400'
-            case 'INTERMEDIATE': return 'bg-blue-500/10 text-blue-600 dark:text-blue-400'
-            case 'ADVANCED': return 'bg-purple-500/10 text-purple-600 dark:text-purple-400'
+            case 'BEGINNER': return 'bg-amber-500/10 text-amber-600 dark:text-amber-400'
+            case 'INTERMEDIATE': return 'bg-orange-500/10 text-orange-600 dark:text-orange-400'
+            case 'ADVANCED': return 'bg-orange-500/10 text-orange-600 dark:text-orange-400'
             default: return 'bg-gray-500/10 text-gray-600 dark:text-gray-400'
         }
     }
@@ -123,7 +123,7 @@ export function UserProgressSheet({
                                     <Card>
                                         <CardContent className="pt-4">
                                             <div className="flex items-center gap-2 mb-1">
-                                                <Target className="w-4 h-4 text-blue-500" />
+                                                <Target className="w-4 h-4 text-orange-500" />
                                                 <p className="text-xs font-medium text-muted-foreground">Progress</p>
                                             </div>
                                             <p className="text-2xl font-bold">
@@ -134,7 +134,7 @@ export function UserProgressSheet({
                                     <Card>
                                         <CardContent className="pt-4">
                                             <div className="flex items-center gap-2 mb-1">
-                                                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                                <CheckCircle2 className="w-4 h-4 text-amber-500" />
                                                 <p className="text-xs font-medium text-muted-foreground">Tasks</p>
                                             </div>
                                             <p className="text-2xl font-bold">
@@ -145,7 +145,7 @@ export function UserProgressSheet({
                                     <Card>
                                         <CardContent className="pt-4">
                                             <div className="flex items-center gap-2 mb-1">
-                                                <Calendar className="w-4 h-4 text-purple-500" />
+                                                <Calendar className="w-4 h-4 text-orange-500" />
                                                 <p className="text-xs font-medium text-muted-foreground">Started</p>
                                             </div>
                                             <p className="text-xs font-semibold">
@@ -186,7 +186,7 @@ export function UserProgressSheet({
                                     data.tasks.completed.length > 0 && (
                                         <div>
                                             <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
-                                                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                                                <CheckCircle2 className="w-4 h-4 text-amber-500" />
                                                 Completed Tasks ({data.tasks.completed.length})
                                             </h3>
                                             <div className="space-y-2">
@@ -197,7 +197,7 @@ export function UserProgressSheet({
                                                             initial={{ opacity: 0, y: 10 }}
                                                             animate={{ opacity: 1, y: 0 }}
                                                         >
-                                                            <Card className="border-green-200 dark:border-green-900/50 bg-green-50/50 dark:bg-green-950/20">
+                                                            <Card className="border-amber-200 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-950/20">
                                                                 <CardContent className="p-4">
                                                                     <div className="flex items-start justify-between gap-2 mb-2">
                                                                         <h4 className="font-medium text-sm">{task.title}</h4>
@@ -208,7 +208,7 @@ export function UserProgressSheet({
                                                                     <p className="text-xs text-muted-foreground mb-2">
                                                                         {task.description[0]}
                                                                     </p>
-                                                                    <div className="flex items-center gap-2 text-xs text-green-600 dark:text-green-400">
+                                                                    <div className="flex items-center gap-2 text-xs text-amber-600 dark:text-amber-400">
                                                                         <CheckCircle2 className="w-3 h-3" />
                                                                         Completed {task.completedAt ? format(new Date(task.completedAt), 'MMM d, yyyy') : ''}
                                                                     </div>

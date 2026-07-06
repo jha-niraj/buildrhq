@@ -151,7 +151,7 @@ export default function DailyStandupSheet({
                 <SheetHeader className="mb-6">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                            <Trophy className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                            <Trophy className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                             <SheetTitle className="text-2xl">Daily Standup</SheetTitle>
                         </div>
                         <Button
@@ -175,14 +175,14 @@ export default function DailyStandupSheet({
                         </div>
                     ) : hasConfig && config ? (
                         <div className="space-y-6">
-                            <div className="bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-900/30 rounded-lg p-4">
+                            <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/30 rounded-lg p-4">
                                 <div className="flex items-start gap-3">
-                                    <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                                    <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                                     <div>
-                                        <h3 className="font-semibold text-green-900 dark:text-green-100 mb-1">
+                                        <h3 className="font-semibold text-amber-900 dark:text-amber-100 mb-1">
                                             Daily Standup Active
                                         </h3>
-                                        <p className="text-sm text-green-800 dark:text-green-200">
+                                        <p className="text-sm text-amber-800 dark:text-amber-200">
                                             Your standup is configured and ready to go!
                                         </p>
                                     </div>
@@ -230,25 +230,25 @@ export default function DailyStandupSheet({
                                     }
                                 </div>
                             </div>
-                            <div className="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-900/30 rounded-lg p-4">
-                                <h4 className="font-medium text-blue-900 dark:text-blue-100 mb-2">
+                            <div className="bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-900/30 rounded-lg p-4">
+                                <h4 className="font-medium text-orange-900 dark:text-orange-100 mb-2">
                                     📝 Standup submissions will be available here soon!
                                 </h4>
-                                <p className="text-sm text-blue-800 dark:text-blue-200">
+                                <p className="text-sm text-orange-800 dark:text-orange-200">
                                     The submission interface is being built. You&apos;ll be able to submit your daily standups directly from here.
                                 </p>
                             </div>
                         </div>
                     ) : (
                         <div className="space-y-6">
-                            <div className="bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-900/30 rounded-lg p-4">
-                                <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-2">
+                            <div className="bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-900/30 rounded-lg p-4">
+                                <h3 className="font-semibold text-orange-900 dark:text-orange-100 mb-2">
                                     🚀 Build Professional Habits
                                 </h3>
-                                <p className="text-sm text-blue-800 dark:text-blue-200 mb-3">
+                                <p className="text-sm text-orange-800 dark:text-orange-200 mb-3">
                                     Daily standups help you stay accountable, track progress, and develop habits used in real software teams.
                                 </p>
-                                <ul className="space-y-1 text-sm text-blue-800 dark:text-blue-200">
+                                <ul className="space-y-1 text-sm text-orange-800 dark:text-orange-200">
                                     <li className="flex items-start gap-2">
                                         <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" />
                                         <span>Share what you worked on yesterday</span>
@@ -277,7 +277,7 @@ export default function DailyStandupSheet({
                                                 className={`
                                             p-3 rounded-lg border-2 transition-all
                                             ${selectedDays.includes(day.value)
-                                                        ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
+                                                        ? 'border-orange-600 bg-orange-50 dark:bg-orange-900/20'
                                                         : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700'
                                                     }
                                         `}
@@ -287,7 +287,7 @@ export default function DailyStandupSheet({
                                                 </div>
                                                 {
                                                     selectedDays.includes(day.value) && (
-                                                        <CheckCircle2 className="w-4 h-4 text-blue-600 mx-auto mt-1" />
+                                                        <CheckCircle2 className="w-4 h-4 text-orange-600 mx-auto mt-1" />
                                                     )
                                                 }
                                             </button>
@@ -370,7 +370,7 @@ export default function DailyStandupSheet({
                                 <Button
                                     onClick={handleCreateConfig}
                                     disabled={isCreating || userCredits < weeklyCredits}
-                                    className="w-full bg-blue-600 hover:bg-blue-700 text-white gap-2"
+                                    className="w-full bg-orange-600 hover:bg-orange-700 text-white gap-2"
                                 >
                                     {
                                         isCreating ? (

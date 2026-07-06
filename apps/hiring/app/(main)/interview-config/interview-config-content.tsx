@@ -56,15 +56,15 @@ interface InterviewConfigContentProps {
 }
 
 const roundTypeColors: Record<string, string> = {
-    PHONE_SCREEN: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-    TECHNICAL_CODING: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
+    PHONE_SCREEN: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    TECHNICAL_CODING: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
     SYSTEM_DESIGN: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    BEHAVIORAL: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+    BEHAVIORAL: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
     TAKE_HOME: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
     PANEL: "bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400",
-    HIRING_MANAGER: "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400",
-    CULTURE_FIT: "bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-400",
-    HR_FINAL: "bg-cyan-100 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-400",
+    HIRING_MANAGER: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    CULTURE_FIT: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    HR_FINAL: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
     CUSTOM: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-400",
 }
 
@@ -230,13 +230,13 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20 rounded-2xl p-6 border border-blue-200/50 dark:border-blue-800/30"
+                    className="bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-orange-950/30 dark:to-orange-900/20 rounded-2xl p-6 border border-orange-200/50 dark:border-orange-800/30"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 rounded-xl bg-blue-500/10">
-                            <ListChecks className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                        <div className="p-2 rounded-xl bg-orange-500/10">
+                            <ListChecks className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                         </div>
-                        <span className="text-sm font-medium text-blue-600 dark:text-blue-400">Processes</span>
+                        <span className="text-sm font-medium text-orange-600 dark:text-orange-400">Processes</span>
                     </div>
                     <p className="text-3xl font-bold text-neutral-900 dark:text-white">{stats.processCount}</p>
                     <p className="text-sm text-neutral-500 mt-1">Active interview processes</p>
@@ -245,13 +245,13 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20 rounded-2xl p-6 border border-purple-200/50 dark:border-purple-800/30"
+                    className="bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-orange-950/30 dark:to-orange-900/20 rounded-2xl p-6 border border-orange-200/50 dark:border-orange-800/30"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 rounded-xl bg-purple-500/10">
-                            <Users className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                        <div className="p-2 rounded-xl bg-orange-500/10">
+                            <Users className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                         </div>
-                        <span className="text-sm font-medium text-purple-600 dark:text-purple-400">Rounds</span>
+                        <span className="text-sm font-medium text-orange-600 dark:text-orange-400">Rounds</span>
                     </div>
                     <p className="text-3xl font-bold text-neutral-900 dark:text-white">{stats.totalRounds}</p>
                     <p className="text-sm text-neutral-500 mt-1">Total interview rounds</p>
@@ -260,13 +260,13 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="bg-gradient-to-br from-green-50 to-green-100/50 dark:from-green-950/30 dark:to-green-900/20 rounded-2xl p-6 border border-green-200/50 dark:border-green-800/30"
+                    className="bg-gradient-to-br from-amber-50 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20 rounded-2xl p-6 border border-amber-200/50 dark:border-amber-800/30"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 rounded-xl bg-green-500/10">
-                            <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+                        <div className="p-2 rounded-xl bg-amber-500/10">
+                            <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                         </div>
-                        <span className="text-sm font-medium text-green-600 dark:text-green-400">Jobs Linked</span>
+                        <span className="text-sm font-medium text-amber-600 dark:text-amber-400">Jobs Linked</span>
                     </div>
                     <p className="text-3xl font-bold text-neutral-900 dark:text-white">{stats.jobsWithProcess}</p>
                     <p className="text-sm text-neutral-500 mt-1">Jobs with processes assigned</p>
@@ -555,7 +555,7 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                     <div className="max-w-7xl mx-auto w-full flex flex-col h-full">
                         <SheetHeader className="pb-4 border-b border-neutral-200 dark:border-neutral-800">
                             <SheetTitle className="flex items-center gap-2 text-xl">
-                                <Sparkles className="w-6 h-6 text-purple-500" />
+                                <Sparkles className="w-6 h-6 text-orange-500" />
                                 Interview Process Templates
                             </SheetTitle>
                             <SheetDescription>
@@ -611,7 +611,7 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                                                     initial={{ opacity: 0, y: 10 }}
                                                     animate={{ opacity: 1, y: 0 }}
                                                     transition={{ delay: i * 0.03 }}
-                                                    className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-purple-300 dark:hover:border-purple-700 hover:bg-purple-50/50 dark:hover:bg-purple-950/20 transition-all cursor-pointer group"
+                                                    className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 hover:bg-orange-50/50 dark:hover:bg-orange-950/20 transition-all cursor-pointer group"
                                                     onClick={() => {
                                                         setSelectedTemplate({
                                                             name: template.name,
@@ -630,16 +630,16 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                                                                 variant="outline"
                                                                 className={cn(
                                                                     "text-xs",
-                                                                    template.style === "STARTUP" && "border-green-300 text-green-700 dark:border-green-700 dark:text-green-400",
-                                                                    template.style === "FAANG" && "border-blue-300 text-blue-700 dark:border-blue-700 dark:text-blue-400",
-                                                                    template.style === "MNC" && "border-purple-300 text-purple-700 dark:border-purple-700 dark:text-purple-400"
+                                                                    template.style === "STARTUP" && "border-amber-300 text-amber-700 dark:border-amber-700 dark:text-amber-400",
+                                                                    template.style === "FAANG" && "border-orange-300 text-orange-700 dark:border-orange-700 dark:text-orange-400",
+                                                                    template.style === "MNC" && "border-orange-300 text-orange-700 dark:border-orange-700 dark:text-orange-400"
                                                                 )}
                                                             >
                                                                 {template.style}
                                                             </Badge>
                                                             {
                                                                 template.isAiGenerated && (
-                                                                    <Badge variant="secondary" className="text-xs bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 text-purple-700 dark:text-purple-400">
+                                                                    <Badge variant="secondary" className="text-xs bg-gradient-to-r from-orange-100 to-pink-100 dark:from-orange-900/30 dark:to-pink-900/30 text-orange-700 dark:text-orange-400">
                                                                         <Sparkles className="w-3 h-3 mr-1" />
                                                                         AI
                                                                     </Badge>
@@ -650,7 +650,7 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                                                             {template.roundCount} rounds
                                                         </span>
                                                     </div>
-                                                    <h3 className="font-semibold text-neutral-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-purple-400 mb-1">
+                                                    <h3 className="font-semibold text-neutral-900 dark:text-white group-hover:text-orange-700 dark:group-hover:text-orange-400 mb-1">
                                                         {template.name}
                                                     </h3>
                                                     <p className="text-sm text-neutral-500 line-clamp-2 mb-3">
@@ -678,9 +678,9 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                             }
                         </div>
                         <div className="border-t border-neutral-200 dark:border-neutral-800 pt-4 mt-auto">
-                            <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 rounded-2xl p-4">
+                            <div className="bg-gradient-to-r from-orange-50 to-orange-50 dark:from-orange-950/30 dark:to-orange-950/30 rounded-2xl p-4">
                                 <div className="flex items-center gap-2 mb-3">
-                                    <Sparkles className="w-5 h-5 text-purple-500" />
+                                    <Sparkles className="w-5 h-5 text-orange-500" />
                                     <h3 className="font-semibold text-neutral-900 dark:text-white">
                                         Generate with AI
                                     </h3>
@@ -697,7 +697,7 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                                             onClick={() => handleGenerateWithAI("STARTUP")}
                                             disabled={aiGenerating || !aiRoleType.trim()}
                                             variant="outline"
-                                            className="flex-1 rounded-xl border-green-300 text-green-700 hover:bg-green-50 dark:border-green-700 dark:text-green-400 dark:hover:bg-green-950/30"
+                                            className="flex-1 rounded-xl border-amber-300 text-amber-700 hover:bg-amber-50 dark:border-amber-700 dark:text-amber-400 dark:hover:bg-amber-950/30"
                                         >
                                             <Rocket className="w-4 h-4 mr-1" />
                                             Startup
@@ -706,7 +706,7 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                                             onClick={() => handleGenerateWithAI("FAANG")}
                                             disabled={aiGenerating || !aiRoleType.trim()}
                                             variant="outline"
-                                            className="flex-1 rounded-xl border-blue-300 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-400 dark:hover:bg-blue-950/30"
+                                            className="flex-1 rounded-xl border-orange-300 text-orange-700 hover:bg-orange-50 dark:border-orange-700 dark:text-orange-400 dark:hover:bg-orange-950/30"
                                         >
                                             <Building2 className="w-4 h-4 mr-1" />
                                             FAANG
@@ -715,7 +715,7 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
                                             onClick={() => handleGenerateWithAI("MNC")}
                                             disabled={aiGenerating || !aiRoleType.trim()}
                                             variant="outline"
-                                            className="flex-1 rounded-xl border-purple-300 text-purple-700 hover:bg-purple-50 dark:border-purple-700 dark:text-purple-400 dark:hover:bg-purple-950/30"
+                                            className="flex-1 rounded-xl border-orange-300 text-orange-700 hover:bg-orange-50 dark:border-orange-700 dark:text-orange-400 dark:hover:bg-orange-950/30"
                                         >
                                             <Briefcase className="w-4 h-4 mr-1" />
                                             MNC
@@ -734,7 +734,7 @@ export function InterviewConfigContent({ initialProcesses, initialStats }: Inter
 
                                 {
                                     aiGenerating && (
-                                        <div className="flex items-center gap-2 mt-3 text-sm text-purple-600 dark:text-purple-400">
+                                        <div className="flex items-center gap-2 mt-3 text-sm text-orange-600 dark:text-orange-400">
                                             <Loader2 className="w-4 h-4 animate-spin" />
                                             Generating interview process...
                                         </div>

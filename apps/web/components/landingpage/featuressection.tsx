@@ -25,13 +25,13 @@ const features = [
     },
     {
         icon: GitMerge,
-        title: "Open Source Guide",
-        description: "Step-by-step walkthroughs for forking, cloning, and pushing to enterprise repos."
+        title: "AI Mock Interviews",
+        description: "Real-time voice interviews with an AI interviewer and instant, detailed feedback on your answers."
     },
     {
         icon: GraduationCap,
-        title: "Verified Certs",
-        description: "Blockchain-verified certificates that you can export directly to LinkedIn."
+        title: "Job Matching",
+        description: "Add your resume and links, and get matched to roles that actually fit your skills and experience."
     },
     {
         icon: FileCode,
@@ -45,7 +45,7 @@ export default function FeaturesSection() {
         <section className="py-24 w-full bg-white dark:bg-neutral-950 border-t border-neutral-100 dark:border-neutral-800">
             <div className="max-w-7xl mx-auto px-6">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: -16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
@@ -65,10 +65,10 @@ export default function FeaturesSection() {
                             return (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: -16 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
+                                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                     className="group p-8 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors duration-300"
                                 >
                                     <div className="w-12 h-12 rounded-lg bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center mb-6 text-neutral-900 dark:text-white group-hover:scale-110 transition-transform duration-300">

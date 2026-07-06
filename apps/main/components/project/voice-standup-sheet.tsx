@@ -230,12 +230,12 @@ PREVIOUS STANDUP (${previousStandup.date}):
                         <div className={cn(
                             "w-10 h-10 rounded-xl flex items-center justify-center",
                             step === 'complete'
-                                ? "bg-green-100 dark:bg-green-900/30"
-                                : "bg-gradient-to-br from-emerald-500 to-teal-500"
+                                ? "bg-amber-100 dark:bg-amber-900/30"
+                                : "bg-gradient-to-br from-amber-500 to-amber-500"
                         )}>
                             {
                                 step === 'complete' ? (
-                                    <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+                                    <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                                 ) : (
                                     <Mic className="w-5 h-5 text-white" />
                                 )
@@ -259,25 +259,25 @@ PREVIOUS STANDUP (${previousStandup.date}):
                                 exit={{ opacity: 0, y: -20 }}
                                 className="space-y-6"
                             >
-                                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 border border-emerald-200 dark:border-emerald-800 rounded-xl p-5">
-                                    <h3 className="font-semibold text-emerald-900 dark:text-emerald-100 mb-3 flex items-center gap-2">
+                                <div className="bg-gradient-to-br from-amber-50 to-amber-50 dark:from-amber-900/20 dark:to-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-5">
+                                    <h3 className="font-semibold text-amber-900 dark:text-amber-100 mb-3 flex items-center gap-2">
                                         🎙️ Voice Standup Session
                                     </h3>
-                                    <p className="text-sm text-emerald-800 dark:text-emerald-200 mb-4">
+                                    <p className="text-sm text-amber-800 dark:text-amber-200 mb-4">
                                         Have a natural conversation with our AI Scrum Master. Share your progress, plans, and blockers just like a real standup meeting.
                                     </p>
                                     <div className="grid grid-cols-3 gap-3 text-center">
                                         <div className="bg-white/60 dark:bg-black/20 rounded-lg p-3">
                                             <div className="text-lg mb-1">📝</div>
-                                            <div className="text-xs font-medium text-emerald-700 dark:text-emerald-300">Yesterday</div>
+                                            <div className="text-xs font-medium text-amber-700 dark:text-amber-300">Yesterday</div>
                                         </div>
                                         <div className="bg-white/60 dark:bg-black/20 rounded-lg p-3">
                                             <div className="text-lg mb-1">🎯</div>
-                                            <div className="text-xs font-medium text-emerald-700 dark:text-emerald-300">Today</div>
+                                            <div className="text-xs font-medium text-amber-700 dark:text-amber-300">Today</div>
                                         </div>
                                         <div className="bg-white/60 dark:bg-black/20 rounded-lg p-3">
                                             <div className="text-lg mb-1">🚧</div>
-                                            <div className="text-xs font-medium text-emerald-700 dark:text-emerald-300">Blockers</div>
+                                            <div className="text-xs font-medium text-amber-700 dark:text-amber-300">Blockers</div>
                                         </div>
                                     </div>
                                 </div>
@@ -307,13 +307,13 @@ PREVIOUS STANDUP (${previousStandup.date}):
                                         <Clock className="w-4 h-4" />
                                         <span className="text-sm">Estimated time: 5-10 minutes</span>
                                     </div>
-                                    <Badge variant="secondary" className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+                                    <Badge variant="secondary" className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
                                         5 credits
                                     </Badge>
                                 </div>
                                 <Button
                                     onClick={handleStartVoice}
-                                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white py-6 text-lg gap-2"
+                                    className="w-full bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 text-white py-6 text-lg gap-2"
                                     disabled={!STANDUP_AGENT_ID}
                                 >
                                     {
@@ -358,7 +358,7 @@ PREVIOUS STANDUP (${previousStandup.date}):
                                 className="min-h-[400px] flex flex-col items-center justify-center space-y-6"
                             >
                                 <div className="relative">
-                                    <div className="w-20 h-20 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 flex items-center justify-center">
+                                    <div className="w-20 h-20 rounded-full bg-gradient-to-r from-amber-500 to-amber-500 flex items-center justify-center">
                                         {
                                             processingStatus === 'processing' && (
                                                 <Loader2 className="w-8 h-8 text-white animate-spin" />
@@ -395,14 +395,14 @@ PREVIOUS STANDUP (${previousStandup.date}):
                                 exit={{ opacity: 0, y: -20 }}
                                 className="space-y-6"
                             >
-                                <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-xl p-6 text-center">
-                                    <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400" />
+                                <div className="bg-gradient-to-br from-amber-50 to-amber-50 dark:from-amber-900/20 dark:to-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-6 text-center">
+                                    <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <CheckCircle2 className="w-8 h-8 text-amber-600 dark:text-amber-400" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-2">
+                                    <h3 className="text-xl font-bold text-amber-900 dark:text-amber-100 mb-2">
                                         Standup Complete! 🎉
                                     </h3>
-                                    <p className="text-green-800 dark:text-green-200">
+                                    <p className="text-amber-800 dark:text-amber-200">
                                         Great job staying consistent with your daily standups. Keep up the momentum!
                                     </p>
                                 </div>

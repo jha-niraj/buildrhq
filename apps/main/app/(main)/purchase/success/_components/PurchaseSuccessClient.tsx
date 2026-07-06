@@ -82,10 +82,10 @@ Thank you for your purchase!
 					transition={{ duration: 0.5 }}
 					className="text-center mb-8"
 				>
-					<div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 mb-6 shadow-lg">
+					<div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-amber-500 to-amber-500 mb-6 shadow-lg">
 						<CheckCircle2 className="w-12 h-12 text-white" />
 					</div>
-					<h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400">
+					<h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-amber-600 dark:from-amber-400 dark:to-amber-400">
 						Payment Successful! 🎉
 					</h1>
 					<p className="text-lg text-neutral-600 dark:text-neutral-400">
@@ -100,7 +100,7 @@ Thank you for your purchase!
 					<Card className="border-neutral-300 dark:border-neutral-800 bg-neutral-50/40 dark:bg-neutral-900/40 backdrop-blur-sm shadow-lg">
 						<CardHeader className="text-center pb-6 border-b border-neutral-200 dark:border-neutral-800">
 							<div className="flex items-center justify-center gap-3 mb-3">
-								<div className="p-2.5 bg-gradient-to-br from-blue-500 to-purple-500 rounded-lg shadow-md">
+								<div className="p-2.5 bg-gradient-to-br from-orange-500 to-orange-500 rounded-lg shadow-md">
 									<Receipt className="h-6 w-6 text-white" />
 								</div>
 								<CardTitle className="text-2xl font-bold text-neutral-900 dark:text-white">
@@ -115,8 +115,8 @@ Thank you for your purchase!
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 								<div className="flex justify-around items-center p-4 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
 									<div className="flex items-center gap-3">
-										<div className="p-2 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-lg">
-											<CreditCard className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+										<div className="p-2 bg-gradient-to-br from-orange-500/10 to-orange-500/10 rounded-lg">
+											<CreditCard className="w-5 h-5 text-orange-600 dark:text-orange-400" />
 										</div>
 										<div>
 											<p className="text-sm text-neutral-600 dark:text-neutral-400">Payment ID</p>
@@ -128,12 +128,12 @@ Thank you for your purchase!
 								</div>
 								<div className="flex justify-around items-center p-4 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
 									<div className="flex items-center gap-3">
-										<div className="p-2 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-lg">
-											<Sparkles className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+										<div className="p-2 bg-gradient-to-br from-amber-500/10 to-amber-500/10 rounded-lg">
+											<Sparkles className="w-5 h-5 text-amber-600 dark:text-amber-400" />
 										</div>
 										<div>
 											<p className="text-sm text-neutral-600 dark:text-neutral-400">Credits Purchased</p>
-											<p className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
+											<p className="text-xl font-bold text-amber-600 dark:text-amber-400">
 												{paymentData.credits || 0} Credits
 											</p>
 										</div>
@@ -141,8 +141,8 @@ Thank you for your purchase!
 								</div>
 								<div className="flex justify-around items-start p-4 bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
 									<div className="flex items-start gap-3">
-										<div className="p-2 bg-gradient-to-br from-purple-500/10 to-violet-500/10 rounded-lg">
-											<Receipt className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+										<div className="p-2 bg-gradient-to-br from-orange-500/10 to-orange-500/10 rounded-lg">
+											<Receipt className="w-5 h-5 text-orange-600 dark:text-orange-400" />
 										</div>
 										<div>
 											<p className="text-sm text-neutral-600 dark:text-neutral-400">Amount Paid</p>
@@ -167,16 +167,16 @@ Thank you for your purchase!
 									</div>
 								</div>
 							</div>
-							<div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20 rounded-lg border border-green-200 dark:border-green-800">
+							<div className="p-4 bg-gradient-to-r from-amber-50 to-amber-50 dark:from-amber-950/20 dark:to-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800">
 								<div className="flex items-center justify-center gap-3">
 									<div>
 										<div className="flex items-center justify-center gap-3">
-											<CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-											<p className="font-semibold text-sm text-green-900 dark:text-green-100 mb-1">
+											<CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5 flex-shrink-0" />
+											<p className="font-semibold text-sm text-amber-900 dark:text-amber-100 mb-1">
 												Credits Added Successfully
 											</p>
 										</div>
-										<p className="text-xs text-green-700 dark:text-green-300">
+										<p className="text-xs text-amber-700 dark:text-amber-300">
 											Your {paymentData.credits || 0} credits have been added to your account and are ready to use!
 										</p>
 									</div>
@@ -223,7 +223,7 @@ Thank you for your purchase!
 					className="mt-8 text-center"
 				>
 					<p className="text-sm text-neutral-600 dark:text-neutral-400">
-						Need help? <Link href="mailto:work@coderzai.xyz" className="text-blue-600 dark:text-blue-400 hover:underline">Contact Support</Link>
+						Need help? <Link href="mailto:work@coderzai.xyz" className="text-orange-600 dark:text-orange-400 hover:underline">Contact Support</Link>
 					</p>
 				</motion.div>
 			</div>

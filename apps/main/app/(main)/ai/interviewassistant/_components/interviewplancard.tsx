@@ -64,7 +64,7 @@ export function InterviewPlanCard({
                     <div>
                         <CardTitle className="text-xl line-clamp-2">{plan.position}</CardTitle>
                         <div className="mt-2 flex flex-wrap items-center gap-2">
-                            <Badge variant="outline" className="border-emerald-500/30 text-emerald-600 dark:text-emerald-400">
+                            <Badge variant="outline" className="border-amber-500/30 text-amber-600 dark:text-amber-400">
                                 Public
                             </Badge>
                             <Badge className="bg-neutral-900 text-white dark:bg-white dark:text-neutral-900">
@@ -85,7 +85,7 @@ export function InterviewPlanCard({
                             </div>
                         )}
                         {!!plan.purchaseCount && (
-                            <div className="flex items-center gap-1 justify-end text-emerald-600 dark:text-emerald-400 text-xs">
+                            <div className="flex items-center gap-1 justify-end text-amber-600 dark:text-amber-400 text-xs">
                                 <span>{plan.purchaseCount} purchases</span>
                             </div>
                         )}
@@ -126,12 +126,12 @@ export function InterviewPlanCard({
                 {/* Features */}
                 <div className="flex flex-wrap gap-1 mb-3">
                     {plan.includeAnswers && (
-                        <Badge variant="outline" className="text-xs px-2 py-0.5 border-green-200 text-green-700 dark:border-green-800 dark:text-green-400">
+                        <Badge variant="outline" className="text-xs px-2 py-0.5 border-amber-200 text-amber-700 dark:border-amber-800 dark:text-amber-400">
                             ✓ Answers
                         </Badge>
                     )}
                     {plan.includePractice && (
-                        <Badge variant="outline" className="text-xs px-2 py-0.5 border-blue-200 text-blue-700 dark:border-blue-800 dark:text-blue-400">
+                        <Badge variant="outline" className="text-xs px-2 py-0.5 border-orange-200 text-orange-700 dark:border-orange-800 dark:text-orange-400">
                             ✓ Practice
                         </Badge>
                     )}

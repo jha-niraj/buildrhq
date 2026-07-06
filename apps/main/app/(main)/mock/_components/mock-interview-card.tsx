@@ -43,7 +43,7 @@ interface MockData {
 }
 
 const levelColors = {
-    'BEGINNER': 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 border-green-200 dark:border-green-900/50',
+    'BEGINNER': 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-900/50',
     'INTERMEDIATE': 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700',
     'ADVANCED': 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-900/50',
     'EXPERT': 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 border-red-200 dark:border-red-900/50',
@@ -85,7 +85,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                                 </Badge>
                                 {
                                     shouldShowAdminBadge && (
-                                        <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-xs">
+                                        <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs">
                                             <Shield className="w-3 h-3 mr-1" />
                                             Official
                                         </Badge>
@@ -96,7 +96,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                         </div>
                         {
                             isUserGenerated && mock.isPublic && (
-                                <Globe className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                                <Globe className="w-4 h-4 text-orange-600 dark:text-orange-400" />
                             )
                         }
                     </div>
@@ -111,7 +111,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                             <span>{mock.duration}m</span>
                         </div>
                         <div className="flex items-center gap-1">
-                            <Sparkles className="w-4 h-4 text-purple-600" />
+                            <Sparkles className="w-4 h-4 text-orange-600" />
                             <span>{mock.creditsRequired}c</span>
                         </div>
                     </div>
@@ -160,7 +160,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                                         </Badge>
                                         {
                                             shouldShowAdminBadge && (
-                                                <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-xs mb-1">
+                                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs mb-1">
                                                     <Shield className="w-3 h-3 mr-1" />
                                                     Official
                                                 </Badge>
@@ -256,7 +256,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                             </Badge>
                             {
                                 shouldShowAdminBadge && (
-                                    <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-xs">
+                                    <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs">
                                         <Shield className="w-3 h-3 mr-1" />
                                         Official
                                     </Badge>
@@ -283,8 +283,8 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                             }
                             {
                                 mock.popularity && mock.popularity > 80 && (
-                                    <div className="p-1.5 bg-green-100 dark:bg-green-900/30 rounded">
-                                        <TrendingUp className="w-3.5 h-3.5 text-green-600 dark:text-green-400" />
+                                    <div className="p-1.5 bg-amber-100 dark:bg-amber-900/30 rounded">
+                                        <TrendingUp className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                                     </div>
                                 )
                             }

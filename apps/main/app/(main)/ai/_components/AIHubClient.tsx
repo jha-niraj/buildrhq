@@ -1,21 +1,13 @@
 "use client"
 
-import { useState } from "react"
 import { motion } from "framer-motion"
 import {
-    ArrowRight, Sparkles, Users, Zap, Trophy, Briefcase, GitPullRequest,
-    LayoutTemplate, BrainCircuit, ChevronRight, Lock, CheckCircle2,
-    ScanSearch, FileText, ShieldCheck, TestTube2
+    ArrowRight, Sparkles, Users, Zap, Trophy, Briefcase,
+    LayoutTemplate, ChevronRight, CheckCircle2, FileText
 } from "lucide-react"
 import { Badge } from "@repo/ui/components/ui/badge"
 import { Button } from "@repo/ui/components/ui/button"
-import {
-    Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription
-} from "@repo/ui/components/ui/dialog"
 import { useRouter } from "next/navigation"
-import toast from "@repo/ui/components/ui/sonner"
-import { saveFeatureNotifyInterest } from "@/actions/(main)/feature-notify.action"
-import { FeatureNotifySection } from "@repo/db"
 
 // Active tools - Job Interview Assistant & Resume Creator only
 const tools = [
@@ -51,17 +43,6 @@ const tools = [
     },
 ]
 
-// Locked / "Notify Me" placeholder tools — removed to keep the AI hub focused on
-// the three shipped tools. Kept as an (empty) typed list so the notify machinery
-// still type-checks; the "coming soon" grid renders nothing.
-const lockedTools: {
-    id: string
-    icon: typeof FileText
-    name: string
-    description: string
-    section: FeatureNotifySection
-}[] = []
-
 const stats = [
     { label: "Interviews Aced", value: "850", icon: Trophy, suffix: "+" },
     { label: "Systems Designed", value: "2.1K", icon: LayoutTemplate, suffix: "" },
@@ -69,45 +50,15 @@ const stats = [
     { label: "Uptime", value: "99.9", icon: Zap, suffix: "%" },
 ]
 
-type LockedTool = typeof lockedTools[0];
-
 export default function AiToolsPage() {
     const router = useRouter();
-    const [dialogOpen, setDialogOpen] = useState(false);
-    const [selectedTool, setSelectedTool] = useState<LockedTool | null>(null);
-    const [notifyLoading, setNotifyLoading] = useState(false);
-
-    const handleLockedClick = (tool: LockedTool) => {
-        setSelectedTool(tool);
-        setDialogOpen(true);
-    };
-
-    const handleNotifyMe = async () => {
-        if (!selectedTool) return;
-        setNotifyLoading(true);
-        const res = await saveFeatureNotifyInterest({
-            section: selectedTool.section as FeatureNotifySection,
-            title: selectedTool.name,
-            description: selectedTool.description,
-        });
-        setNotifyLoading(false);
-        if (res.success) {
-            setDialogOpen(false);
-            setSelectedTool(null);
-            toast.success("You'll receive an email at launch!", {
-                description: "We'll notify you when this feature is ready.",
-            });
-        } else {
-            toast.error(res.error || "Failed. Please try again.");
-        }
-    };
 
     return (
         <div className="font-sans selection:bg-neutral-100 dark:selection:bg-neutral-800">
 
                 <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-neutral-100 dark:border-neutral-800">
                     <div className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-neutral-950 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
-                    <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-blue-500/10 opacity-50 blur-[100px] dark:bg-blue-500/20"></div>
+                    <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-orange-500/10 opacity-50 blur-[100px] dark:bg-orange-500/20"></div>
 
                     <div className="max-w-7xl mx-auto px-6 relative z-10">
                         <motion.div
@@ -122,7 +73,7 @@ export default function AiToolsPage() {
                                 transition={{ delay: 0.2 }}
                             >
                                 <Badge variant="outline" className="px-4 py-1.5 rounded-full border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 font-medium text-sm backdrop-blur-sm">
-                                    <Sparkles className="w-3.5 h-3.5 mr-2 text-blue-500" />
+                                    <Sparkles className="w-3.5 h-3.5 mr-2 text-orange-500" />
                                     The Coder&apos;z Intelligence Engine
                                 </Badge>
                             </motion.div>
@@ -213,7 +164,7 @@ export default function AiToolsPage() {
                                                 <div className="w-14 h-14 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-100 dark:border-neutral-700 flex items-center justify-center text-neutral-900 dark:text-white">
                                                     <tool.icon className="w-7 h-7" />
                                                 </div>
-                                                <Badge className="bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">
+                                                <Badge className="bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">
                                                     {tool.status}
                                                 </Badge>
                                             </div>
@@ -223,37 +174,6 @@ export default function AiToolsPage() {
                                             </p>
                                             <div className="flex items-center justify-end text-sm font-bold text-neutral-900 dark:text-white group-hover:translate-x-1 transition-transform">
                                                 Launch <ChevronRight className="ml-1 w-4 h-4" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                            {lockedTools.map((tool, index) => (
-                                <motion.div
-                                    key={tool.id}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.3, delay: (tools.length + index) * 0.1 }}
-                                    onClick={() => handleLockedClick(tool)}
-                                    className="cursor-pointer"
-                                >
-                                    <div className="group relative h-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-neutral-900/5 dark:hover:shadow-black/50 transition-all duration-500 opacity-90">
-                                        <div className="p-8">
-                                            <div className="flex items-start justify-between mb-6">
-                                                <div className="w-14 h-14 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-100 dark:border-neutral-700 flex items-center justify-center text-neutral-500">
-                                                    <tool.icon className="w-7 h-7" />
-                                                </div>
-                                                <Badge variant="outline" className="border-neutral-300 text-neutral-500">
-                                                    <Lock className="w-3 h-3 mr-1" />
-                                                    Notify Me
-                                                </Badge>
-                                            </div>
-                                            <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-3">{tool.name}</h3>
-                                            <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed text-base mb-6">
-                                                {tool.description}
-                                            </p>
-                                            <div className="flex items-center justify-end text-sm font-bold text-neutral-500 group-hover:translate-x-1 transition-transform">
-                                                Notify Me <ChevronRight className="ml-1 w-4 h-4" />
                                             </div>
                                         </div>
                                     </div>
@@ -295,49 +215,12 @@ export default function AiToolsPage() {
                                 </Button>
                             </div>
                             <div className="pt-6 flex items-center justify-center gap-6 text-sm text-neutral-400 font-medium">
-                                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Cancel anytime</span>
-                                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Secure payment</span>
+                                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-amber-500" /> Cancel anytime</span>
+                                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-amber-500" /> Secure payment</span>
                             </div>
                         </motion.div>
                     </div>
                 </section>
-                <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-                    <DialogContent className="sm:max-w-[425px] bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
-                        <DialogHeader>
-                            <DialogTitle className="flex items-center gap-2 text-xl font-bold">
-                                <Lock className="w-5 h-5 text-neutral-400" />
-                                Coming Soon
-                            </DialogTitle>
-                            <DialogDescription>
-                                Get notified when this feature launches. We&apos;ll send you an email.
-                            </DialogDescription>
-                        </DialogHeader>
-                        <div className="py-6">
-                            {selectedTool && (
-                                <div className="rounded-xl bg-neutral-50 dark:bg-neutral-900 p-4 border border-neutral-100 dark:border-neutral-800 mb-4">
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <div className="p-2 bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700">
-                                            <selectedTool.icon className="w-5 h-5" />
-                                        </div>
-                                        <span className="font-semibold text-lg">{selectedTool.name}</span>
-                                    </div>
-                                    <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                                        {selectedTool.description}
-                                    </p>
-                                </div>
-                            )}
-                        </div>
-                        <div className="flex gap-3">
-                            <Button onClick={() => setDialogOpen(false)} variant="outline" className="flex-1 rounded-full border-neutral-200 dark:border-neutral-800">
-                                Close
-                            </Button>
-                            <Button onClick={handleNotifyMe} disabled={notifyLoading} className="flex-1 rounded-full bg-neutral-900 dark:bg-white dark:text-neutral-900">
-                                {notifyLoading ? "Saving..." : "Notify Me"}
-                            </Button>
-                        </div>
-                    </DialogContent>
-                </Dialog>
-
             </div>
     )
 }

@@ -41,23 +41,23 @@ const categoryLabels: Record<string, string> = {
 };
 
 const categoryColors: Record<string, string> = {
-    TECHNICAL_SKILLS: "bg-blue-500",
-    PROJECTS: "bg-purple-500",
-    WORK_EXPERIENCE: "bg-emerald-500",
+    TECHNICAL_SKILLS: "bg-orange-500",
+    PROJECTS: "bg-orange-500",
+    WORK_EXPERIENCE: "bg-amber-500",
     EDUCATION: "bg-amber-500",
     ASSESSMENTS: "bg-pink-500",
-    AVAILABILITY: "bg-cyan-500",
+    AVAILABILITY: "bg-amber-500",
     COMPENSATION: "bg-red-500",
-    SOFT_SKILLS: "bg-indigo-500",
+    SOFT_SKILLS: "bg-orange-500",
     GENERAL: "bg-slate-500",
     OTHER: "bg-gray-500",
 };
 
 const insightIcons: Record<string, React.ReactNode> = {
-    strength: <Sparkles className="w-4 h-4 text-emerald-500" />,
+    strength: <Sparkles className="w-4 h-4 text-amber-500" />,
     suggestion: <Lightbulb className="w-4 h-4 text-amber-500" />,
     warning: <AlertTriangle className="w-4 h-4 text-red-500" />,
-    info: <Info className="w-4 h-4 text-blue-500" />,
+    info: <Info className="w-4 h-4 text-orange-500" />,
 };
 
 export default function KnowMeAnalytics({ analytics, initialRange }: KnowMeAnalyticsProps) {
@@ -238,7 +238,7 @@ export default function KnowMeAnalytics({ analytics, initialRange }: KnowMeAnaly
                                             key={index}
                                             className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-neutral-800 rounded-xl"
                                         >
-                                            <div className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 text-xs font-bold flex-shrink-0">
+                                            <div className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400 text-xs font-bold flex-shrink-0">
                                                 {index + 1}
                                             </div>
                                             <div className="flex-1 min-w-0">
@@ -339,10 +339,10 @@ export default function KnowMeAnalytics({ analytics, initialRange }: KnowMeAnaly
                                             key={index}
                                             className={cn(
                                                 "p-4 rounded-xl border",
-                                                insight.type === "strength" && "bg-emerald-50 dark:bg-emerald-900/10 border-emerald-200 dark:border-emerald-900/30",
+                                                insight.type === "strength" && "bg-amber-50 dark:bg-amber-900/10 border-amber-200 dark:border-amber-900/30",
                                                 insight.type === "suggestion" && "bg-amber-50 dark:bg-amber-900/10 border-amber-200 dark:border-amber-900/30",
                                                 insight.type === "warning" && "bg-red-50 dark:bg-red-900/10 border-red-200 dark:border-red-900/30",
-                                                insight.type === "info" && "bg-blue-50 dark:bg-blue-900/10 border-blue-200 dark:border-blue-900/30"
+                                                insight.type === "info" && "bg-orange-50 dark:bg-orange-900/10 border-orange-200 dark:border-orange-900/30"
                                             )}
                                         >
                                             <div className="flex items-start gap-3">
@@ -408,7 +408,7 @@ export default function KnowMeAnalytics({ analytics, initialRange }: KnowMeAnaly
                                                 transition={{ duration: 0.3, delay: index * 0.01 }}
                                                 className={cn(
                                                     "w-full rounded-t-sm transition-colors",
-                                                    height > 0 ? "bg-blue-500 hover:bg-blue-600" : "bg-slate-200 dark:bg-neutral-700"
+                                                    height > 0 ? "bg-orange-500 hover:bg-orange-600" : "bg-slate-200 dark:bg-neutral-700"
                                                 )}
                                             />
                                         </div>
@@ -438,9 +438,9 @@ function StatCard({
     color: "blue" | "purple" | "emerald" | "amber";
 }) {
     const colorClasses = {
-        blue: "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400",
-        purple: "bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400",
-        emerald: "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400",
+        blue: "bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400",
+        purple: "bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400",
+        emerald: "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400",
         amber: "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400",
     };
 
@@ -465,7 +465,7 @@ function StatCard({
                     trend && (
                         <div className={cn(
                             "flex items-center gap-1 text-xs font-medium",
-                            trend.direction === "up" && "text-emerald-600",
+                            trend.direction === "up" && "text-amber-600",
                             trend.direction === "down" && "text-red-600",
                             trend.direction === "stable" && "text-slate-400"
                         )}>

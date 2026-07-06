@@ -95,7 +95,7 @@ export function StudioContainer({
 									</p>
 								)}
 								<div className="flex items-center gap-2 mt-2">
-									<span className="text-xs px-2 py-1 rounded-full bg-purple-100 dark:bg-purple-950/30 text-purple-700 dark:text-purple-300">
+									<span className="text-xs px-2 py-1 rounded-full bg-orange-100 dark:bg-orange-950/30 text-orange-700 dark:text-orange-300">
 										{getSourceLabel()}
 									</span>
 									<span className="text-xs text-neutral-500">

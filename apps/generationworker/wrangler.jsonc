@@ -1,0 +1,31 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "buildrhq-generation",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-05-07",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true
+	},
+	// The Durable Object that owns each generation job: it schedules an Alarm and
+	// runs the 1–1.5 min pipeline inside alarm(), writing status server-side.
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "PROJECT_GENERATOR",
+				"class_name": "ProjectGenerator"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["ProjectGenerator"]
+		}
+	],
+	// Non-secret vars can live here; secrets (DATABASE_URL, OPENAI_API_KEY,
+	// WORKER_SECRET) are set with `wrangler secret put <NAME>` or the dashboard.
+	"vars": {
+		"NODE_ENV": "production"
+	}
+}

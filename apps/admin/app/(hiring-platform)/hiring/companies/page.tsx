@@ -39,7 +39,7 @@ interface Pagination {
 }
 
 const statusColors: Record<VerificationStatus, string> = {
-    VERIFIED: "bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400",
+    VERIFIED: "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400",
     PENDING: "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400",
     REJECTED: "bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400"
 }
@@ -84,7 +84,7 @@ export default function HiringCompaniesPage() {
         return (
             <div className="p-6 lg:p-8 flex items-center justify-center min-h-[400px]">
                 <div className="text-center">
-                    <Activity className="w-12 h-12 animate-spin text-emerald-400 mx-auto mb-4" />
+                    <Activity className="w-12 h-12 animate-spin text-amber-400 mx-auto mb-4" />
                     <p className="text-neutral-500">Loading companies...</p>
                 </div>
             </div>
@@ -100,7 +100,7 @@ export default function HiringCompaniesPage() {
                 </Link>
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <div className="w-3 h-8 rounded-full bg-emerald-500" />
+                        <div className="w-3 h-8 rounded-full bg-amber-500" />
                         <div>
                             <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">Companies</h1>
                             <p className="text-neutral-500 dark:text-neutral-400">
@@ -156,14 +156,14 @@ export default function HiringCompaniesPage() {
                     <p className="text-2xl font-bold text-neutral-900 dark:text-white">{pagination.total}</p>
                 </div>
                 <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-4">
-                    <div className="flex items-center gap-2 text-emerald-500 text-sm mb-1">
+                    <div className="flex items-center gap-2 text-amber-500 text-sm mb-1">
                         <CheckCircle className="w-4 h-4" />
                         Verified
                     </div>
                     <p className="text-2xl font-bold text-neutral-900 dark:text-white">{verifiedCount}</p>
                 </div>
                 <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-4">
-                    <div className="flex items-center gap-2 text-blue-500 text-sm mb-1">
+                    <div className="flex items-center gap-2 text-orange-500 text-sm mb-1">
                         <Users className="w-4 h-4" />
                         Members
                     </div>
@@ -210,8 +210,8 @@ export default function HiringCompaniesPage() {
                                     >
                                         <td className="px-4 py-4">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center">
-                                                    <Building2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                                                <div className="w-10 h-10 rounded-lg bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center">
+                                                    <Building2 className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                                                 </div>
                                                 <div>
                                                     <p className="font-medium text-neutral-900 dark:text-white">{company.name}</p>

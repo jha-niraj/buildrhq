@@ -5,22 +5,16 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Button } from '@repo/ui/components/ui/button'
 import { Badge } from '@repo/ui/components/ui/badge'
-import { 
-    Card, CardContent, CardDescription, CardHeader, CardTitle 
+import {
+    Card, CardContent, CardDescription, CardHeader, CardTitle
 } from '@repo/ui/components/ui/card'
 import {
-    Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription
-} from '@repo/ui/components/ui/dialog'
-import {
-    ArrowRight, Brain, Video, Building2, Users, Phone, Sparkles, 
-    CheckCircle, TrendingUp, Trophy, Target, Zap, Star, MessageSquare, 
-    Mic, Award, Timer, Shield, Lock
+    ArrowRight, Brain, Users, Sparkles,
+    CheckCircle, TrendingUp, Trophy, Target, Zap, Star, MessageSquare,
+    Mic, Award, Timer, Shield
 } from 'lucide-react'
-import toast from '@repo/ui/components/ui/sonner'
 import { useUserStore } from '@/app/store/useUserStore'
 import { getMockInterviewStats } from '@/actions/(main)/mockvoice/stats.action'
-import { saveFeatureNotifyInterest } from '@/actions/(main)/feature-notify.action'
-import type { FeatureNotifySection } from '@repo/db'
 
 const mockInterviewTypes = [
     {
@@ -101,9 +95,6 @@ export default function MockInterviewLandingPage() {
         averageRating: '4.8',
         successRate: '85'
     })
-    const [notifyDialogOpen, setNotifyDialogOpen] = useState(false)
-    const [selectedLockedType, setSelectedLockedType] = useState<typeof mockInterviewTypes[0] | null>(null)
-    const [notifyLoading, setNotifyLoading] = useState(false)
 
     useEffect(() => {
         async function loadStats() {
@@ -160,10 +151,10 @@ export default function MockInterviewLandingPage() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
                         {
                             [
-                                { value: `${stats.totalVoiceInterviews.toLocaleString()}+`, label: 'Interviews Conducted', icon: Mic, iconColor: "bg-blue-50 text-blue-600 dark:bg-blue-950 dark:text-blue-400" },
-                                { value: `${stats.activeUsers.toLocaleString()}+`, label: 'Active Users', icon: Users, iconColor: "bg-emerald-50 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400" },
+                                { value: `${stats.totalVoiceInterviews.toLocaleString()}+`, label: 'Interviews Conducted', icon: Mic, iconColor: "bg-orange-50 text-orange-600 dark:bg-orange-950 dark:text-orange-400" },
+                                { value: `${stats.activeUsers.toLocaleString()}+`, label: 'Active Users', icon: Users, iconColor: "bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-400" },
                                 { value: `${stats.averageRating}/5`, label: 'Average Rating', icon: Star, iconColor: "bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-400" },
-                                { value: `${stats.successRate}%`, label: 'Success Rate', icon: Trophy, iconColor: "bg-purple-50 text-purple-600 dark:bg-purple-950 dark:text-purple-400" },
+                                { value: `${stats.successRate}%`, label: 'Success Rate', icon: Trophy, iconColor: "bg-orange-50 text-orange-600 dark:bg-orange-950 dark:text-orange-400" },
                             ].map((stat, index) => (
                                 <motion.div
                                     key={index}
@@ -203,93 +194,55 @@ export default function MockInterviewLandingPage() {
                         </motion.div>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {
-                                mockInterviewTypes.map((type, index) => {
-                                    const isLocked = 'isLocked' in type && type.isLocked;
-                                    const isActive = 'isActive' in type && type.isActive;
-                                    
-                                    const cardContent = (
-                                        <Card className={`h-full bg-white dark:bg-neutral-900 shadow-lg border border-neutral-200 dark:border-neutral-800 p-4 transition-all duration-300 group ${isLocked ? 'opacity-60 cursor-not-allowed' : 'hover:shadow-2xl cursor-pointer'}`}>
-                                            <CardHeader className="space-y-4">
-                                                <div className="flex items-start justify-between">
-                                                    <div className={`p-3 rounded-xl ${isActive ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300'}`}>
-                                                        {type.icon}
+                                mockInterviewTypes.map((type, index) => (
+                                    <motion.div
+                                        key={type.id}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: index * 0.1 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <Link href={type.href}>
+                                            <Card className="h-full bg-white dark:bg-neutral-900 shadow-lg border border-neutral-200 dark:border-neutral-800 p-4 transition-all duration-300 group hover:shadow-2xl cursor-pointer">
+                                                <CardHeader className="space-y-4">
+                                                    <div className="flex items-start justify-between">
+                                                        <div className="p-3 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400">
+                                                            {type.icon}
+                                                        </div>
+                                                        <Badge className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-0">
+                                                            <CheckCircle className="w-3 h-3 mr-1" />
+                                                            Active
+                                                        </Badge>
                                                     </div>
-                                                    {
-                                                        isLocked && (
-                                                            <Badge className="bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border-0">
-                                                                <Lock className="w-3 h-3 mr-1" />
-                                                                Locked
-                                                            </Badge>
-                                                        )
-                                                    }
-                                                    {
-                                                        isActive && (
-                                                            <Badge className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-0">
-                                                                <CheckCircle className="w-3 h-3 mr-1" />
-                                                                Active
-                                                            </Badge>
-                                                        )
-                                                    }
-                                                </div>
-                                                <div>
-                                                    <CardTitle className={`text-xl mb-2 ${!isLocked && 'group-hover:underline underline-offset-4'}`}>
-                                                        {type.title}
-                                                    </CardTitle>
-                                                    <CardDescription className="text-sm">
-                                                        {type.description}
-                                                    </CardDescription>
-                                                </div>
-                                            </CardHeader>
-                                            <CardContent className="space-y-4">
-                                                <div className="space-y-2">
-                                                    {
-                                                        type.features.map((feature, idx) => (
-                                                            <div key={idx} className={`flex items-center gap-2 text-sm ${isLocked ? 'text-neutral-400 dark:text-neutral-500' : 'text-neutral-600 dark:text-neutral-400'}`}>
-                                                                <CheckCircle className={`w-4 h-4 flex-shrink-0 ${isLocked ? 'text-neutral-400 dark:text-neutral-500' : 'text-green-600 dark:text-green-500'}`} />
-                                                                <span>{feature}</span>
-                                                            </div>
-                                                        ))
-                                                    }
-                                                </div>
-                                                <div className="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-neutral-800">
-                                                    <span className={`text-sm ${isLocked ? 'text-neutral-400 dark:text-neutral-500' : 'text-neutral-600 dark:text-neutral-400'}`}>{type.badge}</span>
-                                                    {
-                                                        isLocked ? (
-                                                            <Lock className="w-5 h-5 text-neutral-400" />
-                                                        ) : (
-                                                            <ArrowRight className="w-5 h-5 text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
-                                                        )
-                                                    }
-                                                </div>
-                                            </CardContent>
-                                        </Card>
-                                    );
-
-                                    const handleLockedClick = () => {
-                                        if (isLocked && 'notifySection' in type) {
-                                            setSelectedLockedType(type)
-                                            setNotifyDialogOpen(true)
-                                        }
-                                    }
-
-                                    return (
-                                        <motion.div
-                                            key={type.id}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            whileInView={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: index * 0.1 }}
-                                            viewport={{ once: true }}
-                                        >
-                                            {
-                                                isLocked ? (
-                                                    <div onClick={handleLockedClick} className="cursor-pointer">{cardContent}</div>
-                                                ) : (
-                                                    <Link href={type.href}>{cardContent}</Link>
-                                                )
-                                            }
-                                        </motion.div>
-                                    );
-                                })
+                                                    <div>
+                                                        <CardTitle className="text-xl mb-2 group-hover:underline underline-offset-4">
+                                                            {type.title}
+                                                        </CardTitle>
+                                                        <CardDescription className="text-sm">
+                                                            {type.description}
+                                                        </CardDescription>
+                                                    </div>
+                                                </CardHeader>
+                                                <CardContent className="space-y-4">
+                                                    <div className="space-y-2">
+                                                        {
+                                                            type.features.map((feature, idx) => (
+                                                                <div key={idx} className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
+                                                                    <CheckCircle className="w-4 h-4 flex-shrink-0 text-orange-500" />
+                                                                    <span>{feature}</span>
+                                                                </div>
+                                                            ))
+                                                        }
+                                                    </div>
+                                                    <div className="flex items-center justify-between pt-4 border-t border-neutral-200 dark:border-neutral-800">
+                                                        <span className="text-sm text-neutral-600 dark:text-neutral-400">{type.badge}</span>
+                                                        <ArrowRight className="w-5 h-5 text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
+                                                    </div>
+                                                </CardContent>
+                                            </Card>
+                                        </Link>
+                                    </motion.div>
+                                ))
                             }
                         </div>
                     </div>
@@ -404,61 +357,6 @@ export default function MockInterviewLandingPage() {
                         </motion.div>
                     </div>
                 </section>
-                <Dialog open={notifyDialogOpen} onOpenChange={setNotifyDialogOpen}>
-                    <DialogContent className="sm:max-w-[425px] bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
-                        <DialogHeader>
-                            <DialogTitle className="flex items-center gap-2 text-xl font-bold">
-                                <Lock className="w-5 h-5 text-neutral-400" />
-                                Coming Soon
-                            </DialogTitle>
-                            <DialogDescription>
-                                Get notified when this feature launches. We&apos;ll send you an email.
-                            </DialogDescription>
-                        </DialogHeader>
-                        {
-                        selectedLockedType && (
-                            <div className="py-4">
-                                <div className="rounded-xl bg-neutral-50 dark:bg-neutral-900 p-4 border border-neutral-100 dark:border-neutral-800">
-                                    <h3 className="font-semibold text-lg mb-2">{selectedLockedType.title}</h3>
-                                    <p className="text-sm text-neutral-500 dark:text-neutral-400">{selectedLockedType.description}</p>
-                                </div>
-                            </div>
-                        )
-                        }
-                        <div className="flex gap-3">
-                            <Button onClick={() => setNotifyDialogOpen(false)} variant="outline" className="flex-1 rounded-full">
-                                Close
-                            </Button>
-                            <Button
-                                onClick={async () => {
-                                    const section = selectedLockedType && 'notifySection' in selectedLockedType
-                                        ? selectedLockedType.notifySection
-                                        : undefined;
-                                    if (!section) return;
-                                    setNotifyLoading(true)
-                                    const res = await saveFeatureNotifyInterest({
-                                        section: section as FeatureNotifySection,
-                                        title: selectedLockedType!.title,
-                                        description: selectedLockedType!.description,
-                                    })
-                                    setNotifyLoading(false)
-                                    if (res.success) {
-                                        setNotifyDialogOpen(false)
-                                        toast.success("You'll receive an email at launch!", {
-                                            description: "We'll notify you when this feature is ready.",
-                                        })
-                                    } else {
-                                        toast.error(res.error || "Please sign in to get notified.")
-                                    }
-                                }}
-                                disabled={notifyLoading}
-                                className="flex-1 rounded-full bg-neutral-900 dark:bg-white dark:text-neutral-900"
-                            >
-                                {notifyLoading ? "Saving..." : "Notify Me"}
-                            </Button>
-                        </div>
-                    </DialogContent>
-                </Dialog>
             </main>
     )
 }

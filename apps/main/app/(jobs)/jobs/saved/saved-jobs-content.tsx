@@ -174,8 +174,8 @@ function AuthRequiredState() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-16 px-4"
         >
-            <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <UserCheck className="w-10 h-10 text-purple-600 dark:text-purple-400" />
+            <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-pink-100 dark:from-orange-900/30 dark:to-pink-900/30 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                <UserCheck className="w-10 h-10 text-orange-600 dark:text-orange-400" />
             </div>
             <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
                 Sign in to see your saved jobs

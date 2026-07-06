@@ -65,7 +65,7 @@ export function QuizVerification({ goalId, questions, status, score, attempts }:
         return (
             <div className="flex-1 flex items-center justify-center p-8">
                 <div className="text-center">
-                    <div className="w-20 h-20 mx-auto rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4">
+                    <div className="w-20 h-20 mx-auto rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4">
                         <span className="text-3xl">✓</span>
                     </div>
                     <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">Quiz Passed!</h3>

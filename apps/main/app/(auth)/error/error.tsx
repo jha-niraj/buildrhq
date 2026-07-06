@@ -50,7 +50,7 @@ export default function AuthError() {
                 <div className="flex justify-center space-x-4">
                     <Link
                         href="/signin"
-                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
+                        className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-300"
                     >
                         Return to Sign In
                     </Link>
