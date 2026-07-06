@@ -72,8 +72,23 @@ export const auth = betterAuth({
     secret: process.env.BETTER_AUTH_SECRET || process.env.NEXTAUTH_SECRET,
     basePath: "/api/auth",
 
+    // ─── Cross-subdomain cookies ─────────────────────────────────────────────
+    // The app (app.buildrhq.com) and the marketing site (buildrhq.com) are
+    // separate deploys. Setting AUTH_COOKIE_DOMAIN to the shared parent domain
+    // (".buildrhq.com") makes the session cookie readable across subdomains, so
+    // the marketing navbar can show "Go to Dashboard" for a logged-in visitor.
+    // Left disabled on localhost (no shared parent domain).
+    advanced: {
+        crossSubDomainCookies: {
+            enabled: Boolean(process.env.AUTH_COOKIE_DOMAIN),
+            domain: process.env.AUTH_COOKIE_DOMAIN,
+        },
+        cookiePrefix: "buildrhq",
+    },
+
     trustedOrigins: [
-        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
+        process.env.NEXT_PUBLIC_WEB_URL || "http://localhost:3000",
+        process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3004",
         process.env.NEXT_PUBLIC_UNI_URL || "http://localhost:3001",
         process.env.NEXT_PUBLIC_HIRING_URL || "http://localhost:3002",
         process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3003",

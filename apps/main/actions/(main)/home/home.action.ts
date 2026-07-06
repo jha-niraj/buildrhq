@@ -10,14 +10,10 @@ import {
     pathfinderGoals,
     activityEntries,
     dailyActivities,
-    userBadges,
-    creditTransfers,
-    referrals,
     mockVoiceSession,
-    communityPosts,
     userStats,
 } from "@repo/db";
-import { eq, and, or, gte, desc, asc, sql } from "drizzle-orm";
+import { eq, and, gte, desc, asc } from "drizzle-orm";
 
 
 // Get user's home page data
@@ -39,10 +35,6 @@ export async function getHomeData() {
             pathfinderGoalRows,
             recentActivity,
             activityCalendar,
-            achievements,
-            leaderboardRank,
-            recentTransfers,
-            referralStats,
             recentMockSessions,
         ] = await Promise.all([
             // User stats
@@ -150,52 +142,6 @@ export async function getHomeData() {
                 orderBy: asc(dailyActivities.date),
             }),
 
-            // Recent achievements from badges system (limit 5)
-            db.query.userBadges.findMany({
-                where: and(
-                    eq(userBadges.userId, userId),
-                    eq(userBadges.status, "CLAIMED")
-                ),
-                with: {
-                    badge: {
-                        columns: {
-                            id: true,
-                            name: true,
-                            description: true,
-                            icon: true,
-                            xpReward: true,
-                            rarity: true,
-                        },
-                    },
-                },
-                orderBy: desc(userBadges.claimedAt),
-                limit: 5,
-            }),
-
-            // Leaderboard position
-            getLeaderboardPosition(userId),
-
-            // Recent credit transfers
-            db.query.creditTransfers.findMany({
-                where: or(
-                    eq(creditTransfers.senderId, userId),
-                    eq(creditTransfers.receiverId, userId)
-                ),
-                with: {
-                    sender: {
-                        columns: { id: true, name: true, image: true, username: true },
-                    },
-                    receiver: {
-                        columns: { id: true, name: true, image: true, username: true },
-                    },
-                },
-                orderBy: desc(creditTransfers.createdAt),
-                limit: 5,
-            }),
-
-            // Referral stats
-            getReferralStats(userId),
-
             // Recent mock voice sessions (limit 6)
             db.query.mockVoiceSession.findMany({
                 where: eq(mockVoiceSession.userId, userId),
@@ -262,20 +208,6 @@ export async function getHomeData() {
             createdAt: activity.createdAt,
         }));
 
-        // Transform achievements from new badges system
-        const transformedAchievementsFromBadges = achievements.map((ub) => ({
-            id: ub.id,
-            achievement: {
-                id: ub.badge.id,
-                name: ub.badge.name,
-                description: ub.badge.description,
-                icon: ub.badge.icon,
-                xpReward: ub.badge.xpReward,
-                rarity: ub.badge.rarity,
-            },
-            unlockedAt: ub.claimedAt ?? ub.completedAt ?? ub.unlockedAt ?? new Date(),
-        }));
-
         // Normalize studios to include _count shape for client compatibility
         const normalizedStudios = recentStudios.map(s => ({
             id: s.id,
@@ -299,10 +231,6 @@ export async function getHomeData() {
                 pathfinderGoals: pathfinderGoalsForHome,
                 recentActivity: transformedActivity,
                 activityCalendar: transformedCalendar,
-                achievements: transformedAchievementsFromBadges,
-                leaderboardRank,
-                recentTransfers,
-                referralStats,
                 recentMockSessions: recentMockSessions || [],
             },
         };
@@ -312,61 +240,7 @@ export async function getHomeData() {
     }
 }
 
-// Get leaderboard position
-async function getLeaderboardPosition(userId: string) {
-    try {
-        const allUsers = await db.query.users.findMany({
-            columns: { id: true, totalXp: true },
-            orderBy: desc(users.totalXp),
-        });
-
-        const position = allUsers.findIndex((u) => u.id === userId) + 1;
-        const totalUsers = allUsers.length;
-        const percentile = Math.round(((totalUsers - position) / totalUsers) * 100);
-
-        return { position, totalUsers, percentile };
-    } catch {
-        return { position: 0, totalUsers: 0, percentile: 0 };
-    }
-}
-
-// Get referral stats
-async function getReferralStats(userId: string) {
-    try {
-        const userReferrals = await db.query.referrals.findMany({
-            where: eq(referrals.referrerId, userId),
-            with: {
-                referredUser: {
-                    columns: {
-                        id: true,
-                        name: true,
-                        image: true,
-                        createdAt: true,
-                    },
-                },
-            },
-            orderBy: desc(referrals.createdAt),
-        });
-
-        // Calculate credits earned from referrals (assuming 50 credits per referral)
-        const creditsEarned = userReferrals.length * 50;
-
-        return {
-            totalReferrals: userReferrals.length,
-            creditsEarned,
-            recentReferrals: userReferrals.slice(0, 5).map((r) => ({
-                id: r.referredUser.id,
-                name: r.referredUser.name,
-                image: r.referredUser.image,
-                createdAt: r.referredUser.createdAt,
-            })),
-        };
-    } catch {
-        return { totalReferrals: 0, creditsEarned: 0, recentReferrals: [] };
-    }
-}
-
-// Get activities for a specific date (for activity day detail sheet)
+// Get activities for a specific date (used by the activity calendar day view)
 export async function getActivitiesByDate(dateStr: string) {
     try {
         const session = await getSession(headers());
@@ -408,43 +282,5 @@ export async function getActivitiesByDate(dateStr: string) {
     } catch (error) {
         console.error("Error fetching activities by date:", error);
         return { success: false, error: "Failed to fetch activities", data: [] };
-    }
-}
-
-// Get community highlights
-export async function getCommunityHighlights() {
-    try {
-        const posts = await db.query.communityPosts.findMany({
-            where: sql`${communityPosts.officialChannel} IS NOT NULL`,
-            with: {
-                author: {
-                    columns: {
-                        id: true,
-                        name: true,
-                        image: true,
-                        username: true,
-                    },
-                },
-            },
-            orderBy: [desc(communityPosts.likeCount), desc(communityPosts.createdAt)],
-            limit: 3,
-        });
-
-        // Transform to match expected format
-        const transformedPosts = posts.map((post) => ({
-            id: post.id,
-            content: post.content,
-            createdAt: post.createdAt,
-            author: post.author,
-            _count: {
-                likes: post.likeCount,
-                comments: post.commentCount,
-            },
-        }));
-
-        return { success: true, posts: transformedPosts };
-    } catch (error) {
-        console.error("Error fetching community highlights:", error);
-        return { success: false, posts: [] };
     }
 }

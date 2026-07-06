@@ -9,7 +9,7 @@ import { Button } from "@repo/ui/components/ui/button";
 import { Progress } from "@repo/ui/components/ui/progress";
 import { Badge } from "@repo/ui/components/ui/badge";
 import {
-	Github, Linkedin, Twitter, Globe, Trophy, Zap, Share2, BookOpen, 
+	Github, Linkedin, Twitter, Globe, Zap, Share2, BookOpen, 
 	Target, ArrowRight
 } from "lucide-react";
 import { cn } from "@repo/ui/lib/utils";
@@ -35,11 +35,6 @@ interface ProfileSidebarProps {
 			id: string;
 			platform: string;
 			url: string;
-		}>;
-		achievements?: Array<{
-			id: string;
-			title: string;
-			description: string;
 		}>;
 		userProfile?: {
 			completionScore: number;
@@ -79,7 +74,6 @@ export function ProfileSidebar({ user, isOwnProfile }: ProfileSidebarProps) {
 	const [strengthSheetOpen, setStrengthSheetOpen] = useState(false);
 	const completionScore = user.userProfile?.completionScore || 0;
 	const topSkills = user.skills?.slice(0, 6) || [];
-	const recentAchievements = user.achievements?.slice(0, 3) || [];
 
 	return (
 		<div className="space-y-4">
@@ -213,61 +207,6 @@ export function ProfileSidebar({ user, isOwnProfile }: ProfileSidebarProps) {
 					</motion.div>
 				)
 			}
-			<motion.div
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ delay: 0.25 }}
-			>
-				<Card>
-					<CardHeader className="pb-2">
-						<CardTitle className="text-sm font-medium flex items-center justify-between gap-2">
-							<span className="flex items-center gap-2">
-								<Trophy className="w-4 h-4 text-yellow-500" />
-								Achievements
-							</span>
-							<Button variant="ghost" size="sm" className="h-auto p-0" asChild>
-								<Link href="/achievements" className="text-xs flex items-center gap-1">
-									View all <ArrowRight className="w-3 h-3" />
-								</Link>
-							</Button>
-						</CardTitle>
-					</CardHeader>
-					<CardContent className="space-y-2">
-						{
-							recentAchievements.length > 0 ? (
-								<>
-									{
-										recentAchievements.map((achievement) => (
-											<div
-												key={achievement.id}
-												className="flex items-start gap-2 text-sm"
-											>
-												<div className="w-2 h-2 mt-1.5 rounded-full bg-gradient-to-r from-yellow-500 to-amber-500" />
-												<div>
-													<p className="font-medium text-foreground">{achievement.title}</p>
-													<p className="text-xs text-muted-foreground line-clamp-1">
-														{achievement.description}
-													</p>
-												</div>
-											</div>
-										))
-									}
-								</>
-							) : (
-								<p className="text-xs text-muted-foreground">
-									No achievements yet. Start learning to earn badges!
-								</p>
-							)
-						}
-						<Button variant="outline" size="sm" className="w-full mt-2" asChild>
-							<Link href="/achievements" className="gap-2">
-								<Trophy className="w-4 h-4" />
-								Go to Achievements
-							</Link>
-						</Button>
-					</CardContent>
-				</Card>
-			</motion.div>
 			{
 				user.socialLinks && user.socialLinks.length > 0 && (
 					<motion.div

@@ -21,7 +21,7 @@ import { cn } from '@repo/ui/lib/utils'
 import toast from '@repo/ui/components/ui/sonner'
 import { 
     disconnectSocialAccount 
-} from '@/actions/(main)/achievements/social-share.action'
+} from '@/actions/(main)/social/social-connections.action'
 import {
     getGitHubProfile, disconnectGitHub, syncGitHubContributions
 } from '@/actions/(main)/user/integrations.action'

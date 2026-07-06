@@ -37,7 +37,6 @@ const protectedRoutes = [
 	'/profile',
 	'/settings',
 	'/transactions',
-	'/sharecredits',
 ]
 
 // Public routes that don't require authentication (allow exploration)
@@ -61,13 +60,7 @@ const _publicRoutes = [
 	'/mock',
 	'/interviewprep',
 	'/assessments',
-	'/communities',
-	'/leaderboard',
-	'/feedback',
-	'/devconfessions',
-	'/coderzforge',
 	'/opensource',
-	'/store',
 	'/purchase',
 	'/onboarding',
 	'/dashboard',  // Keep for redirect

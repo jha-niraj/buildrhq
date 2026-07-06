@@ -30,7 +30,6 @@ interface ProfileStats {
     xp: number;
     level: number;
     credits: number;
-    achievementsCount: number;
 }
 
 interface ProfileData {
@@ -351,7 +350,6 @@ export default function ProfilePage() {
         xp: profileData?.totalXp || profileData?.currentXp || 0,
         level: profileData?.currentLevel || 1,
         credits: profileData?.credits || 0,
-        achievementsCount: profileData?.achievements?.length || 0,
     };
 
     // Render tab content

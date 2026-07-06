@@ -80,7 +80,6 @@ export function PublicProfileClient({
         xp: user.totalXp || 0,
         level: user.currentLevel || 1,
         credits: user.credits || 0,
-        achievementsCount: user.achievements?.length || 0,
     };
 
     const renderTabContent = () => {

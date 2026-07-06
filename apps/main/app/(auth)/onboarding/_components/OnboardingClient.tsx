@@ -32,6 +32,7 @@ import { cn } from '@repo/ui/lib/utils'
 import { getColleges } from '@/actions/(main)/user/college.action'
 import { checkUsernameAvailability, completeOnboarding } from '@/actions/(main)/user/onboarding.action'
 import { uploadResume } from '@/actions/(main)/user/resume.action'
+import { uploadImageToCloudinary } from '@/actions/(common)/shared/upload.action'
 import { validateResumeFile } from '@/lib/resume-extractor.client'
 
 const SEMESTERS = [
@@ -71,6 +72,8 @@ export default function OnboardingPage() {
     const [username, setUsername] = useState('')
     const [university, setUniversity] = useState('')
     const [semester, setSemester] = useState('')
+    const [avatarFile, setAvatarFile] = useState<File | null>(null)
+    const [avatarPreview, setAvatarPreview] = useState<string | null>(null)
     const [resumeFile, setResumeFile] = useState<File | null>(null)
     const [colleges, setColleges] = useState<string[]>([])
     const [openCollegePicker, setOpenCollegePicker] = useState(false)
@@ -115,17 +118,40 @@ export default function OnboardingPage() {
         setResumeFile(file)
     }
 
+    const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0]
+        if (!file) return
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
+        if (!validTypes.includes(file.type)) { toast.error('Please upload a JPG, PNG or WebP image'); return }
+        if (file.size > 5 * 1024 * 1024) { toast.error('Image must be smaller than 5MB'); return }
+        setAvatarFile(file)
+        setAvatarPreview(URL.createObjectURL(file))
+    }
+
     const canProceed = () => currentStep === 0 ? username.length >= 3 && usernameCheck.available === true : true
 
     const handleComplete = async () => {
         if (!canProceed()) return
         setLoading(true)
         try {
-            let resumeUrl: string | undefined
+            // Profile image → Cloudinary
+            let imageUrl: string | undefined
+            if (avatarFile) {
+                try {
+                    const fd = new FormData()
+                    fd.append('file', avatarFile)
+                    const imgResult = await uploadImageToCloudinary(fd)
+                    if (imgResult.success && imgResult.url) imageUrl = imgResult.url
+                    else if (imgResult.message) toast.warning(imgResult.message)
+                } catch {
+                    toast.warning('Profile photo upload failed. You can add one later from your profile.')
+                }
+            }
+
+            // Resume file → Cloudflare R2 (uploadResume persists it to the DB itself)
             if (resumeFile) {
                 try {
                     const result = await uploadResume(resumeFile)
-                    resumeUrl = result.url
                     if (result.message) toast.info(result.message)
                 } catch {
                     toast.warning('Resume upload failed. You can upload later from your profile.')
@@ -135,7 +161,7 @@ export default function OnboardingPage() {
                 username,
                 university: university || undefined,
                 semester: semester || undefined,
-                resume: resumeUrl,
+                image: imageUrl,
                 learningPreferences: learningGoals,
             })
             toast.success('Welcome to BuildrHQ!')
@@ -279,6 +305,33 @@ export default function OnboardingPage() {
                                 <div>
                                     <h1 className="text-2xl font-semibold text-white mb-1">Set up your profile</h1>
                                     <p className="text-neutral-400 text-sm">This takes less than a minute.</p>
+                                </div>
+
+                                {/* Profile photo → Cloudinary */}
+                                <div className="flex items-center gap-4">
+                                    <label htmlFor="avatar-upload" className="cursor-pointer group relative">
+                                        <div className="h-16 w-16 rounded-full overflow-hidden border border-neutral-700 bg-neutral-900 flex items-center justify-center">
+                                            {avatarPreview ? (
+                                                // eslint-disable-next-line @next/next/no-img-element
+                                                <img src={avatarPreview} alt="Avatar preview" className="h-full w-full object-cover" />
+                                            ) : (
+                                                <Upload className="h-5 w-5 text-neutral-500" />
+                                            )}
+                                        </div>
+                                    </label>
+                                    <div>
+                                        <p className="text-sm text-neutral-300">Profile photo</p>
+                                        <label htmlFor="avatar-upload" className="cursor-pointer text-xs text-orange-500 hover:text-orange-400">
+                                            {avatarFile ? 'Change photo' : 'Upload a photo'}
+                                        </label>
+                                        <input
+                                            id="avatar-upload"
+                                            type="file"
+                                            accept="image/jpeg,image/jpg,image/png,image/webp"
+                                            className="hidden"
+                                            onChange={handleAvatarChange}
+                                        />
+                                    </div>
                                 </div>
 
                                 {/* Username */}

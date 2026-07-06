@@ -1,4 +1,16 @@
 import { Resend } from "resend";
+import {
+	shell,
+	heading,
+	serif,
+	paragraph,
+	otpPanel,
+	primaryButton,
+	callout,
+	urlFallback,
+	featureList,
+	type EmailContent,
+} from "@repo/email";
 
 const DEFAULT_FROM = "BuildrHQ <noreply@coderzai.xyz>";
 
@@ -15,214 +27,104 @@ function fromEmail(): string {
 
 function appUrl(): string {
 	return (
+		process.env.NEXT_PUBLIC_APP_URL ||
 		process.env.NEXT_PUBLIC_BASE_URL ||
 		process.env.NEXTAUTH_URL ||
-		"http://localhost:3000"
+		"http://localhost:3004"
 	);
-}
-
-// ─── Shell ────────────────────────────────────────────────────────────────────
-
-function shell(params: {
-	title: string;
-	subtitle?: string;
-	body: string;
-	footerNote?: string;
-}): string {
-	const year = new Date().getFullYear();
-	return `
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${params.title}</title>
-  </head>
-  <body style="margin:0;padding:0;background:#f5f5f5;font-family:Inter,'Segoe UI',Roboto,Arial,sans-serif;color:#171717;">
-    <div style="max-width:620px;margin:0 auto;padding:24px 16px;">
-      <div style="background:#ffffff;border:1px solid #e5e5e5;border-radius:14px;overflow:hidden;">
-
-        <div style="padding:24px 28px 16px;border-bottom:1px solid #efefef;">
-          <p style="margin:0;font-size:20px;font-weight:700;color:#111111;letter-spacing:-0.3px;">BuildrHQ</p>
-          ${params.subtitle ? `<p style="margin:6px 0 0;font-size:13px;color:#737373;">${params.subtitle}</p>` : ""}
-        </div>
-
-        <div style="padding:28px;">
-          ${params.body}
-        </div>
-
-      </div>
-
-      <p style="margin:12px 2px 0;font-size:12px;color:#737373;line-height:1.6;">
-        ${params.footerNote ?? "This is an automated message from BuildrHQ. Please do not reply directly to this email."}
-      </p>
-      <p style="margin:4px 2px 0;font-size:12px;color:#a3a3a3;">© ${year} BuildrHQ. All rights reserved.</p>
-    </div>
-  </body>
-</html>`;
 }
 
 // ─── Templates ────────────────────────────────────────────────────────────────
 
 export const authEmailTemplates = {
 
-	verifyOTP: (name: string, otp: string) => ({
+	verifyOTP: (name: string, otp: string): EmailContent => ({
 		subject: "Verify your email — BuildrHQ",
 		html: shell({
 			title: "Verify your email",
-			subtitle: "Use this one-time code to complete your registration",
+			eyebrow: "Email verification · BuildrHQ",
 			body: `
-        <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello ${name},</p>
-        <p style="margin:0 0 20px;font-size:14px;color:#525252;">
-          Enter the code below to verify your email address. This code expires in <strong>10 minutes</strong>.
-        </p>
-
-        <div style="margin:24px 0;padding:20px 16px;border:1px solid #d4d4d4;border-radius:12px;background:#fafafa;text-align:center;">
-          <p style="margin:0 0 10px;font-size:11px;letter-spacing:0.1em;color:#737373;text-transform:uppercase;">Verification code</p>
-          <p style="margin:0;font-size:38px;letter-spacing:10px;font-weight:700;color:#111111;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Courier New',monospace;">${otp}</p>
-        </div>
-
-        <p style="margin:0;font-size:13px;color:#737373;">
-          If you did not create an account, you can safely ignore this email.
-        </p>
-      `,
+				${heading(`Your verification ${serif("code")}.`)}
+				${paragraph(`Hi ${name}, use the code below to verify your email address and finish setting up your account.`)}
+				${otpPanel(otp, "One-time code", "Valid for 10 minutes")}
+				${callout("Didn't create a BuildrHQ account? You can safely ignore this email.")}
+			`,
 		}),
 	}),
 
-	welcome: (name: string) => ({
+	welcome: (name: string): EmailContent => ({
 		subject: "Welcome to BuildrHQ",
 		html: shell({
 			title: "Welcome to BuildrHQ",
-			subtitle: "Your account is ready",
+			eyebrow: "Account ready · BuildrHQ",
 			body: `
-        <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello ${name},</p>
-        <p style="margin:0 0 18px;font-size:14px;color:#525252;">
-          Your email has been verified and your account is ready. You can now sign in and start building.
-        </p>
-
-        <div style="margin:20px 0;padding:16px;border:1px solid #e5e5e5;border-radius:10px;background:#fafafa;">
-          <p style="margin:0 0 10px;font-size:13px;font-weight:600;color:#111111;">What's waiting for you</p>
-          <ul style="margin:0;padding-left:18px;color:#525252;font-size:13px;line-height:1.8;">
-            <li>Build and showcase your developer portfolio</li>
-            <li>Take skill assessments and earn certifications</li>
-            <li>Connect with projects and open source opportunities</li>
-            <li>AI-powered tools to accelerate your growth</li>
-          </ul>
-        </div>
-
-        <p style="text-align:center;margin:24px 0 8px;">
-          <a href="${appUrl()}/home"
-             style="display:inline-block;background:#171717;color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:8px;font-size:14px;font-weight:600;">
-            Go to dashboard
-          </a>
-        </p>
-      `,
+				${heading(`Welcome aboard, ${serif(name)}.`)}
+				${paragraph("Your email is verified and your account is ready. BuildrHQ is your engineering intelligence suite — here's what you can dive into next.")}
+				${featureList("What's waiting for you", [
+					"Build and showcase your developer portfolio",
+					"Practice DSA, system design & take assessments",
+					"Ace AI-powered mock technical interviews",
+					"Ship real projects and track open-source impact",
+				])}
+				${primaryButton("Go to your dashboard", `${appUrl()}/home`)}
+			`,
 		}),
 	}),
 
-	resetPasswordOTP: (name: string, otp: string) => ({
+	resetPasswordOTP: (name: string, otp: string): EmailContent => ({
 		subject: "Reset your password — BuildrHQ",
 		html: shell({
 			title: "Password reset request",
-			subtitle: "Use this code to reset your password",
+			eyebrow: "Security · One-time code",
 			body: `
-        <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello ${name},</p>
-        <p style="margin:0 0 20px;font-size:14px;color:#525252;">
-          We received a request to reset your password. Use the code below on the reset page.
-          This code expires in <strong>10 minutes</strong>.
-        </p>
-
-        <div style="margin:24px 0;padding:20px 16px;border:1px solid #d4d4d4;border-radius:12px;background:#fafafa;text-align:center;">
-          <p style="margin:0 0 10px;font-size:11px;letter-spacing:0.1em;color:#737373;text-transform:uppercase;">Password reset code</p>
-          <p style="margin:0;font-size:38px;letter-spacing:10px;font-weight:700;color:#111111;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'Courier New',monospace;">${otp}</p>
-        </div>
-
-        <div style="margin:16px 0;padding:14px;border:1px solid #e5e5e5;border-radius:8px;background:#fafafa;font-size:13px;color:#525252;">
-          If you did not request a password reset, you can ignore this email — your password will not change.
-        </div>
-      `,
+				${heading(`Reset your ${serif("password")}.`)}
+				${paragraph(`Hi ${name}, we received a request to reset your password. Enter the code below on the reset page. It expires in <strong>10 minutes</strong>.`)}
+				${otpPanel(otp, "Password reset code", "Valid for 10 minutes")}
+				${callout("If you didn't request a password reset, you can ignore this email — your password won't change.")}
+			`,
 		}),
 	}),
 
-	passwordResetConfirmation: (name: string) => ({
+	passwordResetConfirmation: (name: string): EmailContent => ({
 		subject: "Your password has been reset — BuildrHQ",
 		html: shell({
 			title: "Password updated",
-			subtitle: "Your account password has been changed",
+			eyebrow: "Security · Confirmation",
 			body: `
-        <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello ${name},</p>
-        <p style="margin:0 0 18px;font-size:14px;color:#525252;">
-          Your password has been successfully updated. You can now sign in with your new password.
-        </p>
-
-        <p style="text-align:center;margin:24px 0 8px;">
-          <a href="${appUrl()}/signin"
-             style="display:inline-block;background:#171717;color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:8px;font-size:14px;font-weight:600;">
-            Sign in
-          </a>
-        </p>
-
-        <div style="margin:16px 0;padding:14px;border:1px solid #e5e5e5;border-radius:8px;background:#fafafa;font-size:13px;color:#525252;">
-          If you did not make this change, please contact our support team immediately.
-        </div>
-      `,
+				${heading(`Your password was ${serif("updated")}.`)}
+				${paragraph(`Hi ${name}, your password has been successfully changed. You can now sign in with your new password.`)}
+				${primaryButton("Sign in", `${appUrl()}/signin`)}
+				${callout("If you didn't make this change, please contact our support team immediately.")}
+			`,
 		}),
 	}),
 
-	verifyEmail: (name: string, verifyLink: string) => ({
+	verifyEmail: (name: string, verifyLink: string): EmailContent => ({
 		subject: "Verify your email — BuildrHQ",
 		html: shell({
 			title: "Verify your email",
-			subtitle: "One click to activate your account",
+			eyebrow: "Email verification · BuildrHQ",
 			body: `
-        <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello ${name},</p>
-        <p style="margin:0 0 20px;font-size:14px;color:#525252;">
-          Click the button below to verify your email address and activate your account.
-          This link expires in <strong>72 hours</strong>.
-        </p>
-
-        <p style="text-align:center;margin:24px 0;">
-          <a href="${verifyLink}"
-             style="display:inline-block;background:#171717;color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:8px;font-size:14px;font-weight:600;">
-            Verify email address
-          </a>
-        </p>
-
-        <p style="margin:0 0 8px;font-size:13px;color:#525252;">If the button does not work, copy and paste this URL:</p>
-        <p style="margin:0;padding:10px;border:1px solid #e5e5e5;border-radius:8px;background:#fafafa;word-break:break-all;font-family:ui-monospace,monospace;font-size:12px;color:#404040;">
-          ${verifyLink}
-        </p>
-      `,
+				${heading(`One click to ${serif("activate")}.`)}
+				${paragraph(`Hi ${name}, click the button below to verify your email address and activate your account. This link expires in <strong>72 hours</strong>.`)}
+				${primaryButton("Verify email address", verifyLink)}
+				${urlFallback(verifyLink)}
+			`,
 		}),
 	}),
 
-	resetPasswordLink: (name: string, resetLink: string) => ({
+	resetPasswordLink: (name: string, resetLink: string): EmailContent => ({
 		subject: "Reset your password — BuildrHQ",
 		html: shell({
 			title: "Password reset request",
-			subtitle: "Secure access to your account",
+			eyebrow: "Security · Password reset",
 			body: `
-        <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello ${name},</p>
-        <p style="margin:0 0 20px;font-size:14px;color:#525252;">
-          We received a request to reset your password. Click the button below to choose a new one.
-        </p>
-
-        <p style="text-align:center;margin:24px 0;">
-          <a href="${resetLink}"
-             style="display:inline-block;background:#171717;color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:8px;font-size:14px;font-weight:600;">
-            Reset password
-          </a>
-        </p>
-
-        <div style="margin:16px 0;padding:14px;border:1px solid #e5e5e5;border-radius:8px;background:#fafafa;font-size:13px;color:#525252;">
-          This link expires in 1 hour and can be used once.
-        </div>
-
-        <p style="margin:0 0 8px;font-size:13px;color:#525252;">If the button does not work, copy and paste this URL:</p>
-        <p style="margin:0;padding:10px;border:1px solid #e5e5e5;border-radius:8px;background:#fafafa;word-break:break-all;font-family:ui-monospace,monospace;font-size:12px;color:#404040;">
-          ${resetLink}
-        </p>
-      `,
+				${heading(`Reset your ${serif("password")}.`)}
+				${paragraph(`Hi ${name}, we received a request to reset your password. Click the button below to choose a new one.`)}
+				${primaryButton("Reset password", resetLink)}
+				${callout("This link expires in 1 hour and can be used once.")}
+				${urlFallback(resetLink)}
+			`,
 		}),
 	}),
 
@@ -254,7 +156,7 @@ export async function sendAuthEmail({
 	otp,
 }: SendAuthEmailParams) {
 	const displayName = name || "there";
-	let template: { subject: string; html: string };
+	let template: EmailContent;
 
 	switch (emailType) {
 		case "VERIFY_OTP": {

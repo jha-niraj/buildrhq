@@ -31,51 +31,9 @@ const mockInterviewTypes = [
         href: '/mock/voice',
         features: ['Voice-based', 'Real-time feedback', 'Custom scenarios'],
         badge: '15K+ completed',
-        isActive: true
-    },
-    {
-        id: 'video',
-        title: 'AI Video Mock',
-        description: 'Face-to-face AI practice. Analyze body language and presentation skills.',
-        icon: <Video className="w-6 h-6" />,
-        href: '/mock/video',
-        features: ['Video analysis', 'Body language', 'Facial expressions'],
-        badge: 'Coming Soon',
-        isLocked: true,
-        notifySection: 'MOCK_VIDEO' as const
-    },
-    {
-        id: 'companywise',
-        title: 'Company-Specific',
-        description: 'Prepare for specific companies with tailored questions and formats.',
-        icon: <Building2 className="w-6 h-6" />,
-        href: '/mock/companywise',
-        features: ['FAANG focused', 'Company culture', 'Real questions'],
-        badge: 'Coming Soon',
-        isLocked: true,
-        notifySection: 'MOCK_COMPANYWISE' as const
-    },
-    {
-        id: 'peertopeer',
-        title: 'Peer-to-Peer',
-        description: 'Practice with other developers. Give and receive feedback in real-time.',
-        icon: <Users className="w-6 h-6" />,
-        href: '/mock/peertopeer',
-        features: ['Live sessions', 'Community driven', 'Collaborative'],
-        badge: 'Coming Soon',
-        isLocked: true,
-        notifySection: 'MOCK_PEERTOPEER' as const
-    },
-    {
-        id: 'connect',
-        title: 'Expert Mentorship',
-        description: 'Schedule 1-on-1 sessions with industry professionals for expert guidance.',
-        icon: <Phone className="w-6 h-6" />,
-        href: '/mock/connect',
-        features: ['Expert mentors', 'Personalized', '1-on-1 sessions'],
-        badge: 'Coming Soon',
-        isLocked: true,
-        notifySection: 'MOCK_CONNECT' as const
+        isActive: true,
+        isLocked: false,
+        notifySection: undefined as string | undefined,
     },
 ]
 

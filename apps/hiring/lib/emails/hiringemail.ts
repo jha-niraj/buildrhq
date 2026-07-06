@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { shell } from "@repo/email";
 
 const DEFAULT_FROM = "BuildrHQ Hiring <noreply@coderzai.xyz>";
 
@@ -23,44 +24,6 @@ function appUrl(): string {
 
 // ─── Shell ────────────────────────────────────────────────────────────────────
 
-function shell(params: {
-    title: string;
-    subtitle?: string;
-    body: string;
-    footerNote?: string;
-}): string {
-    const year = new Date().getFullYear();
-    return `
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${params.title}</title>
-  </head>
-  <body style="margin:0;padding:0;background:#f5f5f5;font-family:Inter,'Segoe UI',Roboto,Arial,sans-serif;color:#171717;">
-    <div style="max-width:620px;margin:0 auto;padding:24px 16px;">
-      <div style="background:#ffffff;border:1px solid #e5e5e5;border-radius:14px;overflow:hidden;">
-
-        <div style="padding:24px 28px 16px;border-bottom:1px solid #efefef;">
-          <p style="margin:0;font-size:20px;font-weight:700;color:#111111;letter-spacing:-0.3px;">BuildrHQ Hiring</p>
-          ${params.subtitle ? `<p style="margin:6px 0 0;font-size:13px;color:#737373;">${params.subtitle}</p>` : ""}
-        </div>
-
-        <div style="padding:28px;">
-          ${params.body}
-        </div>
-
-      </div>
-
-      <p style="margin:12px 2px 0;font-size:12px;color:#737373;line-height:1.6;">
-        ${params.footerNote ?? "This is an automated message from BuildrHQ Hiring. Please do not reply directly to this email."}
-      </p>
-      <p style="margin:4px 2px 0;font-size:12px;color:#a3a3a3;">© ${year} BuildrHQ. All rights reserved.</p>
-    </div>
-  </body>
-</html>`;
-}
 
 // ─── Templates ────────────────────────────────────────────────────────────────
 

@@ -8,7 +8,7 @@ import { Badge } from "@repo/ui/components/ui/badge";
 import { Progress } from "@repo/ui/components/ui/progress";
 import {
 	Camera, Edit2, Share2, Settings, MapPin, Briefcase, Calendar,
-	Link as LinkIcon, Mail, Check, Copy, Eye, TrendingUp
+	Link as LinkIcon, Check, Copy, Eye, TrendingUp
 } from "lucide-react";
 import toast from "@repo/ui/components/ui/sonner";
 import Link from "next/link";
@@ -44,7 +44,6 @@ interface ProfileHeaderProps {
 		xp: number;
 		level: number;
 		credits: number;
-		achievementsCount: number;
 	};
 	isOwnProfile: boolean;
 	isFollowing?: boolean;
@@ -86,7 +85,6 @@ export function ProfileHeader({
 		{ label: "Following", value: stats.followingCount },
 		{ label: "XP", value: stats.xp.toLocaleString() },
 		{ label: "Credits", value: stats.credits },
-		{ label: "Badges", value: stats.achievementsCount },
 	];
 
 	return (
@@ -237,10 +235,6 @@ export function ProfileHeader({
 										}
 									>
 										{isFollowing ? "Following" : "Follow"}
-									</Button>
-									<Button variant="outline" size="sm">
-										<Mail className="w-4 h-4 mr-2" />
-										Message
 									</Button>
 									<Button variant="outline" size="icon" onClick={copyProfileLink}>
 										{

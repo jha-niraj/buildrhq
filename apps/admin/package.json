@@ -16,6 +16,7 @@
 		"@repo/auth": "workspace:*",
 		"better-auth": "^1.2.7",
 		"@repo/db": "workspace:*",
+		"@repo/email": "workspace:*",
 		"drizzle-orm": "^0.45.2",
 		"@repo/ui": "workspace:*",
 		"bcryptjs": "^3.0.3",

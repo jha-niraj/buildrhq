@@ -476,35 +476,3 @@ export async function getUserByEmail(email: string) {
         throw new Error("Failed to fetch user");
     }
 }
-
-export async function updateUserResume(file: File) {
-    try {
-        const session = await getSession(headers())
-        if (!session?.user?.id) {
-            return { success: false, error: "Not authenticated" }
-        }
-
-        // For now, we'll just update the database fields
-        // In a production app, you'd want to upload to cloud storage
-        const formData = new FormData()
-        formData.append('file', file)
-
-        // Simple mock upload - in reality you'd upload to S3/Cloudinary/etc
-        const mockUrl = `https://example.com/resumes/${session.user.id}/${file.name}`
-
-        await db.update(users).set({
-            hasResume: true,
-            resume: mockUrl,
-            // You might also want to extract text from the file and store it
-            // resumeText: extractedText
-        }).where(eq(users.id, session.user.id))
-
-        revalidatePath('/profile')
-        revalidatePath('/ai/jobinterviewassistant')
-
-        return { success: true }
-    } catch (error) {
-        console.error("Error updating resume:", error)
-        return { success: false, error: "Failed to update resume" }
-    }
-}

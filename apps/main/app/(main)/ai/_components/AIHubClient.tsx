@@ -51,16 +51,16 @@ const tools = [
     },
 ]
 
-// Locked / Notify Me tools
-const lockedTools = [
-    { id: "portfolio-audit", icon: ScanSearch, name: "Portfolio Audit", description: "Scan your GitHub and Portfolio to identify red flags and weak case studies.", section: "AI_PORTFOLIO_AUDIT" as const },
-    { id: "system-architect", icon: LayoutTemplate, name: "System Architect", description: "Get DB schema, API structure, and tech stack for your project.", section: "AI_SYSTEM_ARCHITECT" as const },
-    { id: "project-scoper", icon: BrainCircuit, name: "Project Scoper", description: "Turn ideas into development roadmaps with MVP and sprint planning.", section: "AI_PROJECT_SCOPER" as const },
-    { id: "oss-scout", icon: GitPullRequest, name: "Open Source Scout", description: "Find Good First Issues matching your tech stack.", section: "AI_OSS_SCOUT" as const },
-    { id: "docusmith", icon: FileText, name: "DocuSmith", description: "Generate API docs and How-to guides from your code.", section: "AI_DOCUSMITH" as const },
-    { id: "code-sentinel", icon: ShieldCheck, name: "Code Sentinel", description: "Automated PR reviews for security and anti-patterns.", section: "AI_CODE_SENTINEL" as const },
-    { id: "test-forge", icon: TestTube2, name: "Test Forge", description: "Generate integration tests for APIs.", section: "AI_TEST_FORGE" as const },
-]
+// Locked / "Notify Me" placeholder tools — removed to keep the AI hub focused on
+// the three shipped tools. Kept as an (empty) typed list so the notify machinery
+// still type-checks; the "coming soon" grid renders nothing.
+const lockedTools: {
+    id: string
+    icon: typeof FileText
+    name: string
+    description: string
+    section: FeatureNotifySection
+}[] = []
 
 const stats = [
     { label: "Interviews Aced", value: "850", icon: Trophy, suffix: "+" },

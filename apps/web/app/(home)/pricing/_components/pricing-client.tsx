@@ -1,0 +1,169 @@
+"use client"
+
+import { useState } from "react"
+import Link from "next/link"
+import { motion } from "framer-motion"
+import { ArrowRight, Lock, Infinity as Infit, Server, Sparkles } from "lucide-react"
+import { ShaderHeroBg, SHADER_PALETTES } from "@repo/ui/components/hero-shader-bg"
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@repo/ui/components/ui/accordion"
+import { BentoPricing } from "@/components/main/bentopricing"
+import { pricingFaqs } from "./pricing-faqs"
+
+const valueProps = [
+	{ icon: Infit, title: "Credits never expire", desc: "Buy once, spend whenever. Your balance is yours forever." },
+	{ icon: Lock, title: "Encrypted & secure", desc: "AES-256 encryption on every transaction. INR & USD supported." },
+	{ icon: Server, title: "Instant provisioning", desc: "Compute is allocated the moment your payment completes." },
+]
+
+export default function PricingClient() {
+	const [currency, setCurrency] = useState<"INR" | "USD">("INR")
+
+	return (
+		<main className="bg-white dark:bg-neutral-950">
+			{/* ── Hero ─────────────────────────────────────────────────────────── */}
+			<section className="relative overflow-hidden bg-[#faf7f2] dark:bg-black pt-32 pb-20">
+				<ShaderHeroBg colors={SHADER_PALETTES.pearl} light className="dark:hidden" />
+				<div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+					<motion.div
+						initial={{ opacity: 0, y: 16 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5 }}
+					>
+						<span className="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white/80 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-widest text-neutral-600 backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-white/60">
+							<span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
+							Pricing
+						</span>
+						<h1 className="mt-7 text-[44px] font-bold leading-[1.05] tracking-[-2px] text-neutral-950 dark:text-white sm:text-[56px]">
+							Pay only for what you{" "}
+							<span className="text-orange-500">run.</span>
+						</h1>
+						<p className="mx-auto mt-5 max-w-xl text-[16px] leading-relaxed text-neutral-600 dark:text-white/50">
+							BuildrHQ is credit-based — no subscriptions, no idle-time charges.
+							Buy a pack once, and spend credits only when you build, practice,
+							or interview. Credits never expire.
+						</p>
+
+						{/* currency toggle */}
+						<div className="mx-auto mt-8 flex w-fit items-center gap-4 rounded-full border border-neutral-200 bg-neutral-100/80 py-2 pl-4 pr-2 backdrop-blur dark:border-neutral-800 dark:bg-neutral-900">
+							<span className={`font-mono text-sm font-bold transition-colors ${currency === "INR" ? "text-neutral-900 dark:text-white" : "text-neutral-400"}`}>
+								INR
+							</span>
+							<button
+								onClick={() => setCurrency(currency === "INR" ? "USD" : "INR")}
+								className="relative h-6 w-12 rounded-full bg-neutral-900 transition-colors dark:bg-white"
+								aria-label="Toggle currency"
+							>
+								<span
+									className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-all dark:bg-neutral-900 ${currency === "USD" ? "left-6" : "left-0.5"}`}
+								/>
+							</button>
+							<span className={`font-mono text-sm font-bold transition-colors ${currency === "USD" ? "text-neutral-900 dark:text-white" : "text-neutral-400"}`}>
+								USD
+							</span>
+						</div>
+					</motion.div>
+				</div>
+			</section>
+
+			{/* ── Pricing cards ────────────────────────────────────────────────── */}
+			<section className="relative border-t border-neutral-100 py-20 dark:border-neutral-800">
+				<div className="mx-auto max-w-7xl px-6">
+					<BentoPricing currency={currency} showFreeCredits />
+				</div>
+			</section>
+
+			{/* ── Value props ──────────────────────────────────────────────────── */}
+			<section className="border-t border-neutral-100 py-16 dark:border-neutral-800">
+				<div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 px-6 md:grid-cols-3">
+					{valueProps.map((v) => (
+						<div
+							key={v.title}
+							className="rounded-2xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
+						>
+							<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 dark:bg-orange-500/10">
+								<v.icon className="h-5 w-5 text-orange-500" />
+							</div>
+							<h3 className="text-base font-bold text-neutral-900 dark:text-white">{v.title}</h3>
+							<p className="mt-2 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">{v.desc}</p>
+						</div>
+					))}
+				</div>
+			</section>
+
+			{/* ── FAQ ──────────────────────────────────────────────────────────── */}
+			<section className="border-t border-neutral-100 py-20 dark:border-neutral-800">
+				<div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr]">
+					<div className="lg:sticky lg:top-24 lg:h-fit">
+						<span className="font-mono text-[11px] uppercase tracking-widest text-neutral-400">
+							FAQ
+						</span>
+						<h2 className="mt-3 text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+							Questions,{" "}
+							<span className="text-neutral-400 dark:text-neutral-600">answered.</span>
+						</h2>
+						<p className="mt-4 text-sm text-neutral-500 dark:text-neutral-400">
+							Everything about how credits, billing, and access work on BuildrHQ.
+						</p>
+						<Link
+							href="/aboutus"
+							className="mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 dark:bg-white dark:text-neutral-900"
+						>
+							Talk to support <ArrowRight className="h-4 w-4" />
+						</Link>
+					</div>
+
+					<Accordion type="single" collapsible className="space-y-3">
+						{pricingFaqs.map((faq, i) => (
+							<AccordionItem
+								key={i}
+								value={`faq-${i}`}
+								className="rounded-xl border border-neutral-200 px-5 dark:border-neutral-800"
+							>
+								<AccordionTrigger className="py-4 text-left text-[15px] font-semibold text-neutral-900 hover:no-underline dark:text-white">
+									{faq.q}
+								</AccordionTrigger>
+								<AccordionContent className="pb-4 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+									{faq.a}
+								</AccordionContent>
+							</AccordionItem>
+						))}
+					</Accordion>
+				</div>
+			</section>
+
+			{/* ── CTA ──────────────────────────────────────────────────────────── */}
+			<section className="border-t border-neutral-100 py-20 dark:border-neutral-800">
+				<div className="mx-auto max-w-3xl px-6 text-center">
+					<Sparkles className="mx-auto mb-5 h-7 w-7 text-orange-500" />
+					<h2 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+						Start building for{" "}
+						<span className="text-orange-500">free.</span>
+					</h2>
+					<p className="mx-auto mt-4 max-w-lg text-neutral-500 dark:text-neutral-400">
+						Create an account, claim your starter credits, and run your first AI
+						agent in minutes.
+					</p>
+					<div className="mt-8 flex flex-wrap justify-center gap-3">
+						<Link
+							href="/signup"
+							className="inline-flex items-center gap-2 rounded-xl bg-neutral-950 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+						>
+							Get started free <ArrowRight className="h-4 w-4" />
+						</Link>
+						<Link
+							href="/#pricing"
+							className="inline-flex items-center gap-2 rounded-xl border border-neutral-300 px-7 py-3.5 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:border-white/10 dark:text-white/70 dark:hover:bg-white/5"
+						>
+							Compare features
+						</Link>
+					</div>
+				</div>
+			</section>
+		</main>
+	)
+}

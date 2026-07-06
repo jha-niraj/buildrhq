@@ -1,528 +1,95 @@
-"use client";
+"use client"
 
-import React, { useState, useEffect, useRef } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { signOut, useSession } from "@repo/auth/client";
-import { useTheme } from "@repo/ui/components/themeprovider";
-import Link from "next/link";
-import Image from "next/image";
+import { useCallback, useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import { Layers } from "lucide-react"
+import { useSession, signOut } from "@repo/auth/client"
+import { toast } from "@repo/ui/components/ui/sonner"
 import {
-    LogOut, User, Sun, Moon, Bell, ChevronLeft, ChevronRight,
-    AlignLeft, Layers, ChevronDown, AlertCircle
-} from "lucide-react";
-import {
-    Tooltip, TooltipTrigger, TooltipContent, TooltipProvider
-} from "@repo/ui/components/ui/tooltip";
-import { cn } from "@repo/ui/lib/utils";
-import { format } from "date-fns";
-import { ScrollArea } from "@repo/ui/components/ui/scroll-area"
-import { AnimatePresence, motion } from "framer-motion";
-import { useSidebar } from "./sidebarprovider";
-import {
-    hiringNavigation, NavigationItem
-} from "../../lib/navigation";
-import {
-    getNotifications, markNotificationAsRead
-} from "../../actions/notifications/notifications.action";
-
-interface Notification {
-    id: string;
-    title: string;
-    message: string;
-    actionUrl?: string | null;
-    read: boolean;
-    createdAt: Date;
-}
+    AppSidebar, type AppSidebarNotification,
+} from "@repo/ui/components/app-sidebar"
+import { useSidebar } from "@/components/navigation/sidebarprovider"
+import { hiringNavigation } from "@/lib/navigation"
+import { getNotifications, markNotificationAsRead } from "@/actions/notifications/notifications.action"
 
 export function HiringSidebar() {
-    const { isCollapsed, setIsCollapsed } = useSidebar();
-    const { data: session } = useSession();
-    const { theme, setTheme } = useTheme();
-    const pathname = usePathname();
-    const router = useRouter();
-    const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
-    const [notificationsDropdownOpen, setNotificationsDropdownOpen] = useState(false);
-    const [notifications, setNotifications] = useState<Notification[]>([]);
-    const [unreadCount, setUnreadCount] = useState(0);
-    const [isMobileOpen, setIsMobileOpen] = useState(false);
-    const [expandedItems, setExpandedItems] = useState<string[]>([]);
+    const { isCollapsed, setIsCollapsed, isMobileOpen, setIsMobileOpen } = useSidebar()
+    const { data: session, isPending } = useSession()
+    const router = useRouter()
 
-    const profileTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const notificationsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const [notifs, setNotifs] = useState<AppSidebarNotification[]>([])
+    const [unreadCount, setUnreadCount] = useState(0)
+    const [loading, setLoading] = useState(false)
 
-    // Close mobile menu on path change
-    useEffect(() => {
-        setIsMobileOpen(false);
-    }, [pathname]);
-
-    // Auto-expand parent if child route is active
-    useEffect(() => {
-        const allRoutes = [...hiringNavigation.primary, ...hiringNavigation.secondary];
-        for (const route of allRoutes) {
-            if (route.children) {
-                for (const child of route.children) {
-                    if (pathname === `/${child.path}` || pathname.startsWith(`/${child.path}/`)) {
-                        setExpandedItems(prev => prev.includes(route.path) ? prev : [...prev, route.path]);
-                        break;
-                    }
-                }
+    const load = useCallback(async () => {
+        setLoading(true)
+        try {
+            const r = await getNotifications(20)
+            if (r.success && r.notifications) {
+                setNotifs((r.notifications as Array<Record<string, unknown>>).map(n => ({
+                    id: n.id as string,
+                    title: n.title as string,
+                    description: (n.message as string) ?? null,
+                    read: Boolean(n.read),
+                    type: (n.type as string) ?? "INFO",
+                    actionUrl: (n.actionUrl as string) ?? null,
+                    createdAt: n.createdAt as Date,
+                })))
+                setUnreadCount(r.unreadCount || 0)
             }
+        } catch { /* silent */ } finally { setLoading(false) }
+    }, [])
+
+    useEffect(() => { if (session?.user) load() }, [session?.user, load])
+
+    const onItemClick = async (n: AppSidebarNotification) => {
+        if (!n.read) {
+            await markNotificationAsRead(n.id)
+            setNotifs(prev => prev.map(x => x.id === n.id ? { ...x, read: true } : x))
+            setUnreadCount(c => Math.max(0, c - 1))
         }
-    }, [pathname]);
+        if (n.actionUrl) router.push(n.actionUrl)
+    }
 
-    useEffect(() => {
-        const fetchNotifications = async () => {
-            if (session?.user) {
-                try {
-                    const result = await getNotifications();
-                    if (result.success && result.notifications) {
-                        setNotifications(result.notifications as unknown as Notification[]);
-                        setUnreadCount(result.unreadCount || 0);
-                    }
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-        };
-        fetchNotifications();
-    }, [session]);
-
-    const toggleItemExpanded = (path: string) => {
-        setExpandedItems(prev => {
-            if (prev.includes(path)) {
-                return prev.filter(p => p !== path);
-            }
-            return [path]; // Only allow one expanded at a time
-        });
-    };
-
-    const handleNotificationClick = async (notification: Notification) => {
-        if (!notification.read) {
-            try {
-                await markNotificationAsRead(notification.id);
-                setUnreadCount(prev => Math.max(0, prev - 1));
-                setNotifications(prev =>
-                    prev.map(n => n.id === notification.id ? { ...n, read: true } : n)
-                );
-            } catch (error) {
-                console.error("Failed to mark read", error);
-            }
-        }
-
-        if (notification.actionUrl) {
-            router.push(notification.actionUrl);
-        }
-        setNotificationsDropdownOpen(false);
-    };
-
-    const handleProfileMouseEnter = () => {
-        if (profileTimeoutRef.current) {
-            clearTimeout(profileTimeoutRef.current);
-        }
-        setProfileDropdownOpen(true);
-    };
-
-    const handleProfileMouseLeave = () => {
-        if (profileTimeoutRef.current) {
-            clearTimeout(profileTimeoutRef.current);
-        }
-        profileTimeoutRef.current = setTimeout(() => {
-            setProfileDropdownOpen(false);
-        }, 150);
-    };
-
-    const handleNotificationsMouseEnter = () => {
-        if (notificationsTimeoutRef.current) {
-            clearTimeout(notificationsTimeoutRef.current);
-        }
-        setNotificationsDropdownOpen(true);
-    };
-
-    const handleNotificationsMouseLeave = () => {
-        if (notificationsTimeoutRef.current) {
-            clearTimeout(notificationsTimeoutRef.current);
-        }
-        notificationsTimeoutRef.current = setTimeout(() => {
-            setNotificationsDropdownOpen(false);
-        }, 150);
-    };
-
-    const renderNavItem = (item: NavigationItem) => {
-        const cleanPath = item.path.startsWith('/') ? item.path.substring(1) : item.path;
-        const Icon = item.icon;
-        const hasChildren = item.children && item.children.length > 0;
-
-        // For parent: check if any child is active OR if we're on the parent route itself
-        const isChildActive = hasChildren && item.children!.some((child) => {
-            const childPath = child.path.startsWith('/') ? child.path.substring(1) : child.path;
-            return pathname === `/${childPath}` || pathname.startsWith(`/${childPath}/`);
-        });
-        const isParentActive = pathname === `/${cleanPath}` || pathname.startsWith(`/${cleanPath}/`);
-        const isExpanded = expandedItems.includes(cleanPath) || ((isChildActive || isParentActive) && !isCollapsed);
-
-        // For items without children, check if the item itself is active
-        const isActive = !hasChildren && (pathname === `/${cleanPath}` || pathname.startsWith(`/${cleanPath}/`));
-
-        if (hasChildren) {
-            const handleParentClick = () => {
-                // Navigate to parent route
-                router.push(`/${cleanPath}`);
-                // Expand dropdown if not already expanded
-                if (!expandedItems.includes(cleanPath)) {
-                    setExpandedItems(() => [cleanPath]);
-                }
-            };
-
-            const handleChevronClick = (e: React.MouseEvent) => {
-                e.stopPropagation();
-                toggleItemExpanded(cleanPath);
-            };
-
-            return (
-                <div key={cleanPath} className="space-y-1">
-                    <button
-                        onClick={handleParentClick}
-                        className={cn(
-                            "cursor-pointer flex items-center w-full gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all group",
-                            (isChildActive || isParentActive)
-                                ? "text-neutral-900 dark:text-white bg-neutral-100 dark:bg-neutral-800/50"
-                                : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50",
-                            isCollapsed && "justify-center px-3"
-                        )}
-                    >
-                        <div className="h-5 w-5 flex-shrink-0 flex items-center justify-center">
-                            <Icon className="h-5 w-5" />
-                        </div>
-                        {
-                            !isCollapsed && (
-                                <>
-                                    <span className="flex-1 text-left whitespace-nowrap overflow-hidden">{item.name}</span>
-                                    {
-                                        item.isImportant && (
-                                            <Tooltip>
-                                                <TooltipTrigger asChild>
-                                                    <AlertCircle className="h-4 w-4 text-amber-500 dark:text-amber-400 flex-shrink-0" />
-                                                </TooltipTrigger>
-                                                <TooltipContent side="top" className="bg-neutral-900 text-white dark:bg-white dark:text-black text-xs">
-                                                    Required
-                                                </TooltipContent>
-                                            </Tooltip>
-                                        )
-                                    }
-                                    <div
-                                        onClick={handleChevronClick}
-                                        className="p-1 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors"
-                                    >
-                                        <ChevronDown className={cn(
-                                            "h-4 w-4 transition-transform duration-200 flex-shrink-0",
-                                            isExpanded && "rotate-180"
-                                        )} />
-                                    </div>
-                                </>
-                            )
-                        }
-                    </button>
-                    <AnimatePresence>
-                        {
-                            isExpanded && !isCollapsed && (
-                                <motion.div
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: "auto" }}
-                                    exit={{ opacity: 0, height: 0 }}
-                                    transition={{ duration: 0.2 }}
-                                    className="overflow-hidden"
-                                >
-                                    <div className="pl-4 space-y-1">
-                                        {
-                                            item.children!.map((child) => {
-                                                const childPath = child.path.startsWith('/') ? child.path.substring(1) : child.path;
-                                                const isChildItemActive = pathname === `/${childPath}` || pathname.startsWith(`/${childPath}/`);
-                                                const ChildIcon = child.icon;
-
-                                                return (
-                                                    <Link
-                                                        key={childPath}
-                                                        href={`/${childPath}`}
-                                                        className={cn(
-                                                            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all",
-                                                            isChildItemActive
-                                                                ? "bg-neutral-900 dark:bg-white text-white dark:text-black"
-                                                                : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50"
-                                                        )}
-                                                    >
-                                                        <ChildIcon className="h-4 w-4" />
-                                                        <span>{child.name}</span>
-                                                    </Link>
-                                                );
-                                            })
-                                        }
-                                    </div>
-                                </motion.div>
-                            )
-                        }
-                    </AnimatePresence>
-                </div>
-            );
-        }
-
-        const linkContent = (
-            <Link
-                key={cleanPath}
-                href={`/${cleanPath}`}
-                className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all",
-                    isActive
-                        ? "bg-neutral-900 dark:bg-white text-white dark:text-black"
-                        : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/50",
-                    isCollapsed && "justify-center px-3"
-                )}
-            >
-                <div className={cn("flex-shrink-0 flex items-center justify-center", "h-5 w-5")}>
-                    <Icon className="h-5 w-5" />
-                </div>
-                {
-                    !isCollapsed && (
-                        <>
-                            <span className="whitespace-nowrap overflow-hidden flex-1">{item.name}</span>
-                            {
-                                item.isImportant && (
-                                    <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <AlertCircle className="h-4 w-4 text-amber-500 dark:text-amber-400 flex-shrink-0" />
-                                        </TooltipTrigger>
-                                        <TooltipContent side="top" className="bg-neutral-900 text-white dark:bg-white dark:text-black text-xs">
-                                            Required
-                                        </TooltipContent>
-                                    </Tooltip>
-                                )
-                            }
-                        </>
-                    )
-                }
-            </Link>
-        );
-
-        return isCollapsed ? (
-            <Tooltip key={cleanPath}>
-                <TooltipTrigger asChild>
-                    {linkContent}
-                </TooltipTrigger>
-                <TooltipContent side="right" className="bg-neutral-900 dark:bg-white text-white dark:text-black border-neutral-800 dark:border-neutral-200">
-                    {item.name}
-                </TooltipContent>
-            </Tooltip>
-        ) : linkContent;
-    };
-
-    const renderSidebarContent = () => (
-        <>
-            <div className={cn("p-6 flex items-center relative border-b border-neutral-200 dark:border-neutral-800", isCollapsed ? "justify-center" : "gap-3")}>
-                <Link href="/home" className="flex items-center gap-3">
-                    <div className="relative h-10 w-10 flex-shrink-0 flex items-center justify-center bg-neutral-900 dark:bg-white rounded-xl">
-                        <Layers className="h-6 w-6 text-white dark:text-black" />
-                    </div>
-                    {
-                        !isCollapsed && (
-                            <div className="flex-1 text-left min-w-0 hidden lg:block">
-                                <h1 className="font-bold text-neutral-900 dark:text-white truncate tracking-tight">FlowSync</h1>
-                                <p className="text-[10px] text-neutral-500 dark:text-neutral-400 truncate uppercase tracking-widest font-mono">
-                                    Hiring Portal
-                                </p>
-                            </div>
-                        )
-                    }
-                </Link>
-                {
-                    setIsCollapsed && (
-                        <button
-                            onClick={() => setIsCollapsed(!isCollapsed)}
-                            className="hidden lg:block absolute top-6 -right-3 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-full p-1 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors z-50 shadow-lg"
-                        >
-                            {isCollapsed ? <ChevronRight className="w-4 h-4 text-neutral-900 dark:text-white" /> : <ChevronLeft className="w-4 h-4 text-neutral-900 dark:text-white" />}
-                        </button>
-                    )
-                }
-            </div>
-            <ScrollArea className="flex-1">
-                <nav className="px-3 py-4 space-y-1">
-                    {hiringNavigation.primary.map((item) => renderNavItem(item))}
-
-                    <div className="my-4 border-t border-neutral-200 dark:border-neutral-800" />
-
-                    {hiringNavigation.secondary.map((item) => renderNavItem(item))}
-                </nav>
-            </ScrollArea>
-            <div className="mt-auto border-t border-neutral-200 dark:border-neutral-800">
-                <div className={cn("p-2", isCollapsed ? "flex justify-center" : "grid grid-cols-2 gap-2")}>
-                    <div className={isCollapsed ? "mb-2" : ""}>
-                        <button
-                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                            className={cn(
-                                "flex items-center justify-center rounded-lg p-2 text-sm font-medium transition-all hover:bg-neutral-100 dark:hover:bg-neutral-800 w-full",
-                                isCollapsed && "aspect-square"
-                            )}
-                            title="Toggle Theme"
-                        >
-                            {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-                            {!isCollapsed && <span className="ml-2">Theme</span>}
-                        </button>
-                    </div>
-                    {
-                        session && (
-                            <div
-                                className="relative"
-                                onMouseEnter={handleNotificationsMouseEnter}
-                                onMouseLeave={handleNotificationsMouseLeave}
-                            >
-                                <button className={cn(
-                                    "flex items-center justify-center rounded-lg p-2 text-sm font-medium transition-all hover:bg-neutral-100 dark:hover:bg-neutral-800 w-full",
-                                    isCollapsed && "aspect-square"
-                                )}>
-                                    <div className="relative">
-                                        <Bell className="h-5 w-5" />
-                                        {
-                                            unreadCount > 0 && (
-                                                <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-600 border border-white dark:border-neutral-950"></span>
-                                            )
-                                        }
-                                    </div>
-                                    {!isCollapsed && <span className="ml-2">Inbox</span>}
-                                </button>
-                                {
-                                    notificationsDropdownOpen && (
-                                        <div className="absolute bottom-full left-0 mb-2 w-80 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg shadow-xl z-50 overflow-hidden">
-                                            <div className="p-3 border-b border-neutral-100 dark:border-neutral-800">
-                                                <h3 className="font-semibold text-sm">Notifications</h3>
-                                            </div>
-                                            <div className="max-h-80 overflow-y-auto">
-                                                {
-                                                    notifications.length === 0 ? (
-                                                        <div className="p-4 text-center text-neutral-500 text-sm">No notifications</div>
-                                                    ) : (
-                                                        notifications.map(notification => (
-                                                            <button
-                                                                key={notification.id}
-                                                                onClick={() => handleNotificationClick(notification)}
-                                                                className={cn(
-                                                                    "w-full text-left p-3 hover:bg-neutral-50 dark:hover:bg-neutral-800 border-b border-neutral-100 dark:border-neutral-800/50 last:border-0",
-                                                                    !notification.read && "bg-blue-50/50 dark:bg-blue-900/10"
-                                                                )}
-                                                            >
-                                                                <p className="text-sm font-medium line-clamp-1">{notification.title}</p>
-                                                                <p className="text-xs text-neutral-500 mt-1">{format(new Date(notification.createdAt), "MMM d, h:mm a")}</p>
-                                                            </button>
-                                                        ))
-                                                    )
-                                                }
-                                            </div>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                        )
-                    }
-                </div>
-                {
-                    session ? (
-                        <div
-                            className="relative px-3 py-2"
-                            onMouseEnter={handleProfileMouseEnter}
-                            onMouseLeave={handleProfileMouseLeave}
-                        >
-                            <button className={cn("flex cursor-pointer items-center gap-3 w-full rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 p-2 transition-colors", isCollapsed && "justify-center")}>
-                                {
-                                    session?.user?.image ? (
-                                        <Image
-                                            className="h-8 w-8 rounded-full border border-neutral-200 dark:border-neutral-800"
-                                            src={session.user.image}
-                                            alt="User"
-                                            width={32}
-                                            height={32}
-                                        />
-                                    ) : (
-                                        <div className="h-8 w-8 rounded-full bg-neutral-900 dark:bg-white flex items-center justify-center">
-                                            <span className="text-white dark:text-black text-xs font-bold">{session?.user?.name?.[0] || 'U'}</span>
-                                        </div>
-                                    )
-                                }
-                                {
-                                    !isCollapsed && (
-                                        <div className="flex-1 text-left min-w-0 hidden lg:block">
-                                            <p className="text-sm font-bold truncate">{session?.user?.name}</p>
-                                            <p className="text-[10px] text-neutral-500 truncate">{session?.user?.email}</p>
-                                        </div>
-                                    )
-                                }
-                            </button>
-                            {
-                                profileDropdownOpen && (
-                                    <div
-                                        className="absolute left-full ml-2 bottom-0 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg shadow-2xl z-50 w-64 overflow-hidden"
-                                        onMouseEnter={handleProfileMouseEnter}
-                                        onMouseLeave={handleProfileMouseLeave}
-                                    >
-                                        <div className="p-2">
-                                            <button onClick={async () => { await signOut(); router.push("/"); }} className="cursor-pointer w-full flex items-center gap-3 px-3 py-2 hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 rounded-md transition-colors text-sm">
-                                                <LogOut className="h-4 w-4" />
-                                                Sign Out
-                                            </button>
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        </div>
-                    ) : (
-                        <div className="px-3 py-2">
-                            <button
-                                onClick={() => router.push('/')}
-                                className={cn(
-                                    "flex items-center w-full rounded-lg p-2 text-sm font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800",
-                                    isCollapsed && "justify-center"
-                                )}
-                            >
-                                <User className="h-5 w-5" />
-                                {!isCollapsed && <span className="ml-3">Sign In</span>}
-                            </button>
-                        </div>
-                    )
-                }
-            </div>
-        </>
-    );
+    const handleSignOut = async () => {
+        await signOut()
+        toast.success("Signed out")
+        router.push("/signin")
+    }
 
     return (
-        <TooltipProvider>
-            <button
-                onClick={() => setIsMobileOpen(!isMobileOpen)}
-                className="fixed top-2 left-2 z-50 lg:hidden bg-white dark:bg-neutral-950 p-2 rounded-lg border border-neutral-200 dark:border-neutral-800"
-            >
-                <AlignLeft className="h-5 w-5" />
-            </button>
-
-            {
-                isMobileOpen && (
-                    <div
-                        className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-                        onClick={() => setIsMobileOpen(false)}
-                    />
-                )
-            }
-
-            <aside
-                className={cn(
-                    "fixed top-0 left-0 h-screen bg-white dark:bg-neutral-950 border-r border-neutral-200 dark:border-neutral-800 flex flex-col z-40 transition-all duration-300",
-                    "hidden lg:flex",
-                    isCollapsed ? "w-[90px]" : "w-64"
-                )}
-            >
-                {renderSidebarContent()}
-            </aside>
-            <div className={cn(
-                "fixed top-0 left-0 h-full w-64 bg-white dark:bg-neutral-950 z-50 transition-transform duration-300 transform border-r border-neutral-200 dark:border-neutral-800 lg:hidden flex flex-col",
-                isMobileOpen ? "translate-x-0" : "-translate-x-full"
-            )}>
-                {renderSidebarContent()}
-            </div>
-        </TooltipProvider>
-    );
+        <AppSidebar
+            brand={{
+                name: "BuildrHQ",
+                subtitle: "Hiring Portal",
+                homeHref: "/home",
+                logo: (
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-orange-500 text-white">
+                        <Layers className="h-[18px] w-[18px]" />
+                    </div>
+                ),
+            }}
+            primary={hiringNavigation.primary}
+            secondary={hiringNavigation.secondary}
+            secondaryLabel="Management"
+            isCollapsed={isCollapsed}
+            setIsCollapsed={setIsCollapsed}
+            isMobileOpen={isMobileOpen}
+            setIsMobileOpen={setIsMobileOpen}
+            user={session?.user ? { name: session.user.name, image: session.user.image, role: (session.user as { role?: string }).role ?? "Recruiter" } : null}
+            isPending={isPending}
+            onSignOut={handleSignOut}
+            profileHref="/settings"
+            notifications={{
+                items: notifs,
+                unreadCount,
+                loading,
+                onItemClick,
+                onMarkAllRead: () => { setNotifs(prev => prev.map(n => ({ ...n, read: true }))); setUnreadCount(0) },
+                viewAllHref: "/home",
+            }}
+        />
+    )
 }
+
+export default HiringSidebar

@@ -64,8 +64,8 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
             <PlatformSidebar platform={adminControlConfig} />
             <main className={cn(
                 "h-screen transition-all duration-300",
-                "lg:ml-64 p-3",
-                isCollapsed && "lg:ml-[90px]"
+                "lg:ml-[17rem] p-3",
+                isCollapsed && "lg:ml-[6.25rem]"
             )}>
                 <div className="h-screen bg-white dark:bg-neutral-950 lg:rounded-l-3xl lg:border-l border-neutral-200 dark:border-neutral-800 shadow-xl overflow-hidden">
                     <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-700 scrollbar-track-transparent">

@@ -12,6 +12,22 @@ const nextConfig = {
     env: {
         BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
         NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
+        NEXT_PUBLIC_WEB_URL: process.env.NEXT_PUBLIC_WEB_URL,
+        NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+    },
+
+    // The marketing surface now lives on the web deploy (buildrhq.com). Any stale
+    // marketing path that lands on the app host is bounced back to web so old
+    // links + shared URLs keep working.
+    async redirects() {
+        const WEB_URL = process.env.NEXT_PUBLIC_WEB_URL || "http://localhost:3000";
+        const marketingPaths = [
+            "/aboutus", "/blogs", "/privacypolicy", "/termsofservice", "/pricing",
+        ];
+        return marketingPaths.flatMap((p) => ([
+            { source: p, destination: `${WEB_URL}${p}`, permanent: false },
+            { source: `${p}/:path*`, destination: `${WEB_URL}${p}/:path*`, permanent: false },
+        ]));
     },
 
     // These packages must NOT be bundled into the Cloudflare Worker bundle.

@@ -1,7 +1,7 @@
 import { getSession } from '@repo/auth'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { getSocialConnections } from '@/actions/(main)/achievements/social-share.action'
+import { getSocialConnections } from '@/actions/(main)/social/social-connections.action'
 import { IntegrationsContent } from './_components/integrations-content'
 
 export const metadata = {

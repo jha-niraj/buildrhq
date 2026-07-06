@@ -58,8 +58,8 @@ function UniversityLayoutContent({ children }: { children: React.ReactNode }) {
             <main
                 className={cn(
                     "h-screen flex flex-col transition-all duration-300",
-                    "lg:ml-64 p-3",
-                    isCollapsed && "lg:ml-[90px]"
+                    "lg:ml-[17rem] p-3",
+                    isCollapsed && "lg:ml-[6.25rem]"
                 )}
             >
                 <div className="flex-1 bg-white dark:bg-neutral-950 lg:rounded-3xl lg:border-l border-neutral-200 dark:border-neutral-800 shadow-xl overflow-hidden flex flex-col">

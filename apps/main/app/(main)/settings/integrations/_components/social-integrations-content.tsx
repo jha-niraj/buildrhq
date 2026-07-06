@@ -17,7 +17,7 @@ import { cn } from '@repo/ui/lib/utils'
 import toast from '@repo/ui/components/ui/sonner'
 import Link from 'next/link'
 import Image from 'next/image'
-import { disconnectSocialAccount } from '@/actions/(main)/achievements/social-share.action'
+import { disconnectSocialAccount } from '@/actions/(main)/social/social-connections.action'
 
 interface Connection {
     id: string

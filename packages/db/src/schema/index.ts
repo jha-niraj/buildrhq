@@ -10,7 +10,6 @@ export * from "./hiring";
 export * from "./jobmock";
 export * from "./jobs";
 export * from "./worker";
-export * from "./communities";
 export * from "./credits";
 export * from "./knowme";
 export * from "./mock";

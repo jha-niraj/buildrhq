@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.buildrhq.com'
+// This is the app deploy (app.buildrhq.com). Public/marketing SEO + the sitemap
+// live on the web deploy (buildrhq.com). Keep the private product areas out of
+// the index and point crawlers at the marketing sitemap.
+const WEB_URL = process.env.NEXT_PUBLIC_WEB_URL ?? 'https://www.buildrhq.com'
 
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -31,6 +34,6 @@ export default function robots(): MetadataRoute.Robots {
             { userAgent: 'PerplexityBot', allow: '/' },
             { userAgent: 'Googlebot', allow: '/' },
         ],
-        sitemap: `${BASE_URL}/sitemap.xml`,
+        sitemap: `${WEB_URL}/sitemap.xml`,
     }
 }

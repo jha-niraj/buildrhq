@@ -40,13 +40,6 @@ export const jobsNavigation: JobsNavigationConfig = {
             icon: Heart,
             status: "active"
         },
-        {
-            name: "Job Alerts",
-            path: "jobs/alerts",
-            icon: Bell,
-            status: "active",
-            comingSoon: true
-        },
     ],
     secondary: [
         {
@@ -60,20 +53,6 @@ export const jobsNavigation: JobsNavigationConfig = {
             path: "companies/following",
             icon: Star,
             status: "active"
-        },
-        {
-            name: "Company Reviews",
-            path: "companies/reviews",
-            icon: FileText,
-            status: "active",
-            comingSoon: true
-        },
-        {
-            name: "Salary Insights",
-            path: "jobs/salaries",
-            icon: TrendingUp,
-            status: "active",
-            comingSoon: true
         },
     ]
 }

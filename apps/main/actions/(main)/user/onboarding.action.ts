@@ -54,8 +54,7 @@ export async function completeOnboarding(data: {
     username: string
     university?: string
     semester?: string
-    resume?: string
-    resumeText?: string
+    image?: string
     learningPreferences?: string[]
 }) {
     const session = await getSession(headers())
@@ -72,14 +71,15 @@ export async function completeOnboarding(data: {
             throw new Error(usernameCheck.message)
         }
 
-        // Update user with onboarding data
+        // Update user with onboarding data. The resume file is uploaded to R2 by
+        // `uploadResume` (which persists hasResume/resume/resumeText itself), and the
+        // profile image is uploaded to Cloudinary — here we only persist the image URL
+        // plus the profile fields, so we never clobber the R2 key with a signed URL.
         await db.update(users).set({
             username: data.username.toLowerCase(),
             university: data.university || null,
             semester: data.semester || null,
-            resume: data.resume || null,
-            resumeText: data.resumeText || null,
-            hasResume: data.resume ? true : false,
+            ...(data.image ? { image: data.image } : {}),
             learningPreferences: data.learningPreferences || [],
             onboardingCompleted: true,
         }).where(eq(users.id, userId))
