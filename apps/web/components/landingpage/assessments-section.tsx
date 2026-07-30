@@ -1,12 +1,12 @@
 "use client"
 
-import Link from "next/link"
 import { motion } from "framer-motion"
 import {
     Trophy, Target, Timer, Code, BookOpen, Sparkles, Terminal
 } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
 import { Badge } from "@repo/ui/components/ui/badge"
+import { APP_LINKS, APP_URL } from "@/lib/site"
 
 const features = [
     {
@@ -57,16 +57,16 @@ export default function AssessmentsSection() {
                         </p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-3">
-                        <Link href="/assessments/learn">
+                        <a href={APP_LINKS.signup}>
                             <Button size="lg" className="cursor-pointer rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 h-12 px-6">
                                 Start Learning
                             </Button>
-                        </Link>
-                        <Link href="/assessments/practice">
+                        </a>
+                        <a href={`${APP_URL}/practice`}>
                             <Button size="lg" variant="outline" className="cursor-pointer rounded-full border-neutral-200 dark:border-neutral-800 h-12 px-6">
                                 Take Assessment
                             </Button>
-                        </Link>
+                        </a>
                     </div>
                 </motion.div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

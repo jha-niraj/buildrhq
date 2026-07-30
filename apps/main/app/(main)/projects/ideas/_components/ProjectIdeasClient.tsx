@@ -2,11 +2,11 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import {
     Lightbulb, Sparkles, Layers, Target, CheckCircle2, Heart,
     Eye, Code2, Search, Filter, Crown, Users, Clock, ChevronRight,
-    Zap, BookOpen, Play
+    Zap, BookOpen, Play, MessageSquare
 } from 'lucide-react'
 import { Button } from '@repo/ui/components/ui/button'
 import { Badge } from '@repo/ui/components/ui/badge'
@@ -30,6 +30,7 @@ import toast from '@repo/ui/components/ui/sonner'
 import ProjectGenerateSheet from '@/components/projects/project-generate-sheet'
 import { Skeleton } from '@repo/ui/components/ui/skeleton'
 import { cn } from '@repo/ui/lib/utils'
+import { CommentThread } from '@/components/comments'
 
 // Dynamic Lucide icon map (for DB-driven icons)
 import * as LucideIcons from 'lucide-react'
@@ -67,6 +68,7 @@ interface ProblemStatement {
     difficulty: string; overview: string | null; coreRequirements: string[];
     engineeringConstraints: string[]; suggestedStacks: Record<string, string[]> | null;
     recruiterSignal: string | null; upvotes: number; views: number; buildCount: number;
+    commentCount: number;
     createdAt: Date; submittedBy?: { id: string; name: string | null; username: string | null; image: string | null } | null;
 }
 
@@ -93,6 +95,10 @@ export default function ProjectIdeasPage() {
     // Problem detail sheet
     const [selectedProblem, setSelectedProblem] = useState<ProblemStatement | null>(null)
     const [problemDetailOpen, setProblemDetailOpen] = useState(false)
+    // Mirrors selectedProblem.id so handleCommentCountChange can stay memoised
+    // without capturing a stale id in its closure.
+    const selectedProblemIdRef = useRef<string | null>(null)
+    selectedProblemIdRef.current = selectedProblem?.id ?? null
 
     // Generate sheet
     const [generateSheetOpen, setGenerateSheetOpen] = useState(false)
@@ -149,6 +155,15 @@ export default function ProjectIdeasPage() {
     useEffect(() => {
         if (activeView === 'problems') fetchProblemStatements()
     }, [activeView, fetchProblemStatements])
+
+    // Comments mutate the denormalised counter server-side; mirror it locally so
+    // the card badge behind the sheet updates without a refetch.
+    const handleCommentCountChange = useCallback((commentCount: number) => {
+        setSelectedProblem(prev => (prev ? { ...prev, commentCount } : prev))
+        setProblemStatements(prev => prev.map(p =>
+            p.id === selectedProblemIdRef.current ? { ...p, commentCount } : p
+        ))
+    }, [])
 
     const handleStartBuilding = (problem: ProblemStatement) => {
         setProblemDetailOpen(false)
@@ -564,6 +579,8 @@ export default function ProjectIdeasPage() {
                                             <div className="flex items-center gap-2 text-xs text-neutral-400">
                                                 <span className="flex items-center gap-0.5"><Eye className="w-3 h-3" />{problem.views || 0}</span>
                                                 <span className="flex items-center gap-0.5"><Heart className="w-3 h-3" />{problem.upvotes || 0}</span>
+                                                {/* Reads the denormalised counter — no join per card. */}
+                                                <span className="flex items-center gap-0.5"><MessageSquare className="w-3 h-3" />{problem.commentCount || 0}</span>
                                             </div>
                                         </div>
                                         <h3 className="text-base font-bold text-neutral-900 dark:text-white mb-2 line-clamp-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
@@ -606,6 +623,7 @@ export default function ProjectIdeasPage() {
                                     <div className="flex items-center gap-3 text-sm text-neutral-400">
                                         <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" />{selectedProblem.views || 0}</span>
                                         <span className="flex items-center gap-1"><Heart className="w-3.5 h-3.5" />{selectedProblem.upvotes || 0}</span>
+                                        <span className="flex items-center gap-1"><MessageSquare className="w-3.5 h-3.5" />{selectedProblem.commentCount || 0}</span>
                                     </div>
                                 </div>
                                 <SheetTitle className="text-left text-2xl">{selectedProblem.projectTitle}</SheetTitle>
@@ -659,6 +677,16 @@ export default function ProjectIdeasPage() {
                                         </div>
                                     </div>
                                 )}
+                                {/* Generic comment system, first consumer. The same component
+                                    mounts under a project or a blog post with a different entityType. */}
+                                <div className="pt-6 border-t border-neutral-200 dark:border-neutral-800">
+                                    <CommentThread
+                                        entityType="PROJECT_IDEA"
+                                        entityId={selectedProblem.id}
+                                        initialCount={selectedProblem.commentCount || 0}
+                                        onCountChange={handleCommentCountChange}
+                                    />
+                                </div>
                             </div>
                             <SheetFooter className="mt-8">
                                 <Button onClick={() => handleStartBuilding(selectedProblem)} className="w-full h-12 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900">

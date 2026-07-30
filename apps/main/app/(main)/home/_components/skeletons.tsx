@@ -66,3 +66,23 @@ export function ProjectsPreviewSkeleton() {
 export function MockVoicePreviewSkeleton() {
     return <LoaderTile className="h-64" />;
 }
+
+/** Header + 4 counters + the stack of stats-beside-chart module rows. Mirrors the
+ *  real dashboard's shape so the route transition doesn't visibly reflow. */
+export function HomeDashboardSkeleton() {
+    return (
+        <div className="space-y-7">
+            <div className="h-16 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900" />
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+                {[0, 1, 2, 3].map((i) => (
+                    <div key={i} className="h-[86px] rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900" />
+                ))}
+            </div>
+            <div className="space-y-6">
+                {[0, 1, 2].map((i) => (
+                    <LoaderTile key={i} className="h-[280px]" />
+                ))}
+            </div>
+        </div>
+    );
+}

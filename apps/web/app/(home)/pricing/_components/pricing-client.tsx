@@ -13,6 +13,7 @@ import {
 } from "@repo/ui/components/ui/accordion"
 import { BentoPricing } from "@/components/main/bentopricing"
 import { pricingFaqs } from "./pricing-faqs"
+import { APP_LINKS } from "@/lib/site"
 
 const valueProps = [
 	{ icon: Infit, title: "Credits never expire", desc: "Buy once, spend whenever. Your balance is yours forever." },
@@ -110,7 +111,7 @@ export default function PricingClient() {
 							Everything about how credits, billing, and access work on BuildrHQ.
 						</p>
 						<Link
-							href="/aboutus"
+							href="/contact"
 							className="mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 dark:bg-white dark:text-neutral-900"
 						>
 							Talk to support <ArrowRight className="h-4 w-4" />
@@ -149,17 +150,17 @@ export default function PricingClient() {
 						agent in minutes.
 					</p>
 					<div className="mt-8 flex flex-wrap justify-center gap-3">
-						<Link
-							href="/signup"
+						<a
+							href={APP_LINKS.signup}
 							className="inline-flex items-center gap-2 rounded-xl bg-neutral-950 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
 						>
 							Get started free <ArrowRight className="h-4 w-4" />
-						</Link>
+						</a>
 						<Link
-							href="/#pricing"
+							href="/contact"
 							className="inline-flex items-center gap-2 rounded-xl border border-neutral-300 px-7 py-3.5 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:border-white/10 dark:text-white/70 dark:hover:bg-white/5"
 						>
-							Compare features
+							Talk to us
 						</Link>
 					</div>
 				</div>

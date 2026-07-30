@@ -23,6 +23,8 @@ If you cannot do these things yet, spend 2–3 weeks on these fundamentals first
 
 For your interview language: Python is the most popular for interviews because of its concise syntax. If you already know Java or C++ well, stick with it. Do not switch languages for interviews unless you have months to spare — the overhead of adapting to a new syntax under pressure is not worth it.
 
+**Where to solve the problems.** [LeetCode](https://leetcode.com/) is the default and its free tier covers most of the classic set. [NeetCode](https://neetcode.io/practice) organises that same set by pattern with video walkthroughs, which maps almost exactly onto the structure below. The [Tech Interview Handbook](https://www.techinterviewhandbook.org/) is the best free companion guide to the whole process. If you want systematic topic coverage instead of an interview-shaped list, the [CSES Problem Set](https://cses.fi/problemset/) is excellent and free.
+
 ## Month 1: Foundations (Weeks 1–4)
 
 The goal of month 1 is to get comfortable with the four foundational data structures and the searching and sorting algorithms that apply to them.
@@ -244,7 +246,7 @@ This is the most important part of the plan. Stop solving problems cold and star
 - Use a coding environment similar to the interview (not your full IDE)
 - Do at least 10 full interview simulations over these two weeks
 
-Use [BuildrHQ's Practice module](/practice) for structured problem sets with AI hints, and the [Mock Interview platform](/mock) for full simulated interview sessions with performance feedback.
+Use BuildrHQ's practice module for structured problem sets with AI hints, and its mock interview platform for full simulated sessions with performance feedback. If you want to vary where you practise, [the LeetCode alternatives guide](/blogs/leetcode-alternatives) covers what each platform is actually good at.
 
 ## The Daily Commitment
 

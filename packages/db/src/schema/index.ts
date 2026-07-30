@@ -6,6 +6,7 @@ export * from "./admin";
 export * from "./aitools";
 export * from "./bookmarks";
 export * from "./chat";
+export * from "./comments";
 export * from "./hiring";
 export * from "./jobmock";
 export * from "./jobs";

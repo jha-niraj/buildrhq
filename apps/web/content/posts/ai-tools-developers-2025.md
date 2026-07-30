@@ -24,7 +24,9 @@ Novel architecture decisions, security-sensitive code (it will generate code tha
 
 **Best practice:** Treat Copilot as a fast typist, not a smart architect. Accept suggestions for boilerplate, reject suggestions where you do not understand the generated code, and always review security-critical generations carefully.
 
-**Alternatives:** Cursor (uses Claude and GPT-4), Tabnine (self-hosted for privacy-sensitive environments), Supermaven (very fast, less accurate).
+**Alternatives:** [Cursor](https://cursor.com/), [Tabnine](https://www.tabnine.com/) (self-hosted for privacy-sensitive environments), and [Codeium](https://codeium.com/) (generous free tier). [GitHub Copilot](https://github.com/features/copilot) itself now has a free tier for individuals, which removes most of the reason not to try it.
+
+**Worth knowing before you rely on it:** GitHub's own [research on Copilot](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/) reported large speed-ups on well-scoped tasks — but that is task completion time, not correctness. Independent work on AI-assisted code quality has been considerably more mixed, which is why the review discipline below matters more than the tool choice.
 
 ## 2. Claude (Complex Reasoning and Code Review)
 
@@ -66,7 +68,7 @@ Deep reasoning tasks where you need an extended back-and-forth conversation. For
 
 ## 5. BuildrHQ AI Resume Builder (Interview Preparation)
 
-For developers actively job searching, the [BuildrHQ AI Resume Builder](/ai) is the most directly career-impactful AI tool in this list. Paste a job description and it rewrites your resume bullets to match the specific language and keywords the ATS and recruiter will be scanning for.
+For developers actively job searching, an AI resume builder is the most directly career-impactful AI tool in this list — BuildrHQ's is built for exactly this, and [the ATS resume guide](/blogs/ats-resume-software-engineer) explains what it is optimising for. Paste a job description and it rewrites your resume bullets to match the specific language and keywords the ATS and recruiter will be scanning for.
 
 **What it is genuinely good at:**
 ATS score analysis, bullet rewriting for specific roles, keyword gap analysis, and cover letter generation from your profile data. It understands the specific conventions of software engineering resumes (metrics, action verbs, stack specificity) in a way that generic AI tools do not.

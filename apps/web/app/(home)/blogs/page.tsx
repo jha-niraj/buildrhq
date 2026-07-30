@@ -1,18 +1,69 @@
 import type { Metadata } from 'next'
-import { allPosts } from '@/content/blog'
+import { publishedPosts } from '@/content/blog'
+import { SITE, BRAND } from '@/lib/site'
 import BlogsClient from './_components/BlogsClient'
 
+const TITLE = 'Developer Blog: Careers, Interviews & Engineering'
+const DESCRIPTION =
+    'Practical guides on software engineering careers, technical interview prep, DSA, system design, portfolios and resumes - written for CS students and working engineers.'
+
 export const metadata: Metadata = {
-    title: 'Developer Blog — Career, Interviews & Engineering',
-    description: 'Deep dives into software engineering careers, technical interview prep, portfolio building, DSA, system design, and the AI tools that get developers hired.',
+    title: TITLE,
+    description: DESCRIPTION,
+    alternates: { canonical: `${SITE}/blogs` },
     openGraph: {
-        title: 'BuildrHQ Blog — Career, Interviews & Engineering',
-        description: 'Deep dives into software engineering careers, technical interview prep, portfolio building, DSA, and system design.',
-        images: [{ url: '/og/blog/blog-index-hero.webp', width: 1200, height: 630 }],
+        type: 'website',
+        url: `${SITE}/blogs`,
+        siteName: BRAND.name,
+        title: `${TITLE} | ${BRAND.name}`,
+        description: DESCRIPTION,
+        images: [{ url: '/og/blog/blog-index-hero.webp', width: 1200, height: 630, alt: `${BRAND.name} blog` }],
     },
-    alternates: { canonical: '/blogs' },
+    twitter: {
+        card: 'summary_large_image',
+        title: `${TITLE} | ${BRAND.name}`,
+        description: DESCRIPTION,
+        images: ['/og/blog/blog-index-hero.webp'],
+    },
 }
 
 export default function BlogsPage() {
-    return <BlogsClient posts={allPosts} />
+    const blogSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Blog',
+        name: `${BRAND.name} Blog`,
+        description: DESCRIPTION,
+        url: `${SITE}/blogs`,
+        publisher: {
+            '@type': 'Organization',
+            name: BRAND.name,
+            url: SITE,
+            logo: { '@type': 'ImageObject', url: BRAND.logo },
+        },
+        blogPost: publishedPosts.map((post) => ({
+            '@type': 'BlogPosting',
+            headline: post.title,
+            description: post.description,
+            url: `${SITE}/blogs/${post.slug}`,
+            datePublished: post.datePublished,
+            dateModified: post.dateModified,
+        })),
+    }
+
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE}/blogs` },
+        ],
+    }
+
+    return (
+        <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            <BlogsClient posts={publishedPosts} />
+        </>
+    )
 }

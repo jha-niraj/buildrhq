@@ -796,6 +796,13 @@ export const projectIdeas = pgTable(
         submittedById: text("submittedById").references(() => users.id),
         isUserSubmitted: boolean("isUserSubmitted").notNull().default(false),
         upvotes: integer("upvotes").notNull().default(0),
+        // Denormalised for the same reason `upvotes` is: the ideas grid renders a
+        // count on every card and must not pay for a join per card. Kept in step
+        // inside the same transaction as the comment insert/soft-delete.
+        // Denormalised for the same reason `upvotes` is: the ideas grid renders a
+        // count on every card and must not pay for a join per card. Kept in step
+        // inside the same transaction as the comment insert/soft-delete.
+        commentCount: integer("commentCount").notNull().default(0),
         views: integer("views").notNull().default(0),
         createdAt: timestamp("createdAt").notNull().defaultNow(),
         updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),

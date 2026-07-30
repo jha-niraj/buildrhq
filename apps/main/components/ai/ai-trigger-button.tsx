@@ -1,0 +1,35 @@
+"use client";
+
+import { Sparkles } from "lucide-react";
+import { cn } from "@repo/ui/lib/utils";
+import { useAIPanelStore } from "@/app/store/aiPanelStore";
+
+/**
+ * Floating launcher for the AI panel. Hides itself while the panel is open —
+ * the panel has its own close button, so a second control in the same corner
+ * would just be a target the panel is already covering.
+ */
+export function AITriggerButton({ className }: { className?: string }) {
+	const { isOpen, open } = useAIPanelStore();
+
+	if (isOpen) return null;
+
+	return (
+		<button
+			type="button"
+			onClick={open}
+			aria-label="Open BuildrHQ AI"
+			className={cn(
+				"fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-full",
+				"bg-orange-500 px-4 py-3 text-sm font-semibold text-white shadow-lg",
+				"transition-all hover:bg-orange-600 hover:shadow-xl active:scale-95 cursor-pointer",
+				className,
+			)}
+		>
+			<Sparkles className="h-4 w-4" />
+			<span className="hidden sm:inline">Ask AI</span>
+		</button>
+	);
+}
+
+export default AITriggerButton;

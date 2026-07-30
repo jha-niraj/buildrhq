@@ -1,570 +1,252 @@
-'use client'
+"use client"
 
-import { useState, useEffect, useCallback } from 'react'
-import { useSession, signOut } from '@repo/auth/client'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Input } from '@repo/ui/components/ui/input'
-import { Label } from '@repo/ui/components/ui/label'
-import { Button } from '@repo/ui/components/ui/button'
+import { useMemo, useRef, useState } from "react"
+import { useRouter } from "next/navigation"
+import { LogOut, Loader2 } from "lucide-react"
 import {
-    Select, SelectContent, SelectItem, SelectTrigger, SelectValue
-} from '@repo/ui/components/ui/select'
-import {
-    Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader,
-    DialogTitle
-} from '@repo/ui/components/ui/dialog'
-import {
-    Command, CommandEmpty, CommandGroup, CommandInput, CommandItem
-} from '@repo/ui/components/ui/command'
-import {
-    Popover, PopoverContent, PopoverTrigger
-} from '@repo/ui/components/ui/popover'
-import {
-    Loader2, CheckCircle2, XCircle, Upload, ArrowRight, ArrowLeft,
-    Sparkles, Code, Briefcase, Target, TrendingUp, LogOut, ChevronsUpDown,
-    Check, AlertCircle, Cloud, ShieldCheck, Database,
-    Gamepad2, Palette, Server, Smartphone, Globe, Cpu, Blocks, TestTube2,
-    Layers, BrainCircuit, FileText, X
-} from 'lucide-react'
-import { useDebounce } from '@/hooks/use-debounce'
-import toast from '@repo/ui/components/ui/sonner'
-import { cn } from '@repo/ui/lib/utils'
-import { getColleges } from '@/actions/(main)/user/college.action'
-import { checkUsernameAvailability, completeOnboarding } from '@/actions/(main)/user/onboarding.action'
-import { uploadResume } from '@/actions/(main)/user/resume.action'
-import { uploadImageToCloudinary } from '@/actions/(common)/shared/upload.action'
-import { validateResumeFile } from '@/lib/resume-extractor.client'
+	TypeformFlow, type FlowStep, type FlowFileValue,
+} from "@repo/ui/components/typeform-flow"
+import { signOut, useSession } from "@repo/auth/client"
+import toast from "@repo/ui/components/ui/sonner"
+import { checkUsernameAvailability, completeOnboarding } from "@/actions/(main)/user/onboarding.action"
+import { uploadResume } from "@/actions/(main)/user/resume.action"
+import { uploadImageToCloudinary } from "@/actions/(common)/shared/upload.action"
+import { finalizeSignup } from "@/actions/(auth)/auth/signup.actions"
+import { OnboardingSidePanel } from "./onboarding-side-panel"
+import { OnboardingShaderBg } from "./onboarding-shader-bg"
 
 const SEMESTERS = [
-    "1st Semester", "2nd Semester", "3rd Semester", "4th Semester",
-    "5th Semester", "6th Semester", "7th Semester", "8th Semester",
-    "Graduate", "Post-Graduate", "Other"
+	"1st Semester", "2nd Semester", "3rd Semester", "4th Semester",
+	"5th Semester", "6th Semester", "7th Semester", "8th Semester",
+	"Graduate", "Post-Graduate", "Other",
 ]
 
-const LEARNING_GOALS = [
-    { id: 'web-dev', label: 'Web Development', icon: Globe },
-    { id: 'mobile-dev', label: 'Mobile Development', icon: Smartphone },
-    { id: 'backend', label: 'Backend Engineering', icon: Server },
-    { id: 'fullstack', label: 'Full Stack', icon: Layers },
-    { id: 'dsa', label: 'Data Structures & Algorithms', icon: Target },
-    { id: 'system-design', label: 'System Design', icon: TrendingUp },
-    { id: 'os-db', label: 'OS & Databases', icon: Database },
-    { id: 'ai-ml', label: 'AI & Machine Learning', icon: Sparkles },
-    { id: 'cloud', label: 'Cloud Computing', icon: Cloud },
-    { id: 'devops', label: 'DevOps & CI/CD', icon: Briefcase },
-    { id: 'cybersecurity', label: 'Cybersecurity', icon: ShieldCheck },
-    { id: 'blockchain', label: 'Blockchain & Web3', icon: Blocks },
-    { id: 'game-dev', label: 'Game Development', icon: Gamepad2 },
-    { id: 'iot', label: 'Internet of Things', icon: Cpu },
-    { id: 'qa-testing', label: 'QA & Automation', icon: TestTube2 },
-    { id: 'ui-ux', label: 'UI/UX Design', icon: Palette },
-    { id: 'product-mgmt', label: 'Product Management', icon: BrainCircuit },
-    { id: 'technical-writing', label: 'Technical Writing', icon: Code },
+// Stored on `users.learningPreferences`. Labels are what the user picks; the ids
+// are what we persist, so renaming a label never orphans existing rows.
+const LEARNING_GOALS: Array<{ id: string; label: string }> = [
+	{ id: "web-dev", label: "Web Development" },
+	{ id: "mobile-dev", label: "Mobile Development" },
+	{ id: "backend", label: "Backend Engineering" },
+	{ id: "fullstack", label: "Full Stack" },
+	{ id: "dsa", label: "Data Structures & Algorithms" },
+	{ id: "system-design", label: "System Design" },
+	{ id: "os-db", label: "OS & Databases" },
+	{ id: "ai-ml", label: "AI & Machine Learning" },
+	{ id: "cloud", label: "Cloud Computing" },
+	{ id: "devops", label: "DevOps & CI/CD" },
+	{ id: "cybersecurity", label: "Cybersecurity" },
+	{ id: "blockchain", label: "Blockchain & Web3" },
+	{ id: "game-dev", label: "Game Development" },
+	{ id: "iot", label: "Internet of Things" },
+	{ id: "qa-testing", label: "QA & Automation" },
+	{ id: "ui-ux", label: "UI/UX Design" },
+	{ id: "product-mgmt", label: "Product Management" },
+	{ id: "technical-writing", label: "Technical Writing" },
 ]
 
-export default function OnboardingPage() {
-    const { refetch, data: session } = useSession()
-    const [currentStep, setCurrentStep] = useState(0)
-    const [loading, setLoading] = useState(false)
-    const [loggingOut, setLoggingOut] = useState(false)
-    const [showExitDialog, setShowExitDialog] = useState(false)
+const LABEL_TO_GOAL_ID = new Map(LEARNING_GOALS.map((g) => [g.label, g.id]))
 
-    const [username, setUsername] = useState('')
-    const [university, setUniversity] = useState('')
-    const [semester, setSemester] = useState('')
-    const [avatarFile, setAvatarFile] = useState<File | null>(null)
-    const [avatarPreview, setAvatarPreview] = useState<string | null>(null)
-    const [resumeFile, setResumeFile] = useState<File | null>(null)
-    const [colleges, setColleges] = useState<string[]>([])
-    const [openCollegePicker, setOpenCollegePicker] = useState(false)
-    const [learningGoals, setLearningGoals] = useState<string[]>([])
+const USERNAME_RE = /^[a-zA-Z0-9_-]+$/
 
-    const [usernameCheck, setUsernameCheck] = useState<{
-        checking: boolean; available: boolean | null; message: string
-    }>({ checking: false, available: null, message: '' })
+function validateUsername(value: unknown): string | null {
+	const v = String(value ?? "").trim()
+	if (v.length < 3 || v.length > 20) return "Username must be between 3 and 20 characters."
+	if (!USERNAME_RE.test(v)) return "Only letters, numbers, underscores and hyphens."
+	return null
+}
 
-    const debouncedUsername = useDebounce(username, 500)
+/** Suggest a handle from the signed-in name/email so the first field is never blank. */
+function suggestUsername(source: string | null | undefined): string {
+	const base = (source ?? "").split("@")[0] ?? ""
+	const cleaned = base.replace(/[^a-zA-Z0-9_-]/g, "").toLowerCase().slice(0, 20)
+	return cleaned.length >= 3 ? cleaned : ""
+}
 
-    useEffect(() => {
-        getColleges().then(result => {
-            if (result.success) setColleges(result.colleges)
-        })
-    }, [])
+export default function OnboardingClient() {
+	const router = useRouter()
+	const { data: session, refetch } = useSession()
+	const [open, setOpen] = useState(true)
+	const [loggingOut, setLoggingOut] = useState(false)
+	const submittedRef = useRef(false)
 
-    useEffect(() => {
-        if (debouncedUsername.length >= 3) {
-            setUsernameCheck({ checking: true, available: null, message: '' })
-            checkUsernameAvailability(debouncedUsername)
-                .then(result => setUsernameCheck({ checking: false, available: result.available, message: result.message }))
-                .catch(() => setUsernameCheck({ checking: false, available: false, message: 'Error checking username' }))
-        } else if (debouncedUsername.length > 0) {
-            setUsernameCheck({ checking: false, available: false, message: 'Username must be at least 3 characters' })
-        } else {
-            setUsernameCheck({ checking: false, available: null, message: '' })
-        }
-    }, [debouncedUsername])
+	const steps: FlowStep[] = useMemo(() => [
+		{
+			id: "welcome",
+			type: "welcome",
+			question: "Welcome to BuildrHQ",
+			description:
+				"Let's set up your developer profile. It takes about a minute — and everything here can be changed later in Settings.",
+		},
+		{
+			id: "username",
+			type: "short_text",
+			question: "Pick your username",
+			navLabel: "Username",
+			description: "This is your handle across BuildrHQ — on your profile, projects and leaderboard.",
+			placeholder: "e.g. nirajbuilds",
+			required: true,
+			validate: validateUsername,
+			// Uniqueness lives on the server, so it can only be checked there. Runs
+			// on advance, after the format check passes.
+			validateAsync: async (value) => {
+				const result = await checkUsernameAvailability(String(value ?? "").trim())
+				return result.available ? null : result.message
+			},
+		},
+		{
+			id: "avatar",
+			type: "file",
+			question: "Add a profile photo",
+			navLabel: "Profile photo",
+			description: "Optional — you can always add or change it later.",
+			accept: "image/jpeg,image/jpg,image/png,image/webp",
+			maxSizeMb: 5,
+			slots: [{ id: "avatar", label: "Profile photo" }],
+		},
+		{
+			id: "university",
+			type: "short_text",
+			question: "Where do you study?",
+			navLabel: "University",
+			description: "Your college or university. Leave it blank if it doesn't apply.",
+			placeholder: "e.g. Tribhuvan University",
+		},
+		{
+			id: "semester",
+			type: "single_choice",
+			question: "Where are you right now?",
+			navLabel: "Semester",
+			options: SEMESTERS,
+			columns: 2,
+		},
+		{
+			id: "interests",
+			type: "multiple_choice",
+			question: "What do you want to get better at?",
+			navLabel: "Learning goals",
+			description: "Pick as many as you like — this shapes what BuildrHQ recommends you.",
+			options: LEARNING_GOALS.map((g) => g.label),
+			columns: 2,
+			required: true,
+		},
+		{
+			id: "resume",
+			type: "file",
+			question: "Upload your resume",
+			navLabel: "Resume",
+			description:
+				"Optional, but it powers the AI resume review, cover letters and interview prep. PDF or DOCX.",
+			accept: ".pdf,.doc,.docx",
+			maxSizeMb: 5,
+			slots: [{ id: "resume", label: "Resume" }],
+		},
+	], [])
 
-    const toggleLearningGoal = useCallback((goalId: string) => {
-        setLearningGoals(prev =>
-            prev.includes(goalId) ? prev.filter(g => g !== goalId) : [...prev, goalId]
-        )
-    }, [])
+	const initialAnswers = useMemo(
+		() => ({ username: suggestUsername(session?.user?.name || session?.user?.email) }),
+		[session?.user?.name, session?.user?.email],
+	)
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]
-        if (!file) return
-        const validation = validateResumeFile(file)
-        if (!validation.valid) { toast.error(validation.error); return }
-        setResumeFile(file)
-    }
+	const handleSubmit = async (answers: Record<string, unknown>) => {
+		const avatarFiles = (answers.avatar as FlowFileValue) ?? {}
+		const resumeFiles = (answers.resume as FlowFileValue) ?? {}
 
-    const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]
-        if (!file) return
-        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
-        if (!validTypes.includes(file.type)) { toast.error('Please upload a JPG, PNG or WebP image'); return }
-        if (file.size > 5 * 1024 * 1024) { toast.error('Image must be smaller than 5MB'); return }
-        setAvatarFile(file)
-        setAvatarPreview(URL.createObjectURL(file))
-    }
+		// 1) Profile photo → Cloudinary. Best-effort: a failed upload must never
+		//    block the account from being usable.
+		let imageUrl: string | undefined
+		const avatarFile = avatarFiles.avatar
+		if (avatarFile) {
+			try {
+				const fd = new FormData()
+				fd.append("file", avatarFile)
+				const result = await uploadImageToCloudinary(fd)
+				if (result.success && result.url) imageUrl = result.url
+			} catch {
+				toast.warning("Profile photo upload failed — you can add one later from your profile.")
+			}
+		}
 
-    const canProceed = () => currentStep === 0 ? username.length >= 3 && usernameCheck.available === true : true
+		// 2) Resume → R2. `uploadResume` persists hasResume/resume/resumeText itself.
+		//    Also best-effort.
+		const resumeFile = resumeFiles.resume
+		if (resumeFile) {
+			try {
+				await uploadResume(resumeFile)
+			} catch {
+				toast.warning("Resume upload failed — you can upload it later from your profile.")
+			}
+		}
 
-    const handleComplete = async () => {
-        if (!canProceed()) return
-        setLoading(true)
-        try {
-            // Profile image → Cloudinary
-            let imageUrl: string | undefined
-            if (avatarFile) {
-                try {
-                    const fd = new FormData()
-                    fd.append('file', avatarFile)
-                    const imgResult = await uploadImageToCloudinary(fd)
-                    if (imgResult.success && imgResult.url) imageUrl = imgResult.url
-                    else if (imgResult.message) toast.warning(imgResult.message)
-                } catch {
-                    toast.warning('Profile photo upload failed. You can add one later from your profile.')
-                }
-            }
+		// 3) The profile itself. This one MUST succeed: throwing keeps the user on
+		//    the last step with the flow's error state, instead of dropping them
+		//    into an app that still thinks they haven't onboarded.
+		const selectedLabels = (answers.interests as string[]) ?? []
+		await completeOnboarding({
+			username: String(answers.username ?? "").trim(),
+			university: String(answers.university ?? "").trim() || undefined,
+			semester: (answers.semester as string) || undefined,
+			image: imageUrl,
+			learningPreferences: selectedLabels
+				.map((label) => LABEL_TO_GOAL_ID.get(label))
+				.filter((id): id is string => Boolean(id)),
+		})
 
-            // Resume file → Cloudflare R2 (uploadResume persists it to the DB itself)
-            if (resumeFile) {
-                try {
-                    const result = await uploadResume(resumeFile)
-                    if (result.message) toast.info(result.message)
-                } catch {
-                    toast.warning('Resume upload failed. You can upload later from your profile.')
-                }
-            }
-            await completeOnboarding({
-                username,
-                university: university || undefined,
-                semester: semester || undefined,
-                image: imageUrl,
-                learningPreferences: learningGoals,
-            })
-            toast.success('Welcome to BuildrHQ!')
-            await refetch()
-            window.location.href = '/home'
-        } catch (error) {
-            toast.error(error instanceof Error ? error.message : 'Failed to complete onboarding')
-        } finally {
-            setLoading(false)
-        }
-    }
+		// 4) Signup side effects (referral credit, activity, welcome mail). Idempotent,
+		//    and the only place they run for users who arrived via Google or a magic
+		//    link — those paths never touch the register page.
+		await finalizeSignup(null)
 
-    const handleLogout = async () => {
-        setLoggingOut(true)
-        try {
-            await signOut()
-            window.location.href = '/signin'
-        } catch {
-            toast.error('Failed to logout')
-            setLoggingOut(false)
-        }
-    }
+		// Refresh the cached session so middleware sees onboardingCompleted:true and
+		// stops bouncing /home back to /onboarding.
+		await refetch()
+		submittedRef.current = true
+		// TypeformFlow shows its own "You're all set" screen; its Continue button
+		// (or autoCloseMs) triggers onClose below, which routes into the app.
+	}
 
-    const steps = [
-        { id: 0, label: 'Your Profile' },
-        { id: 1, label: 'Learning Goals' },
-    ]
+	const handleClose = () => {
+		setOpen(false)
+		router.push(submittedRef.current ? "/home" : "/signin")
+	}
 
-    return (
-        <div className="min-h-screen bg-neutral-950 text-white flex flex-col">
-            <Dialog open={showExitDialog} onOpenChange={setShowExitDialog}>
-                <DialogContent className="bg-neutral-900 border-neutral-800 text-white">
-                    <DialogHeader>
-                        <DialogTitle className="flex items-center gap-2 text-white">
-                            <AlertCircle className="w-4 h-4 text-amber-400" />
-                            Complete onboarding first
-                        </DialogTitle>
-                        <DialogDescription className="text-neutral-400">
-                            You need to log out to leave this page. Your onboarding progress will be saved.
-                        </DialogDescription>
-                    </DialogHeader>
-                    <DialogFooter className="gap-2 sm:gap-0">
-                        <Button variant="ghost" onClick={() => setShowExitDialog(false)} className="text-neutral-400 hover:text-white">
-                            Stay
-                        </Button>
-                        <Button onClick={handleLogout} disabled={loggingOut} variant="destructive">
-                            {loggingOut ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Logging out...</> : 'Log out'}
-                        </Button>
-                    </DialogFooter>
-                </DialogContent>
-            </Dialog>
+	const handleLogout = async () => {
+		if (loggingOut) return
+		setLoggingOut(true)
+		try {
+			await signOut()
+		} catch {
+			// even if the sign-out call fails, send them to the sign-in screen
+		}
+		router.push("/signin")
+	}
 
-            {/* Header */}
-            <header className="border-b border-neutral-800/60 bg-neutral-950/80 backdrop-blur-sm sticky top-0 z-10">
-                <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-                    <button onClick={() => setShowExitDialog(true)} className="flex items-center gap-2.5 group">
-                        <div className="w-7 h-7 rounded-md bg-orange-500 flex items-center justify-center">
-                            <Code className="w-4 h-4 text-white" />
-                        </div>
-                        <span className="font-semibold text-white group-hover:text-neutral-300 transition-colors">
-                            BuildrHQ
-                        </span>
-                    </button>
-                    <div className="flex items-center gap-4">
-                        {session?.user?.email && (
-                            <span className="text-sm text-neutral-500 hidden sm:block">{session.user.email}</span>
-                        )}
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={handleLogout}
-                            disabled={loggingOut}
-                            className="text-neutral-400 hover:text-white h-8 px-3"
-                        >
-                            {loggingOut
-                                ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                                : <><LogOut className="w-3.5 h-3.5 mr-1.5" />Log out</>
-                            }
-                        </Button>
-                    </div>
-                </div>
-            </header>
-
-            {/* Main */}
-            <main className="flex-1 flex items-start justify-center px-4 py-10 sm:py-16">
-                <div className="w-full max-w-2xl">
-                    {/* Step progress */}
-                    <div className="mb-10">
-                        <div className="flex items-center gap-3 mb-6">
-                            <div className="flex items-center gap-2">
-                                {steps.map((step, i) => (
-                                    <div key={step.id} className="flex items-center gap-2">
-                                        <div className={cn(
-                                            "w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium transition-all",
-                                            i < currentStep ? "bg-orange-500 text-white" :
-                                            i === currentStep ? "bg-white text-neutral-900" :
-                                            "bg-neutral-800 text-neutral-500"
-                                        )}>
-                                            {i < currentStep ? <Check className="w-3.5 h-3.5" /> : i + 1}
-                                        </div>
-                                        <span className={cn(
-                                            "text-sm hidden sm:block",
-                                            i === currentStep ? "text-white font-medium" : "text-neutral-500"
-                                        )}>
-                                            {step.label}
-                                        </span>
-                                        {i < steps.length - 1 && (
-                                            <div className={cn(
-                                                "w-12 h-px mx-1",
-                                                i < currentStep ? "bg-orange-500" : "bg-neutral-800"
-                                            )} />
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                            <span className="ml-auto text-xs text-neutral-500">
-                                {currentStep + 1} of {steps.length}
-                            </span>
-                        </div>
-                        <div className="h-px bg-neutral-800 relative overflow-hidden">
-                            <motion.div
-                                className="absolute h-full bg-orange-500"
-                                initial={{ width: "0%" }}
-                                animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
-                                transition={{ duration: 0.4, ease: "easeOut" }}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Step content */}
-                    <AnimatePresence mode="wait">
-                        {currentStep === 0 && (
-                            <motion.div
-                                key="step-0"
-                                initial={{ opacity: 0, y: 12 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -12 }}
-                                transition={{ duration: 0.25 }}
-                                className="space-y-8"
-                            >
-                                <div>
-                                    <h1 className="text-2xl font-semibold text-white mb-1">Set up your profile</h1>
-                                    <p className="text-neutral-400 text-sm">This takes less than a minute.</p>
-                                </div>
-
-                                {/* Profile photo → Cloudinary */}
-                                <div className="flex items-center gap-4">
-                                    <label htmlFor="avatar-upload" className="cursor-pointer group relative">
-                                        <div className="h-16 w-16 rounded-full overflow-hidden border border-neutral-700 bg-neutral-900 flex items-center justify-center">
-                                            {avatarPreview ? (
-                                                // eslint-disable-next-line @next/next/no-img-element
-                                                <img src={avatarPreview} alt="Avatar preview" className="h-full w-full object-cover" />
-                                            ) : (
-                                                <Upload className="h-5 w-5 text-neutral-500" />
-                                            )}
-                                        </div>
-                                    </label>
-                                    <div>
-                                        <p className="text-sm text-neutral-300">Profile photo</p>
-                                        <label htmlFor="avatar-upload" className="cursor-pointer text-xs text-orange-500 hover:text-orange-400">
-                                            {avatarFile ? 'Change photo' : 'Upload a photo'}
-                                        </label>
-                                        <input
-                                            id="avatar-upload"
-                                            type="file"
-                                            accept="image/jpeg,image/jpg,image/png,image/webp"
-                                            className="hidden"
-                                            onChange={handleAvatarChange}
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* Username */}
-                                <div className="space-y-1.5">
-                                    <Label htmlFor="username" className="text-sm text-neutral-300">
-                                        Username <span className="text-orange-500">*</span>
-                                    </Label>
-                                    <div className="relative">
-                                        <Input
-                                            id="username"
-                                            placeholder="e.g., johndoe_dev"
-                                            value={username}
-                                            onChange={e => setUsername(e.target.value)}
-                                            className="bg-neutral-900 border-neutral-700 text-white pr-10 focus:border-neutral-500 focus:ring-0"
-                                        />
-                                        <div className="absolute inset-y-0 right-3 flex items-center">
-                                            {usernameCheck.checking && <Loader2 className="h-4 w-4 animate-spin text-neutral-400" />}
-                                            {!usernameCheck.checking && usernameCheck.available === true && <CheckCircle2 className="h-4 w-4 text-amber-500" />}
-                                            {!usernameCheck.checking && usernameCheck.available === false && <XCircle className="h-4 w-4 text-red-500" />}
-                                        </div>
-                                    </div>
-                                    {usernameCheck.message && (
-                                        <p className={cn("text-xs", usernameCheck.available ? "text-amber-500" : "text-red-400")}>
-                                            {usernameCheck.message}
-                                        </p>
-                                    )}
-                                </div>
-
-                                {/* College + Semester */}
-                                <div className="grid sm:grid-cols-2 gap-4">
-                                    <div className="space-y-1.5">
-                                        <Label className="text-sm text-neutral-300">
-                                            College / University <span className="text-neutral-600 font-normal">(optional)</span>
-                                        </Label>
-                                        <Popover open={openCollegePicker} onOpenChange={setOpenCollegePicker}>
-                                            <PopoverTrigger asChild>
-                                                <Button
-                                                    variant="outline"
-                                                    role="combobox"
-                                                    className="w-full justify-between bg-neutral-900 border-neutral-700 text-left font-normal text-neutral-300 hover:bg-neutral-800 hover:text-white"
-                                                >
-                                                    <span className="truncate">{university || "Select college"}</span>
-                                                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-40" />
-                                                </Button>
-                                            </PopoverTrigger>
-                                            <PopoverContent className="w-[min(380px,calc(100vw-2rem))] p-0 bg-neutral-900 border-neutral-700">
-                                                <Command className="bg-neutral-900">
-                                                    <CommandInput
-                                                        placeholder="Search or type college..."
-                                                        className="text-white border-b border-neutral-700"
-                                                        value={university}
-                                                        onValueChange={setUniversity}
-                                                        onKeyDown={(e) => {
-                                                            if (e.key === 'Enter') {
-                                                                const hasMatch = colleges.some(c =>
-                                                                    c.toLowerCase().includes(university.toLowerCase())
-                                                                )
-                                                                if (!hasMatch && university.trim()) {
-                                                                    setOpenCollegePicker(false)
-                                                                }
-                                                            }
-                                                        }}
-                                                    />
-                                                    <CommandEmpty className="py-4 px-3 text-sm text-neutral-500">
-                                                        Press Enter to add &quot;{university}&quot;
-                                                    </CommandEmpty>
-                                                    <CommandGroup className="max-h-56 overflow-auto">
-                                                        {colleges.map(college => (
-                                                            <CommandItem
-                                                                key={college}
-                                                                value={college}
-                                                                onSelect={val => { setUniversity(val === university ? "" : val); setOpenCollegePicker(false) }}
-                                                                className="text-neutral-300 aria-selected:text-white"
-                                                            >
-                                                                <Check className={cn("mr-2 h-3.5 w-3.5", university === college ? "opacity-100 text-orange-500" : "opacity-0")} />
-                                                                {college}
-                                                            </CommandItem>
-                                                        ))}
-                                                    </CommandGroup>
-                                                </Command>
-                                            </PopoverContent>
-                                        </Popover>
-                                    </div>
-                                    <div className="space-y-1.5">
-                                        <Label className="text-sm text-neutral-300">
-                                            Current Semester <span className="text-neutral-600 font-normal">(optional)</span>
-                                        </Label>
-                                        <Select value={semester} onValueChange={setSemester}>
-                                            <SelectTrigger className="bg-neutral-900 border-neutral-700 text-neutral-300 hover:bg-neutral-800">
-                                                <SelectValue placeholder="Select semester" />
-                                            </SelectTrigger>
-                                            <SelectContent className="bg-neutral-900 border-neutral-700">
-                                                {SEMESTERS.map(sem => (
-                                                    <SelectItem key={sem} value={sem} className="text-neutral-300 focus:bg-neutral-800 focus:text-white">
-                                                        {sem}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
-                                </div>
-
-                                {/* Resume upload */}
-                                <div className="space-y-1.5">
-                                    <Label className="text-sm text-neutral-300">
-                                        Resume <span className="text-neutral-600 font-normal">(optional · PDF, DOC, DOCX)</span>
-                                    </Label>
-                                    <div className="relative">
-                                        <input
-                                            id="resume-upload"
-                                            type="file"
-                                            accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                            onChange={handleFileChange}
-                                            className="hidden"
-                                        />
-                                        {resumeFile ? (
-                                            <div className="flex items-center gap-3 p-3.5 rounded-lg border border-neutral-700 bg-neutral-900">
-                                                <div className="w-8 h-8 rounded-md bg-orange-500/10 flex items-center justify-center shrink-0">
-                                                    <FileText className="w-4 h-4 text-orange-400" />
-                                                </div>
-                                                <div className="flex-1 min-w-0">
-                                                    <p className="text-sm text-white truncate">{resumeFile.name}</p>
-                                                    <p className="text-xs text-neutral-500 mt-0.5">
-                                                        {(resumeFile.size / 1024 / 1024).toFixed(1)} MB · Ready to upload
-                                                    </p>
-                                                </div>
-                                                <button
-                                                    onClick={() => setResumeFile(null)}
-                                                    className="text-neutral-500 hover:text-white transition-colors shrink-0"
-                                                >
-                                                    <X className="w-4 h-4" />
-                                                </button>
-                                            </div>
-                                        ) : (
-                                            <label
-                                                htmlFor="resume-upload"
-                                                className="flex flex-col items-center justify-center gap-2 p-6 rounded-lg border border-dashed border-neutral-700 bg-neutral-900 cursor-pointer hover:border-neutral-500 hover:bg-neutral-800/50 transition-all"
-                                            >
-                                                <Upload className="w-5 h-5 text-neutral-500" />
-                                                <span className="text-sm text-neutral-400">
-                                                    Click to upload your resume
-                                                </span>
-                                                <span className="text-xs text-neutral-600">Max 5 MB</span>
-                                            </label>
-                                        )}
-                                    </div>
-                                    <p className="text-xs text-neutral-600">
-                                        Your resume helps us personalise AI features like cover letter generation.
-                                    </p>
-                                </div>
-                            </motion.div>
-                        )}
-
-                        {currentStep === 1 && (
-                            <motion.div
-                                key="step-1"
-                                initial={{ opacity: 0, y: 12 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -12 }}
-                                transition={{ duration: 0.25 }}
-                                className="space-y-6"
-                            >
-                                <div>
-                                    <h1 className="text-2xl font-semibold text-white mb-1">What do you want to learn?</h1>
-                                    <p className="text-neutral-400 text-sm">
-                                        Select any that apply — you can update these any time.
-                                        {learningGoals.length > 0 && (
-                                            <span className="ml-2 text-orange-400">{learningGoals.length} selected</span>
-                                        )}
-                                    </p>
-                                </div>
-                                <div className="grid sm:grid-cols-2 gap-2.5">
-                                    {LEARNING_GOALS.map(goal => {
-                                        const Icon = goal.icon
-                                        const isSelected = learningGoals.includes(goal.id)
-                                        return (
-                                            <button
-                                                key={goal.id}
-                                                onClick={() => toggleLearningGoal(goal.id)}
-                                                className={cn(
-                                                    "flex items-center gap-3 px-4 py-3 rounded-lg border text-left transition-all",
-                                                    isSelected
-                                                        ? "border-orange-500/60 bg-orange-500/10 text-white"
-                                                        : "border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-neutral-700 hover:text-neutral-200"
-                                                )}
-                                            >
-                                                <Icon className={cn("w-4 h-4 shrink-0", isSelected ? "text-orange-400" : "text-neutral-600")} />
-                                                <span className="text-sm">{goal.label}</span>
-                                                {isSelected && <Check className="w-3.5 h-3.5 text-orange-400 ml-auto shrink-0" />}
-                                            </button>
-                                        )
-                                    })}
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-
-                    {/* Navigation */}
-                    <div className="flex items-center justify-between mt-10 pt-6 border-t border-neutral-800">
-                        <Button
-                            variant="ghost"
-                            onClick={() => setCurrentStep(s => Math.max(0, s - 1))}
-                            disabled={currentStep === 0 || loading}
-                            className="text-neutral-400 hover:text-white"
-                        >
-                            <ArrowLeft className="w-4 h-4 mr-2" />
-                            Back
-                        </Button>
-                        {currentStep < steps.length - 1 ? (
-                            <Button
-                                onClick={() => setCurrentStep(s => s + 1)}
-                                disabled={!canProceed() || loading}
-                                className="bg-orange-500 hover:bg-orange-600 text-white font-medium"
-                            >
-                                Continue
-                                <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                        ) : (
-                            <Button
-                                onClick={handleComplete}
-                                disabled={loading}
-                                className="bg-orange-500 hover:bg-orange-600 text-white font-medium min-w-28"
-                            >
-                                {loading ? (
-                                    <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Setting up...</>
-                                ) : (
-                                    <><Sparkles className="w-4 h-4 mr-2" />Get started</>
-                                )}
-                            </Button>
-                        )}
-                    </div>
-                </div>
-            </main>
-        </div>
-    )
+	return (
+		<TypeformFlow
+			isOpen={open}
+			onClose={handleClose}
+			steps={steps}
+			initialAnswers={initialAnswers}
+			onSubmit={handleSubmit}
+			themed
+			renderSidePanel={(nav) => <OnboardingSidePanel nav={nav} />}
+			persistKey="buildrhq-onboarding-draft"
+			background={<OnboardingShaderBg />}
+			headerRight={
+				<button
+					type="button"
+					onClick={handleLogout}
+					disabled={loggingOut}
+					className="inline-flex items-center gap-1.5 rounded-xl border border-neutral-200 px-3 py-1.5 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-100 disabled:opacity-60 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 cursor-pointer"
+				>
+					{loggingOut
+						? <><Loader2 className="h-3.5 w-3.5 animate-spin" /> Logging out…</>
+						: <><LogOut className="h-3.5 w-3.5" /> Log out</>}
+				</button>
+			}
+			autoCloseMs={3500}
+			submitLabel="Finish setup"
+			thankYouTitle="You're all set!"
+			thankYouDesc="Welcome to BuildrHQ. Let's get you building."
+		/>
+	)
 }

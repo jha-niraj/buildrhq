@@ -1,10 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@repo/ui/styles/globals.css";
 import { ThemeProvider } from "@repo/ui/components/themeprovider";
 import { Geist, Space_Grotesk, Geist_Mono } from "next/font/google";
 import { Toaster as SonnerToaster } from "@repo/ui/components/ui/sonner";
 import { Providers } from "@/app/providers";
-import { Analytics } from "@vercel/analytics/next";
+import { SITE, APP_URL, BRAND } from "@/lib/site";
+
+// No analytics component is rendered here on purpose. This site deploys to Cloudflare
+// Workers, where Cloudflare Web Analytics is injected by the platform automatically - it
+// needs no package and no <script> in the tree. (`@vercel/analytics` used to be mounted
+// here; on a non-Vercel host its beacon 404s on every page load, which shows up as a
+// console error and a Lighthouse Best-Practices deduction.) Enable it under
+// Cloudflare dashboard -> Web Analytics for the buildrhq.com hostname.
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -23,50 +30,57 @@ const geistMono = Geist_Mono({
 	display: "swap",
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_WEB_URL ?? "https://www.buildrhq.com";
+const DEFAULT_TITLE = `${BRAND.name} - ${BRAND.tagline}`;
+const DEFAULT_DESCRIPTION =
+	"AI-powered career tools for CS students and software engineers. Practise mock interviews and DSA, build a portfolio that gets read, and land your next engineering role.";
+
+export const viewport: Viewport = {
+	themeColor: [
+		{ media: "(prefers-color-scheme: light)", color: "#ffffff" },
+		{ media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+	],
+};
 
 export const metadata: Metadata = {
 	title: {
-		default: "BuildrHQ — The Engineering Intelligence Suite",
-		template: "%s | BuildrHQ",
+		default: DEFAULT_TITLE,
+		template: `%s | ${BRAND.name}`,
 	},
-	description:
-		"AI-powered platform for CS students and software engineers. Build your portfolio, ace technical interviews, practice DSA, and land your dream engineering job.",
+	description: DEFAULT_DESCRIPTION,
+	applicationName: BRAND.name,
 	keywords: [
 		"software engineering portfolio", "mock technical interview", "system design prep",
 		"DSA practice", "open source contribution tracker", "AI resume builder",
 		"cover letter generator", "coding interview prep", "cs student platform",
 		"developer career tools", "BuildrHQ", "engineering intelligence suite",
 	],
-	authors: [{ name: "Niraj Jha", url: BASE_URL }],
-	creator: "Shunya Tech",
-	publisher: "Shunya Tech",
-	metadataBase: new URL(BASE_URL),
+	authors: [{ name: "Niraj Kumar Jha", url: `${SITE}/aboutus` }],
+	creator: BRAND.name,
+	publisher: BRAND.name,
+	metadataBase: new URL(SITE),
 	alternates: {
 		canonical: "/",
 	},
 	openGraph: {
 		type: "website",
 		locale: "en_US",
-		url: BASE_URL,
-		siteName: "BuildrHQ",
-		title: "BuildrHQ — The Engineering Intelligence Suite",
-		description:
-			"AI-powered platform for CS students and software engineers. Build your portfolio, ace interviews, practice DSA, and land your dream engineering job.",
+		url: SITE,
+		siteName: BRAND.name,
+		title: DEFAULT_TITLE,
+		description: DEFAULT_DESCRIPTION,
 		images: [
 			{
 				url: "/og/home.webp",
 				width: 1200,
 				height: 630,
-				alt: "BuildrHQ — The Engineering Intelligence Suite for Developers",
+				alt: `${BRAND.name} - ${BRAND.tagline}`,
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "BuildrHQ — The Engineering Intelligence Suite",
-		description:
-			"AI-powered platform for CS students and software engineers. Build your portfolio, ace interviews, practice DSA, and land your dream engineering job.",
+		title: DEFAULT_TITLE,
+		description: DEFAULT_DESCRIPTION,
 		images: ["/og/home.webp"],
 		creator: "@buildrhq",
 		site: "@buildrhq",
@@ -91,59 +105,50 @@ export const metadata: Metadata = {
 	},
 };
 
+// Site-wide structured data. Deliberately NO aggregateRating here: Google's structured
+// data policy requires ratings to come from real, on-page user reviews, and inventing one
+// is a fast route to a manual action. Add it back only when real reviews are displayed.
 const organizationSchema = {
 	"@context": "https://schema.org",
 	"@type": "Organization",
-	name: "BuildrHQ",
-	url: BASE_URL,
-	logo: `${BASE_URL}/mainlogo.png`,
+	"@id": `${SITE}/#organization`,
+	name: BRAND.name,
+	url: SITE,
+	logo: BRAND.logo,
+	email: BRAND.email,
 	description:
 		"AI-powered engineering intelligence platform for CS students and software engineers.",
-	sameAs: [
-		"https://twitter.com/buildrhq",
-		"https://github.com/buildrhq",
-		"https://linkedin.com/company/buildrhq",
-	],
+	sameAs: [BRAND.social.twitter, BRAND.social.github, BRAND.social.linkedin],
 	foundingDate: "2024",
-	founders: [{ "@type": "Person", name: "Niraj Jha" }],
+	founder: { "@type": "Person", name: "Niraj Kumar Jha" },
 };
 
 const websiteSchema = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
-	name: "BuildrHQ",
-	url: BASE_URL,
-	description: "AI-powered platform for CS students and software engineers.",
-	potentialAction: {
-		"@type": "SearchAction",
-		target: {
-			"@type": "EntryPoint",
-			urlTemplate: `${BASE_URL}/search?q={search_term_string}`,
-		},
-		"query-input": "required name=search_term_string",
-	},
+	"@id": `${SITE}/#website`,
+	name: BRAND.name,
+	url: SITE,
+	description: DEFAULT_DESCRIPTION,
+	publisher: { "@id": `${SITE}/#organization` },
+	inLanguage: "en",
 };
 
 const softwareAppSchema = {
 	"@context": "https://schema.org",
 	"@type": "SoftwareApplication",
-	name: "BuildrHQ",
-	url: BASE_URL,
+	name: BRAND.name,
+	url: APP_URL,
 	applicationCategory: "DeveloperApplication",
 	operatingSystem: "Web",
 	description:
-		"AI-powered engineering intelligence suite: resume builder, mock interviews, DSA practice, system design prep, and open source tracking — all in one platform.",
+		"AI-powered engineering intelligence suite: resume builder, mock interviews, DSA practice, system design prep, and open source tracking - all in one platform.",
+	publisher: { "@id": `${SITE}/#organization` },
 	offers: {
 		"@type": "Offer",
 		price: "0",
 		priceCurrency: "USD",
-		description: "Free to use",
-	},
-	aggregateRating: {
-		"@type": "AggregateRating",
-		ratingValue: "4.8",
-		ratingCount: "120",
-		bestRating: "5",
+		description: "Free to start",
 	},
 };
 
@@ -153,7 +158,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<head>
 				<script
 					type="application/ld+json"
@@ -171,7 +176,6 @@ export default function RootLayout({
 			<body
 				className={`${spaceGrotesk.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<Analytics />
 				<Providers>
 					<ThemeProvider
 						attribute="class"

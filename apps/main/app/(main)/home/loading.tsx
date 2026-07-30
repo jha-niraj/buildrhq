@@ -1,20 +1,19 @@
 import {
-    GreetingHeaderSkeleton, ContinueLearningSkeleton, PathfinderGoalsSkeleton,
-    ActivityCalendarSkeleton, ProjectsPreviewSkeleton, MockVoicePreviewSkeleton,
+    HomeDashboardSkeleton, ContinueLearningSkeleton, ActivityCalendarSkeleton,
 } from "./_components/skeletons";
 
+// Mirrors the real page: the analytics dashboard, then the two surfaces below it.
+// Deliberately a SKELETON rather than the full-page BuildrHQLoader — the sidebar is
+// already painted around this, so previewing the layout beats a centred spinner.
 export default function HomeLoading() {
     return (
-        <div className="w-full min-h-screen bg-background">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-4">
-                <GreetingHeaderSkeleton />
+        <div className="w-full pb-4">
+            <div className="mx-auto w-full px-4 pt-6 pb-10 sm:px-6 lg:px-8">
+                <HomeDashboardSkeleton />
+            </div>
+            <div className="mx-auto w-full space-y-4 px-4 pb-10 sm:px-6 lg:px-8">
                 <ContinueLearningSkeleton />
                 <ActivityCalendarSkeleton />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <PathfinderGoalsSkeleton />
-                    <ProjectsPreviewSkeleton />
-                    <MockVoicePreviewSkeleton />
-                </div>
             </div>
         </div>
     );

@@ -38,13 +38,15 @@ The right first project has these characteristics:
 
 ### Where to Find Projects
 
-**GitHub Explore:** Filter by language and topic. Add `good-first-issue` to your search: `language:typescript good-first-issue`.
+**GitHub Explore:** Filter by language and topic. Add `good-first-issue` to your search: `language:typescript good-first-issue`. GitHub's own [guide to finding ways to contribute](https://docs.github.com/en/get-started/exploring-projects-on-github/finding-ways-to-contribute-to-open-source-on-github) walks through the search syntax.
 
-**Good First Issues (goodfirstissues.com):** Aggregates good first issues from GitHub daily.
+**[Good First Issue](https://goodfirstissue.dev/):** Aggregates beginner-appropriate issues from active repositories daily.
 
-**Up For Grabs (up-for-grabs.net):** Curated list of projects that explicitly want new contributors.
+**[Up For Grabs](https://up-for-grabs.net/):** Curated list of projects that explicitly want new contributors.
 
-**BuildrHQ Open Source tracker:** [BuildrHQ's open source module](/opensource) surfaces beginner-friendly issues matched to your tech stack, tracks your contribution activity, and shows you which projects are actively maintained.
+**[Open Source Guides](https://opensource.guide/how-to-contribute/):** GitHub's own written guide to contributing. Worth reading once end to end before your first PR — it covers the social conventions that are not obvious from the outside.
+
+**BuildrHQ Open Source tracker:** BuildrHQ surfaces beginner-friendly issues matched to your tech stack, tracks your contribution activity, and shows you which projects are actively maintained.
 
 **Your own dependencies:** Look at the packages you use in your own projects. If you ever hit a limitation or found a bug, there is a contribution waiting for you.
 
@@ -189,7 +191,7 @@ The goal for month one is three merged PRs, ideally in the same project. Staying
 
 The goal for month three is at least one non-trivial contribution: a bug fix, a test addition, or a small feature. By this point, your GitHub profile will show genuine open source activity, and your profile will look completely different to recruiters.
 
-Track your contributions automatically with [BuildrHQ's Open Source module](/opensource), which connects to your GitHub and surfaces your activity, shows contribution streaks, and helps you find your next issue based on your skill level and the tech stack you work with.
+Track your contributions automatically with BuildrHQ's open source module, which connects to your GitHub and surfaces your activity, shows contribution streaks, and helps you find your next issue based on your skill level and the tech stack you work with.
 
 ## The Long Game
 

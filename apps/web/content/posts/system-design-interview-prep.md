@@ -160,7 +160,7 @@ The protocol that works:
 4. Interviewer asks follow-up questions to probe for depth
 5. Spend 10 minutes debrief after: what did the candidate do well, what did they miss
 
-[BuildrHQ's Mock Interview platform](/mock) includes structured system design practice sessions with AI feedback on your architecture decisions, communication clarity, and coverage of edge cases. Practice with AI before practicing with humans — the feedback loop is much faster.
+BuildrHQ's mock interview platform includes structured system design practice sessions with AI feedback on your architecture decisions, communication clarity, and coverage of edge cases. Practice with AI before practicing with humans — the feedback loop is much faster.
 
 ### Building the Mental Framework
 
@@ -188,9 +188,11 @@ What happens if your database goes down? What happens if your cache fails? What 
 Not all system design resources are equal. Here is what actually moves the needle:
 
 **Free:**
-- System Design Primer (GitHub) — the most comprehensive free resource
-- ByteByteGo newsletter (free tier) — excellent visual explanations
-- High Scalability blog — real-world case studies
+- [The System Design Primer](https://github.com/donnemartin/system-design-primer) — the most comprehensive free resource, and the de facto standard reference
+- [ByteByteGo's newsletter](https://blog.bytebytego.com/) (free tier) — excellent visual explanations
+- [High Scalability](https://highscalability.com/) — real-world architecture case studies
+- Company engineering blogs — [Netflix](https://netflixtechblog.com/), [Uber](https://www.uber.com/en-US/blog/engineering/) and [Discord](https://discord.com/category/engineering) all publish detailed write-ups of the exact systems you get asked to design
+- [Designing Data-Intensive Applications](https://dataintensive.net/) — the book, if you want the theory properly rather than the interview version
 
 **Paid (worth it if you can afford it):**
 - ByteByteGo course — visual, well-structured, regularly updated

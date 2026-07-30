@@ -1,13 +1,13 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { cn } from '@repo/ui/lib/utils';
 import { Button } from '@repo/ui/components/ui/button';
 import { Badge } from '@repo/ui/components/ui/badge';
 import {
     CheckIcon, SparklesIcon, Zap, Gift, ArrowRight
 } from 'lucide-react';
+import { APP_URL } from "@/lib/site";
 
 type PricingCardProps = {
     titleBadge: string;
@@ -35,7 +35,7 @@ function PricingCard({
     priceSuffix = '/one-time',
     features,
     cta = 'Get Credits',
-    ctaHref = '/purchase',
+    ctaHref = `${APP_URL}/purchase`,
     className,
     credits,
     onPurchase,
@@ -93,10 +93,10 @@ function PricingCard({
                         </Button>
                     ) : (
                         <Button asChild variant="outline" className="w-full">
-                            <Link href={ctaHref}>
+                            <a href={ctaHref}>
                                 {cta}
                                 <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
+                            </a>
                         </Button>
                     )
                 }
@@ -208,10 +208,10 @@ export function BentoPricing({
                             </Button>
                         ) : (
                             <Button asChild size="lg" className="bg-white text-neutral-900 hover:bg-neutral-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800">
-                                <Link href="/purchase">
+                                <a href={`${APP_URL}/purchase`}>
                                     Get 150 Credits
                                     <ArrowRight className="ml-2 h-4 w-4" />
-                                </Link>
+                                </a>
                             </Button>
                         )
                     }
@@ -293,10 +293,10 @@ export function BentoPricing({
                                     </Button>
                                 ) : (
                                     <Button asChild className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white">
-                                        <Link href="/purchase">
+                                        <a href={`${APP_URL}/purchase`}>
                                             <Gift className="mr-2 h-4 w-4" />
                                             Claim Free Credits
-                                        </Link>
+                                        </a>
                                     </Button>
                                 )
                             }

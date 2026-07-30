@@ -14,8 +14,10 @@ When you upload a PDF or Word document, the ATS does not read it like a human. I
 **2. Scores your resume against the job description**
 After parsing, the ATS compares your resume content against the job description using keyword matching. It looks for exact matches, synonyms, and related terms. A senior software engineer role requiring "Kubernetes experience" might match "k8s" or "container orchestration" depending on the system's sophistication.
 
-**3. Ranks and filters candidates**
-Based on the score, the ATS either filters you out automatically (below a threshold) or ranks you in a queue for a recruiter to review. Recruiters often start at the top of the ranked list and stop when they have enough candidates to interview. Being in the bottom 20% of a 500-person applicant pool is functionally equivalent to never applying.
+**3. Ranks and surfaces candidates to recruiters**
+This is the step most commonly misunderstood. The popular story is that the ATS auto-rejects you below some score. In reality, the major platforms — [Greenhouse](https://www.greenhouse.io/), [Lever](https://www.lever.co/), [Workday](https://www.workday.com/) and [iCIMS](https://www.icims.com/) between them cover most of the market — mainly parse, store and make your application *searchable*. The recruiter then filters and searches it.
+
+That distinction matters because it changes the failure mode. You are rarely rejected by a robot. You are far more often never surfaced: parsed badly so your experience is missing, or missing the exact terms the recruiter typed into the search box. Recruiters start at the top of the resulting list and stop when they have enough candidates, so being invisible to that search is functionally equivalent to never applying.
 
 The critical insight: your resume must be readable by a machine before a human ever sees it.
 
@@ -168,7 +170,7 @@ Tailoring does not mean rewriting from scratch. It means:
 3. Reordering bullets within jobs to lead with the most relevant experience for that specific role
 4. Checking that every technology mentioned in the JD that you have experience with appears somewhere in your resume
 
-This takes 15–20 minutes per application. [BuildrHQ's AI Resume Builder](/ai) does this automatically — you paste the job description and it tailors your resume bullets in place, flags missing keywords, and gives you an ATS score before you apply.
+This takes 15–20 minutes per application. BuildrHQ's AI resume builder does this automatically — you paste the job description and it tailors your resume bullets in place, flags missing keywords, and gives you an ATS score before you apply.
 
 ## One Last Thing: The Human Element
 

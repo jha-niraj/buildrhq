@@ -173,8 +173,11 @@ export default function RootLayout({
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }}
 				/>
 			</head>
+			{/* `spaceGrotesk.variable` (not just its className) so components in
+			    @repo/ui — the loader wordmark, notably — can reference the display
+			    face as `var(--font-space-grotesk)` instead of hardcoding a stack. */}
 			<body className={`
-				${spaceGrotesk.className} ${geistSans.variable} ${geistMono.variable} antialiased
+				${spaceGrotesk.className} ${spaceGrotesk.variable} ${geistSans.variable} ${geistMono.variable} antialiased
 			`}>
                 <Analytics/>
 				<Providers>

@@ -15,6 +15,55 @@ import {
 } from "@repo/db";
 import { eq, and, gte, desc, asc } from "drizzle-orm";
 
+// ─── Monthly trend helpers ───────────────────────────────────────────────────
+// The dashboard charts are all "last 6 months, one point per month". Rather than
+// six grouped SQL queries, the rows we already fetch for the page are bucketed in
+// memory — the volumes here are per-user and small (a year of daily activity is
+// ≤365 rows), so the round trips cost more than the arithmetic.
+
+const TREND_MONTHS = 6;
+
+/** `[{ key: "2026-02", month: "Feb" }, …]` for the last N months, oldest first. */
+function monthBuckets(count = TREND_MONTHS): Array<{ key: string; month: string }> {
+    const now = new Date();
+    const out: Array<{ key: string; month: string }> = [];
+    for (let i = count - 1; i >= 0; i--) {
+        const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+        out.push({
+            key: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`,
+            month: d.toLocaleDateString("en-US", { month: "short" }),
+        });
+    }
+    return out;
+}
+
+function monthKey(value: Date | string | null | undefined): string | null {
+    if (!value) return null;
+    const d = value instanceof Date ? value : new Date(value);
+    if (Number.isNaN(d.getTime())) return null;
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+}
+
+/**
+ * Bucket rows into the last N months and fold each bucket into a data point.
+ * `getDate` picks the row's timestamp; `fold` accumulates a row into the point.
+ */
+function toMonthlySeries<TRow, TPoint extends Record<string, number>>(
+    rows: TRow[],
+    getDate: (row: TRow) => Date | string | null | undefined,
+    empty: () => TPoint,
+    fold: (point: TPoint, row: TRow) => void,
+): Array<TPoint & { month: string }> {
+    const buckets = monthBuckets();
+    const byKey = new Map(buckets.map((b) => [b.key, empty()]));
+    for (const row of rows) {
+        const key = monthKey(getDate(row));
+        if (!key) continue;
+        const point = byKey.get(key);
+        if (point) fold(point, row);
+    }
+    return buckets.map((b) => ({ ...(byKey.get(b.key) ?? empty()), month: b.month }));
+}
 
 // Get user's home page data
 export async function getHomeData() {
@@ -36,6 +85,10 @@ export async function getHomeData() {
             recentActivity,
             activityCalendar,
             recentMockSessions,
+            projectProgressAll,
+            mockSessionsAll,
+            goalsAll,
+            activityTypeRows,
         ] = await Promise.all([
             // User stats
             db.query.users.findFirst({
@@ -157,6 +210,35 @@ export async function getHomeData() {
                 orderBy: desc(mockVoiceSession.createdAt),
                 limit: 6,
             }),
+
+            // ── Trend / total sources ──────────────────────────────────────
+            // Unlimited but column-narrow: these back the dashboard counters and
+            // the monthly charts, which need every row, not just the newest page.
+            db.query.userProjectV2Progress.findMany({
+                where: eq(userProjectV2Progress.userId, userId),
+                columns: { status: true, startedAt: true, completedAt: true, createdAt: true },
+            }),
+
+            db.query.mockVoiceSession.findMany({
+                where: eq(mockVoiceSession.userId, userId),
+                columns: { createdAt: true },
+            }),
+
+            db.query.pathfinderGoals.findMany({
+                where: eq(pathfinderGoals.userId, userId),
+                columns: { status: true, createdAt: true, progressPercent: true },
+            }),
+
+            // Backs the "what you've been doing" breakdown. Deliberately a separate,
+            // two-column query rather than reusing the 10-row activity FEED above —
+            // a mix chart built from the last 10 entries describes this afternoon,
+            // not the user's habits.
+            db.query.activityEntries.findMany({
+                where: eq(activityEntries.userId, userId),
+                columns: { activityType: true, xpEarned: true },
+                orderBy: desc(activityEntries.createdAt),
+                limit: 500,
+            }),
         ]);
 
         // Transform pathfinder goals for home
@@ -222,6 +304,69 @@ export async function getHomeData() {
             },
         }));
 
+        // ── Counters ──────────────────────────────────────────────────────
+        const projectStats = {
+            total: projectProgressAll.length,
+            active: projectProgressAll.filter((p) => p.status === "IN_PROGRESS").length,
+            completed: projectProgressAll.filter((p) => p.status === "COMPLETED").length,
+        };
+        const goalStats = {
+            total: goalsAll.length,
+            // Pathfinder's goal enum is ACTIVE/COMPLETED/… — not the IN_PROGRESS
+            // the project-progress enum uses. Different tables, different vocab.
+            active: goalsAll.filter((g) => g.status === "ACTIVE").length,
+            completed: goalsAll.filter((g) => g.status === "COMPLETED").length,
+            avgProgress: goalsAll.length
+                ? Math.round(goalsAll.reduce((sum, g) => sum + (g.progressPercent ?? 0), 0) / goalsAll.length)
+                : 0,
+        };
+
+        const totalXpEarned = activityCalendar.reduce((sum, d) => sum + d.totalXpEarned, 0);
+        const activeDays = activityCalendar.filter((d) => d.activitiesCount > 0).length;
+
+        // ── Monthly trends (last 6 months) ────────────────────────────────
+        const monthlyActivity = toMonthlySeries(
+            activityCalendar,
+            (d) => d.date,
+            () => ({ xp: 0, sessions: 0 }),
+            (p, d) => { p.xp += d.totalXpEarned; p.sessions += d.activitiesCount; },
+        );
+
+        const monthlyProjects = toMonthlySeries(
+            projectProgressAll,
+            // Bucketed by when work STARTED, so "started" and "completed" on the same
+            // chart describe the same cohort of months rather than two different axes.
+            (p) => p.startedAt ?? p.createdAt,
+            () => ({ started: 0, completed: 0 }),
+            (point, row) => { point.started += 1; if (row.status === "COMPLETED") point.completed += 1; },
+        );
+
+        const monthlyMocks = toMonthlySeries(
+            mockSessionsAll,
+            (m) => m.createdAt,
+            () => ({ sessions: 0 }),
+            (p) => { p.sessions += 1; },
+        );
+
+        const monthlyGoals = toMonthlySeries(
+            goalsAll,
+            (g) => g.createdAt,
+            () => ({ goals: 0, completed: 0 }),
+            (point, row) => { point.goals += 1; if (row.status === "COMPLETED") point.completed += 1; },
+        );
+
+        // ── Activity mix (what the XP actually came from) ─────────────────
+        const mixByType = new Map<string, { count: number; xp: number }>();
+        for (const a of activityTypeRows) {
+            const entry = mixByType.get(a.activityType) ?? { count: 0, xp: 0 };
+            entry.count += 1;
+            entry.xp += a.xpEarned;
+            mixByType.set(a.activityType, entry);
+        }
+        const activityMix = [...mixByType.entries()]
+            .map(([type, v]) => ({ type, ...v }))
+            .sort((a, b) => b.count - a.count);
+
         return {
             success: true,
             data: {
@@ -232,6 +377,22 @@ export async function getHomeData() {
                 recentActivity: transformedActivity,
                 activityCalendar: transformedCalendar,
                 recentMockSessions: recentMockSessions || [],
+                // Dashboard extras
+                stats: {
+                    projects: projectStats,
+                    goals: goalStats,
+                    studios: normalizedStudios.length,
+                    mockSessions: mockSessionsAll.length,
+                    totalXpEarned,
+                    activeDays,
+                },
+                trends: {
+                    activity: monthlyActivity,
+                    projects: monthlyProjects,
+                    mocks: monthlyMocks,
+                    goals: monthlyGoals,
+                },
+                activityMix,
             },
         };
     } catch (error) {

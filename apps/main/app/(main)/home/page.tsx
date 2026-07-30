@@ -4,16 +4,12 @@ import { headers } from 'next/headers';
 import { redirect } from "next/navigation";
 import { getHomeData } from "@/actions/(main)/home/home.action";
 
-import GreetingHeader from "./_components/greeting-header";
+import HomeDashboard from "./_components/home-dashboard";
 import ContinueLearning from "./_components/continue-learning";
-import PathfinderGoalsCard from "./_components/pathfinder-goals-card";
 import ActivityCalendar from "./_components/activity-calendar";
-import ProjectsPreview from "./_components/projects-preview";
-import MockVoicePreview from "./_components/mock-voice-preview";
 
 import {
-    GreetingHeaderSkeleton, ContinueLearningSkeleton, PathfinderGoalsSkeleton,
-    ActivityCalendarSkeleton, ProjectsPreviewSkeleton, MockVoicePreviewSkeleton,
+    ContinueLearningSkeleton, ActivityCalendarSkeleton,
 } from "./_components/skeletons";
 
 export const metadata = {
@@ -23,7 +19,7 @@ export const metadata = {
 
 export default async function HomePage() {
     const session = await getSession(headers());
-    if (!session?.user?.id) redirect("/login");
+    if (!session?.user?.id) redirect("/signin");
 
     const homeDataResult = await getHomeData();
 
@@ -36,22 +32,28 @@ export default async function HomePage() {
     }
 
     const {
-        user, inProgressProjects, recentStudios, pathfinderGoals,
-        activityCalendar, recentMockSessions,
+        user, inProgressProjects, recentStudios, activityCalendar,
+        stats, trends, activityMix, recentActivity,
     } = homeDataResult.data;
 
     const hasContinueLearning = inProgressProjects.length > 0 || recentStudios.length > 0;
 
     return (
-        <div className="w-full max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 space-y-4 pb-10">
+        <div className="w-full pb-4">
+            {/* The analytics dashboard IS the page now: headline counters, then a stack
+                of module rows pairing counters with a 6-month trend line, then the
+                activity mix + feed. The two surfaces below it are kept because they do
+                something the charts can't — resume a specific piece of work, and show
+                the day-by-day contribution grid. */}
+            <HomeDashboard
+                user={user}
+                stats={stats}
+                trends={trends}
+                activityMix={activityMix}
+                recentActivity={recentActivity}
+            />
 
-            {/* ── Greeting header ── */}
-            <Suspense fallback={<GreetingHeaderSkeleton />}>
-                <GreetingHeader user={user} />
-            </Suspense>
-
-            <div className="space-y-4">
-                {/* ── Continue Learning (full width, only when items exist) ── */}
+            <div className="mx-auto w-full space-y-4 px-4 pb-10 sm:px-6 lg:px-8">
                 {hasContinueLearning && (
                     <Suspense fallback={<ContinueLearningSkeleton />}>
                         <ContinueLearning
@@ -61,23 +63,9 @@ export default async function HomePage() {
                     </Suspense>
                 )}
 
-                {/* ── Activity calendar (full width) ── */}
                 <Suspense fallback={<ActivityCalendarSkeleton />}>
                     <ActivityCalendar data={activityCalendar} />
                 </Suspense>
-
-                {/* ── Three action cards ── */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <Suspense fallback={<PathfinderGoalsSkeleton />}>
-                        <PathfinderGoalsCard goals={pathfinderGoals} />
-                    </Suspense>
-                    <Suspense fallback={<ProjectsPreviewSkeleton />}>
-                        <ProjectsPreview projects={inProgressProjects} />
-                    </Suspense>
-                    <Suspense fallback={<MockVoicePreviewSkeleton />}>
-                        <MockVoicePreview sessions={recentMockSessions} />
-                    </Suspense>
-                </div>
             </div>
         </div>
     );

@@ -1,13 +1,12 @@
 "use client"
 
-import Image from "next/image"
 import { ChevronRight, Terminal } from "lucide-react"
 import { motion, useReducedMotion, type Variants } from "framer-motion"
 import { useRef, useState, useEffect, useCallback } from "react"
-import { useSession } from "@repo/auth/client"
 import { Skeleton } from "@repo/ui/components/ui/skeleton"
 import { ShaderHeroBg, SHADER_PALETTES } from "@repo/ui/components/hero-shader-bg"
 import { getPlatformStats } from "@/actions/stats.action"
+import { APP_LINKS } from "@/lib/site"
 
 interface PlatformStats {
     totalUsers: number
@@ -15,23 +14,47 @@ interface PlatformStats {
     completedTasks: number
     successRate: number
     totalOpenSourceProjects: number
-    totalEvents: number
     totalMockSessions: number
     totalProjectIdeas: number
 }
 
-// The authenticated app lives on a separate deploy (app.buildrhq.com in prod,
-// localhost:4101 in local). Auth CTAs point there directly.
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4101"
-
 const ROTATE_WORDS = ["career", "portfolio", "resume", "skillset", "interviews", "journey"]
 
+// Rotating product panel. This used to be an image carousel where all five slides
+// pointed at /mainlogo.png - five identical logos behind dot navigation, which reads as
+// broken. Until real product screenshots exist, showing what each surface actually does
+// is both honest and more informative than a repeated logo.
 const SLIDES = [
-    { src: "/mainlogo.png", alt: "BuildrHQ Dashboard" },
-    { src: "/mainlogo.png", alt: "Resume Builder" },
-    { src: "/mainlogo.png", alt: "Mock Interviews" },
-    { src: "/mainlogo.png", alt: "Project Studio" },
-    { src: "/mainlogo.png", alt: "AI Tools" },
+    {
+        label: "Project Studio",
+        headline: "Build something you can defend in an interview.",
+        body: "Guided projects broken into real tasks, with reviewed output and a deployable result at the end.",
+        points: ["Architecture planning", "Task-level review", "Proof of completion"],
+    },
+    {
+        label: "Mock Interviews",
+        headline: "Practise the performance, not just the problem.",
+        body: "Technical and behavioural rounds with follow-up questions and feedback on structure and clarity.",
+        points: ["DSA & system design", "Behavioural rounds", "Scored feedback"],
+    },
+    {
+        label: "Practice",
+        headline: "Hints that teach instead of hand over the answer.",
+        body: "Pattern-first problem sets that give you the minimum nudge needed to make progress.",
+        points: ["15 core patterns", "Progressive hints", "Progress tracking"],
+    },
+    {
+        label: "Resume & Cover Letters",
+        headline: "Get past the keyword search, then past the human.",
+        body: "Paste a job description and get bullets tailored to it, with the formatting an ATS can actually parse.",
+        points: ["ATS parsing check", "Keyword gap analysis", "Tailored per role"],
+    },
+    {
+        label: "Open Source",
+        headline: "Turn contributions into a hiring signal.",
+        body: "Beginner-appropriate issues matched to your stack, with your contribution history tracked in one place.",
+        points: ["Issue matching", "Contribution tracking", "Maintainer activity"],
+    },
 ]
 
 const container: Variants = {
@@ -51,8 +74,6 @@ function formatNumber(num: number): string {
 
 export default function HeroSection() {
     const reduced = useReducedMotion()
-    const { data: session } = useSession()
-    const isLoggedIn = Boolean(session?.user)
 
     const [stats, setStats] = useState<PlatformStats | null>(null)
     const [loading, setLoading] = useState(true)
@@ -92,7 +113,7 @@ export default function HeroSection() {
         if (intervalRef.current) clearInterval(intervalRef.current)
         intervalRef.current = setInterval(() => {
             setSlideIdx(i => (i + 1) % SLIDES.length)
-        }, 2000)
+        }, 5000)
     }, [])
 
     useEffect(() => {
@@ -125,9 +146,9 @@ export default function HeroSection() {
             accent: "bg-orange-500",
         },
         {
-            eyebrow: "Events Hosted",
-            value: loading ? null : formatNumber(stats?.totalEvents ?? 0),
-            desc: "Workshops and hackathons",
+            eyebrow: "Open Source",
+            value: loading ? null : formatNumber(stats?.totalOpenSourceProjects ?? 0),
+            desc: "Projects tracked for contributors",
             accent: "bg-amber-500",
         },
     ]
@@ -194,34 +215,23 @@ export default function HeroSection() {
                             className="mt-8 flex flex-wrap items-center gap-3"
                             variants={reduced ? undefined : item}
                         >
-                            {isLoggedIn ? (
-                                <a
-                                    href={`${APP_URL}/home`}
-                                    className="group inline-flex items-center gap-2 rounded-xl bg-neutral-950 px-7 py-3.5 text-[14px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100"
-                                >
-                                    <Terminal className="h-4 w-4" />
-                                    Go to Dashboard
-                                    <ChevronRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                                </a>
-                            ) : (
-                                <>
-                                    <a
-                                        href={`${APP_URL}/register`}
-                                        className="group inline-flex items-center gap-2 rounded-xl bg-neutral-950 px-7 py-3.5 text-[14px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100"
-                                    >
-                                        <Terminal className="h-4 w-4" />
-                                        Initialize Environment
-                                        <ChevronRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                                    </a>
-                                    <a
-                                        href={`${APP_URL}/signin`}
-                                        className="inline-flex items-center gap-1.5 rounded-xl border border-neutral-300 bg-transparent px-7 py-3.5 text-[14px] font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-400 hover:bg-neutral-100 dark:border-white/10 dark:text-white/70 dark:hover:bg-white/5"
-                                    >
-                                        Sign in
-                                        <span className="text-neutral-400 dark:text-white/30">→</span>
-                                    </a>
-                                </>
-                            )}
+                            {/* The marketing site never knows who you are - both CTAs simply
+                                hand off to the app deploy, which owns auth end to end. */}
+                            <a
+                                href={APP_LINKS.signup}
+                                className="group inline-flex items-center gap-2 rounded-xl bg-neutral-950 px-7 py-3.5 text-[14px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-100"
+                            >
+                                <Terminal className="h-4 w-4" />
+                                Start building free
+                                <ChevronRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                            </a>
+                            <a
+                                href={APP_LINKS.signin}
+                                className="inline-flex items-center gap-1.5 rounded-xl border border-neutral-300 bg-transparent px-7 py-3.5 text-[14px] font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-400 hover:bg-neutral-100 dark:border-white/10 dark:text-white/70 dark:hover:bg-white/5"
+                            >
+                                Sign in
+                                <span className="text-neutral-400 dark:text-white/30">→</span>
+                            </a>
                         </motion.div>
 
                         <motion.div
@@ -236,7 +246,7 @@ export default function HeroSection() {
                                     <button
                                         key={i}
                                         onClick={() => goTo(i)}
-                                        aria-label={`Go to slide ${i + 1}`}
+                                        aria-label={`Show ${SLIDES[i]?.label}`}
                                         className={`h-1.5 rounded-full transition-all duration-300 ${
                                             i === slideIdx
                                                 ? "w-6 bg-neutral-950 dark:bg-white"
@@ -279,7 +289,7 @@ export default function HeroSection() {
                     </motion.div>
                 </div>
 
-                {/* ── Image carousel — fills rest, bleeds off bottom ────────── */}
+                {/* ── Rotating product panel — fills rest, bleeds off bottom ── */}
                 <motion.div
                     className="relative min-h-0 flex-1"
                     initial={reduced ? false : { opacity: 0, y: 32 }}
@@ -289,18 +299,30 @@ export default function HeroSection() {
                     <div className="absolute inset-0 bottom-[-48px] overflow-hidden rounded-t-2xl border border-b-0 border-neutral-200 bg-white shadow-2xl shadow-neutral-900/10 dark:border-white/10 dark:bg-neutral-900">
                         {SLIDES.map((slide, i) => (
                             <div
-                                key={i}
-                                className="absolute inset-0 transition-opacity duration-500"
+                                key={slide.label}
+                                aria-hidden={i !== slideIdx}
+                                className="absolute inset-0 flex flex-col justify-center px-8 transition-opacity duration-500 sm:px-14"
                                 style={{ opacity: i === slideIdx ? 1 : 0 }}
                             >
-                                <Image
-                                    src={slide.src}
-                                    alt={slide.alt}
-                                    fill
-                                    className="object-contain object-center p-12"
-                                    priority={i === 0}
-                                    sizes="(max-width: 1280px) 100vw, 1280px"
-                                />
+                                <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-orange-500">
+                                    {slide.label}
+                                </p>
+                                <p className="mb-3 max-w-xl text-2xl font-bold leading-tight tracking-tight text-neutral-900 dark:text-white sm:text-3xl">
+                                    {slide.headline}
+                                </p>
+                                <p className="mb-6 max-w-lg text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+                                    {slide.body}
+                                </p>
+                                <ul className="flex flex-wrap gap-2">
+                                    {slide.points.map((point) => (
+                                        <li
+                                            key={point}
+                                            className="rounded-full border border-neutral-200 px-3 py-1 text-[11px] text-neutral-500 dark:border-white/10 dark:text-neutral-400"
+                                        >
+                                            {point}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         ))}
                     </div>

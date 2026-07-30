@@ -13,6 +13,9 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNetworkStatus } from '@/hooks/useNetworkStatus';
 import { cn } from '@repo/ui/lib/utils';
+import { AIPanel } from '@/components/ai/ai-panel';
+import { AITriggerButton } from '@/components/ai/ai-trigger-button';
+import { useAIPanelStore } from '@/app/store/aiPanelStore';
 
 interface LayoutProps {
     children: React.ReactNode
@@ -21,6 +24,15 @@ interface LayoutProps {
 // Inner layout component that uses the sidebar context
 const MainContent = ({ children }: { children: React.ReactNode }) => {
     const { isCollapsed } = useSidebar();
+    const { isOpen: aiOpen, width: aiWidth, isMaximized: aiMaximized } = useAIPanelStore();
+
+    // The AI panel is a fixed-position rail on the right, so the page has to give
+    // it room or the content sits underneath it. Padding (not margin) keeps the
+    // page's own background running to the panel edge. Applied via inline style
+    // rather than a class because the width is a live drag value — Tailwind can't
+    // generate a class per pixel. Desktop only: below lg the panel is a sheet
+    // OVER the page, and a maximized panel is an overlay by design.
+    const aiInset = aiOpen && !aiMaximized ? aiWidth : 0;
 
     return (
         <>
@@ -31,11 +43,21 @@ const MainContent = ({ children }: { children: React.ReactNode }) => {
                     "ml-0",
                     isCollapsed ? "lg:ml-[6.25rem]" : "lg:ml-[17rem]"
                 )}>
-                    <div className="h-full w-full bg-white dark:bg-neutral-950 lg:rounded-l-4xl lg:border-l border-neutral-200 dark:border-neutral-800 shadow-xl relative overflow-y-auto overflow-x-hidden">
-                        {children}
+                    <div
+                        className="h-full w-full bg-white dark:bg-neutral-950 lg:rounded-l-4xl lg:border-l border-neutral-200 dark:border-neutral-800 shadow-xl relative overflow-y-auto overflow-x-hidden"
+                        style={{ ["--ai-inset" as string]: `${aiInset}px` }}
+                    >
+                        {/* min-w-0 so a wide child (a table, a chart) shrinks with the
+                            column instead of forcing the page to scroll sideways when
+                            the panel widens. */}
+                        <div className="min-w-0 lg:pr-[var(--ai-inset)] transition-[padding] duration-150">
+                            {children}
+                        </div>
                     </div>
                 </main>
             </div>
+            <AIPanel />
+            <AITriggerButton />
             <Script
                 src="https://checkout.razorpay.com/v1/checkout.js"
                 strategy="afterInteractive"

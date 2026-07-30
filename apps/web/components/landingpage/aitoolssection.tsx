@@ -1,12 +1,12 @@
 "use client"
 
-import Link from "next/link"
 import { motion } from "framer-motion"
 import {
     Briefcase, FileText, PenLine, ArrowRight, Sparkles
 } from "lucide-react"
 import { Badge } from "@repo/ui/components/ui/badge"
 import { Button } from "@repo/ui/components/ui/button"
+import { APP_URL } from "@/lib/site"
 
 const tools = [
     {
@@ -14,21 +14,21 @@ const tools = [
         title: "Resume Creator",
         description: "Build an ATS-friendly resume with AI. Sync your work, education, skills and projects from your profile and export a polished PDF.",
         status: "Live",
-        href: "/ai/resume"
+        href: `${APP_URL}/ai/resume`
     },
     {
         icon: Briefcase,
         title: "Interview Assistant",
         description: "Context-aware simulation that ingests your specific resume and the target job description to generate high-probability technical questions.",
         status: "Live",
-        href: "/ai/jobinterviewassistant"
+        href: `${APP_URL}/ai/jobinterviewassistant`
     },
     {
         icon: PenLine,
         title: "Cover Letter",
         description: "Generate a tailored, role-specific cover letter in seconds — grounded in your profile and the job you're applying to.",
         status: "Live",
-        href: "/ai/resume/cover-letter"
+        href: `${APP_URL}/ai/resume/cover-letter`
     }
 ]
 
@@ -60,9 +60,9 @@ export default function AIToolsSection() {
                     </div>
                     <div>
                         <Button variant="outline" asChild className="h-12 px-6 rounded-full border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900">
-                            <Link href="/ai">
+                            <a href={`${APP_URL}/ai`}>
                                 View Full Roster <ArrowRight className="ml-2 w-4 h-4" />
-                            </Link>
+                            </a>
                         </Button>
                     </div>
                 </motion.div>
@@ -98,9 +98,9 @@ export default function AIToolsSection() {
                                     </div>
                                 </div>
                                 <div className="px-8 pb-8 pt-0">
-                                    <Link href={tool.href} className="inline-flex items-center text-sm font-bold text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-1 hover:border-neutral-900 dark:hover:border-white transition-all">
+                                    <a href={tool.href} className="inline-flex items-center text-sm font-bold text-neutral-900 dark:text-white border-b border-neutral-200 dark:border-neutral-800 pb-1 hover:border-neutral-900 dark:hover:border-white transition-all">
                                         Launch Tool <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Link>
+                                    </a>
                                 </div>
                             </motion.div>
                         ))

@@ -1,0 +1,11 @@
+-- Baseline: the schema that already existed when Drizzle migrations were adopted.
+--
+-- Deliberately a NO-OP. This project was previously managed with `drizzle-kit push`,
+-- so all 209 tables in meta/0000_snapshot.json are already present in every
+-- environment. Running the real DDL here would fail on the first `CREATE TYPE`.
+--
+-- The snapshot beside this file is NOT a no-op: it records the exact pre-existing
+-- shape, so `db:generate` produces correct incremental deltas from 0001 onward.
+-- To provision a brand-new database from scratch, restore this file from git
+-- history (commit that added it) or use `db:push` once against the empty DB.
+SELECT 1;

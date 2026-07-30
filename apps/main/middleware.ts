@@ -44,7 +44,6 @@ const _publicRoutes = [
 	'/',
 	'/signin',
 	'/register',
-	'/verify',
 	'/forgotpassword',
 	'/resetpassword',
 	'/error',
@@ -73,12 +72,7 @@ const apiRoutes = [
 	'/api/health',
 	'/api/user',
 	'/api/webhooks',
-	'/api/register',
-	'/api/verifyemail',
 	'/api/forgotpassword',
-	'/api/resend-verification',
-	'/api/user/verify-status',
-	'/api/auth/verify-password'
 ]
 
 const PRODUCTION_ORIGIN = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.buildrhq.com'
@@ -96,11 +90,15 @@ export default async function middleware(req: NextRequest) {
 		return NextResponse.next()
 	}
 
-	// Noindex non-production deployments so staging/preview URLs don't pollute Google's index
+	// Noindex non-production deployments so staging/preview URLs don't pollute
+	// Google's index. This only sets a header — it must NOT return early, or every
+	// auth redirect below (sign-in gate, onboarding gate) would be dead on
+	// localhost and preview deploys, which is exactly where they get tested.
 	const isProduction = req.nextUrl.origin === PRODUCTION_ORIGIN
-	if (!isProduction) {
-		const res = NextResponse.next()
-		res.headers.set('X-Robots-Tag', 'noindex, nofollow')
+	const noindex = !isProduction
+
+	const withNoindex = (res: NextResponse) => {
+		if (noindex) res.headers.set('X-Robots-Tag', 'noindex, nofollow')
 		return res
 	}
 
@@ -111,28 +109,28 @@ export default async function middleware(req: NextRequest) {
 	const isProtected = protectedRoutes.some(r => pathname.startsWith(r))
 
 	if (!isLoggedIn && isProtected) {
-		return redirectToSignIn(req)
+		return withNoindex(redirectToSignIn(req))
 	}
 
 	if (isLoggedIn) {
-		if (!onboardingCompleted && pathname !== '/onboarding' && pathname !== '/verify') {
-			return NextResponse.redirect(new URL('/onboarding', nextUrl.origin))
+		if (!onboardingCompleted && pathname !== '/onboarding') {
+			return withNoindex(NextResponse.redirect(new URL('/onboarding', nextUrl.origin)))
 		}
 		if (onboardingCompleted && pathname === '/onboarding') {
-			return NextResponse.redirect(new URL('/home', nextUrl.origin))
+			return withNoindex(NextResponse.redirect(new URL('/home', nextUrl.origin)))
 		}
 		if (pathname === '/signin' || pathname === '/register') {
-			return NextResponse.redirect(new URL(onboardingCompleted ? '/home' : '/onboarding', nextUrl.origin))
+			return withNoindex(NextResponse.redirect(new URL(onboardingCompleted ? '/home' : '/onboarding', nextUrl.origin)))
 		}
 		if (pathname === '/') {
-			return NextResponse.redirect(new URL(onboardingCompleted ? '/home' : '/onboarding', nextUrl.origin))
+			return withNoindex(NextResponse.redirect(new URL(onboardingCompleted ? '/home' : '/onboarding', nextUrl.origin)))
 		}
 		if (pathname === '/dashboard' || pathname === '/explore') {
-			return NextResponse.redirect(new URL('/home', nextUrl.origin))
+			return withNoindex(NextResponse.redirect(new URL('/home', nextUrl.origin)))
 		}
 	}
 
-	return NextResponse.next()
+	return withNoindex(NextResponse.next())
 }
 
 export const config = {

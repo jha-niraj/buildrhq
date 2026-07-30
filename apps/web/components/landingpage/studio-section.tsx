@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { motion } from "framer-motion"
 import { Badge } from "@repo/ui/components/ui/badge"
 import { Button } from "@repo/ui/components/ui/button"
@@ -8,6 +7,7 @@ import {
     Sparkles, FileText, Brain, Image as ImageIcon, MessageCircle, Code, Save,
     Layers, GraduationCap, CheckCircle2, Zap
 } from "lucide-react"
+import { APP_LINKS } from "@/lib/site"
 
 const studioFeatures = [
     {
@@ -141,10 +141,10 @@ export default function StudioSection() {
                             <h4 className="text-lg font-bold text-neutral-900 dark:text-white mb-2">Ready to ship your knowledge?</h4>
                             <p className="text-sm text-neutral-500 mb-6">Join thousands of students building their second brain.</p>
                             <Button asChild size="lg" className="w-full h-12 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:opacity-90 transition-opacity">
-                                <Link href="/studio">
+                                <a href={APP_LINKS.signup}>
                                     <GraduationCap className="mr-2 h-4 w-4" />
                                     Enter Studio
-                                </Link>
+                                </a>
                             </Button>
                         </div>
                     </motion.div>

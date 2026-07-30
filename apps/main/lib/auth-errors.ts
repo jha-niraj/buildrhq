@@ -11,6 +11,13 @@ export const AUTH_ERROR_MESSAGES = {
     SOCIAL_ACCOUNT_ALREADY_LINKED: "This social account is already linked to another user",
     ACCOUNT_NOT_FOUND: "No account found with this email address",
 
+    // emailOTP / magicLink plugin codes
+    OTP_EXPIRED: "That code has expired. Request a new one",
+    INVALID_OTP: "That code isn't right. Check it and try again",
+    TOO_MANY_ATTEMPTS: "Too many incorrect attempts. Request a new code",
+    INVALID_TOKEN: "That link is invalid or has already been used",
+    EXPIRED_TOKEN: "That link has expired. Request a new one",
+
     // Legacy custom codes kept for backwards compatibility
     INVALID_CREDENTIALS: "Incorrect email or password. Please try again",
     OAUTH_ACCOUNT: "This account was created with a social login. Please use Google or GitHub to sign in",

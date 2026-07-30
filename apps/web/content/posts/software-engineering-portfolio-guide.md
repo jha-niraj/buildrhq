@@ -60,7 +60,7 @@ You do not need it to be production-ready. You need it to be impressive and well
 
 This is your proof that you can work in someone else's codebase, follow conventions, write good commit messages, and get a PR merged by strangers. Even one meaningful contribution to a real open source project tells recruiters more about your professional readiness than three solo projects.
 
-If you have not made an open source contribution yet, [BuildrHQ's Open Source tracker](/opensource) helps you find beginner-friendly issues across popular repositories and tracks your contribution activity automatically.
+If you have not made an open source contribution yet, [the first pull request guide](/blogs/open-source-contribution-beginners) walks through the whole process, and BuildrHQ's open source tracker helps you find beginner-friendly issues matched to your stack.
 
 ## Building Projects That Get Noticed
 
@@ -93,7 +93,7 @@ The architecture decisions section is what separates a junior portfolio from a m
 
 Your GitHub profile is searched by recruiters. Not as much as LinkedIn, but it happens. And when a technical recruiter clicks your GitHub, you have about 10 seconds before they move on.
 
-**Profile README:** GitHub lets you create a special `username/username` repository that renders as your profile README. Use it. Write a 3-sentence intro, list your main skills, link to your portfolio and LinkedIn. Do not write a wall of text with badges that take 15 seconds to load.
+**Profile README:** GitHub lets you create a special `username/username` repository that renders as your profile README — the [official documentation](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme) covers the setup. Use it. Write a 3-sentence intro, list your main skills, link to your portfolio and LinkedIn. Do not write a wall of text with badges that take 15 seconds to load.
 
 **Pinned repositories:** Pin your 6 best projects. If you only have 3 good ones, pin 3. Do not pin repositories named "my-first-react-app" or "test-project".
 
@@ -119,7 +119,9 @@ A portfolio website should be simple. The goal is to communicate clearly, not to
 - Dark patterns (no need to be clever — just be clear)
 - Visitor counters, GitHub stats cards, and other noise
 
-The best portfolio websites load fast, have good contrast, work on mobile, and get out of the way of your actual work.
+The best portfolio websites load fast, have good contrast, work on mobile, and get out of the way of your actual work. Run yours through [PageSpeed Insights](https://pagespeed.web.dev/) once — a portfolio site that scores badly on Core Web Vitals is an unforced error when the whole point is to demonstrate competence. If accessibility is unfamiliar territory, [the WAI quick reference](https://www.w3.org/WAI/standards-guidelines/wcag/) is the place to start.
+
+**Hosting:** [Vercel](https://vercel.com/), [Netlify](https://www.netlify.com/) and [GitHub Pages](https://pages.github.com/) all have free tiers that are more than enough. There is no reason to pay for portfolio hosting.
 
 ## Writing About Yourself
 
@@ -161,9 +163,9 @@ That is enough to get interviews at most companies. The rest is execution.
 
 ## Using BuildrHQ to Accelerate Your Portfolio
 
-[BuildrHQ's Project Builder](/projects) helps CS students build portfolio-worthy projects with AI guidance — from architecture planning to code review to verified proof of completion. Instead of spending hours figuring out what to build and how to structure it, you get a structured path from idea to shipped project.
+BuildrHQ's project builder helps CS students build portfolio-worthy projects with AI guidance — from architecture planning to code review to verified proof of completion. Instead of spending hours figuring out what to build and how to structure it, you get a structured path from idea to shipped project.
 
-The platform also auto-tracks your GitHub activity and open source contributions in one dashboard, so your portfolio data is always current. When you are ready to apply, [the AI Resume Builder](/ai) turns your project history into recruiter-ready resume bullets tailored to each job description.
+The platform also auto-tracks your GitHub activity and open source contributions in one dashboard, so your portfolio data is always current. When you are ready to apply, the AI resume builder turns your project history into recruiter-ready resume bullets tailored to each job description — and [the ATS resume guide](/blogs/ats-resume-software-engineer) explains what those bullets need to survive.
 
 ## The Honest Truth About Portfolios in 2025
 

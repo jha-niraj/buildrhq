@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import Image from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
@@ -9,20 +9,29 @@ import {
 } from 'lucide-react'
 import { Button } from "@repo/ui/components/ui/button"
 import { Badge } from "@repo/ui/components/ui/badge"
-import nirajjha from "./images/nirajjha (copy).jpeg"
+import nirajjha from "./images/nirajjha.jpeg"
 import harsh from "./images/harsh.jpeg"
+import { APP_LINKS } from "@/lib/site"
 
 // Filtered Team Data
-const leadership = [
+interface Leader {
+    name: string
+    role: string
+    bio: string
+    img: StaticImageData
+    links: { linkedin: string; github: string; twitter?: string }
+}
+
+const leadership: Leader[] = [
     {
         name: "Niraj Jha",
         role: "Lead Developer & Architect",
         bio: "Full-stack engineer passionate about building scalable educational infrastructure.",
         img: nirajjha,
         links: {
-            linkedin: "https://linkedin.com/in/janedoe",
+            linkedin: "https://www.linkedin.com/in/nirajjha31/",
             github: "https://github.com/jha-niraj",
-            twitter: "#"
+            twitter: "https://x.com/iamnirajjha"
         }
     },
     {
@@ -32,8 +41,7 @@ const leadership = [
         img: harsh,
         links: {
             linkedin: "https://www.linkedin.com/in/harsh-pandey0504",
-            github: "https://github.com/HarshPandey-5804",
-            twitter: "#"
+            github: "https://github.com/HarshPandey-5804"
         }
     }
 ]
@@ -140,15 +148,17 @@ export default function AboutUs() {
                                             {leader.bio}
                                         </p>
                                         <div className="flex gap-4">
-                                            <Link href={leader.links.linkedin} target="_blank" className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                            <a href={leader.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${leader.name} on LinkedIn`} className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                                 <Linkedin className="w-4 h-4" />
-                                            </Link>
-                                            <Link href={leader.links.github} target="_blank" className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                            </a>
+                                            <a href={leader.links.github} target="_blank" rel="noopener noreferrer" aria-label={`${leader.name} on GitHub`} className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                                 <Github className="w-4 h-4" />
-                                            </Link>
-                                            <Link href={leader.links.twitter} target="_blank" className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                                                <Twitter className="w-4 h-4" />
-                                            </Link>
+                                            </a>
+                                            {leader.links.twitter && (
+                                                <a href={leader.links.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${leader.name} on X`} className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                                    <Twitter className="w-4 h-4" />
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </motion.div>
@@ -161,16 +171,16 @@ export default function AboutUs() {
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <h2 className="text-3xl font-bold text-neutral-900 dark:text-white mb-6">Ready to join the movement?</h2>
                     <div className="flex justify-center gap-4">
-                        <Link href="mailto:thecoderzofficial@gmail.com">
+                        <Link href="/contact">
                             <Button size="lg" className="rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900">
                                 Contact Us <ArrowRight className="ml-2 w-4 h-4" />
                             </Button>
                         </Link>
-                        <Link href="/explore">
+                        <a href={APP_LINKS.signup}>
                             <Button variant="outline" size="lg" className="rounded-full border-neutral-200 dark:border-neutral-800">
                                 Explore Platform
                             </Button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </section>

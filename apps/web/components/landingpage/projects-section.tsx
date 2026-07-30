@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import { motion } from "framer-motion"
 import {
     Target, Globe, Cpu, Terminal, Layers, ShieldCheck
@@ -10,6 +9,7 @@ import { Badge } from "@repo/ui/components/ui/badge"
 import { Button } from "@repo/ui/components/ui/button"
 import { Skeleton } from "@repo/ui/components/ui/skeleton"
 import { getProjectsPageStats } from "@/actions/stats.action"
+import { APP_URL } from "@/lib/site"
 
 // Marketing showcase — a static, curated preview of the kind of projects the
 // community ships. The live, data-backed registry lives in the app (main).
@@ -168,17 +168,17 @@ export default function ProjectsSection() {
                         </p>
                     </div>
                     <div className="flex gap-3">
-                        <Link href="/projects/generate">
+                        <a href={`${APP_URL}/projects/generate`}>
                             <Button className="cursor-pointer rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900">
                                 <Terminal className="mr-2 h-4 w-4" />
                                 Initialize Project
                             </Button>
-                        </Link>
-                        <Link href="/projects/allprojects">
-                            <Button variant="outline" className=" cursor-pointerrounded-full border-neutral-200 dark:border-neutral-800">
+                        </a>
+                        <a href={`${APP_URL}/projects/allprojects`}>
+                            <Button variant="outline" className="cursor-pointer rounded-full border-neutral-200 dark:border-neutral-800">
                                 View Registry
                             </Button>
-                        </Link>
+                        </a>
                     </div>
                 </motion.div>
 

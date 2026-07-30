@@ -7,14 +7,19 @@ import { cn } from "../../lib/utils"
 
 const ScrollArea = React.forwardRef<
 	React.ElementRef<typeof ScrollAreaPrimitive.Root>,
-	React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
->(({ className, children, ...props }, ref) => (
+	React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> & {
+		/** Classes for the inner viewport — the element that actually scrolls.
+		 *  Needed for max-height caps (`max-h-56` on a dropdown list), which have
+		 *  no effect on the Root. Optional: omit it and nothing changes. */
+		viewportClassName?: string
+	}
+>(({ className, children, viewportClassName, ...props }, ref) => (
 	<ScrollAreaPrimitive.Root
 		ref={ref}
 		className={cn("relative overflow-hidden", className)}
 		{...props}
 	>
-		<ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
+		<ScrollAreaPrimitive.Viewport className={cn("h-full w-full rounded-[inherit]", viewportClassName)}>
 			{children}
 		</ScrollAreaPrimitive.Viewport>
 		<ScrollBar />

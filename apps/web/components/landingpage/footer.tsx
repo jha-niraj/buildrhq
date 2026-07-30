@@ -1,135 +1,134 @@
-"use client";
-
 import Link from "next/link";
-import {
-    Twitter, Linkedin, Github, Youtube, Command,
-} from "lucide-react";
-import toast from "@repo/ui/components/ui/sonner";
+import { Linkedin, Github, Command } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 import { NewsletterSubscription } from "../homepage/newslettersubscription";
+import { APP_LINKS, APP_URL, BRAND } from "@/lib/site";
 
-export default function Footer() {
-    const handleComingSoon = (featureName: string) => {
-        toast.info("Coming Soon", {
-            description: `${featureName} is currently in development.`,
-        });
-    };
-
-    const linkGroups = [
+// Marketing footer. Two kinds of destination and no third:
+//   - internal Next <Link>s for pages that exist on THIS site
+//   - plain <a> to the app origin for anything behind a login
+// Nothing here points at a route that only resolves via a redirect hop, and nothing is a
+// "coming soon" toast pretending to be a link (the previous version had four of those).
+const LINK_GROUPS: {
+    title: string;
+    links: { name: string; href: string; external?: boolean }[];
+}[] = [
         {
             title: "Platform",
             links: [
-                { name: "Projects", href: "/projects" },
-                { name: "Practice", href: "/practice" },
-                { name: "Mock Interviews", href: "/mock" },
-                { name: "AI Tools", href: "/ai" },
-                { name: "Jobs", href: "/jobs" },
+                { name: "Projects", href: `${APP_URL}/projects`, external: true },
+                { name: "Practice", href: `${APP_URL}/practice`, external: true },
+                { name: "Mock Interviews", href: `${APP_URL}/mock`, external: true },
+                { name: "AI Tools", href: `${APP_URL}/ai`, external: true },
                 { name: "Pricing", href: "/pricing" },
-            ]
+            ],
         },
         {
             title: "Resources",
             links: [
                 { name: "Blog", href: "/blogs" },
-                { name: "Documentation", href: "/docs", dev: true },
-                { name: "Help Center", href: "/help", dev: true },
-            ]
+                { name: "Interview Prep", href: "/blogs/topics/interview-prep" },
+                { name: "Career Guides", href: "/blogs/topics/career" },
+                { name: "DSA & Practice", href: "/blogs/topics/dsa" },
+            ],
         },
         {
             title: "Company",
             links: [
                 { name: "About", href: "/aboutus" },
-                { name: "Careers", href: "/careers", dev: true },
+                { name: "Contact", href: "/contact" },
                 { name: "Terms of Service", href: "/termsofservice" },
                 { name: "Privacy Policy", href: "/privacypolicy" },
-            ]
-        }
+            ],
+        },
     ];
 
-    return (
-        <footer className="bg-white dark:bg-neutral-950 border-t border-neutral-200 dark:border-neutral-800">
-            <div className="max-w-7xl mx-auto px-6 py-12">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+const SOCIALS = [
+    { name: "X", href: BRAND.social.twitter, Icon: FaXTwitter },
+    { name: "GitHub", href: BRAND.social.github, Icon: Github },
+    { name: "LinkedIn", href: BRAND.social.linkedin, Icon: Linkedin },
+];
 
-                    <div className="lg:col-span-4 flex flex-col justify-between h-full">
+export default function Footer() {
+    return (
+        <footer className="border-t border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+            <div className="mx-auto max-w-7xl px-6 py-12">
+                <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8">
+                    <div className="flex h-full flex-col justify-between lg:col-span-4">
                         <div>
-                            <Link href="/" className="flex items-center gap-2 mb-6">
-                                <div className="w-8 h-8 bg-neutral-900 dark:bg-white rounded-lg flex items-center justify-center text-white dark:text-neutral-900 font-bold">
-                                    <Command className="w-4 h-4" />
-                                </div>
-                                <span className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">BuildrHQ</span>
+                            <Link href="/" className="mb-6 flex items-center gap-2">
+                                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 font-bold text-white dark:bg-white dark:text-neutral-900">
+                                    <Command className="h-4 w-4" />
+                                </span>
+                                <span className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
+                                    {BRAND.name}
+                                </span>
                             </Link>
-                            <p className="text-neutral-500 dark:text-neutral-400 text-sm mb-8 leading-relaxed max-w-xs">
-                                The operating system for engineering students.
-                                Master system design, open source, and full-stack architecture.
+                            <p className="mb-8 max-w-xs text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+                                The engineering intelligence suite. Build real projects, practise
+                                interviews, and land your next software role.
                             </p>
                         </div>
                         <NewsletterSubscription />
                     </div>
-                    <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
-                        {
-                            linkGroups.map((group) => (
-                                <div key={group.title}>
-                                    <h4 className="font-semibold text-neutral-900 dark:text-white mb-6 text-sm">
-                                        {group.title}
-                                    </h4>
-                                    <ul className="space-y-3">
-                                        {
-                                            group.links.map((link) => (
-                                                <li key={link.name}>
-                                                    {link.dev ? (
-                                                        <button
-                                                            onClick={() => handleComingSoon(link.name)}
-                                                            className="group flex items-center gap-2 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
-                                                        >
-                                                            {link.name}
-                                                            <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-500 group-hover:text-neutral-900 dark:group-hover:text-white border border-neutral-200 dark:border-neutral-700">
-                                                                Dev
-                                                            </span>
-                                                        </button>
-                                                    ) : (
-                                                        <Link
-                                                            href={link.href}
-                                                            className="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
-                                                        >
-                                                            {link.name}
-                                                        </Link>
-                                                    )
-                                                    }
-                                                </li>
-                                            ))
-                                        }
-                                    </ul>
-                                </div>
-                            ))
-                        }
+
+                    <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:col-span-8">
+                        {LINK_GROUPS.map((group) => (
+                            <div key={group.title}>
+                                <h2 className="mb-6 text-sm font-semibold text-neutral-900 dark:text-white">
+                                    {group.title}
+                                </h2>
+                                <ul className="space-y-3">
+                                    {group.links.map((link) => (
+                                        <li key={link.name}>
+                                            {link.external ? (
+                                                <a
+                                                    href={link.href}
+                                                    className="text-sm text-neutral-500 transition-colors hover:text-neutral-900 dark:hover:text-white"
+                                                >
+                                                    {link.name}
+                                                </a>
+                                            ) : (
+                                                <Link
+                                                    href={link.href}
+                                                    className="text-sm text-neutral-500 transition-colors hover:text-neutral-900 dark:hover:text-white"
+                                                >
+                                                    {link.name}
+                                                </Link>
+                                            )}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </div>
-                <div className="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+
+                <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-neutral-200 pt-8 dark:border-neutral-800 md:flex-row">
+                    <div className="flex flex-col items-center gap-4 md:flex-row md:gap-8">
                         <p className="text-xs text-neutral-500">
-                            © {new Date().getFullYear()} BuildrHQ Inc.
+                            © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
                         </p>
-                        <div className="flex items-center gap-2">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                            </span>
-                            <span className="text-xs font-mono text-neutral-500 uppercase">All Systems Normal</span>
-                        </div>
+                        <a
+                            href={APP_LINKS.signin}
+                            className="text-xs text-neutral-500 transition-colors hover:text-neutral-900 dark:hover:text-white"
+                        >
+                            Sign in to the app →
+                        </a>
                     </div>
                     <div className="flex items-center gap-6">
-                        <Link href="https://twitter.com/buildrhq" target="_blank" className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                            <Twitter className="w-4 h-4" />
-                        </Link>
-                        <Link href="https://github.com/buildrhq" target="_blank" className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                            <Github className="w-4 h-4" />
-                        </Link>
-                        <Link href="https://linkedin.com/company/buildrhq" target="_blank" className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                            <Linkedin className="w-4 h-4" />
-                        </Link>
-                        <Link href="https://youtube.com/@buildrhq" target="_blank" className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                            <Youtube className="w-4 h-4" />
-                        </Link>
+                        {SOCIALS.map(({ name, href, Icon }) => (
+                            <a
+                                key={name}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`${BRAND.name} on ${name}`}
+                                className="text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-white"
+                            >
+                                <Icon className="h-4 w-4" />
+                            </a>
+                        ))}
                     </div>
                 </div>
             </div>

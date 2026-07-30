@@ -1,12 +1,12 @@
 "use client"
 
-import Link from "next/link"
 import { motion } from "framer-motion"
 import {
     Zap, Wallet, ArrowRight, Check, Activity
 } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
 import { Badge } from "@repo/ui/components/ui/badge"
+import { APP_URL } from "@/lib/site"
 
 const benefits = [
     { title: "No Expiration", desc: "Credits stay in your wallet forever." },
@@ -60,11 +60,11 @@ export default function CreditsSection() {
                             }
                         </div>
                         <div className="mt-10 pt-10 border-t border-neutral-200 dark:border-neutral-800">
-                            <Link href="/purchase">
+                            <a href={`${APP_URL}/purchase`}>
                                 <Button size="lg" className="cursor-pointer rounded-full h-12 px-8 bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900">
                                     Top Up Wallet <ArrowRight className="ml-2 w-4 h-4" />
                                 </Button>
-                            </Link>
+                            </a>
                         </div>
                     </motion.div>
                     <motion.div

@@ -86,7 +86,7 @@ export default function FeaturesSection() {
                     }
                 </div>
                 <div className="mt-12 text-center">
-                    <Link href="/explore">
+                    <Link href="/blogs">
                         <Button variant="ghost" className="cursor-pointer text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800">
                             Explore Technical Resources <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>

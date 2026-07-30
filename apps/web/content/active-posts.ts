@@ -1,0 +1,36 @@
+// Manual publish gate for blog posts.
+//
+// A post's markdown + metadata can exist in `blog.ts` / `content/posts/*.md` and be fully
+// finished, but it only becomes PUBLIC (listed on /blogs, indexed, included in sitemap.xml
+// and llms.txt) once its slug is added here. This lets posts be written in batches and
+// rolled out on a schedule without a deploy backlog.
+//
+// Posts NOT listed here still render as real pages - so internal links between posts never
+// 404 - but are `noindex` and hidden from every listing until their turn.
+//
+// To activate the next post: append its slug (do not reorder) and deploy.
+export const ACTIVE_BLOG_SLUGS: readonly string[] = [
+    // ─── Interview Prep ───
+    'star-method-interview-software-engineers',
+    'behavioral-interview-questions-software-engineer',
+    'questions-to-ask-interviewer-software-engineer',
+    'system-design-interview-prep',
+    'mock-technical-interview-guide',
+    // ─── DSA & Practice ───
+    'dsa-study-plan-coding-interview',
+    'leetcode-alternatives',
+    // ─── Resume & Applications ───
+    'ats-resume-software-engineer',
+    'software-engineer-cover-letter',
+    // ─── Career ───
+    'how-to-become-a-software-engineer',
+    'full-stack-developer-roadmap',
+    'software-engineer-career-path',
+    'new-grad-software-engineer-jobs',
+    'campus-placement-preparation-guide',
+    // ─── Portfolio & Open Source ───
+    'software-engineering-portfolio-guide',
+    'open-source-contribution-beginners',
+    // ─── AI & Developer Tools ───
+    'ai-tools-developers-2025',
+]
