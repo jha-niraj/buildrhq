@@ -36,7 +36,7 @@ const LINK_GROUPS: {
             title: "Company",
             links: [
                 { name: "About", href: "/aboutus" },
-                { name: "Contact", href: "/contact" },
+                { name: "Contact", href: "/aboutus#contact" },
                 { name: "Terms of Service", href: "/termsofservice" },
                 { name: "Privacy Policy", href: "/privacypolicy" },
             ],

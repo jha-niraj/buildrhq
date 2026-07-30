@@ -10,6 +10,7 @@ import {
     type BlogCategory,
 } from '@/content/blog'
 import { SITE, BRAND } from '@/lib/site'
+import { Reveal, RevealGroup, RevealItem } from '@/components/reveal'
 
 interface Props { params: Promise<{ topic: string }> }
 
@@ -91,7 +92,7 @@ export default async function TopicPage({ params }: Props) {
 
             <div className="min-h-screen bg-white dark:bg-neutral-950">
                 <div className="border-b border-neutral-100 dark:border-neutral-900">
-                    <div className="mx-auto max-w-6xl px-6 py-16">
+                    <Reveal className="mx-auto max-w-6xl px-6 py-16">
                         <nav aria-label="Breadcrumb" className="mb-8">
                             <ol className="flex flex-wrap items-center gap-2 text-[13px] text-neutral-400 dark:text-neutral-500">
                                 <li><Link href="/" className="transition-colors hover:text-neutral-900 dark:hover:text-white">Home</Link></li>
@@ -108,7 +109,7 @@ export default async function TopicPage({ params }: Props) {
                         <p className="max-w-2xl text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
                             {BLOG_CATEGORY_INTROS[topic]}
                         </p>
-                    </div>
+                    </Reveal>
                 </div>
 
                 <div className="mx-auto max-w-6xl px-6 py-12 pb-24">
@@ -118,12 +119,12 @@ export default async function TopicPage({ params }: Props) {
                             <Link href="/blogs" className="underline underline-offset-4">Browse all posts</Link>.
                         </p>
                     ) : (
-                        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                        <RevealGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                             {posts.map((post) => (
+                                <RevealItem key={post.slug} className="flex">
                                 <Link
-                                    key={post.slug}
                                     href={`/blogs/${post.slug}`}
-                                    className="group flex flex-col rounded-2xl border border-neutral-200 p-6 transition-colors hover:border-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-600"
+                                    className="group flex w-full flex-col rounded-2xl border border-neutral-200 p-6 transition-colors hover:border-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-600"
                                 >
                                     <h2 className="mb-3 text-lg font-semibold leading-snug tracking-tight text-neutral-900 group-hover:text-orange-600 dark:text-white dark:group-hover:text-orange-400">
                                         {post.title}
@@ -136,11 +137,12 @@ export default async function TopicPage({ params }: Props) {
                                         {post.readingTime} min read
                                     </span>
                                 </Link>
+                                </RevealItem>
                             ))}
-                        </div>
+                        </RevealGroup>
                     )}
 
-                    <div className="mt-16 border-t border-neutral-200 pt-8 dark:border-neutral-800">
+                    <Reveal className="mt-16 border-t border-neutral-200 pt-8 dark:border-neutral-800">
                         <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
                             Other topics
                         </p>
@@ -155,7 +157,7 @@ export default async function TopicPage({ params }: Props) {
                                 </Link>
                             ))}
                         </div>
-                    </div>
+                    </Reveal>
                 </div>
             </div>
         </>

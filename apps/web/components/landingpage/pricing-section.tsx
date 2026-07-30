@@ -112,7 +112,7 @@ export default function PricingSection() {
                             size="lg"
                             className="h-12 px-8 bg-white text-neutral-900 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800 rounded-full font-semibold"
                         >
-                            <Link href="/contact">
+                            <Link href="/aboutus#contact">
                                 Contact Sales
                                 <ChevronRight className="ml-2 w-4 h-4" />
                             </Link>

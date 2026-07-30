@@ -111,7 +111,7 @@ export default function PricingClient() {
 							Everything about how credits, billing, and access work on BuildrHQ.
 						</p>
 						<Link
-							href="/contact"
+							href="/aboutus#contact"
 							className="mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 dark:bg-white dark:text-neutral-900"
 						>
 							Talk to support <ArrowRight className="h-4 w-4" />
@@ -157,7 +157,7 @@ export default function PricingClient() {
 							Get started free <ArrowRight className="h-4 w-4" />
 						</a>
 						<Link
-							href="/contact"
+							href="/aboutus#contact"
 							className="inline-flex items-center gap-2 rounded-xl border border-neutral-300 px-7 py-3.5 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 dark:border-white/10 dark:text-white/70 dark:hover:bg-white/5"
 						>
 							Talk to us

@@ -8,7 +8,31 @@ Cloudflare's asset CDN. `apps/web` deploys the same way, to a separate Worker.
 | --- | --- |
 | `open-next.config.ts` | OpenNext adapter config — currently just the R2 incremental cache. |
 | `wrangler.jsonc` | Worker name, compatibility flags, asset + R2 bindings, observability. |
+| `.env` | **Local** values. Untouched by deploys. |
+| `.env.production` | **Production** values. Gitignored — holds live secrets. |
+| `.env.production.example` | Committed template for the above. |
 | `.open-next/` | Build output. Generated, gitignored. Never edit or commit. |
+
+## How environment values reach production
+
+`.env.production` does two different jobs, which is why the public URLs and the
+secrets live in one file:
+
+1. **Build time.** `next build` sets `NODE_ENV=production`, and Next then loads
+   `.env.production` automatically (it takes precedence over `.env`). Every
+   `NEXT_PUBLIC_*` value is *inlined into the client bundle at this point*. If the
+   production domains are not in that file, the deployed bundle ships `localhost`
+   URLs — there is no runtime fix for that, it has to be right before the build.
+2. **Runtime.** `pnpm deploy` passes the same file to
+   `wrangler deploy --secrets-file .env.production`, uploading each key as a
+   Cloudflare Worker secret for the server side (`DATABASE_URL`,
+   `BETTER_AUTH_SECRET`, API keys, …).
+
+`--secrets-file` is **additive**: a key you leave out keeps whatever value it
+already has in production. But a key that is *present with an empty value* is
+uploaded as an empty string and **overwrites the live secret**. So the rule is
+delete the line, never blank it — which is why the generated `.env.production`
+ships with every secret commented out rather than set to `""`.
 
 ## One-time setup
 
@@ -24,32 +48,41 @@ npx wrangler r2 bucket create buildrhq-next-cache
 
 ## Secrets
 
-`wrangler.jsonc` `vars` are **public** — they end up in the bundle. Everything sensitive
-(`DATABASE_URL`, `BETTER_AUTH_SECRET`, `GOOGLE_CLIENT_SECRET`, `RESEND_API_KEY`,
-`OPENAI_API_KEY`, …) must be uploaded as a Worker secret:
+`wrangler.jsonc` `vars` are **public** — they end up in the bundle, so only
+non-sensitive things belong there. Everything sensitive goes in `.env.production`
+and is pushed by `pnpm deploy`.
 
 ```bash
-# one at a time
-npx wrangler secret put DATABASE_URL
-
-# or in bulk from a local file (same KEY=value format as .env)
-pnpm deploy:secrets     # builds, deploys, then pushes .env.production as secrets
+cp .env.production.example .env.production   # if you don't have it yet
+# fill in every secret; DELETE any line you are not setting
+pnpm deploy
 ```
 
-`.env.production` is gitignored along with every other `.env*`.
+A single secret can also be set without a full deploy:
+
+```bash
+npx wrangler secret put DATABASE_URL
+```
+
+`.env.production` is gitignored (the blanket `.env*` rule);
+`.env.production.example` is explicitly un-ignored so the template stays in git.
 
 ## Commands
 
 ```bash
-pnpm deploy:build   # build the Worker bundle only
-pnpm preview        # build, then run it locally on workerd (closest thing to prod)
-pnpm deploy         # build + wrangler deploy
-pnpm cf-typegen     # regenerate cloudflare-env.d.ts from the bindings
+pnpm deploy             # build + deploy + push .env.production as secrets
+pnpm deploy:no-secrets  # build + deploy, leaving existing secrets untouched
+pnpm deploy:build       # build the Worker bundle only
+pnpm preview            # build, then run it locally on workerd (closest to prod)
+pnpm cf-typegen         # regenerate cloudflare-env.d.ts from the bindings
 ```
 
 All of these set `--max-old-space-size=8192`. That is not decoration: a plain
 `next build` on this app is OOM-killed at Node's default heap, and the OpenNext build
 runs a bundling pass on top of the Next build.
+
+Every app in the monorepo (`web`, `main`, `uni`, `hiring`, `admin`) exposes the same
+five scripts and the same `.env.production` convention.
 
 ## Things that bite
 

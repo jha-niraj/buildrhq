@@ -17,7 +17,6 @@ const ROUTES: Record<string, [number, MetadataRoute.Sitemap[number]['changeFrequ
     'pricing': [0.9, 'monthly'],
     'blogs': [0.8, 'weekly'],
     'aboutus': [0.6, 'monthly'],
-    'contact': [0.6, 'monthly'],
     'termsofservice': [0.3, 'yearly'],
     'privacypolicy': [0.3, 'yearly'],
 }

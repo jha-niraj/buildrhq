@@ -9,11 +9,11 @@
 		"start": "next start --port 3003",
 		"lint": "eslint --max-warnings 0",
 		"check-types": "next typegen && tsc --noEmit",
-		"deploy:build": "NODE_OPTIONS='--max-old-space-size=6144' opennextjs-cloudflare build",
-		"deploy": "NODE_OPTIONS='--max-old-space-size=6144' opennextjs-cloudflare build && wrangler deploy",
-		"preview": "opennextjs-cloudflare preview",
+		"deploy:build": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build",
+		"deploy": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy --secrets-file .env.production",
+		"preview": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare preview",
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
-		"deploy:secrets": "NODE_OPTIONS='--max-old-space-size=6144' opennextjs-cloudflare build && wrangler deploy --secrets-file secrets.json"
+		"deploy:no-secrets": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy"
 	},
 	"dependencies": {
 		"@repo/auth": "workspace:*",

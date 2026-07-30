@@ -16,7 +16,7 @@ const NAV_LINKS = [
     { href: "/blogs", label: "Blog" },
     { href: "/pricing", label: "Pricing" },
     { href: "/aboutus", label: "About" },
-    { href: "/contact", label: "Contact" },
+    { href: "/aboutus#contact", label: "Contact" },
 ] as const;
 
 export default function Navbar() {
@@ -40,16 +40,22 @@ export default function Navbar() {
         href === "/" ? pathname === "/" : pathname.startsWith(href);
 
     return (
-        <nav
-            className={`fixed top-0 w-full pl-3 pr-3 z-50 transition-all duration-300
-            ${isHome
-                    ? scrolled
-                        ? "bg-white/75 dark:bg-neutral-950/75 backdrop-blur-md border-b border-neutral-200/50 dark:border-neutral-800/50 shadow-sm"
-                        : "bg-transparent"
-                    : "bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800"
-                }`}
-        >
-            <div className="max-w-7xl mx-auto flex items-center justify-between h-16">
+        // A floating pill rather than a full-bleed bar: the outer <nav> only positions
+        // and pads, the inner div is the visible surface, capped at max-w-7xl so it
+        // lines up with the page content beneath it. `theme-vt-glass` lets the theme
+        // wipe swap this to a solid background — a translucent + backdrop-blur bar is
+        // exactly what flashes during a View Transition snapshot.
+        <nav className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4">
+            <div
+                className={`theme-vt-glass mx-auto max-w-7xl rounded-2xl transition-all duration-300
+                ${isHome
+                        ? scrolled
+                            ? "bg-white/75 dark:bg-neutral-950/75 backdrop-blur-md border border-neutral-200/50 dark:border-neutral-800/50 shadow-sm"
+                            : "border border-transparent bg-transparent"
+                        : "bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border border-neutral-200 dark:border-neutral-800 shadow-sm"
+                    }`}
+            >
+                <div className="flex items-center justify-between h-16 px-4 sm:px-6">
                 <Link href="/" className="flex items-center gap-2" aria-label="BuildrHQ home">
                     <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900">
                         <Command className="h-4 w-4" />
@@ -100,6 +106,7 @@ export default function Navbar() {
                     >
                         <Menu className="h-6 w-6" />
                     </Button>
+                </div>
                 </div>
             </div>
 

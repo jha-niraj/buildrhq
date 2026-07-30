@@ -373,3 +373,62 @@
 .dark .blog-content td {
     color: #d4d4d4;
 }
+/* ── Animated theme switch ────────────────────────────────────────────────────
+   Driven by packages/ui/src/lib/theme-transition.ts using the View Transitions
+   API: a directional clip-path inset() WIPE of the new theme (light->dark wipes
+   left-to-right, dark->light right-to-left). The rules below animate the "new"
+   root snapshot's clip and strip backdrop-filter (which can't be snapshotted) for
+   the ~0.8s the transition runs; `.theme-vt-glass` surfaces go solid so removing
+   the blur doesn't flash. */
+
+@keyframes vt-theme-reveal {
+    /* inset(top right bottom left): the far edge starts collapsed at 100% -> 0. */
+    from { clip-path: var(--vt-clip-from, inset(0 100% 0 0)); }
+    to   { clip-path: inset(0 0 0 0); }
+}
+
+/* Reveal mode: the new theme wipes in over a STATIC old snapshot underneath. Force
+   mix-blend-mode:normal - the UA default (plus-lighter) ADDS the two snapshots'
+   colours inside the revealed area and flashes bright, worst on dark->light. */
+html[data-theme-transition="reveal"]::view-transition-old(root),
+html[data-theme-transition="reveal"]::view-transition-new(root) {
+    mix-blend-mode: normal;
+}
+html[data-theme-transition="reveal"]::view-transition-old(root) {
+    animation: none;
+    z-index: 0;
+}
+html[data-theme-transition="reveal"]::view-transition-new(root) {
+    animation: vt-theme-reveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) both; /* sweep duration */
+    z-index: 1;
+}
+
+/* Fade mode (no click origin, e.g. a programmatic/system switch): gentle cross-fade. */
+html[data-theme-transition="fade"]::view-transition-old(root),
+html[data-theme-transition="fade"]::view-transition-new(root) {
+    animation-duration: 0.3s;
+}
+
+/* Anti-flash: backdrop-filter can't be captured in a snapshot, so it flashes over
+   both. Strip the blur during the transition, and force any tagged glass surface to
+   a solid per-theme background token. The sticky navbar is the main one — it is
+   `backdrop-blur` + a translucent background, which is exactly the combination that
+   flashes white on a dark->light wipe. */
+html[data-theme-transition] *,
+html[data-theme-transition] *::before,
+html[data-theme-transition] *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+html[data-theme-transition] .theme-vt-glass {
+    background-color: var(--background) !important;
+}
+
+/* Honour reduced-motion: the switch still happens, just no sweep. */
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none !important;
+    }
+}

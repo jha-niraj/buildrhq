@@ -28,6 +28,9 @@ yarn-error.log*
 # env files (can opt-in for commiting if needed)
 .env*
 !.env.example
+# Committed template for production. The real .env.production holds live
+# secrets and stays ignored by the .env* rule above.
+!.env.production.example
 
 # vercel
 .vercel

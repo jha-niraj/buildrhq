@@ -68,7 +68,7 @@ a visible hiring signal.
 - Home: ${SITE}
 - Pricing: ${SITE}/pricing
 - About: ${SITE}/aboutus
-- Contact: ${SITE}/contact
+- Contact: ${SITE}/aboutus#contact
 - Blog: ${SITE}/blogs
 - Terms: ${SITE}/termsofservice
 - Privacy: ${SITE}/privacypolicy

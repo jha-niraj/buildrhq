@@ -82,6 +82,8 @@ const nextConfig = {
         return [
             // Legacy singular blog path from before the marketing split. Permanent so any
             // existing backlink or indexed URL keeps its equity instead of 404ing.
+            // /contact was folded into the About page as an anchored section.
+            { source: "/contact", destination: "/aboutus#contact", permanent: true },
             { source: "/blog", destination: "/blogs", permanent: true },
             { source: "/blog/:path*", destination: "/blogs/:path*", permanent: true },
             // Retired one-off post that predated the content system (Razorpay tutorial,

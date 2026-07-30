@@ -2,16 +2,16 @@
 
 import React from 'react'
 import Image, { type StaticImageData } from 'next/image'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
-    ArrowRight, Github, Linkedin, Twitter, Target, Users, Globe, Cpu
+    ArrowRight, Github, Linkedin, Twitter, Target, Users, Globe, Cpu, Mail
 } from 'lucide-react'
 import { Button } from "@repo/ui/components/ui/button"
 import { Badge } from "@repo/ui/components/ui/badge"
 import nirajjha from "./images/nirajjha.jpeg"
 import harsh from "./images/harsh.jpeg"
-import { APP_LINKS } from "@/lib/site"
+import { APP_LINKS, BRAND } from "@/lib/site"
+import ContactClient from "./_components/contact-client"
 
 // Filtered Team Data
 interface Leader {
@@ -171,17 +171,70 @@ export default function AboutUs() {
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <h2 className="text-3xl font-bold text-neutral-900 dark:text-white mb-6">Ready to join the movement?</h2>
                     <div className="flex justify-center gap-4">
-                        <Link href="/contact">
+                        <a href="#contact">
                             <Button size="lg" className="rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900">
                                 Contact Us <ArrowRight className="ml-2 w-4 h-4" />
                             </Button>
-                        </Link>
+                        </a>
                         <a href={APP_LINKS.signup}>
                             <Button variant="outline" size="lg" className="rounded-full border-neutral-200 dark:border-neutral-800">
                                 Explore Platform
                             </Button>
                         </a>
                     </div>
+                </div>
+            </section>
+            <section id="contact" className="scroll-mt-24 border-t border-neutral-100 py-24 dark:border-neutral-800">
+                <div className="mx-auto max-w-7xl px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-80px" }}
+                        transition={{ duration: 0.5 }}
+                        className="grid gap-14 lg:grid-cols-[1fr_1.2fr]"
+                    >
+                        <div>
+                            <h2 className="mb-5 text-3xl font-bold tracking-tight text-neutral-900 dark:text-white md:text-4xl">
+                                Get in touch
+                            </h2>
+                            <p className="mb-8 text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
+                                Questions about the platform, bulk credits for a university or bootcamp,
+                                partnerships, or something that is broken. We read everything.
+                            </p>
+
+                            <div className="space-y-6 text-sm">
+                                <div>
+                                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                                        Email
+                                    </p>
+                                    <a
+                                        href={`mailto:${BRAND.email}`}
+                                        className="inline-flex items-center gap-2 text-neutral-900 underline-offset-4 hover:underline dark:text-white"
+                                    >
+                                        <Mail className="h-4 w-4" aria-hidden />
+                                        {BRAND.email}
+                                    </a>
+                                </div>
+                                <div>
+                                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                                        Response time
+                                    </p>
+                                    <p className="text-neutral-600 dark:text-neutral-400">Within two working days.</p>
+                                </div>
+                                <div>
+                                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                                        Account &amp; billing
+                                    </p>
+                                    <p className="text-neutral-600 dark:text-neutral-400">
+                                        Already have an account? Billing and account settings live in the app -
+                                        this form is for everything else.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ContactClient />
+                    </motion.div>
                 </div>
             </section>
         </div>

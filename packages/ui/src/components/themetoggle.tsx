@@ -3,6 +3,7 @@
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { cn } from "@repo/ui/lib/utils"
+import { startThemeTransition } from "@repo/ui/lib/theme-transition"
 
 interface ThemeToggleProps {
     className?: string
@@ -11,6 +12,16 @@ interface ThemeToggleProps {
 export function ThemeToggle({ className }: ThemeToggleProps) {
     const { resolvedTheme, setTheme } = useTheme()
     const isDark = resolvedTheme === "dark"
+
+    const toggle = (e?: React.MouseEvent) => {
+        // Passing an origin runs the directional wipe (light->dark L->R, dark->light
+        // R->L; direction is derived from the current theme inside the helper). The
+        // coords themselves don't steer the wipe, so a keyboard toggle passes {0,0}.
+        startThemeTransition(
+            () => setTheme(isDark ? "light" : "dark"),
+            e ? { x: e.clientX, y: e.clientY } : { x: 0, y: 0 },
+        )
+    }
 
     return (
         <div
@@ -21,7 +32,8 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
                     : "bg-white border border-zinc-200",
                 className
             )}
-            onClick={() => setTheme(isDark ? "light" : "dark")}
+            onClick={toggle}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle() } }}
             role="button"
             tabIndex={0}
             aria-label="Toggle theme"
@@ -76,4 +88,4 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
     )
 }
 
-export default useTheme;
+export default ThemeToggle

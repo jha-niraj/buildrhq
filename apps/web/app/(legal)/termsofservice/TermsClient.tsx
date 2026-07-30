@@ -2,12 +2,13 @@
 
 import Link from "next/link"
 import SmoothScroll from "@/components/smoothscroll"
+import { Reveal } from "@/components/reveal"
 
 export default function TermsOfService() {
     return (
         <SmoothScroll>
-            <div className="min-h-screen bg-white dark:bg-neutral-950 font-sans selection:bg-neutral-100 dark:selection:bg-neutral-800">
-                <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
+            <div className="w-full bg-white dark:bg-neutral-950 font-sans selection:bg-neutral-100 dark:selection:bg-neutral-800">
+                <Reveal fadeOnly className="max-w-7xl mx-auto px-6 py-16 md:py-24">
                     <div className="flex gap-16 items-start">
                         {/* Sidebar */}
                         <aside className="hidden lg:block w-[260px] shrink-0">
@@ -191,7 +192,7 @@ export default function TermsOfService() {
                             </div>
                         </main>
                     </div>
-                </div>
+                </Reveal>
             </div>
         </SmoothScroll>
     )

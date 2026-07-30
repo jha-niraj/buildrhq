@@ -10,10 +10,10 @@
 		"lint": "eslint --max-warnings 0",
 		"check-types": "next typegen && tsc --noEmit",
 		"deploy:build": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build",
-		"deploy": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy",
+		"deploy": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy --secrets-file .env.production",
 		"preview": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare preview",
-		"deploy:secrets": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy --secrets-file .env.production",
-		"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+		"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+		"deploy:no-secrets": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy"
 	},
 	"dependencies": {
 		"@aws-sdk/client-s3": "^3.958.0",

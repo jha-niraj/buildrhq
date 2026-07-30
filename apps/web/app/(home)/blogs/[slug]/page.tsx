@@ -12,6 +12,7 @@ import {
 import { AUTHORS, AUTHOR_PAGE_URL } from '@/content/authors'
 import { getPostContent } from '@/lib/blog-renderer'
 import { SITE, APP_LINKS, BRAND, abs } from '@/lib/site'
+import { Reveal } from '@/components/reveal'
 import { AuthorByline } from '@/components/author-byline'
 import { KeyTakeaways } from '../_components/key-takeaways'
 import { FaqSection } from '../_components/faq-section'
@@ -157,7 +158,7 @@ export default async function BlogPostPage({ params }: Props) {
             )}
 
             <div className="min-h-screen bg-white dark:bg-neutral-950">
-                <div className="mx-auto max-w-[760px] px-6 pt-10">
+                <div className="mx-auto max-w-5xl px-6 pt-10">
                     <nav aria-label="Breadcrumb" className="mb-8">
                         <ol className="flex flex-wrap items-center gap-2 text-[13px] text-neutral-400 dark:text-neutral-500">
                             <li><Link href="/" className="transition-colors hover:text-neutral-900 dark:hover:text-white">Home</Link></li>
@@ -207,18 +208,18 @@ export default async function BlogPostPage({ params }: Props) {
                     </header>
                 </div>
 
-                <div className="mx-auto mb-12 max-w-[900px] px-6">
+                <Reveal className="mx-auto mb-12 max-w-5xl px-6">
                     <PostCover title={post.title} category={category} heroImage={post.heroImage} priority />
-                </div>
+                </Reveal>
 
-                <div className="mx-auto max-w-[760px] px-6 pb-16">
+                <div className="mx-auto max-w-5xl px-6 pb-16">
                     <KeyTakeaways takeaways={post.takeaways} />
 
                     <article className="blog-content" dangerouslySetInnerHTML={{ __html: html }} />
 
                     <FaqSection faqs={post.faqs} />
 
-                    <div className="mt-16 rounded-2xl border border-neutral-800 bg-neutral-950 p-8 text-center dark:bg-neutral-900">
+                    <Reveal className="mt-16 rounded-2xl border border-neutral-800 bg-neutral-950 p-8 text-center dark:bg-neutral-900">
                         <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-orange-500">
                             {BRAND.name}
                         </p>
@@ -243,11 +244,11 @@ export default async function BlogPostPage({ params }: Props) {
                                 See pricing
                             </Link>
                         </div>
-                    </div>
+                    </Reveal>
 
-                    <div className="mt-16">
+                    <Reveal className="mt-16">
                         <AuthorByline authorKey={post.author} dateModified={fullDate(post.dateModified)} />
-                    </div>
+                    </Reveal>
 
                     <div className="mt-8">
                         <Link
@@ -260,11 +261,11 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
 
                 {related.length > 0 && (
-                    <div className="mx-auto max-w-6xl px-6 pb-24">
+                    <Reveal className="mx-auto max-w-6xl px-6 pb-24">
                         <div className="border-t border-neutral-200 dark:border-neutral-800">
                             <RelatedPosts posts={related} />
                         </div>
-                    </div>
+                    </Reveal>
                 )}
             </div>
         </>

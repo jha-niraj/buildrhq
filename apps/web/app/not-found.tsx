@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import Navbar from '@/components/landingpage/homepagenavbar'
 import Footer from '@/components/landingpage/footer'
+import { Reveal } from '@/components/reveal'
 
 export const metadata: Metadata = {
     title: 'Page not found',
@@ -12,7 +13,8 @@ export default function NotFound() {
     return (
         <div className="flex min-h-screen flex-col bg-white dark:bg-neutral-950">
             <Navbar />
-            <main className="flex flex-1 items-center justify-center px-6 pt-16">
+            <main className="flex flex-1 items-center justify-center px-6 pt-20">
+                <Reveal>
                 <div className="max-w-md text-center">
                     <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-orange-500">
                         404
@@ -39,6 +41,7 @@ export default function NotFound() {
                         </Link>
                     </div>
                 </div>
+                </Reveal>
             </main>
             <Footer />
         </div>

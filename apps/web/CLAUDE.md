@@ -74,15 +74,22 @@ When adding a post:
 ## Deployment (Cloudflare Workers)
 
 ```bash
-pnpm deploy:build    # opennextjs-cloudflare build  -> .open-next/
-pnpm preview         # run the built Worker locally in workerd
-pnpm deploy          # build + wrangler deploy   (code only - the default)
-pnpm deploy:secrets  # build + deploy, also uploading .env.production as Worker secrets
+pnpm deploy             # build + deploy, pushing .env.production as Worker secrets
+pnpm deploy:no-secrets  # build + deploy, leaving existing secrets untouched
+pnpm deploy:build       # opennextjs-cloudflare build  -> .open-next/
+pnpm preview            # run the built Worker locally in workerd
 ```
 
-Secrets are uploaded only by `deploy:secrets`, so a normal code deploy never depends on a
-local secrets file existing. Set them once (dashboard, `wrangler secret put`, or
-`deploy:secrets`) and use plain `deploy` after that.
+`.env.production` does two jobs: Next loads it at build time (so every `NEXT_PUBLIC_*`
+production URL is inlined into the bundle), and `wrangler deploy --secrets-file` uploads
+it as Worker secrets for the server side. `.env` stays local-only.
+
+`--secrets-file` is **additive** - a key you omit keeps its current production value. But a
+key present with an *empty* value is uploaded as an empty string and overwrites the live
+secret, which is why the generated `.env.production` ships with unset keys commented out
+rather than set to `""`. Delete the line, never blank it.
+
+Use `deploy:no-secrets` when shipping code without touching secrets (e.g. a rollback).
 
 **One-time setup before the first deploy** - the R2 cache bucket must exist. It is shared by
 every app in the monorepo, so this only has to run once ever:

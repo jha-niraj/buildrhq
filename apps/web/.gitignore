@@ -23,6 +23,9 @@ yarn-error.log*
 # env files — real values are ignored, the template is committed
 .env*
 !.env.example
+# Committed template for production. The real .env.production holds live
+# secrets and stays ignored by the .env* rule above.
+!.env.production.example
 
 # cloudflare / opennext
 .open-next

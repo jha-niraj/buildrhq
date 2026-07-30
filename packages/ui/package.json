@@ -7,7 +7,7 @@
 		"./components/ui/*": "./src/components/ui/*.tsx",
 		"./postcss.config": "./postcss.config.mjs",
 		"./styles/globals.css": "./src/styles/globals.css",
-		"./lib/utils": "./src/lib/utils.ts"
+		"./lib/*": "./src/lib/*.ts"
 	},
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",
