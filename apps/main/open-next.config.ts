@@ -1,24 +1,20 @@
 import { defineCloudflareConfig } from "@opennextjs/cloudflare";
+import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
 
-// Minimal config — no R2 or Durable Objects required right now.
-// Static pages are served from Cloudflare's asset CDN.
-// Dynamic pages (auth-protected routes, AI features) are server-rendered per request.
+// Cloudflare Workers deploy config for the BuildrHQ app (app.buildrhq.com).
 //
-// When you enable R2 on the Cloudflare dashboard, uncomment the block below
-// and uncomment the r2_buckets + durable_objects sections in wrangler.jsonc:
+// Incremental cache backed by R2 (binding NEXT_INC_CACHE_R2_BUCKET -> bucket
+// "buildrhq-next-cache", declared in wrangler.jsonc, namespaced by
+// NEXT_INC_CACHE_R2_PREFIX so it can share that bucket with apps/web).
 //
-// import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
-// import { withRegionalCache } from "@opennextjs/cloudflare/overrides/incremental-cache/regional-cache";
-// import doShardedTagCache from "@opennextjs/cloudflare/overrides/tag-cache/do-sharded-tag-cache";
+// Deliberately MINIMAL, matching apps/web. No `enableCacheInterception`, no
+// `withRegionalCache`, no Durable Object sharded tag cache: that combination caused
+// intermittent production 500s in a sibling project on this same stack. Nothing in this
+// app calls revalidateTag today, so a tag cache would be cost without benefit.
 //
-// export default defineCloudflareConfig({
-//   incrementalCache: withRegionalCache(r2IncrementalCache, {
-//     mode: "long-lived",
-//     shouldLazilyUpdateOnCacheHit: true,
-//     bypassTagCacheOnCacheHit: false,
-//   }),
-//   tagCache: doShardedTagCache({ baseShardSize: 12 }),
-//   enableCacheInterception: true,
-// });
-
-export default defineCloudflareConfig({});
+// If tag-based revalidation is introduced later, add doShardedTagCache THEN — and add it
+// together with the matching durable_objects + migrations blocks in wrangler.jsonc, or
+// the Worker will fail to boot on a missing binding.
+export default defineCloudflareConfig({
+    incrementalCache: r2IncrementalCache,
+});

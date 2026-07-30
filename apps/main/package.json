@@ -9,8 +9,11 @@
 		"start": "next start",
 		"lint": "eslint --max-warnings 0",
 		"check-types": "next typegen && tsc --noEmit",
-		"deploy:build": "opennextjs-cloudflare build",
-		"deploy": "opennextjs-cloudflare build && wrangler deploy"
+		"deploy:build": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build",
+		"deploy": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy",
+		"preview": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare preview",
+		"deploy:secrets": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy --secrets-file .env.production",
+		"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
 	},
 	"dependencies": {
 		"@aws-sdk/client-s3": "^3.958.0",
@@ -59,7 +62,7 @@
 		"mermaid": "^11.12.3",
 		"monaco-editor": "^0.55.1",
 		"nanoid": "^5.1.6",
-		"next": "15.4.10",
+		"next": "^16.2.12",
 		"openai": "5.23.2",
 		"pdfjs-dist": "^5.4.449",
 		"postcss": "^8.5.6",
@@ -84,7 +87,7 @@
 		"zustand": "^5.0.9"
 	},
 	"devDependencies": {
-		"@opennextjs/cloudflare": "^1.19.8",
+		"@opennextjs/cloudflare": "^1.20.2",
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
 		"@types/node": "^22.15.3",
@@ -94,6 +97,6 @@
 		"@types/three": "^0.182.0",
 		"eslint": "^9.39.1",
 		"typescript": "5.9.2",
-		"wrangler": "^4.88.0"
+		"wrangler": "^4.116.0"
 	}
 }

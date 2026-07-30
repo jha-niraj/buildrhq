@@ -34,6 +34,12 @@ export const config = [
       ...pluginReactHooks.configs.recommended.rules,
       // React scope no longer necessary with new JSX transform.
       "react/react-in-jsx-scope": "off",
+      // prop-types is a JavaScript-era runtime check. Every component in this
+      // workspace is TypeScript, where props are already validated at compile
+      // time, and the rule cannot see through `React.forwardRef<T, Props>` — so
+      // it fires on components that ARE fully typed. Adding a propTypes block to
+      // satisfy it would be strictly worse than the types already there.
+      "react/prop-types": "off",
     },
   },
 ];

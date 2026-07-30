@@ -230,7 +230,7 @@ export function LocationSelector({ value, onChange, className }: LocationSelecto
                     {/* Step breadcrumb */}
                     <div className="flex items-center gap-1 text-xs text-neutral-500">
                         {(['country', ...(value.country === 'NP' ? ['province', 'district'] : value.country === 'IN' ? ['province'] : []), 'city'] as (typeof step)[])
-                            .map((s, i, arr) => (
+                            .map((s, i) => (
                                 <span key={s} className="flex items-center gap-1">
                                     {i > 0 && <span className="text-neutral-300">›</span>}
                                     <button

@@ -35,12 +35,12 @@ export const CardContainer = ({
 		containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
 	};
 
-	const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleMouseEnter = () => {
 		setIsMouseEntered(true);
 		if (!containerRef.current) return;
 	};
 
-	const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+	const handleMouseLeave = () => {
 		if (!containerRef.current) return;
 		setIsMouseEntered(false);
 		containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
@@ -95,17 +95,20 @@ export const CardBody = ({
 	);
 };
 
-interface CardItemProps {
+// Extends HTMLAttributes rather than declaring a `[key: string]` catch-all. The
+// catch-all actively broke typing here: `keyof` on an index-signature type is
+// `string | number`, so forwardRef's internal `Omit<P, 'ref'>` collapsed every
+// explicit prop back into the index type — `className` came out as `unknown` and
+// could not even be passed to cn(). HTMLAttributes gives className, children and
+// the standard DOM props with none of that.
+interface CardItemProps extends React.HTMLAttributes<HTMLElement> {
 	as?: React.ElementType;
-	children: React.ReactNode;
-	className?: string;
 	translateX?: number | string;
 	translateY?: number | string;
 	translateZ?: number | string;
 	rotateX?: number | string;
 	rotateY?: number | string;
 	rotateZ?: number | string;
-	[key: string]: any;
 }
 
 export const CardItem = React.forwardRef<HTMLElement, CardItemProps>(({
@@ -120,7 +123,7 @@ export const CardItem = React.forwardRef<HTMLElement, CardItemProps>(({
 	rotateZ = 0,
 	...rest
 }, forwardedRef) => {
-	const localRef = useRef<any>(null);
+	const localRef = useRef<HTMLElement>(null);
 	const ref = forwardedRef || localRef;
 	const [isMouseEntered] = useMouseEnter();
 
@@ -138,7 +141,7 @@ export const CardItem = React.forwardRef<HTMLElement, CardItemProps>(({
 		handleAnimations();
 	}, [handleAnimations]);
 
-	const Component = Tag as any;
+	const Component = Tag as React.ElementType;
 
 	return (
 		<Component

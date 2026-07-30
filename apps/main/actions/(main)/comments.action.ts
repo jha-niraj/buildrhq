@@ -274,31 +274,38 @@ export async function addComment(input: AddCommentInput): Promise<MutateCommentR
             }
         }
 
-        const result = await db.transaction(async (tx) => {
-            const [inserted] = await tx
-                .insert(comments)
-                .values({
-                    entityType,
-                    entityId,
-                    userId: user.id,
-                    parentId: parentId ?? null,
-                    body,
-                })
-                .returning();
+        const insertRow = db
+            .insert(comments)
+            .values({
+                entityType,
+                entityId,
+                userId: user.id,
+                parentId: parentId ?? null,
+                body,
+            })
+            .returning();
 
-            if (!inserted) throw new Error("Failed to insert comment");
-
-            // Denormalised counter moves in the SAME statement block as the insert,
-            // exactly as toggleProjectUpvote keeps projectIdeas.upvotes in step.
-            if (entityType === "PROJECT_IDEA") {
-                await tx
+        // The denormalised counter moves atomically with the insert — the intent
+        // behind `toggleProjectUpvote`'s db.transaction. It is `db.batch` and not
+        // `db.transaction` because the shared client is drizzle's neon-http driver,
+        // whose `.transaction()` throws "No transactions support in neon-http
+        // driver" at runtime. `.batch()` dispatches through Neon's HTTP transaction
+        // endpoint, so these two statements still commit or roll back together.
+        // `entityId` is known before the write here, so both statements can be
+        // built upfront — the delete path can't do that (see deleteComment).
+        const result = entityType === "PROJECT_IDEA"
+            ? (await db.batch([
+                insertRow,
+                db
                     .update(projectIdeas)
                     .set({ commentCount: sql`${projectIdeas.commentCount} + 1` })
-                    .where(eq(projectIdeas.id, entityId));
-            }
+                    .where(eq(projectIdeas.id, entityId)),
+            ]))[0][0]
+            : (await insertRow)[0];
 
-            return inserted;
-        });
+        if (!result) {
+            return { success: false, error: "Failed to add comment" };
+        }
 
         const node: CommentNode = {
             id: result.id,
@@ -403,36 +410,44 @@ export async function deleteComment(id: string): Promise<DeleteCommentResult> {
             return { success: false, error: "User not found" };
         }
 
-        const deleted = await db.transaction(async (tx) => {
-            // Soft delete. A hard delete would orphan every reply beneath this row.
-            // `isDeleted: false` in the WHERE also makes this idempotent — deleting
-            // twice cannot decrement the counter twice.
-            const [row] = await tx
-                .update(comments)
-                .set({ isDeleted: true })
-                .where(and(
-                    eq(comments.id, id),
-                    eq(comments.userId, user.id),
-                    eq(comments.isDeleted, false),
-                ))
-                .returning({
-                    entityType: comments.entityType,
-                    entityId: comments.entityId,
-                });
+        // One statement, so the soft delete and the counter decrement are inherently
+        // atomic — no transaction needed, which matters because the shared neon-http
+        // client has none (see the note in addComment).
+        //
+        // A CTE rather than a two-statement batch because the decrement has to be
+        // CONDITIONAL on the ownership-scoped UPDATE actually matching a row. Two
+        // separate statements can't express that: on a repeat delete the UPDATE
+        // matches nothing (its WHERE requires isDeleted = false) while a standalone
+        // decrement would still see a deleted row and fire again, drifting the
+        // counter down on every retry. Chaining off `deleted` makes the decrement
+        // run exactly as many times as the UPDATE succeeded — zero or one.
+        //
+        // Ownership stays in the WHERE clause, not in JavaScript.
+        const result = await db.execute<{ entityType: CommentEntityType; entityId: string }>(sql`
+            WITH deleted AS (
+                UPDATE ${comments}
+                SET ${sql.identifier("isDeleted")} = true,
+                    ${sql.identifier("updatedAt")} = now()
+                WHERE ${comments.id} = ${id}
+                  AND ${comments.userId} = ${user.id}
+                  AND ${comments.isDeleted} = false
+                RETURNING ${comments.entityType} AS ${sql.identifier("entityType")},
+                          ${comments.entityId} AS ${sql.identifier("entityId")}
+            ), bumped AS (
+                UPDATE ${projectIdeas}
+                -- GREATEST floors at 0 so a counter that has drifted low can never
+                -- go negative and render as "-1 comments".
+                SET ${sql.identifier("commentCount")} = GREATEST(${projectIdeas.commentCount} - 1, 0)
+                WHERE ${projectIdeas.id} IN (
+                    SELECT ${sql.identifier("entityId")} FROM deleted
+                    WHERE ${sql.identifier("entityType")} = 'PROJECT_IDEA'
+                )
+                RETURNING ${projectIdeas.id}
+            )
+            SELECT ${sql.identifier("entityType")}, ${sql.identifier("entityId")} FROM deleted
+        `);
 
-            if (!row) return null;
-
-            if (row.entityType === "PROJECT_IDEA") {
-                await tx
-                    .update(projectIdeas)
-                    // GREATEST floors at 0 so a counter that has drifted low can never
-                    // go negative and render as "-1 comments".
-                    .set({ commentCount: sql`GREATEST(${projectIdeas.commentCount} - 1, 0)` })
-                    .where(eq(projectIdeas.id, row.entityId));
-            }
-
-            return row;
-        });
+        const deleted = result.rows[0] ?? null;
 
         if (!deleted) {
             return { success: false, error: "Comment not found or not yours to delete" };

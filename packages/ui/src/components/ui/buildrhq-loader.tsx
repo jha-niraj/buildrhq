@@ -135,7 +135,8 @@ export function BuildrHQLoader({
         >
             <div className="bhq-logo-wrap">
                 <span className="bhq-glow" aria-hidden />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
+                {/* Plain <img>, not next/image: a fixed-size decorative mark in a
+                    package that must not depend on Next. */}
                 <img src={logoSrc} alt="" aria-hidden className="bhq-logo" />
             </div>
             <div className="bhq-word" style={{ marginTop: "1.15rem" }}>BuildrHQ</div>

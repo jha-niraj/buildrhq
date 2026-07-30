@@ -328,8 +328,7 @@ export default function AdminManagementPage() {
                                                             <span className={cn(
                                                                 "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium",
                                                                 {
-                                                                    "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400": invite.status === "PENDING",
-                                                                    "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400": invite.status === "USED",
+                                                                    "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400": invite.status === "PENDING" || invite.status === "USED",
                                                                     "bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400": invite.status === "EXPIRED",
                                                                 }
                                                             )}>

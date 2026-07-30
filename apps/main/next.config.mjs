@@ -34,47 +34,30 @@ const nextConfig = {
     // @prisma/client — migrated to Drizzle; remaining imports are type-only (erased at compile time)
     // @react-pdf/renderer — uses canvas rendering, not compatible with Workers bundling
     // mammoth — uses Node.js fs/Buffer for DOCX parsing; already on server actions only
+    // `sass` is listed here (not just externalised in a bundler hook) because
+    // @excalidraw/excalidraw resolves it as an optional peer dep, which used to pull
+    // ~4 MB of dead weight into the Cloudflare Worker. serverExternalPackages is
+    // bundler-agnostic, so it keeps working now that Turbopack is the default.
     serverExternalPackages: ["@prisma/client", "prisma", "@react-pdf/renderer", "mammoth", "sass"],
 
-    webpack: (config, { isServer }) => {
-        config.module.rules.push({
-            test: /\.md$/,
-            use: "raw-loader",
-        });
-
-        if (!isServer) {
-            config.resolve.fallback = {
-                ...config.resolve.fallback,
-                canvas: false,
-                fs: false,
-                path: false,
-                stream: false,
-            };
-        }
-
-        // Suppress import.meta warning from unpdf (third-party package limitation)
-        config.ignoreWarnings = [
-            ...(config.ignoreWarnings ?? []),
-            { module: /unpdf/ },
-        ];
-
-        // Hard-exclude sass from the server bundle — no .scss files in this app,
-        // but @excalidraw/excalidraw resolves sass as an optional peer dep which
-        // inflates the Cloudflare Worker by ~4 MB.
-        if (isServer) {
-            config.externals = [
-                ...(Array.isArray(config.externals) ? config.externals : [config.externals].filter(Boolean)),
-                ({ request }, callback) => {
-                    if (request === 'sass' || request?.startsWith('sass/')) {
-                        return callback(null, `commonjs ${request}`);
-                    }
-                    callback();
-                },
-            ];
-        }
-
-        return config;
+    // Next 16 builds with Turbopack by default, so the old `webpack(config)` hook no
+    // longer runs. Everything it did is either gone or expressed declaratively now:
+    //
+    //   raw-loader for *.md   — dropped. The blog content moved to apps/web; this app
+    //                           has no .md imports left (verified by grep).
+    //   ignoreWarnings/unpdf  — dropped. That was cosmetic webpack noise suppression.
+    //   sass server external  — now covered by serverExternalPackages above.
+    //   resolve.fallback      — replaced by the alias below.
+    //
+    // pdfjs-dist reaches for the optional Node-only `canvas` package. In the browser it
+    // is never actually used, so it is aliased to an empty module rather than allowed to
+    // fail resolution during the client build.
+    turbopack: {
+        resolveAlias: {
+            canvas: { browser: "./lib/empty-module.js" },
+        },
     },
+
     reactStrictMode: true,
 };
 

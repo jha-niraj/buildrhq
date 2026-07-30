@@ -320,9 +320,8 @@ export default function CreditsPage() {
                                                     <span className={cn(
                                                         "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium",
                                                         {
-                                                            "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400": txn.type === "PURCHASE",
+                                                            "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400": txn.type === "PURCHASE" || txn.type === "BONUS",
                                                             "bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400": txn.type === "SPEND",
-                                                            "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400": txn.type === "BONUS",
                                                             "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400": txn.type === "REWARD",
                                                         }
                                                     )}>

@@ -103,6 +103,25 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 	)
 }
 
+/**
+ * The subset of a Recharts tooltip/legend payload entry that this component reads.
+ *
+ * Recharts types its payload loosely, so the shadcn chart wrapper originally used
+ * `any` throughout. Naming the shape keeps the callbacks below type-checked and
+ * makes it obvious which fields the renderer depends on — everything here is
+ * optional because which keys are populated depends on the chart type.
+ */
+export interface ChartPayloadItem {
+	type?: string
+	name?: string
+	dataKey?: string | number
+	value?: unknown
+	color?: string
+	fill?: string
+	payload?: Record<string, unknown> & { fill?: string }
+	[key: string]: unknown
+}
+
 const ChartTooltip = RechartsPrimitive.Tooltip
 
 function ChartTooltipContent({
@@ -121,11 +140,17 @@ function ChartTooltipContent({
 	labelKey,
 }: React.ComponentProps<"div"> & {
 	active?: boolean
-	payload?: any[]
+	payload?: ChartPayloadItem[]
 	label?: string
-	labelFormatter?: (label: any, payload: any) => React.ReactNode
+	labelFormatter?: (label: unknown, payload: ChartPayloadItem[] | undefined) => React.ReactNode
 	labelClassName?: string
-	formatter?: (value: any, name: any, item: any, index: any, payload: any) => React.ReactNode
+	formatter?: (
+		value: unknown,
+		name: string | undefined,
+		item: ChartPayloadItem,
+		index: number,
+		payload: ChartPayloadItem["payload"],
+	) => React.ReactNode
 	color?: string
 	hideLabel?: boolean
 	hideIndicator?: boolean
@@ -188,11 +213,11 @@ function ChartTooltipContent({
 			<div className="grid gap-1.5">
 				{
 					payload
-						.filter((item: any) => item.type !== "none")
-						.map((item: any, index: number) => {
+						.filter((item) => item.type !== "none")
+						.map((item, index) => {
 							const key = `${nameKey || item.name || item.dataKey || "value"}`
 							const itemConfig = getPayloadConfigFromPayload(config, item, key)
-							const indicatorColor = color || item.payload.fill || item.color
+							const indicatorColor = color || item.payload?.fill || item.color
 
 							return (
 								<div
@@ -245,7 +270,7 @@ function ChartTooltipContent({
 														</span>
 													</div>
 													{
-														item.value && (
+														(typeof item.value === "string" || typeof item.value === "number") && (
 															<span className="text-foreground font-mono font-medium tabular-nums">
 																{item.value.toLocaleString()}
 															</span>
@@ -273,7 +298,7 @@ function ChartLegendContent({
 	verticalAlign = "bottom",
 	nameKey,
 }: React.ComponentProps<"div"> & {
-	payload?: any[]
+	payload?: ChartPayloadItem[]
 	verticalAlign?: "top" | "bottom"
 	hideIcon?: boolean
 	nameKey?: string
@@ -294,14 +319,14 @@ function ChartLegendContent({
 		>
 			{
 				payload
-					.filter((item: any) => item.type !== "none")
-					.map((item: any) => {
+					.filter((item) => item.type !== "none")
+					.map((item) => {
 						const key = `${nameKey || item.dataKey || "value"}`
 						const itemConfig = getPayloadConfigFromPayload(config, item, key)
 
 						return (
 							<div
-								key={item.value}
+								key={item.dataKey ?? item.name}
 								className={cn(
 									"[&>svg]:text-muted-foreground flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3"
 								)}
