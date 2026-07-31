@@ -253,15 +253,15 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
     return (
         <div className={`${className} space-y-6`}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Card className="bg-gradient-to-br from-orange-500 to-red-600 text-white border-0 shadow-2xl rounded-xl transition-all duration-300">
+                <Card className="bg-gradient-to-br from-neutral-900 to-red-600 text-white border-0 shadow-2xl rounded-xl transition-all duration-300">
                     <CardContent className="p-6">
                         <div className="flex items-center justify-between">
                             <div>
-                                <p className="text-orange-100 text-sm font-medium">Current Streak</p>
+                                <p className="text-neutral-100 text-sm font-medium">Current Streak</p>
                                 <p className="text-3xl font-bold">{stats?.streak.currentStreak || 0}</p>
-                                <p className="text-orange-100 text-xs">days</p>
+                                <p className="text-neutral-100 text-xs">days</p>
                             </div>
-                            <Flame className="w-8 h-8 text-orange-200" />
+                            <Flame className="w-8 h-8 text-neutral-200" />
                         </div>
                     </CardContent>
                 </Card>
@@ -282,12 +282,12 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                         <div className="flex items-center justify-between">
                             <div>
                                 <p className="text-muted-foreground text-sm font-medium">Next Milestone</p>
-                                <p className="text-3xl font-bold text-amber-600">
+                                <p className="text-3xl font-bold text-neutral-800">
                                     {Math.max(0, Math.ceil((stats?.streak.currentStreak || 0 + 1) / 7) * 7 - (stats?.streak.currentStreak || 0)) || '365+'}
                                 </p>
                                 <p className="text-muted-foreground text-xs">days</p>
                             </div>
-                            <Trophy className="w-8 h-8 text-amber-500" />
+                            <Trophy className="w-8 h-8 text-neutral-900" />
                         </div>
                     </CardContent>
                 </Card>
@@ -339,9 +339,9 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                                         className={`
                                         h-8 w-8 rounded border-2 text-xs font-medium transition-all duration-200
                                         ${getIntensityColor(intensity)}
-                                        ${isToday ? 'ring-2 ring-orange-500' : ''}
+                                        ${isToday ? 'ring-2 ring-neutral-900' : ''}
                                         ${isFuture ? 'opacity-30' : 'hover:scale-110 cursor-pointer'}
-                                        ${selectedDay?.date.getTime() === dayData.date.getTime() ? 'ring-2 ring-orange-500' : ''}
+                                        ${selectedDay?.date.getTime() === dayData.date.getTime() ? 'ring-2 ring-neutral-900' : ''}
                                     `}
                                         onClick={() => setSelectedDay(dayData)}
                                         disabled={isFuture}
@@ -393,7 +393,7 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                                     {
                                         loadingDailySummary ? (
                                             <div className="flex items-center justify-center py-12">
-                                                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-500"></div>
+                                                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-neutral-900"></div>
                                             </div>
                                         ) : selectedDay.hasActivity && dailySummary ? (
                                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -407,28 +407,28 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    <Coins className="w-4 h-4 text-yellow-600" />
+                                                    <Coins className="w-4 h-4 text-neutral-800" />
                                                     <div>
                                                         <p className="text-sm text-muted-foreground">Credits Earned</p>
-                                                        <p className="font-bold text-yellow-600">
+                                                        <p className="font-bold text-neutral-800">
                                                             {dailySummary.totalCreditsEarned}
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    <Clock className="w-4 h-4 text-orange-600" />
+                                                    <Clock className="w-4 h-4 text-neutral-800" />
                                                     <div>
                                                         <p className="text-sm text-muted-foreground">Time Spent</p>
-                                                        <p className="font-bold text-orange-600">
+                                                        <p className="font-bold text-neutral-800">
                                                             {dailySummary.totalTimeSpent}m
                                                         </p>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    <ActivityIcon className="w-4 h-4 text-amber-600" />
+                                                    <ActivityIcon className="w-4 h-4 text-neutral-800" />
                                                     <div>
                                                         <p className="text-sm text-muted-foreground">Activities</p>
-                                                        <p className="font-bold text-amber-600">
+                                                        <p className="font-bold text-neutral-800">
                                                             {dailySummary.activitiesCount}
                                                         </p>
                                                     </div>
@@ -442,14 +442,14 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                                                                     const getActivityCategory = (type: ActivityType) => {
                                                                         switch (type) {
                                                                             case ActivityType.DAILY_QUIZ_COMPLETED:
-                                                                                return { category: 'Quiz', color: 'bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300' };
+                                                                                return { category: 'Quiz', color: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-100' };
                                                                             case ActivityType.LEARN_COMPLETED:
-                                                                                return { category: 'Learn', color: 'bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300' };
+                                                                                return { category: 'Learn', color: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-100' };
                                                                             case ActivityType.STARTED_INTERVIEW:
                                                                                 return { category: 'AI Interview', color: 'bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300' };
                                                                             case ActivityType.REFERRAL_BONUS:
                                                                             case ActivityType.REWARD_RECEIVED:
-                                                                                return { category: 'Reward', color: 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300' };
+                                                                                return { category: 'Reward', color: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-100' };
                                                                             default:
                                                                                 return { category: 'Activity', color: 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300' };
                                                                         }
@@ -509,14 +509,14 @@ const ActivityCalendar: React.FC<ActivityCalendarProps> = ({ className = "" }) =
                                                                             <div className="flex flex-col gap-1 ml-4">
                                                                                 {
                                                                                     activity.xpEarned > 0 && (
-                                                                                        <Badge variant="secondary" className="text-xs bg-orange-600 text-white border-0">
+                                                                                        <Badge variant="secondary" className="text-xs bg-neutral-800 text-white border-0">
                                                                                             +{activity.xpEarned} XP
                                                                                         </Badge>
                                                                                     )
                                                                                 }
                                                                                 {
                                                                                     activity.creditsEarned > 0 && (
-                                                                                        <Badge variant="secondary" className="text-xs bg-amber-600 text-white border-0">
+                                                                                        <Badge variant="secondary" className="text-xs bg-neutral-800 text-white border-0">
                                                                                             +{activity.creditsEarned} Credits
                                                                                         </Badge>
                                                                                     )

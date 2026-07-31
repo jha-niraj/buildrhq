@@ -201,7 +201,7 @@ const DocumentUploadDialog = ({
                             }
                             {
                                 !isExtracting && extractedText && (
-                                    <div className="text-sm text-amber-600 dark:text-amber-400">
+                                    <div className="text-sm text-neutral-800 dark:text-neutral-100">
                                         ✓ Resume text extracted ({extractedText.length} characters)
                                     </div>
                                 )

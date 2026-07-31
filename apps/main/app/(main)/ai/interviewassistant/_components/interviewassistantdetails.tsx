@@ -192,9 +192,9 @@ function VoiceRecorder({ onRecordingComplete, isRecording, onStartRecording, onS
 
     return (
         <div className="space-y-2">
-            <div className="flex items-center gap-2 px-3 py-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-                <Clock className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-                <span className="text-amber-700 dark:text-amber-300 text-sm">
+            <div className="flex items-center gap-2 px-3 py-2 bg-neutral-50 dark:bg-neutral-800/20 rounded-lg border border-neutral-200 dark:border-neutral-800">
+                <Clock className="h-4 w-4 text-neutral-800 dark:text-neutral-100" />
+                <span className="text-neutral-700 dark:text-neutral-100 text-sm">
                     💡 Keep your answer under 1 minute for optimal processing
                 </span>
             </div>
@@ -211,12 +211,12 @@ function VoiceRecorder({ onRecordingComplete, isRecording, onStartRecording, onS
                     ) : (
                         <div className="flex items-center gap-3">
                             <div className={`flex items-center gap-2 px-3 py-2 rounded-lg border ${recordingTime > 60
-                                ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
+                                ? 'bg-neutral-50 dark:bg-neutral-800/20 border-neutral-200 dark:border-neutral-800'
                                 : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
                                 }`}>
                                 <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
                                 <span className={`text-sm font-medium ${recordingTime > 60
-                                    ? 'text-amber-700 dark:text-amber-300'
+                                    ? 'text-neutral-700 dark:text-neutral-100'
                                     : 'text-red-700 dark:text-red-300'
                                     }`}>
                                     Recording: {formatTime(recordingTime)}
@@ -347,15 +347,15 @@ function QuestionAnswering({
         <div className="space-y-6">
             {
                 includePractice && hasPracticed && (
-                    <Card className="bg-gradient-to-r from-amber-50 to-amber-50 dark:from-amber-900/20 dark:to-amber-900/20 border-amber-200 dark:border-amber-800">
+                    <Card className="bg-gradient-to-r from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 border-neutral-200 dark:border-neutral-800">
                         <CardContent className="p-4">
                             <div className="flex items-center gap-3">
-                                <CheckCircle className="h-5 w-5 text-amber-600" />
+                                <CheckCircle className="h-5 w-5 text-neutral-800" />
                                 <div>
-                                    <h4 className="text-left font-semibold text-amber-800 dark:text-amber-300">
+                                    <h4 className="text-left font-semibold text-neutral-800 dark:text-neutral-100">
                                         Practice Completed!
                                     </h4>
-                                    <p className="text-sm text-amber-700 dark:text-amber-400">
+                                    <p className="text-sm text-neutral-700 dark:text-neutral-100">
                                         Great job! You can now view expert answers and compare your response.
                                     </p>
                                 </div>
@@ -369,7 +369,7 @@ function QuestionAnswering({
                     <Card className="border-slate-200 dark:border-slate-700">
                         <CardHeader>
                             <CardTitle className="flex items-center gap-3 text-lg">
-                                <MessageSquare className="h-5 w-5 text-orange-600" />
+                                <MessageSquare className="h-5 w-5 text-neutral-800" />
                                 Your Answer
                             </CardTitle>
                         </CardHeader>
@@ -410,7 +410,7 @@ function QuestionAnswering({
                                                     <Button
                                                         onClick={handleTextSubmit}
                                                         disabled={isSubmitting || !textAnswer.trim()}
-                                                        className="w-full bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700"
+                                                        className="w-full bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700"
                                                     >
                                                         {
                                                             isSubmitting ? (
@@ -458,8 +458,8 @@ function QuestionAnswering({
                                                 {
                                                     existingResponse.score && (
                                                         <Badge
-                                                            className={`text-xs ${existingResponse.score >= 80 ? 'bg-amber-100 text-amber-800' :
-                                                                existingResponse.score >= 60 ? 'bg-yellow-100 text-yellow-800' :
+                                                            className={`text-xs ${existingResponse.score >= 80 ? 'bg-neutral-100 text-neutral-800' :
+                                                                existingResponse.score >= 60 ? 'bg-neutral-100 text-neutral-800' :
                                                                     'bg-red-100 text-red-800'
                                                                 }`}
                                                         >
@@ -481,10 +481,10 @@ function QuestionAnswering({
             }
             {
                 showFeedback && feedback && (
-                    <Card className="border-orange-200 dark:border-orange-800">
+                    <Card className="border-neutral-200 dark:border-neutral-800">
                         <CardHeader>
                             <CardTitle className="flex items-center gap-3 text-lg">
-                                <BarChart3 className="h-5 w-5 text-orange-600" />
+                                <BarChart3 className="h-5 w-5 text-neutral-800" />
                                 AI Feedback
                             </CardTitle>
                         </CardHeader>
@@ -493,12 +493,12 @@ function QuestionAnswering({
                                 feedback.score !== undefined && (
                                     <div className="flex items-center gap-4">
                                         <div className="flex items-center gap-2">
-                                            <Award className="h-5 w-5 text-yellow-600" />
+                                            <Award className="h-5 w-5 text-neutral-800" />
                                             <span className="font-semibold">Score:</span>
                                         </div>
                                         <Badge
-                                            className={`text-lg px-3 py-1 ${feedback.score >= 80 ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400' :
-                                                feedback.score >= 60 ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400' :
+                                            className={`text-lg px-3 py-1 ${feedback.score >= 80 ? 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100' :
+                                                feedback.score >= 60 ? 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100' :
                                                     'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
                                                 }`}
                                         >
@@ -525,16 +525,16 @@ function QuestionAnswering({
                             <div className="space-y-6">
                                 {
                                     (feedback?.strengths?.length ?? 0) > 0 && (
-                                        <div className="bg-amber-50 dark:bg-amber-950 border border-amber-200 dark:border-amber-700 rounded-lg p-4 shadow-sm">
-                                            <h4 className="text-amber-800 dark:text-amber-300 font-semibold text-base flex items-center gap-2 mb-3">
-                                                <TrendingUp className="h-5 w-5 text-amber-600" />
+                                        <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-lg p-4 shadow-sm">
+                                            <h4 className="text-neutral-800 dark:text-neutral-100 font-semibold text-base flex items-center gap-2 mb-3">
+                                                <TrendingUp className="h-5 w-5 text-neutral-800" />
                                                 Strengths
                                             </h4>
                                             <ul className="space-y-2">
                                                 {
                                                     feedback?.strengths?.map((strength: string, index: number) => (
                                                         <li key={index} className="flex items-start gap-3">
-                                                            <CheckCircle className="h-4 w-4 mt-1 text-amber-600 flex-shrink-0" />
+                                                            <CheckCircle className="h-4 w-4 mt-1 text-neutral-800 flex-shrink-0" />
                                                             <span className="text-sm text-slate-800 dark:text-slate-300">{strength}</span>
                                                         </li>
                                                     ))
@@ -545,16 +545,16 @@ function QuestionAnswering({
                                 }
                                 {
                                     (feedback?.improvements?.length ?? 0) > 0 && (
-                                        <div className="bg-orange-50 dark:bg-slate-900 border border-orange-200 dark:border-orange-700 rounded-lg p-4 shadow-sm">
-                                            <h4 className="text-orange-800 dark:text-orange-300 font-semibold text-base flex items-center gap-2 mb-3">
-                                                <Target className="h-5 w-5 text-orange-600" />
+                                        <div className="bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-neutral-700 rounded-lg p-4 shadow-sm">
+                                            <h4 className="text-neutral-800 dark:text-neutral-100 font-semibold text-base flex items-center gap-2 mb-3">
+                                                <Target className="h-5 w-5 text-neutral-800" />
                                                 Areas for Improvement
                                             </h4>
                                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                                 {
                                                     feedback?.improvements?.map((improvement: string, index: number) => (
                                                         <li key={index} className="flex items-start gap-3">
-                                                            <ArrowRight className="h-4 w-4 mt-1 text-orange-600 flex-shrink-0" />
+                                                            <ArrowRight className="h-4 w-4 mt-1 text-neutral-800 flex-shrink-0" />
                                                             <span className="text-sm text-left text-slate-800 dark:text-slate-300">{improvement}</span>
                                                         </li>
                                                     ))
@@ -565,23 +565,23 @@ function QuestionAnswering({
                                 }
                                 {
                                     feedback.comparedToExpert && (
-                                        <div className="bg-orange-50 dark:bg-orange-950 border border-orange-200 dark:border-orange-700 rounded-lg p-4 shadow-sm">
-                                            <h4 className="text-orange-800 dark:text-orange-300 font-semibold text-base flex items-center gap-2 mb-4">
-                                                <Users className="h-5 w-5 text-orange-600" />
+                                        <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-lg p-4 shadow-sm">
+                                            <h4 className="text-neutral-800 dark:text-neutral-100 font-semibold text-base flex items-center gap-2 mb-4">
+                                                <Users className="h-5 w-5 text-neutral-800" />
                                                 Comparison with Expert Answer
                                             </h4>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                                 {
                                                     (feedback?.comparedToExpert?.similarities?.length ?? 0) > 0 && (
                                                         <div>
-                                                            <h5 className="text-sm text-left font-medium text-amber-800 dark:text-amber-300 mb-2">
+                                                            <h5 className="text-sm text-left font-medium text-neutral-800 dark:text-neutral-100 mb-2">
                                                                 ✅ Similarities
                                                             </h5>
                                                             <ul className="space-y-2">
                                                                 {
                                                                     feedback?.comparedToExpert?.similarities?.map((similarity: string, index: number) => (
                                                                         <li key={index} className="flex items-start gap-3">
-                                                                            <CheckCircle className="h-3 w-3 mt-1 text-amber-600 flex-shrink-0" />
+                                                                            <CheckCircle className="h-3 w-3 mt-1 text-neutral-800 flex-shrink-0" />
                                                                             <span className="text-sm text-left text-slate-700 dark:text-slate-300">{similarity}</span>
                                                                         </li>
                                                                     ))
@@ -620,15 +620,15 @@ function QuestionAnswering({
             }
             {
                 includePractice && includeAnswers && !hasPracticed && (
-                    <Card className="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 border-yellow-200 dark:border-yellow-800">
+                    <Card className="bg-gradient-to-r from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 border-neutral-200 dark:border-neutral-800">
                         <CardContent className="p-4">
                             <div className="flex items-center gap-3">
-                                <Lock className="h-5 w-5 text-yellow-600" />
+                                <Lock className="h-5 w-5 text-neutral-800" />
                                 <div className="text-left">
-                                    <h4 className="font-semibold text-yellow-800 dark:text-yellow-300">
+                                    <h4 className="font-semibold text-neutral-800 dark:text-neutral-100">
                                         Practice Required
                                     </h4>
-                                    <p className="text-sm text-yellow-700 dark:text-yellow-400">
+                                    <p className="text-sm text-neutral-700 dark:text-neutral-100">
                                         Complete your practice above to unlock the expert answer and detailed tips.
                                     </p>
                                 </div>
@@ -648,7 +648,7 @@ function formatAnswer(content: string | string[]) {
                 {
                     content.map((point, index) => (
                         <li key={index} className="flex items-start gap-2">
-                            <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                            <div className="w-1.5 h-1.5 bg-neutral-900 rounded-full mt-2 flex-shrink-0" />
                             <span className="text-gray-700 dark:text-gray-300">{point}</span>
                         </li>
                     ))
@@ -667,7 +667,7 @@ function formatAnswer(content: string | string[]) {
                         if (cleanLine) {
                             return (
                                 <li key={index} className="flex items-start gap-2">
-                                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                                    <div className="w-1.5 h-1.5 bg-neutral-900 rounded-full mt-2 flex-shrink-0" />
                                     <span className="text-gray-700 dark:text-gray-300">{cleanLine}</span>
                                 </li>
                             )
@@ -792,9 +792,9 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
             case "Easy":
-                return "bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800"
+                return "bg-neutral-100 text-neutral-800 border-neutral-200 dark:bg-neutral-800/30 dark:text-neutral-100 dark:border-neutral-800"
             case "Medium":
-                return "bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800"
+                return "bg-neutral-100 text-neutral-800 border-neutral-200 dark:bg-neutral-800/30 dark:text-neutral-100 dark:border-neutral-800"
             case "Hard":
                 return "bg-rose-100 text-rose-800 border-rose-200 dark:bg-rose-900/30 dark:text-rose-400 dark:border-rose-800"
             default:
@@ -806,7 +806,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
         return (
             <div className="min-h-screen bg-white dark:bg-neutral-900 flex items-center justify-center">
                 <div className="text-center">
-                    <div className="w-16 h-16 border-4 border-orange-600 dark:border-orange-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <div className="w-16 h-16 border-4 border-neutral-800 dark:border-neutral-100 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
                     <p className="text-slate-600 dark:text-slate-400">Loading interview questions...</p>
                 </div>
             </div>
@@ -815,7 +815,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
 
     if (!generation) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-slate-50 via-amber-50/30 to-amber-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800 flex items-center justify-center">
+            <div className="min-h-screen bg-gradient-to-br from-slate-50 via-neutral-50/30 to-neutral-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800 flex items-center justify-center">
                 <div className="text-center">
                     <h1 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Generation not found</h1>
                     <Link href="/ai/jobinterviewassistant">
@@ -834,10 +834,10 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
             label: "Technical",
             icon: Brain,
             count: technicalQuestions?.length || 0,
-            color: "from-orange-500 to-orange-600",
-            bgColor: "bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/50 dark:to-orange-950/50",
-            activeBg: "bg-orange-500 text-white",
-            hoverBg: "hover:bg-orange-50 dark:hover:bg-orange-950/50",
+            color: "from-neutral-900 to-neutral-800",
+            bgColor: "bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900/50 dark:to-neutral-900/50",
+            activeBg: "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900",
+            hoverBg: "hover:bg-neutral-50 dark:hover:bg-neutral-900/50",
             questions: technicalQuestions
         },
         {
@@ -845,10 +845,10 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
             label: "Behavioral",
             icon: Users,
             count: behavioralQuestions?.length || 0,
-            color: "from-amber-500 to-amber-600",
-            bgColor: "bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/50 dark:to-amber-950/50",
-            activeBg: "bg-amber-500 text-white",
-            hoverBg: "hover:bg-amber-50 dark:hover:bg-amber-950/50",
+            color: "from-neutral-900 to-neutral-800",
+            bgColor: "bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900/50 dark:to-neutral-900/50",
+            activeBg: "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900",
+            hoverBg: "hover:bg-neutral-50 dark:hover:bg-neutral-900/50",
             questions: behavioralQuestions
         }
     ]
@@ -867,7 +867,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                 <Button
                                     variant="outline"
                                     size="sm"
-                                    className="gap-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-amber-200 dark:border-amber-700 hover:bg-amber-100/40 dark:hover:bg-amber-900/30 text-amber-700 dark:text-amber-300 transition-all"
+                                    className="gap-2 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100/40 dark:hover:bg-neutral-800/30 text-neutral-700 dark:text-neutral-100 transition-all"
                                 >
                                     <ArrowLeft className="h-4 w-4" />
                                     Back to Generator
@@ -875,14 +875,14 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                             </Link>
                         </div>
                         <Card className="bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-700 shadow-xl rounded-2xl overflow-hidden">
-                            <div className="bg-gradient-to-br from-amber-100/40 via-amber-100/30 to-amber-100/30 dark:from-amber-900/10 dark:via-amber-900/10 dark:to-amber-900/10 p-8 border-b border-amber-200 dark:border-amber-800/40 rounded-t-2xl">
+                            <div className="bg-gradient-to-br from-neutral-100/40 via-neutral-100/30 to-neutral-100/30 dark:from-neutral-800/10 dark:via-neutral-800/10 dark:to-neutral-800/10 p-8 border-b border-neutral-200 dark:border-neutral-800/40 rounded-t-2xl">
                                 <div className="flex flex-col md:flex-row justify-between gap-6">
                                     <div className="flex-1">
                                         <div className="flex items-center gap-4 mb-4">
-                                            <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500 to-amber-500 shadow-lg ring-1 ring-amber-400/30">
+                                            <div className="p-3 rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-900 shadow-lg ring-1 ring-neutral-800/30">
                                                 <Briefcase className="h-6 w-6 text-white" />
                                             </div>
-                                            <Badge className="bg-amber-100 hover:text-white text-amber-800 dark:bg-amber-800/30 dark:text-amber-300 border border-amber-200 dark:border-amber-700 px-3 py-1 rounded-md text-sm font-medium">
+                                            <Badge className="bg-neutral-100 hover:text-white text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700 px-3 py-1 rounded-md text-sm font-medium">
                                                 Interview Preparation
                                             </Badge>
                                         </div>
@@ -891,18 +891,18 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                         </h1>
                                         <div className="flex flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-300">
                                             <div className="flex items-center gap-2">
-                                                <Calendar className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                                <Calendar className="h-4 w-4 text-neutral-800 dark:text-neutral-100" />
                                                 <span>{format(new Date(generation.createdAt), "MMMM d, yyyy")}</span>
                                             </div>
                                             {
                                                 generation.companyUrl && (
                                                     <div className="flex items-center gap-2">
-                                                        <Globe className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                                        <Globe className="h-4 w-4 text-neutral-800 dark:text-neutral-100" />
                                                         <Link
                                                             href={generation.companyUrl}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
-                                                            className="underline underline-offset-4 hover:text-amber-700 dark:hover:text-amber-300"
+                                                            className="underline underline-offset-4 hover:text-neutral-700 dark:hover:text-neutral-100"
                                                         >
                                                             Company Website
                                                         </Link>
@@ -910,7 +910,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                 )
                                             }
                                             <div className="flex items-center gap-2">
-                                                <Target className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                                <Target className="h-4 w-4 text-neutral-800 dark:text-neutral-100" />
                                                 <span>{generation.includeAnswers ? 'With Expert Solutions' : 'Practice Questions'}</span>
                                             </div>
                                         </div>
@@ -918,7 +918,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                     <div className="flex items-center gap-2 flex-wrap">
                                         {
                                             generation.includeAnswers && (
-                                                <Badge className="bg-amber-100 hover:text-white text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 border border-amber-200 dark:border-amber-700 px-3 py-1 text-sm rounded-md font-medium inline-flex items-center gap-2">
+                                                <Badge className="bg-neutral-100 hover:text-white text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700 px-3 py-1 text-sm rounded-md font-medium inline-flex items-center gap-2">
                                                     <Lightbulb className="h-4 w-4" />
                                                     Expert Solutions Included
                                                 </Badge>
@@ -926,13 +926,13 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                         }
                                         {
                                             generation.includePractice && (
-                                                <Badge className="bg-amber-100 hover:text-white text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 border border-amber-200 dark:border-amber-700 px-3 py-1 text-sm rounded-md font-medium inline-flex items-center gap-2">
+                                                <Badge className="bg-neutral-100 hover:text-white text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-700 px-3 py-1 text-sm rounded-md font-medium inline-flex items-center gap-2">
                                                     <Workflow className="h-4 w-4" />
                                                     Practice Included
                                                 </Badge>
                                             )
                                         }
-                                        <Badge className="bg-amber-50 hover:text-white text-amber-700 dark:bg-amber-900/20 dark:text-amber-300 border border-amber-200 dark:border-amber-600 px-3 py-1 text-sm rounded-md font-medium">
+                                        <Badge className="bg-neutral-50 hover:text-white text-neutral-700 dark:bg-neutral-800/20 dark:text-neutral-100 border border-neutral-200 dark:border-neutral-300 px-3 py-1 text-sm rounded-md font-medium">
                                             {
                                                 (technicalQuestions?.length || 0) +
                                                 (behavioralQuestions?.length || 0) +
@@ -945,7 +945,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                     generation.jobDescription && (
                                         <div className="mt-6 p-5 bg-white/60 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl backdrop-blur-sm">
                                             <h3 className="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                                                <FileText className="h-4 w-4 text-amber-600" />
+                                                <FileText className="h-4 w-4 text-neutral-800" />
                                                 Job Description
                                             </h3>
                                             <p className="text-slate-800 dark:text-slate-300 text-sm leading-relaxed line-clamp-3">
@@ -970,11 +970,11 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                         animate={{ opacity: 1, y: 0 }}
                                         className="mb-6"
                                     >
-                                        <Card className="bg-gradient-to-r from-orange-50 to-pink-50 dark:from-orange-950/30 dark:to-pink-950/30 border-orange-200 dark:border-orange-700">
+                                        <Card className="bg-gradient-to-r from-neutral-50 to-pink-50 dark:from-neutral-900/30 dark:to-pink-950/30 border-neutral-200 dark:border-neutral-700">
                                             <CardContent className="p-6">
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center gap-4">
-                                                        <div className="p-3 bg-gradient-to-br from-orange-500 to-pink-500 rounded-xl shadow-lg">
+                                                        <div className="p-3 bg-gradient-to-br from-neutral-900 to-pink-500 rounded-xl shadow-lg">
                                                             <Code className="h-6 w-6 text-white" />
                                                         </div>
                                                         <div>
@@ -985,7 +985,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                                 Practice algorithms and data structures with AI evaluation
                                                             </p>
                                                             <div className="flex items-center gap-2 mt-2">
-                                                                <Badge className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400">
+                                                                <Badge className="bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100">
                                                                     {codingQuestions.length} Questions
                                                                 </Badge>
                                                                 <Badge variant="outline" className="text-xs">
@@ -994,7 +994,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <Button asChild className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white shadow-lg">
+                                                    <Button asChild className="bg-gradient-to-r from-neutral-900 to-pink-500 hover:from-neutral-800 hover:to-pink-600 text-white shadow-lg">
                                                         <Link href={`/ai/jobinterviewassistant/${slug}/codingquestions`}>
                                                             <Code className="h-4 w-4 mr-2" />
                                                             Start Coding Challenge
@@ -1014,18 +1014,18 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                             key={tab.value}
                                             value={tab.value}
                                             className={`flex flex-col items-center gap-3 p-6 rounded-xl transition-all duration-300 data-[state=active]:shadow-lg ${activeTab === tab.value
-                                                ? `bg-gradient-to-br from-amber-500 to-amber-500 text-white shadow-lg`
-                                                : `hover:bg-amber-50 dark:hover:bg-amber-900/20 text-slate-600 dark:text-slate-400 hover:text-amber-600 dark:hover:text-amber-400`
+                                                ? `bg-gradient-to-br from-neutral-900 to-neutral-900 text-white shadow-lg`
+                                                : `hover:bg-neutral-50 dark:hover:bg-neutral-800/20 text-slate-600 dark:text-slate-400 hover:text-neutral-800 dark:hover:text-neutral-100`
                                                 }`}
                                         >
                                             <div className="flex items-center gap-3">
                                                 <div className={`p-2 rounded-lg ${activeTab === tab.value
                                                     ? 'bg-white/20'
-                                                    : 'bg-amber-100 dark:bg-amber-900/30'
+                                                    : 'bg-neutral-100 dark:bg-neutral-800/30'
                                                     }`}>
                                                     <tab.icon className={`h-5 w-5 ${activeTab === tab.value
                                                         ? 'text-white'
-                                                        : 'text-amber-600 dark:text-amber-400'
+                                                        : 'text-neutral-800 dark:text-neutral-100'
                                                         }`} />
                                                 </div>
                                                 <div className="text-left">
@@ -1038,7 +1038,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                     <Badge
                                                         className={`text-xs hover:text-white px-2 py-1 mt-1 ${activeTab === tab.value
                                                             ? 'bg-white/20 text-white border-white/20'
-                                                            : 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-800'
+                                                            : 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800'
                                                             }`}
                                                     >
                                                         {tab.count} Questions
@@ -1058,9 +1058,9 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                             </TabsList>
                             <TabsContent value="technical" className="space-y-0">
                                 <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-slate-200/50 dark:border-slate-700/50 shadow-xl overflow-hidden">
-                                    <div className="bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-950/30 dark:to-amber-950/30 p-8 border-b border-amber-200 dark:border-amber-700">
+                                    <div className="bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-900/30 dark:to-neutral-900/30 p-8 border-b border-neutral-200 dark:border-neutral-700">
                                         <div className="flex items-center gap-4 mb-4">
-                                            <div className="p-4 bg-gradient-to-br from-amber-500 to-amber-500 rounded-2xl shadow-lg">
+                                            <div className="p-4 bg-gradient-to-br from-neutral-900 to-neutral-900 rounded-2xl shadow-lg">
                                                 <Brain className="h-7 w-7 text-white" />
                                             </div>
                                             <div className="flex-1">
@@ -1071,18 +1071,18 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                     Deep-dive into role-specific technical Learns and system design
                                                 </div>
                                             </div>
-                                            <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-800 px-4 py-2 text-sm">
+                                            <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800 px-4 py-2 text-sm">
                                                 {technicalQuestions?.length || 0} Questions
                                             </Badge>
                                         </div>
-                                        <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-5 border border-amber-200 dark:border-amber-800">
+                                        <div className="bg-neutral-50 dark:bg-neutral-800/20 rounded-xl p-5 border border-neutral-200 dark:border-neutral-800">
                                             <div className="flex items-start gap-3">
-                                                <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg shrink-0">
-                                                    <Lightbulb className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                                <div className="p-2 bg-neutral-100 dark:bg-neutral-800/30 rounded-lg shrink-0">
+                                                    <Lightbulb className="h-4 w-4 text-neutral-800 dark:text-neutral-100" />
                                                 </div>
                                                 <div className="text-left">
-                                                    <h5 className="font-medium text-amber-800 dark:text-amber-300 mb-2">Think Through This</h5>
-                                                    <p className="text-amber-700 dark:text-amber-200 text-sm leading-relaxed">
+                                                    <h5 className="font-medium text-neutral-800 dark:text-neutral-100 mb-2">Think Through This</h5>
+                                                    <p className="text-neutral-700 dark:text-neutral-700 text-sm leading-relaxed">
                                                         Consider the technical Learns, implementation details, architecture patterns, and potential edge cases. Think about scalability, performance, and best practices.
                                                     </p>
                                                 </div>
@@ -1115,8 +1115,8 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                                                 generation.includePractice && (
                                                                                     <Badge
                                                                                         className={`text-xs ${userResponses[`technical-${index}`]
-                                                                                            ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400'
-                                                                                            : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400'
+                                                                                            ? 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100'
+                                                                                            : 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100'
                                                                                             }`}
                                                                                     >
                                                                                         {userResponses[`technical-${index}`] ? 'Practiced' : 'Practice Available'}
@@ -1125,7 +1125,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                                             }
                                                                             {
                                                                                 generation.includeAnswers && (!generation.includePractice || userResponses[`technical-${index}`]) && (
-                                                                                    <Badge className="bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 text-xs">
+                                                                                    <Badge className="bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100 text-xs">
                                                                                         <Lightbulb className="h-2 w-2 mr-1" />
                                                                                         Expert Answer
                                                                                     </Badge>
@@ -1140,9 +1140,9 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                         <AccordionContent className="px-6 pb-6">
                                                             {
                                                                 generation?.includePractice && (
-                                                                    <div className="mt-6 p-6 bg-gradient-to-br from-amber-50/50 to-amber-50/50 dark:from-amber-950/30 dark:to-amber-950/30 rounded-xl border border-amber-200/50 dark:border-amber-700/50">
+                                                                    <div className="mt-6 p-6 bg-gradient-to-br from-neutral-50/50 to-neutral-50/50 dark:from-neutral-900/30 dark:to-neutral-900/30 rounded-xl border border-neutral-200/50 dark:border-neutral-700/50">
                                                                         <div className="flex items-center gap-2 mb-4">
-                                                                            <MessageSquare className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                                                            <MessageSquare className="h-4 w-4 text-neutral-800 dark:text-neutral-100" />
                                                                             <h4 className="font-semibold text-slate-900 dark:text-white">
                                                                                 Practice Your Answer
                                                                             </h4>
@@ -1164,10 +1164,10 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                             {
                                                                 question.answer && generation.includeAnswers && userResponses[`technical-${index}`] && (
                                                                     <div className="mt-6">
-                                                                        <div className="bg-white/80 dark:bg-slate-800/80 rounded-xl p-6 border border-amber-200/50 dark:border-amber-700/50 shadow-sm backdrop-blur-sm">
+                                                                        <div className="bg-white/80 dark:bg-slate-800/80 rounded-xl p-6 border border-neutral-200/50 dark:border-neutral-700/50 shadow-sm backdrop-blur-sm">
                                                                             <div className="flex items-center justify-between mb-4">
                                                                                 <h4 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-                                                                                    <Lightbulb className="h-4 w-4 text-amber-500" />
+                                                                                    <Lightbulb className="h-4 w-4 text-neutral-900" />
                                                                                     Expert Answer
                                                                                 </h4>
                                                                                 <CopyButton text={question.answer} />
@@ -1189,9 +1189,9 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                             </TabsContent>
                             <TabsContent value="behavioral" className="space-y-0">
                                 <Card className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-slate-200/50 dark:border-slate-700/50 shadow-xl overflow-hidden">
-                                    <div className="bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-950/30 dark:to-amber-950/30 p-8 border-b border-amber-200 dark:border-amber-700">
+                                    <div className="bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-900/30 dark:to-neutral-900/30 p-8 border-b border-neutral-200 dark:border-neutral-700">
                                         <div className="flex items-center gap-4 mb-6">
-                                            <div className="p-4 bg-gradient-to-br from-amber-500 to-amber-500 rounded-2xl shadow-lg">
+                                            <div className="p-4 bg-gradient-to-br from-neutral-900 to-neutral-900 rounded-2xl shadow-lg">
                                                 <Users className="h-7 w-7 text-white" />
                                             </div>
                                             <div className="flex-1">
@@ -1202,36 +1202,36 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                     Master soft skills, behavioral scenarios, and cultural fit assessments
                                                 </div>
                                             </div>
-                                            <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-800 px-4 py-2 text-sm">
+                                            <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800 px-4 py-2 text-sm">
                                                 {behavioralQuestions?.length || 0} Questions
                                             </Badge>
                                         </div>
-                                        <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-5 border border-amber-200 dark:border-amber-800">
+                                        <div className="bg-neutral-50 dark:bg-neutral-800/20 rounded-xl p-5 border border-neutral-200 dark:border-neutral-800">
                                             <div className="flex items-start gap-3">
-                                                <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg shrink-0">
-                                                    <Users className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                                <div className="p-2 bg-neutral-100 dark:bg-neutral-800/30 rounded-lg shrink-0">
+                                                    <Users className="h-4 w-4 text-neutral-800 dark:text-neutral-100" />
                                                 </div>
                                                 <div>
-                                                    <h5 className="font-medium text-amber-800 dark:text-amber-300 mb-2">STAR Method Framework</h5>
-                                                    <p className="text-amber-700 dark:text-amber-200 text-sm leading-relaxed mb-3">
+                                                    <h5 className="font-medium text-neutral-800 dark:text-neutral-100 mb-2">STAR Method Framework</h5>
+                                                    <p className="text-neutral-700 dark:text-neutral-700 text-sm leading-relaxed mb-3">
                                                         Structure your response using the STAR method for maximum impact:
                                                     </p>
                                                     <div className="space-y-2 text-xs">
                                                         <div className="flex items-center gap-2">
-                                                            <Badge className="bg-amber-200 text-amber-800 dark:bg-amber-800 dark:text-amber-200 text-xs px-2 py-1">S</Badge>
-                                                            <span className="text-amber-700 dark:text-amber-200">Situation - Set the context</span>
+                                                            <Badge className="bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-700 text-xs px-2 py-1">S</Badge>
+                                                            <span className="text-neutral-700 dark:text-neutral-700">Situation - Set the context</span>
                                                         </div>
                                                         <div className="flex items-center gap-2">
-                                                            <Badge className="bg-amber-200 text-amber-800 dark:bg-amber-800 dark:text-amber-200 text-xs px-2 py-1">T</Badge>
-                                                            <span className="text-amber-700 dark:text-amber-200">Task - Describe your responsibility</span>
+                                                            <Badge className="bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-700 text-xs px-2 py-1">T</Badge>
+                                                            <span className="text-neutral-700 dark:text-neutral-700">Task - Describe your responsibility</span>
                                                         </div>
                                                         <div className="flex items-center gap-2">
-                                                            <Badge className="bg-amber-200 text-amber-800 dark:bg-amber-800 dark:text-amber-200 text-xs px-2 py-1">A</Badge>
-                                                            <span className="text-amber-700 dark:text-amber-200">Action - Explain what you did</span>
+                                                            <Badge className="bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-700 text-xs px-2 py-1">A</Badge>
+                                                            <span className="text-neutral-700 dark:text-neutral-700">Action - Explain what you did</span>
                                                         </div>
                                                         <div className="flex items-center gap-2">
-                                                            <Badge className="bg-amber-200 text-amber-800 dark:bg-amber-800 dark:text-amber-200 text-xs px-2 py-1">R</Badge>
-                                                            <span className="text-amber-700 dark:text-amber-200">Result - Share the outcome</span>
+                                                            <Badge className="bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-700 text-xs px-2 py-1">R</Badge>
+                                                            <span className="text-neutral-700 dark:text-neutral-700">Result - Share the outcome</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1246,7 +1246,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                         <AccordionTrigger className="hover:no-underline group">
                                                             <div className="flex items-center justify-between w-full pr-4">
                                                                 <div className="flex items-center gap-4">
-                                                                    <div className="p-2 rounded-lg bg-gradient-to-br from-amber-500 to-amber-500 text-white shadow-lg">
+                                                                    <div className="p-2 rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-900 text-white shadow-lg">
                                                                         <MessageSquare className="h-4 w-4" />
                                                                     </div>
                                                                     <div className="text-left">
@@ -1261,8 +1261,8 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                                                 generation.includePractice && (
                                                                                     <Badge
                                                                                         className={`text-xs ${userResponses[`behavioral-${index}`]
-                                                                                            ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400'
-                                                                                            : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400'
+                                                                                            ? 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100'
+                                                                                            : 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100'
                                                                                             }`}
                                                                                     >
                                                                                         {userResponses[`behavioral-${index}`] ? 'Practiced' : 'Practice Available'}
@@ -1271,7 +1271,7 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                                             }
                                                                             {
                                                                                 generation.includeAnswers && (!generation.includePractice || userResponses[`behavioral-${index}`]) && (
-                                                                                    <Badge className="bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 text-xs">
+                                                                                    <Badge className="bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100 text-xs">
                                                                                         <Lightbulb className="h-2 w-2 mr-1" />
                                                                                         Expert Answer
                                                                                     </Badge>
@@ -1286,9 +1286,9 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                         <AccordionContent className="px-6 pb-6">
                                                             {
                                                                 generation?.includePractice && (
-                                                                    <div className="mt-6 p-6 bg-gradient-to-br from-amber-50/50 to-amber-50/50 dark:from-amber-950/30 dark:to-amber-950/30 rounded-xl border border-amber-200/50 dark:border-amber-700/50">
+                                                                    <div className="mt-6 p-6 bg-gradient-to-br from-neutral-50/50 to-neutral-50/50 dark:from-neutral-900/30 dark:to-neutral-900/30 rounded-xl border border-neutral-200/50 dark:border-neutral-700/50">
                                                                         <div className="flex items-center gap-2 mb-4">
-                                                                            <MessageSquare className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                                                            <MessageSquare className="h-4 w-4 text-neutral-800 dark:text-neutral-100" />
                                                                             <h4 className="font-semibold text-slate-900 dark:text-white">
                                                                                 Practice Your Answer
                                                                             </h4>
@@ -1310,10 +1310,10 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                             {
                                                                 generation.includeAnswers && userResponses[`behavioral-${index}`] && question.answer && (
                                                                     <div className="mt-6">
-                                                                        <div className="bg-white/80 dark:bg-slate-800/80 rounded-xl p-6 border border-amber-200/50 dark:border-amber-700/50 shadow-sm backdrop-blur-sm">
+                                                                        <div className="bg-white/80 dark:bg-slate-800/80 rounded-xl p-6 border border-neutral-200/50 dark:border-neutral-700/50 shadow-sm backdrop-blur-sm">
                                                                             <div className="flex items-center justify-between mb-4">
                                                                                 <h4 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
-                                                                                    <Lightbulb className="h-4 w-4 text-amber-500" />
+                                                                                    <Lightbulb className="h-4 w-4 text-neutral-900" />
                                                                                     Sample STAR Answer
                                                                                 </h4>
                                                                                 <CopyButton text={question.answer} />
@@ -1324,13 +1324,13 @@ export default function InterviewAssistantDetails({ slug }: { slug: string }) {
                                                                         </div>
                                                                         {
                                                                             question.tips && (
-                                                                                <div className="mt-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl p-5 border border-amber-200 dark:border-amber-800">
+                                                                                <div className="mt-4 bg-neutral-50 dark:bg-neutral-800/20 rounded-xl p-5 border border-neutral-200 dark:border-neutral-800">
                                                                                     <div className="flex items-start gap-3">
-                                                                                        <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg shrink-0">
-                                                                                            <Target className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                                                                                        <div className="p-2 bg-neutral-100 dark:bg-neutral-800/30 rounded-lg shrink-0">
+                                                                                            <Target className="h-4 w-4 text-neutral-800 dark:text-neutral-100" />
                                                                                         </div>
                                                                                         <div>
-                                                                                            <h5 className="font-medium text-amber-800 dark:text-amber-300 mb-2">Pro Tips</h5>
+                                                                                            <h5 className="font-medium text-neutral-800 dark:text-neutral-100 mb-2">Pro Tips</h5>
                                                                                             {formatAnswer(question.tips)}
                                                                                         </div>
                                                                                     </div>

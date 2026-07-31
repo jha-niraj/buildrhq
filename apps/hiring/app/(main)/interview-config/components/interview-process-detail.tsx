@@ -62,15 +62,15 @@ const roundTypeIcons: Record<string, React.ElementType> = {
 }
 
 const roundTypeColors: Record<string, string> = {
-    PHONE_SCREEN: "bg-orange-500",
-    TECHNICAL_CODING: "bg-orange-500",
-    SYSTEM_DESIGN: "bg-orange-500",
-    BEHAVIORAL: "bg-amber-500",
-    TAKE_HOME: "bg-yellow-500",
+    PHONE_SCREEN: "bg-neutral-900",
+    TECHNICAL_CODING: "bg-neutral-900",
+    SYSTEM_DESIGN: "bg-neutral-900",
+    BEHAVIORAL: "bg-neutral-900",
+    TAKE_HOME: "bg-neutral-900",
     PANEL: "bg-pink-500",
-    HIRING_MANAGER: "bg-orange-500",
-    CULTURE_FIT: "bg-amber-500",
-    HR_FINAL: "bg-amber-500",
+    HIRING_MANAGER: "bg-neutral-900",
+    CULTURE_FIT: "bg-neutral-900",
+    HR_FINAL: "bg-neutral-900",
     CUSTOM: "bg-neutral-500",
 }
 
@@ -92,7 +92,7 @@ export function InterviewProcessDetail({ process, onClose }: InterviewProcessDet
                         <div className="flex items-center gap-2 mb-2">
                             {
                                 process.isDefault && (
-                                    <Badge className="bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">
+                                    <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                         <Star className="w-3 h-3 mr-1" />
                                         Default
                                     </Badge>
@@ -172,7 +172,7 @@ export function InterviewProcessDetail({ process, onClose }: InterviewProcessDet
                                                         </span>
                                                         {
                                                             round.hasMockInterview && (
-                                                                <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-xs">
+                                                                <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 text-xs">
                                                                     <Mic className="w-3 h-3 mr-1" />
                                                                     Mock Available
                                                                 </Badge>
@@ -208,7 +208,7 @@ export function InterviewProcessDetail({ process, onClose }: InterviewProcessDet
                                                         {
                                                             round.passRatePercent && (
                                                                 <div className="flex items-center gap-1.5 text-sm">
-                                                                    <TrendingUp className="w-4 h-4 text-amber-500" />
+                                                                    <TrendingUp className="w-4 h-4 text-neutral-900" />
                                                                     <span className="text-neutral-600 dark:text-neutral-400">
                                                                         {round.passRatePercent}% pass rate
                                                                     </span>
@@ -218,7 +218,7 @@ export function InterviewProcessDetail({ process, onClose }: InterviewProcessDet
                                                         {
                                                             round.daysToNextRound && (
                                                                 <div className="flex items-center gap-1.5 text-sm">
-                                                                    <Clock className="w-4 h-4 text-orange-500" />
+                                                                    <Clock className="w-4 h-4 text-neutral-900" />
                                                                     <span className="text-neutral-600 dark:text-neutral-400">
                                                                         ~{round.daysToNextRound} days to next
                                                                     </span>

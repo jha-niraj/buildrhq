@@ -32,12 +32,12 @@ export default function FacultyPage() {
     const [actionLoading, setActionLoading] = useState<string | null>(null)
 
     const roleColors: Record<UniversityMemberRole, string> = {
-        HEAD: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400",
-        DEPARTMENT_HEAD: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400",
-        FACULTY: "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400",
-        TEACHING_ASSISTANT: "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400",
+        HEAD: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
+        DEPARTMENT_HEAD: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
+        FACULTY: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
+        TEACHING_ASSISTANT: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
         PLACEMENT_OFFICER: "bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400",
-        FINANCE_OFFICER: "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400",
+        FINANCE_OFFICER: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
     }
 
     const roleLabels: Record<UniversityMemberRole, string> = {
@@ -101,7 +101,7 @@ export default function FacultyPage() {
         return (
             <div className="min-h-full flex items-center justify-center p-6">
                 <div className="flex flex-col items-center gap-4">
-                    <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+                    <Loader2 className="w-8 h-8 animate-spin text-neutral-900" />
                     <p className="text-sm text-neutral-500">Loading faculty...</p>
                 </div>
             </div>
@@ -151,7 +151,7 @@ export default function FacultyPage() {
                         className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800"
                     >
                         <div className="flex items-center gap-3">
-                            <item.icon className="w-5 h-5 text-orange-600" />
+                            <item.icon className="w-5 h-5 text-neutral-800" />
                             <div>
                                 <p className="text-xl font-bold text-neutral-900 dark:text-white">
                                     {roleCounts[item.role] || 0}
@@ -177,7 +177,7 @@ export default function FacultyPage() {
                         >
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                                         <span className="text-lg font-bold text-white">
                                             {member.displayName?.charAt(0) || member.email.charAt(0).toUpperCase()}
                                         </span>
@@ -186,7 +186,7 @@ export default function FacultyPage() {
                                         <h3 className="font-bold text-neutral-900 dark:text-white flex items-center gap-2">
                                             {member.displayName || member.email.split("@")[0]}
                                             {member.userId === session?.user?.id && (
-                                                <span className="text-xs px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400">
+                                                <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100">
                                                     You
                                                 </span>
                                             )}
@@ -198,7 +198,7 @@ export default function FacultyPage() {
                                         </h3>
                                         <p className="text-sm text-neutral-500">{member.email}</p>
                                         {member.department && (
-                                            <p className="text-xs text-orange-600 dark:text-orange-400 mt-1">
+                                            <p className="text-xs text-neutral-800 dark:text-neutral-100 mt-1">
                                                 {member.department.name}
                                             </p>
                                         )}
@@ -253,8 +253,8 @@ export default function FacultyPage() {
                     transition={{ delay: 0.1 }}
                     className="text-center py-16 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl"
                 >
-                    <div className="w-20 h-20 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mx-auto mb-6">
-                        <Users className="w-10 h-10 text-orange-600" />
+                    <div className="w-20 h-20 rounded-2xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mx-auto mb-6">
+                        <Users className="w-10 h-10 text-neutral-800" />
                     </div>
                     <h3 className="font-bold text-xl text-neutral-900 dark:text-white mb-2">
                         Invite your faculty

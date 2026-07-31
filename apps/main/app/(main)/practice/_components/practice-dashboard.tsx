@@ -28,8 +28,8 @@ const MODULE_PATHS: Record<PracticeModule, string> = {
 };
 
 const DIFFICULTY_COLORS = {
-    EASY: "text-amber-600 dark:text-amber-400",
-    MEDIUM: "text-amber-600 dark:text-amber-400",
+    EASY: "text-neutral-800 dark:text-neutral-100",
+    MEDIUM: "text-neutral-800 dark:text-neutral-100",
     HARD: "text-red-600 dark:text-red-400",
 };
 
@@ -95,13 +95,13 @@ export function PracticeDashboard({ stats, dailyChallenge }: PracticeDashboardPr
                         label="Easy"
                         completed={stats.difficultyBreakdown.easy.completed}
                         total={stats.difficultyBreakdown.easy.total}
-                        color="bg-amber-500"
+                        color="bg-neutral-900"
                     />
                     <DifficultyBar
                         label="Medium"
                         completed={stats.difficultyBreakdown.medium.completed}
                         total={stats.difficultyBreakdown.medium.total}
-                        color="bg-amber-500"
+                        color="bg-neutral-900"
                     />
                     <DifficultyBar
                         label="Hard"
@@ -154,23 +154,23 @@ function DailyChallengeCard({ challenge }: { challenge: DailyChallengeData }) {
     return (
         <Link
             href={`${path}/${challenge.slug}?mode=assist`}
-            className="group block rounded-xl border border-neutral-200 dark:border-neutral-800 bg-gradient-to-r from-amber-50/50 via-orange-50/30 to-transparent dark:from-amber-950/20 dark:via-orange-950/10 dark:to-transparent p-5 hover:border-amber-300 dark:hover:border-amber-700 transition-all"
+            className="group block rounded-xl border border-neutral-200 dark:border-neutral-800 bg-gradient-to-r from-neutral-50/50 via-neutral-50/30 to-transparent dark:from-neutral-900/20 dark:via-neutral-900/10 dark:to-transparent p-5 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all"
         >
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-lg bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
-                        <Sparkles className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                    <div className="h-10 w-10 rounded-lg bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                        <Sparkles className="h-5 w-5 text-neutral-800 dark:text-neutral-100" />
                     </div>
                     <div>
                         <div className="flex items-center gap-2 mb-0.5">
-                            <span className="text-[10px] font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                            <span className="text-[10px] font-semibold text-neutral-800 dark:text-neutral-100 uppercase tracking-wider">
                                 Daily Challenge
                             </span>
                             <Badge variant="outline" className={cn("text-[10px] border", DIFFICULTY_COLORS[challenge.difficulty])}>
                                 {challenge.difficulty}
                             </Badge>
                         </div>
-                        <h3 className="text-sm font-semibold text-neutral-900 dark:text-white group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
+                        <h3 className="text-sm font-semibold text-neutral-900 dark:text-white group-hover:text-neutral-700 dark:group-hover:text-neutral-100 transition-colors">
                             {challenge.title}
                         </h3>
                         <p className="text-xs text-neutral-500 mt-0.5">
@@ -178,7 +178,7 @@ function DailyChallengeCard({ challenge }: { challenge: DailyChallengeData }) {
                         </p>
                     </div>
                 </div>
-                <ArrowRight className="h-4 w-4 text-neutral-400 group-hover:text-amber-500 group-hover:translate-x-0.5 transition-all" />
+                <ArrowRight className="h-4 w-4 text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-0.5 transition-all" />
             </div>
         </Link>
     );
@@ -338,11 +338,11 @@ function RecentSessionRow({ session }: { session: PracticeRecentSession }) {
             </div>
             {
                 session.status === "COMPLETED" ? (
-                    <Badge variant="outline" className="text-[10px] border-amber-200 text-amber-600 dark:border-amber-800 dark:text-amber-400">
+                    <Badge variant="outline" className="text-[10px] border-neutral-200 text-neutral-800 dark:border-neutral-800 dark:text-neutral-100">
                         {session.bestScore}%
                     </Badge>
                 ) : (
-                    <Badge variant="outline" className="text-[10px] border-amber-200 text-amber-600 dark:border-amber-800 dark:text-amber-400">
+                    <Badge variant="outline" className="text-[10px] border-neutral-200 text-neutral-800 dark:border-neutral-800 dark:text-neutral-100">
                         In Progress
                     </Badge>
                 )

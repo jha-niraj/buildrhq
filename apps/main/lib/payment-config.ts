@@ -41,7 +41,7 @@ export const creditPackages: CreditPackage[] = [
 		popular: false,
 		badge: "Free",
 		savings: "20%",
-		color: "from-orange-500/80 to-orange-600/80"
+		color: "from-neutral-900/80 to-neutral-800/80"
 	},	
 	{
 		credits: 25,
@@ -53,7 +53,7 @@ export const creditPackages: CreditPackage[] = [
 		popular: false,
 		badge: "Starter",
 		savings: "20%",
-		color: "from-orange-500/80 to-orange-600/80"
+		color: "from-neutral-900/80 to-neutral-800/80"
 	},
 	{
 		credits: 50,
@@ -65,7 +65,7 @@ export const creditPackages: CreditPackage[] = [
 		popular: true,
 		badge: "Most Popular",
 		savings: "27%",
-		color: "from-amber-500/80 to-amber-600/80"
+		color: "from-neutral-900/80 to-neutral-800/80"
 	},
 	{
 		credits: 75,
@@ -77,7 +77,7 @@ export const creditPackages: CreditPackage[] = [
 		popular: false,
 		badge: "Pro",
 		savings: "33%",
-		color: "from-orange-500/80 to-orange-600/80"
+		color: "from-neutral-900/80 to-neutral-800/80"
 	},
 	{
 		credits: 100,
@@ -89,7 +89,7 @@ export const creditPackages: CreditPackage[] = [
 		popular: false,
 		badge: "Max",
 		savings: "42%",
-		color: "from-orange-500/80 to-red-500/80"
+		color: "from-neutral-900/80 to-red-500/80"
 	},
 ];
 

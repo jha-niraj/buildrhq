@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import toast from "@repo/ui/components/ui/sonner";
 import Link from "next/link";
+import { publicProfileUrl } from "@/lib/urls";
 
 interface ProfileHeaderProps {
 	user: {
@@ -66,8 +67,15 @@ export function ProfileHeader({
 	const [copied, setCopied] = useState(false);
 
 	const copyProfileLink = () => {
-		const url = `${window.location.origin}/u/${user.username}`;
-		navigator.clipboard.writeText(url);
+		// `username` is nullable, and the old template interpolated it straight in —
+		// a user who had not picked one copied a link ending in `/null`. Say so
+		// instead of handing over a broken link. (The path was wrong too: `/u/...`
+		// is not a route in this app.)
+		if (!user.username) {
+			toast.error("Set a username in settings to get a shareable profile link");
+			return;
+		}
+		navigator.clipboard.writeText(publicProfileUrl(user.username));
 		setCopied(true);
 		toast.success("Profile link copied!");
 		setTimeout(() => setCopied(false), 2000);
@@ -131,7 +139,7 @@ export function ProfileHeader({
 									user.userProfile?.completionScore === 100 && (
 										<Badge
 											variant="secondary"
-											className="bg-amber-500/10 text-amber-600 border-amber-500/20"
+											className="bg-neutral-900/10 text-neutral-800 border-neutral-900/20"
 										>
 											<Check className="w-3 h-3 mr-1" />
 											Verified
@@ -230,7 +238,7 @@ export function ProfileHeader({
 										onClick={onFollowToggle}
 										className={
 											!isFollowing
-												? "bg-gradient-to-r from-yellow-500 to-amber-500 text-white hover:from-yellow-600 hover:to-amber-600"
+												? "bg-gradient-to-r from-neutral-900 to-neutral-900 text-white hover:from-neutral-800 hover:to-neutral-800"
 												: ""
 										}
 									>
@@ -292,15 +300,15 @@ export function ProfileHeader({
 								initial={{ opacity: 0, y: 10 }}
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 0.35 }}
-								className="hidden sm:flex items-center gap-3 px-4 py-2 rounded-lg bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border border-amber-500/20 min-w-[180px]"
+								className="hidden sm:flex items-center gap-3 px-4 py-2 rounded-lg bg-gradient-to-r from-neutral-900/10 to-neutral-900/10 border border-neutral-900/20 min-w-[180px]"
 							>
-								<TrendingUp className="w-5 h-5 text-amber-600 shrink-0" />
+								<TrendingUp className="w-5 h-5 text-neutral-800 shrink-0" />
 								<div className="flex-1 min-w-0">
 									<div className="flex items-center justify-between text-xs mb-1">
 										<span className="font-medium text-foreground">Level {stats.level}</span>
-										<span className="font-semibold text-amber-600">{Math.round(xpProgress)}%</span>
+										<span className="font-semibold text-neutral-800">{Math.round(xpProgress)}%</span>
 									</div>
-									<Progress value={xpProgress} className="h-2 bg-amber-200/50" />
+									<Progress value={xpProgress} className="h-2 bg-neutral-200/50" />
 								</div>
 							</motion.div>
 						</div>

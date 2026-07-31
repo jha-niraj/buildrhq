@@ -42,7 +42,7 @@ export function FlashcardStep({ step }: FlashcardStepProps) {
 			<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="py-8">
 				<div className="rounded-2xl overflow-hidden bg-white dark:bg-neutral-900 shadow-sm border border-neutral-200 dark:border-neutral-800 p-6">
 					<div className="flex items-center gap-3 mb-4">
-						<div className="h-10 w-10 rounded-xl bg-orange-500 flex items-center justify-center">
+						<div className="h-10 w-10 rounded-xl bg-neutral-900 flex items-center justify-center">
 							<Layers className="h-5 w-5 text-white" />
 						</div>
 						<div>
@@ -72,13 +72,13 @@ export function FlashcardStep({ step }: FlashcardStepProps) {
 
 		return (
 			<motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="py-8">
-				<div className="rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/20 dark:to-amber-950/20 p-8">
+				<div className="rounded-2xl bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-900/20 dark:to-neutral-900/20 p-8">
 					<div className="text-center">
 						<motion.div
 							initial={{ scale: 0 }}
 							animate={{ scale: 1 }}
 							transition={{ type: "spring", delay: 0.2 }}
-							className="h-20 w-20 rounded-full bg-orange-500 mx-auto mb-6 flex items-center justify-center"
+							className="h-20 w-20 rounded-full bg-neutral-900 mx-auto mb-6 flex items-center justify-center"
 						>
 							<Trophy className="h-10 w-10 text-white" />
 						</motion.div>
@@ -90,12 +90,12 @@ export function FlashcardStep({ step }: FlashcardStepProps) {
 						</p>
 						<div className="flex items-center justify-center gap-8 mb-8">
 							<div className="text-center">
-								<p className="text-3xl font-bold text-amber-600">{knownCount}</p>
+								<p className="text-3xl font-bold text-neutral-800">{knownCount}</p>
 								<p className="text-sm text-neutral-500">Known</p>
 							</div>
 							<div className="h-12 w-px bg-neutral-200 dark:bg-neutral-700" />
 							<div className="text-center">
-								<p className="text-3xl font-bold text-amber-600">{reviewCount}</p>
+								<p className="text-3xl font-bold text-neutral-800">{reviewCount}</p>
 								<p className="text-sm text-neutral-500">Review</p>
 							</div>
 							<div className="h-12 w-px bg-neutral-200 dark:bg-neutral-700" />
@@ -154,7 +154,7 @@ export function FlashcardStep({ step }: FlashcardStepProps) {
 			<div className="rounded-2xl overflow-hidden bg-white dark:bg-neutral-900 shadow-sm border border-neutral-200 dark:border-neutral-800">
 				<div className="p-4 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
 					<div className="flex items-center gap-3">
-						<div className="h-8 w-8 rounded-lg bg-orange-500 flex items-center justify-center">
+						<div className="h-8 w-8 rounded-lg bg-neutral-900 flex items-center justify-center">
 							<Layers className="h-4 w-4 text-white" />
 						</div>
 						<div>
@@ -168,7 +168,7 @@ export function FlashcardStep({ step }: FlashcardStepProps) {
 					</div>
 					<div className="w-24 h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
 						<motion.div
-							className="h-full bg-gradient-to-r from-orange-400 to-amber-400 rounded-full"
+							className="h-full bg-gradient-to-r from-neutral-800 to-neutral-800 rounded-full"
 							initial={{ width: 0 }}
 							animate={{ width: `${progress}%` }}
 						/>
@@ -187,7 +187,7 @@ export function FlashcardStep({ step }: FlashcardStepProps) {
 								exit={{ rotateY: isFlipped ? 90 : -90, opacity: 0 }}
 								transition={{ duration: 0.3 }}
 								className={`w-full h-full rounded-2xl flex items-center justify-center p-8 text-center ${isFlipped
-									? "bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-950/30 dark:to-amber-950/30"
+									? "bg-gradient-to-br from-neutral-100 to-neutral-100 dark:from-neutral-900/30 dark:to-neutral-900/30"
 									: "bg-gradient-to-br from-neutral-100 to-neutral-50 dark:from-neutral-800 dark:to-neutral-900"
 									}`}
 							>
@@ -223,7 +223,7 @@ export function FlashcardStep({ step }: FlashcardStepProps) {
 								<Button
 									size="sm"
 									variant="outline"
-									className="gap-2 border-amber-400 text-amber-700 hover:bg-amber-50 dark:text-amber-300"
+									className="gap-2 border-neutral-800 text-neutral-700 hover:bg-neutral-50 dark:text-neutral-100"
 									onClick={handleReview}
 								>
 									<XCircle className="h-4 w-4" />
@@ -231,7 +231,7 @@ export function FlashcardStep({ step }: FlashcardStepProps) {
 								</Button>
 								<Button
 									size="sm"
-									className="gap-2 bg-amber-600 hover:bg-amber-700"
+									className="gap-2 bg-neutral-800 hover:bg-neutral-700"
 									onClick={handleKnow}
 								>
 									<CheckCircle className="h-4 w-4" />

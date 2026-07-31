@@ -127,7 +127,7 @@ export default function CreditsSection() {
                                     </div>
                                     <div className="flex justify-between items-center text-sm">
                                         <span className="text-neutral-600 dark:text-neutral-300">PR Merge Bonus</span>
-                                        <span className="font-mono text-orange-600 dark:text-orange-400">+100 CR</span>
+                                        <span className="font-mono text-neutral-800 dark:text-neutral-100">+100 CR</span>
                                     </div>
                                 </div>
                             </div>

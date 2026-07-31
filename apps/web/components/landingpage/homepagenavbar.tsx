@@ -123,7 +123,7 @@ export default function Navbar() {
                                         onClick={() => setIsMobileMenuOpen(false)}
                                         className={`rounded-lg px-4 py-3 text-lg transition-all ${isActive(link.href)
                                             ? "bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-white"
-                                            : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-900 hover:text-neutral-900 dark:hover:text-white"
+                                            : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-900 dark:bg-white hover:text-neutral-900 dark:hover:text-white dark:text-neutral-900"
                                             }`}
                                     >
                                         {link.label}

@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 
 import { useState } from "react"
 import { motion } from "framer-motion"
@@ -177,7 +178,7 @@ export function ResumeHubClient({
         <div className="min-h-screen bg-white dark:bg-neutral-950 font-sans">
             <section className="relative pt-20 pb-8 lg:pt-28 lg:pb-14 overflow-hidden border-b border-neutral-100 dark:border-neutral-800">
                 <div className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-neutral-950 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
-                <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-orange-500/10 opacity-50 blur-[100px] dark:bg-orange-500/20" />
+                <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-neutral-900/10 opacity-50 blur-[100px] dark:bg-neutral-200/20" />
 
                 <div className="max-w-5xl mx-auto px-6 relative z-10">
                     <motion.div
@@ -187,7 +188,7 @@ export function ResumeHubClient({
                         transition={{ duration: 0.6 }}
                     >
                         <Badge variant="outline" className="px-4 py-1.5 rounded-full border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 font-medium text-sm">
-                            <Sparkles className="w-3.5 h-3.5 mr-2 text-orange-500" />
+                            <Sparkles className="w-3.5 h-3.5 mr-2 text-neutral-900" />
                             Career Toolkit
                         </Badge>
                         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-neutral-950 dark:text-white max-w-3xl">
@@ -257,7 +258,7 @@ export function ResumeHubClient({
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center gap-2 mb-1">
                                                     <h3 className="text-sm font-bold text-neutral-900 dark:text-white">{tool.name}</h3>
-                                                    <Badge className="bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400 text-[10px] h-4 px-1.5">
+                                                    <Badge className="bg-neutral-50 text-neutral-700 dark:bg-neutral-800/20 dark:text-neutral-100 text-[10px] h-4 px-1.5">
                                                         {tool.status}
                                                     </Badge>
                                                 </div>
@@ -287,7 +288,7 @@ export function ResumeHubClient({
                 <div className="max-w-5xl mx-auto px-6">
                     <div className="mb-8">
                         <div className="flex items-center gap-2 mb-2">
-                            <LayoutTemplate className="w-5 h-5 text-orange-500" />
+                            <LayoutTemplate className="w-5 h-5 text-neutral-900" />
                             <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">Resume Templates</h2>
                         </div>
                         <p className="text-neutral-500 dark:text-neutral-400 font-light">
@@ -316,13 +317,13 @@ export function ResumeHubClient({
                                             <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
                                                 {
                                                     template.isPurchased ? (
-                                                        <Badge className="bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400 text-[10px]">
+                                                        <Badge className="bg-neutral-50 text-neutral-700 dark:bg-neutral-800/20 dark:text-neutral-100 text-[10px]">
                                                             <CheckCircle2 className="w-3 h-3 mr-1" />
                                                             Unlocked
                                                         </Badge>
                                                     ) : (
                                                         <Badge variant="outline" className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border-neutral-200 dark:border-neutral-700 text-[10px]">
-                                                            <Coins className="w-3 h-3 mr-1 text-amber-500" />
+                                                            <Coins className="w-3 h-3 mr-1 text-neutral-900" />
                                                             {template.creditsCost} Credits
                                                         </Badge>
                                                     )
@@ -419,7 +420,7 @@ export function ResumeHubClient({
                                             <p className="text-neutral-500 dark:text-neutral-400 text-[10px] leading-relaxed mb-2 line-clamp-2">
                                                 {tool.description}
                                             </p>
-                                            <p className="text-[9px] text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 rounded px-2 py-1 leading-relaxed line-clamp-2">
+                                            <p className="text-[9px] text-neutral-800 dark:text-neutral-100 bg-neutral-50 dark:bg-neutral-800/20 rounded px-2 py-1 leading-relaxed line-clamp-2">
                                                 📊 {tool.pain}
                                             </p>
                                         </div>
@@ -439,26 +440,17 @@ export function ResumeHubClient({
                         Every tool here solves a specific pain point that costs developers real opportunities.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-                        <Button
-                            size="lg"
-                            onClick={() => router.push("/ai/resume")}
-                            className="h-11 px-7 bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 rounded-full font-semibold text-sm"
-                        >
+                        <Button size="lg" className="h-11 px-7 bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 rounded-full font-semibold text-sm" asChild><Link href="/ai/resume">
                             Build Your Resume
                             <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
-                        <Button
-                            size="lg"
-                            variant="outline"
-                            onClick={() => router.push("/ai/resume/cover-letter")}
-                            className="h-11 px-7 rounded-full border-neutral-200 dark:border-neutral-800 font-semibold text-sm"
-                        >
+                        </Link></Button>
+                        <Button size="lg" variant="outline" className="h-11 px-7 rounded-full border-neutral-200 dark:border-neutral-800 font-semibold text-sm" asChild><Link href="/ai/resume/cover-letter">
                             Generate Cover Letter
-                        </Button>
+                        </Link></Button>
                     </div>
                     <div className="pt-3 flex items-center justify-center gap-6 text-xs text-neutral-400">
-                        <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500" /> 100% Free</span>
-                        <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-amber-500" /> No signup wall</span>
+                        <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-neutral-900" /> 100% Free</span>
+                        <span className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-neutral-900" /> No signup wall</span>
                     </div>
                 </div>
             </section>

@@ -220,7 +220,7 @@ export default async function BlogPostPage({ params }: Props) {
                     <FaqSection faqs={post.faqs} />
 
                     <Reveal className="mt-16 rounded-2xl border border-neutral-800 bg-neutral-950 p-8 text-center dark:bg-neutral-900">
-                        <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-orange-500">
+                        <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-900">
                             {BRAND.name}
                         </p>
                         <h2 className="mb-3 text-2xl font-bold tracking-tight text-white">

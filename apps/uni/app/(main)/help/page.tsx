@@ -22,7 +22,7 @@ const helpCategories = [
         icon: <Mail className="w-6 h-6" />,
         title: "Email Support",
         description: "We reply within 24 hours",
-        href: "mailto:support@flowsync.com",
+        href: "mailto:support@buildrhq.com",
     },
     {
         icon: <FileText className="w-6 h-6" />,

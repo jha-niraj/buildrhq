@@ -59,7 +59,7 @@ export default function AIToolsSection() {
                         </p>
                     </div>
                     <div>
-                        <Button variant="outline" asChild className="h-12 px-6 rounded-full border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900">
+                        <Button variant="outline" asChild className="h-12 px-6 rounded-full border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white dark:text-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-900 dark:bg-white">
                             <a href={`${APP_URL}/ai`}>
                                 View Full Roster <ArrowRight className="ml-2 w-4 h-4" />
                             </a>
@@ -84,7 +84,7 @@ export default function AIToolsSection() {
                                         <div className="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center text-neutral-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
                                             <tool.icon className="w-6 h-6" />
                                         </div>
-                                        <Badge variant="secondary" className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-0 px-3">
+                                        <Badge variant="secondary" className="bg-neutral-100 dark:bg-neutral-800/30 text-neutral-700 dark:text-neutral-100 border-0 px-3">
                                             Live
                                         </Badge>
                                     </div>

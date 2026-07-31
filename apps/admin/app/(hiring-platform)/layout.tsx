@@ -11,9 +11,9 @@ import { Loader2, Building2, LayoutDashboard, Shield, Briefcase } from "lucide-r
 const hiringPlatformConfig = {
     name: "Hiring Platform",
     icon: Building2,
-    color: "bg-amber-500",
-    bgColor: "bg-gradient-to-br from-amber-500 to-amber-600",
-    textColor: "text-amber-600 dark:text-amber-400",
+    color: "bg-neutral-900",
+    bgColor: "bg-gradient-to-br from-neutral-900 to-neutral-800",
+    textColor: "text-neutral-800 dark:text-neutral-100",
     overviewHref: "/hiring",
     navItems: [
         { name: "Hiring Dashboard", path: "hiring", icon: LayoutDashboard },
@@ -57,7 +57,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
             <main className={cn(
                 "h-screen transition-all duration-300",
                 "lg:ml-[17rem] p-3",
-                isCollapsed && "lg:ml-[6.25rem]"
+                isCollapsed && "lg:ml-[106px]"
             )}>
                 <div className="h-screen bg-white dark:bg-neutral-950 lg:rounded-l-3xl lg:border-l border-neutral-200 dark:border-neutral-800 shadow-xl overflow-hidden">
                     <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-700 scrollbar-track-transparent">

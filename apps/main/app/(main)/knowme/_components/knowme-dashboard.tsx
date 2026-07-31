@@ -136,7 +136,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
             >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/25">
+                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center shadow-lg shadow-neutral-900/25">
                             <Bot className="w-7 h-7 text-white" />
                         </div>
                         <div>
@@ -175,7 +175,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                         <div className="p-4 border-b border-slate-200 dark:border-neutral-800 bg-slate-50 dark:bg-neutral-800/50">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                                         <Bot className="w-5 h-5 text-white" />
                                     </div>
                                     <div>
@@ -191,7 +191,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                                     variant={profile.status === "ACTIVE" ? "default" : "secondary"}
                                     className={cn(
                                         "gap-1",
-                                        profile.status === "ACTIVE" && "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20"
+                                        profile.status === "ACTIVE" && "bg-neutral-900/10 text-neutral-800 dark:text-neutral-100 border-neutral-900/20"
                                     )}
                                 >
                                     <span className="w-1.5 h-1.5 rounded-full bg-current" />
@@ -231,7 +231,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                                         >
                                             {
                                                 message.role === "assistant" && (
-                                                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                                                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center flex-shrink-0">
                                                         <Bot className="w-4 h-4 text-white" />
                                                     </div>
                                                 )
@@ -240,7 +240,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                                                 className={cn(
                                                     "max-w-[80%] rounded-2xl px-4 py-3",
                                                     message.role === "user"
-                                                        ? "bg-orange-600 text-white rounded-tr-none"
+                                                        ? "bg-neutral-800 text-white rounded-tr-none"
                                                         : "bg-white dark:bg-neutral-800 text-slate-900 dark:text-white rounded-tl-none shadow-sm border border-slate-200 dark:border-neutral-700"
                                                 )}
                                             >
@@ -260,7 +260,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                                         animate={{ opacity: 1 }}
                                         className="flex gap-3"
                                     >
-                                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                                             <Bot className="w-4 h-4 text-white" />
                                         </div>
                                         <div className="bg-white dark:bg-neutral-800 rounded-2xl rounded-tl-none px-4 py-3 shadow-sm border border-slate-200 dark:border-neutral-700">
@@ -294,7 +294,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                                 <Button
                                     type="submit"
                                     disabled={!inputValue.trim() || isLoading}
-                                    className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700"
+                                    className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700"
                                 >
                                     <Send className="w-4 h-4" />
                                 </Button>
@@ -328,7 +328,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                 >
                     <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-slate-200 dark:border-neutral-800 p-5">
                         <h3 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                            <Zap className="w-4 h-4 text-amber-500" />
+                            <Zap className="w-4 h-4 text-neutral-900" />
                             Status
                         </h3>
                         <div className="space-y-4">
@@ -336,7 +336,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                                 <span className="text-sm text-slate-600 dark:text-slate-400">
                                     Status
                                 </span>
-                                <Badge className="bg-amber-500/10 text-amber-600 border-amber-500/20">
+                                <Badge className="bg-neutral-900/10 text-neutral-800 border-neutral-900/20">
                                     Active
                                 </Badge>
                             </div>
@@ -372,7 +372,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                     </div>
                     <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-slate-200 dark:border-neutral-800 p-5">
                         <h3 className="font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-                            <FileText className="w-4 h-4 text-orange-500" />
+                            <FileText className="w-4 h-4 text-neutral-900" />
                             Data Sources
                         </h3>
                         <div className="space-y-3">
@@ -410,7 +410,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                             </Button>
                         </Link>
                     </div>
-                    <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-5 text-white">
+                    <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-2xl p-5 text-white">
                         <h3 className="font-semibold mb-2 flex items-center gap-2">
                             <Share2 className="w-4 h-4" />
                             Share Your AI
@@ -440,7 +440,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                     </div>
                     <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-slate-200 dark:border-neutral-800 p-5">
                         <h3 className="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                            <Key className="w-4 h-4 text-amber-500" />
+                            <Key className="w-4 h-4 text-neutral-900" />
                             API Integration
                         </h3>
                         <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
@@ -489,7 +489,7 @@ function DataSourceItem({
             </div>
             {
                 enabled ? (
-                    <ToggleRight className="w-5 h-5 text-amber-500" />
+                    <ToggleRight className="w-5 h-5 text-neutral-900" />
                 ) : (
                     <ToggleLeft className="w-5 h-5 text-slate-400" />
                 )

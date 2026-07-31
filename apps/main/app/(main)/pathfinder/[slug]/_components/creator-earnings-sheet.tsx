@@ -88,7 +88,7 @@ export function CreatorEarningsSheet({
             <SheetContent className="sm:max-w-md lg:max-w-lg" side="right">
                 <SheetHeader>
                     <SheetTitle className="flex items-center gap-2">
-                        <Coins className="w-5 h-5 text-amber-500" />
+                        <Coins className="w-5 h-5 text-neutral-900" />
                         Goal Earnings
                     </SheetTitle>
                     <SheetDescription>
@@ -121,12 +121,12 @@ export function CreatorEarningsSheet({
                                 </Button>
                             </div>
                         </div>
-                        <div className="p-4 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800">
-                            <p className="text-sm font-medium text-amber-900 dark:text-amber-100 flex items-center gap-2">
+                        <div className="p-4 rounded-lg bg-neutral-50 dark:bg-neutral-900/30 border border-neutral-200 dark:border-neutral-800">
+                            <p className="text-sm font-medium text-neutral-900 dark:text-neutral-800 flex items-center gap-2">
                                 <DollarSign className="w-4 h-4" />
                                 Total earned from this goal
                             </p>
-                            <p className="text-2xl font-bold text-amber-700 dark:text-amber-300 mt-1">
+                            <p className="text-2xl font-bold text-neutral-700 dark:text-neutral-100 mt-1">
                                 {totalEarned} credits
                             </p>
                         </div>
@@ -142,7 +142,7 @@ export function CreatorEarningsSheet({
                                                     key={e.id}
                                                     className="flex items-center justify-between p-2 rounded border border-neutral-200 dark:border-neutral-800 text-sm"
                                                 >
-                                                    <span className="text-amber-600 dark:text-amber-400">+{e.amount} credits</span>
+                                                    <span className="text-neutral-800 dark:text-neutral-100">+{e.amount} credits</span>
                                                     <span className="text-neutral-500 text-xs">
                                                         {new Date(e.createdAt).toLocaleDateString()}
                                                     </span>

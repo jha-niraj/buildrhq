@@ -40,8 +40,8 @@ export function MockVerification({
         return (
             <div className="flex-1 flex items-center justify-center p-8">
                 <div className="text-center">
-                    <div className="w-20 h-20 mx-auto rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4">
-                        <CheckCircle2 className="w-10 h-10 text-amber-500" />
+                    <div className="w-20 h-20 mx-auto rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mb-4">
+                        <CheckCircle2 className="w-10 h-10 text-neutral-900" />
                     </div>
                     <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">Mock Interview Passed!</h3>
                     <p className="text-neutral-500 mb-4">You scored {score}%</p>
@@ -70,7 +70,7 @@ export function MockVerification({
     return (
         <div className="flex-1 flex items-center justify-center p-8">
             <div className="text-center max-w-lg">
-                <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mb-6 shadow-lg">
+                <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-neutral-800 to-neutral-800 flex items-center justify-center mb-6 shadow-lg">
                     <Mic className="w-12 h-12 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
@@ -98,9 +98,9 @@ export function MockVerification({
                     </div>
                 </div>
                 <div className="space-y-4">
-                    <div className="p-4 rounded-xl bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800 text-left">
-                        <h4 className="font-semibold text-orange-900 dark:text-orange-100 mb-2">Before you start:</h4>
-                        <ul className="text-sm text-orange-700 dark:text-orange-300 space-y-1">
+                    <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/30 border border-neutral-200 dark:border-neutral-800 text-left">
+                        <h4 className="font-semibold text-neutral-900 dark:text-neutral-800 mb-2">Before you start:</h4>
+                        <ul className="text-sm text-neutral-700 dark:text-neutral-100 space-y-1">
                             <li>• Make sure you&apos;re in a quiet environment</li>
                             <li>• Allow microphone access when prompted</li>
                             <li>• Speak clearly and take your time</li>
@@ -111,7 +111,7 @@ export function MockVerification({
                     {
                         mockInterviewId ? (
                             <Link href={`/mock/voice/interview/${mockInterviewId}`}>
-                                <Button size="lg" className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:opacity-90">
+                                <Button size="lg" className="w-full bg-gradient-to-r from-neutral-900 to-neutral-800 hover:opacity-90">
                                     <Play className="w-5 h-5 mr-2" />
                                     Start Mock Interview
                                 </Button>
@@ -120,7 +120,7 @@ export function MockVerification({
                             <>
                                 <Button
                                     size="lg"
-                                    className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:opacity-90"
+                                    className="w-full bg-gradient-to-r from-neutral-900 to-neutral-800 hover:opacity-90"
                                     onClick={() => setShowMockSheet(true)}
                                 >
                                     <Play className="w-5 h-5 mr-2" />

@@ -4,7 +4,8 @@ import { getSession } from "@repo/auth";
 import { headers } from "next/headers";
 import {
     db, projectV2TaskDetails, userTaskV2DetailAccesses, projectV2Tasks,
-    users, creditTransactions
+    users, creditTransactions,
+    withTransaction
 } from "@repo/db";
 import { eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -41,7 +42,7 @@ async function deductCredits(userId: string, amount: number, description: string
         throw new Error("Insufficient credits");
     }
 
-    await db.transaction(async (tx) => {
+    await withTransaction(async (tx) => {
         await tx
             .update(users)
             .set({ credits: sql`${users.credits} - ${amount}` })

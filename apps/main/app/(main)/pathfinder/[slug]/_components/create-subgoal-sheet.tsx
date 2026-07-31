@@ -106,7 +106,7 @@ export function CreateSubGoalSheet({
             <SheetContent side="right" className="w-full sm:max-w-md">
                 <SheetHeader>
                     <SheetTitle className="flex items-center gap-2">
-                        <Target className="w-5 h-5 text-orange-500" />
+                        <Target className="w-5 h-5 text-neutral-900" />
                         Add Learning Task
                     </SheetTitle>
                     <SheetDescription>
@@ -139,21 +139,21 @@ export function CreateSubGoalSheet({
                         !isLoading ? (
                             <Button
                                 type="submit"
-                                className="w-full bg-orange-600 hover:bg-orange-700"
+                                className="w-full bg-neutral-800 hover:bg-neutral-700"
                                 disabled={!title.trim()}
                             >
                                 Generate Content
                             </Button>
                         ) : (
                             <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-8 text-center">
-                                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                                    <Loader2 className="w-8 h-8 text-orange-500 animate-spin" />
+                                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                                    <Loader2 className="w-8 h-8 text-neutral-900 animate-spin" />
                                 </div>
                                 <h3 className="font-semibold text-neutral-900 dark:text-white mb-1">
                                     Generating Content
                                 </h3>
                                 <p className="text-sm text-neutral-500 mb-2 flex items-center justify-center gap-2">
-                                    <Sparkles className="w-4 h-4 text-orange-500" />
+                                    <Sparkles className="w-4 h-4 text-neutral-900" />
                                     Fetching videos & docs (Exa) + creating content (OpenAI)
                                 </p>
                                 <p className="text-xs text-neutral-400">

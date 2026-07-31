@@ -40,10 +40,23 @@ export const openai = {
         completions: {
             async create(params: {
                 model: string
-                messages: Array<{ role: string; content: string | unknown[] }>
+                // `tool` messages carry a tool_call_id; assistant messages that
+                // requested a call carry tool_calls and a null content. Both are
+                // required for a multi-turn tool loop, so the shape is widened
+                // rather than kept to the plain {role, content} pair.
+                messages: Array<{
+                    role: string
+                    content?: string | unknown[] | null
+                    name?: string
+                    tool_call_id?: string
+                    tool_calls?: unknown[]
+                }>
                 temperature?: number
                 max_tokens?: number
                 response_format?: unknown
+                tools?: unknown[]
+                tool_choice?: unknown
+                parallel_tool_calls?: boolean
                 stream?: boolean
             }) {
                 if (params.stream) {

@@ -21,12 +21,12 @@ interface MockVoicePreviewProps {
 }
 
 const categoryConfig: Record<string, { emoji: string; color: string }> = {
-    TECHNICAL:     { emoji: "💻", color: "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20"      },
-    BEHAVIORAL:    { emoji: "🤝", color: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20"  },
-    HR:            { emoji: "👔", color: "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20" },
-    SYSTEM_DESIGN: { emoji: "🏗️", color: "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20" },
-    LEADERSHIP:    { emoji: "👑", color: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20"  },
-    CODING:        { emoji: "⌨️", color: "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20" },
+    TECHNICAL:     { emoji: "💻", color: "bg-neutral-900/10 text-neutral-800 dark:text-neutral-100 border-neutral-900/20"      },
+    BEHAVIORAL:    { emoji: "🤝", color: "bg-neutral-900/10 text-neutral-800 dark:text-neutral-100 border-neutral-900/20"  },
+    HR:            { emoji: "👔", color: "bg-neutral-900/10 text-neutral-800 dark:text-neutral-100 border-neutral-900/20" },
+    SYSTEM_DESIGN: { emoji: "🏗️", color: "bg-neutral-900/10 text-neutral-800 dark:text-neutral-100 border-neutral-900/20" },
+    LEADERSHIP:    { emoji: "👑", color: "bg-neutral-900/10 text-neutral-800 dark:text-neutral-100 border-neutral-900/20"  },
+    CODING:        { emoji: "⌨️", color: "bg-neutral-900/10 text-neutral-800 dark:text-neutral-100 border-neutral-900/20" },
     GENERAL:       { emoji: "📋", color: "bg-neutral-500/10 text-neutral-600 dark:text-neutral-400 border-neutral-500/20" },
 };
 
@@ -41,8 +41,8 @@ export default function MockVoicePreview({ sessions }: MockVoicePreviewProps) {
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                        <Mic className="h-4 w-4 text-amber-500" />
+                    <div className="w-8 h-8 rounded-lg bg-neutral-900/10 flex items-center justify-center">
+                        <Mic className="h-4 w-4 text-neutral-900" />
                     </div>
                     <span className="font-semibold text-sm">Mock Interviews</span>
                 </div>
@@ -85,14 +85,14 @@ export default function MockVoicePreview({ sessions }: MockVoicePreviewProps) {
                     </div>
                 ) : (
                     <div className="text-center py-6 space-y-3">
-                        <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto">
-                            <Mic className="h-5 w-5 text-amber-400" />
+                        <div className="w-12 h-12 rounded-full bg-neutral-900/10 flex items-center justify-center mx-auto">
+                            <Mic className="h-5 w-5 text-neutral-800" />
                         </div>
                         <div>
                             <p className="text-sm font-medium text-neutral-700 dark:text-neutral-300">No sessions yet</p>
                             <p className="text-xs text-neutral-500 mt-0.5">Practice with an AI interviewer</p>
                         </div>
-                        <Link href="/mock/voice" className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-500 hover:text-amber-600 transition-colors">
+                        <Link href="/mock/voice" className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-900 hover:text-neutral-800 transition-colors">
                             <Play className="h-3 w-3" />
                             Start a mock interview
                         </Link>

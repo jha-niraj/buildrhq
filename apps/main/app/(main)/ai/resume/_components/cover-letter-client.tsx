@@ -459,7 +459,7 @@ export function CoverLetterClient({
                                     <div className="overflow-hidden flex-1">
                                         <div className="flex items-center gap-1.5 mb-0.5">
                                             {h.isDraft && (
-                                                <Badge className="text-[9px] px-1 h-3.5 bg-orange-50 text-orange-600 border-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:border-orange-900/40">
+                                                <Badge className="text-[9px] px-1 h-3.5 bg-neutral-50 text-neutral-800 border-neutral-200 dark:bg-neutral-800/20 dark:text-neutral-100 dark:border-neutral-800/40">
                                                     <PenLine className="w-2.5 h-2.5 mr-0.5" />
                                                     Draft
                                                 </Badge>

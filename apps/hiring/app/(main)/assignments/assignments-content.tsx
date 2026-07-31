@@ -59,9 +59,9 @@ function StatCard({
 
 function JobAssignmentCard({ job }: { job: JobWithAssignment }) {
     const statusColor = {
-        ACTIVE: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+        ACTIVE: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
         DRAFT: "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
-        PAUSED: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
+        PAUSED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
         CLOSED: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
     }[job.status] || "bg-neutral-100 text-neutral-600"
 
@@ -93,21 +93,21 @@ function JobAssignmentCard({ job }: { job: JobWithAssignment }) {
             </div>
             <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-800">
                 <div className="text-center">
-                    <div className="flex items-center justify-center gap-1 text-orange-600 dark:text-orange-400">
+                    <div className="flex items-center justify-center gap-1 text-neutral-800 dark:text-neutral-100">
                         <Send className="w-4 h-4" />
                         <span className="font-semibold">{job.assignmentsSent}</span>
                     </div>
                     <p className="text-xs text-neutral-500 mt-1">Sent</p>
                 </div>
                 <div className="text-center">
-                    <div className="flex items-center justify-center gap-1 text-amber-600 dark:text-amber-400">
+                    <div className="flex items-center justify-center gap-1 text-neutral-800 dark:text-neutral-100">
                         <Clock className="w-4 h-4" />
                         <span className="font-semibold">{job.pendingSubmissions}</span>
                     </div>
                     <p className="text-xs text-neutral-500 mt-1">Pending</p>
                 </div>
                 <div className="text-center">
-                    <div className="flex items-center justify-center gap-1 text-amber-600 dark:text-amber-400">
+                    <div className="flex items-center justify-center gap-1 text-neutral-800 dark:text-neutral-100">
                         <CheckCircle2 className="w-4 h-4" />
                         <span className="font-semibold">{job.submissionsReceived}</span>
                     </div>
@@ -163,34 +163,34 @@ export default function AssignmentsContent({ stats, jobs }: AssignmentsContentPr
                 stats && (
                     <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
                         <StatCard
-                            icon={<Briefcase className="w-5 h-5 text-orange-600" />}
+                            icon={<Briefcase className="w-5 h-5 text-neutral-800" />}
                             label="Jobs with Assignments"
                             value={stats.totalJobsWithAssignments}
-                            color="bg-orange-100 dark:bg-orange-900/30"
+                            color="bg-neutral-100 dark:bg-neutral-800/30"
                         />
                         <StatCard
-                            icon={<Send className="w-5 h-5 text-orange-600" />}
+                            icon={<Send className="w-5 h-5 text-neutral-800" />}
                             label="Assignments Sent"
                             value={stats.totalAssignmentsSent}
-                            color="bg-orange-100 dark:bg-orange-900/30"
+                            color="bg-neutral-100 dark:bg-neutral-800/30"
                         />
                         <StatCard
-                            icon={<CheckCircle2 className="w-5 h-5 text-amber-600" />}
+                            icon={<CheckCircle2 className="w-5 h-5 text-neutral-800" />}
                             label="Submissions"
                             value={stats.totalSubmissions}
-                            color="bg-amber-100 dark:bg-amber-900/30"
+                            color="bg-neutral-100 dark:bg-neutral-800/30"
                         />
                         <StatCard
-                            icon={<Clock className="w-5 h-5 text-amber-600" />}
+                            icon={<Clock className="w-5 h-5 text-neutral-800" />}
                             label="Pending Review"
                             value={stats.pendingReview}
-                            color="bg-amber-100 dark:bg-amber-900/30"
+                            color="bg-neutral-100 dark:bg-neutral-800/30"
                         />
                         <StatCard
-                            icon={<Star className="w-5 h-5 text-orange-600" />}
+                            icon={<Star className="w-5 h-5 text-neutral-800" />}
                             label="Avg. Score"
                             value={`${Math.round(stats.averageScore)}%`}
-                            color="bg-orange-100 dark:bg-orange-900/30"
+                            color="bg-neutral-100 dark:bg-neutral-800/30"
                         />
                     </div>
                 )
@@ -263,7 +263,7 @@ export default function AssignmentsContent({ stats, jobs }: AssignmentsContentPr
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="flex gap-3">
-                        <div className="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0 text-orange-600">
+                        <div className="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center shrink-0 text-neutral-800">
                             1
                         </div>
                         <div>
@@ -274,7 +274,7 @@ export default function AssignmentsContent({ stats, jobs }: AssignmentsContentPr
                         </div>
                     </div>
                     <div className="flex gap-3">
-                        <div className="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0 text-orange-600">
+                        <div className="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center shrink-0 text-neutral-800">
                             2
                         </div>
                         <div>
@@ -285,7 +285,7 @@ export default function AssignmentsContent({ stats, jobs }: AssignmentsContentPr
                         </div>
                     </div>
                     <div className="flex gap-3">
-                        <div className="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center shrink-0 text-amber-600">
+                        <div className="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center shrink-0 text-neutral-800">
                             3
                         </div>
                         <div>

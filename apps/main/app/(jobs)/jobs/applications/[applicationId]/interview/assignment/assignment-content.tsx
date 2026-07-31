@@ -112,14 +112,9 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
             <div className="bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-10">
                 <div className="max-w-4xl mx-auto px-6 py-4">
                     <div className="flex items-center gap-4">
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => router.push(`/jobs/applications/${application.id}/interview`)}
-                            className="rounded-xl"
-                        >
+                        <Button variant="ghost" size="icon" className="rounded-xl" asChild><Link href={`/jobs/applications/${application.id}/interview`}>
                             <ArrowLeft className="w-5 h-5" />
-                        </Button>
+                        </Link></Button>
                         <div className="flex items-center gap-3 flex-1">
                             <div className="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center overflow-hidden">
                                 {
@@ -145,7 +140,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                         </div>
                         {
                             isSubmitted ? (
-                                <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+                                <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                     <CheckCircle2 className="w-3 h-3 mr-1" />
                                     Submitted
                                 </Badge>
@@ -155,7 +150,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                     Overdue
                                 </Badge>
                             ) : hasStarted ? (
-                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
+                                <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                     <Clock className="w-3 h-3 mr-1" />
                                     In Progress
                                 </Badge>
@@ -175,15 +170,15 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                         deadline && !isSubmitted && (
                             <div className={`mb-6 p-4 rounded-xl border ${isOverdue
                                     ? "bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800"
-                                    : "bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800"
+                                    : "bg-neutral-50 dark:bg-neutral-800/20 border-neutral-200 dark:border-neutral-800"
                                 }`}>
                                 <div className="flex items-center gap-3">
-                                    <Clock className={`w-5 h-5 ${isOverdue ? "text-red-600" : "text-amber-600"}`} />
+                                    <Clock className={`w-5 h-5 ${isOverdue ? "text-red-600" : "text-neutral-800"}`} />
                                     <div>
-                                        <p className={`font-medium ${isOverdue ? "text-red-700 dark:text-red-400" : "text-amber-700 dark:text-amber-400"}`}>
+                                        <p className={`font-medium ${isOverdue ? "text-red-700 dark:text-red-400" : "text-neutral-700 dark:text-neutral-100"}`}>
                                             {isOverdue ? "Assignment Overdue" : "Deadline"}
                                         </p>
-                                        <p className={`text-sm ${isOverdue ? "text-red-600 dark:text-red-500" : "text-amber-600 dark:text-amber-500"}`}>
+                                        <p className={`text-sm ${isOverdue ? "text-red-600 dark:text-red-500" : "text-neutral-800 dark:text-neutral-200"}`}>
                                             {
                                                 deadline.toLocaleDateString('en-US', {
                                                     weekday: 'long',
@@ -239,7 +234,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                                 {
                                                     assignment.requirements.map((req, index) => (
                                                         <li key={index} className="flex items-start gap-2">
-                                                            <CheckCircle2 className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
+                                                            <CheckCircle2 className="w-4 h-4 text-neutral-900 mt-0.5 shrink-0" />
                                                             <span className="text-neutral-700 dark:text-neutral-300">{req}</span>
                                                         </li>
                                                     ))
@@ -259,7 +254,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                                 {
                                                     assignment.deliverables.map((del, index) => (
                                                         <li key={index} className="flex items-start gap-2">
-                                                            <div className="w-5 h-5 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-xs font-semibold text-orange-700 dark:text-orange-400 mt-0.5 shrink-0">
+                                                            <div className="w-5 h-5 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center text-xs font-semibold text-neutral-700 dark:text-neutral-100 mt-0.5 shrink-0">
                                                                 {index + 1}
                                                             </div>
                                                             <span className="text-neutral-700 dark:text-neutral-300">{del}</span>
@@ -287,8 +282,8 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                                             rel="noopener noreferrer"
                                                             className="flex items-center gap-2 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors"
                                                         >
-                                                            <LinkIcon className="w-4 h-4 text-orange-500" />
-                                                            <span className="text-sm text-orange-600 dark:text-orange-400 truncate flex-1">
+                                                            <LinkIcon className="w-4 h-4 text-neutral-900" />
+                                                            <span className="text-sm text-neutral-800 dark:text-neutral-100 truncate flex-1">
                                                                 {resource}
                                                             </span>
                                                             <ExternalLink className="w-4 h-4 text-neutral-400" />
@@ -304,7 +299,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                     {
                                         isSubmitted ? (
                                             <div className="text-center py-4">
-                                                <CheckCircle2 className="w-12 h-12 text-amber-500 mx-auto mb-3" />
+                                                <CheckCircle2 className="w-12 h-12 text-neutral-900 mx-auto mb-3" />
                                                 <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
                                                     Assignment Submitted
                                                 </h4>
@@ -314,7 +309,7 @@ export function AssignmentContent({ application }: AssignmentContentProps) {
                                                 </p>
                                                 {
                                                     application.assignmentScore !== null && (
-                                                        <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 text-lg px-4 py-2">
+                                                        <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 text-lg px-4 py-2">
                                                             Score: {application.assignmentScore}%
                                                         </Badge>
                                                     )

@@ -23,14 +23,14 @@ import { ResourceType } from '@repo/db'
 
 const RESOURCE_TYPES = [
     { value: 'YOUTUBE_VIDEO', label: 'YouTube Video', icon: Youtube, color: 'text-red-600' },
-    { value: 'VIDEO', label: 'Video', icon: FileText, color: 'text-orange-600' },
-    { value: 'DOCUMENTATION', label: 'Documentation', icon: BookOpen, color: 'text-amber-600' },
-    { value: 'BLOG_ARTICLE', label: 'Blog Article', icon: FileText, color: 'text-orange-600' },
-    { value: 'COURSE', label: 'Course', icon: GraduationCap, color: 'text-yellow-600' },
-    { value: 'DISCORD_COMMUNITY', label: 'Discord/Community', icon: MessageCircle, color: 'text-orange-600' },
-    { value: 'TOOL_RECOMMENDATION', label: 'Tool Recommendation', icon: Wrench, color: 'text-orange-600' },
+    { value: 'VIDEO', label: 'Video', icon: FileText, color: 'text-neutral-800' },
+    { value: 'DOCUMENTATION', label: 'Documentation', icon: BookOpen, color: 'text-neutral-800' },
+    { value: 'BLOG_ARTICLE', label: 'Blog Article', icon: FileText, color: 'text-neutral-800' },
+    { value: 'COURSE', label: 'Course', icon: GraduationCap, color: 'text-neutral-800' },
+    { value: 'DISCORD_COMMUNITY', label: 'Discord/Community', icon: MessageCircle, color: 'text-neutral-800' },
+    { value: 'TOOL_RECOMMENDATION', label: 'Tool Recommendation', icon: Wrench, color: 'text-neutral-800' },
     { value: 'DESIGN_MOCKUP', label: 'Design Mockup', icon: Palette, color: 'text-pink-600' },
-    { value: 'DESIGN_INSPIRATION', label: 'Design Inspiration', icon: Sparkles, color: 'text-amber-600' },
+    { value: 'DESIGN_INSPIRATION', label: 'Design Inspiration', icon: Sparkles, color: 'text-neutral-800' },
     { value: 'GITHUB_REPO', label: 'GitHub Repository', icon: Github, color: 'text-gray-600' },
     { value: 'OTHER', label: 'Other', icon: FileText, color: 'text-neutral-600' },
 ]

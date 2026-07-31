@@ -28,7 +28,7 @@ export const AnimatedText = () => {
                 animate={{ y: 0 }}
                 exit={{ y: -40 }}
                 transition={{ duration: 0.5 }}
-                className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-orange-600 dark:from-orange-400 dark:to-orange-400"
+                className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-800 to-neutral-800 dark:from-neutral-100 dark:to-neutral-100"
             >
                 {phrases[currentIndex]}
             </motion.div>

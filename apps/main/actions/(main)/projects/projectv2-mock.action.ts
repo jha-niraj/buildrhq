@@ -9,6 +9,7 @@ import {
     projectsV2,
     projectV2MockSessions,
     projectV2KnowledgeBases,
+    withTransaction
 } from "@repo/db";
 import { eq, and, sql } from "drizzle-orm";
 import { openai } from '@/lib/openai-client'
@@ -166,7 +167,7 @@ PRACTICAL SCENARIOS:
 ${knowledgeBase.practicalScenarios.map((s, i) => `${i + 1}. ${s}`).join('\n')}
 `
 
-        await db.transaction(async (tx) => {
+        await withTransaction(async (tx) => {
             await tx.update(users)
                 .set({ credits: sql`${users.credits} - ${MOCK_CREDIT_COST}` })
                 .where(eq(users.id, session.user.id));

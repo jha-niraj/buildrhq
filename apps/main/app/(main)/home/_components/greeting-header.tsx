@@ -42,28 +42,28 @@ export default function GreetingHeader({ user }: GreetingHeaderProps) {
             icon: Zap,
             label: "Total XP",
             value: user?.totalXp?.toLocaleString() || "0",
-            color: "from-amber-400 to-orange-500",
-            bgColor: "bg-amber-500/10",
+            color: "from-neutral-800 to-neutral-900",
+            bgColor: "bg-neutral-900/10",
         },
         {
             icon: Shield,
             label: "Level",
             value: user?.currentLevel?.toString() || "1",
-            color: "from-orange-500 to-orange-600",
-            bgColor: "bg-orange-500/10",
+            color: "from-neutral-900 to-neutral-800",
+            bgColor: "bg-neutral-900/10",
         },
         {
             icon: Coins,
             label: "Credits",
             value: user?.credits?.toLocaleString() || "0",
-            color: "from-amber-500 to-amber-500",
-            bgColor: "bg-amber-500/10",
+            color: "from-neutral-900 to-neutral-900",
+            bgColor: "bg-neutral-900/10",
         },
         {
             icon: TrendingUp,
             label: "Streak",
             value: `${user?.currentStreak || 0} days`,
-            color: "from-rose-500 to-orange-500",
+            color: "from-rose-500 to-neutral-900",
             bgColor: "bg-rose-500/10",
         },
     ];
@@ -111,7 +111,7 @@ export default function GreetingHeader({ user }: GreetingHeaderProps) {
                                 transition={{ repeat: Infinity, duration: 2, delay: 1 }}
                                 className="shrink-0"
                             >
-                                <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-amber-500" />
+                                <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-neutral-900" />
                             </motion.div>
                         </div>
                         <p className="text-muted-foreground text-sm sm:text-base">

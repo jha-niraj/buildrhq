@@ -194,7 +194,7 @@ export default function DailyStandupTab({
         agentId: STANDUP_AGENT_ID,
         title: 'Daily Standup',
         subtitle: `${projectTitle} - ${new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}`,
-        orbColors: ['#f59e0b', '#f97316'],
+        orbColors: ['#525252', '#171717'],
         knowledgeBase: `You are a friendly AI assistant conducting a daily standup for the project "${projectTitle}". 
 Your job is to ask the developer three questions:
 1. What did you work on yesterday?
@@ -234,7 +234,7 @@ Keep responses brief and natural.`,
                 <div className="flex items-center justify-between">
                     <div>
                         <h2 className="text-xl font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                            <Trophy className="w-5 h-5 text-amber-500" />
+                            <Trophy className="w-5 h-5 text-neutral-900" />
                             Daily Standup
                         </h2>
                         <p className="text-sm text-neutral-500 dark:text-neutral-400">
@@ -254,7 +254,7 @@ Keep responses brief and natural.`,
                     </Button>
                 </div>
 
-                <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 rounded-2xl p-8 border border-amber-200 dark:border-amber-800">
+                <div className="bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-900/20 dark:to-neutral-900/20 rounded-2xl p-8 border border-neutral-200 dark:border-neutral-800">
                     <Voice
                         config={voiceConfig}
                         callbacks={{
@@ -270,12 +270,12 @@ Keep responses brief and natural.`,
                     />
                 </div>
 
-                <div className="bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-800 rounded-xl p-4">
-                    <h4 className="font-medium text-orange-900 dark:text-orange-100 mb-2 flex items-center gap-2">
+                <div className="bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4">
+                    <h4 className="font-medium text-neutral-900 dark:text-neutral-800 mb-2 flex items-center gap-2">
                         <Mic className="w-4 h-4" />
                         Tips for a Great Standup
                     </h4>
-                    <ul className="text-sm text-orange-800 dark:text-orange-200 space-y-1">
+                    <ul className="text-sm text-neutral-800 dark:text-neutral-700 space-y-1">
                         <li>• Be specific about what you worked on</li>
                         <li>• Mention any challenges or blockers</li>
                         <li>• Keep it concise (2-3 minutes)</li>
@@ -295,16 +295,16 @@ Keep responses brief and natural.`,
 
         return (
             <div className="space-y-6">
-                <div className="bg-gradient-to-r from-amber-50 to-amber-50 dark:from-amber-950/20 dark:to-amber-950/20 border border-amber-200 dark:border-amber-900/30 rounded-xl p-5">
+                <div className="bg-gradient-to-r from-neutral-50 to-neutral-50 dark:from-neutral-900/20 dark:to-neutral-900/20 border border-neutral-200 dark:border-neutral-800/30 rounded-xl p-5">
                     <div className="flex items-start gap-3">
-                        <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg">
-                            <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                        <div className="p-2 bg-neutral-100 dark:bg-neutral-800/30 rounded-lg">
+                            <CheckCircle2 className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                         </div>
                         <div>
-                            <h3 className="font-semibold text-amber-900 dark:text-amber-100 mb-1">
+                            <h3 className="font-semibold text-neutral-900 dark:text-neutral-800 mb-1">
                                 Daily Standup Active
                             </h3>
-                            <p className="text-sm text-amber-800 dark:text-amber-200">
+                            <p className="text-sm text-neutral-800 dark:text-neutral-700">
                                 Your voice standup schedule for {projectTitle} is active.
                             </p>
                         </div>
@@ -352,7 +352,7 @@ Keep responses brief and natural.`,
                                 className={cn(
                                     "px-3 py-1",
                                     config.selectedDays.includes(day.value)
-                                        ? "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 border-amber-200 dark:border-amber-800"
+                                        ? "bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800"
                                         : "opacity-50"
                                 )}
                             >
@@ -364,24 +364,24 @@ Keep responses brief and natural.`,
 
                 {/* Today's standup or upcoming */}
                 {todayEntry ? (
-                    <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 border border-amber-200 dark:border-amber-800 rounded-xl p-5">
+                    <div className="bg-gradient-to-r from-neutral-50 to-neutral-50 dark:from-neutral-900/20 dark:to-neutral-900/20 border border-neutral-200 dark:border-neutral-800 rounded-xl p-5">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                                <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg">
-                                    <Mic className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                                <div className="p-2 bg-neutral-100 dark:bg-neutral-800/30 rounded-lg">
+                                    <Mic className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-amber-900 dark:text-amber-100">
+                                    <h4 className="font-semibold text-neutral-900 dark:text-neutral-800">
                                         Today&apos;s Voice Standup Ready
                                     </h4>
-                                    <p className="text-sm text-amber-700 dark:text-amber-300">
+                                    <p className="text-sm text-neutral-700 dark:text-neutral-100">
                                         Share your daily progress via voice
                                     </p>
                                 </div>
                             </div>
                             <Button
                                 onClick={() => setActiveStandup(todayEntry)}
-                                className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white gap-2"
+                                className="bg-gradient-to-r from-neutral-900 to-neutral-800 hover:from-neutral-800 hover:to-neutral-700 text-white gap-2"
                             >
                                 <Play className="w-4 h-4" />
                                 Start Voice Standup
@@ -419,13 +419,13 @@ Keep responses brief and natural.`,
                                     className={cn(
                                         "flex items-center justify-between p-3 rounded-lg border",
                                         standup.status === 'SUBMITTED'
-                                            ? "bg-amber-50/50 dark:bg-amber-950/10 border-amber-200 dark:border-amber-900/30"
+                                            ? "bg-neutral-50/50 dark:bg-neutral-900/10 border-neutral-200 dark:border-neutral-800/30"
                                             : "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800"
                                     )}
                                 >
                                     <div className="flex items-center gap-3">
                                         {standup.status === 'SUBMITTED' ? (
-                                            <CheckCircle2 className="w-4 h-4 text-amber-600" />
+                                            <CheckCircle2 className="w-4 h-4 text-neutral-800" />
                                         ) : (
                                             <Calendar className="w-4 h-4 text-neutral-400" />
                                         )}
@@ -442,7 +442,7 @@ Keep responses brief and natural.`,
                                         className={cn(
                                             "text-xs",
                                             standup.status === 'SUBMITTED'
-                                                ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
+                                                ? "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100"
                                                 : "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
                                         )}
                                     >
@@ -461,8 +461,8 @@ Keep responses brief and natural.`,
     return (
         <div className="space-y-6 max-w-2xl mx-auto">
             <div className="text-center mb-6">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30 rounded-2xl flex items-center justify-center mb-4">
-                    <Mic className="w-8 h-8 text-amber-600 dark:text-amber-400" />
+                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-neutral-100 to-neutral-100 dark:from-neutral-800/30 dark:to-neutral-800/30 rounded-2xl flex items-center justify-center mb-4">
+                    <Mic className="w-8 h-8 text-neutral-800 dark:text-neutral-100" />
                 </div>
                 <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
                     Voice Daily Standup
@@ -472,14 +472,14 @@ Keep responses brief and natural.`,
                 </p>
             </div>
 
-            <div className="bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-900/30 rounded-xl p-4">
-                <h3 className="font-semibold text-orange-900 dark:text-orange-100 mb-2">
+            <div className="bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30 rounded-xl p-4">
+                <h3 className="font-semibold text-neutral-900 dark:text-neutral-800 mb-2">
                     🎙️ Voice-Powered Standups
                 </h3>
-                <p className="text-sm text-orange-800 dark:text-orange-200 mb-3">
+                <p className="text-sm text-neutral-800 dark:text-neutral-700 mb-3">
                     Practice real-world standup meetings with our AI interviewer. Just like in a real team!
                 </p>
-                <ul className="space-y-1 text-sm text-orange-800 dark:text-orange-200">
+                <ul className="space-y-1 text-sm text-neutral-800 dark:text-neutral-700">
                     <li className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" />
                         <span>Talk through what you worked on yesterday</span>
@@ -509,7 +509,7 @@ Keep responses brief and natural.`,
                             className={cn(
                                 "p-3 rounded-lg border-2 transition-all",
                                 selectedDays.includes(day.value)
-                                    ? "border-amber-500 bg-amber-50 dark:bg-amber-900/20"
+                                    ? "border-neutral-900 bg-neutral-50 dark:bg-neutral-800/20"
                                     : "border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700"
                             )}
                         >
@@ -517,7 +517,7 @@ Keep responses brief and natural.`,
                                 {day.label}
                             </div>
                             {selectedDays.includes(day.value) && (
-                                <CheckCircle2 className="w-4 h-4 text-amber-600 mx-auto mt-1" />
+                                <CheckCircle2 className="w-4 h-4 text-neutral-800 mx-auto mt-1" />
                             )}
                         </button>
                     ))}
@@ -562,16 +562,16 @@ Keep responses brief and natural.`,
             </div>
 
             {/* Cost display */}
-            <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/30 rounded-xl p-4">
+            <div className="bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30 rounded-xl p-4">
                 <div className="flex items-center justify-between mb-2">
-                    <span className="font-semibold text-amber-900 dark:text-amber-100">
+                    <span className="font-semibold text-neutral-900 dark:text-neutral-800">
                         Weekly Cost
                     </span>
-                    <span className="text-2xl font-bold text-amber-900 dark:text-amber-100">
+                    <span className="text-2xl font-bold text-neutral-900 dark:text-neutral-800">
                         {weeklyCredits} credits
                     </span>
                 </div>
-                <p className="text-sm text-amber-800 dark:text-amber-200">
+                <p className="text-sm text-neutral-800 dark:text-neutral-700">
                     {selectedDays.length} days × 5 credits/day = {weeklyCredits} credits/week
                 </p>
             </div>
@@ -595,7 +595,7 @@ Keep responses brief and natural.`,
             <Button
                 onClick={handleCreateConfig}
                 disabled={isCreating || userCredits < weeklyCredits}
-                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white gap-2"
+                className="w-full bg-gradient-to-r from-neutral-900 to-neutral-800 hover:from-neutral-800 hover:to-neutral-700 text-white gap-2"
             >
                 {isCreating ? (
                     <>

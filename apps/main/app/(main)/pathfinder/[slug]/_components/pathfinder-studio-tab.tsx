@@ -57,7 +57,7 @@ export function PathfinderStudioTab({
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-orange-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-neutral-900" />
       </div>
     );
   }
@@ -65,8 +65,8 @@ export function PathfinderStudioTab({
   if (!studioId || !studio) {
     return (
       <div className="flex flex-col items-center justify-center py-20 text-center">
-        <div className="h-20 w-20 rounded-full bg-orange-100 dark:bg-orange-950/30 flex items-center justify-center mb-4">
-          <StickyNote className="h-10 w-10 text-orange-500" />
+        <div className="h-20 w-20 rounded-full bg-neutral-100 dark:bg-neutral-900/30 flex items-center justify-center mb-4">
+          <StickyNote className="h-10 w-10 text-neutral-900" />
         </div>
         <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
           No Studio Yet
@@ -78,7 +78,7 @@ export function PathfinderStudioTab({
         <Button
           onClick={handleCreateStudio}
           disabled={creating}
-          className="gap-2 bg-gradient-to-r from-orange-600 to-pink-600 hover:from-orange-700 hover:to-pink-700"
+          className="gap-2 bg-gradient-to-r from-neutral-800 to-pink-600 hover:from-neutral-700 hover:to-pink-700"
         >
           {creating ? (
             <>

@@ -173,8 +173,8 @@ export default function ProjectIdeasPage() {
 
     const getDifficultyColor = (d: string) => {
         switch (d) {
-            case 'BEGINNER': return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400'
-            case 'INTERMEDIATE': return 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400'
+            case 'BEGINNER': return 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100'
+            case 'INTERMEDIATE': return 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100'
             case 'ADVANCED': return 'bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-400'
             default: return 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-400'
         }
@@ -186,7 +186,7 @@ export default function ProjectIdeasPage() {
                 <div className="max-w-[1400px] mx-auto px-4 md:px-6">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center gap-3">
-                            <div className="p-1.5 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600">
+                            <div className="p-1.5 rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-800">
                                 <Sparkles className="w-4 h-4 text-white" />
                             </div>
                             <div>
@@ -374,15 +374,15 @@ export default function ProjectIdeasPage() {
                                             <motion.div
                                                 initial={{ opacity: 0, y: -10 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                className="mb-6 p-4 rounded-xl bg-gradient-to-r from-orange-50 to-orange-50 dark:from-orange-950/20 dark:to-orange-950/20 border border-orange-100 dark:border-orange-900/30"
+                                                className="mb-6 p-4 rounded-xl bg-gradient-to-r from-neutral-50 to-neutral-50 dark:from-neutral-900/20 dark:to-neutral-900/20 border border-neutral-100 dark:border-neutral-800/30"
                                             >
                                                 <div className="flex items-center gap-2 mb-2">
-                                                    <BookOpen className="w-4 h-4 text-orange-600 dark:text-orange-400" />
-                                                    <span className="text-sm font-semibold text-orange-900 dark:text-orange-300">What you&apos;ll learn with {selectedTech.name}</span>
+                                                    <BookOpen className="w-4 h-4 text-neutral-800 dark:text-neutral-100" />
+                                                    <span className="text-sm font-semibold text-neutral-900 dark:text-neutral-100">What you&apos;ll learn with {selectedTech.name}</span>
                                                 </div>
                                                 <div className="flex flex-wrap gap-2">
                                                     {selectedTech.learningOutcomes.map((outcome, i) => (
-                                                        <span key={i} className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-white/70 dark:bg-neutral-800/70 text-orange-700 dark:text-orange-300">
+                                                        <span key={i} className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-white/70 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-100">
                                                             <CheckCircle2 className="w-3 h-3" />
                                                             {outcome}
                                                         </span>
@@ -394,9 +394,9 @@ export default function ProjectIdeasPage() {
                                         {/* Platform Curated Projects Section */}
                                         <div className="mb-8">
                                             <div className="flex items-center gap-2 mb-4">
-                                                <Crown className="w-4 h-4 text-amber-500" />
+                                                <Crown className="w-4 h-4 text-neutral-900" />
                                                 <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">BuildrHQ Curated Projects</h3>
-                                                <Badge className="bg-gradient-to-r from-amber-100 to-yellow-100 dark:from-amber-900/30 dark:to-yellow-900/30 text-amber-800 dark:text-amber-300 text-[10px] border-0">
+                                                <Badge className="bg-gradient-to-r from-neutral-100 to-neutral-100 dark:from-neutral-800/30 dark:to-neutral-800/30 text-neutral-800 dark:text-neutral-100 text-[10px] border-0">
                                                     Ready to Start
                                                 </Badge>
                                             </div>
@@ -426,9 +426,9 @@ export default function ProjectIdeasPage() {
                                                                 <div className="group relative bg-white dark:bg-neutral-900 rounded-xl p-5 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-600 hover:shadow-lg transition-all duration-300 cursor-pointer">
                                                                     {/* BuildrHQ Badge */}
                                                                     <div className="absolute top-3 right-3">
-                                                                        <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-950/40 dark:to-yellow-950/40 border border-amber-200 dark:border-amber-800">
-                                                                            <Crown className="w-3 h-3 text-amber-500" />
-                                                                            <span className="text-[10px] font-semibold text-amber-700 dark:text-amber-300">BuildrHQ</span>
+                                                                        <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-neutral-50 to-neutral-50 dark:from-neutral-900/40 dark:to-neutral-900/40 border border-neutral-200 dark:border-neutral-800">
+                                                                            <Crown className="w-3 h-3 text-neutral-900" />
+                                                                            <span className="text-[10px] font-semibold text-neutral-700 dark:text-neutral-100">BuildrHQ</span>
                                                                         </div>
                                                                     </div>
 
@@ -437,14 +437,14 @@ export default function ProjectIdeasPage() {
                                                                             {project.difficulty}
                                                                         </Badge>
                                                                         {project.guidedModeEnabled && (
-                                                                            <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-[10px] border-0">
+                                                                            <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 text-[10px] border-0">
                                                                                 <Sparkles className="w-2.5 h-2.5 mr-0.5" />
                                                                                 AI Guided
                                                                             </Badge>
                                                                         )}
                                                                     </div>
 
-                                                                    <h4 className="text-base font-bold text-neutral-900 dark:text-white mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors line-clamp-1 pr-20">
+                                                                    <h4 className="text-base font-bold text-neutral-900 dark:text-white mb-2 group-hover:text-neutral-800 dark:group-hover:text-neutral-100 transition-colors line-clamp-1 pr-20">
                                                                         {project.title}
                                                                     </h4>
 
@@ -466,8 +466,8 @@ export default function ProjectIdeasPage() {
 
                                                                     {/* Recruiter Signal */}
                                                                     {project.recruiterSignal && (
-                                                                        <div className="mb-3 p-2 rounded-lg bg-orange-50/50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30">
-                                                                            <p className="text-[10px] text-orange-600 dark:text-orange-400 line-clamp-1">
+                                                                        <div className="mb-3 p-2 rounded-lg bg-neutral-50/50 dark:bg-neutral-900/20 border border-neutral-100 dark:border-neutral-800/30">
+                                                                            <p className="text-[10px] text-neutral-800 dark:text-neutral-100 line-clamp-1">
                                                                                 📡 {project.recruiterSignal}
                                                                             </p>
                                                                         </div>
@@ -480,7 +480,7 @@ export default function ProjectIdeasPage() {
                                                                             <span className="flex items-center gap-1"><Users className="w-3 h-3" />{project._count.progress} enrolled</span>
                                                                             <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{project.totalViews}</span>
                                                                         </div>
-                                                                        <div className="flex items-center gap-1 text-xs font-medium text-orange-600 dark:text-orange-400 group-hover:translate-x-0.5 transition-transform">
+                                                                        <div className="flex items-center gap-1 text-xs font-medium text-neutral-800 dark:text-neutral-100 group-hover:translate-x-0.5 transition-transform">
                                                                             <Play className="w-3 h-3" />
                                                                             Start
                                                                         </div>
@@ -496,9 +496,9 @@ export default function ProjectIdeasPage() {
                                         {/* Community Ideas (from the technology) */}
                                         <div>
                                             <div className="flex items-center gap-2 mb-4">
-                                                <Users className="w-4 h-4 text-orange-500" />
+                                                <Users className="w-4 h-4 text-neutral-900" />
                                                 <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">Community Ideas</h3>
-                                                <Badge className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-[10px] border-0">
+                                                <Badge className="bg-neutral-100 dark:bg-neutral-800/30 text-neutral-700 dark:text-neutral-100 text-[10px] border-0">
                                                     User Submitted
                                                 </Badge>
                                             </div>
@@ -583,7 +583,7 @@ export default function ProjectIdeasPage() {
                                                 <span className="flex items-center gap-0.5"><MessageSquare className="w-3 h-3" />{problem.commentCount || 0}</span>
                                             </div>
                                         </div>
-                                        <h3 className="text-base font-bold text-neutral-900 dark:text-white mb-2 line-clamp-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                                        <h3 className="text-base font-bold text-neutral-900 dark:text-white mb-2 line-clamp-2 group-hover:text-neutral-800 dark:group-hover:text-neutral-100 transition-colors">
                                             {problem.projectTitle}
                                         </h3>
                                         <p className="text-xs text-neutral-500 mb-3 line-clamp-2 flex-grow">
@@ -591,7 +591,7 @@ export default function ProjectIdeasPage() {
                                         </p>
                                         {problem.coreRequirements?.slice(0, 2).map((req, i) => (
                                             <div key={i} className="flex items-center gap-1 text-[10px] text-neutral-500 mb-1">
-                                                <CheckCircle2 className="w-3 h-3 text-amber-500" />
+                                                <CheckCircle2 className="w-3 h-3 text-neutral-900" />
                                                 <span className="truncate">{req}</span>
                                             </div>
                                         ))}
@@ -634,9 +634,9 @@ export default function ProjectIdeasPage() {
                                     <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">{selectedProblem.overview || selectedProblem.projectDescription}</p>
                                 </div>
                                 {selectedProblem.recruiterSignal && (
-                                    <div className="bg-gradient-to-r from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-orange-100 dark:border-orange-800">
-                                        <h4 className="text-sm font-semibold text-orange-900 dark:text-orange-300 mb-2 flex items-center gap-2">📡 Recruiter Signal</h4>
-                                        <p className="text-sm text-orange-700 dark:text-orange-400">{selectedProblem.recruiterSignal}</p>
+                                    <div className="bg-gradient-to-r from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 rounded-xl p-4 border border-neutral-100 dark:border-neutral-800">
+                                        <h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-100 mb-2 flex items-center gap-2">📡 Recruiter Signal</h4>
+                                        <p className="text-sm text-neutral-700 dark:text-neutral-100">{selectedProblem.recruiterSignal}</p>
                                     </div>
                                 )}
                                 {selectedProblem.coreRequirements?.length > 0 && (
@@ -645,7 +645,7 @@ export default function ProjectIdeasPage() {
                                         <ul className="space-y-2">
                                             {selectedProblem.coreRequirements.map((req, i) => (
                                                 <li key={i} className="flex items-start gap-2">
-                                                    <CheckCircle2 className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                                                    <CheckCircle2 className="w-4 h-4 text-neutral-900 flex-shrink-0 mt-0.5" />
                                                     <span className="text-sm text-neutral-600 dark:text-neutral-400">{req}</span>
                                                 </li>
                                             ))}
@@ -658,7 +658,7 @@ export default function ProjectIdeasPage() {
                                         <ul className="space-y-2">
                                             {selectedProblem.engineeringConstraints.map((c, i) => (
                                                 <li key={i} className="flex items-start gap-2">
-                                                    <Target className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                                                    <Target className="w-4 h-4 text-neutral-900 flex-shrink-0 mt-0.5" />
                                                     <span className="text-sm text-neutral-600 dark:text-neutral-400">{c}</span>
                                                 </li>
                                             ))}

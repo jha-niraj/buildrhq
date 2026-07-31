@@ -251,7 +251,7 @@ export default function TeacherMockCreateSheet({
         }}>
             <SheetTrigger asChild>
                 {trigger || (
-                    <Button className="rounded-xl bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 text-white">
+                    <Button className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white">
                         <Mic className="w-4 h-4 mr-2" />
                         Create Mock Interview
                     </Button>
@@ -260,7 +260,7 @@ export default function TeacherMockCreateSheet({
             <SheetContent className="w-full sm:max-w-xl overflow-y-auto">
                 <SheetHeader className="mb-6">
                     <SheetTitle className="flex items-center gap-2">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                             <Mic className="w-5 h-5 text-white" />
                         </div>
                         <div>
@@ -280,9 +280,9 @@ export default function TeacherMockCreateSheet({
                                 <div className={cn(
                                     "w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all",
                                     idx < currentStep
-                                        ? "bg-amber-500 text-white"
+                                        ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900"
                                         : idx === currentStep
-                                            ? "bg-amber-100 dark:bg-amber-900 text-amber-600 dark:text-amber-400 ring-2 ring-amber-500"
+                                            ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 ring-2 ring-neutral-900"
                                             : "bg-neutral-100 dark:bg-neutral-800 text-neutral-400"
                                 )}>
                                     {idx < currentStep ? <Check className="w-4 h-4" /> : idx + 1}
@@ -292,7 +292,7 @@ export default function TeacherMockCreateSheet({
                             {idx < steps.length - 1 && (
                                 <div className={cn(
                                     "w-8 sm:w-12 h-0.5 mx-1",
-                                    idx < currentStep ? "bg-amber-500" : "bg-neutral-200 dark:bg-neutral-700"
+                                    idx < currentStep ? "bg-neutral-900" : "bg-neutral-200 dark:bg-neutral-700"
                                 )} />
                             )}
                         </div>
@@ -379,13 +379,13 @@ export default function TeacherMockCreateSheet({
                                                     className={cn(
                                                         "p-3 rounded-xl border text-left transition-all",
                                                         formData.category === cat.value
-                                                            ? "border-amber-500 bg-amber-50 dark:bg-amber-900/20"
-                                                            : "border-neutral-200 dark:border-neutral-700 hover:border-amber-300"
+                                                            ? "border-neutral-900 bg-neutral-50 dark:bg-neutral-800/20"
+                                                            : "border-neutral-200 dark:border-neutral-700 hover:border-neutral-300"
                                                     )}
                                                 >
                                                     <Icon className={cn(
                                                         "w-5 h-5 mb-1",
-                                                        formData.category === cat.value ? "text-amber-600" : "text-neutral-500"
+                                                        formData.category === cat.value ? "text-neutral-800" : "text-neutral-500"
                                                     )} />
                                                     <div className="font-medium text-sm">{cat.label}</div>
                                                     <div className="text-xs text-neutral-500">{cat.description}</div>
@@ -406,8 +406,8 @@ export default function TeacherMockCreateSheet({
                                                 className={cn(
                                                     "w-full p-3 rounded-xl border text-left transition-all flex justify-between items-center",
                                                     formData.level === level.value
-                                                        ? "border-amber-500 bg-amber-50 dark:bg-amber-900/20"
-                                                        : "border-neutral-200 dark:border-neutral-700 hover:border-amber-300"
+                                                        ? "border-neutral-900 bg-neutral-50 dark:bg-neutral-800/20"
+                                                        : "border-neutral-200 dark:border-neutral-700 hover:border-neutral-300"
                                                 )}
                                             >
                                                 <div>
@@ -415,7 +415,7 @@ export default function TeacherMockCreateSheet({
                                                     <div className="text-xs text-neutral-500">{level.desc}</div>
                                                 </div>
                                                 {formData.level === level.value && (
-                                                    <Check className="w-5 h-5 text-amber-600" />
+                                                    <Check className="w-5 h-5 text-neutral-800" />
                                                 )}
                                             </button>
                                         ))}
@@ -427,12 +427,12 @@ export default function TeacherMockCreateSheet({
                         {/* Step 2: Knowledge Base */}
                         {currentStep === 2 && (
                             <div className="space-y-4">
-                                <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-4">
-                                    <h4 className="font-medium text-amber-900 dark:text-amber-100 flex items-center gap-2">
+                                <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4">
+                                    <h4 className="font-medium text-neutral-900 dark:text-neutral-800 flex items-center gap-2">
                                         <Brain className="w-4 h-4" />
                                         Knowledge Base
                                     </h4>
-                                    <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">
+                                    <p className="text-sm text-neutral-700 dark:text-neutral-100 mt-1">
                                         Provide context and topics for the AI interviewer. This helps generate relevant questions.
                                     </p>
                                 </div>
@@ -501,7 +501,7 @@ export default function TeacherMockCreateSheet({
                                     </Label>
                                     {loadingClasses ? (
                                         <div className="flex items-center justify-center py-8">
-                                            <Loader2 className="w-6 h-6 animate-spin text-amber-500" />
+                                            <Loader2 className="w-6 h-6 animate-spin text-neutral-900" />
                                         </div>
                                     ) : classes.length === 0 ? (
                                         <div className="text-center py-8 text-neutral-500">
@@ -516,8 +516,8 @@ export default function TeacherMockCreateSheet({
                                                     className={cn(
                                                         "flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all",
                                                         formData.classIds.includes(cls.id)
-                                                            ? "border-amber-500 bg-amber-50 dark:bg-amber-900/20"
-                                                            : "border-neutral-200 dark:border-neutral-700 hover:border-amber-300"
+                                                            ? "border-neutral-900 bg-neutral-50 dark:bg-neutral-800/20"
+                                                            : "border-neutral-200 dark:border-neutral-700 hover:border-neutral-300"
                                                     )}
                                                 >
                                                     <Checkbox
@@ -599,7 +599,7 @@ export default function TeacherMockCreateSheet({
                     <Button
                         onClick={nextStep}
                         disabled={!canProceed() || loading}
-                        className="rounded-xl bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700"
+                        className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700"
                     >
                         {loading ? (
                             <>

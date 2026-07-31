@@ -60,6 +60,7 @@ import {
 
 
 import { TaskItem } from '@/components/projects/task-list-progress'
+import { projectLeaderboardUrl } from '@/lib/urls'
 
 function MilestoneTracker({ progressPercentage }: { progressPercentage: number, includeAssessment?: boolean }) {
     const milestones = [
@@ -75,7 +76,7 @@ function MilestoneTracker({ progressPercentage }: { progressPercentage: number, 
             <div className="relative">
                 <div className="absolute top-5 left-0 right-0 h-1 bg-neutral-200 dark:bg-neutral-800 rounded-full">
                     <motion.div
-                        className="h-full bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"
+                        className="h-full bg-gradient-to-r from-neutral-900 to-neutral-800 rounded-full"
                         initial={{ width: 0 }}
                         animate={{ width: `${progressPercentage}%` }}
                         transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -93,14 +94,14 @@ function MilestoneTracker({ progressPercentage }: { progressPercentage: number, 
                                                 <div className={cn(
                                                     'w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300',
                                                     milestone.unlocked
-                                                        ? 'bg-gradient-to-br from-orange-500 to-orange-600 border-orange-400 text-white shadow-lg shadow-orange-500/30'
+                                                        ? 'bg-gradient-to-br from-neutral-900 to-neutral-800 border-neutral-800 text-white shadow-lg shadow-neutral-900/30'
                                                         : 'bg-neutral-100 dark:bg-neutral-800 border-neutral-300 dark:border-neutral-700 text-neutral-400'
                                                 )}>
                                                     <Icon className="w-4 h-4" />
                                                 </div>
                                                 <span className={cn(
                                                     'mt-2 text-xs font-medium',
-                                                    milestone.unlocked ? 'text-orange-600 dark:text-orange-400' : 'text-neutral-400'
+                                                    milestone.unlocked ? 'text-neutral-800 dark:text-neutral-100' : 'text-neutral-400'
                                                 )}>
                                                     {milestone.label}
                                                 </span>
@@ -109,7 +110,7 @@ function MilestoneTracker({ progressPercentage }: { progressPercentage: number, 
                                         <TooltipContent>
                                             {
                                                 milestone.unlocked ? (
-                                                    <p className="text-amber-600">✓ Unlocked</p>
+                                                    <p className="text-neutral-800">✓ Unlocked</p>
                                                 ) : (
                                                     <p>Complete {milestone.threshold}% to unlock</p>
                                                 )
@@ -166,12 +167,12 @@ function QuickActions({
                             className={cn(
                                 "w-full h-auto py-4 flex-col gap-1",
                                 progressPercentage >= 50
-                                    ? "hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:border-orange-300"
+                                    ? "hover:bg-neutral-50 dark:hover:bg-neutral-800/20 hover:border-neutral-300"
                                     : "opacity-50 cursor-not-allowed"
                             )}
                             disabled={progressPercentage < 50}
                         >
-                            <Brain className={cn("w-5 h-5", progressPercentage >= 50 ? "text-orange-600" : "text-neutral-400")} />
+                            <Brain className={cn("w-5 h-5", progressPercentage >= 50 ? "text-neutral-800" : "text-neutral-400")} />
                             <span className="text-xs">{progressPercentage >= 50 ? 'Quiz' : '50% to unlock'}</span>
                         </Button>
                     </Link>
@@ -186,12 +187,12 @@ function QuickActions({
                             className={cn(
                                 "w-full h-auto py-4 flex-col gap-1",
                                 progressPercentage >= 75
-                                    ? "hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:border-amber-300"
+                                    ? "hover:bg-neutral-50 dark:hover:bg-neutral-800/20 hover:border-neutral-300"
                                     : "opacity-50 cursor-not-allowed"
                             )}
                             disabled={progressPercentage < 75}
                         >
-                            <Sparkles className={cn("w-5 h-5", progressPercentage >= 75 ? "text-amber-600" : "text-neutral-400")} />
+                            <Sparkles className={cn("w-5 h-5", progressPercentage >= 75 ? "text-neutral-800" : "text-neutral-400")} />
                             <span className="text-xs">{progressPercentage >= 75 ? 'Mock AI' : '75% to unlock'}</span>
                         </Button>
                     </Link>
@@ -201,8 +202,8 @@ function QuickActions({
             {
                 isPublic && (
                     <Link href={`/projects/${projectSlug}/leaderboard`}>
-                        <Button variant="outline" className="w-full h-auto py-4 flex-col gap-1 hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:border-amber-300">
-                            <Trophy className="w-5 h-5 text-amber-600" />
+                        <Button variant="outline" className="w-full h-auto py-4 flex-col gap-1 hover:bg-neutral-50 dark:hover:bg-neutral-800/20 hover:border-neutral-300">
+                            <Trophy className="w-5 h-5 text-neutral-800" />
                             <span className="text-xs">Leaderboard</span>
                         </Button>
                     </Link>
@@ -465,11 +466,11 @@ export default function ProjectDetailsClient({
         }
     }
 
-    const getShareableLink = () => {
-        const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
-        const username = currentUser?.username || 'user'
-        return `${baseUrl}/projects/${project.slug}/leaderboard?username=${username}&showProgress=true`
-    }
+    // The path here was already correct; the origin was not. `window.location.origin`
+    // is whatever host the AUTHOR is on, so a link copied from a preview deploy or
+    // localhost was unopenable for the recipient. See lib/urls.ts.
+    const getShareableLink = () =>
+        projectLeaderboardUrl(project.slug, currentUser?.username || 'user')
 
     const handleCopyLink = async () => {
         try {
@@ -486,9 +487,9 @@ export default function ProjectDetailsClient({
 
 
     const difficultyColors = {
-        BEGINNER: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
-        INTERMEDIATE: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
-        ADVANCED: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
+        BEGINNER: 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100',
+        INTERMEDIATE: 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100',
+        ADVANCED: 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100',
     }
 
 
@@ -540,7 +541,7 @@ export default function ProjectDetailsClient({
                                 </Badge>
                                 {
                                     isPublic ? (
-                                        <Badge variant="outline" className="px-3 py-1 border-amber-300 text-amber-700 dark:border-amber-700 dark:text-amber-400">
+                                        <Badge variant="outline" className="px-3 py-1 border-neutral-300 text-neutral-700 dark:border-neutral-700 dark:text-neutral-100">
                                             <Unlock className="w-3 h-3 mr-1" />
                                             Public
                                         </Badge>
@@ -553,7 +554,7 @@ export default function ProjectDetailsClient({
                                 }
                                 {
                                     hasStarted && (
-                                        <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
+                                        <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                             <Zap className="w-3 h-3 mr-1" />
                                             In Progress
                                         </Badge>
@@ -609,14 +610,10 @@ export default function ProjectDetailsClient({
                                                         {userProgress?.tasksCompleted || 0} of {userProgress?.totalTasks || totalTasks} tasks
                                                     </p>
                                                 </div>
-                                                <Button
-                                                    onClick={() => router.push(`/projects/${project.slug}/sprints`)}
-                                                    className="w-full bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white shadow-lg shadow-orange-500/25"
-                                                    size="lg"
-                                                >
+                                                <Button className="w-full bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white shadow-lg shadow-neutral-900/25" size="lg" asChild><Link href={`/projects/${project.slug}/sprints`}>
                                                     <Play className="w-4 h-4 mr-2" />
                                                     {isCompleted ? 'Review Tasks' : 'Continue Building'}
-                                                </Button>
+                                                </Link></Button>
                                                 <div className="flex gap-2">
                                                     <Button
                                                         variant="outline"
@@ -640,7 +637,7 @@ export default function ProjectDetailsClient({
                                                     progressPercentage >= 90 && (
                                                         <Button
                                                             onClick={() => setSubmitDialogOpen(true)}
-                                                            className="w-full bg-gradient-to-r from-amber-600 to-amber-600 hover:from-amber-700 hover:to-amber-700 text-white"
+                                                            className="w-full bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white"
                                                         >
                                                             <Trophy className="w-4 h-4 mr-2" />
                                                             Submit Project
@@ -659,7 +656,7 @@ export default function ProjectDetailsClient({
                                                 <Button
                                                     onClick={handleStartProject}
                                                     disabled={starting}
-                                                    className="w-full bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white shadow-lg shadow-orange-500/25"
+                                                    className="w-full bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white shadow-lg shadow-neutral-900/25"
                                                     size="lg"
                                                 >
                                                     {
@@ -679,10 +676,10 @@ export default function ProjectDetailsClient({
                                             </>
                                         ) : isPublic ? (
                                             <>
-                                                <div className="bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 rounded-xl p-4 border border-orange-100 dark:border-orange-800">
+                                                <div className="bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 rounded-xl p-4 border border-neutral-100 dark:border-neutral-800">
                                                     <div className="flex items-center justify-between mb-2">
                                                         <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">Enrollment</span>
-                                                        <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-400">
+                                                        <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/50 dark:text-neutral-100">
                                                             <Coins className="w-3 h-3 mr-1" />
                                                             13 Credits
                                                         </Badge>
@@ -693,7 +690,7 @@ export default function ProjectDetailsClient({
                                                 </div>
                                                 <Button
                                                     onClick={() => setEnrollDialogOpen(true)}
-                                                    className="w-full bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white shadow-lg shadow-orange-500/25"
+                                                    className="w-full bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white shadow-lg shadow-neutral-900/25"
                                                     size="lg"
                                                 >
                                                     <Coins className="w-4 h-4 mr-2" />
@@ -768,7 +765,7 @@ export default function ProjectDetailsClient({
                 >
                     <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                         <TabsList className="w-full lg:w-auto bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-xl p-1 border border-neutral-200 dark:border-neutral-800 shadow-sm flex-wrap">
-                            <TabsTrigger value="overview" className="rounded-lg data-[state=active]:bg-neutral-900 data-[state=active]:text-white dark:data-[state=active]:bg-white dark:data-[state=active]:text-black">
+                            <TabsTrigger value="overview" className="rounded-lg data-[state=active]:bg-neutral-900 dark:bg-white data-[state=active]:text-white dark:text-neutral-900 dark:data-[state=active]:bg-white dark:data-[state=active]:text-black">
                                 Overview
                             </TabsTrigger>
                             <TabsTrigger value="pages">
@@ -779,7 +776,7 @@ export default function ProjectDetailsClient({
                             </TabsTrigger>
                             {
                                 isCreator && (
-                                    <TabsTrigger value="settings" className="rounded-lg data-[state=active]:bg-neutral-900 data-[state=active]:text-white dark:data-[state=active]:bg-white dark:data-[state=active]:text-black">
+                                    <TabsTrigger value="settings" className="rounded-lg data-[state=active]:bg-neutral-900 dark:bg-white data-[state=active]:text-white dark:text-neutral-900 dark:data-[state=active]:bg-white dark:data-[state=active]:text-black">
                                         <Settings className="w-4 h-4 mr-1" />
                                         Settings
                                     </TabsTrigger>
@@ -801,7 +798,7 @@ export default function ProjectDetailsClient({
                                 <Card className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md transition-shadow duration-300">
                                     <CardHeader>
                                         <CardTitle className="flex items-center gap-2 text-xl">
-                                            <Layers className="w-5 h-5 text-orange-500" />
+                                            <Layers className="w-5 h-5 text-neutral-900" />
                                             Technology Stack
                                         </CardTitle>
                                     </CardHeader>
@@ -811,7 +808,7 @@ export default function ProjectDetailsClient({
                                                 project.stacks?.frontend && (
                                                     <div className="flex gap-4 items-center">
                                                         <p className="text-left text-sm font-medium text-neutral-500 dark:text-neutral-400 w-20">Frontend</p>
-                                                        <Badge variant="secondary" className="bg-orange-50 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">{project.stacks.frontend}</Badge>
+                                                        <Badge variant="secondary" className="bg-neutral-50 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">{project.stacks.frontend}</Badge>
                                                     </div>
                                                 )
                                             }
@@ -819,7 +816,7 @@ export default function ProjectDetailsClient({
                                                 project.stacks?.backend && (
                                                     <div className="flex gap-4 items-center">
                                                         <p className="text-left text-sm font-medium text-neutral-500 dark:text-neutral-400 w-20">Backend</p>
-                                                        <Badge variant="secondary" className="bg-orange-50 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">{project.stacks.backend}</Badge>
+                                                        <Badge variant="secondary" className="bg-neutral-50 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">{project.stacks.backend}</Badge>
                                                     </div>
                                                 )
                                             }
@@ -827,7 +824,7 @@ export default function ProjectDetailsClient({
                                                 project.stacks?.database && (
                                                     <div className="flex gap-4 items-center">
                                                         <p className="text-left text-sm font-medium text-neutral-500 dark:text-neutral-400 w-20">Database</p>
-                                                        <Badge variant="secondary" className="bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">{project.stacks.database}</Badge>
+                                                        <Badge variant="secondary" className="bg-neutral-50 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">{project.stacks.database}</Badge>
                                                     </div>
                                                 )
                                             }
@@ -835,7 +832,7 @@ export default function ProjectDetailsClient({
                                                 project.stacks?.deployment && (
                                                     <div className="flex gap-4 items-center">
                                                         <p className="text-left text-sm font-medium text-neutral-500 dark:text-neutral-400 w-20">Deployment</p>
-                                                        <Badge variant="secondary" className="bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">{project.stacks.deployment}</Badge>
+                                                        <Badge variant="secondary" className="bg-neutral-50 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">{project.stacks.deployment}</Badge>
                                                     </div>
                                                 )
                                             }
@@ -845,7 +842,7 @@ export default function ProjectDetailsClient({
                                 <Card className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md transition-shadow duration-300">
                                     <CardHeader>
                                         <CardTitle className="flex items-center gap-2 text-xl">
-                                            <Target className="w-5 h-5 text-amber-500" />
+                                            <Target className="w-5 h-5 text-neutral-900" />
                                             Key Outcomes
                                         </CardTitle>
                                         <CardDescription>What you&apos;ll build in this project</CardDescription>
@@ -855,7 +852,7 @@ export default function ProjectDetailsClient({
                                             {
                                                 (project.keyOutcomes || []).map((outcome: string, index: number) => (
                                                     <li key={index} className="flex items-start gap-3 p-2 bg-neutral-50 dark:bg-neutral-800/50 rounded-lg">
-                                                        <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                                                        <CheckCircle2 className="w-4 h-4 text-neutral-800 flex-shrink-0 mt-0.5" />
                                                         <span className="text-left text-neutral-700 dark:text-neutral-300 text-sm">{outcome}</span>
                                                     </li>
                                                 ))
@@ -868,7 +865,7 @@ export default function ProjectDetailsClient({
                                         <Card className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md transition-shadow duration-300">
                                             <CardHeader>
                                                 <CardTitle className="flex items-center gap-2 text-xl">
-                                                    <Lightbulb className="w-5 h-5 text-amber-500" />
+                                                    <Lightbulb className="w-5 h-5 text-neutral-900" />
                                                     Vision & Purpose
                                                 </CardTitle>
                                             </CardHeader>
@@ -899,7 +896,7 @@ export default function ProjectDetailsClient({
                                         <Card className="bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 border-neutral-200 dark:border-neutral-800 lg:col-span-2 shadow-sm hover:shadow-md transition-shadow duration-300">
                                             <CardHeader>
                                                 <CardTitle className="text-left flex items-center gap-2 text-xl">
-                                                    <Code2 className="w-5 h-5 text-orange-500" />
+                                                    <Code2 className="w-5 h-5 text-neutral-900" />
                                                     Features
                                                 </CardTitle>
                                                 <CardDescription className="text-left">Main features you&apos;ll implement</CardDescription>
@@ -916,8 +913,8 @@ export default function ProjectDetailsClient({
                                                                         className={cn(
                                                                             "text-[10px] uppercase",
                                                                             feature.priority === 'must-have' && "border-red-200 bg-red-50 text-red-700 dark:bg-red-900/20 dark:border-red-900 dark:text-red-400",
-                                                                            feature.priority === 'should-have' && "border-amber-200 bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:border-amber-900 dark:text-amber-400",
-                                                                            feature.priority === 'nice-to-have' && "border-amber-200 bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:border-amber-900 dark:text-amber-400"
+                                                                            feature.priority === 'should-have' && "border-neutral-200 bg-neutral-50 text-neutral-700 dark:bg-neutral-800/20 dark:border-neutral-800 dark:text-neutral-100",
+                                                                            feature.priority === 'nice-to-have' && "border-neutral-200 bg-neutral-50 text-neutral-700 dark:bg-neutral-800/20 dark:border-neutral-800 dark:text-neutral-100"
                                                                         )}
                                                                     >
                                                                         {feature.priority?.replace('-', ' ')}
@@ -1016,7 +1013,7 @@ export default function ProjectDetailsClient({
                             <div className="flex gap-2">
                                 <Input value={getShareableLink()} readOnly className="flex-1" />
                                 <Button size="icon" variant="outline" onClick={handleCopyLink}>
-                                    {copied ? <Check className="h-4 w-4 text-amber-600" /> : <Copy className="h-4 w-4" />}
+                                    {copied ? <Check className="h-4 w-4 text-neutral-800" /> : <Copy className="h-4 w-4" />}
                                 </Button>
                             </div>
                         </div>
@@ -1065,7 +1062,7 @@ export default function ProjectDetailsClient({
                         <Button
                             onClick={handleSubmitProject}
                             disabled={submitting || !submitForm.githubUrl}
-                            className="w-full bg-gradient-to-r from-amber-600 to-amber-600 text-white"
+                            className="w-full bg-gradient-to-r from-neutral-800 to-neutral-800 text-white"
                         >
                             {
                                 submitting ? (

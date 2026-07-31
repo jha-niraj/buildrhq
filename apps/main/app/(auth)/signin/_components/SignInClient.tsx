@@ -14,6 +14,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useAppContext } from "@/app/context/usercontext";
 import { getAuthErrorMessage, shouldRedirectToVerification } from "@/lib/auth-errors";
 import { cn } from "@repo/ui/lib/utils";
+import { AuthShell } from "../../_components/auth-shell";
 
 const RESEND_COOLDOWN_SECONDS = 30;
 
@@ -262,7 +263,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                 placeholder="you@example.com"
                 className={cn(
                     "text-sm w-full py-2.5 px-3 border rounded-lg",
-                    "focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent",
+                    "focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent",
                     "bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700",
                     "text-neutral-900 dark:text-white"
                 )}
@@ -275,46 +276,11 @@ function SignInForm({ searchParams }: SignInFormProps) {
     );
 
     return (
-        <div className="min-h-screen flex items-center justify-center overflow-hidden p-4 bg-neutral-100 dark:bg-neutral-950">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="w-full relative max-w-5xl overflow-hidden flex flex-col md:flex-row rounded-3xl shadow-2xl"
-            >
-                {/* Background Elements */}
-                <div className="w-full h-full z-[2] absolute bg-gradient-to-t from-transparent to-black/50 pointer-events-none md:hidden" />
-                <div className="hidden md:flex absolute z-[2] overflow-hidden backdrop-blur-2xl pointer-events-none">
-                    {[...Array(6)].map((_, i) => (
-                        <div key={i} className="h-[40rem] z-[2] w-[4rem] bg-gradient-to-r from-transparent via-black/20 to-white/10 opacity-30" />
-                    ))}
-                </div>
-                <div className="w-[15rem] h-[15rem] bg-orange-500 absolute z-[1] rounded-full -bottom-20 -left-20 blur-3xl opacity-50" />
-                <div className="w-[8rem] h-[8rem] bg-orange-400 absolute z-[1] rounded-full bottom-10 left-10 blur-2xl opacity-30" />
-
-                {/* Left Panel */}
-                <div className="bg-black text-white p-8 md:p-12 md:w-1/2 relative rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none overflow-hidden flex flex-col justify-between min-h-[200px] md:min-h-[600px]">
-                    <div className="relative z-10">
-                        <Link href="/" className="flex items-center gap-2 mb-8">
-                            <Code2 className="h-8 w-8 text-orange-500" />
-                            <span className="font-bold text-xl">BuildrHQ</span>
-                        </Link>
-                        <h1 className="text-2xl md:text-3xl font-medium leading-tight tracking-tight">
-                            Build projects. Crack interviews. Land your dream job.
-                        </h1>
-                    </div>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="text-white/60 text-sm mt-4 md:mt-0 relative z-10"
-                    >
-                        &quot;Every expert was once a beginner. Start your journey today.&quot;
-                    </motion.p>
-                </div>
-
-                {/* Right Panel */}
-                <div className="p-8 md:p-12 md:w-1/2 flex flex-col bg-white dark:bg-neutral-900 z-10">
+        <AuthShell
+            headline={<>Build projects. Crack interviews. <span className="text-white/50">Land the job.</span></>}
+            sub="Sign in to pick up where you left off."
+            quote="Every expert was once a beginner. Start your journey today."
+        >
                     <AnimatePresence mode="wait">
                         {mode === "verify" ? (
                             <motion.div
@@ -326,8 +292,8 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                 className="flex flex-col"
                             >
                                 <div className="mb-8">
-                                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10 border border-orange-500/20">
-                                        <MailCheck className="h-6 w-6 text-orange-500" />
+                                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-neutral-900/10 border border-neutral-900/20">
+                                        <MailCheck className="h-6 w-6 text-neutral-900" />
                                     </div>
                                     <h2 className="text-3xl font-medium mb-2 tracking-tight text-neutral-900 dark:text-white">
                                         Verify your email
@@ -352,7 +318,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                             onKeyDown={(e) => handleOtpKeyDown(i, e)}
                                             onPaste={handleOtpPaste}
                                             disabled={isVerifying}
-                                            className="h-13 w-11 flex-1 rounded-lg border-2 border-neutral-200 bg-neutral-50 py-3 text-center text-xl font-semibold text-neutral-900 outline-none transition-colors focus:border-orange-500 disabled:opacity-60 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+                                            className="h-13 w-11 flex-1 rounded-lg border-2 border-neutral-200 bg-neutral-50 py-3 text-center text-xl font-semibold text-neutral-900 outline-none transition-colors focus:border-neutral-900 disabled:opacity-60 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
                                         />
                                     ))}
                                 </div>
@@ -361,7 +327,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                     type="button"
                                     onClick={() => void verify(code.join(""))}
                                     disabled={isVerifying || code.join("").length !== 6}
-                                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2.5 rounded-lg disabled:opacity-50"
+                                    className="w-full bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-medium py-2.5 rounded-lg disabled:opacity-50"
                                 >
                                     {isVerifying
                                         ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Verifying...</>
@@ -374,7 +340,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                         type="button"
                                         onClick={() => void sendVerificationCode()}
                                         disabled={cooldown > 0}
-                                        className="font-medium text-orange-500 hover:underline disabled:text-neutral-400 disabled:no-underline dark:disabled:text-neutral-600"
+                                        className="font-medium text-neutral-900 hover:underline disabled:text-neutral-400 disabled:no-underline dark:disabled:text-neutral-600"
                                     >
                                         {cooldown > 0 ? `Resend in ${cooldown}s` : "Resend code"}
                                     </button>
@@ -398,7 +364,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                 className="flex flex-col"
                             >
                                 <div className="flex flex-col items-start mb-8">
-                                    <div className="text-orange-500 mb-4">
+                                    <div className="text-neutral-900 mb-4">
                                         <Code2 className="h-10 w-10" />
                                     </div>
                                     <h2 className="text-3xl font-medium mb-2 tracking-tight text-neutral-900 dark:text-white">
@@ -416,7 +382,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                         {emailField}
 
                                         {magicSent && (
-                                            <div className="rounded-lg border border-orange-500/20 bg-orange-500/5 p-3 text-sm text-neutral-700 dark:text-neutral-300">
+                                            <div className="rounded-lg border border-neutral-900/20 bg-neutral-900/5 p-3 text-sm text-neutral-700 dark:text-neutral-300">
                                                 Link sent. Open it on this device and you&apos;ll be signed in
                                                 automatically. It expires in 10 minutes.
                                             </div>
@@ -425,7 +391,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                         <Button
                                             type="submit"
                                             disabled={isSubmitting || !emailIsValid || cooldown > 0}
-                                            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                            className="w-full bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-medium py-2.5 px-4 rounded-lg transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             {isSubmitting
                                                 ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Sending link...</>
@@ -434,13 +400,15 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                                     : magicSent ? "Send another link" : "Email me a sign-in link"}
                                         </Button>
 
-                                        <button
+                                        <Button
                                             type="button"
+                                            variant="outline"
                                             onClick={() => { setMode("password"); setMagicSent(false); }}
-                                            className="mx-auto mt-2 flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200"
+                                            className="w-full gap-2 rounded-lg py-2.5 font-medium text-neutral-600 dark:text-neutral-300"
                                         >
-                                            <KeyRound className="h-4 w-4" /> Sign in with a password instead
-                                        </button>
+                                            <KeyRound className="h-4 w-4" />
+                                            Use a password instead
+                                        </Button>
                                     </form>
                                 ) : (
                                     <form className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
@@ -451,7 +419,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                                 <Label htmlFor="password" className="block text-sm text-neutral-700 dark:text-neutral-300">
                                                     Password
                                                 </Label>
-                                                <Link href="/forgotpassword" className="text-sm text-orange-500 hover:text-orange-600 transition-colors">
+                                                <Link href="/forgotpassword" className="text-sm text-neutral-900 hover:text-neutral-800 transition-colors">
                                                     Forgot password?
                                                 </Link>
                                             </div>
@@ -462,7 +430,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                                     placeholder="••••••••"
                                                     className={cn(
                                                         "text-sm w-full py-2.5 px-3 pr-10 border rounded-lg",
-                                                        "focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent",
+                                                        "focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:border-transparent",
                                                         "bg-neutral-50 dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700",
                                                         "text-neutral-900 dark:text-white"
                                                     )}
@@ -485,7 +453,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                         <Button
                                             type="submit"
                                             disabled={isSubmitting || !email.trim() || !password}
-                                            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                            className="w-full bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-medium py-2.5 px-4 rounded-lg transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             {isSubmitting ? (
                                                 <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Signing in...</>
@@ -494,13 +462,24 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                             )}
                                         </Button>
 
-                                        <button
+                                        <div className="relative my-1">
+                                            <div className="absolute inset-0 flex items-center">
+                                                <span className="w-full border-t border-neutral-200 dark:border-neutral-700" />
+                                            </div>
+                                            <div className="relative flex justify-center text-xs">
+                                                <span className="bg-white px-2 text-neutral-400 dark:bg-neutral-900">or</span>
+                                            </div>
+                                        </div>
+
+                                        <Button
                                             type="button"
+                                            variant="outline"
                                             onClick={() => setMode("magic")}
-                                            className="mx-auto flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200"
+                                            className="w-full gap-2 rounded-lg border-neutral-900/30 py-2.5 font-medium text-neutral-800 transition-colors hover:border-neutral-900/60 hover:bg-neutral-900/5 hover:text-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-200/10"
                                         >
-                                            <Wand2 className="h-4 w-4" /> Sign in without a password
-                                        </button>
+                                            <Wand2 className="h-4 w-4" />
+                                            Email me a sign-in link
+                                        </Button>
                                     </form>
                                 )}
 
@@ -553,16 +532,14 @@ function SignInForm({ searchParams }: SignInFormProps) {
 
                                 <p className="text-center text-neutral-600 dark:text-neutral-400 text-sm mt-4">
                                     Don&apos;t have an account?{" "}
-                                    <Link href={registerUrl} className="text-orange-500 font-medium hover:underline">
+                                    <Link href={registerUrl} className="font-semibold text-neutral-900 underline-offset-4 hover:underline dark:text-white">
                                         Create account
                                     </Link>
                                 </p>
                             </motion.div>
                         )}
                     </AnimatePresence>
-                </div>
-            </motion.div>
-        </div>
+        </AuthShell>
     );
 }
 
@@ -570,7 +547,7 @@ export default function SignInPage() {
     return (
         <Suspense fallback={
             <div className="flex min-h-screen items-center justify-center bg-neutral-100 dark:bg-neutral-950">
-                <Loader2 className="h-8 w-8 animate-spin text-orange-500" />
+                <Loader2 className="h-8 w-8 animate-spin text-neutral-900" />
             </div>
         }>
             <SearchParamsLoader />

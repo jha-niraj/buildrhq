@@ -58,7 +58,7 @@ export default function AiToolsPage() {
 
                 <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-neutral-100 dark:border-neutral-800">
                     <div className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-neutral-950 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
-                    <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-orange-500/10 opacity-50 blur-[100px] dark:bg-orange-500/20"></div>
+                    <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-neutral-900/10 opacity-50 blur-[100px] dark:bg-neutral-200/20"></div>
 
                     <div className="max-w-7xl mx-auto px-6 relative z-10">
                         <motion.div
@@ -73,7 +73,7 @@ export default function AiToolsPage() {
                                 transition={{ delay: 0.2 }}
                             >
                                 <Badge variant="outline" className="px-4 py-1.5 rounded-full border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 font-medium text-sm backdrop-blur-sm">
-                                    <Sparkles className="w-3.5 h-3.5 mr-2 text-orange-500" />
+                                    <Sparkles className="w-3.5 h-3.5 mr-2 text-neutral-900" />
                                     The Coder&apos;z Intelligence Engine
                                 </Badge>
                             </motion.div>
@@ -164,7 +164,7 @@ export default function AiToolsPage() {
                                                 <div className="w-14 h-14 rounded-xl bg-neutral-50 dark:bg-neutral-800 border border-neutral-100 dark:border-neutral-700 flex items-center justify-center text-neutral-900 dark:text-white">
                                                     <tool.icon className="w-7 h-7" />
                                                 </div>
-                                                <Badge className="bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">
+                                                <Badge className="bg-neutral-50 text-neutral-700 dark:bg-neutral-800/20 dark:text-neutral-100">
                                                     {tool.status}
                                                 </Badge>
                                             </div>
@@ -209,14 +209,14 @@ export default function AiToolsPage() {
                                 <Button
                                     size="lg"
                                     variant="outline"
-                                    className="h-14 px-8 bg-transparent text-neutral-900 dark:text-white border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 font-semibold text-lg rounded-full"
+                                    className="h-14 px-8 bg-transparent text-neutral-900 dark:text-white dark:text-neutral-900 border-neutral-200 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-900 dark:bg-white font-semibold text-lg rounded-full"
                                 >
                                     View Pricing
                                 </Button>
                             </div>
                             <div className="pt-6 flex items-center justify-center gap-6 text-sm text-neutral-400 font-medium">
-                                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-amber-500" /> Cancel anytime</span>
-                                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-amber-500" /> Secure payment</span>
+                                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-neutral-900" /> Cancel anytime</span>
+                                <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-neutral-900" /> Secure payment</span>
                             </div>
                         </motion.div>
                     </div>

@@ -34,13 +34,13 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
     <Link href={href}>
         <motion.div
             whileHover={{ y: -2 }}
-            className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-orange-300 dark:hover:border-orange-700 transition-all cursor-pointer group"
+            className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all cursor-pointer group"
         >
             <div className="flex items-start justify-between mb-4">
                 <div className="p-3 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 group-hover:scale-105 transition-transform">
                     {icon}
                 </div>
-                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors" />
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-800 dark:group-hover:text-neutral-100 transition-colors" />
             </div>
             <div className="space-y-1">
                 <p className="text-3xl font-bold text-neutral-900 dark:text-white">{value}</p>
@@ -48,7 +48,7 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
             </div>
             {
                 change && (
-                    <div className={`mt-3 text-xs font-medium ${changeType === "positive" ? "text-amber-600 dark:text-amber-400" :
+                    <div className={`mt-3 text-xs font-medium ${changeType === "positive" ? "text-neutral-800 dark:text-neutral-100" :
                             changeType === "negative" ? "text-red-600 dark:text-red-400" :
                                 "text-neutral-500"
                         }`}>
@@ -66,28 +66,28 @@ export function HeadDashboard({ userName, stats }: HeadDashboardProps) {
             title: "Total Students",
             value: stats?.totalStudents || 0,
             change: stats?.pendingVerifications ? `${stats.pendingVerifications} pending verification` : "No pending verifications",
-            icon: <Users className="w-5 h-5 text-orange-600" />,
+            icon: <Users className="w-5 h-5 text-neutral-800" />,
             href: "/students"
         },
         {
             title: "Faculty Members",
             value: stats?.totalFaculty || 0,
             change: "Manage team roles",
-            icon: <GraduationCap className="w-5 h-5 text-orange-600" />,
+            icon: <GraduationCap className="w-5 h-5 text-neutral-800" />,
             href: "/team/roles"
         },
         {
             title: "Active Classes",
             value: stats?.totalClasses || 0,
             change: "View all classes",
-            icon: <School className="w-5 h-5 text-orange-600" />,
+            icon: <School className="w-5 h-5 text-neutral-800" />,
             href: "/classes"
         },
         {
             title: "Credit Balance",
             value: stats?.creditsBalance || 0,
             change: "Manage credits",
-            icon: <Coins className="w-5 h-5 text-orange-600" />,
+            icon: <Coins className="w-5 h-5 text-neutral-800" />,
             href: "/billing"
         },
     ]
@@ -103,8 +103,8 @@ export function HeadDashboard({ userName, stats }: HeadDashboardProps) {
                 >
                     <div>
                         <div className="flex items-center gap-2 mb-2">
-                            <Shield className="w-5 h-5 text-amber-500" />
-                            <span className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                            <Shield className="w-5 h-5 text-neutral-900" />
+                            <span className="text-xs font-bold text-neutral-800 dark:text-neutral-100 uppercase tracking-wider">
                                 University Administrator
                             </span>
                         </div>
@@ -123,7 +123,7 @@ export function HeadDashboard({ userName, stats }: HeadDashboardProps) {
                             </Button>
                         </Link>
                         <Link href="/billing">
-                            <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
+                            <Button className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white">
                                 <CreditCard className="w-4 h-4 mr-2" />
                                 Manage Billing
                             </Button>
@@ -156,10 +156,10 @@ export function HeadDashboard({ userName, stats }: HeadDashboardProps) {
                     <h2 className="text-lg font-bold text-neutral-900 dark:text-white mb-6">Quick Actions</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <Link href="/departments/new" className="block">
-                            <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-all group">
+                            <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all group">
                                 <div className="flex items-center gap-3">
-                                    <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
-                                        <Building className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                                    <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/30">
+                                        <Building className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                     </div>
                                     <div>
                                         <p className="font-semibold text-neutral-900 dark:text-white">Create Department</p>
@@ -169,10 +169,10 @@ export function HeadDashboard({ userName, stats }: HeadDashboardProps) {
                             </div>
                         </Link>
                         <Link href="/classes/new" className="block">
-                            <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-all group">
+                            <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all group">
                                 <div className="flex items-center gap-3">
-                                    <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
-                                        <School className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                                    <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/30">
+                                        <School className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                     </div>
                                     <div>
                                         <p className="font-semibold text-neutral-900 dark:text-white">Create Class</p>
@@ -182,10 +182,10 @@ export function HeadDashboard({ userName, stats }: HeadDashboardProps) {
                             </div>
                         </Link>
                         <Link href="/students/verify" className="block">
-                            <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-all group">
+                            <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all group">
                                 <div className="flex items-center gap-3">
-                                    <div className="p-2 rounded-lg bg-amber-100 dark:bg-amber-900/30">
-                                        <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                                    <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/30">
+                                        <CheckCircle2 className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                     </div>
                                     <div>
                                         <p className="font-semibold text-neutral-900 dark:text-white">Verify Students</p>
@@ -195,10 +195,10 @@ export function HeadDashboard({ userName, stats }: HeadDashboardProps) {
                             </div>
                         </Link>
                         <Link href="/analytics" className="block">
-                            <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-all group">
+                            <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all group">
                                 <div className="flex items-center gap-3">
-                                    <div className="p-2 rounded-lg bg-amber-100 dark:bg-amber-900/30">
-                                        <PieChart className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                                    <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/30">
+                                        <PieChart className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                     </div>
                                     <div>
                                         <p className="font-semibold text-neutral-900 dark:text-white">View Analytics</p>
@@ -218,30 +218,30 @@ export function HeadDashboard({ userName, stats }: HeadDashboardProps) {
                     className="space-y-4"
                 >
                     {/* Getting Started */}
-                    <div className="bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl p-6 text-white">
+                    <div className="bg-gradient-to-br from-neutral-800 to-neutral-700 rounded-2xl p-6 text-white">
                         <h3 className="font-bold text-lg mb-2">Admin Checklist</h3>
-                        <p className="text-orange-200 text-sm mb-4">
+                        <p className="text-neutral-200 text-sm mb-4">
                             Complete these to fully set up your university.
                         </p>
                         <div className="space-y-3">
                             <div className="flex items-center gap-3 text-sm">
-                                <CheckCircle2 className="w-4 h-4 text-amber-300" />
+                                <CheckCircle2 className="w-4 h-4 text-neutral-300" />
                                 <span>University profile complete</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-orange-200">
-                                <div className="w-4 h-4 rounded-full border-2 border-orange-300" />
+                            <div className="flex items-center gap-3 text-sm text-neutral-200">
+                                <div className="w-4 h-4 rounded-full border-2 border-neutral-300" />
                                 <span>Create departments</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-orange-200">
-                                <div className="w-4 h-4 rounded-full border-2 border-orange-300" />
+                            <div className="flex items-center gap-3 text-sm text-neutral-200">
+                                <div className="w-4 h-4 rounded-full border-2 border-neutral-300" />
                                 <span>Invite faculty members</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-orange-200">
-                                <div className="w-4 h-4 rounded-full border-2 border-orange-300" />
+                            <div className="flex items-center gap-3 text-sm text-neutral-200">
+                                <div className="w-4 h-4 rounded-full border-2 border-neutral-300" />
                                 <span>Set up student verification</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-orange-200">
-                                <div className="w-4 h-4 rounded-full border-2 border-orange-300" />
+                            <div className="flex items-center gap-3 text-sm text-neutral-200">
+                                <div className="w-4 h-4 rounded-full border-2 border-neutral-300" />
                                 <span>Purchase credits</span>
                             </div>
                         </div>
@@ -251,7 +251,7 @@ export function HeadDashboard({ userName, stats }: HeadDashboardProps) {
                     <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
-                                <CreditCard className="w-4 h-4 text-orange-600" />
+                                <CreditCard className="w-4 h-4 text-neutral-800" />
                             </div>
                             <h3 className="font-bold text-neutral-900 dark:text-white">Billing</h3>
                         </div>
@@ -269,7 +269,7 @@ export function HeadDashboard({ userName, stats }: HeadDashboardProps) {
                     <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
-                                <Briefcase className="w-4 h-4 text-orange-600" />
+                                <Briefcase className="w-4 h-4 text-neutral-800" />
                             </div>
                             <h3 className="font-bold text-neutral-900 dark:text-white">Placements</h3>
                         </div>

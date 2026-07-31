@@ -71,8 +71,8 @@ export default function CreditTransactionsPage() {
 
     function getStatusBadge(status: string) {
         const styles = {
-            COMPLETED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-            PENDING: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+            COMPLETED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+            PENDING: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
             FAILED: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
             CANCELLED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-400",
         }
@@ -81,9 +81,9 @@ export default function CreditTransactionsPage() {
 
     function getTypeBadge(type: string) {
         const styles = {
-            PURCHASE: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-            REWARD: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-            REFUND: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+            PURCHASE: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+            REWARD: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+            REFUND: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
             DEDUCTION: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
         }
         return styles[type as keyof typeof styles] || styles.PURCHASE
@@ -101,7 +101,7 @@ export default function CreditTransactionsPage() {
                         View and manage all credit transactions
                     </p>
                 </div>
-                <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-orange-500 rounded-lg hover:from-red-600 hover:to-orange-600 transition-colors">
+                <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-neutral-900 rounded-lg hover:from-red-600 hover:to-neutral-800 transition-colors">
                     <Download className="w-4 h-4" />
                     Export
                 </button>
@@ -176,7 +176,7 @@ export default function CreditTransactionsPage() {
                                                 <tr key={transaction.id} className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="flex items-center">
-                                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-white text-sm font-medium">
+                                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-neutral-900 flex items-center justify-center text-white text-sm font-medium">
                                                                 {transaction.user?.name?.charAt(0) || "U"}
                                                             </div>
                                                             <div className="ml-3">
@@ -195,7 +195,7 @@ export default function CreditTransactionsPage() {
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        <span className={`text-sm font-semibold ${transaction.amount > 0 ? 'text-amber-600 dark:text-amber-400' : 'text-red-600 dark:text-red-400'}`}>
+                                                        <span className={`text-sm font-semibold ${transaction.amount > 0 ? 'text-neutral-800 dark:text-neutral-100' : 'text-red-600 dark:text-red-400'}`}>
                                                             {transaction.amount > 0 ? '+' : ''}{transaction.amount} credits
                                                         </span>
                                                     </td>

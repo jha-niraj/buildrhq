@@ -9,6 +9,7 @@ import {
     users,
     creditTransactions,
     earnings,
+    withTransaction
 } from '@repo/db'
 import { eq, and, desc, sql, or, ilike } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
@@ -110,7 +111,7 @@ export async function purchaseTemplate(templateId: string) {
     const platformFee = Math.ceil(price * 0.1)
     const creatorEarning = price - platformFee
 
-    await db.transaction(async tx => {
+    await withTransaction(async tx => {
         // Deduct from buyer
         await tx.update(users)
             .set({ credits: sql`${users.credits} - ${price}` })

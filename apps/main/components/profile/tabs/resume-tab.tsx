@@ -180,10 +180,10 @@ export function ResumeTab({
                 animate={{ opacity: 1, y: 0 }}
             >
                 <Card className="overflow-hidden">
-                    <div className="bg-gradient-to-r from-yellow-500/10 via-amber-500/10 to-orange-500/10 p-6">
+                    <div className="bg-gradient-to-r from-neutral-900/10 via-neutral-900/10 to-neutral-900/10 p-6">
                         <div className="flex items-start justify-between">
                             <div className="flex items-center gap-4">
-                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-amber-500 flex items-center justify-center">
+                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-900 flex items-center justify-center">
                                     <FileText className="w-7 h-7 text-white" />
                                 </div>
                                 <div>
@@ -229,7 +229,7 @@ export function ResumeTab({
                                             </Button>
                                             <Button
                                                 size="sm"
-                                                className="gap-2 bg-gradient-to-r from-yellow-500 to-amber-500 text-white hover:from-yellow-600 hover:to-amber-600"
+                                                className="gap-2 bg-gradient-to-r from-neutral-900 to-neutral-900 text-white hover:from-neutral-800 hover:to-neutral-800"
                                                 onClick={handleViewResume}
                                             >
                                                 <Download className="w-4 h-4" />
@@ -240,7 +240,7 @@ export function ResumeTab({
                                         <Button
                                             onClick={handleUploadClick}
                                             disabled={uploading}
-                                            className="gap-2 bg-gradient-to-r from-yellow-500 to-amber-500 text-white hover:from-yellow-600 hover:to-amber-600"
+                                            className="gap-2 bg-gradient-to-r from-neutral-900 to-neutral-900 text-white hover:from-neutral-800 hover:to-neutral-800"
                                         >
                                             {uploading ? (
                                                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -265,7 +265,7 @@ export function ResumeTab({
                     <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
                             <CardTitle className="text-lg flex items-center gap-2">
-                                <Briefcase className="w-5 h-5 text-orange-500" />
+                                <Briefcase className="w-5 h-5 text-neutral-900" />
                                 Work Experience
                             </CardTitle>
                             {
@@ -355,7 +355,7 @@ export function ResumeTab({
                                                                         exp.isCurrentlyWorking && (
                                                                             <Badge
                                                                                 variant="outline"
-                                                                                className="text-xs bg-amber-500/10 text-amber-600 border-amber-500/20"
+                                                                                className="text-xs bg-neutral-900/10 text-neutral-800 border-neutral-900/20"
                                                                             >
                                                                                 Current
                                                                             </Badge>
@@ -409,7 +409,7 @@ export function ResumeTab({
                     <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
                             <CardTitle className="text-lg flex items-center gap-2">
-                                <GraduationCap className="w-5 h-5 text-orange-500" />
+                                <GraduationCap className="w-5 h-5 text-neutral-900" />
                                 Education
                             </CardTitle>
                             {
@@ -427,8 +427,8 @@ export function ResumeTab({
                                 <div className="space-y-4">
                                     {user.educations.map((edu) => (
                                         <div key={edu.id} className="flex items-start gap-4">
-                                            <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center shrink-0">
-                                                <GraduationCap className="w-6 h-6 text-orange-500" />
+                                            <div className="w-12 h-12 rounded-lg bg-neutral-900/10 flex items-center justify-center shrink-0">
+                                                <GraduationCap className="w-6 h-6 text-neutral-900" />
                                             </div>
                                             <div>
                                                 <h4 className="font-semibold">
@@ -445,8 +445,8 @@ export function ResumeTab({
                                 </div>
                             ) : user.university ? (
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center">
-                                        <GraduationCap className="w-6 h-6 text-orange-500" />
+                                    <div className="w-12 h-12 rounded-lg bg-neutral-900/10 flex items-center justify-center">
+                                        <GraduationCap className="w-6 h-6 text-neutral-900" />
                                     </div>
                                     <div>
                                         <h4 className="font-semibold">{user.university}</h4>
@@ -479,7 +479,7 @@ export function ResumeTab({
                     <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
                             <CardTitle className="text-lg flex items-center gap-2">
-                                <Award className="w-5 h-5 text-yellow-500" />
+                                <Award className="w-5 h-5 text-neutral-900" />
                                 Certifications
                             </CardTitle>
                             {
@@ -505,8 +505,8 @@ export function ResumeTab({
                                                 transition={{ delay: index * 0.05 }}
                                                 className="flex items-center gap-4 p-4 rounded-lg border hover:shadow-sm transition-shadow group"
                                             >
-                                                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-500/20 to-amber-500/20 flex items-center justify-center flex-shrink-0">
-                                                    <Award className="w-6 h-6 text-yellow-500" />
+                                                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-neutral-900/20 to-neutral-900/20 flex items-center justify-center flex-shrink-0">
+                                                    <Award className="w-6 h-6 text-neutral-900" />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <h4 className="font-medium line-clamp-1 group-hover:text-primary transition-colors">

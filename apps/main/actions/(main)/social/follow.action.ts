@@ -1,6 +1,6 @@
 "use server"
 
-import { db, follow, followRequest, users } from "@repo/db"
+import { db, follow, followRequest, users, withTransaction } from "@repo/db"
 import { getSession } from "@repo/auth"
 import { headers } from "next/headers"
 import { eq, and } from "drizzle-orm"
@@ -97,7 +97,7 @@ export async function acceptFollowRequest(requestId: string) {
         })
         if (!req) return { success: false, error: "Request not found" }
 
-        await db.transaction(async (tx) => {
+        await withTransaction(async (tx) => {
             await tx.delete(followRequest).where(eq(followRequest.id, requestId))
             await tx.insert(follow).values({
                 followerId: req.senderId,

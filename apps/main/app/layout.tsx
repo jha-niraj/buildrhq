@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@repo/ui/styles/globals.css";
 import { ThemeProvider } from "@repo/ui/components/themeprovider";
-import { Geist, Space_Grotesk, Geist_Mono } from "next/font/google";
+import { Geist, Space_Grotesk, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import { Toaster as SonnerToaster } from "@repo/ui/components/ui/sonner";
 import { Providers } from "@/app/providers/providers";
 import { AppProvider } from "./context/usercontext";
@@ -22,6 +22,16 @@ const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	subsets: ["latin"],
 	display: "swap",
+});
+
+const bricolage = Bricolage_Grotesque({
+	subsets: ["latin"],
+	weight: ["200", "300", "400", "500", "600", "700", "800"],
+	display: "swap",
+	// Registered as --font-display, which globals.css maps to the `font-display`
+	// utility — so every h1/h2 and the sidebar pick it up without each app
+	// restating the stack.
+	variable: "--font-display",
 });
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.buildrhq.com'
@@ -177,7 +187,7 @@ export default function RootLayout({
 			    @repo/ui — the loader wordmark, notably — can reference the display
 			    face as `var(--font-space-grotesk)` instead of hardcoding a stack. */}
 			<body className={`
-				${spaceGrotesk.className} ${spaceGrotesk.variable} ${geistSans.variable} ${geistMono.variable} antialiased
+				${spaceGrotesk.className} ${bricolage.variable} ${spaceGrotesk.variable} ${geistSans.variable} ${geistMono.variable} antialiased
 			`}>
                 <Analytics/>
 				<Providers>

@@ -16,7 +16,7 @@ export const BackgroundOrbits = () => {
 
             {/* Decorative "Planets" on Orbit */}
             <div className="absolute h-[800px] w-[800px] animate-spin-slow">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-orange-500 rounded-full blur-[1px]" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-neutral-900 rounded-full blur-[1px]" />
             </div>
         </div>
     )

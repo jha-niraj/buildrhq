@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { cn } from "@repo/ui/lib/utils"
@@ -11,7 +12,21 @@ interface ThemeToggleProps {
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
     const { resolvedTheme, setTheme } = useTheme()
-    const isDark = resolvedTheme === "dark"
+
+    // `resolvedTheme` is undefined during SSR and on the first client render —
+    // next-themes can only know the real theme once it has read localStorage and
+    // the <html> class. Branching on it directly made the server emit the light
+    // classes and the client emit the dark ones, which React reported as a
+    // hydration mismatch and recovered from by throwing away and re-rendering
+    // this subtree. Since the toggle sits in the sidebar footer, that happened on
+    // every page load, in every app.
+    //
+    // Gating on `mounted` makes the server render and the first client render
+    // identical by construction. The correct state lands one frame later.
+    const [mounted, setMounted] = useState(false)
+    useEffect(() => setMounted(true), [])
+
+    const isDark = mounted && resolvedTheme === "dark"
 
     const toggle = (e?: React.MouseEvent) => {
         // Passing an origin runs the directional wipe (light->dark L->R, dark->light
@@ -27,6 +42,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
         <div
             className={cn(
                 "flex w-16 h-8 p-1 rounded-full cursor-pointer transition-all duration-300",
+                !mounted && "transition-none",
                 isDark
                     ? "bg-zinc-950 border border-zinc-800"
                     : "bg-white border border-zinc-200",
@@ -42,6 +58,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
                 <div
                     className={cn(
                         "flex justify-center items-center w-6 h-6 rounded-full transition-transform duration-300",
+                        !mounted && "transition-none",
                         isDark
                             ? "transform translate-x-0 bg-zinc-800"
                             : "transform translate-x-8 bg-gray-200"
@@ -64,6 +81,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
                 <div
                     className={cn(
                         "flex justify-center items-center w-6 h-6 rounded-full transition-transform duration-300",
+                        !mounted && "transition-none",
                         isDark
                             ? "bg-transparent"
                             : "transform -translate-x-8"

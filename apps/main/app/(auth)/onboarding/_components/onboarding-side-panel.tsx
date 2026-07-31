@@ -25,9 +25,9 @@ const INK_FAINT = "text-neutral-400 dark:text-white/40"
 const HAIRLINE = "border-neutral-900/10 dark:border-white/10"
 const FILL_SOFT = "bg-neutral-900/5 dark:bg-white/10"
 const HOVER_SOFT = "hover:bg-neutral-900/[0.03] dark:hover:bg-white/5"
-const MARKER_DONE = "border-orange-500 bg-orange-500 text-white"
-const MARKER_CURRENT = "border-orange-500 text-orange-500"
-const TOGGLE = "text-neutral-700 hover:bg-neutral-900/5 dark:text-white dark:hover:bg-white/10"
+const MARKER_DONE = "border-neutral-900 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900"
+const MARKER_CURRENT = "border-neutral-900 text-neutral-900"
+const TOGGLE = "text-neutral-700 hover:bg-neutral-900 dark:bg-white/5 dark:text-white dark:text-neutral-900 dark:hover:bg-white/10"
 
 const STEP_CAPTIONS: Record<string, string> = {
 	username: "Your handle across BuildrHQ",
@@ -56,8 +56,8 @@ export function OnboardingSidePanel({ nav }: { nav: FlowNav }) {
 			>
 				{/* Brand */}
 				<motion.div variants={item} className="flex items-center gap-2.5">
-					<span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-orange-500/10 border border-orange-500/20">
-						<Code2 className="h-5 w-5 text-orange-500" />
+					<span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-900/10 border border-neutral-900/20">
+						<Code2 className="h-5 w-5 text-neutral-900" />
 					</span>
 					<span className={`text-lg font-semibold tracking-tight ${INK}`}>BuildrHQ</span>
 				</motion.div>

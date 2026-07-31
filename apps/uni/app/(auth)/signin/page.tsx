@@ -106,11 +106,11 @@ function SignInForm({ searchParams }: SignInFormProps) {
             >
                 <div className="flex justify-center mb-8">
                     <Link href="/" className="flex items-center gap-2">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-600 to-orange-600 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-800 flex items-center justify-center">
                             <GraduationCap className="w-5 h-5 text-white" />
                         </div>
                         <span className="text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
-                            Coder&apos;z <span className="text-orange-600 font-mono font-normal">UNIVERSITY</span>
+                            Coder&apos;z <span className="text-neutral-800 font-mono font-normal">UNIVERSITY</span>
                         </span>
                     </Link>
                 </div>
@@ -242,7 +242,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                         New to the platform?{" "}
                         <Link
                             href={registerUrl}
-                            className="text-orange-600 dark:text-orange-400 font-semibold hover:underline"
+                            className="text-neutral-800 dark:text-neutral-100 font-semibold hover:underline"
                         >
                             Register University
                         </Link>

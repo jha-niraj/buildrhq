@@ -65,7 +65,7 @@ export function QuizVerification({ goalId, questions, status, score, attempts }:
         return (
             <div className="flex-1 flex items-center justify-center p-8">
                 <div className="text-center">
-                    <div className="w-20 h-20 mx-auto rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mb-4">
+                    <div className="w-20 h-20 mx-auto rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mb-4">
                         <span className="text-3xl">✓</span>
                     </div>
                     <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">Quiz Passed!</h3>
@@ -87,7 +87,7 @@ export function QuizVerification({ goalId, questions, status, score, attempts }:
                     <p className="text-neutral-500 mb-4">You scored {score}%. You need 70% to pass.</p>
                     <div className="flex items-center justify-center gap-4">
                         <span className="text-xs text-neutral-500">Attempts: {attempts}</span>
-                        <Button onClick={handleRetry} variant="outline" className="bg-neutral-900 hover:bg-neutral-800 text-white border-0">
+                        <Button onClick={handleRetry} variant="outline" className="bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 border-0">
                             <RotateCcw className="w-4 h-4 mr-2" />
                             Try Again
                         </Button>

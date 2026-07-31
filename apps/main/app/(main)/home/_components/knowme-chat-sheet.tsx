@@ -144,7 +144,7 @@ export default function KnowmeChatSheet({
             >
                 <SheetHeader className="p-4 border-b shrink-0">
                     <SheetTitle className="flex items-center gap-2">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                             <Bot className="w-5 h-5 text-white" />
                         </div>
                         KnowMe Chat
@@ -201,7 +201,7 @@ export default function KnowmeChatSheet({
                                                 >
                                                     {
                                                         message.role === "assistant" && (
-                                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center flex-shrink-0">
                                                                 <Bot className="w-4 h-4 text-white" />
                                                             </div>
                                                         )
@@ -224,7 +224,7 @@ export default function KnowmeChatSheet({
                                     {
                                         isLoading && (
                                             <div className="flex gap-3">
-                                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center flex-shrink-0">
                                                     <Bot className="w-4 h-4 text-white" />
                                                 </div>
                                                 <div className="bg-muted rounded-2xl rounded-tl-none px-4 py-3">

@@ -62,11 +62,11 @@ const ROLE_LABELS: Record<UniversityMemberRole, string> = {
 }
 
 const ROLE_COLORS: Record<UniversityMemberRole, string> = {
-    HEAD: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
-    DEPARTMENT_HEAD: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300",
-    PLACEMENT_OFFICER: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300",
-    FINANCE_OFFICER: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
-    FACULTY: "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400",
+    HEAD: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    DEPARTMENT_HEAD: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    PLACEMENT_OFFICER: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    FINANCE_OFFICER: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    FACULTY: "bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100",
     TEACHING_ASSISTANT: "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
 }
 
@@ -404,7 +404,7 @@ export default function RolesPage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
                 <div>
                     <h1 className="text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                        <Users className="w-7 h-7 text-orange-500" />
+                        <Users className="w-7 h-7 text-neutral-900" />
                         Team & Roles
                     </h1>
                     <p className="text-neutral-500 mt-1">
@@ -415,7 +415,7 @@ export default function RolesPage() {
                     isHead && (
                         <Button
                             onClick={() => setInviteSheetOpen(true)}
-                            className="rounded-xl bg-orange-600 hover:bg-orange-700 text-white cursor-pointer"
+                            className="rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white cursor-pointer"
                         >
                             <UserPlus className="w-4 h-4 mr-2" />
                             Invite Member
@@ -433,7 +433,7 @@ export default function RolesPage() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             className={`mb-6 p-4 rounded-xl flex items-center gap-3 ${message.type === "success"
-                                ? "bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300"
+                                ? "bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-100"
                                 : "bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300"
                                 }`}
                         >
@@ -469,7 +469,7 @@ export default function RolesPage() {
                         className="mb-8"
                     >
                         <h2 className="text-lg font-bold text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
-                            <Mail className="w-5 h-5 text-amber-500" />
+                            <Mail className="w-5 h-5 text-neutral-900" />
                             Pending Invitations
                         </h2>
                         <div className="grid gap-3">
@@ -477,7 +477,7 @@ export default function RolesPage() {
                                 invitations.map((invite) => (
                                     <div
                                         key={invite.id}
-                                        className="flex items-center justify-between p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800"
+                                        className="flex items-center justify-between p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800"
                                     >
                                         <div>
                                             <p className="font-medium text-neutral-900 dark:text-white">{invite.email}</p>
@@ -513,22 +513,22 @@ export default function RolesPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.05 }}
                             className={`relative p-5 rounded-2xl border transition-all ${member.isActive
-                                ? "bg-white dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700"
+                                ? "bg-white dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700"
                                 : "bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 opacity-60"
                                 }`}
                         >
                             {/* Role badge */}
                             {
                                 member.role === "HEAD" && (
-                                    <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-amber-500 flex items-center justify-center shadow-lg">
+                                    <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-neutral-900 flex items-center justify-center shadow-lg">
                                         <Crown className="w-4 h-4 text-white" />
                                     </div>
                                 )
                             }
 
                             <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-100 to-orange-100 dark:from-orange-900/30 dark:to-orange-900/30 flex items-center justify-center shrink-0">
-                                    <GraduationCap className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neutral-100 to-neutral-100 dark:from-neutral-800/30 dark:to-neutral-800/30 flex items-center justify-center shrink-0">
+                                    <GraduationCap className="w-6 h-6 text-neutral-800 dark:text-neutral-100" />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <p className="font-bold text-neutral-900 dark:text-white truncate">
@@ -584,7 +584,7 @@ export default function RolesPage() {
                                                     ) : (
                                                         <DropdownMenuItem
                                                             onClick={() => handleReactivate(member.id)}
-                                                            className="text-amber-600 cursor-pointer"
+                                                            className="text-neutral-800 cursor-pointer"
                                                         >
                                                             <UserCheck className="w-4 h-4 mr-2" />
                                                             Reactivate
@@ -613,7 +613,7 @@ export default function RolesPage() {
                                     }
                                     {
                                         member.permissions.length > 4 && (
-                                            <span className="px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-900/30 text-xs text-orange-600 dark:text-orange-400">
+                                            <span className="px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800/30 text-xs text-neutral-800 dark:text-neutral-100">
                                                 +{member.permissions.length - 4} more
                                             </span>
                                         )
@@ -630,7 +630,7 @@ export default function RolesPage() {
                 <SheetContent side="right" className="w-full sm:max-w-lg overflow-y-auto">
                     <SheetHeader>
                         <SheetTitle className="flex items-center gap-2">
-                            <UserPlus className="w-5 h-5 text-orange-500" />
+                            <UserPlus className="w-5 h-5 text-neutral-900" />
                             Invite Team Member
                         </SheetTitle>
                         <SheetDescription>
@@ -776,7 +776,7 @@ export default function RolesPage() {
                         <Button
                             onClick={handleInviteSubmit}
                             disabled={saving || !inviteForm.email}
-                            className="w-full rounded-xl bg-orange-600 hover:bg-orange-700 text-white cursor-pointer"
+                            className="w-full rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white cursor-pointer"
                         >
                             {
                                 saving ? (
@@ -801,7 +801,7 @@ export default function RolesPage() {
                 <SheetContent side="right" className="w-full sm:max-w-lg overflow-y-auto">
                     <SheetHeader>
                         <SheetTitle className="flex items-center gap-2">
-                            <Edit2 className="w-5 h-5 text-orange-500" />
+                            <Edit2 className="w-5 h-5 text-neutral-900" />
                             Edit Member
                         </SheetTitle>
                         <SheetDescription>
@@ -913,7 +913,7 @@ export default function RolesPage() {
                         <Button
                             onClick={handleEditSubmit}
                             disabled={saving}
-                            className="w-full rounded-xl bg-orange-600 hover:bg-orange-700 text-white cursor-pointer"
+                            className="w-full rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white cursor-pointer"
                         >
                             {
                                 saving ? (

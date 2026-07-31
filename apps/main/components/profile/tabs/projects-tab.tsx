@@ -104,12 +104,12 @@ const statusConfig: Record<string, { color: string; icon: typeof CheckCircle2; l
     PLANNED: defaultStatusConfig,
 };
 
-const defaultVisibilityConfig = { icon: Globe, label: "Public", color: "text-amber-600" };
+const defaultVisibilityConfig = { icon: Globe, label: "Public", color: "text-neutral-800" };
 
 const visibilityConfig: Record<string, { icon: typeof Globe; label: string; color: string }> = {
     PUBLIC: defaultVisibilityConfig,
     PRIVATE: { icon: EyeOff, label: "Private", color: "text-gray-500" },
-    UNLISTED: { icon: Eye, label: "Unlisted", color: "text-yellow-600" },
+    UNLISTED: { icon: Eye, label: "Unlisted", color: "text-neutral-800" },
 };
 
 export function ProjectsTab({

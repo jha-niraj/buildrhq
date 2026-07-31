@@ -66,15 +66,15 @@ function CompanyCard({ company, onApprove, onReject, isLoading }: CompanyCardPro
             >
                 <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center">
-                            <Building2 className="w-6 h-6 text-amber-600 dark:text-amber-400" />
+                        <div className="w-12 h-12 rounded-xl bg-neutral-50 dark:bg-neutral-800/20 flex items-center justify-center">
+                            <Building2 className="w-6 h-6 text-neutral-800 dark:text-neutral-100" />
                         </div>
                         <div>
                             <h3 className="font-semibold text-neutral-900 dark:text-white">{company.name}</h3>
                             <p className="text-sm text-neutral-500">{company.industry || "Industry not specified"}</p>
                         </div>
                     </div>
-                    <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 text-xs font-medium">
+                    <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-neutral-50 dark:bg-neutral-800/20 text-neutral-800 dark:text-neutral-100 text-xs font-medium">
                         <Clock className="w-3 h-3" />
                         Pending
                     </span>
@@ -136,7 +136,7 @@ function CompanyCard({ company, onApprove, onReject, isLoading }: CompanyCardPro
                             size="sm"
                             onClick={() => onApprove(company.id)}
                             disabled={isLoading}
-                            className="text-xs bg-amber-600 hover:bg-amber-700"
+                            className="text-xs bg-neutral-800 hover:bg-neutral-700"
                         >
                             {
                                 isLoading ? (
@@ -154,7 +154,7 @@ function CompanyCard({ company, onApprove, onReject, isLoading }: CompanyCardPro
                 <DialogContent className="max-w-lg">
                     <DialogHeader>
                         <DialogTitle className="flex items-center gap-2">
-                            <Building2 className="w-5 h-5 text-amber-600" />
+                            <Building2 className="w-5 h-5 text-neutral-800" />
                             {company.name}
                         </DialogTitle>
                         <DialogDescription>Company verification details</DialogDescription>
@@ -165,7 +165,7 @@ function CompanyCard({ company, onApprove, onReject, isLoading }: CompanyCardPro
                                 <p className="text-xs text-neutral-500 uppercase tracking-wider mb-1">Website</p>
                                 {
                                     company.website ? (
-                                        <a href={company.website} target="_blank" rel="noopener noreferrer" className="text-sm text-orange-600 hover:underline flex items-center gap-1">
+                                        <a href={company.website} target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-800 hover:underline flex items-center gap-1">
                                             {company.website} <ExternalLink className="w-3 h-3" />
                                         </a>
                                     ) : (
@@ -328,7 +328,7 @@ export default function CompanyVerificationPage() {
         return (
             <div className="p-6 lg:p-8 flex items-center justify-center min-h-[400px]">
                 <div className="text-center">
-                    <Loader2 className="w-12 h-12 animate-spin text-amber-400 mx-auto mb-4" />
+                    <Loader2 className="w-12 h-12 animate-spin text-neutral-800 mx-auto mb-4" />
                     <p className="text-neutral-500">Loading verification queue...</p>
                 </div>
             </div>
@@ -343,7 +343,7 @@ export default function CompanyVerificationPage() {
                     Back to Hiring Platform
                 </Link>
                 <div className="flex items-center gap-3">
-                    <div className="w-3 h-8 rounded-full bg-amber-500" />
+                    <div className="w-3 h-8 rounded-full bg-neutral-900" />
                     <div>
                         <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">
                             Company Verification
@@ -355,19 +355,19 @@ export default function CompanyVerificationPage() {
                 </div>
             </div>
             <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800">
-                    <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+                <div className="bg-neutral-50 dark:bg-neutral-800/20 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800">
+                    <div className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
                         <Clock className="w-5 h-5" />
                         <span className="text-2xl font-bold">{stats.pending}</span>
                     </div>
-                    <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Pending Review</p>
+                    <p className="text-sm text-neutral-700 dark:text-neutral-100 mt-1">Pending Review</p>
                 </div>
-                <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800">
-                    <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+                <div className="bg-neutral-50 dark:bg-neutral-800/20 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800">
+                    <div className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
                         <CheckCircle className="w-5 h-5" />
                         <span className="text-2xl font-bold">{stats.verified}</span>
                     </div>
-                    <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Approved</p>
+                    <p className="text-sm text-neutral-700 dark:text-neutral-100 mt-1">Approved</p>
                 </div>
                 <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-4 border border-red-200 dark:border-red-800">
                     <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
@@ -394,7 +394,7 @@ export default function CompanyVerificationPage() {
                     </div>
                 ) : (
                     <div className="text-center py-16 bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800">
-                        <CheckCircle className="w-12 h-12 text-amber-500 mx-auto mb-4" />
+                        <CheckCircle className="w-12 h-12 text-neutral-900 mx-auto mb-4" />
                         <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2">
                             All caught up!
                         </h3>

@@ -50,13 +50,13 @@ const categoryConfig: Record<
 	string,
 	{ icon: React.ComponentType<{ className?: string }>; color: string }
 > = {
-	FRONTEND: { icon: Globe, color: "text-orange-500 bg-orange-500/10" },
-	LANGUAGES: { icon: Code2, color: "text-orange-500 bg-orange-500/10" },
-	BACKEND: { icon: Server, color: "text-amber-500 bg-amber-500/10" },
-	API: { icon: Wrench, color: "text-orange-500 bg-orange-500/10" },
+	FRONTEND: { icon: Globe, color: "text-neutral-900 bg-neutral-900/10" },
+	LANGUAGES: { icon: Code2, color: "text-neutral-900 bg-neutral-900/10" },
+	BACKEND: { icon: Server, color: "text-neutral-900 bg-neutral-900/10" },
+	API: { icon: Wrench, color: "text-neutral-900 bg-neutral-900/10" },
 	DATABASE: { icon: Database, color: "text-red-500 bg-red-500/10" },
-	DEVOPS: { icon: Wrench, color: "text-yellow-500 bg-yellow-500/10" },
-	CLOUD: { icon: Cloud, color: "text-amber-500 bg-amber-500/10" },
+	DEVOPS: { icon: Wrench, color: "text-neutral-900 bg-neutral-900/10" },
+	CLOUD: { icon: Cloud, color: "text-neutral-900 bg-neutral-900/10" },
 };
 
 // Level to percentage
@@ -333,7 +333,7 @@ export function SkillsTab({
 												rel="noopener noreferrer"
 												className="flex items-center gap-3 p-4 rounded-lg border hover:shadow-sm transition-shadow"
 											>
-												<div className="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-500/20 to-amber-500/20 flex items-center justify-center">
+												<div className="w-12 h-12 rounded-lg bg-gradient-to-br from-neutral-900/20 to-neutral-900/20 flex items-center justify-center">
 													🏅
 												</div>
 												<div className="flex-1 min-w-0">

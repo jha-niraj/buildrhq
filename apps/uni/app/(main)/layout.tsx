@@ -41,7 +41,7 @@ function UniversityLayoutContent({ children }: { children: React.ReactNode }) {
         return (
             <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 flex items-center justify-center">
                 <div className="flex flex-col items-center gap-4">
-                    <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+                    <Loader2 className="w-8 h-8 animate-spin text-neutral-900" />
                     <p className="text-sm text-neutral-500 font-mono">Initializing university portal...</p>
                 </div>
             </div>
@@ -59,7 +59,7 @@ function UniversityLayoutContent({ children }: { children: React.ReactNode }) {
                 className={cn(
                     "h-screen flex flex-col transition-all duration-300",
                     "lg:ml-[17rem] p-3",
-                    isCollapsed && "lg:ml-[6.25rem]"
+                    isCollapsed && "lg:ml-[106px]"
                 )}
             >
                 <div className="flex-1 bg-white dark:bg-neutral-950 lg:rounded-3xl lg:border-l border-neutral-200 dark:border-neutral-800 shadow-xl overflow-hidden flex flex-col">

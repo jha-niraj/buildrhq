@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "@repo/ui/styles/globals.css";
 import { ThemeProvider } from "@repo/ui/components/themeprovider";
-import { Geist, Space_Grotesk, Geist_Mono } from "next/font/google";
+import { Geist, Space_Grotesk, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import { Toaster as SonnerToaster } from "@repo/ui/components/ui/sonner";
 import { Providers } from "@/app/providers";
 import { SITE, APP_URL, BRAND } from "@/lib/site";
@@ -28,6 +28,16 @@ const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	subsets: ["latin"],
 	display: "swap",
+});
+
+const bricolage = Bricolage_Grotesque({
+	subsets: ["latin"],
+	weight: ["200", "300", "400", "500", "600", "700", "800"],
+	display: "swap",
+	// Registered as --font-display, which globals.css maps to the `font-display`
+	// utility — so every h1/h2 and the sidebar pick it up without each app
+	// restating the stack.
+	variable: "--font-display",
 });
 
 const DEFAULT_TITLE = `${BRAND.name} - ${BRAND.tagline}`;
@@ -174,7 +184,7 @@ export default function RootLayout({
 				/>
 			</head>
 			<body
-				className={`${spaceGrotesk.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
+				className={`${spaceGrotesk.className} ${bricolage.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
 				<Providers>
 					<ThemeProvider

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { signOut, useSession } from "@repo/auth/client"
 import Link from "next/link"
@@ -24,6 +24,15 @@ function JobsSidebarContent() {
     const { isCollapsed, setIsCollapsed } = useSidebar()
     const { data: session } = useSession()
     const { theme, setTheme } = useTheme()
+    // next-themes cannot know the real theme until it has read localStorage, so
+    // `theme` is undefined on the server and resolved on the client. Branching on
+    // it directly in the markup below made the server emit one icon and the
+    // client the other — a hydration mismatch React recovers from by discarding
+    // and re-rendering this subtree, on every /jobs load. Same fix as
+    // @repo/ui's ThemeToggle.
+    const [mounted, setMounted] = useState(false)
+    useEffect(() => setMounted(true), [])
+    const isDark = mounted && theme === "dark"
     const pathname = usePathname()
     const router = useRouter()
     const [profileDropdownOpen, setProfileDropdownOpen] = useState(false)
@@ -70,17 +79,17 @@ function JobsSidebarContent() {
                                 className={cn(
                                     "flex items-center justify-center p-2.5 rounded-xl transition-all duration-200",
                                     "hover:bg-neutral-100 dark:hover:bg-neutral-800",
-                                    active && "bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400",
+                                    active && "bg-neutral-50 dark:bg-neutral-800/20 text-neutral-800 dark:text-neutral-100",
                                     item.comingSoon && "opacity-50 pointer-events-none"
                                 )}
                             >
                                 <Icon className={cn(
                                     "w-5 h-5",
-                                    active ? "text-orange-600 dark:text-orange-400" : "text-neutral-600 dark:text-neutral-400"
+                                    active ? "text-neutral-800 dark:text-neutral-100" : "text-neutral-600 dark:text-neutral-400"
                                 )} />
                             </Link>
                         </TooltipTrigger>
-                        <TooltipContent side="right" className="bg-neutral-900 text-white border-neutral-800">
+                        <TooltipContent side="right" className="bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 border-neutral-800">
                             <p>{item.name}</p>
                             {item.comingSoon && <span className="text-xs text-neutral-400 ml-1">(Coming Soon)</span>}
                         </TooltipContent>
@@ -96,17 +105,17 @@ function JobsSidebarContent() {
                 className={cn(
                     "flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200",
                     "hover:bg-neutral-100 dark:hover:bg-neutral-800",
-                    active && "bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400",
+                    active && "bg-neutral-50 dark:bg-neutral-800/20 text-neutral-800 dark:text-neutral-100",
                     item.comingSoon && "opacity-50 pointer-events-none"
                 )}
             >
                 <Icon className={cn(
                     "w-5 h-5",
-                    active ? "text-orange-600 dark:text-orange-400" : "text-neutral-600 dark:text-neutral-400"
+                    active ? "text-neutral-800 dark:text-neutral-100" : "text-neutral-600 dark:text-neutral-400"
                 )} />
                 <span className={cn(
                     "text-sm font-medium",
-                    active ? "text-orange-600 dark:text-orange-400" : "text-neutral-700 dark:text-neutral-300"
+                    active ? "text-neutral-800 dark:text-neutral-100" : "text-neutral-700 dark:text-neutral-300"
                 )}>
                     {item.name}
                 </span>
@@ -116,7 +125,7 @@ function JobsSidebarContent() {
                     </span>
                 )}
                 {item.badge && (
-                    <span className="ml-auto text-xs px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 font-medium">
+                    <span className="ml-auto text-xs px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100 font-medium">
                         {item.badge}
                     </span>
                 )}
@@ -125,7 +134,7 @@ function JobsSidebarContent() {
     }
 
     return (
-        <aside
+        <aside data-sidebar
             className={cn(
                 "fixed top-0 left-0 h-screen bg-white dark:bg-neutral-950 border-r border-neutral-200 dark:border-neutral-800 z-50",
                 "transition-all duration-300 ease-in-out",
@@ -137,14 +146,14 @@ function JobsSidebarContent() {
             <div className="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-800">
                 {!isCollapsed && (
                     <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                             <Briefcase className="w-4 h-4 text-white" />
                         </div>
                         <span className="font-bold text-neutral-900 dark:text-white">Jobs</span>
                     </div>
                 )}
                 {isCollapsed && (
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mx-auto">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center mx-auto">
                         <Briefcase className="w-4 h-4 text-white" />
                     </div>
                 )}
@@ -193,21 +202,21 @@ function JobsSidebarContent() {
             <div className="p-3 border-t border-neutral-200 dark:border-neutral-800">
                 {/* Theme Toggle */}
                 <button
-                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                    onClick={() => setTheme(isDark ? "light" : "dark")}
                     className={cn(
                         "flex items-center gap-2 px-3 py-2 rounded-xl w-full",
                         "hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all",
                         isCollapsed && "justify-center px-2"
                     )}
                 >
-                    {theme === "dark" ? (
+                    {isDark ? (
                         <Sun className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
                     ) : (
                         <Moon className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
                     )}
                     {!isCollapsed && (
                         <span className="text-sm text-neutral-600 dark:text-neutral-400">
-                            {theme === "dark" ? "Light Mode" : "Dark Mode"}
+                            {isDark ? "Light Mode" : "Dark Mode"}
                         </span>
                     )}
                 </button>

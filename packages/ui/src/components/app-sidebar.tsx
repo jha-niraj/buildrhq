@@ -104,6 +104,15 @@ export interface AppSidebarProps {
 
     /** Extra footer content (e.g. a credits pill) rendered above the profile row. */
     footerExtra?: React.ReactNode
+
+    /**
+     * The collapsed-rail form of `footerExtra` — icon buttons in a vertical
+     * stack. Supplied separately rather than derived, because a row of labelled
+     * pills does not shrink into a 84px rail; it has to be re-laid-out. Without
+     * this the tools simply vanish when the sidebar collapses, which is exactly
+     * when the user is most likely to be reaching for them.
+     */
+    footerExtraCollapsed?: React.ReactNode
 }
 
 const normalize = (p: string) => (p.startsWith("/") ? p : `/${p}`)
@@ -117,9 +126,9 @@ const NOTIF_TYPES: {
     icon: React.ComponentType<{ className?: string }>
     tint: string
 }[] = [
-    { value: "INFO", label: "Updates", icon: Info, tint: "text-orange-500 bg-orange-500/10" },
-    { value: "SUCCESS", label: "Success", icon: CheckCircle2, tint: "text-orange-600 bg-orange-600/10" },
-    { value: "WARNING", label: "Warnings", icon: AlertTriangle, tint: "text-amber-500 bg-amber-500/10" },
+    { value: "INFO", label: "Updates", icon: Info, tint: "text-neutral-900 bg-neutral-900/10" },
+    { value: "SUCCESS", label: "Success", icon: CheckCircle2, tint: "text-neutral-800 bg-neutral-800/10" },
+    { value: "WARNING", label: "Warnings", icon: AlertTriangle, tint: "text-neutral-900 bg-neutral-900/10" },
     { value: "ERROR", label: "Alerts", icon: XCircle, tint: "text-red-500 bg-red-500/10" },
 ]
 
@@ -141,7 +150,7 @@ export function AppSidebar(props: AppSidebarProps) {
         brand, primary, secondary = [], secondaryLabel = "Management",
         isCollapsed, setIsCollapsed, isMobileOpen, setIsMobileOpen,
         user, isPending, onSignOut, profileHref = "/profile", profileLinks = [],
-        notifications, footerExtra,
+        notifications, footerExtra, footerExtraCollapsed,
     } = props
 
     const pathname = usePathname()
@@ -257,7 +266,7 @@ export function AppSidebar(props: AppSidebarProps) {
                         <Link ref={isActive ? activeItemRef : undefined} href={href} onClick={() => { if (!isExpanded) toggleExpanded(item.path) }} className={cn("flex flex-1 min-w-0 items-center gap-3 rounded-lg px-3 py-2.5 transition-all cursor-pointer", !isActive && "hover:text-foreground dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800")}>
                             <Icon className="h-5 w-5 flex-shrink-0" />
                             <span className="flex-1 text-left whitespace-nowrap overflow-hidden">{item.name}</span>
-                            {item.isImportant && <AlertCircle className="h-3.5 w-3.5 shrink-0 text-orange-500" />}
+                            {item.isImportant && <AlertCircle className="h-3.5 w-3.5 shrink-0 text-neutral-900" />}
                         </Link>
                         <button type="button" aria-label={isExpanded ? `Collapse ${item.name}` : `Expand ${item.name}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleExpanded(item.path) }} className="cursor-pointer mr-1.5 flex items-center justify-center rounded-md p-1 text-neutral-500 dark:text-neutral-400 transition-colors hover:bg-neutral-200 dark:hover:bg-neutral-700 hover:text-foreground dark:hover:text-white">
                             <ChevronDown className={cn("h-4 w-4 transition-transform flex-shrink-0", isExpanded && "rotate-180")} />
@@ -295,7 +304,7 @@ export function AppSidebar(props: AppSidebarProps) {
                 {!collapsed && item.badge != null && !item.comingSoon && (
                     <span className={cn("ml-auto shrink-0 rounded-full px-1.5 py-0.5 text-xs font-semibold tabular-nums", isActive ? "bg-white/20 text-white dark:bg-black/20 dark:text-black" : "bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-200")}>{item.badge}</span>
                 )}
-                {!collapsed && item.isImportant && <AlertCircle className="ml-auto h-3.5 w-3.5 shrink-0 text-orange-500" />}
+                {!collapsed && item.isImportant && <AlertCircle className="ml-auto h-3.5 w-3.5 shrink-0 text-neutral-900" />}
             </Link>
         )
 
@@ -335,7 +344,7 @@ export function AppSidebar(props: AppSidebarProps) {
         : NOTIF_TYPES.find(t => t.value === notifType) ?? null
 
     const brandTile = brand.logo ?? (
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-orange-500 text-white text-sm font-bold">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-bold">
             {brand.name?.[0]?.toUpperCase() ?? "B"}
         </div>
     )
@@ -394,8 +403,11 @@ export function AppSidebar(props: AppSidebarProps) {
 
             {/* Bottom bar */}
             <div className="mt-auto shrink-0 border-t border-neutral-200 dark:border-neutral-800">
-                {footerExtra && !collapsed && (
+                {!collapsed && footerExtra && (
                     <div className="border-b border-neutral-200 dark:border-neutral-800 px-3 py-2.5">{footerExtra}</div>
+                )}
+                {collapsed && footerExtraCollapsed && (
+                    <div className="flex flex-col items-center gap-1 border-b border-neutral-200 py-2 dark:border-neutral-800">{footerExtraCollapsed}</div>
                 )}
 
                 {/* Theme + notifications */}
@@ -492,16 +504,20 @@ export function AppSidebar(props: AppSidebarProps) {
 
     return (
         <TooltipProvider delayDuration={0}>
-            {/* Mobile hamburger */}
-            <button onClick={() => setIsMobileOpen(!isMobileOpen)} className="fixed top-3 left-3 z-50 lg:hidden bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-foreground dark:text-white p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all shadow-lg cursor-pointer" aria-label="Toggle sidebar">
-                <Menu className="h-5 w-5" />
-            </button>
+            {/* Mobile hamburger. Hidden while the sheet is open: the sheet covers
+                this corner, so the button is a target nothing can reach, and the
+                sheet's own dismiss is the control at that point. */}
+            {!isMobileOpen && (
+                <button onClick={() => setIsMobileOpen(true)} className="fixed top-3 right-3 z-50 lg:hidden bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-foreground dark:text-white p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all shadow-lg cursor-pointer" aria-label="Open sidebar">
+                    <Menu className="h-5 w-5" />
+                </button>
+            )}
 
             {/* Desktop sidebar — floating rounded card */}
-            <aside className={cn(
+            <aside data-sidebar className={cn(
                 "fixed top-2 left-2 z-40 flex h-[calc(100vh-1rem)] flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 dark:border-neutral-800 dark:bg-neutral-950",
                 "hidden lg:flex",
-                isCollapsed ? "lg:w-[84px]" : "lg:w-64",
+                isCollapsed ? "lg:w-[90px]" : "lg:w-64",
             )}>
                 {renderContent()}
             </aside>
@@ -536,7 +552,7 @@ export function AppSidebar(props: AppSidebarProps) {
                                             notifTab === key ? "bg-white dark:bg-neutral-800 text-foreground dark:text-white shadow-sm" : "text-neutral-500 dark:text-neutral-400 hover:text-foreground dark:hover:text-white",
                                         )}>
                                             {label}
-                                            {cnt > 0 && <span className={cn("inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] font-bold tabular-nums", notifTab === key ? "bg-orange-500 text-white" : "bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300")}>{cnt}</span>}
+                                            {cnt > 0 && <span className={cn("inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] font-bold tabular-nums", notifTab === key ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900" : "bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300")}>{cnt}</span>}
                                         </button>
                                     ))}
                                 </div>
@@ -549,7 +565,7 @@ export function AppSidebar(props: AppSidebarProps) {
                                                 "inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-sm font-medium transition-colors cursor-pointer",
                                                 notifType === "ALL"
                                                     ? "border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-                                                    : "border-orange-300 dark:border-orange-800 text-orange-600 dark:text-orange-400 bg-orange-500/5",
+                                                    : "border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-100 bg-neutral-900/5",
                                             )}>
                                                 <ListFilter className="h-3.5 w-3.5" />
                                                 <span>{activeTypeMeta ? activeTypeMeta.label : "All modules"}</span>
@@ -560,14 +576,14 @@ export function AppSidebar(props: AppSidebarProps) {
                                             <p className="px-2 pb-1 pt-0.5 text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-400">Filter by module</p>
                                             <button type="button" onClick={() => { setNotifType("ALL"); setNotifFilterOpen(false) }} className="flex w-full items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
                                                 <span className="flex items-center gap-2"><Inbox className="h-4 w-4 text-neutral-400" />All modules</span>
-                                                {notifType === "ALL" && <Check className="h-4 w-4 text-orange-500" />}
+                                                {notifType === "ALL" && <Check className="h-4 w-4 text-neutral-900" />}
                                             </button>
                                             {(availableTypes.length ? availableTypes : NOTIF_TYPES).map(t => {
                                                 const Icon = t.icon
                                                 return (
                                                     <button key={t.value} type="button" onClick={() => { setNotifType(t.value); setNotifFilterOpen(false) }} className="flex w-full items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors">
                                                         <span className="flex items-center gap-2"><span className={cn("flex h-5 w-5 items-center justify-center rounded", t.tint)}><Icon className="h-3.5 w-3.5" /></span>{t.label}</span>
-                                                        {notifType === t.value && <Check className="h-4 w-4 text-orange-500" />}
+                                                        {notifType === t.value && <Check className="h-4 w-4 text-neutral-900" />}
                                                     </button>
                                                 )
                                             })}
@@ -600,7 +616,7 @@ export function AppSidebar(props: AppSidebarProps) {
                                         const meta = notifTypeMeta(n.type)
                                         const Icon = meta.icon
                                         return (
-                                            <button key={n.id} type="button" onClick={() => notifications.onItemClick?.(n)} className={cn("w-full flex items-start gap-3.5 px-6 py-4 text-left transition-colors cursor-pointer", n.read ? "hover:bg-neutral-50 dark:hover:bg-neutral-900" : "bg-orange-500/[0.04] dark:bg-orange-500/[0.06] hover:bg-orange-500/[0.08]")}>
+                                            <button key={n.id} type="button" onClick={() => notifications.onItemClick?.(n)} className={cn("w-full flex items-start gap-3.5 px-6 py-4 text-left transition-colors cursor-pointer", n.read ? "hover:bg-neutral-50 dark:hover:bg-neutral-900" : "bg-neutral-900/[0.04] dark:bg-neutral-200/[0.06] hover:bg-neutral-900/[0.08]")}>
                                                 <div className="relative shrink-0 mt-0.5">
                                                     {n.sender?.image || n.sender?.name ? (
                                                         <Avatar user={{ name: n.sender?.name, image: n.sender?.image }} size={38} />
@@ -614,7 +630,7 @@ export function AppSidebar(props: AppSidebarProps) {
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-start justify-between gap-2">
                                                         <p className={cn("text-sm leading-snug", n.read ? "font-medium text-neutral-700 dark:text-neutral-300" : "font-semibold text-foreground dark:text-white")}>{n.title}</p>
-                                                        {!n.read && <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-orange-500" />}
+                                                        {!n.read && <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-neutral-900" />}
                                                     </div>
                                                     {n.description && <p className="mt-0.5 text-sm text-neutral-500 dark:text-neutral-400 line-clamp-2">{n.description}</p>}
                                                     <p className="mt-1.5 text-xs text-neutral-400 dark:text-neutral-500">{timeAgo(n.createdAt)}</p>
@@ -655,7 +671,7 @@ function NotificationEmptyState({ tab, filtered }: { tab: "unread" | "read"; fil
                 {[0, 1, 2].map(i => (
                     <motion.span
                         key={i}
-                        className="absolute rounded-full border border-orange-400/40 dark:border-orange-500/30"
+                        className="absolute rounded-full border border-neutral-800/40 dark:border-neutral-200/30"
                         initial={{ width: 56, height: 56, opacity: 0 }}
                         animate={{ width: 156, height: 156, opacity: [0, 0.6, 0] }}
                         transition={{ duration: 3, repeat: Infinity, delay: i * 1, ease: "easeOut" }}
@@ -664,7 +680,7 @@ function NotificationEmptyState({ tab, filtered }: { tab: "unread" | "read"; fil
 
                 {/* Soft breathing halo */}
                 <motion.span
-                    className="absolute h-24 w-24 rounded-full bg-orange-500/10 blur-xl"
+                    className="absolute h-24 w-24 rounded-full bg-neutral-900/10 blur-xl"
                     animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
                     transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                 />
@@ -677,7 +693,7 @@ function NotificationEmptyState({ tab, filtered }: { tab: "unread" | "read"; fil
                 ].map((p, i) => (
                     <motion.span
                         key={`spark-${i}`}
-                        className="absolute rounded-full bg-orange-400"
+                        className="absolute rounded-full bg-neutral-800"
                         style={{ width: p.s, height: p.s, left: `calc(50% + ${p.x}px)` }}
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: [-4, -46], opacity: [0, 1, 0] }}
@@ -692,10 +708,10 @@ function NotificationEmptyState({ tab, filtered }: { tab: "unread" | "read"; fil
                     animate={{ rotate: [0, -9, 9, -6, 6, 0] }}
                     transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 1.4, ease: "easeInOut" }}
                 >
-                    <Bell className="h-7 w-7 text-orange-500" />
+                    <Bell className="h-7 w-7 text-neutral-900" />
                     {/* Bell clapper dot */}
                     <motion.span
-                        className="absolute -bottom-0.5 h-1.5 w-1.5 rounded-full bg-orange-500"
+                        className="absolute -bottom-0.5 h-1.5 w-1.5 rounded-full bg-neutral-900"
                         animate={{ x: [0, -3, 3, -2, 2, 0] }}
                         transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 1.4, ease: "easeInOut" }}
                     />

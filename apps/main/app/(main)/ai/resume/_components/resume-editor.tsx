@@ -1,7 +1,7 @@
 'use client'
+import Link from "next/link";
 
 import { useState, useCallback, useTransition } from 'react'
-import { useRouter } from 'next/navigation'
 import { Button } from '@repo/ui/components/ui/button'
 import { Input } from '@repo/ui/components/ui/input'
 import { Label } from '@repo/ui/components/ui/label'
@@ -282,25 +282,25 @@ function AIToolsSheet({ draftId, open, onClose, onContentUpdated }: {
                     {tailorResult && (
                         <div className="space-y-3 border-t border-neutral-200 dark:border-neutral-800 pt-4">
                             {tailorResult.summary && (
-                                <p className="text-xs text-neutral-600 dark:text-neutral-400 bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3 border border-amber-200 dark:border-amber-900/40">
+                                <p className="text-xs text-neutral-600 dark:text-neutral-400 bg-neutral-50 dark:bg-neutral-800/20 rounded-lg p-3 border border-neutral-200 dark:border-neutral-800/40">
                                     ✓ {tailorResult.summary}
                                 </p>
                             )}
                             {tailorResult.keywordsAdded.length > 0 && (
                                 <div>
-                                    <p className="text-xs font-medium text-amber-600 mb-1.5">Keywords added/emphasised</p>
+                                    <p className="text-xs font-medium text-neutral-800 mb-1.5">Keywords added/emphasised</p>
                                     <div className="flex flex-wrap gap-1">
-                                        {tailorResult.keywordsAdded.map(k => <Badge key={k} className="text-[10px] bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400">{k}</Badge>)}
+                                        {tailorResult.keywordsAdded.map(k => <Badge key={k} className="text-[10px] bg-neutral-50 text-neutral-700 dark:bg-neutral-800/20 dark:text-neutral-100">{k}</Badge>)}
                                     </div>
                                 </div>
                             )}
                             {tailorResult.suggestions.length > 0 && (
                                 <div>
-                                    <p className="text-xs font-medium text-amber-600 mb-1.5">What you should add to this resume</p>
+                                    <p className="text-xs font-medium text-neutral-800 mb-1.5">What you should add to this resume</p>
                                     <ul className="space-y-1">
                                         {tailorResult.suggestions.map((s, i) => (
                                             <li key={i} className="text-xs text-neutral-600 dark:text-neutral-400 flex gap-1.5">
-                                                <span className="text-amber-500 flex-shrink-0">→</span>{s}
+                                                <span className="text-neutral-900 flex-shrink-0">→</span>{s}
                                             </li>
                                         ))}
                                     </ul>
@@ -314,7 +314,7 @@ function AIToolsSheet({ draftId, open, onClose, onContentUpdated }: {
                         <div className="space-y-3 border-t border-neutral-200 dark:border-neutral-800 pt-4">
                             <div className="flex items-center justify-between">
                                 <span className="text-sm font-semibold">ATS Score</span>
-                                <span className={cn('text-2xl font-black', scoreResult.score >= 80 ? 'text-amber-600' : scoreResult.score >= 60 ? 'text-amber-600' : 'text-red-600')}>
+                                <span className={cn('text-2xl font-black', scoreResult.score >= 80 ? 'text-neutral-800' : scoreResult.score >= 60 ? 'text-neutral-800' : 'text-red-600')}>
                                     {scoreResult.score}/100
                                 </span>
                             </div>
@@ -416,7 +416,6 @@ function LivePreview({ content, templateSlug }: { content: ResumeDraftContent; t
 
 // ─── Main Editor ──────────────────────────────────────────────────────────────
 export function ResumeEditor({ draft, content: initialContent, templates }: Props) {
-    const router = useRouter()
     const [content, setContent] = useState<ResumeDraftContent>(initialContent)
     const [name, setName] = useState(draft.name)
     const [templateSlug, setTemplateSlug] = useState(draft.templateSlug)
@@ -456,9 +455,9 @@ export function ResumeEditor({ draft, content: initialContent, templates }: Prop
         <div className="flex flex-col h-screen bg-neutral-50 dark:bg-neutral-950">
             {/* ── Top bar ── */}
             <div className="flex items-center gap-3 px-4 h-12 border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 flex-shrink-0">
-                <Button variant="ghost" size="sm" className="h-8 w-8 p-0" onClick={() => router.push('/ai/resume')}>
+                <Button variant="ghost" size="sm" className="h-8 w-8 p-0" asChild><Link href='/ai/resume'>
                     <ArrowLeft className="w-4 h-4" />
-                </Button>
+                </Link></Button>
                 <Input
                     value={name}
                     onChange={e => setName(e.target.value)}

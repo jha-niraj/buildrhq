@@ -139,7 +139,7 @@ export const PLATFORM_TEMPLATES: PlatformTemplate[] = [
         tags: ["executive", "leadership", "classic"],
         sectionOrder: ["header", "summary", "experience", "education", "skills", "certifications"],
         config: { primaryColor: "#1e293b", fontFamily: "georgia", layout: "single", showPhoto: false, fontSize: "medium" },
-        previewColor: "#f59e0b",
+        previewColor: "#525252",
     },
     {
         slug: "ats-optimizer",

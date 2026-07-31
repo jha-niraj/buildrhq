@@ -105,7 +105,7 @@ export function ReviewSheet({ isOpen, onClose, sessionId, existingRating }: Revi
                             >
                                 <SheetHeader className="mb-6">
                                     <SheetTitle className="flex items-center gap-2 text-2xl">
-                                        <MessageSquare className="w-6 h-6 text-orange-600" />
+                                        <MessageSquare className="w-6 h-6 text-neutral-800" />
                                         How was your experience?
                                     </SheetTitle>
                                     <SheetDescription>
@@ -132,7 +132,7 @@ export function ReviewSheet({ isOpen, onClose, sessionId, existingRating }: Revi
                                                     >
                                                         <Star
                                                             className={`w-10 h-10 transition-colors ${star <= (hoveredRating || rating)
-                                                                ? 'fill-amber-400 text-amber-400'
+                                                                ? 'fill-neutral-800 text-neutral-800'
                                                                 : 'text-neutral-300 dark:text-neutral-700'
                                                                 }`}
                                                         />
@@ -141,7 +141,7 @@ export function ReviewSheet({ isOpen, onClose, sessionId, existingRating }: Revi
                                             }
                                             {
                                                 rating > 0 && (
-                                                    <span className="ml-3 text-lg font-semibold text-amber-600">
+                                                    <span className="ml-3 text-lg font-semibold text-neutral-800">
                                                         {rating === 1 && 'Poor'}
                                                         {rating === 2 && 'Fair'}
                                                         {rating === 3 && 'Good'}
@@ -175,9 +175,9 @@ export function ReviewSheet({ isOpen, onClose, sessionId, existingRating }: Revi
                                                 animate={{ opacity: 1, height: 'auto' }}
                                                 className="space-y-3"
                                             >
-                                                <div className="flex items-center gap-2 p-3 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/30 rounded-lg">
-                                                    <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                                                    <p className="text-sm text-amber-700 dark:text-amber-400">
+                                                <div className="flex items-center gap-2 p-3 bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30 rounded-lg">
+                                                    <AlertCircle className="w-5 h-5 text-neutral-800 flex-shrink-0" />
+                                                    <p className="text-sm text-neutral-700 dark:text-neutral-100">
                                                         We&apos;re sorry to hear that. Help us improve by selecting any issues you encountered:
                                                     </p>
                                                 </div>
@@ -261,7 +261,7 @@ export function ReviewSheet({ isOpen, onClose, sessionId, existingRating }: Revi
                                 animate={{ opacity: 1, scale: 1 }}
                                 className="flex flex-col items-center justify-center py-20"
                             >
-                                <CheckCircle className="w-20 h-20 text-amber-600 mb-6" />
+                                <CheckCircle className="w-20 h-20 text-neutral-800 mb-6" />
                                 <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-3">
                                     Thank You!
                                 </h3>

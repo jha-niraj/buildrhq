@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -71,14 +72,9 @@ export function StudioContainer({
 				<div className="max-w-4xl mx-auto px-6 py-4">
 					<div className="flex items-center justify-between">
 						<div className="flex items-center gap-4">
-							<Button
-								variant="ghost"
-								size="icon"
-								onClick={() => router.push(backUrl)}
-								className="shrink-0"
-							>
+							<Button variant="ghost" size="icon" className="shrink-0" asChild><Link href={backUrl}>
 								<ArrowLeft className="h-4 w-4" />
-							</Button>
+							</Link></Button>
 
 							<div>
 								<div className="flex items-center gap-3">
@@ -95,7 +91,7 @@ export function StudioContainer({
 									</p>
 								)}
 								<div className="flex items-center gap-2 mt-2">
-									<span className="text-xs px-2 py-1 rounded-full bg-orange-100 dark:bg-orange-950/30 text-orange-700 dark:text-orange-300">
+									<span className="text-xs px-2 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900/30 text-neutral-700 dark:text-neutral-100">
 										{getSourceLabel()}
 									</span>
 									<span className="text-xs text-neutral-500">

@@ -165,7 +165,7 @@ export function ProjectAnalytics({ stats, className }: AnalyticsComponentProps) 
 									stats.technologyPopularity.slice(0, 5).map((tech, index) => (
 										<div key={tech.name} className="flex items-center justify-between">
 											<div className="flex items-center gap-3">
-												<div className="w-6 h-6 rounded bg-gradient-to-br from-orange-500 to-orange-600 text-white flex items-center justify-center text-xs font-bold">
+												<div className="w-6 h-6 rounded bg-gradient-to-br from-neutral-900 to-neutral-800 text-white flex items-center justify-center text-xs font-bold">
 													{index + 1}
 												</div>
 												<span className="font-medium text-gray-900 dark:text-white">
@@ -259,13 +259,13 @@ export function UserProjectAnalytics({ userStats, className }: UserStatsComponen
 					<CardContent className="space-y-4">
 						<div className="flex items-center justify-between">
 							<span className="text-gray-600 dark:text-gray-400">Current Streak</span>
-							<Badge className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400">
+							<Badge className="bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100">
 								{userStats.streak} days
 							</Badge>
 						</div>
 						<div className="flex items-center justify-between">
 							<span className="text-gray-600 dark:text-gray-400">Global Rank</span>
-							<Badge className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400">
+							<Badge className="bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100">
 								#{userStats.rank}
 							</Badge>
 						</div>
@@ -299,7 +299,7 @@ export function UserProjectAnalytics({ userStats, className }: UserStatsComponen
 									{
 										userStats.badges.slice(0, 3).map((badge) => (
 											<div key={badge.id} className="flex items-center gap-3">
-												<div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+												<div className="w-8 h-8 bg-gradient-to-br from-neutral-800 to-neutral-900 rounded-full flex items-center justify-center">
 													<span className="text-lg">{badge.icon}</span>
 												</div>
 												<div>
@@ -345,13 +345,13 @@ export function ProjectProgressAnalytics({ progress, className }: ProgressCompon
 					<Progress value={progress.progressPercentage} className="h-3" />
 					<div className="grid grid-cols-2 gap-4 mt-4">
 						<div className="flex items-center gap-2">
-							<Clock className="h-4 w-4 text-orange-600" />
+							<Clock className="h-4 w-4 text-neutral-800" />
 							<span className="text-sm text-gray-600 dark:text-gray-400">
 								{Math.round(progress.timeSpent / 60)}h spent
 							</span>
 						</div>
 						<div className="flex items-center gap-2">
-							<Zap className="h-4 w-4 text-yellow-600" />
+							<Zap className="h-4 w-4 text-neutral-800" />
 							<span className="text-sm text-gray-600 dark:text-gray-400">
 								{progress.xpEarned} XP earned
 							</span>
@@ -367,7 +367,7 @@ export function ProjectProgressAnalytics({ progress, className }: ProgressCompon
 						</CardHeader>
 						<CardContent>
 							<div className="flex items-center gap-3">
-								<div className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center">
+								<div className="w-10 h-10 bg-neutral-800 rounded-lg flex items-center justify-center">
 									<Code2 className="h-5 w-5 text-white" />
 								</div>
 								<div>
@@ -456,10 +456,10 @@ function StatCard({
 	trend?: number
 }) {
 	const colorClasses = {
-		blue: "from-orange-500 to-orange-600",
-		green: "from-amber-500 to-amber-600",
-		purple: "from-orange-500 to-orange-600",
-		yellow: "from-yellow-500 to-yellow-600",
+		blue: "from-neutral-900 to-neutral-800",
+		green: "from-neutral-900 to-neutral-800",
+		purple: "from-neutral-900 to-neutral-800",
+		yellow: "from-neutral-900 to-neutral-800",
 		red: "from-red-500 to-red-600"
 	}
 
@@ -472,7 +472,7 @@ function StatCard({
 					</div>
 					{
 						trend !== undefined && (
-							<div className={`flex items-center gap-1 text-xs ${trend >= 0 ? 'text-amber-600' : 'text-red-600'}`}>
+							<div className={`flex items-center gap-1 text-xs ${trend >= 0 ? 'text-neutral-800' : 'text-red-600'}`}>
 								{trend >= 0 ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
 								{Math.abs(trend)}%
 							</div>
@@ -517,7 +517,7 @@ function CompletionRateChart({ completionRate }: { completionRate: number }) {
 							strokeWidth="8"
 							fill="none"
 							strokeDasharray={`${completionRate * 2.51} 251`}
-							className="text-orange-600"
+							className="text-neutral-800"
 						/>
 					</svg>
 					<div className="absolute inset-0 flex items-center justify-center">
@@ -551,9 +551,9 @@ function DifficultyDistributionChart({
 					Object.entries(distribution).map(([level, count]) => {
 						const percentage = total > 0 ? Math.round((count / total) * 100) : 0
 						const colors = {
-							beginner: "bg-amber-500",
-							intermediate: "bg-orange-500",
-							advanced: "bg-orange-500"
+							beginner: "bg-neutral-900",
+							intermediate: "bg-neutral-900",
+							advanced: "bg-neutral-900"
 						}
 
 						return (
@@ -599,15 +599,15 @@ function WeeklyTrendsChart({ weeklyStats }: { weeklyStats: { week: string; views
 								</div>
 								<div className="flex gap-1 h-2">
 									<div
-										className="bg-orange-500 rounded-sm flex-grow"
+										className="bg-neutral-900 rounded-sm flex-grow"
 										style={{ flex: week.views }}
 									></div>
 									<div
-										className="bg-amber-500 rounded-sm flex-grow"
+										className="bg-neutral-900 rounded-sm flex-grow"
 										style={{ flex: week.started }}
 									></div>
 									<div
-										className="bg-orange-500 rounded-sm flex-grow"
+										className="bg-neutral-900 rounded-sm flex-grow"
 										style={{ flex: week.completed }}
 									></div>
 								</div>
@@ -634,9 +634,9 @@ function TopPerformersLeaderboard({ performers }: { performers: { username: stri
 					{
 						performers.slice(0, 5).map((performer, index) => (
 							<div key={performer.username} className="flex items-center gap-3">
-								<div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm ${index === 0 ? 'bg-yellow-500' :
+								<div className={`w-8 h-8 rounded-full flex items-center justify-center text-white dark:text-neutral-900 font-bold text-sm ${index === 0 ? 'bg-neutral-900 dark:bg-white' :
 									index === 1 ? 'bg-gray-400' :
-										index === 2 ? 'bg-orange-500' : 'bg-orange-500'
+										index === 2 ? 'bg-neutral-900' : 'bg-neutral-900'
 									}`}>
 									{index + 1}
 								</div>

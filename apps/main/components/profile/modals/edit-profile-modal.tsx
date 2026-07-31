@@ -63,10 +63,10 @@ interface EditProfileModalProps {
 
 // Theme options (reserved for future use)
 const _THEME_OPTIONS = [
-    { id: "OCEAN_BLUE", name: "Ocean Blue", gradient: "from-orange-600 via-amber-500 to-amber-400" },
-    { id: "SUNSET_ORANGE", name: "Sunset", gradient: "from-orange-500 via-amber-500 to-yellow-400" },
-    { id: "FOREST_GREEN", name: "Forest", gradient: "from-amber-600 via-amber-500 to-amber-400" },
-    { id: "PURPLE_DREAM", name: "Purple Dream", gradient: "from-orange-600 via-orange-500 to-pink-400" },
+    { id: "OCEAN_BLUE", name: "Ocean Blue", gradient: "from-neutral-800 via-neutral-900 to-neutral-800" },
+    { id: "SUNSET_ORANGE", name: "Sunset", gradient: "from-neutral-900 via-neutral-900 to-neutral-800" },
+    { id: "FOREST_GREEN", name: "Forest", gradient: "from-neutral-800 via-neutral-900 to-neutral-800" },
+    { id: "PURPLE_DREAM", name: "Purple Dream", gradient: "from-neutral-800 via-neutral-900 to-pink-400" },
     { id: "DARK_MODE", name: "Dark", gradient: "from-gray-800 via-gray-700 to-gray-600" },
 ];
 

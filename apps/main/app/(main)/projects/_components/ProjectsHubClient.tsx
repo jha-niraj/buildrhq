@@ -146,7 +146,7 @@ export default function ProjectsHomePage() {
 								className="flex justify-center"
 							>
 								<div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full shadow-sm">
-									<Sparkles className="w-3.5 h-3.5 text-amber-500" />
+									<Sparkles className="w-3.5 h-3.5 text-neutral-900" />
 									<span className="text-xs font-semibold text-neutral-700 dark:text-neutral-300 tracking-wide uppercase">
 										AI-Powered Project Generator
 									</span>
@@ -208,7 +208,7 @@ export default function ProjectsHomePage() {
 									</Button>
 									<span className="hidden sm:block text-neutral-300 dark:text-neutral-700 py-2">|</span>
 									<Link href="/projects/leaderboard">
-										<Button variant="ghost" className="text-amber-600 hover:text-amber-700 dark:text-amber-500 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/20 px-3">
+										<Button variant="ghost" className="text-neutral-800 hover:text-neutral-700 dark:text-neutral-200 dark:hover:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800/20 px-3">
 											<Trophy className="mr-1.5 h-4 w-4" />
 											Leaderboard
 										</Button>

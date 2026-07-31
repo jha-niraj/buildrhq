@@ -320,7 +320,7 @@ export default function MockInterviewPage({ params }: { params: Promise<{ sessio
                                     volumeMode="auto"
                                     getInputVolume={conversation.getInputVolume}
                                     getOutputVolume={conversation.getOutputVolume}
-                                    colors={['#6366f1', '#8b5cf6']}
+                                    colors={['#6366f1', '#404040']}
                                 />
                             )
                         }
@@ -394,7 +394,7 @@ export default function MockInterviewPage({ params }: { params: Promise<{ sessio
                             !hasStarted ? (
                                 <Button
                                     size="lg"
-                                    className="bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white px-8 py-6 text-lg"
+                                    className="bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white px-8 py-6 text-lg"
                                     onClick={startInterview}
                                 >
                                     <Phone className="w-5 h-5 mr-2" />
@@ -449,13 +449,13 @@ export default function MockInterviewPage({ params }: { params: Promise<{ sessio
                         <DialogTitle className="flex items-center gap-2">
                             {processingStatus === 'processing' && (
                                 <>
-                                    <Loader2 className="w-5 h-5 animate-spin text-orange-600" />
+                                    <Loader2 className="w-5 h-5 animate-spin text-neutral-800" />
                                     Processing Your Interview
                                 </>
                             )}
                             {processingStatus === 'success' && (
                                 <>
-                                    <CheckCircle2 className="w-5 h-5 text-amber-600" />
+                                    <CheckCircle2 className="w-5 h-5 text-neutral-800" />
                                     Interview Completed!
                                 </>
                             )}
@@ -483,15 +483,15 @@ export default function MockInterviewPage({ params }: { params: Promise<{ sessio
                                     className="space-y-3"
                                 >
                                     <div className="flex items-center gap-3 text-sm">
-                                        <Loader2 className="w-4 h-4 animate-spin text-orange-600" />
+                                        <Loader2 className="w-4 h-4 animate-spin text-neutral-800" />
                                         <span>Retrieving conversation details...</span>
                                     </div>
                                     <div className="flex items-center gap-3 text-sm">
-                                        <Loader2 className="w-4 h-4 animate-spin text-orange-600" />
+                                        <Loader2 className="w-4 h-4 animate-spin text-neutral-800" />
                                         <span>Generating transcript...</span>
                                     </div>
                                     <div className="flex items-center gap-3 text-sm">
-                                        <Loader2 className="w-4 h-4 animate-spin text-amber-600" />
+                                        <Loader2 className="w-4 h-4 animate-spin text-neutral-800" />
                                         <span>Preparing your feedback...</span>
                                     </div>
                                 </motion.div>
@@ -503,7 +503,7 @@ export default function MockInterviewPage({ params }: { params: Promise<{ sessio
                                     animate={{ scale: 1 }}
                                     className="flex flex-col items-center justify-center py-8"
                                 >
-                                    <CheckCircle2 className="w-20 h-20 text-amber-600 mb-4" />
+                                    <CheckCircle2 className="w-20 h-20 text-neutral-800 mb-4" />
                                     <p className="text-center text-neutral-600 dark:text-neutral-400">
                                         Your interview has been successfully processed!
                                     </p>

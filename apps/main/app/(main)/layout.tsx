@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 import { usePathname } from "next/navigation";
 import Sidebar from '@/components/common/mainsidebar';
@@ -13,55 +13,200 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNetworkStatus } from '@/hooks/useNetworkStatus';
 import { cn } from '@repo/ui/lib/utils';
+import { Sheet, SheetContent, SheetTitle } from '@repo/ui/components/ui/sheet';
 import { AIPanel } from '@/components/ai/ai-panel';
 import { AITriggerButton } from '@/components/ai/ai-trigger-button';
-import { useAIPanelStore } from '@/app/store/aiPanelStore';
+import {
+    useAIPanelStore, AI_MIN_WIDTH, AI_MAX_WIDTH, clampPanelWidth,
+} from '@/app/store/aiPanelStore';
 
 interface LayoutProps {
     children: React.ReactNode
 }
 
-// Inner layout component that uses the sidebar context
-const MainContent = ({ children }: { children: React.ReactNode }) => {
-    const { isCollapsed } = useSidebar();
-    const { isOpen: aiOpen, width: aiWidth, isMaximized: aiMaximized } = useAIPanelStore();
+// ─────────────────────────────────────────────────────────────────────────────
+// Shell geometry.
+//
+// Three surfaces float as separate rounded cards on a neutral backdrop: the
+// sidebar, the page, and the AI rail. That separation is the point of the
+// rounding — you can see where one surface ends and the next begins, instead of
+// three regions sharing one flat white plane.
+//
+// When the AI rail is open the page rounds only on its LEFT (`rounded-l-2xl`)
+// and the rail only on its RIGHT, so the pair reads as one card split in two
+// rather than two cards butted together with a seam between them.
+// ─────────────────────────────────────────────────────────────────────────────
 
-    // The AI panel is a fixed-position rail on the right, so the page has to give
-    // it room or the content sits underneath it. Padding (not margin) keeps the
-    // page's own background running to the panel edge. Applied via inline style
-    // rather than a class because the width is a live drag value — Tailwind can't
-    // generate a class per pixel. Desktop only: below lg the panel is a sheet
-    // OVER the page, and a maximized panel is an overlay by design.
-    const aiInset = aiOpen && !aiMaximized ? aiWidth : 0;
+const MainContent = ({ children }: { children: React.ReactNode }) => {
+    const { isCollapsed, setIsCollapsed } = useSidebar();
+    const {
+        isOpen: aiOpen, close: closeAI, width: aiWidth, setWidth: setAIWidth,
+        isMaximized: aiMaximized,
+    } = useAIPanelStore();
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Below lg the rail would leave no page worth assisting with, so it becomes a
+    // Sheet instead. On lg+ it is a real docked column — never a Sheet.
+    useEffect(() => {
+        const mq = window.matchMedia('(max-width: 1023px)');
+        const update = () => setIsMobile(mq.matches);
+        update();
+        mq.addEventListener('change', update);
+        return () => mq.removeEventListener('change', update);
+    }, []);
+
+    // Opening the rail collapses the sidebar: three full-width columns do not fit
+    // on a laptop, and the nav is the one the user is least likely to be reading
+    // while they type a question. Only on the OPEN transition — otherwise the
+    // user could never expand the sidebar again while the rail stayed open.
+    const wasAIOpen = useRef(aiOpen);
+    useEffect(() => {
+        if (isMobile) return;
+        if (aiOpen && !wasAIOpen.current) setIsCollapsed(true);
+        wasAIOpen.current = aiOpen;
+    }, [aiOpen, isMobile, setIsCollapsed]);
+
+    const isDocked = aiOpen && !isMobile;
+
+    // ── Drag to resize ────────────────────────────────────────────────────────
+    // Width is committed to the store on every move (a cheap set, and the store
+    // is the single source of truth for the rail width), and the listeners live
+    // on `window` so the drag survives the cursor leaving the handle.
+    const handleResizeStart = useCallback((startX: number, startWidth: number) => {
+        // The rail is docked RIGHT, so dragging left (smaller clientX) widens it.
+        const onMove = (clientX: number) => setAIWidth(clampPanelWidth(startWidth + (startX - clientX)));
+        const onMouseMove = (e: MouseEvent) => { e.preventDefault(); onMove(e.clientX); };
+        const onTouchMove = (e: TouchEvent) => {
+            const touch = e.touches[0];
+            if (touch) onMove(touch.clientX);
+        };
+        const stop = () => {
+            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mouseup', stop);
+            window.removeEventListener('touchmove', onTouchMove);
+            window.removeEventListener('touchend', stop);
+            document.body.style.cursor = '';
+            document.body.style.userSelect = '';
+        };
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mouseup', stop);
+        window.addEventListener('touchmove', onTouchMove, { passive: true });
+        window.addEventListener('touchend', stop);
+        // Without these the drag selects page text and the cursor flickers back
+        // to the default whenever it crosses a child element.
+        document.body.style.cursor = 'col-resize';
+        document.body.style.userSelect = 'none';
+    }, [setAIWidth]);
+
+    // Maximized is a reading mode, not a different layout: the rail takes most of
+    // the window and the page keeps a sliver, rather than disappearing.
+    const railWidth = aiMaximized ? 'min(1100px, 72vw)' : `${aiWidth}px`;
 
     return (
         <>
             <Sidebar />
-            <div className="flex flex-col flex-1 h-screen overflow-hidden bg-neutral-100 dark:bg-black transition-colors duration-300">
-                <main className={cn(
-                    "h-full relative transition-all duration-300 ease-in-out",
-                    "ml-0",
-                    isCollapsed ? "lg:ml-[6.25rem]" : "lg:ml-[17rem]"
-                )}>
+
+            <div
+                className={cn(
+                    "min-w-0 flex-1 transition-all duration-300 ease-in-out",
+                    isCollapsed ? "lg:ml-[106px]" : "lg:ml-[17rem]",
+                )}
+            >
+                {/* The card row. `ring` rather than `border`: this element is height
+                    constrained with border-box sizing, so a 1px border would eat 2px of
+                    inner height that a full-height page below does not account for,
+                    leaving it 2px too tall and scrolling the shell. A ring is a
+                    box-shadow — same look, zero layout cost. */}
+                <main className="m-2 flex h-[calc(100vh-1rem)] overflow-hidden lg:ml-0">
+                    {/* Page surface */}
                     <div
-                        className="h-full w-full bg-white dark:bg-neutral-950 lg:rounded-l-4xl lg:border-l border-neutral-200 dark:border-neutral-800 shadow-xl relative overflow-y-auto overflow-x-hidden"
-                        style={{ ["--ai-inset" as string]: `${aiInset}px` }}
+                        data-app-page
+                        className={cn(
+                            // min-w-0 so a wide child (a table, a chart) shrinks with the
+                            // column instead of pushing the row past the viewport.
+                            "flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-white ring-1 ring-inset ring-neutral-200 transition-all duration-300 dark:bg-neutral-950 dark:ring-neutral-800",
+                            isDocked ? "rounded-l-2xl" : "rounded-2xl",
+                        )}
+                        // The card is inset by the shell's 0.5rem margin, so "full
+                        // height" inside it is 1rem short of the viewport. `--page-h`
+                        // is the single source of truth for that; a rule in
+                        // globals.css retargets `h-screen` / `min-h-screen` inside
+                        // [data-app-page] at it. Without that, the ~49 full-height
+                        // pages under (main) would each overflow by exactly 16px and
+                        // show a scrollbar over a strip of nothing.
+                        style={{ ["--page-h" as string]: "calc(100vh - 1rem)" }}
                     >
-                        {/* min-w-0 so a wide child (a table, a chart) shrinks with the
-                            column instead of forcing the page to scroll sideways when
-                            the panel widens. */}
-                        <div className="min-w-0 lg:pr-[var(--ai-inset)] transition-[padding] duration-150">
+                        <div className="min-w-0 flex-1 overflow-x-hidden overflow-y-auto">
                             {children}
                         </div>
                     </div>
+
+                    {/* AI rail — a real column, not an overlay. The page narrows to make
+                        room for it, so nothing the user was reading gets covered. */}
+                    <AnimatePresence initial={false}>
+                        {isDocked && (
+                            <motion.aside
+                                key="ai-rail"
+                                initial={{ width: 0, opacity: 0 }}
+                                animate={{ width: railWidth, opacity: 1 }}
+                                exit={{ width: 0, opacity: 0 }}
+                                transition={{ type: 'spring', stiffness: 320, damping: 34 }}
+                                className="relative h-full shrink-0 overflow-hidden rounded-r-2xl border-l border-neutral-200 ring-1 ring-inset ring-neutral-200 dark:border-neutral-800 dark:ring-neutral-800"
+                            >
+                                {/* Resize handle. Keyboard-operable too — a drag handle
+                                    that only works with a mouse is not a control everyone
+                                    can reach. Pointless while maximized. */}
+                                {!aiMaximized && (
+                                    <div
+                                        role="separator"
+                                        aria-orientation="vertical"
+                                        aria-label="Resize AI panel"
+                                        aria-valuenow={aiWidth}
+                                        aria-valuemin={AI_MIN_WIDTH}
+                                        aria-valuemax={AI_MAX_WIDTH}
+                                        tabIndex={0}
+                                        onMouseDown={(e) => { e.preventDefault(); handleResizeStart(e.clientX, aiWidth); }}
+                                        onTouchStart={(e) => {
+                                            const touch = e.touches[0];
+                                            if (touch) handleResizeStart(touch.clientX, aiWidth);
+                                        }}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'ArrowLeft') { e.preventDefault(); setAIWidth(aiWidth + 24); }
+                                            if (e.key === 'ArrowRight') { e.preventDefault(); setAIWidth(aiWidth - 24); }
+                                        }}
+                                        className="group absolute left-0 top-0 z-10 h-full w-1.5 cursor-col-resize transition-colors hover:bg-neutral-900/50 focus:bg-neutral-900/50 focus:outline-none dark:hover:bg-white/40 dark:focus:bg-white/40"
+                                    >
+                                        <span className="absolute left-1/2 top-1/2 h-10 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-300 opacity-0 transition-opacity group-hover:opacity-100 dark:bg-neutral-600" />
+                                    </div>
+                                )}
+                                {/* The animated width runs to 0 on exit, so the chat is
+                                    pinned to its full width here and clipped by the
+                                    parent — otherwise the composer and messages would
+                                    reflow through every intermediate width on the way out. */}
+                                <div className="h-full" style={{ width: railWidth }}>
+                                    <AIPanel />
+                                </div>
+                            </motion.aside>
+                        )}
+                    </AnimatePresence>
                 </main>
             </div>
-            <AIPanel />
+
+            {/* Below lg, the same panel in a Sheet. */}
+            <Sheet open={aiOpen && isMobile} onOpenChange={(v) => { if (!v) closeAI() }}>
+                <SheetContent
+                    side="bottom"
+                    className="h-[100dvh] w-full max-w-full rounded-t-2xl border-0 p-0 [&>button]:hidden"
+                >
+                    <SheetTitle className="sr-only">BuildrHQ AI</SheetTitle>
+                    <AIPanel />
+                </SheetContent>
+            </Sheet>
+
             <AITriggerButton />
             <Script
                 src="https://checkout.razorpay.com/v1/checkout.js"
                 strategy="afterInteractive"
-                onLoad={() => console.log('Razorpay script loaded')}
             />
         </>
     );
@@ -103,7 +248,7 @@ const Layout = ({ children }: LayoutProps) => {
 
     return (
         <SidebarProvider>
-            <div className="flex h-screen bg-neutral-100 dark:bg-black overflow-hidden">
+            <div className="flex h-screen w-full overflow-hidden bg-neutral-100 dark:bg-neutral-900">
                 <MainContent>{children}</MainContent>
             </div>
         </SidebarProvider>

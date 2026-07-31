@@ -30,7 +30,7 @@ export default function SubmitConfirmDialog({
 			<DialogContent className="max-w-2xl">
 				<DialogHeader>
 					<DialogTitle className="flex items-center gap-2">
-						<Code2 className="h-5 w-5 text-orange-600" />
+						<Code2 className="h-5 w-5 text-neutral-800" />
 						Confirm Code Submission
 					</DialogTitle>
 					<DialogDescription>
@@ -38,14 +38,14 @@ export default function SubmitConfirmDialog({
 					</DialogDescription>
 				</DialogHeader>
 				<div className="space-y-4">
-					<div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4">
+					<div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4">
 						<div className="flex items-start gap-3">
-							<AlertTriangle className="h-5 w-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" />
+							<AlertTriangle className="h-5 w-5 text-neutral-800 dark:text-neutral-100 flex-shrink-0 mt-0.5" />
 							<div className="text-sm">
-								<p className="font-medium text-yellow-800 dark:text-yellow-200 mb-1">
+								<p className="font-medium text-neutral-800 dark:text-neutral-700 mb-1">
 									Important Notes:
 								</p>
-								<ul className="text-yellow-700 dark:text-yellow-300 space-y-1">
+								<ul className="text-neutral-700 dark:text-neutral-100 space-y-1">
 									<li>• Your solution will be evaluated and stored in your submission history</li>
 									<li>• You can submit multiple times - only your best score will be shown</li>
 									<li>• The evaluation will check correctness, efficiency, and code quality</li>
@@ -78,7 +78,7 @@ export default function SubmitConfirmDialog({
 					<Button
 						onClick={onConfirm}
 						disabled={isSubmitting}
-						className="bg-amber-600 hover:bg-amber-700 text-white"
+						className="bg-neutral-800 hover:bg-neutral-700 text-white"
 					>
 						{
 							isSubmitting ? (

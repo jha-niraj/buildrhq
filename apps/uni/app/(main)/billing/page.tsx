@@ -73,20 +73,20 @@ export default function BillingPage() {
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl p-6 mb-8 text-white"
+                className="bg-gradient-to-br from-neutral-800 to-neutral-700 rounded-2xl p-6 mb-8 text-white"
             >
                 <div className="flex items-start justify-between">
                     <div>
-                        <p className="text-orange-200 text-sm mb-1">Credit Balance</p>
+                        <p className="text-neutral-200 text-sm mb-1">Credit Balance</p>
                         <h2 className="text-4xl font-bold flex items-center gap-2">
                             <Coins className="w-8 h-8" />
-                            0 <span className="text-lg font-normal text-orange-200">credits</span>
+                            0 <span className="text-lg font-normal text-neutral-200">credits</span>
                         </h2>
-                        <p className="text-orange-200 text-sm mt-2">
+                        <p className="text-neutral-200 text-sm mt-2">
                             0 credits allocated to students
                         </p>
                     </div>
-                    <Button className="rounded-xl bg-white text-orange-700 hover:bg-orange-50">
+                    <Button className="rounded-xl bg-white text-neutral-700 hover:bg-neutral-50">
                         <Zap className="w-4 h-4 mr-2" />
                         Buy Credits
                     </Button>
@@ -102,7 +102,7 @@ export default function BillingPage() {
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <Users className="w-5 h-5 text-orange-600" />
+                        <Users className="w-5 h-5 text-neutral-800" />
                         <span className="text-neutral-500 text-sm">Students</span>
                     </div>
                     <p className="text-2xl font-bold text-neutral-900 dark:text-white">0</p>
@@ -115,7 +115,7 @@ export default function BillingPage() {
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <Coins className="w-5 h-5 text-orange-600" />
+                        <Coins className="w-5 h-5 text-neutral-800" />
                         <span className="text-neutral-500 text-sm">Used This Month</span>
                     </div>
                     <p className="text-2xl font-bold text-neutral-900 dark:text-white">0</p>
@@ -128,7 +128,7 @@ export default function BillingPage() {
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <BookOpen className="w-5 h-5 text-orange-600" />
+                        <BookOpen className="w-5 h-5 text-neutral-800" />
                         <span className="text-neutral-500 text-sm">Assignments</span>
                     </div>
                     <p className="text-2xl font-bold text-neutral-900 dark:text-white">0</p>
@@ -147,7 +147,7 @@ export default function BillingPage() {
                     <div>
                         <p className="text-neutral-500 text-sm mb-1">Current Plan</p>
                         <h2 className="text-2xl font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                            Starter <span className="text-xs px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">Trial</span>
+                            Starter <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100">Trial</span>
                         </h2>
                         <p className="text-neutral-500 text-sm mt-2">
                             30-day free trial • Upgrade anytime
@@ -173,12 +173,12 @@ export default function BillingPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 + i * 0.1 }}
                             className={`relative bg-white dark:bg-neutral-950 border rounded-2xl p-6 ${plan.popular
-                                ? "border-orange-500 shadow-lg shadow-orange-500/10"
+                                ? "border-neutral-900 shadow-lg shadow-neutral-900/10"
                                 : "border-neutral-200 dark:border-neutral-800"
                                 }`}
                         >
                             {plan.popular && (
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-orange-600 to-orange-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-neutral-800 to-neutral-800 text-white text-xs font-bold px-3 py-1 rounded-full">
                                     POPULAR
                                 </div>
                             )}
@@ -193,7 +193,7 @@ export default function BillingPage() {
                             <ul className="space-y-3 mb-6">
                                 {plan.features.map((feature, j) => (
                                     <li key={j} className="flex items-start gap-2 text-sm">
-                                        <Check className="w-4 h-4 text-orange-500 mt-0.5 shrink-0" />
+                                        <Check className="w-4 h-4 text-neutral-900 mt-0.5 shrink-0" />
                                         <span className="text-neutral-600 dark:text-neutral-400">{feature}</span>
                                     </li>
                                 ))}
@@ -201,7 +201,7 @@ export default function BillingPage() {
                             <Button
                                 variant={plan.current ? "outline" : "default"}
                                 className={`w-full rounded-xl ${plan.popular
-                                    ? "bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white"
+                                    ? "bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white"
                                     : ""
                                     }`}
                                 disabled={plan.current}
@@ -221,7 +221,7 @@ export default function BillingPage() {
                 className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6"
             >
                 <h2 className="font-bold text-lg text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
-                    <CreditCard className="w-5 h-5 text-orange-600" />
+                    <CreditCard className="w-5 h-5 text-neutral-800" />
                     Payment Methods
                 </h2>
                 <p className="text-neutral-500 text-sm mb-4">

@@ -185,7 +185,7 @@ export function CompanyProfileContent({ profile, stats }: CompanyProfileContentP
                 animate={{ opacity: 1, y: 0 }}
                 className="relative mb-8"
             >
-                <div className="h-48 lg:h-64 rounded-2xl bg-gradient-to-r from-orange-600 via-orange-600 to-pink-600 overflow-hidden relative group">
+                <div className="h-48 lg:h-64 rounded-2xl bg-gradient-to-r from-neutral-800 via-neutral-800 to-pink-600 overflow-hidden relative group">
                     {
                         profile.coverImage && (
                             <Image
@@ -217,7 +217,7 @@ export function CompanyProfileContent({ profile, stats }: CompanyProfileContentP
                                 fill
                             />
                         ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                            <div className="w-full h-full bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                                 <span className="text-3xl font-bold text-white">
                                     {profile.name.charAt(0)}
                                 </span>
@@ -235,7 +235,7 @@ export function CompanyProfileContent({ profile, stats }: CompanyProfileContentP
                 {
                     profile.isVerified && (
                         <div className="absolute -bottom-10 left-40">
-                            <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 gap-1">
+                            <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 gap-1">
                                 <Check className="w-3 h-3" />
                                 Verified
                             </Badge>
@@ -246,8 +246,8 @@ export function CompanyProfileContent({ profile, stats }: CompanyProfileContentP
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 mb-8">
                 <div className="p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
                     <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
-                            <Briefcase className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                        <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/30">
+                            <Briefcase className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">{stats?.activeJobs || 0}</p>
@@ -257,8 +257,8 @@ export function CompanyProfileContent({ profile, stats }: CompanyProfileContentP
                 </div>
                 <div className="p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
                     <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-amber-100 dark:bg-amber-900/30">
-                            <Users className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                        <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/30">
+                            <Users className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">{stats?.totalHires || 0}</p>
@@ -268,8 +268,8 @@ export function CompanyProfileContent({ profile, stats }: CompanyProfileContentP
                 </div>
                 <div className="p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
                     <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
-                            <Users className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                        <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/30">
+                            <Users className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">{profile.membersCount || 0}</p>
@@ -279,8 +279,8 @@ export function CompanyProfileContent({ profile, stats }: CompanyProfileContentP
                 </div>
                 <div className="p-4 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
                     <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
-                            <Calendar className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                        <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800/30">
+                            <Calendar className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">{stats?.avgTimeToHireDays || 0}d</p>
@@ -337,7 +337,7 @@ export function CompanyProfileContent({ profile, stats }: CompanyProfileContentP
                                                 href={profile.website || "#"}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="text-orange-600 dark:text-orange-400 hover:underline flex items-center gap-1"
+                                                className="text-neutral-800 dark:text-neutral-100 hover:underline flex items-center gap-1"
                                             >
                                                 <Globe className="w-4 h-4" />
                                                 {profile.website || "Not set"}
@@ -550,7 +550,7 @@ export function CompanyProfileContent({ profile, stats }: CompanyProfileContentP
                                         (isEditing ? formData.benefits : benefits)?.map((benefit, i) => (
                                             <Badge
                                                 key={i}
-                                                className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 gap-1 px-3 py-1"
+                                                className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 gap-1 px-3 py-1"
                                             >
                                                 <Sparkles className="w-3 h-3" />
                                                 {benefit}
@@ -611,7 +611,7 @@ export function CompanyProfileContent({ profile, stats }: CompanyProfileContentP
                                     (isEditing ? formData.techStack : techStack)?.map((tech, i) => (
                                         <Badge
                                             key={i}
-                                            className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 gap-1 px-3 py-1"
+                                            className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 gap-1 px-3 py-1"
                                         >
                                             {tech}
                                             {

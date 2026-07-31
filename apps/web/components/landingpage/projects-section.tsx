@@ -192,7 +192,7 @@ export default function ProjectsSection() {
                                 <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
                                     {p.tag}
                                 </span>
-                                <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
+                                <span className="h-1.5 w-1.5 rounded-full bg-neutral-900" />
                             </div>
                             <h4 className="text-lg font-bold text-neutral-900 dark:text-white mb-1.5">
                                 {p.title}

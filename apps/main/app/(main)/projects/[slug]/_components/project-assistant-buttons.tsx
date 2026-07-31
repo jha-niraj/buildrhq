@@ -84,7 +84,7 @@ export function ProjectAssistantButtons({
                     <span className="hidden sm:inline">Resources</span>
                     {
                         resourcesCount > 0 && (
-                            <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] flex items-center justify-center text-[10px] font-bold bg-orange-600 text-white rounded-full px-1">
+                            <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] flex items-center justify-center text-[10px] font-bold bg-neutral-800 text-white rounded-full px-1">
                                 {resourcesCount}
                             </span>
                         )
@@ -100,7 +100,7 @@ export function ProjectAssistantButtons({
                     <span className="hidden sm:inline">Community</span>
                     {
                         suggestionsCount > 0 && (
-                            <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] flex items-center justify-center text-[10px] font-bold bg-orange-600 text-white rounded-full px-1">
+                            <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] flex items-center justify-center text-[10px] font-bold bg-neutral-800 text-white rounded-full px-1">
                                 {suggestionsCount}
                             </span>
                         )
@@ -116,7 +116,7 @@ export function ProjectAssistantButtons({
                     <span className="hidden sm:inline">Errors</span>
                     {
                         errorsCount > 0 && (
-                            <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] flex items-center justify-center text-[10px] font-bold bg-amber-600 text-white rounded-full px-1">
+                            <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] flex items-center justify-center text-[10px] font-bold bg-neutral-800 text-white rounded-full px-1">
                                 {errorsCount}
                             </span>
                         )
@@ -128,7 +128,7 @@ export function ProjectAssistantButtons({
                     <div className="h-full flex flex-col">
                         <SheetHeader className="px-6 py-4 border-b border-neutral-200 dark:border-neutral-800">
                             <SheetTitle className="flex items-center gap-2">
-                                <Book className="w-5 h-5 text-orange-600" />
+                                <Book className="w-5 h-5 text-neutral-800" />
                                 Resources Library
                             </SheetTitle>
                         </SheetHeader>
@@ -149,7 +149,7 @@ export function ProjectAssistantButtons({
                     <div className="h-full flex flex-col">
                         <SheetHeader className="px-6 py-4 border-b border-neutral-200 dark:border-neutral-800">
                             <SheetTitle className="flex items-center gap-2">
-                                <Users className="w-5 h-5 text-orange-600" />
+                                <Users className="w-5 h-5 text-neutral-800" />
                                 Community Suggestions
                             </SheetTitle>
                         </SheetHeader>
@@ -173,7 +173,7 @@ export function ProjectAssistantButtons({
                     <div className="h-full flex flex-col">
                         <SheetHeader className="px-6 py-4 border-b border-neutral-200 dark:border-neutral-800">
                             <SheetTitle className="flex items-center gap-2">
-                                <AlertTriangle className="w-5 h-5 text-amber-600" />
+                                <AlertTriangle className="w-5 h-5 text-neutral-800" />
                                 Errors & Mistakes
                             </SheetTitle>
                         </SheetHeader>

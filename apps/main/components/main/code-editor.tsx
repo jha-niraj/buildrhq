@@ -324,8 +324,8 @@ export default function CodeEditor({
                 <div className="flex items-center gap-2">
                     <div className="flex gap-1.5 mr-2">
                         <div className="h-3 w-3 rounded-full bg-red-500" />
-                        <div className="h-3 w-3 rounded-full bg-yellow-500" />
-                        <div className="h-3 w-3 rounded-full bg-amber-500" />
+                        <div className="h-3 w-3 rounded-full bg-neutral-900" />
+                        <div className="h-3 w-3 rounded-full bg-neutral-900" />
                     </div>
 
                     {
@@ -432,7 +432,7 @@ export default function CodeEditor({
                                 size="sm"
                                 onClick={handleSubmit}
                                 disabled={isRunning || isSubmitting}
-                                className="h-7 text-xs gap-1 bg-amber-600 hover:bg-amber-700"
+                                className="h-7 text-xs gap-1 bg-neutral-800 hover:bg-neutral-700"
                             >
                                 {
                                     isSubmitting ? (

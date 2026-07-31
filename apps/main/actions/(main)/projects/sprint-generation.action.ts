@@ -9,6 +9,7 @@ import {
     projectsV2,
     projectV2Sprints,
     projectV2Tasks,
+    withTransaction
 } from "@repo/db";
 import { eq, and } from "drizzle-orm";
 import { openai } from '@/lib/openai-client'
@@ -359,7 +360,7 @@ export async function rejectPersonalSprint(
             return { success: false, error: 'You can only reject your own sprints' }
         }
 
-        await db.transaction(async (tx) => {
+        await withTransaction(async (tx) => {
             await tx.delete(projectV2Tasks).where(eq(projectV2Tasks.sprintId, sprintId));
             await tx.delete(projectV2Sprints).where(eq(projectV2Sprints.id, sprintId));
         });

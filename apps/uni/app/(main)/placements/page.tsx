@@ -36,7 +36,7 @@ export default function PlacementsPage() {
                         <Building2 className="w-4 h-4 mr-2" />
                         Refer Company
                     </Button>
-                    <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
+                    <Button className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white">
                         <Plus className="w-4 h-4 mr-2" />
                         Post Exclusive Job
                     </Button>
@@ -49,47 +49,47 @@ export default function PlacementsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
             >
-                <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-2xl p-6">
+                <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
-                            <Briefcase className="w-6 h-6 text-orange-600" />
+                        <div className="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800/50 flex items-center justify-center">
+                            <Briefcase className="w-6 h-6 text-neutral-800" />
                         </div>
                         <div>
-                            <p className="text-2xl font-bold text-orange-700 dark:text-orange-400">0</p>
-                            <p className="text-sm text-orange-600/80">Active Jobs</p>
+                            <p className="text-2xl font-bold text-neutral-700 dark:text-neutral-100">0</p>
+                            <p className="text-sm text-neutral-800/80">Active Jobs</p>
                         </div>
                     </div>
                 </div>
-                <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-2xl p-6">
+                <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
-                            <Building2 className="w-6 h-6 text-orange-600" />
+                        <div className="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800/50 flex items-center justify-center">
+                            <Building2 className="w-6 h-6 text-neutral-800" />
                         </div>
                         <div>
-                            <p className="text-2xl font-bold text-orange-700 dark:text-orange-400">0</p>
-                            <p className="text-sm text-orange-600/80">Partner Companies</p>
+                            <p className="text-2xl font-bold text-neutral-700 dark:text-neutral-100">0</p>
+                            <p className="text-sm text-neutral-800/80">Partner Companies</p>
                         </div>
                     </div>
                 </div>
-                <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-6">
+                <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
-                            <Users className="w-6 h-6 text-amber-600" />
+                        <div className="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800/50 flex items-center justify-center">
+                            <Users className="w-6 h-6 text-neutral-800" />
                         </div>
                         <div>
-                            <p className="text-2xl font-bold text-amber-700 dark:text-amber-400">0</p>
-                            <p className="text-sm text-amber-600/80">Applications</p>
+                            <p className="text-2xl font-bold text-neutral-700 dark:text-neutral-100">0</p>
+                            <p className="text-sm text-neutral-800/80">Applications</p>
                         </div>
                     </div>
                 </div>
-                <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-6">
+                <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                     <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
-                            <Award className="w-6 h-6 text-amber-600" />
+                        <div className="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800/50 flex items-center justify-center">
+                            <Award className="w-6 h-6 text-neutral-800" />
                         </div>
                         <div>
-                            <p className="text-2xl font-bold text-amber-700 dark:text-amber-400">0</p>
-                            <p className="text-sm text-amber-600/80">Placed Students</p>
+                            <p className="text-2xl font-bold text-neutral-700 dark:text-neutral-100">0</p>
+                            <p className="text-sm text-neutral-800/80">Placed Students</p>
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@ export default function PlacementsPage() {
                     <button
                         key={tab}
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-colors cursor-pointer ${idx === 0
-                                ? "bg-orange-600 text-white"
+                                ? "bg-neutral-800 text-white"
                                 : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700"
                             }`}
                     >
@@ -139,7 +139,7 @@ export default function PlacementsPage() {
                 >
                     {universityJobs.map((job) => (
                         <Link key={job.id} href={`/placements/${job.id}`}>
-                            <div className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-orange-300 dark:hover:border-orange-700 transition-all cursor-pointer">
+                            <div className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all cursor-pointer">
                                 <div className="flex items-start justify-between">
                                     <div className="flex-1">
                                         <div className="flex items-center gap-3 mb-2">
@@ -147,7 +147,7 @@ export default function PlacementsPage() {
                                                 {job.title}
                                             </h3>
                                             <span className={`text-xs px-2 py-1 rounded-full font-medium ${job.visibility === "university_only"
-                                                    ? "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400"
+                                                    ? "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100"
                                                     : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400"
                                                 }`}>
                                                 {job.visibility === "university_only" ? "University Only" : "Public"}
@@ -176,8 +176,8 @@ export default function PlacementsPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center py-16 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl"
                 >
-                    <div className="w-20 h-20 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mx-auto mb-6">
-                        <Briefcase className="w-10 h-10 text-orange-600" />
+                    <div className="w-20 h-20 rounded-2xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mx-auto mb-6">
+                        <Briefcase className="w-10 h-10 text-neutral-800" />
                     </div>
                     <h3 className="font-bold text-xl text-neutral-900 dark:text-white mb-2">
                         No placement activities yet
@@ -190,7 +190,7 @@ export default function PlacementsPage() {
                             <Building2 className="w-4 h-4 mr-2" />
                             Refer a Company
                         </Button>
-                        <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
+                        <Button className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white">
                             <Plus className="w-4 h-4 mr-2" />
                             Post Exclusive Job
                         </Button>
@@ -207,7 +207,7 @@ export default function PlacementsPage() {
             >
                 <div className="flex items-center justify-between mb-4">
                     <h2 className="text-lg font-bold text-neutral-900 dark:text-white">Partner Companies</h2>
-                    <Button variant="ghost" size="sm" className="text-sm text-orange-600">
+                    <Button variant="ghost" size="sm" className="text-sm text-neutral-800">
                         <TrendingUp className="w-4 h-4 mr-1" />
                         View Analytics
                     </Button>

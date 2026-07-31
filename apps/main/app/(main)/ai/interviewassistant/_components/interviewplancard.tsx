@@ -64,7 +64,7 @@ export function InterviewPlanCard({
                     <div>
                         <CardTitle className="text-xl line-clamp-2">{plan.position}</CardTitle>
                         <div className="mt-2 flex flex-wrap items-center gap-2">
-                            <Badge variant="outline" className="border-amber-500/30 text-amber-600 dark:text-amber-400">
+                            <Badge variant="outline" className="border-neutral-900/30 text-neutral-800 dark:text-neutral-100">
                                 Public
                             </Badge>
                             <Badge className="bg-neutral-900 text-white dark:bg-white dark:text-neutral-900">
@@ -79,13 +79,13 @@ export function InterviewPlanCard({
                     </div>
                     <div className="text-right space-y-1">
                         {typeof plan.rating === "number" && (
-                            <div className="flex items-center gap-1 justify-end text-yellow-600 dark:text-yellow-500">
+                            <div className="flex items-center gap-1 justify-end text-neutral-800 dark:text-neutral-200">
                                 <Star className="h-4 w-4 fill-current" />
                                 <span className="text-sm font-medium">{plan.rating.toFixed(1)}</span>
                             </div>
                         )}
                         {!!plan.purchaseCount && (
-                            <div className="flex items-center gap-1 justify-end text-amber-600 dark:text-amber-400 text-xs">
+                            <div className="flex items-center gap-1 justify-end text-neutral-800 dark:text-neutral-100 text-xs">
                                 <span>{plan.purchaseCount} purchases</span>
                             </div>
                         )}
@@ -126,12 +126,12 @@ export function InterviewPlanCard({
                 {/* Features */}
                 <div className="flex flex-wrap gap-1 mb-3">
                     {plan.includeAnswers && (
-                        <Badge variant="outline" className="text-xs px-2 py-0.5 border-amber-200 text-amber-700 dark:border-amber-800 dark:text-amber-400">
+                        <Badge variant="outline" className="text-xs px-2 py-0.5 border-neutral-200 text-neutral-700 dark:border-neutral-800 dark:text-neutral-100">
                             ✓ Answers
                         </Badge>
                     )}
                     {plan.includePractice && (
-                        <Badge variant="outline" className="text-xs px-2 py-0.5 border-orange-200 text-orange-700 dark:border-orange-800 dark:text-orange-400">
+                        <Badge variant="outline" className="text-xs px-2 py-0.5 border-neutral-200 text-neutral-700 dark:border-neutral-800 dark:text-neutral-100">
                             ✓ Practice
                         </Badge>
                     )}

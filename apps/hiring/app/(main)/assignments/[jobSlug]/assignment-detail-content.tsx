@@ -51,17 +51,17 @@ function StatusBadge({ status }: { status: string }) {
     const config: Record<string, { label: string; color: string; icon: React.ReactNode }> = {
         ASSIGNMENT_SENT: {
             label: "Awaiting",
-            color: "bg-amber-50 text-amber-700 border-amber-200",
+            color: "bg-neutral-50 text-neutral-700 border-neutral-200",
             icon: <Clock className="h-3 w-3" />
         },
         ASSIGNMENT_SUBMITTED: {
             label: "Submitted",
-            color: "bg-amber-50 text-amber-700 border-amber-200",
+            color: "bg-neutral-50 text-neutral-700 border-neutral-200",
             icon: <CheckCircle2 className="h-3 w-3" />
         },
         SHORTLISTED: {
             label: "Shortlisted",
-            color: "bg-orange-50 text-orange-700 border-orange-200",
+            color: "bg-neutral-50 text-neutral-700 border-neutral-200",
             icon: <Star className="h-3 w-3" />
         }
     }
@@ -171,7 +171,7 @@ function CandidateCard({
                 {
                     application.assignmentSubmittedAt && (
                         <div className="flex items-center gap-1.5">
-                            <CheckCircle2 className="h-3.5 w-3.5 text-amber-600" />
+                            <CheckCircle2 className="h-3.5 w-3.5 text-neutral-800" />
                             <span>Submitted: {formatDate(application.assignmentSubmittedAt)}</span>
                         </div>
                     )
@@ -179,7 +179,7 @@ function CandidateCard({
                 {
                     application.assignmentScore !== null && (
                         <div className="flex items-center gap-1.5">
-                            <Star className="h-3.5 w-3.5 text-amber-500" />
+                            <Star className="h-3.5 w-3.5 text-neutral-900" />
                             <span>Score: {application.assignmentScore}/100</span>
                         </div>
                     )
@@ -204,7 +204,7 @@ function CandidateCard({
                         <Button
                             size="sm"
                             onClick={() => onScoreAssignment(application)}
-                            className="bg-amber-600 hover:bg-amber-700 text-white"
+                            className="bg-neutral-800 hover:bg-neutral-700 text-white"
                         >
                             <Star className="h-3.5 w-3.5 mr-1.5" />
                             Score Submission
@@ -376,7 +376,7 @@ export default function AssignmentDetailContent({ job, submissions }: Assignment
                         </div>
                         <Badge
                             variant="outline"
-                            className={job.status === "PUBLISHED" ? "bg-amber-50 text-amber-700 border-amber-200" : ""}
+                            className={job.status === "PUBLISHED" ? "bg-neutral-50 text-neutral-700 border-neutral-200" : ""}
                         >
                             {job.status}
                         </Badge>
@@ -387,11 +387,11 @@ export default function AssignmentDetailContent({ job, submissions }: Assignment
                             <span>{awaitingCount} awaiting</span>
                         </div>
                         <div className="flex items-center gap-2 text-[#64748B]">
-                            <CheckCircle2 className="h-4 w-4 text-amber-600" />
+                            <CheckCircle2 className="h-4 w-4 text-neutral-800" />
                             <span>{submittedCount} submitted</span>
                         </div>
                         <div className="flex items-center gap-2 text-[#64748B]">
-                            <Star className="h-4 w-4 text-amber-500" />
+                            <Star className="h-4 w-4 text-neutral-900" />
                             <span>{scoredCount} scored</span>
                         </div>
                         {
@@ -517,7 +517,7 @@ export default function AssignmentDetailContent({ job, submissions }: Assignment
                                                                 <p className="text-xs text-[#64748B]">Scored</p>
                                                             </div>
                                                         ) : (
-                                                            <Badge variant="outline" className="bg-amber-50 text-amber-700 border-amber-200">
+                                                            <Badge variant="outline" className="bg-neutral-50 text-neutral-700 border-neutral-200">
                                                                 Needs Review
                                                             </Badge>
                                                         )

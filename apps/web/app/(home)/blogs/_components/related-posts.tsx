@@ -26,7 +26,7 @@ export function RelatedPosts({ posts }: { posts: BlogPostWithSlug[] }) {
                         <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-400 dark:text-neutral-500">
                             {BLOG_CATEGORIES[post.category]}
                         </p>
-                        <h3 className="mb-2 text-[15px] font-semibold leading-snug tracking-tight text-neutral-900 group-hover:text-orange-600 dark:text-white dark:group-hover:text-orange-400">
+                        <h3 className="mb-2 text-[15px] font-semibold leading-snug tracking-tight text-neutral-900 group-hover:text-neutral-800 dark:text-white dark:group-hover:text-neutral-100">
                             {post.title}
                         </h3>
                         <p className="mb-4 line-clamp-2 text-[13px] leading-relaxed text-neutral-500 dark:text-neutral-400">

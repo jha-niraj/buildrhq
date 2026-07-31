@@ -2,6 +2,10 @@ import Footer from "@/components/landingpage/footer";
 import Navbar from "@/components/landingpage/navbar";
 import { Metadata } from "next";
 
+// Canonical origin for this deploy. Overridable per environment so preview
+// builds emit their own absolute URLs instead of the production ones.
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://hiring.buildrhq.com'
+
 export const metadata: Metadata = {
 	title: {
 		default: "BuildrHQ",
@@ -12,14 +16,14 @@ export const metadata: Metadata = {
 	authors: [{ name: "Niraj Jha" }],
 	creator: "Shunya Tech",
 	publisher: "Shunya Tech",
-	metadataBase: new URL("https://www.coderzai.xyz"),
+	metadataBase: new URL(BASE_URL),
 	alternates: {
 		canonical: "/",
 	},
 	openGraph: {
 		type: "website",
 		locale: "en_US",
-		url: "https://www.coderzai.xyz",
+		url: BASE_URL,
 		siteName: "BuildrHQ",
 		title: "BuildrHQ - The Engineering Intelligence Platform for Computer Science Students",
 		description: "The Engineering Intelligence Platform for Computer Science Students",

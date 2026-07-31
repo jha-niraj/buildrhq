@@ -87,8 +87,8 @@ export function GlobalLeaderboardClient({
                 </Link>
                 <div className="text-center mb-12">
                     <div className="inline-flex items-center gap-3 mb-4">
-                        <Trophy className="w-12 h-12 text-yellow-500" />
-                        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-orange-500">
+                        <Trophy className="w-12 h-12 text-neutral-900" />
+                        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-900 to-neutral-900">
                             Global Leaderboard
                         </h1>
                     </div>
@@ -170,8 +170,8 @@ export function GlobalLeaderboardClient({
                         animate={{ opacity: 1, scale: 1 }}
                     >
                         <Card className="p-12 text-center max-w-2xl mx-auto">
-                            <div className="w-24 h-24 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-yellow-100 to-orange-100 dark:from-yellow-900/30 dark:to-orange-900/30 flex items-center justify-center">
-                                <Trophy className="w-12 h-12 text-yellow-500" />
+                            <div className="w-24 h-24 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-neutral-100 to-neutral-100 dark:from-neutral-800/30 dark:to-neutral-800/30 flex items-center justify-center">
+                                <Trophy className="w-12 h-12 text-neutral-900" />
                             </div>
                             <h3 className="text-2xl font-bold mb-2">No Participants Yet</h3>
                             <p className="text-neutral-600 dark:text-neutral-400 mb-6 max-w-md mx-auto">
@@ -179,7 +179,7 @@ export function GlobalLeaderboardClient({
                             </p>
                             <div className="flex flex-col sm:flex-row gap-3 justify-center">
                                 <Link href="/projects">
-                                    <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white">
+                                    <Button size="lg" className="bg-gradient-to-r from-neutral-900 to-neutral-900 hover:from-neutral-800 hover:to-neutral-800 text-white">
                                         <Trophy className="w-5 h-5 mr-2" />
                                         Start a Project
                                     </Button>
@@ -194,22 +194,22 @@ export function GlobalLeaderboardClient({
                                 <h4 className="font-semibold mb-4 text-neutral-700 dark:text-neutral-300">How Scoring Works</h4>
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
                                     <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900">
-                                        <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
-                                            <Star className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                                        <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                                            <Star className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                         </div>
                                         <p className="font-medium">Complete Projects</p>
                                         <p className="text-neutral-500 text-xs mt-1">Earn points for each completed project</p>
                                     </div>
                                     <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900">
-                                        <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                                            <Award className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                                        <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                                            <Award className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                         </div>
                                         <p className="font-medium">Quality Matters</p>
                                         <p className="text-neutral-500 text-xs mt-1">Higher scores for better submissions</p>
                                     </div>
                                     <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900">
-                                        <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                                            <Medal className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                                        <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                                            <Medal className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                         </div>
                                         <p className="font-medium">Climb the Ranks</p>
                                         <p className="text-neutral-500 text-xs mt-1">Compete with developers worldwide</p>
@@ -266,14 +266,14 @@ export function GlobalLeaderboardClient({
                                 top3[0] && (
                                     <div className="flex flex-col items-center -mt-12">
                                         <div className="relative">
-                                            <Trophy className="w-20 h-20 text-yellow-500 mb-3 animate-pulse drop-shadow-2xl" />
-                                            <div className="absolute inset-0 bg-yellow-500/20 blur-xl rounded-full"></div>
+                                            <Trophy className="w-20 h-20 text-neutral-900 mb-3 animate-pulse drop-shadow-2xl" />
+                                            <div className="absolute inset-0 bg-neutral-900/20 blur-xl rounded-full"></div>
                                         </div>
-                                        <Avatar className="h-32 w-32 mb-4 ring-4 ring-yellow-500 shadow-2xl">
+                                        <Avatar className="h-32 w-32 mb-4 ring-4 ring-neutral-900 shadow-2xl">
                                             <AvatarImage src={top3[0].user.image!} />
                                             <AvatarFallback>{top3[0].user.name?.[0] || 'U'}</AvatarFallback>
                                         </Avatar>
-                                        <Badge className="mb-2 bg-yellow-500 hover:bg-yellow-600 text-white text-lg px-5 py-1.5">
+                                        <Badge className="mb-2 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 text-lg px-5 py-1.5">
                                             <Star className="w-5 h-5 mr-1" />
                                             1st
                                         </Badge>
@@ -301,12 +301,12 @@ export function GlobalLeaderboardClient({
                             {
                                 top3[2] && (
                                     <div className="flex flex-col items-center">
-                                        <Trophy className="w-14 h-14 text-amber-600 mb-3 drop-shadow-lg" />
-                                        <Avatar className="h-24 w-24 mb-3 ring-4 ring-amber-600 shadow-xl">
+                                        <Trophy className="w-14 h-14 text-neutral-800 mb-3 drop-shadow-lg" />
+                                        <Avatar className="h-24 w-24 mb-3 ring-4 ring-neutral-800 shadow-xl">
                                             <AvatarImage src={top3[2].user.image!} />
                                             <AvatarFallback>{top3[2].user.name?.[0] || 'U'}</AvatarFallback>
                                         </Avatar>
-                                        <Badge className="mb-2 bg-amber-600 hover:bg-amber-700 text-white text-base px-4 py-1">
+                                        <Badge className="mb-2 bg-neutral-800 hover:bg-neutral-700 text-white text-base px-4 py-1">
                                             <Award className="w-4 h-4 mr-1" />
                                             3rd
                                         </Badge>
@@ -359,7 +359,7 @@ export function GlobalLeaderboardClient({
                             rest.map((entry) => (
                                 <Card
                                     key={entry.id}
-                                    className={`hover:shadow-md transition-shadow ${entry.userId === currentUserId ? 'ring-2 ring-orange-500' : ''}`}
+                                    className={`hover:shadow-md transition-shadow ${entry.userId === currentUserId ? 'ring-2 ring-neutral-900' : ''}`}
                                 >
                                     <CardContent className="p-4">
                                         <div className="flex items-center gap-4">
@@ -393,7 +393,7 @@ export function GlobalLeaderboardClient({
                                                     <p className="text-xs text-muted-foreground">started</p>
                                                 </div>
                                                 <div>
-                                                    <p className="text-xl font-bold text-amber-600">{entry.projectsCompleted}</p>
+                                                    <p className="text-xl font-bold text-neutral-800">{entry.projectsCompleted}</p>
                                                     <p className="text-xs text-muted-foreground">completed</p>
                                                 </div>
                                                 <div>

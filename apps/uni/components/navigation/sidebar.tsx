@@ -64,7 +64,7 @@ export function UniversitySidebar() {
                 subtitle: "University",
                 homeHref: "/home",
                 logo: (
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-orange-500 text-white">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900">
                         <GraduationCap className="h-[18px] w-[18px]" />
                     </div>
                 ),

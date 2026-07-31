@@ -11,10 +11,7 @@ import { ScrollArea } from "@repo/ui/components/ui/scroll-area";
 import { cn } from "@repo/ui/lib/utils";
 import toast from "@repo/ui/components/ui/sonner";
 import MarkdownRenderer from "@/components/common/markdown-renderer";
-import {
-	useAIPanelStore, AI_MIN_WIDTH, AI_MAX_WIDTH, clampPanelWidth,
-	type AIChatMessage,
-} from "@/app/store/aiPanelStore";
+import { useAIPanelStore, type AIChatMessage } from "@/app/store/aiPanelStore";
 
 const SUGGESTIONS = [
 	"Review my resume for a backend role",
@@ -65,7 +62,7 @@ function MessageBubble({ message, isStreaming }: { message: AIChatMessage; isStr
 	if (isUser) {
 		return (
 			<div className="flex justify-end">
-				<div className="max-w-[85%] rounded-2xl rounded-br-md bg-orange-500 px-3.5 py-2.5 text-sm leading-relaxed text-white">
+				<div className="max-w-[85%] rounded-2xl rounded-br-md bg-neutral-900 dark:bg-white px-3.5 py-2.5 text-sm leading-relaxed text-white dark:text-neutral-900">
 					{message.content}
 				</div>
 			</div>
@@ -75,8 +72,8 @@ function MessageBubble({ message, isStreaming }: { message: AIChatMessage; isStr
 	return (
 		<div className="group flex flex-col gap-1.5">
 			<div className="flex items-center gap-1.5">
-				<span className="flex h-5 w-5 items-center justify-center rounded-md bg-orange-500/10">
-					<Sparkles className="h-3 w-3 text-orange-500" />
+				<span className="flex h-5 w-5 items-center justify-center rounded-md bg-neutral-900/10">
+					<Sparkles className="h-3 w-3 text-neutral-900" />
 				</span>
 				<span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400">BuildrHQ AI</span>
 			</div>
@@ -105,9 +102,19 @@ function MessageBubble({ message, isStreaming }: { message: AIChatMessage; isStr
 
 // ─── Panel ────────────────────────────────────────────────────────────────────
 
+/**
+ * The chat surface — header, conversation, composer — and nothing about WHERE it
+ * sits. It fills whatever box it is given.
+ *
+ * Placement is the app shell's job (`app/(main)/layout.tsx`): on lg+ it mounts
+ * this as a real docked column beside the page, so the page narrows instead of
+ * being covered; below lg it mounts the same component inside a Sheet. Keeping
+ * the two concerns apart is what lets one implementation serve both without a
+ * `variant` flag threading through every element.
+ */
 export function AIPanel() {
 	const {
-		isOpen, close, width, setWidth, isMaximized, toggleMaximized,
+		close, isMaximized, toggleMaximized,
 		sessions, activeSessionId, newSession, selectSession, deleteSession,
 		addUserMessage, addAssistantPlaceholder, appendToLastAssistant, replaceLastAssistant,
 		isStreaming, setStreaming,
@@ -142,50 +149,15 @@ export function AIPanel() {
 		if (el) el.scrollTop = el.scrollHeight;
 	}, [messages, isStreaming]);
 
+	// The shell only mounts this while the panel is open, so mounting IS opening.
 	useEffect(() => {
-		if (isOpen) {
-			const t = setTimeout(() => textareaRef.current?.focus(), 250);
-			return () => clearTimeout(t);
-		}
-	}, [isOpen]);
+		const t = setTimeout(() => textareaRef.current?.focus(), 250);
+		return () => clearTimeout(t);
+	}, []);
 
 	// Abort any in-flight response when the panel unmounts, so a closed panel
 	// can't keep writing into a conversation nobody is looking at.
 	useEffect(() => () => abortRef.current?.abort(), []);
-
-	// ── Drag to resize ────────────────────────────────────────────────────────
-	// Width is committed to the store on every move (it's a cheap set and the
-	// store is the single source of truth for the layout offset), and the listeners
-	// live on `window` so the drag survives the cursor leaving the 6px handle.
-	const handleResizeStart = useCallback((startX: number, startWidth: number) => {
-		const onMove = (clientX: number) => {
-			// The panel is docked RIGHT, so dragging left (smaller clientX) widens it.
-			setWidth(clampPanelWidth(startWidth + (startX - clientX)));
-		};
-
-		const onMouseMove = (e: MouseEvent) => { e.preventDefault(); onMove(e.clientX); };
-		const onTouchMove = (e: TouchEvent) => {
-			const touch = e.touches[0];
-			if (touch) onMove(touch.clientX);
-		};
-		const stop = () => {
-			window.removeEventListener("mousemove", onMouseMove);
-			window.removeEventListener("mouseup", stop);
-			window.removeEventListener("touchmove", onTouchMove);
-			window.removeEventListener("touchend", stop);
-			document.body.style.cursor = "";
-			document.body.style.userSelect = "";
-		};
-
-		window.addEventListener("mousemove", onMouseMove);
-		window.addEventListener("mouseup", stop);
-		window.addEventListener("touchmove", onTouchMove, { passive: true });
-		window.addEventListener("touchend", stop);
-		// Without these the drag selects page text and the cursor flickers back to
-		// the default whenever it crosses a child element.
-		document.body.style.cursor = "col-resize";
-		document.body.style.userSelect = "none";
-	}, [setWidth]);
 
 	// ── Send ──────────────────────────────────────────────────────────────────
 	const send = useCallback(async (text: string) => {
@@ -252,218 +224,165 @@ export function AIPanel() {
 		}
 	};
 
-	const panelWidth = isMobile ? "100vw" : isMaximized ? "min(1100px, 92vw)" : width;
-
 	return (
-		<AnimatePresence>
-			{isOpen && (
-				<>
-					{/* Mobile scrim — on desktop the panel sits beside the page, not over it. */}
-					{isMobile && (
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							onClick={close}
-							className="fixed inset-0 z-40 bg-black/40 lg:hidden"
-						/>
+		<div className="flex h-full w-full min-w-0 flex-col bg-white dark:bg-neutral-950">
+			{/* Header */}
+			<header className="flex shrink-0 items-center justify-between gap-2 border-b border-neutral-200 px-4 py-3 dark:border-neutral-800">
+				<div className="flex min-w-0 items-center gap-2">
+					<span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-neutral-900/10">
+						<Sparkles className="h-4 w-4 text-neutral-900" />
+					</span>
+					<span className="truncate text-sm font-semibold text-neutral-900 dark:text-white">
+						{activeSession?.messages.length ? activeSession.title : "BuildrHQ AI"}
+					</span>
+				</div>
+				<div className="flex shrink-0 items-center gap-0.5">
+					<IconButton label="Chat history" onClick={() => setHistoryOpen((v) => !v)} active={historyOpen}>
+						<History className="h-4 w-4" />
+					</IconButton>
+					<IconButton label="New chat" onClick={() => { newSession(); setHistoryOpen(false); }}>
+						<SquarePen className="h-4 w-4" />
+					</IconButton>
+					{!isMobile && (
+						<IconButton label={isMaximized ? "Restore panel" : "Maximize panel"} onClick={toggleMaximized}>
+							{isMaximized ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+						</IconButton>
 					)}
+					<IconButton label="Close" onClick={close}>
+						<X className="h-4 w-4" />
+					</IconButton>
+				</div>
+			</header>
 
-					<motion.aside
-						initial={{ x: "100%" }}
-						animate={{ x: 0 }}
-						exit={{ x: "100%" }}
-						transition={{ type: "spring", stiffness: 320, damping: 34 }}
-						style={{ width: panelWidth }}
-						className="fixed right-0 top-0 z-50 flex h-screen flex-col border-l border-neutral-200 bg-white shadow-2xl dark:border-neutral-800 dark:bg-neutral-950"
+			{/* History drawer */}
+			<AnimatePresence>
+				{historyOpen && (
+					<motion.div
+						initial={{ height: 0, opacity: 0 }}
+						animate={{ height: "auto", opacity: 1 }}
+						exit={{ height: 0, opacity: 0 }}
+						className="shrink-0 overflow-hidden border-b border-neutral-200 dark:border-neutral-800"
 					>
-						{/* Drag handle — desktop only, and pointless while maximized. */}
-						{!isMobile && !isMaximized && (
-							<div
-								role="separator"
-								aria-orientation="vertical"
-								aria-label="Resize AI panel"
-								aria-valuenow={width}
-								aria-valuemin={AI_MIN_WIDTH}
-								aria-valuemax={AI_MAX_WIDTH}
-								tabIndex={0}
-								onMouseDown={(e) => { e.preventDefault(); handleResizeStart(e.clientX, width); }}
-								onTouchStart={(e) => {
-									const touch = e.touches[0];
-									if (touch) handleResizeStart(touch.clientX, width);
-								}}
-								// Keyboard resize, because a drag handle that only works with a
-								// mouse is not a control everyone can reach.
-								onKeyDown={(e) => {
-									if (e.key === "ArrowLeft") { e.preventDefault(); setWidth(width + 24); }
-									if (e.key === "ArrowRight") { e.preventDefault(); setWidth(width - 24); }
-								}}
-								className="group absolute left-0 top-0 z-10 h-full w-1.5 cursor-col-resize transition-colors hover:bg-orange-500/60 focus:bg-orange-500/60 focus:outline-none"
-							>
-								<span className="absolute left-1/2 top-1/2 h-10 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-300 opacity-0 transition-opacity group-hover:opacity-100 dark:bg-neutral-600" />
-							</div>
-						)}
-
-						{/* Header */}
-						<header className="flex shrink-0 items-center justify-between gap-2 border-b border-neutral-200 px-4 py-3 dark:border-neutral-800">
-							<div className="flex min-w-0 items-center gap-2">
-								<span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-orange-500/10">
-									<Sparkles className="h-4 w-4 text-orange-500" />
-								</span>
-								<span className="truncate text-sm font-semibold text-neutral-900 dark:text-white">
-									{activeSession?.messages.length ? activeSession.title : "BuildrHQ AI"}
-								</span>
-							</div>
-							<div className="flex shrink-0 items-center gap-0.5">
-								<IconButton label="Chat history" onClick={() => setHistoryOpen((v) => !v)} active={historyOpen}>
-									<History className="h-4 w-4" />
-								</IconButton>
-								<IconButton label="New chat" onClick={() => { newSession(); setHistoryOpen(false); }}>
-									<SquarePen className="h-4 w-4" />
-								</IconButton>
-								{!isMobile && (
-									<IconButton label={isMaximized ? "Restore panel" : "Maximize panel"} onClick={toggleMaximized}>
-										{isMaximized ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
-									</IconButton>
-								)}
-								<IconButton label="Close" onClick={close}>
-									<X className="h-4 w-4" />
-								</IconButton>
-							</div>
-						</header>
-
-						{/* History drawer */}
-						<AnimatePresence>
-							{historyOpen && (
-								<motion.div
-									initial={{ height: 0, opacity: 0 }}
-									animate={{ height: "auto", opacity: 1 }}
-									exit={{ height: 0, opacity: 0 }}
-									className="shrink-0 overflow-hidden border-b border-neutral-200 dark:border-neutral-800"
-								>
-									<div className="max-h-56 overflow-y-auto p-2">
-										{sessions.length === 0 ? (
-											<p className="px-2 py-3 text-center text-sm text-neutral-400">No conversations yet</p>
-										) : (
-											sessions.map((s) => (
-												<div
-													key={s.id}
-													className={cn(
-														"group flex items-center gap-2 rounded-lg px-2 py-1.5",
-														s.id === activeSessionId
-															? "bg-orange-500/10"
-															: "hover:bg-neutral-100 dark:hover:bg-neutral-900",
-													)}
-												>
-													<button
-														type="button"
-														onClick={() => { selectSession(s.id); setHistoryOpen(false); }}
-														className="min-w-0 flex-1 cursor-pointer truncate text-left text-sm text-neutral-700 dark:text-neutral-300"
-													>
-														{s.title}
-													</button>
-													<button
-														type="button"
-														onClick={() => deleteSession(s.id)}
-														aria-label={`Delete "${s.title}"`}
-														className="shrink-0 cursor-pointer rounded p-1 text-neutral-400 opacity-0 transition-opacity hover:text-red-500 group-hover:opacity-100"
-													>
-														<Trash2 className="h-3.5 w-3.5" />
-													</button>
-												</div>
-											))
+						<div className="max-h-56 overflow-y-auto p-2">
+							{sessions.length === 0 ? (
+								<p className="px-2 py-3 text-center text-sm text-neutral-400">No conversations yet</p>
+							) : (
+								sessions.map((s) => (
+									<div
+										key={s.id}
+										className={cn(
+											"group flex items-center gap-2 rounded-lg px-2 py-1.5",
+											s.id === activeSessionId
+												? "bg-neutral-900/10"
+												: "hover:bg-neutral-100 dark:hover:bg-neutral-900",
 										)}
+									>
+										<button
+											type="button"
+											onClick={() => { selectSession(s.id); setHistoryOpen(false); }}
+											className="min-w-0 flex-1 cursor-pointer truncate text-left text-sm text-neutral-700 dark:text-neutral-300"
+										>
+											{s.title}
+										</button>
+										<button
+											type="button"
+											onClick={() => deleteSession(s.id)}
+											aria-label={`Delete "${s.title}"`}
+											className="shrink-0 cursor-pointer rounded p-1 text-neutral-400 opacity-0 transition-opacity hover:text-red-500 group-hover:opacity-100"
+										>
+											<Trash2 className="h-3.5 w-3.5" />
+										</button>
 									</div>
-								</motion.div>
+								))
 							)}
-						</AnimatePresence>
-
-						{/* Conversation */}
-						<ScrollArea ref={scrollRef} className="min-h-0 flex-1">
-							<div className={cn(
-								"space-y-5 px-4 py-5",
-								// A maximized panel is far wider than a comfortable reading
-								// measure, so the column is capped and centred there.
-								isMaximized && "mx-auto max-w-3xl",
-							)}>
-								{messages.length === 0 ? (
-									<div className="flex flex-col items-center py-10 text-center">
-										<span className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10">
-											<Sparkles className="h-6 w-6 text-orange-500" />
-										</span>
-										<h2 className="text-base font-semibold text-neutral-900 dark:text-white">
-											How can I help?
-										</h2>
-										<p className="mt-1 max-w-xs text-sm text-neutral-500 dark:text-neutral-400">
-											Ask about your projects, interview prep, DSA, or your resume.
-										</p>
-										<div className="mt-5 grid w-full gap-2">
-											{SUGGESTIONS.map((s) => (
-												<button
-													key={s}
-													type="button"
-													onClick={() => void send(s)}
-													className="cursor-pointer rounded-xl border border-neutral-200 px-3 py-2.5 text-left text-sm text-neutral-700 transition-colors hover:border-orange-500/50 hover:bg-orange-500/5 dark:border-neutral-800 dark:text-neutral-300"
-												>
-													{s}
-												</button>
-											))}
-										</div>
-									</div>
-								) : (
-									messages.map((m, i) => (
-										<MessageBubble
-											key={m.id}
-											message={m}
-											isStreaming={isStreaming && i === messages.length - 1}
-										/>
-									))
-								)}
-							</div>
-						</ScrollArea>
-
-						{/* Composer */}
-						<div className={cn("shrink-0 border-t border-neutral-200 p-3 dark:border-neutral-800", isMaximized && "mx-auto w-full max-w-3xl")}>
-							<div className="flex items-end gap-2 rounded-2xl border border-neutral-200 bg-neutral-50 px-3 py-2 focus-within:border-orange-500 dark:border-neutral-800 dark:bg-neutral-900">
-								<textarea
-									ref={textareaRef}
-									value={input}
-									onChange={(e) => setInput(e.target.value)}
-									onKeyDown={onKeyDown}
-									rows={1}
-									placeholder="Ask anything…"
-									disabled={isStreaming}
-									className="max-h-40 min-h-[24px] w-full resize-none bg-transparent py-1 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 disabled:opacity-60 dark:text-white [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-								/>
-								{isStreaming ? (
-									<button
-										type="button"
-										onClick={stop}
-										aria-label="Stop generating"
-										className="shrink-0 cursor-pointer rounded-lg p-1.5 text-neutral-500 transition-colors hover:text-red-500"
-									>
-										<StopCircle className="h-4.5 w-4.5" />
-									</button>
-								) : (
-									<button
-										type="button"
-										onClick={() => void send(input)}
-										disabled={!input.trim()}
-										aria-label="Send message"
-										className="shrink-0 cursor-pointer rounded-lg bg-orange-500 p-1.5 text-white transition-colors hover:bg-orange-600 disabled:cursor-not-allowed disabled:opacity-40"
-									>
-										<Send className="h-4 w-4" />
-									</button>
-								)}
-							</div>
-							<p className="mt-1.5 px-1 text-center text-xs text-neutral-400">
-								Enter to send · Shift+Enter for a new line
-							</p>
 						</div>
-					</motion.aside>
-				</>
-			)}
-		</AnimatePresence>
+					</motion.div>
+				)}
+			</AnimatePresence>
+
+			{/* Conversation */}
+			<ScrollArea ref={scrollRef} className="min-h-0 flex-1">
+				<div className={cn(
+					"space-y-5 px-4 py-5",
+					// A maximized panel is far wider than a comfortable reading
+					// measure, so the column is capped and centred there.
+					isMaximized && "mx-auto max-w-3xl",
+				)}>
+					{messages.length === 0 ? (
+						<div className="flex flex-col items-center py-10 text-center">
+							<span className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-neutral-900/10">
+								<Sparkles className="h-6 w-6 text-neutral-900" />
+							</span>
+							<h2 className="text-base font-semibold text-neutral-900 dark:text-white">
+								How can I help?
+							</h2>
+							<p className="mt-1 max-w-xs text-sm text-neutral-500 dark:text-neutral-400">
+								Ask about your projects, interview prep, DSA, or your resume.
+							</p>
+							<div className="mt-5 grid w-full gap-2">
+								{SUGGESTIONS.map((s) => (
+									<button
+										key={s}
+										type="button"
+										onClick={() => void send(s)}
+										className="cursor-pointer rounded-xl border border-neutral-200 px-3 py-2.5 text-left text-sm text-neutral-700 transition-colors hover:border-neutral-900/50 hover:bg-neutral-900/5 dark:border-neutral-800 dark:text-neutral-300"
+									>
+										{s}
+									</button>
+								))}
+							</div>
+						</div>
+					) : (
+						messages.map((m, i) => (
+							<MessageBubble
+								key={m.id}
+								message={m}
+								isStreaming={isStreaming && i === messages.length - 1}
+							/>
+						))
+					)}
+				</div>
+			</ScrollArea>
+
+			{/* Composer */}
+			<div className={cn("shrink-0 border-t border-neutral-200 p-3 dark:border-neutral-800", isMaximized && "mx-auto w-full max-w-3xl")}>
+				<div className="flex items-end gap-2 rounded-2xl border border-neutral-200 bg-neutral-50 px-3 py-2 focus-within:border-neutral-900 dark:border-neutral-800 dark:bg-neutral-900">
+					<textarea
+						ref={textareaRef}
+						value={input}
+						onChange={(e) => setInput(e.target.value)}
+						onKeyDown={onKeyDown}
+						rows={1}
+						placeholder="Ask anything…"
+						disabled={isStreaming}
+						className="max-h-40 min-h-[24px] w-full resize-none bg-transparent py-1 text-sm text-neutral-900 outline-none placeholder:text-neutral-400 disabled:opacity-60 dark:text-white [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+					/>
+					{isStreaming ? (
+						<button
+							type="button"
+							onClick={stop}
+							aria-label="Stop generating"
+							className="shrink-0 cursor-pointer rounded-lg p-1.5 text-neutral-500 transition-colors hover:text-red-500"
+						>
+							<StopCircle className="h-4.5 w-4.5" />
+						</button>
+					) : (
+						<button
+							type="button"
+							onClick={() => void send(input)}
+							disabled={!input.trim()}
+							aria-label="Send message"
+							className="shrink-0 cursor-pointer rounded-lg bg-neutral-900 dark:bg-white p-1.5 text-white dark:text-neutral-900 transition-colors hover:bg-neutral-800 dark:hover:bg-neutral-200 disabled:cursor-not-allowed disabled:opacity-40"
+						>
+							<Send className="h-4 w-4" />
+						</button>
+					)}
+				</div>
+				<p className="mt-1.5 px-1 text-center text-xs text-neutral-400">
+					Enter to send · Shift+Enter for a new line
+				</p>
+			</div>
+		</div>
 	);
 }
 

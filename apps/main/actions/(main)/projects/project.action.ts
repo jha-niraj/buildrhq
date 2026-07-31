@@ -15,6 +15,7 @@ import {
     projectV2QuizAttempts,
     projectV2QuizAnswers,
     projectV2Submissions,
+    withTransaction
 } from "@repo/db";
 import { eq, and, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -41,7 +42,7 @@ async function _deductCredits(userId: string, amount: number, description: strin
         throw new Error("Insufficient credits");
     }
 
-    await db.transaction(async (tx) => {
+    await withTransaction(async (tx) => {
         await tx.update(users).set({ credits: sql`${users.credits} - ${amount}` }).where(eq(users.id, userId));
         await tx.insert(creditTransactions).values({
             userId,
@@ -54,7 +55,7 @@ async function _deductCredits(userId: string, amount: number, description: strin
 }
 
 async function _refundCredits(userId: string, amount: number, description: string) {
-    await db.transaction(async (tx) => {
+    await withTransaction(async (tx) => {
         await tx.update(users).set({ credits: sql`${users.credits} + ${amount}` }).where(eq(users.id, userId));
         await tx.insert(creditTransactions).values({
             userId,
@@ -1073,7 +1074,7 @@ export async function enrollInProject(projectId: string): Promise<ActionResponse
 
         const allTasks = project.sprints.flatMap((s: any) => s.tasks);
 
-        const result = await db.transaction(async (tx) => {
+        const result = await withTransaction(async (tx) => {
             // 1. Deduct credits
             await tx.update(users).set({ credits: sql`${users.credits} - ${enrollmentCost}` }).where(eq(users.id, user.id));
 

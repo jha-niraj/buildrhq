@@ -22,7 +22,7 @@ export default function DepartmentsPage() {
                         Organize your university by departments and assign department heads.
                     </p>
                 </div>
-                <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
+                <Button className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white">
                     <Plus className="w-4 h-4 mr-2" />
                     Add Department
                 </Button>
@@ -52,8 +52,8 @@ export default function DepartmentsPage() {
                 className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-12"
             >
                 <div className="text-center max-w-md mx-auto">
-                    <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mx-auto mb-4">
-                        <FolderKanban className="w-8 h-8 text-orange-600" />
+                    <div className="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mx-auto mb-4">
+                        <FolderKanban className="w-8 h-8 text-neutral-800" />
                     </div>
                     <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
                         No departments yet
@@ -61,7 +61,7 @@ export default function DepartmentsPage() {
                     <p className="text-neutral-500 mb-6">
                         Add departments like Computer Science, Electronics, etc. to organize faculty and students.
                     </p>
-                    <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
+                    <Button className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white">
                         <Plus className="w-4 h-4 mr-2" />
                         Add Your First Department
                     </Button>

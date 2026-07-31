@@ -58,7 +58,7 @@ function HiringLayoutContent({ children }: { children: React.ReactNode }) {
                 className={cn(
                     "h-screen transition-all duration-300",
                     "lg:ml-[17rem] p-3",
-                    isCollapsed && "lg:ml-[6.25rem]"
+                    isCollapsed && "lg:ml-[106px]"
                 )}
             >
                 <div className="h-full bg-white dark:bg-neutral-950 lg:rounded-3xl lg:border-l border-neutral-200 dark:border-neutral-800 shadow-xl overflow-hidden">

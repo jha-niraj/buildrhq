@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
     AlertCircle, RefreshCw, Pencil, Share2, Settings, Plus, MapPin, Building2,
@@ -109,7 +108,7 @@ function Section({ title, icon: Icon, action, children }: {
         <section className="rounded-2xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900 sm:p-6">
             <div className="mb-4 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <Icon className="h-4 w-4 text-orange-500" />
+                    <Icon className="h-4 w-4 text-neutral-900" />
                     <h2 className="text-sm font-semibold tracking-tight text-neutral-900 dark:text-white">
                         {title}
                     </h2>
@@ -118,7 +117,7 @@ function Section({ title, icon: Icon, action, children }: {
                     <button
                         type="button"
                         onClick={action.onClick}
-                        className="inline-flex cursor-pointer items-center gap-1 text-sm font-medium text-neutral-400 transition-colors hover:text-orange-500"
+                        className="inline-flex cursor-pointer items-center gap-1 text-sm font-medium text-neutral-400 transition-colors hover:text-neutral-900"
                     >
                         <Plus className="h-3.5 w-3.5" /> {action.label}
                     </button>
@@ -137,7 +136,7 @@ function Empty({ text, action }: { text: string; action?: { label: string; onCli
                 <button
                     type="button"
                     onClick={action.onClick}
-                    className="cursor-pointer text-sm font-medium text-orange-500 hover:underline"
+                    className="cursor-pointer text-sm font-medium text-neutral-900 hover:underline"
                 >
                     {action.label}
                 </button>
@@ -156,7 +155,6 @@ function dateRange(start: Date | string | null, end: Date | string | null, curre
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function ProfilePage() {
-    const router = useRouter();
     const { user: storeUser, isLoading: storeLoading, error: storeError, fetchUser } = useUserStore();
     const [profileData, setProfileData] = useState<ProfileData | null>(null);
     const [stats, setStats] = useState<ProfileStats | null>(null);
@@ -262,8 +260,8 @@ export default function ProfilePage() {
                             Create an account or sign in to access your developer profile.
                         </p>
                         <div className="flex justify-center gap-3">
-                            <Button variant="outline" onClick={() => router.push("/register")}>Create account</Button>
-                            <Button onClick={() => router.push("/signin")}>Sign in</Button>
+                            <Button variant="outline" asChild><Link href="/register">Create account</Link></Button>
+                            <Button asChild><Link href="/signin">Sign in</Link></Button>
                         </div>
                     </CardContent>
                 </Card>
@@ -307,7 +305,7 @@ export default function ProfilePage() {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden rounded-2xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"
             >
-                <div className="h-24 bg-gradient-to-r from-orange-500 via-amber-500 to-orange-400 sm:h-28" />
+                <div className="h-24 bg-gradient-to-r from-neutral-900 via-neutral-900 to-neutral-800 sm:h-28" />
                 <div className="px-5 pb-5 sm:px-6 sm:pb-6">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                         <div className="flex items-end gap-4">
@@ -346,14 +344,9 @@ export default function ProfilePage() {
                             <Button size="sm" variant="outline" className="gap-1.5" onClick={() => setShareOpen(true)}>
                                 <Share2 className="h-3.5 w-3.5" /> Share
                             </Button>
-                            <Button
-                                size="sm"
-                                variant="outline"
-                                className="gap-1.5"
-                                onClick={() => router.push("/settings")}
-                            >
+                            <Button size="sm" variant="outline" className="gap-1.5" asChild><Link href="/settings">
                                 <Settings className="h-3.5 w-3.5" /> Settings
-                            </Button>
+                            </Link></Button>
                         </div>
                     </div>
 
@@ -378,7 +371,7 @@ export default function ProfilePage() {
                                     href={profile.website}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1.5 text-sm text-orange-500 hover:underline"
+                                    className="inline-flex items-center gap-1.5 text-sm text-neutral-900 hover:underline"
                                 >
                                     <Globe className="h-3.5 w-3.5" /> Website
                                 </a>
@@ -390,7 +383,7 @@ export default function ProfilePage() {
                     <div className="mt-5 rounded-xl border border-neutral-100 bg-neutral-50/60 p-4 dark:border-neutral-800 dark:bg-neutral-950/30">
                         <div className="mb-2 flex items-center justify-between">
                             <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-neutral-900 dark:text-white">
-                                <Sparkles className="h-3.5 w-3.5 text-orange-500" /> Level {s.level}
+                                <Sparkles className="h-3.5 w-3.5 text-neutral-900" /> Level {s.level}
                             </span>
                             <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400">
                                 {xpIntoLevel} / 1000 XP to level {s.level + 1}
@@ -398,7 +391,7 @@ export default function ProfilePage() {
                         </div>
                         <div className="h-1.5 w-full overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800">
                             <div
-                                className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-400 transition-all"
+                                className="h-full rounded-full bg-gradient-to-r from-neutral-900 to-neutral-800 transition-all"
                                 style={{ width: `${xpProgress}%` }}
                             />
                         </div>
@@ -505,7 +498,7 @@ export default function ProfilePage() {
                                                         href={e.companyWebsite}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="inline-flex items-center gap-1 hover:text-orange-500"
+                                                        className="inline-flex items-center gap-1 hover:text-neutral-900"
                                                     >
                                                         {e.companyName} <ExternalLink className="h-3 w-3" />
                                                     </a>
@@ -595,12 +588,12 @@ export default function ProfilePage() {
                         {profile.hasResume ? (
                             <div className="flex items-center justify-between gap-3 rounded-xl border border-neutral-100 p-3.5 dark:border-neutral-800">
                                 <div className="flex items-center gap-2.5">
-                                    <FileText className="h-4 w-4 text-orange-500" />
+                                    <FileText className="h-4 w-4 text-neutral-900" />
                                     <span className="text-sm text-neutral-700 dark:text-neutral-300">Resume on file</span>
                                 </div>
                                 <Link
                                     href="/ai"
-                                    className="inline-flex items-center gap-1 text-sm font-medium text-orange-500 hover:underline"
+                                    className="inline-flex items-center gap-1 text-sm font-medium text-neutral-900 hover:underline"
                                 >
                                     AI review <ArrowRight className="h-3 w-3" />
                                 </Link>
@@ -619,7 +612,7 @@ export default function ProfilePage() {
                                         href={l.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-orange-500 dark:text-neutral-300 dark:hover:bg-neutral-800"
+                                        className="flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 text-sm text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800"
                                     >
                                         <span className="truncate">{l.platform}</span>
                                         <ExternalLink className="h-3 w-3 shrink-0 text-neutral-400" />

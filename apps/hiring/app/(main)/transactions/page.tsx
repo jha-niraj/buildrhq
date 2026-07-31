@@ -26,20 +26,20 @@ const statusConfig = {
     SUCCEEDED: {
         label: "Succeeded",
         icon: CheckCircle,
-        color: "text-amber-600 dark:text-amber-400",
-        bg: "bg-amber-100 dark:bg-amber-900/30"
+        color: "text-neutral-800 dark:text-neutral-100",
+        bg: "bg-neutral-100 dark:bg-neutral-800/30"
     },
     PENDING: {
         label: "Pending",
         icon: Clock,
-        color: "text-amber-600 dark:text-amber-400",
-        bg: "bg-amber-100 dark:bg-amber-900/30"
+        color: "text-neutral-800 dark:text-neutral-100",
+        bg: "bg-neutral-100 dark:bg-neutral-800/30"
     },
     PROCESSING: {
         label: "Processing",
         icon: RefreshCcw,
-        color: "text-orange-600 dark:text-orange-400",
-        bg: "bg-orange-100 dark:bg-orange-900/30"
+        color: "text-neutral-800 dark:text-neutral-100",
+        bg: "bg-neutral-100 dark:bg-neutral-800/30"
     },
     FAILED: {
         label: "Failed",
@@ -108,7 +108,7 @@ function TransactionCard({ payment }: { payment: PaymentRecord }) {
                         {
                             payment.paidAt ? (
                                 <span className="flex items-center gap-1 justify-end">
-                                    <CheckCircle className="h-3 w-3 text-amber-500" />
+                                    <CheckCircle className="h-3 w-3 text-neutral-900" />
                                     Paid {new Date(payment.paidAt).toLocaleDateString()}
                                 </span>
                             ) : (
@@ -245,7 +245,7 @@ export default function TransactionsPage() {
                         <CardDescription>Successful</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-2xl font-bold text-amber-600">{successfulPayments.length}</p>
+                        <p className="text-2xl font-bold text-neutral-800">{successfulPayments.length}</p>
                     </CardContent>
                 </Card>
                 <Card>
@@ -253,7 +253,7 @@ export default function TransactionsPage() {
                         <CardDescription>Pending</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-2xl font-bold text-amber-600">{pendingPayments.length}</p>
+                        <p className="text-2xl font-bold text-neutral-800">{pendingPayments.length}</p>
                     </CardContent>
                 </Card>
                 <Card>

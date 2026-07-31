@@ -389,13 +389,13 @@ export const LANGUAGE_CONFIG: Record<AssessmentLanguage, { label: string; icon: 
 export const DIFFICULTY_CONFIG: Record<QuestionDifficulty, { label: string; bg: string; text: string }> = {
     EASY: {
         label: 'Easy',
-        bg: 'bg-amber-100 dark:bg-amber-900/30',
-        text: 'text-amber-700 dark:text-amber-400'
+        bg: 'bg-neutral-100 dark:bg-neutral-800/30',
+        text: 'text-neutral-700 dark:text-neutral-100'
     },
     INTERMEDIATE: {
         label: 'Intermediate',
-        bg: 'bg-yellow-100 dark:bg-yellow-900/30',
-        text: 'text-yellow-700 dark:text-yellow-400'
+        bg: 'bg-neutral-100 dark:bg-neutral-800/30',
+        text: 'text-neutral-700 dark:text-neutral-100'
     },
     HARD: {
         label: 'Hard',

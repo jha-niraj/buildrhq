@@ -3,6 +3,7 @@ import { getSession } from "@repo/auth";
 import { db, users } from "@repo/db";
 import { eq } from "drizzle-orm";
 import { openai } from "@/lib/openai-client";
+import { TOOL_SPECS, runTool } from "@/lib/ai/tools";
 
 export const runtime = "nodejs";
 // The response is a token stream, so it can never be cached or prerendered.
@@ -15,9 +16,34 @@ const MODEL = process.env.OPENAI_CHAT_MODEL || "gpt-4o-mini";
 const MAX_HISTORY_MESSAGES = 20;
 const MAX_MESSAGE_CHARS = 8000;
 
+/** How many times the model may call tools before it must answer in prose.
+ *  Two rounds covers "look me up, then search on what you found"; anything
+ *  beyond that is a loop, not a plan, and burns the user's tokens. */
+const MAX_TOOL_ROUNDS = 2;
+
 interface IncomingMessage {
     role: "user" | "assistant";
     content: string;
+}
+
+/** One entry in the message array we hand to the model. Wider than
+ *  IncomingMessage because tool rounds add assistant-with-tool_calls and tool
+ *  result messages, neither of which the client is allowed to send. */
+interface ChatParam {
+    role: "system" | "user" | "assistant" | "tool";
+    content?: string | null;
+    tool_call_id?: string;
+    tool_calls?: ToolCall[];
+}
+
+interface ToolCall {
+    id: string;
+    type?: string;
+    function?: { name?: string; arguments?: string };
+}
+
+interface CompletionResponse {
+    choices?: Array<{ message?: { content?: string | null; tool_calls?: ToolCall[] } }>;
 }
 
 function systemPrompt(ctx: {
@@ -38,6 +64,12 @@ function systemPrompt(ctx: {
         "- Use fenced code blocks with a language tag for any code.",
         "- If a question is outside engineering/career help, answer briefly and steer back.",
         "- Never invent BuildrHQ features, prices, or user data you weren't given.",
+        "",
+        "Tools:",
+        "- You can read this user's own BuildrHQ data and search the platform's project ideas and job posts.",
+        "- Call a tool when the answer depends on their actual state (progress, goals, practice, profile) or on what the platform actually offers. Don't ask them to repeat something a tool can tell you.",
+        "- Don't call a tool for general knowledge, code review, or explanations — just answer.",
+        "- If a tool returns nothing or errors, say so plainly and answer with what you have. Never fabricate rows.",
         "",
         "About the person you're talking to:",
         `- Name: ${ctx.name ?? "unknown"}`,
@@ -123,11 +155,67 @@ export async function POST(request: NextRequest) {
         page,
     });
 
+    const conversation: ChatParam[] = [
+        { role: "system", content: system },
+        ...history,
+    ];
+
+    // ── Tool rounds ───────────────────────────────────────────────────────────
+    // Resolved BEFORE streaming starts, not during it. A tool round is a
+    // non-streamed completion: the model either answers (and we throw that draft
+    // away, re-asking with streaming so the user sees tokens appear) or asks for
+    // tools, which we run and feed back. Doing it this way means the response
+    // body only ever carries prose — the client stays a plain text reader and
+    // never has to understand tool framing.
+    try {
+        for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
+            const decision = (await openai.chat.completions.create({
+                model: MODEL,
+                messages: conversation,
+                temperature: 0.6,
+                max_tokens: 1600,
+                tools: TOOL_SPECS,
+                tool_choice: "auto",
+            })) as CompletionResponse;
+
+            const choice = decision?.choices?.[0]?.message;
+            const calls = choice?.tool_calls ?? [];
+            if (calls.length === 0) break;
+
+            conversation.push({
+                role: "assistant",
+                content: choice?.content ?? null,
+                tool_calls: calls,
+            });
+
+            // Independent reads — run them together rather than serialising a
+            // round trip to the database per call.
+            const results = await Promise.all(
+                calls.map((call) =>
+                    runTool(call.function?.name ?? "", call.function?.arguments ?? "", session.user.id),
+                ),
+            );
+            calls.forEach((call, i) => {
+                conversation.push({
+                    role: "tool",
+                    tool_call_id: call.id,
+                    content: results[i] ?? JSON.stringify({ error: "No result." }),
+                });
+            });
+        }
+    } catch (error) {
+        // A failed tool round is recoverable: drop back to the plain history and
+        // let the model answer from what it already knows.
+        console.error("[ai/chat] tool round failed:", error);
+        conversation.length = 0;
+        conversation.push({ role: "system", content: system }, ...history);
+    }
+
     let stream: AsyncGenerator<unknown>;
     try {
         stream = (await openai.chat.completions.create({
             model: MODEL,
-            messages: [{ role: "system", content: system }, ...history],
+            messages: conversation,
             temperature: 0.6,
             max_tokens: 1600,
             stream: true,

@@ -189,7 +189,7 @@ export default function PublicChatInterface({ profile }: PublicChatInterfaceProp
                             <Button variant="ghost" size="icon" onClick={handleCopyLink}>
                                 {
                                     copied ? (
-                                        <Check className="w-4 h-4 text-amber-500" />
+                                        <Check className="w-4 h-4 text-neutral-900" />
                                     ) : (
                                         <Share2 className="w-4 h-4" />
                                     )
@@ -221,7 +221,7 @@ export default function PublicChatInterface({ profile }: PublicChatInterfaceProp
                                                 transition={{ delay: index * 0.1 }}
                                                 onClick={() => handleSendMessage(question)}
                                                 disabled={isLoading}
-                                                className="px-4 py-2 text-sm bg-white dark:bg-neutral-700 text-slate-700 dark:text-slate-200 rounded-full border border-slate-200 dark:border-neutral-600 hover:border-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-all"
+                                                className="px-4 py-2 text-sm bg-white dark:bg-neutral-700 text-slate-700 dark:text-slate-200 rounded-full border border-slate-200 dark:border-neutral-600 hover:border-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800/20 transition-all"
                                             >
                                                 {question}
                                             </motion.button>
@@ -236,7 +236,7 @@ export default function PublicChatInterface({ profile }: PublicChatInterfaceProp
                         {
                             messages.length === 0 && (
                                 <div className="flex flex-col items-center justify-center h-full text-center">
-                                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center mb-4">
+                                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center mb-4">
                                         <Bot className="w-8 h-8 text-white" />
                                     </div>
                                     <h3 className="font-semibold text-slate-900 dark:text-white mb-2">
@@ -264,7 +264,7 @@ export default function PublicChatInterface({ profile }: PublicChatInterfaceProp
                                     >
                                         {
                                             message.role === "assistant" && (
-                                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                                                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center flex-shrink-0">
                                                     <Bot className="w-4 h-4 text-white" />
                                                 </div>
                                             )
@@ -274,7 +274,7 @@ export default function PublicChatInterface({ profile }: PublicChatInterfaceProp
                                                 className={cn(
                                                     "rounded-2xl px-4 py-3",
                                                     message.role === "user"
-                                                        ? "bg-orange-600 text-white rounded-tr-none"
+                                                        ? "bg-neutral-800 text-white rounded-tr-none"
                                                         : "bg-white dark:bg-neutral-800 text-slate-900 dark:text-white rounded-tl-none shadow-sm border border-slate-200 dark:border-neutral-700"
                                                 )}
                                             >
@@ -358,7 +358,7 @@ export default function PublicChatInterface({ profile }: PublicChatInterfaceProp
                                     animate={{ opacity: 1 }}
                                     className="flex gap-3"
                                 >
-                                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                                         <Bot className="w-4 h-4 text-white" />
                                     </div>
                                     <div className="bg-white dark:bg-neutral-800 rounded-2xl rounded-tl-none px-4 py-3 shadow-sm border border-slate-200 dark:border-neutral-700">
@@ -392,7 +392,7 @@ export default function PublicChatInterface({ profile }: PublicChatInterfaceProp
                             <Button
                                 type="submit"
                                 disabled={!inputValue.trim() || isLoading}
-                                className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700"
+                                className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700"
                             >
                                 {
                                     isLoading ? (
@@ -405,7 +405,7 @@ export default function PublicChatInterface({ profile }: PublicChatInterfaceProp
                         </form>
                         <div className="flex items-center justify-between mt-3 text-xs text-slate-500">
                             <span>Questions remaining: {rateLimitRemaining}</span>
-                            <Link href={`/profile/${profile.user.username}`} className="flex items-center gap-1 hover:text-orange-600">
+                            <Link href={`/profile/${profile.user.username}`} className="flex items-center gap-1 hover:text-neutral-800">
                                 <Info className="w-3 h-3" />
                                 View full profile
                             </Link>
@@ -419,7 +419,7 @@ export default function PublicChatInterface({ profile }: PublicChatInterfaceProp
                     className="text-center text-xs text-slate-400 mt-4"
                 >
                     This is an AI assistant. For detailed discussions,{" "}
-                    <Link href={`/profile/${profile.user.username}`} className="text-orange-500 hover:underline">
+                    <Link href={`/profile/${profile.user.username}`} className="text-neutral-900 hover:underline">
                         contact {userName} directly
                     </Link>
                     .

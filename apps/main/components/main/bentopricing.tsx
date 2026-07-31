@@ -23,7 +23,7 @@ type PricingCardProps = {
 
 function FilledCheck() {
     return (
-        <div className="bg-gradient-to-r from-amber-500 to-amber-500 text-white rounded-full p-0.5">
+        <div className="bg-gradient-to-r from-neutral-900 to-neutral-900 text-white rounded-full p-0.5">
             <CheckIcon className="size-3" strokeWidth={3} />
         </div>
     );
@@ -55,7 +55,7 @@ function PricingCard({
                 {
                     credits && (
                         <Badge variant="outline" className="ml-auto text-xs">
-                            <Zap className="w-3 h-3 mr-1 text-amber-500" />
+                            <Zap className="w-3 h-3 mr-1 text-neutral-900" />
                             {credits} Credits
                         </Badge>
                     )
@@ -86,7 +86,7 @@ function PricingCard({
                     onPurchase ? (
                         <Button
                             onClick={onPurchase}
-                            className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white border-0"
+                            className="w-full bg-gradient-to-r from-neutral-900 to-neutral-900 hover:from-neutral-800 hover:to-neutral-800 text-white border-0"
                         >
                             {cta}
                             <ArrowRight className="ml-2 h-4 w-4" />
@@ -154,7 +154,7 @@ export function BentoPricing({
                     </div>
                 </div>
                 <div className="flex items-center gap-3 p-5">
-                    <Badge className="bg-gradient-to-r from-orange-500 to-amber-500 text-white border-0">
+                    <Badge className="bg-gradient-to-r from-neutral-900 to-neutral-900 text-white border-0">
                         MOST POPULAR
                     </Badge>
                     <Badge variant="outline" className="hidden lg:flex border-white/20 text-white dark:border-neutral-800 dark:text-neutral-900">
@@ -162,7 +162,7 @@ export function BentoPricing({
                     </Badge>
                     <div className="ml-auto flex items-center gap-2">
                         <Badge variant="secondary" className="bg-white/10 dark:bg-neutral-900/10 text-white dark:text-neutral-900">
-                            <Zap className="w-3 h-3 mr-1 text-amber-400" />
+                            <Zap className="w-3 h-3 mr-1 text-neutral-800" />
                             150 Credits
                         </Badge>
                     </div>
@@ -173,7 +173,7 @@ export function BentoPricing({
                             {prices.popular}
                         </span>
                         <span className="text-neutral-400 dark:text-neutral-600 text-sm ml-2">/one-time</span>
-                        <p className="text-amber-400 dark:text-amber-600 text-sm mt-2 font-medium">
+                        <p className="text-neutral-800 dark:text-neutral-300 text-sm mt-2 font-medium">
                             Save 12% vs regular
                         </p>
                     </div>
@@ -186,7 +186,7 @@ export function BentoPricing({
                                 'Credits never expire',
                             ].map((f, i) => (
                                 <li key={i} className="flex items-center gap-3">
-                                    <div className="bg-gradient-to-r from-amber-500 to-amber-500 text-white rounded-full p-0.5">
+                                    <div className="bg-gradient-to-r from-neutral-900 to-neutral-900 text-white rounded-full p-0.5">
                                         <CheckIcon className="size-3" strokeWidth={3} />
                                     </div>
                                     <span className="leading-relaxed">{f}</span>
@@ -262,15 +262,15 @@ export function BentoPricing({
                 showFreeCredits && (
                     <div
                         className={cn(
-                            'bg-gradient-to-br from-amber-50 to-amber-50 dark:from-amber-950/30 dark:to-amber-950/30',
-                            'border-amber-200 dark:border-amber-800 relative w-full overflow-hidden rounded-2xl border',
+                            'bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-900/30 dark:to-neutral-900/30',
+                            'border-neutral-200 dark:border-neutral-800 relative w-full overflow-hidden rounded-2xl border',
                             'lg:col-span-8',
                             'hover:shadow-xl transition-all duration-300'
                         )}
                     >
                         <div className="flex flex-col md:flex-row items-center justify-between p-6 gap-4">
                             <div className="flex items-center gap-4">
-                                <div className="p-3 bg-gradient-to-r from-amber-500 to-amber-500 rounded-xl">
+                                <div className="p-3 bg-gradient-to-r from-neutral-900 to-neutral-900 rounded-xl">
                                     <Gift className="w-6 h-6 text-white" />
                                 </div>
                                 <div>
@@ -286,13 +286,13 @@ export function BentoPricing({
                                 onRequestFreeCredits ? (
                                     <Button
                                         onClick={onRequestFreeCredits}
-                                        className="bg-gradient-to-r from-amber-500 to-amber-500 hover:from-amber-600 hover:to-amber-600 text-white"
+                                        className="bg-gradient-to-r from-neutral-900 to-neutral-900 hover:from-neutral-800 hover:to-neutral-800 text-white"
                                     >
                                         <Gift className="mr-2 h-4 w-4" />
                                         Claim Free Credits
                                     </Button>
                                 ) : (
-                                    <Button asChild className="bg-gradient-to-r from-amber-500 to-amber-500 hover:from-amber-600 hover:to-amber-600 text-white">
+                                    <Button asChild className="bg-gradient-to-r from-neutral-900 to-neutral-900 hover:from-neutral-800 hover:to-neutral-800 text-white">
                                         <Link href="/purchase">
                                             <Gift className="mr-2 h-4 w-4" />
                                             Claim Free Credits

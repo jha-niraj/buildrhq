@@ -66,12 +66,12 @@ export function TeamMembersDisplay({
                                 >
                                     <Avatar className="w-8 h-8 border-2 border-white dark:border-neutral-900 cursor-pointer hover:z-10 transition-transform hover:scale-110">
                                         <AvatarImage src={member.user.image || ''} />
-                                        <AvatarFallback className="text-xs bg-gradient-to-br from-orange-500 to-orange-600 text-white">
+                                        <AvatarFallback className="text-xs bg-gradient-to-br from-neutral-900 to-neutral-800 text-white">
                                             {(member.user.name ?? member.user.username ?? '?').charAt(0).toUpperCase()}
                                         </AvatarFallback>
                                     </Avatar>
                                     {member.role === 'ADMIN' && (
-                                        <div className="absolute -top-1 -right-1 w-4 h-4 bg-amber-500 rounded-full flex items-center justify-center">
+                                        <div className="absolute -top-1 -right-1 w-4 h-4 bg-neutral-900 rounded-full flex items-center justify-center">
                                             <Crown className="w-2.5 h-2.5 text-white" />
                                         </div>
                                     )}
@@ -111,7 +111,7 @@ export function TeamMembersDisplay({
 
             {/* Admin count badge */}
             {admins.length > 0 && (
-                <Badge variant="outline" className="text-xs text-amber-600 border-amber-300 dark:border-amber-700">
+                <Badge variant="outline" className="text-xs text-neutral-800 border-neutral-300 dark:border-neutral-700">
                     {admins.length} {admins.length === 1 ? 'Admin' : 'Admins'}
                 </Badge>
             )}
@@ -135,7 +135,7 @@ export function TeamCollaborationBadge({ memberCount }: TeamCollaborationBadgePr
     return (
         <Badge
             variant="secondary"
-            className="bg-gradient-to-r from-orange-100 to-orange-100 dark:from-orange-900/30 dark:to-orange-900/30 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800"
+            className="bg-gradient-to-r from-neutral-100 to-neutral-100 dark:from-neutral-800/30 dark:to-neutral-800/30 text-neutral-700 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800"
         >
             <Users className="w-3 h-3 mr-1" />
             Team Project ({memberCount})

@@ -114,9 +114,9 @@ export default function CreditRequestsPage() {
                         Review and approve pending credit requests
                     </p>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg">
-                    <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                    <span className="text-sm font-medium text-amber-600 dark:text-amber-400">
+                <div className="flex items-center gap-2 px-4 py-2 bg-neutral-100 dark:bg-neutral-800/30 rounded-lg">
+                    <AlertCircle className="w-4 h-4 text-neutral-800 dark:text-neutral-100" />
+                    <span className="text-sm font-medium text-neutral-800 dark:text-neutral-100">
                         {requests.length} pending
                     </span>
                 </div>
@@ -139,7 +139,7 @@ export default function CreditRequestsPage() {
                         </div>
                     ) : requests.length === 0 ? (
                         <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-12 text-center">
-                            <CheckCircle className="w-12 h-12 text-amber-500 mx-auto mb-4" />
+                            <CheckCircle className="w-12 h-12 text-neutral-900 mx-auto mb-4" />
                             <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2">
                                 All caught up!
                             </h3>
@@ -155,7 +155,7 @@ export default function CreditRequestsPage() {
                             >
                                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                                     <div className="flex items-start gap-4 flex-1">
-                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
+                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-neutral-900 flex items-center justify-center text-white text-lg font-bold flex-shrink-0">
                                             {request.user?.name?.charAt(0) || "U"}
                                         </div>
                                         <div className="flex-1 min-w-0">
@@ -163,7 +163,7 @@ export default function CreditRequestsPage() {
                                                 <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
                                                     {request.user?.name || "Unknown User"}
                                                 </h3>
-                                                <span className="px-2 py-0.5 text-xs font-medium bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 rounded-full">
+                                                <span className="px-2 py-0.5 text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 rounded-full">
                                                     PENDING
                                                 </span>
                                             </div>
@@ -173,7 +173,7 @@ export default function CreditRequestsPage() {
                                             <div className="grid grid-cols-2 gap-4 text-sm">
                                                 <div>
                                                     <span className="text-neutral-500 dark:text-neutral-400">Amount:</span>
-                                                    <span className="ml-2 font-semibold text-amber-600 dark:text-amber-400">
+                                                    <span className="ml-2 font-semibold text-neutral-800 dark:text-neutral-100">
                                                         {request.amount} credits
                                                     </span>
                                                 </div>
@@ -197,7 +197,7 @@ export default function CreditRequestsPage() {
                                         <button
                                             onClick={() => handleApprove(request.id, request.amount)}
                                             disabled={processingId === request.id}
-                                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-amber-600 rounded-lg hover:bg-amber-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-neutral-800 rounded-lg hover:bg-neutral-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                         >
                                             {
                                                 processingId === request.id ? (

@@ -80,11 +80,11 @@ const ROLE_LABELS: Record<UniversityMemberRole, string> = {
 }
 
 const ROLE_COLORS: Record<UniversityMemberRole, string> = {
-    HEAD: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
-    DEPARTMENT_HEAD: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300",
-    PLACEMENT_OFFICER: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300",
-    FINANCE_OFFICER: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
-    FACULTY: "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400",
+    HEAD: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    DEPARTMENT_HEAD: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    PLACEMENT_OFFICER: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    FINANCE_OFFICER: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    FACULTY: "bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100",
     TEACHING_ASSISTANT: "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400",
 }
 
@@ -462,7 +462,7 @@ export default function RolesPermissionsPage() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
                 <div>
                     <h1 className="text-2xl lg:text-3xl font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                        <Shield className="w-7 h-7 text-orange-500" />
+                        <Shield className="w-7 h-7 text-neutral-900" />
                         Roles &amp; Permissions
                     </h1>
                     <p className="text-neutral-500 mt-1">
@@ -471,7 +471,7 @@ export default function RolesPermissionsPage() {
                 </div>
                 <Button
                     onClick={() => setShowInviteSheet(true)}
-                    className="rounded-xl bg-orange-600 hover:bg-orange-700 text-white cursor-pointer"
+                    className="rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white cursor-pointer"
                 >
                     <UserPlus className="w-4 h-4 mr-2" />
                     Invite Member
@@ -485,7 +485,7 @@ export default function RolesPermissionsPage() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             className={`mb-6 p-4 rounded-xl flex items-center gap-3 ${actionMessage.type === "success"
-                                ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
+                                ? "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100"
                                 : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300"
                                 }`}
                         >
@@ -514,8 +514,8 @@ export default function RolesPermissionsPage() {
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5"
                 >
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                            <Users className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                        <div className="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                            <Users className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">
@@ -532,8 +532,8 @@ export default function RolesPermissionsPage() {
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5"
                 >
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
-                            <Crown className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                        <div className="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                            <Crown className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">
@@ -550,8 +550,8 @@ export default function RolesPermissionsPage() {
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5"
                 >
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                            <Clock className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                        <div className="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                            <Clock className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                         </div>
                         <div>
                             <p className="text-2xl font-bold text-neutral-900 dark:text-white">
@@ -583,8 +583,8 @@ export default function RolesPermissionsPage() {
                                             }`}
                                     >
                                         <div className="flex items-center gap-4">
-                                            <div className="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                                                <Mail className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                                            <div className="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                                                <Mail className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                             </div>
                                             <div>
                                                 <p className="font-medium text-neutral-900 dark:text-white">
@@ -652,8 +652,8 @@ export default function RolesPermissionsPage() {
                                     <div className="flex items-center gap-4">
                                         <div className="relative shrink-0">
                                             <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${member.role === "HEAD"
-                                                ? "bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/30 dark:to-orange-900/30"
-                                                : "bg-orange-50 dark:bg-orange-900/30"
+                                                ? "bg-gradient-to-br from-neutral-100 to-neutral-100 dark:from-neutral-800/30 dark:to-neutral-800/30"
+                                                : "bg-neutral-50 dark:bg-neutral-800/30"
                                                 }`}>
                                                 {
                                                     member.user?.image ? (
@@ -666,15 +666,15 @@ export default function RolesPermissionsPage() {
                                                         />
                                                     ) : (
                                                         <GraduationCap className={`w-5 h-5 ${member.role === "HEAD"
-                                                            ? "text-amber-600 dark:text-amber-400"
-                                                            : "text-orange-600 dark:text-orange-400"
+                                                            ? "text-neutral-800 dark:text-neutral-100"
+                                                            : "text-neutral-800 dark:text-neutral-100"
                                                             }`} />
                                                     )
                                                 }
                                             </div>
                                             {
                                                 member.role === "HEAD" && (
-                                                    <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center">
+                                                    <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-neutral-900 flex items-center justify-center">
                                                         <Crown className="w-2.5 h-2.5 text-white" />
                                                     </div>
                                                 )
@@ -694,7 +694,7 @@ export default function RolesPermissionsPage() {
                                                 </p>
                                                 {
                                                     isSelf && (
-                                                        <span className="text-xs px-2 py-0.5 rounded-full bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400">
+                                                        <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100">
                                                             You
                                                         </span>
                                                     )
@@ -793,7 +793,7 @@ export default function RolesPermissionsPage() {
                                                                                 size="sm"
                                                                                 onClick={() => handleReactivate(member.id)}
                                                                                 disabled={actionLoading === member.id}
-                                                                                className="rounded-lg text-amber-500 hover:text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 cursor-pointer"
+                                                                                className="rounded-lg text-neutral-900 hover:text-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800/20 cursor-pointer"
                                                                             >
                                                                                 {
                                                                                     actionLoading === member.id ? (
@@ -832,22 +832,22 @@ export default function RolesPermissionsPage() {
                                                                                         <div
                                                                                             key={perm.key}
                                                                                             className={`p-3 rounded-lg border transition-colors ${hasPermission
-                                                                                                ? "bg-amber-50 border-amber-200 dark:bg-amber-900/20 dark:border-amber-800/30"
+                                                                                                ? "bg-neutral-50 border-neutral-200 dark:bg-neutral-800/20 dark:border-neutral-800/30"
                                                                                                 : "bg-neutral-50 border-neutral-200 dark:bg-neutral-900/50 dark:border-neutral-800"
-                                                                                                } ${isAdminPermission ? "ring-1 ring-amber-200 dark:ring-amber-800/30" : ""}`}
+                                                                                                } ${isAdminPermission ? "ring-1 ring-neutral-200 dark:ring-neutral-800/30" : ""}`}
                                                                                         >
                                                                                             <div className="flex items-center justify-between">
                                                                                                 <div className="min-w-0">
                                                                                                     <div className="flex items-center gap-1.5">
                                                                                                         <p className={`text-sm font-medium truncate ${hasPermission
-                                                                                                            ? "text-amber-700 dark:text-amber-300"
+                                                                                                            ? "text-neutral-700 dark:text-neutral-100"
                                                                                                             : "text-neutral-700 dark:text-neutral-300"
                                                                                                             }`}>
                                                                                                             {perm.label}
                                                                                                         </p>
                                                                                                         {
                                                                                                             isAdminPermission && (
-                                                                                                                <Crown className="w-3 h-3 text-amber-500 shrink-0" />
+                                                                                                                <Crown className="w-3 h-3 text-neutral-900 shrink-0" />
                                                                                                             )
                                                                                                         }
                                                                                                     </div>
@@ -905,7 +905,7 @@ export default function RolesPermissionsPage() {
                 <SheetContent side="right" className="sm:max-w-md overflow-y-auto">
                     <SheetHeader>
                         <SheetTitle className="flex items-center gap-2">
-                            <UserPlus className="w-5 h-5 text-orange-500" />
+                            <UserPlus className="w-5 h-5 text-neutral-900" />
                             Invite Team Member
                         </SheetTitle>
                         <SheetDescription>
@@ -993,7 +993,7 @@ export default function RolesPermissionsPage() {
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -10 }}
                                         className={`p-3 rounded-xl flex items-center gap-2 text-sm ${inviteMessage.type === "success"
-                                            ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
+                                            ? "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100"
                                             : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300"
                                             }`}
                                     >
@@ -1012,7 +1012,7 @@ export default function RolesPermissionsPage() {
                         <Button
                             type="submit"
                             disabled={inviteLoading || !inviteForm.email}
-                            className="w-full rounded-xl bg-orange-600 hover:bg-orange-700 text-white cursor-pointer"
+                            className="w-full rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white cursor-pointer"
                         >
                             {
                                 inviteLoading ? (

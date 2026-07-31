@@ -90,7 +90,7 @@ export function GoalPreviewContent({ goal }: GoalPreviewContentProps) {
                     <div className="flex items-start gap-4 mb-4">
                         <div className={cn(
                             "w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shrink-0",
-                            category?.bg ?? "bg-orange-100 dark:bg-orange-900/30"
+                            category?.bg ?? "bg-neutral-100 dark:bg-neutral-800/30"
                         )}>
                             {category?.emoji ?? "🎯"}
                         </div>
@@ -130,14 +130,14 @@ export function GoalPreviewContent({ goal }: GoalPreviewContentProps) {
                         </div>
                         <div className="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200/60 dark:border-neutral-800/60">
                             <div className="flex items-center gap-2 mb-1">
-                                <CheckCircle2 className="w-4 h-4 text-amber-500" />
+                                <CheckCircle2 className="w-4 h-4 text-neutral-900" />
                                 <span className="text-xs text-neutral-500">Completed</span>
                             </div>
                             <p className="text-lg font-semibold text-neutral-900 dark:text-white">{goal.completedSubGoals}</p>
                         </div>
                         <div className="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200/60 dark:border-neutral-800/60">
                             <div className="flex items-center gap-2 mb-1">
-                                <Sparkles className="w-4 h-4 text-amber-500" />
+                                <Sparkles className="w-4 h-4 text-neutral-900" />
                                 <span className="text-xs text-neutral-500">Progress</span>
                             </div>
                             <p className="text-lg font-semibold text-neutral-900 dark:text-white">{progressPercent}%</p>
@@ -203,12 +203,12 @@ export function GoalPreviewContent({ goal }: GoalPreviewContentProps) {
                                                 </p>
                                             )}
                                             <div className="flex items-center gap-1.5 mt-2.5">
-                                                <Badge variant="secondary" className="text-[10px] h-5 gap-1 bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border-0">
+                                                <Badge variant="secondary" className="text-[10px] h-5 gap-1 bg-neutral-50 dark:bg-neutral-900/30 text-neutral-800 dark:text-neutral-100 border-0">
                                                     <Brain className="w-2.5 h-2.5" />
                                                     Quiz
                                                 </Badge>
                                                 {sg.hasCoding && (
-                                                    <Badge variant="secondary" className="text-[10px] h-5 gap-1 bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border-0">
+                                                    <Badge variant="secondary" className="text-[10px] h-5 gap-1 bg-neutral-50 dark:bg-neutral-900/30 text-neutral-800 dark:text-neutral-100 border-0">
                                                         <Code2 className="w-2.5 h-2.5" />
                                                         Coding
                                                     </Badge>
@@ -220,7 +220,7 @@ export function GoalPreviewContent({ goal }: GoalPreviewContentProps) {
                                                     </Badge>
                                                 )}
                                                 {sg.status === 'COMPLETED' && (
-                                                    <Badge variant="secondary" className="text-[10px] h-5 gap-1 bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 border-0">
+                                                    <Badge variant="secondary" className="text-[10px] h-5 gap-1 bg-neutral-50 dark:bg-neutral-900/30 text-neutral-800 dark:text-neutral-100 border-0">
                                                         <CheckCircle2 className="w-2.5 h-2.5" />
                                                         Done
                                                     </Badge>

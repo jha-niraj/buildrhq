@@ -251,8 +251,8 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 
 	// const getDifficultyColor = (difficulty: string) => {
 	// 	switch (difficulty) {
-	// 		case "Easy": return "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 hover:text-white"
-	// 		case "Medium": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 hover:text-white"
+	// 		case "Easy": return "bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100 hover:text-white"
+	// 		case "Medium": return "bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100 hover:text-white"
 	// 		case "Hard": return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 hover:text-white"
 	// 		default: return "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400 hover:text-white"
 	// 	}
@@ -357,7 +357,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 							</div>
 							<div className="w-full flex-1 flex items-center gap-2 overflow-auto">
 								<div className="flex items-center gap-2 shrink-0">
-									<Target className="h-4 w-4 text-orange-600" />
+									<Target className="h-4 w-4 text-neutral-800" />
 									<span className="font-medium text-sm">Problems</span>
 								</div>
 								<div className="w-full flex gap-2">
@@ -448,13 +448,13 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 									currentProblem?.hints && currentProblem.hints.length > 0 && (
 										<div className="mt-6">
 											<h3 className="font-semibold mb-3 text-gray-900 dark:text-gray-100 flex items-center gap-2">
-												<Lightbulb className="h-4 w-4 text-yellow-500" />
+												<Lightbulb className="h-4 w-4 text-neutral-900" />
 												Hints
 											</h3>
 											<div className="space-y-2">
 												{
 													currentProblem.hints.map((hint, index) => (
-														<div key={index} className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-3 text-sm">
+														<div key={index} className="bg-neutral-50 dark:bg-neutral-800/20 border-l-4 border-neutral-800 p-3 text-sm">
 															<span className="font-medium">Hint {index + 1}:</span> {hint}
 														</div>
 													))
@@ -468,7 +468,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 									runResults.length > 0 && (
 										<div className="mt-6" ref={testResultsRef}>
 											<h3 className="font-semibold mb-3 text-gray-900 dark:text-gray-100 flex items-center gap-2">
-												<Play className="h-4 w-4 text-orange-500" />
+												<Play className="h-4 w-4 text-neutral-900" />
 												Test Results
 												<Badge variant="outline" className="text-xs ml-2">
 													{runResults.filter(r => r.passed).length}/{runResults.length} passed
@@ -478,7 +478,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 												{
 													runResults.map((result, index) => (
 														<div key={index} className={`text-xs p-3 rounded border ${result.passed
-															? 'bg-amber-50 border-amber-200 text-amber-800 dark:bg-amber-900/20 dark:border-amber-800 dark:text-amber-400'
+															? 'bg-neutral-50 border-neutral-200 text-neutral-800 dark:bg-neutral-800/20 dark:border-neutral-800 dark:text-neutral-100'
 															: 'bg-red-50 border-red-200 text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400'
 															}`}>
 															<div className="flex items-center gap-2 mb-1">
@@ -510,17 +510,17 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 								{
 									generatedAnswer ? (
 										<div className="space-y-6">
-											<div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-6">
+											<div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-lg p-6">
 												<div className="flex items-center gap-3">
-													<CheckCircle className="h-6 w-6 text-amber-600" />
-													<h3 className="font-semibold text-lg text-amber-800 dark:text-amber-200">
+													<CheckCircle className="h-6 w-6 text-neutral-800" />
+													<h3 className="font-semibold text-lg text-neutral-800 dark:text-neutral-700">
 														Expert Solution Available
 													</h3>
 													<Badge variant="outline" className="text-xs">
 														{selectedLanguage}
 													</Badge>
 												</div>
-												<p className="text-sm text-amber-700 dark:text-amber-300 mt-2">
+												<p className="text-sm text-neutral-700 dark:text-neutral-100 mt-2">
 													Generated solution with detailed explanation and analysis
 												</p>
 											</div>
@@ -592,7 +592,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 																{
 																	generatedAnswer.answer.keyPoints.map((point: string, index: number) => (
 																		<li key={index} className="flex items-start gap-2">
-																			<span className="text-orange-500 font-semibold mt-1">•</span>
+																			<span className="text-neutral-900 font-semibold mt-1">•</span>
 																			<span className="text-gray-700 dark:text-gray-300">{point}</span>
 																		</li>
 																	))
@@ -652,7 +652,7 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 																<div className="flex items-center gap-2">
 																	{
 																		submission.passed ? (
-																			<CheckCircle className="h-4 w-4 text-amber-500" />
+																			<CheckCircle className="h-4 w-4 text-neutral-900" />
 																		) : (
 																			<XCircle className="h-4 w-4 text-red-500" />
 																		)
@@ -694,12 +694,12 @@ export default function CodingQuestionsPage({ params }: { params: Promise<{ slug
 													<div className="flex items-center gap-2">
 														{
 															submissionResults.passed ? (
-																<CheckCircle className="h-4 w-4 text-amber-500" />
+																<CheckCircle className="h-4 w-4 text-neutral-900" />
 															) : (
 																<XCircle className="h-4 w-4 text-red-500" />
 															)
 														}
-														<span className={submissionResults.passed ? "text-amber-600" : "text-red-600"}>
+														<span className={submissionResults.passed ? "text-neutral-800" : "text-red-600"}>
 															{submissionResults.passed ? "Accepted" : "Wrong Answer"}
 														</span>
 													</div>

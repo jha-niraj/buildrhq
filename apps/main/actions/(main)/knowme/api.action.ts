@@ -12,6 +12,7 @@ import {
     db,
     knowMeProfiles,
     knowMeApiRequests,
+    withTransaction
 } from "@repo/db";
 import { eq, and, gte, desc, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -379,7 +380,7 @@ export async function recordApiRequest(data: {
   tokensUsed?: number;
 }): Promise<void> {
   try {
-    await db.transaction(async (tx) => {
+    await withTransaction(async (tx) => {
       // Create request record
       await tx.insert(knowMeApiRequests).values({
         profileId: data.profileId,

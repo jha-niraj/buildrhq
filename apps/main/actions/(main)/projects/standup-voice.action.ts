@@ -3,7 +3,8 @@
 import { getSession } from '@repo/auth'
 import { headers } from 'next/headers'
 import {
-    db, projectV2StandupConfigs, projectV2StandupEntries, projectsV2, users, creditTransactions
+    db, projectV2StandupConfigs, projectV2StandupEntries, projectsV2, users, creditTransactions,
+    withTransaction
 } from '@repo/db'
 import { eq, and, desc, sql } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
@@ -149,7 +150,7 @@ export async function createStandupSession(projectId: string, projectSlug: strin
             })
         }
 
-        const result = await db.transaction(async (tx) => {
+        const result = await withTransaction(async (tx) => {
             const [standupEntry] = await tx
                 .insert(projectV2StandupEntries)
                 .values({

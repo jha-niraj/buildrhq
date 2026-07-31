@@ -48,9 +48,9 @@ interface SessionInfo {
 }
 
 const levelColors: Record<string, string> = {
-    BEGINNER: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
-    INTERMEDIATE: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
-    ADVANCED: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
+    BEGINNER: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100',
+    INTERMEDIATE: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100',
+    ADVANCED: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100',
     EXPERT: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
 }
 
@@ -124,7 +124,7 @@ export function PurchaseMockSheet({ isOpen, onClose, mock, userCredits }: Purcha
                                 {mock.level}
                             </Badge>
                             {mock.byAdmin && (
-                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs">
+                                <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 text-xs">
                                     Official
                                 </Badge>
                             )}
@@ -140,17 +140,17 @@ export function PurchaseMockSheet({ isOpen, onClose, mock, userCredits }: Purcha
                     {/* Quick stats row */}
                     <div className="grid grid-cols-3 gap-3">
                         <div className="flex flex-col items-center gap-1 p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                            <Clock className="w-4 h-4 text-orange-500" />
+                            <Clock className="w-4 h-4 text-neutral-900" />
                             <span className="text-lg font-bold">{mock.duration}</span>
                             <span className="text-[10px] text-neutral-500 uppercase tracking-wide">min</span>
                         </div>
                         <div className="flex flex-col items-center gap-1 p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                            <Brain className="w-4 h-4 text-orange-500" />
+                            <Brain className="w-4 h-4 text-neutral-900" />
                             <span className="text-lg font-bold">{mock.questionsCount ?? '—'}</span>
                             <span className="text-[10px] text-neutral-500 uppercase tracking-wide">questions</span>
                         </div>
                         <div className="flex flex-col items-center gap-1 p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
-                            <Trophy className="w-4 h-4 text-amber-500" />
+                            <Trophy className="w-4 h-4 text-neutral-900" />
                             <span className="text-lg font-bold">{mock.popularity ?? 0}</span>
                             <span className="text-[10px] text-neutral-500 uppercase tracking-wide">sessions</span>
                         </div>
@@ -191,13 +191,13 @@ export function PurchaseMockSheet({ isOpen, onClose, mock, userCredits }: Purcha
                                 />
                             </div>
                             {sessionInfo.isCreator && sessionInfo.freeSessionsRemaining > 0 && (
-                                <div className="flex items-center gap-2 px-3 py-2.5 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/30 rounded-lg text-xs text-amber-700 dark:text-amber-300">
+                                <div className="flex items-center gap-2 px-3 py-2.5 bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30 rounded-lg text-xs text-neutral-700 dark:text-neutral-100">
                                     <CheckCircle className="w-3.5 h-3.5 flex-shrink-0" />
                                     {sessionInfo.freeSessionsRemaining} free session{sessionInfo.freeSessionsRemaining > 1 ? 's' : ''} remaining — you created this mock
                                 </div>
                             )}
                             {sessionInfo.isCreator && sessionInfo.needsPayment && (
-                                <div className="flex items-center gap-2 px-3 py-2.5 bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-900/30 rounded-lg text-xs text-amber-700 dark:text-amber-300">
+                                <div className="flex items-center gap-2 px-3 py-2.5 bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30 rounded-lg text-xs text-neutral-700 dark:text-neutral-100">
                                     <Sparkles className="w-3.5 h-3.5 flex-shrink-0" />
                                     Creator discount: <span className="line-through ml-1">{sessionInfo.fullPrice}</span>
                                     <span className="font-semibold ml-1">{creditsNeeded} credits</span>
@@ -218,9 +218,9 @@ export function PurchaseMockSheet({ isOpen, onClose, mock, userCredits }: Purcha
                             )}
                         </div>
                         <div className="flex items-center gap-1.5">
-                            <Sparkles className="w-4 h-4 text-orange-500" />
+                            <Sparkles className="w-4 h-4 text-neutral-900" />
                             {isFreeSession ? (
-                                <span className="text-2xl font-bold text-amber-600">Free</span>
+                                <span className="text-2xl font-bold text-neutral-800">Free</span>
                             ) : (
                                 <span className="text-2xl font-bold text-neutral-900 dark:text-white">{creditsNeeded}</span>
                             )}

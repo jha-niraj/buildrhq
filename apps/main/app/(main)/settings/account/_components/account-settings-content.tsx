@@ -153,7 +153,7 @@ export function AccountSettingsContent({ user, linkedProviders }: AccountSetting
                                 className="max-w-xs bg-muted"
                             />
                             {user.emailVerified && (
-                                <span className="flex items-center gap-1 text-sm text-amber-600 dark:text-amber-400">
+                                <span className="flex items-center gap-1 text-sm text-neutral-800 dark:text-neutral-100">
                                     <Check className="w-4 h-4" />
                                     Verified
                                 </span>
@@ -277,7 +277,7 @@ export function AccountSettingsContent({ user, linkedProviders }: AccountSetting
                             </div>
                         </div>
                         {hasGoogle ? (
-                            <span className="flex items-center gap-1 text-sm text-amber-600 dark:text-amber-400">
+                            <span className="flex items-center gap-1 text-sm text-neutral-800 dark:text-neutral-100">
                                 <Check className="w-4 h-4" />
                                 Connected
                             </span>

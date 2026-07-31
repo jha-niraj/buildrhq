@@ -36,12 +36,12 @@ export default function PricingClient() {
 						transition={{ duration: 0.5 }}
 					>
 						<span className="inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white/80 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-widest text-neutral-600 backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-white/60">
-							<span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
+							<span className="h-1.5 w-1.5 rounded-full bg-neutral-900" />
 							Pricing
 						</span>
 						<h1 className="mt-7 text-[44px] font-bold leading-[1.05] tracking-[-2px] text-neutral-950 dark:text-white sm:text-[56px]">
 							Pay only for what you{" "}
-							<span className="text-orange-500">run.</span>
+							<span className="text-neutral-900">run.</span>
 						</h1>
 						<p className="mx-auto mt-5 max-w-xl text-[16px] leading-relaxed text-neutral-600 dark:text-white/50">
 							BuildrHQ is credit-based — no subscriptions, no idle-time charges.
@@ -86,8 +86,8 @@ export default function PricingClient() {
 							key={v.title}
 							className="rounded-2xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
 						>
-							<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 dark:bg-orange-500/10">
-								<v.icon className="h-5 w-5 text-orange-500" />
+							<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-50 dark:bg-neutral-200/10">
+								<v.icon className="h-5 w-5 text-neutral-900" />
 							</div>
 							<h3 className="text-base font-bold text-neutral-900 dark:text-white">{v.title}</h3>
 							<p className="mt-2 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">{v.desc}</p>
@@ -140,10 +140,10 @@ export default function PricingClient() {
 			{/* ── CTA ──────────────────────────────────────────────────────────── */}
 			<section className="border-t border-neutral-100 py-20 dark:border-neutral-800">
 				<div className="mx-auto max-w-3xl px-6 text-center">
-					<Sparkles className="mx-auto mb-5 h-7 w-7 text-orange-500" />
+					<Sparkles className="mx-auto mb-5 h-7 w-7 text-neutral-900" />
 					<h2 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
 						Start building for{" "}
-						<span className="text-orange-500">free.</span>
+						<span className="text-neutral-900">free.</span>
 					</h2>
 					<p className="mx-auto mt-4 max-w-lg text-neutral-500 dark:text-neutral-400">
 						Create an account, claim your starter credits, and run your first AI

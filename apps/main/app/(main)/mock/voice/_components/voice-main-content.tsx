@@ -1,4 +1,5 @@
 'use client'
+import Link from "next/link";
 
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, useCallback, useTransition } from 'react'
@@ -178,25 +179,25 @@ export function VoiceMainContent({
                 return {
                     title: 'My Interview Sessions',
                     description: `Track your progress and review ${total} past interviews`,
-                    icon: <FolderOpen className="w-6 h-6 text-orange-600" />
+                    icon: <FolderOpen className="w-6 h-6 text-neutral-800" />
                 }
             case 'my-mocks':
                 return {
                     title: 'My Created Mocks',
                     description: `Manage your ${total} custom interview scenarios`,
-                    icon: <Brain className="w-6 h-6 text-orange-600" />
+                    icon: <Brain className="w-6 h-6 text-neutral-800" />
                 }
             case 'category':
                 return {
                     title: `${categoryLabel || 'Category'} Mocks`,
                     description: `Browse ${total} interviews in ${categoryLabel}`,
-                    icon: <Target className="w-6 h-6 text-amber-600" />
+                    icon: <Target className="w-6 h-6 text-neutral-800" />
                 }
             default:
                 return {
                     title: 'All Public Interviews',
                     description: `Explore ${total} community and expert created mocks`,
-                    icon: <Users className="w-6 h-6 text-orange-600" />
+                    icon: <Users className="w-6 h-6 text-neutral-800" />
                 }
         }
     }
@@ -221,9 +222,9 @@ export function VoiceMainContent({
                 </div>
                 {view === 'my-sessions' && (
                     <div className="flex-shrink-0">
-                        <Button variant="outline" onClick={() => router.push('/mock/voice')}>
+                        <Button variant="outline" asChild><Link href='/mock/voice'>
                             Browse Mocks
-                        </Button>
+                        </Link></Button>
                     </div>
                 )}
             </div>
@@ -343,9 +344,9 @@ export function VoiceMainContent({
                                 <p className="text-neutral-500 dark:text-neutral-400 max-w-sm mx-auto mb-6">
                                     We couldn&apos;t find any mocks matching your criteria. Try adjusting your filters or create a new one.
                                 </p>
-                                <Button onClick={() => router.push('/mock/voice?view=all-mocks')}>
+                                <Button asChild><Link href='/mock/voice?view=all-mocks'>
                                     Browse All Mocks
-                                </Button>
+                                </Link></Button>
                             </div>
                         )
                     )

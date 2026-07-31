@@ -89,9 +89,9 @@ interface AssessmentAssignment {
 }
 
 const DIFFICULTY_COLORS = {
-    BEGINNER: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-    INTERMEDIATE: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    ADVANCED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    BEGINNER: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    INTERMEDIATE: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    ADVANCED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
 }
 
 const TYPE_ICONS: Record<string, React.ReactNode> = {
@@ -239,7 +239,7 @@ export default function AssignmentsPage() {
                     {
                     loading ? (
                         <div className="flex items-center justify-center py-16">
-                            <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+                            <Loader2 className="w-8 h-8 animate-spin text-neutral-900" />
                         </div>
                     ) : filteredProjects.length === 0 ? (
                         <motion.div
@@ -248,8 +248,8 @@ export default function AssignmentsPage() {
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-12"
                         >
                             <div className="text-center max-w-md mx-auto">
-                                <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mx-auto mb-4">
-                                    <Code2 className="w-8 h-8 text-orange-600" />
+                                <div className="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mx-auto mb-4">
+                                    <Code2 className="w-8 h-8 text-neutral-800" />
                                 </div>
                                 <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
                                     No project assignments yet
@@ -269,10 +269,10 @@ export default function AssignmentsPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.05 }}
-                                    className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5 hover:border-orange-300 dark:hover:border-orange-700 transition-colors"
+                                    className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors"
                                 >
                                     <div className="flex gap-4">
-                                        <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center flex-shrink-0">
+                                        <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center flex-shrink-0">
                                             <span className="text-2xl text-white font-bold">
                                                 {project.title.charAt(0)}
                                             </span>
@@ -343,20 +343,20 @@ export default function AssignmentsPage() {
                                             </div>
                                             <div className="flex items-center gap-4 mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800">
                                                 <div className="flex items-center gap-2">
-                                                    <div className="w-2 h-2 rounded-full bg-orange-500" />
+                                                    <div className="w-2 h-2 rounded-full bg-neutral-900" />
                                                     <span className="text-sm text-neutral-600 dark:text-neutral-400">
                                                         {project.studentsStarted} started
                                                     </span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    <div className="w-2 h-2 rounded-full bg-amber-500" />
+                                                    <div className="w-2 h-2 rounded-full bg-neutral-900" />
                                                     <span className="text-sm text-neutral-600 dark:text-neutral-400">
                                                         {project.studentsCompleted} completed
                                                     </span>
                                                 </div>
                                                 <Link
                                                     href={`/assignments/projects/${project.id}`}
-                                                    className="ml-auto text-sm text-orange-600 hover:text-orange-700 flex items-center gap-1"
+                                                    className="ml-auto text-sm text-neutral-800 hover:text-neutral-700 flex items-center gap-1"
                                                 >
                                                     View Details
                                                     <ChevronRight className="w-4 h-4" />
@@ -379,8 +379,8 @@ export default function AssignmentsPage() {
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-12"
                         >
                             <div className="text-center max-w-md mx-auto">
-                                <div className="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mx-auto mb-4">
-                                    <Mic className="w-8 h-8 text-amber-600" />
+                                <div className="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mx-auto mb-4">
+                                    <Mic className="w-8 h-8 text-neutral-800" />
                                 </div>
                                 <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
                                     No mock interview assignments yet
@@ -399,10 +399,10 @@ export default function AssignmentsPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.05 }}
-                                    className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5 hover:border-amber-300 dark:hover:border-amber-700 transition-colors"
+                                    className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors"
                                 >
                                     <div className="flex gap-4">
-                                        <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center flex-shrink-0">
+                                        <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center flex-shrink-0">
                                             <Mic className="w-8 h-8 text-white" />
                                         </div>
                                         <div className="flex-1 min-w-0">
@@ -439,7 +439,7 @@ export default function AssignmentsPage() {
                                                 </DropdownMenu>
                                             </div>
                                             <div className="flex flex-wrap items-center gap-3 mt-3">
-                                                <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+                                                <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                                     {mock.category}
                                                 </Badge>
                                                 <Badge variant="outline">
@@ -456,20 +456,20 @@ export default function AssignmentsPage() {
                                             </div>
                                             <div className="flex items-center gap-4 mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800">
                                                 <div className="flex items-center gap-2">
-                                                    <div className="w-2 h-2 rounded-full bg-orange-500" />
+                                                    <div className="w-2 h-2 rounded-full bg-neutral-900" />
                                                     <span className="text-sm text-neutral-600 dark:text-neutral-400">
                                                         {mock.studentsStarted} started
                                                     </span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    <div className="w-2 h-2 rounded-full bg-amber-500" />
+                                                    <div className="w-2 h-2 rounded-full bg-neutral-900" />
                                                     <span className="text-sm text-neutral-600 dark:text-neutral-400">
                                                         {mock.studentsCompleted} completed
                                                     </span>
                                                 </div>
                                                 <Link
                                                     href={`/assignments/mocks/${mock.id}`}
-                                                    className="ml-auto text-sm text-amber-600 hover:text-amber-700 flex items-center gap-1"
+                                                    className="ml-auto text-sm text-neutral-800 hover:text-neutral-700 flex items-center gap-1"
                                                 >
                                                     View Details
                                                     <ChevronRight className="w-4 h-4" />
@@ -491,8 +491,8 @@ export default function AssignmentsPage() {
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-12"
                         >
                             <div className="text-center max-w-md mx-auto">
-                                <div className="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center mx-auto mb-4">
-                                    <Brain className="w-8 h-8 text-amber-600" />
+                                <div className="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mx-auto mb-4">
+                                    <Brain className="w-8 h-8 text-neutral-800" />
                                 </div>
                                 <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
                                     No quiz & assessment assignments yet
@@ -511,15 +511,15 @@ export default function AssignmentsPage() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.05 }}
-                                    className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5 hover:border-amber-300 dark:hover:border-amber-700 transition-colors"
+                                    className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-5 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors"
                                 >
                                     <div className="flex gap-4">
                                         <div className={`w-20 h-20 rounded-xl flex items-center justify-center flex-shrink-0 ${
                                             assessment.mode === 'CODE' 
-                                                ? 'bg-gradient-to-br from-orange-500 to-amber-600' 
+                                                ? 'bg-gradient-to-br from-neutral-900 to-neutral-800' 
                                                 : assessment.mode === 'MIXED'
-                                                    ? 'bg-gradient-to-br from-orange-500 to-pink-600'
-                                                    : 'bg-gradient-to-br from-amber-500 to-orange-600'
+                                                    ? 'bg-gradient-to-br from-neutral-900 to-pink-600'
+                                                    : 'bg-gradient-to-br from-neutral-900 to-neutral-800'
                                         }`}>
                                             {assessment.mode === 'CODE' ? (
                                                 <Code2 className="w-8 h-8 text-white" />
@@ -538,7 +538,7 @@ export default function AssignmentsPage() {
                                                         </h3>
                                                         {assessment.isLiveSession && (
                                                             <Badge className={assessment.liveSessionActive 
-                                                                ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
+                                                                ? "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100"
                                                                 : "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-400"
                                                             }>
                                                                 {assessment.liveSessionActive ? "🔴 Live" : "Live Session"}
@@ -587,10 +587,10 @@ export default function AssignmentsPage() {
                                             <div className="flex flex-wrap items-center gap-3 mt-3">
                                                 <Badge className={
                                                     assessment.mode === 'CODE' 
-                                                        ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400"
+                                                        ? "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100"
                                                         : assessment.mode === 'MIXED'
-                                                            ? "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400"
-                                                            : "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
+                                                            ? "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100"
+                                                            : "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100"
                                                 }>
                                                     {assessment.mode}
                                                 </Badge>
@@ -608,7 +608,7 @@ export default function AssignmentsPage() {
                                             </div>
                                             <div className="flex items-center gap-4 mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800">
                                                 <div className="flex items-center gap-2">
-                                                    <div className="w-2 h-2 rounded-full bg-orange-500" />
+                                                    <div className="w-2 h-2 rounded-full bg-neutral-900" />
                                                     <span className="text-sm text-neutral-600 dark:text-neutral-400">
                                                         {assessment.studentsAttempted} attempted
                                                     </span>
@@ -619,7 +619,7 @@ export default function AssignmentsPage() {
                                                 </span>
                                                 <Link
                                                     href={`/assignments/assessments/${assessment.id}`}
-                                                    className="ml-auto text-sm text-amber-600 hover:text-amber-700 flex items-center gap-1"
+                                                    className="ml-auto text-sm text-neutral-800 hover:text-neutral-700 flex items-center gap-1"
                                                 >
                                                     View Details
                                                     <ChevronRight className="w-4 h-4" />

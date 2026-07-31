@@ -74,7 +74,7 @@ export default function DatabaseHealthPage() {
                 <button
                     onClick={fetchData}
                     disabled={refreshing}
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-orange-500 rounded-lg hover:from-red-600 hover:to-orange-600 disabled:opacity-50 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-neutral-900 rounded-lg hover:from-red-600 hover:to-neutral-800 disabled:opacity-50 transition-colors"
                 >
                     {
                         refreshing ? (
@@ -91,25 +91,25 @@ export default function DatabaseHealthPage() {
                 health && (
                     <div className="mb-8">
                         <div className={`p-6 rounded-xl border ${health.databaseStatus === 'healthy'
-                            ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800'
+                            ? 'bg-neutral-50 dark:bg-neutral-800/20 border-neutral-200 dark:border-neutral-800'
                             : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
                             }`}>
                             <div className="flex items-center gap-3 mb-4">
                                 {
                                     health.databaseStatus === 'healthy' ? (
-                                        <CheckCircle className="w-8 h-8 text-amber-600 dark:text-amber-400" />
+                                        <CheckCircle className="w-8 h-8 text-neutral-800 dark:text-neutral-100" />
                                     ) : (
                                         <AlertCircle className="w-8 h-8 text-red-600 dark:text-red-400" />
                                     )}
                                 <div>
                                     <h2 className={`text-xl font-bold ${health.databaseStatus === 'healthy'
-                                        ? 'text-amber-900 dark:text-amber-200'
+                                        ? 'text-neutral-900 dark:text-neutral-700'
                                         : 'text-red-900 dark:text-red-200'
                                         }`}>
                                         System Status: {health.databaseStatus === 'healthy' ? 'Healthy' : 'Unhealthy'}
                                     </h2>
                                     <p className={`text-sm ${health.databaseStatus === 'healthy'
-                                        ? 'text-amber-700 dark:text-amber-300'
+                                        ? 'text-neutral-700 dark:text-neutral-100'
                                         : 'text-red-700 dark:text-red-300'
                                         }`}>
                                         Last checked: {health.timestamp ? format(new Date(health.timestamp), "MMM dd, yyyy HH:mm:ss") : 'N/A'}
@@ -123,7 +123,7 @@ export default function DatabaseHealthPage() {
                                     }`}>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">Database Connection</p>
                                     <p className={`text-lg font-semibold ${health.databaseStatus === 'healthy'
-                                        ? 'text-amber-600 dark:text-amber-400'
+                                        ? 'text-neutral-800 dark:text-neutral-100'
                                         : 'text-red-600 dark:text-red-400'
                                         }`}>
                                         {health.databaseStatus === 'healthy' ? 'Connected' : 'Disconnected'}
@@ -205,12 +205,12 @@ export default function DatabaseHealthPage() {
                     </>
                 )
             }
-            <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-6">
-                <h3 className="text-sm font-semibold text-orange-900 dark:text-orange-200 mb-2 flex items-center gap-2">
+            <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6">
+                <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-700 mb-2 flex items-center gap-2">
                     <Activity className="w-4 h-4" />
                     System Monitoring
                 </h3>
-                <ul className="text-sm text-orange-800 dark:text-orange-300 space-y-1">
+                <ul className="text-sm text-neutral-800 dark:text-neutral-100 space-y-1">
                     <li>• Page auto-refreshes every 30 seconds</li>
                     <li>• Database health checks connection status</li>
                     <li>• Statistics show real-time record counts</li>
@@ -223,15 +223,15 @@ export default function DatabaseHealthPage() {
 
 function StatCard({ label, value, icon, color }: { label: string; value: number; icon: string; color: string }) {
     const colorClasses = {
-        blue: 'from-orange-500 to-orange-600',
-        purple: 'from-orange-500 to-orange-600',
-        emerald: 'from-amber-500 to-amber-600',
-        amber: 'from-amber-500 to-amber-600',
+        blue: 'from-neutral-900 to-neutral-800',
+        purple: 'from-neutral-900 to-neutral-800',
+        emerald: 'from-neutral-900 to-neutral-800',
+        amber: 'from-neutral-900 to-neutral-800',
         red: 'from-red-500 to-red-600',
-        indigo: 'from-orange-500 to-orange-600',
+        indigo: 'from-neutral-900 to-neutral-800',
         pink: 'from-pink-500 to-pink-600',
-        orange: 'from-orange-500 to-orange-600',
-        cyan: 'from-amber-500 to-amber-600',
+        orange: 'from-neutral-900 to-neutral-800',
+        cyan: 'from-neutral-900 to-neutral-800',
     }
 
     return (

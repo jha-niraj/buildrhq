@@ -10,6 +10,7 @@ import {
     creditTransactions,
     workExperiences,
     coverLetter,
+    withTransaction
 } from '@repo/db'
 import { eq, and, desc, sql } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
@@ -36,7 +37,7 @@ async function deductCredits(userId: string, amount: number, description: string
         throw new Error("Insufficient credits")
     }
 
-    await db.transaction(async (tx) => {
+    await withTransaction(async (tx) => {
         await tx.update(users)
             .set({ credits: sql`${users.credits} - ${amount}` })
             .where(eq(users.id, userId));

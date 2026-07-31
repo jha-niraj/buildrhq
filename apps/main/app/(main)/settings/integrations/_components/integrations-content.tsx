@@ -222,7 +222,7 @@ export function IntegrationsContent({ socialConnections }: IntegrationsContentPr
                                 >
                                     <Unlink className="w-4 h-4" />
                                 </Button>
-                                <span className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-sm">
+                                <span className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-neutral-900/10 text-neutral-800 dark:text-neutral-100 text-sm">
                                     <Check className="w-4 h-4" />
                                     Connected
                                 </span>
@@ -262,29 +262,29 @@ export function IntegrationsContent({ socialConnections }: IntegrationsContentPr
                         </div>
                         {contributionSummary && (
                             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-                                <div className="p-3 rounded-lg bg-amber-500/10">
-                                    <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 mb-1">
+                                <div className="p-3 rounded-lg bg-neutral-900/10">
+                                    <div className="flex items-center gap-1.5 text-neutral-800 dark:text-neutral-100 mb-1">
                                         <GitPullRequest className="w-4 h-4" />
                                         <span className="text-xs font-medium">PRs</span>
                                     </div>
                                     <p className="text-lg font-bold">{contributionSummary.totalPRs}</p>
                                 </div>
-                                <div className="p-3 rounded-lg bg-orange-500/10">
-                                    <div className="flex items-center gap-1.5 text-orange-600 dark:text-orange-400 mb-1">
+                                <div className="p-3 rounded-lg bg-neutral-900/10">
+                                    <div className="flex items-center gap-1.5 text-neutral-800 dark:text-neutral-100 mb-1">
                                         <Check className="w-4 h-4" />
                                         <span className="text-xs font-medium">Merged</span>
                                     </div>
                                     <p className="text-lg font-bold">{contributionSummary.mergedPRs}</p>
                                 </div>
-                                <div className="p-3 rounded-lg bg-amber-500/10">
-                                    <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 mb-1">
+                                <div className="p-3 rounded-lg bg-neutral-900/10">
+                                    <div className="flex items-center gap-1.5 text-neutral-800 dark:text-neutral-100 mb-1">
                                         <GitBranch className="w-4 h-4" />
                                         <span className="text-xs font-medium">Open</span>
                                     </div>
                                     <p className="text-lg font-bold">{contributionSummary.openPRs}</p>
                                 </div>
-                                <div className="p-3 rounded-lg bg-orange-500/10">
-                                    <div className="flex items-center gap-1.5 text-orange-600 dark:text-orange-400 mb-1">
+                                <div className="p-3 rounded-lg bg-neutral-900/10">
+                                    <div className="flex items-center gap-1.5 text-neutral-800 dark:text-neutral-100 mb-1">
                                         <Star className="w-4 h-4" />
                                         <span className="text-xs font-medium">Repos</span>
                                     </div>
@@ -323,7 +323,7 @@ export function IntegrationsContent({ socialConnections }: IntegrationsContentPr
                                 animate={{ opacity: 1, y: 0 }}
                                 className={cn(
                                     'flex items-center justify-between p-4 rounded-lg border',
-                                    isConnected ? 'border-amber-500/30 bg-amber-500/5' : 'bg-muted/30'
+                                    isConnected ? 'border-neutral-900/30 bg-neutral-900/5' : 'bg-muted/30'
                                 )}
                             >
                                 <div className="flex items-center gap-3">

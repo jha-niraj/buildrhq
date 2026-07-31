@@ -35,10 +35,10 @@ interface APITesterProps {
 }
 
 const METHOD_STYLES: Record<string, string> = {
-    GET: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-    POST: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    PUT: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-    PATCH: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    GET: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    POST: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    PUT: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    PATCH: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
     DELETE: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
 };
 
@@ -121,7 +121,7 @@ export function APITester({ testCases, onRunTest, code }: APITesterProps) {
                                 >
                                     {result ? (
                                         result.passed ? (
-                                            <CheckCircle2 className="h-3.5 w-3.5 text-amber-500 flex-shrink-0" />
+                                            <CheckCircle2 className="h-3.5 w-3.5 text-neutral-900 flex-shrink-0" />
                                         ) : (
                                             <XCircle className="h-3.5 w-3.5 text-red-500 flex-shrink-0" />
                                         )
@@ -186,12 +186,12 @@ export function APITester({ testCases, onRunTest, code }: APITesterProps) {
                                                     <div className={cn(
                                                         "rounded-md p-2 mt-1",
                                                         result.passed
-                                                            ? "bg-amber-900/20 border border-amber-800/30"
+                                                            ? "bg-neutral-900/20 border border-neutral-800/30"
                                                             : "bg-red-900/20 border border-red-800/30"
                                                     )}>
                                                         <p className={cn(
                                                             "text-[10px]",
-                                                            result.passed ? "text-amber-400" : "text-red-400"
+                                                            result.passed ? "text-neutral-800" : "text-red-400"
                                                         )}>
                                                             {result.message}
                                                         </p>

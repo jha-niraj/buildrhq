@@ -20,10 +20,9 @@ import {
 	callout,
 	urlFallback,
 	featureList,
+	resolveFromAddress,
 	type EmailContent,
 } from "./index";
-
-const DEFAULT_FROM = "BuildrHQ <noreply@coderzai.xyz>";
 
 function getResend(): Resend {
 	if (!process.env.RESEND_API_KEY) {
@@ -33,7 +32,7 @@ function getResend(): Resend {
 }
 
 function fromEmail(): string {
-	return process.env.RESEND_FROM_EMAIL || DEFAULT_FROM;
+    return resolveFromAddress();
 }
 
 function appUrl(): string {
@@ -54,6 +53,7 @@ export const authEmailTemplates = {
 		subject: "Verify your email — BuildrHQ",
 		html: shell({
 			title: "Verify your email",
+			preheader: `${otp} is your BuildrHQ verification code. It expires in 10 minutes.`,
 			eyebrow: "Email verification · BuildrHQ",
 			body: `
 				${heading(`Your verification ${serif("code")}.`)}
@@ -68,6 +68,7 @@ export const authEmailTemplates = {
 		subject: "Welcome to BuildrHQ",
 		html: shell({
 			title: "Welcome to BuildrHQ",
+			preheader: "Your account is ready — here's what to build first.",
 			eyebrow: "Account ready · BuildrHQ",
 			body: `
 				${heading(`Welcome aboard, ${serif(name)}.`)}
@@ -89,6 +90,7 @@ export const authEmailTemplates = {
 		subject: "Your sign-in link — BuildrHQ",
 		html: shell({
 			title: "Sign in to BuildrHQ",
+			preheader: "Your one-time sign-in link — works once, expires in 10 minutes.",
 			eyebrow: "Passwordless sign-in · BuildrHQ",
 			body: `
 				${heading(`Your ${serif("sign-in")} link.`)}
@@ -104,6 +106,7 @@ export const authEmailTemplates = {
 		subject: "Reset your password — BuildrHQ",
 		html: shell({
 			title: "Password reset request",
+			preheader: `${otp} is your BuildrHQ password reset code. It expires in 10 minutes.`,
 			eyebrow: "Security · One-time code",
 			body: `
 				${heading(`Reset your ${serif("password")}.`)}
@@ -118,6 +121,7 @@ export const authEmailTemplates = {
 		subject: "Your password has been reset — BuildrHQ",
 		html: shell({
 			title: "Password updated",
+			preheader: "Your BuildrHQ password was changed successfully.",
 			eyebrow: "Security · Confirmation",
 			body: `
 				${heading(`Your password was ${serif("updated")}.`)}
@@ -132,6 +136,7 @@ export const authEmailTemplates = {
 		subject: "Verify your email — BuildrHQ",
 		html: shell({
 			title: "Verify your email",
+			preheader: "One click to activate your BuildrHQ account.",
 			eyebrow: "Email verification · BuildrHQ",
 			body: `
 				${heading(`One click to ${serif("activate")}.`)}
@@ -146,6 +151,7 @@ export const authEmailTemplates = {
 		subject: "Reset your password — BuildrHQ",
 		html: shell({
 			title: "Password reset request",
+			preheader: "Reset your BuildrHQ password — this link expires in 1 hour.",
 			eyebrow: "Security · Password reset",
 			body: `
 				${heading(`Reset your ${serif("password")}.`)}

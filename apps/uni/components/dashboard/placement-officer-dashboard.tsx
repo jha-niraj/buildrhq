@@ -32,13 +32,13 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
     <Link href={href}>
         <motion.div
             whileHover={{ y: -2 }}
-            className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-orange-300 dark:hover:border-orange-700 transition-all cursor-pointer group"
+            className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all cursor-pointer group"
         >
             <div className="flex items-start justify-between mb-4">
                 <div className="p-3 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 group-hover:scale-105 transition-transform">
                     {icon}
                 </div>
-                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors" />
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-800 dark:group-hover:text-neutral-100 transition-colors" />
             </div>
             <div className="space-y-1">
                 <p className="text-3xl font-bold text-neutral-900 dark:text-white">{value}</p>
@@ -46,7 +46,7 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
             </div>
             {change && (
                 <div className={`mt-3 text-xs font-medium ${
-                    changeType === "positive" ? "text-amber-600 dark:text-amber-400" :
+                    changeType === "positive" ? "text-neutral-800 dark:text-neutral-100" :
                     changeType === "negative" ? "text-red-600 dark:text-red-400" :
                     "text-neutral-500"
                 }`}>
@@ -67,7 +67,7 @@ export function PlacementOfficerDashboard({ userName, stats }: PlacementOfficerD
             value: stats?.totalStudents || 0, 
             change: `${placementRate}% placement rate`,
             changeType: placementRate > 50 ? "positive" as const : "neutral" as const,
-            icon: <Users className="w-5 h-5 text-orange-600" />, 
+            icon: <Users className="w-5 h-5 text-neutral-800" />, 
             href: "/students" 
         },
         { 
@@ -75,21 +75,21 @@ export function PlacementOfficerDashboard({ userName, stats }: PlacementOfficerD
             value: stats?.placedStudents || 0, 
             change: "Successfully placed",
             changeType: "positive" as const,
-            icon: <UserCheck className="w-5 h-5 text-orange-600" />, 
+            icon: <UserCheck className="w-5 h-5 text-neutral-800" />, 
             href: "/placements/placed" 
         },
         { 
             title: "Active Jobs", 
             value: stats?.activeJobPostings || 0, 
             change: "Open positions",
-            icon: <Briefcase className="w-5 h-5 text-orange-600" />, 
+            icon: <Briefcase className="w-5 h-5 text-neutral-800" />, 
             href: "/placements/jobs" 
         },
         { 
             title: "Partner Companies", 
             value: stats?.partnerCompanies || 0, 
             change: "View partnerships",
-            icon: <Building2 className="w-5 h-5 text-orange-600" />, 
+            icon: <Building2 className="w-5 h-5 text-neutral-800" />, 
             href: "/placements/companies" 
         },
     ]
@@ -105,8 +105,8 @@ export function PlacementOfficerDashboard({ userName, stats }: PlacementOfficerD
                 >
                     <div>
                         <div className="flex items-center gap-2 mb-2">
-                            <Briefcase className="w-5 h-5 text-orange-500" />
-                            <span className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">
+                            <Briefcase className="w-5 h-5 text-neutral-900" />
+                            <span className="text-xs font-bold text-neutral-800 dark:text-neutral-100 uppercase tracking-wider">
                                 Placement Officer
                             </span>
                         </div>
@@ -125,7 +125,7 @@ export function PlacementOfficerDashboard({ userName, stats }: PlacementOfficerD
                             </Button>
                         </Link>
                         <Link href="/placements/jobs/new">
-                            <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
+                            <Button className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white">
                                 <Plus className="w-4 h-4 mr-2" />
                                 Post Job
                             </Button>
@@ -165,8 +165,8 @@ export function PlacementOfficerDashboard({ userName, stats }: PlacementOfficerD
                     </div>
                     
                     <div className="text-center py-12">
-                        <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mx-auto mb-4">
-                            <AlertCircle className="w-8 h-8 text-orange-500" />
+                        <div className="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mx-auto mb-4">
+                            <AlertCircle className="w-8 h-8 text-neutral-900" />
                         </div>
                         <h3 className="font-semibold text-neutral-900 dark:text-white mb-2">No pending applications</h3>
                         <p className="text-sm text-neutral-500 mb-4 max-w-sm mx-auto">
@@ -189,22 +189,22 @@ export function PlacementOfficerDashboard({ userName, stats }: PlacementOfficerD
                     className="space-y-4"
                 >
                     {/* Placement Stats */}
-                    <div className="bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl p-6 text-white">
+                    <div className="bg-gradient-to-br from-neutral-800 to-neutral-700 rounded-2xl p-6 text-white">
                         <h3 className="font-bold text-lg mb-2">Placement Overview</h3>
-                        <p className="text-orange-200 text-sm mb-4">
+                        <p className="text-neutral-200 text-sm mb-4">
                             Current semester statistics.
                         </p>
                         <div className="space-y-3">
                             <div className="flex items-center justify-between text-sm">
-                                <span className="text-orange-200">Placement Rate</span>
+                                <span className="text-neutral-200">Placement Rate</span>
                                 <span className="font-bold">{placementRate}%</span>
                             </div>
                             <div className="flex items-center justify-between text-sm">
-                                <span className="text-orange-200">Avg. Package</span>
+                                <span className="text-neutral-200">Avg. Package</span>
                                 <span className="font-bold">-</span>
                             </div>
                             <div className="flex items-center justify-between text-sm">
-                                <span className="text-orange-200">Top Recruiter</span>
+                                <span className="text-neutral-200">Top Recruiter</span>
                                 <span className="font-bold">-</span>
                             </div>
                         </div>
@@ -214,7 +214,7 @@ export function PlacementOfficerDashboard({ userName, stats }: PlacementOfficerD
                     <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
-                                <TrendingUp className="w-4 h-4 text-orange-600" />
+                                <TrendingUp className="w-4 h-4 text-neutral-800" />
                             </div>
                             <h3 className="font-bold text-neutral-900 dark:text-white">Reports</h3>
                         </div>

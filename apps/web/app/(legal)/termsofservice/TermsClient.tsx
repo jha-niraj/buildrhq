@@ -22,13 +22,13 @@ export default function TermsOfService() {
                                     </span>
                                     <Link
                                         href="/privacypolicy"
-                                        className="block px-3 py-2 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-neutral-900 rounded-lg transition-colors"
+                                        className="block px-3 py-2 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white dark:text-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-900 dark:bg-white rounded-lg transition-colors"
                                     >
                                         Privacy Policy
                                     </Link>
                                     <a
                                         href="mailto:legal@buildrhq.com"
-                                        className="block px-3 py-2 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-50 dark:hover:bg-neutral-900 rounded-lg transition-colors"
+                                        className="block px-3 py-2 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white dark:text-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-900 dark:bg-white rounded-lg transition-colors"
                                     >
                                         Contact
                                     </a>

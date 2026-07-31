@@ -68,9 +68,9 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
             icon: Brain,
             title: 'Technical Questions',
             description: 'Role-specific technical knowledge',
-            color: 'from-orange-500 to-orange-600',
-            bgColor: 'bg-orange-50 dark:bg-orange-900/20',
-            borderColor: 'border-orange-200 dark:border-orange-800',
+            color: 'from-neutral-900 to-neutral-800',
+            bgColor: 'bg-neutral-50 dark:bg-neutral-800/20',
+            borderColor: 'border-neutral-200 dark:border-neutral-800',
             min: 3,
             max: 15,
             value: counts.technical
@@ -80,9 +80,9 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
             icon: Users,
             title: 'Behavioral Questions',
             description: 'Soft skills and cultural fit',
-            color: 'from-amber-500 to-amber-600',
-            bgColor: 'bg-amber-50 dark:bg-amber-900/20',
-            borderColor: 'border-amber-200 dark:border-amber-800',
+            color: 'from-neutral-900 to-neutral-800',
+            bgColor: 'bg-neutral-50 dark:bg-neutral-800/20',
+            borderColor: 'border-neutral-200 dark:border-neutral-800',
             min: 3,
             max: 15,
             value: counts.behavioral
@@ -92,9 +92,9 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
             icon: Code,
             title: 'Coding Challenges',
             description: 'Algorithm and problem solving',
-            color: 'from-orange-500 to-amber-600',
-            bgColor: 'bg-orange-50 dark:bg-orange-900/20',
-            borderColor: 'border-orange-200 dark:border-orange-800',
+            color: 'from-neutral-900 to-neutral-800',
+            bgColor: 'bg-neutral-50 dark:bg-neutral-800/20',
+            borderColor: 'border-neutral-200 dark:border-neutral-800',
             min: 1,
             max: 8,
             value: counts.coding
@@ -106,7 +106,7 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-0 shadow-2xl">
                 <DialogHeader className="pb-6">
                     <div className="flex items-center gap-4">
-                        <div className="p-3 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl shadow-lg">
+                        <div className="p-3 bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-2xl shadow-lg">
                             <Sparkles className="h-6 w-6 text-white" />
                         </div>
                         <div>
@@ -184,11 +184,11 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                     >
-                        <Card className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border-amber-200 dark:border-amber-800 shadow-lg">
+                        <Card className="bg-gradient-to-r from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 border-neutral-200 dark:border-neutral-800 shadow-lg">
                             <CardContent className="p-6">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-4">
-                                        <div className="p-3 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl shadow-lg">
+                                        <div className="p-3 bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-xl shadow-lg">
                                             <Lightbulb className="h-6 w-6 text-white" />
                                         </div>
                                         <div>
@@ -201,13 +201,13 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-3">
-                                        <Badge className="bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+                                        <Badge className="bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100">
                                             +{totalQuestions * 2} credits
                                         </Badge>
                         <Switch
                             checked={includeAnswers}
                             onCheckedChange={setIncludeAnswers}
-                                            className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-amber-500 data-[state=checked]:to-orange-600"
+                                            className="data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-neutral-900 data-[state=checked]:to-neutral-800"
                         />
                     </div>
                                 </div>
@@ -235,7 +235,7 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
                                     <Badge 
                                         className={`text-lg px-4 py-2 ${
                                             canAfford 
-                                                ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400' 
+                                                ? 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100' 
                                                 : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
                                         }`}
                                     >
@@ -282,7 +282,7 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
                                         </span>
                                         <span className={`font-bold ${
                                             canAfford 
-                                                ? 'text-amber-600 dark:text-amber-400' 
+                                                ? 'text-neutral-800 dark:text-neutral-100' 
                                                 : 'text-red-600 dark:text-red-400'
                                         }`}>
                                             {userCredits - totalCredits} credits
@@ -332,7 +332,7 @@ export function GenerationDialog({ open, onClose, onConfirm, userCredits }: Gene
                             disabled={!canAfford}
                             className={`flex-1 h-12 font-bold ${
                                 canAfford
-                                    ? 'bg-gradient-to-r from-amber-600 via-amber-600 to-orange-600 hover:from-amber-700 hover:via-amber-700 hover:to-orange-700 shadow-lg hover:shadow-xl'
+                                    ? 'bg-gradient-to-r from-neutral-800 via-neutral-800 to-neutral-800 hover:from-neutral-700 hover:via-neutral-700 hover:to-neutral-700 shadow-lg hover:shadow-xl'
                                     : 'bg-slate-300 dark:bg-slate-600 cursor-not-allowed'
                             } transition-all`}
                         >

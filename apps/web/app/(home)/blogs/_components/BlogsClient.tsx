@@ -107,7 +107,7 @@ export default function BlogsClient({ posts }: Props) {
                                     {publishDate(featured.datePublished)} · {featured.readingTime} min read
                                 </span>
                             </div>
-                            <h2 className="mb-4 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-neutral-900 group-hover:text-orange-600 dark:text-white dark:group-hover:text-orange-400 md:text-4xl">
+                            <h2 className="mb-4 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-neutral-900 group-hover:text-neutral-800 dark:text-white dark:group-hover:text-neutral-100 md:text-4xl">
                                 {featured.title}
                             </h2>
                             <p className="mb-6 max-w-2xl text-base leading-relaxed text-neutral-500 dark:text-neutral-400">
@@ -136,7 +136,7 @@ export default function BlogsClient({ posts }: Props) {
                                 <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-400 dark:text-neutral-500">
                                     {BLOG_CATEGORIES[post.category]}
                                 </p>
-                                <h3 className="mb-3 text-lg font-semibold leading-snug tracking-tight text-neutral-900 group-hover:text-orange-600 dark:text-white dark:group-hover:text-orange-400">
+                                <h3 className="mb-3 text-lg font-semibold leading-snug tracking-tight text-neutral-900 group-hover:text-neutral-800 dark:text-white dark:group-hover:text-neutral-100">
                                     {post.title}
                                 </h3>
                                 <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">

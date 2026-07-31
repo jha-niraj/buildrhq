@@ -172,10 +172,10 @@ export function formatScore(score: number): string {
  * Get score color based on value
  */
 export function getScoreColor(score: number): string {
-    if (score >= 90) return 'text-amber-600 dark:text-amber-400'
-    if (score >= 75) return 'text-orange-600 dark:text-orange-400'
-    if (score >= 60) return 'text-yellow-600 dark:text-yellow-400'
-    if (score >= 40) return 'text-orange-600 dark:text-orange-400'
+    if (score >= 90) return 'text-neutral-800 dark:text-neutral-100'
+    if (score >= 75) return 'text-neutral-800 dark:text-neutral-100'
+    if (score >= 60) return 'text-neutral-800 dark:text-neutral-100'
+    if (score >= 40) return 'text-neutral-800 dark:text-neutral-100'
     return 'text-red-600 dark:text-red-400'
 }
 
@@ -183,8 +183,8 @@ export function getScoreColor(score: number): string {
  * Get rank badge color
  */
 export function getRankBadgeColor(rank: number): string {
-    if (rank === 1) return 'bg-yellow-500 text-white'
+    if (rank === 1) return 'bg-neutral-900 text-white'
     if (rank === 2) return 'bg-gray-400 text-white'
-    if (rank === 3) return 'bg-amber-600 text-white'
+    if (rank === 3) return 'bg-neutral-800 text-white'
     return 'bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-white'
 }

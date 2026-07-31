@@ -126,10 +126,10 @@ export function WorkExperienceTab({ user, isOwnProfile, onUploadResume, onRefres
             {/* Uploaded resume card */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
                 <Card className="overflow-hidden">
-                    <div className="bg-gradient-to-r from-yellow-500/10 via-amber-500/10 to-orange-500/10 p-6">
+                    <div className="bg-gradient-to-r from-neutral-900/10 via-neutral-900/10 to-neutral-900/10 p-6">
                         <div className="flex items-start justify-between gap-4">
                             <div className="flex items-center gap-4">
-                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-amber-500 flex items-center justify-center">
+                                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-900 flex items-center justify-center">
                                     <FileText className="w-7 h-7 text-white" />
                                 </div>
                                 <div>
@@ -149,7 +149,7 @@ export function WorkExperienceTab({ user, isOwnProfile, onUploadResume, onRefres
                                     <Button
                                         onClick={handleUploadClick}
                                         disabled={uploading}
-                                        className="gap-2 bg-gradient-to-r from-yellow-500 to-amber-500 text-white hover:from-yellow-600 hover:to-amber-600"
+                                        className="gap-2 bg-gradient-to-r from-neutral-900 to-neutral-900 text-white hover:from-neutral-800 hover:to-neutral-800"
                                     >
                                         {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileText className="w-4 h-4" />}
                                         {uploading ? "Uploading..." : "Upload Resume"}
@@ -202,14 +202,14 @@ export function WorkExperienceTab({ user, isOwnProfile, onUploadResume, onRefres
                                 <Card className="p-5">
                                     <div className="flex items-start justify-between gap-3">
                                         <div className="flex items-start gap-3 flex-1 min-w-0">
-                                            <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                                <Building2 className="w-5 h-5 text-orange-500" />
+                                            <div className="w-10 h-10 rounded-lg bg-neutral-900/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                <Building2 className="w-5 h-5 text-neutral-900" />
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center gap-2 flex-wrap">
                                                     <h4 className="font-semibold">{exp.roleTitle}</h4>
                                                     {exp.isCurrentlyWorking && (
-                                                        <Badge className="text-[10px] bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+                                                        <Badge className="text-[10px] bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                                             Current
                                                         </Badge>
                                                     )}

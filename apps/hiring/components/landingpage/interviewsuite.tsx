@@ -47,16 +47,16 @@ export default function InterviewSuite() {
                             <div className="flex items-center justify-between mb-8 pb-8 border-b border-neutral-800">
                                 <div className="flex gap-3">
                                     <div className="w-3 h-3 rounded-full bg-red-500" />
-                                    <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                                    <div className="w-3 h-3 rounded-full bg-amber-500" />
+                                    <div className="w-3 h-3 rounded-full bg-neutral-900" />
+                                    <div className="w-3 h-3 rounded-full bg-neutral-900" />
                                 </div>
                                 <div className="text-[10px] font-mono text-neutral-500">LIVE SESSION: #8X92-A</div>
                             </div>
                             <div className="space-y-4 font-mono text-xs">
                                 <div className="flex gap-4">
                                     <span className="text-neutral-600">01</span>
-                                    <span className="text-orange-400">const</span>
-                                    <span className="text-orange-400">optimizeGraph</span> = (nodes) ={">"} {"{"}
+                                    <span className="text-neutral-800">const</span>
+                                    <span className="text-neutral-800">optimizeGraph</span> = (nodes) ={">"} {"{"}
                                 </div>
                                 <div className="flex gap-4">
                                     <span className="text-neutral-600">02</span>
@@ -67,9 +67,9 @@ export default function InterviewSuite() {
                                     <span className="text-neutral-500 ml-4">{/* Candidate is refactoring for memory safety... */}</span>
                                 </div>
                             </div>
-                            <div className="mt-8 p-4 rounded-xl bg-amber-900/20 border border-amber-900/50 flex items-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                                <span className="text-amber-400 text-xs font-bold tracking-wide">PASSING THRESHOLD MET</span>
+                            <div className="mt-8 p-4 rounded-xl bg-neutral-900/20 border border-neutral-900/50 flex items-center gap-3">
+                                <div className="w-2 h-2 rounded-full bg-neutral-900 animate-pulse" />
+                                <span className="text-neutral-800 text-xs font-bold tracking-wide">PASSING THRESHOLD MET</span>
                             </div>
                         </div>
                     </div>

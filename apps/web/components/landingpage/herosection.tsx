@@ -131,25 +131,25 @@ export default function HeroSection() {
             eyebrow: "Active Developers",
             value: loading ? null : formatNumber(stats?.totalUsers ?? 0),
             desc: "Building on BuildrHQ",
-            accent: "bg-orange-500",
+            accent: "bg-neutral-900",
         },
         {
             eyebrow: "Projects Built",
             value: loading ? null : formatNumber(stats?.totalProjects ?? 0),
             desc: "Shipped by our community",
-            accent: "bg-amber-500",
+            accent: "bg-neutral-900",
         },
         {
             eyebrow: "Mock Interviews",
             value: loading ? null : formatNumber(stats?.totalMockSessions ?? 0),
             desc: "Conducted on platform",
-            accent: "bg-orange-500",
+            accent: "bg-neutral-900",
         },
         {
             eyebrow: "Open Source",
             value: loading ? null : formatNumber(stats?.totalOpenSourceProjects ?? 0),
             desc: "Projects tracked for contributors",
-            accent: "bg-amber-500",
+            accent: "bg-neutral-900",
         },
     ]
 
@@ -177,12 +177,12 @@ export default function HeroSection() {
                             className="mb-7 inline-flex items-center gap-2 rounded-full border border-neutral-300 bg-white px-3.5 py-1.5 dark:border-white/10 dark:bg-white/5"
                             variants={reduced ? undefined : item}
                         >
-                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-orange-500" />
+                            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-neutral-900" />
                             <span className="text-[11px] font-medium uppercase tracking-widest text-neutral-500 dark:text-white/50">
                                 Accelerate your
                             </span>
                             <span
-                                className="min-w-[68px] text-left text-[11px] font-semibold uppercase tracking-widest text-orange-500"
+                                className="min-w-[68px] text-left text-[11px] font-semibold uppercase tracking-widest text-neutral-900"
                                 style={{
                                     opacity: wordVis ? 1 : 0,
                                     filter: wordVis ? "blur(0)" : "blur(5px)",
@@ -278,7 +278,7 @@ export default function HeroSection() {
                                         ) : (
                                             <p className="text-[38px] font-bold leading-none tracking-tight text-neutral-900 dark:text-white">
                                                 {s.value}
-                                                <span className="text-[22px] text-orange-500">+</span>
+                                                <span className="text-[22px] text-neutral-900">+</span>
                                             </p>
                                         )}
                                         <p className="mt-2 text-[11px] text-neutral-500 dark:text-neutral-400">{s.desc}</p>
@@ -304,7 +304,7 @@ export default function HeroSection() {
                                 className="absolute inset-0 flex flex-col justify-center px-8 transition-opacity duration-500 sm:px-14"
                                 style={{ opacity: i === slideIdx ? 1 : 0 }}
                             >
-                                <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-orange-500">
+                                <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.22em] text-neutral-900">
                                     {slide.label}
                                 </p>
                                 <p className="mb-3 max-w-xl text-2xl font-bold leading-tight tracking-tight text-neutral-900 dark:text-white sm:text-3xl">

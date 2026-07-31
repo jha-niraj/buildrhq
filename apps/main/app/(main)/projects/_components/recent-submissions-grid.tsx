@@ -66,9 +66,9 @@ export function RecentSubmissionsGrid() {
     }
 
     const difficultyColors = {
-        BEGINNER: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400',
-        INTERMEDIATE: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
-        ADVANCED: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
+        BEGINNER: 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100',
+        INTERMEDIATE: 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100',
+        ADVANCED: 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100',
     }
 
     return (
@@ -127,7 +127,7 @@ export function RecentSubmissionsGrid() {
                                 {
                                     submission.upvotes && submission.upvotes > 0 && (
                                         <div className="flex items-center gap-1">
-                                            <Star className="w-3.5 h-3.5 fill-yellow-500 text-yellow-500" />
+                                            <Star className="w-3.5 h-3.5 fill-neutral-900 text-neutral-900" />
                                             <span>{submission.upvotes}</span>
                                         </div>
                                     )

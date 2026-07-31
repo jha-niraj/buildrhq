@@ -8,6 +8,7 @@ import {
     xpTransactions,
     projectIdeas,
     projectIdeaUpvotes,
+    withTransaction
 } from "@repo/db";
 import { eq, and, or, desc, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache"
@@ -226,7 +227,7 @@ export async function approveProjectIdea(id: string) {
             .where(eq(projectIdeas.id, id));
 
         if (projectIdea.isUserSubmitted && projectIdea.submittedById) {
-            await db.transaction(async (tx) => {
+            await withTransaction(async (tx) => {
                 await tx.update(users)
                     .set({
                         currentXp: sql`${users.currentXp} + 20`,
@@ -315,25 +316,34 @@ export async function toggleProjectUpvote(projectId: string) {
             ),
         });
 
+        // `db.batch` and NOT `db.transaction`: the shared client is drizzle's
+        // neon-http driver, whose `.transaction()` throws "No transactions support
+        // in neon-http driver" at runtime. That threw on every single upvote, was
+        // swallowed by the catch below, and the action just returned
+        // { success: false } — so upvoting has been silently broken in production.
+        // `.batch()` dispatches through Neon's HTTP transaction endpoint, so the
+        // vote row and the denormalised counter still commit or roll back together.
         if (existingUpvote) {
-            await db.transaction(async (tx) => {
-                await tx.delete(projectIdeaUpvotes).where(eq(projectIdeaUpvotes.id, existingUpvote.id));
-                await tx.update(projectIdeas)
-                    .set({ upvotes: sql`${projectIdeas.upvotes} - 1` })
-                    .where(eq(projectIdeas.id, projectId));
-            });
+            await db.batch([
+                db.delete(projectIdeaUpvotes).where(eq(projectIdeaUpvotes.id, existingUpvote.id)),
+                db.update(projectIdeas)
+                    // GREATEST floors at 0 — a counter that has drifted low must not
+                    // render as "-1 upvotes".
+                    .set({ upvotes: sql`GREATEST(${projectIdeas.upvotes} - 1, 0)` })
+                    .where(eq(projectIdeas.id, projectId)),
+            ]);
 
             return { success: true, upvoted: false, message: 'Upvote removed' }
         } else {
-            await db.transaction(async (tx) => {
-                await tx.insert(projectIdeaUpvotes).values({
+            await db.batch([
+                db.insert(projectIdeaUpvotes).values({
                     projectIdeaId: projectId,
                     userId: user.id,
-                });
-                await tx.update(projectIdeas)
+                }),
+                db.update(projectIdeas)
                     .set({ upvotes: sql`${projectIdeas.upvotes} + 1` })
-                    .where(eq(projectIdeas.id, projectId));
-            });
+                    .where(eq(projectIdeas.id, projectId)),
+            ]);
 
             return { success: true, upvoted: true, message: 'Upvoted successfully' }
         }

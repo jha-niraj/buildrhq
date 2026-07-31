@@ -122,7 +122,7 @@ export function CodeStep({ step, studioId }: CodeStepProps) {
 			<div className="rounded-2xl overflow-hidden bg-neutral-900">
 				<div className="px-6 py-4 bg-neutral-800 border-b border-neutral-700 flex items-center justify-between">
 					<div className="flex items-center gap-3">
-						<div className="h-10 w-10 rounded-xl bg-amber-500 flex items-center justify-center">
+						<div className="h-10 w-10 rounded-xl bg-neutral-900 flex items-center justify-center">
 							<Code className="h-5 w-5 text-white" />
 						</div>
 						<div>
@@ -142,7 +142,7 @@ export function CodeStep({ step, studioId }: CodeStepProps) {
 							</span>
 						)}
 						{isSaved && !isSaving && (
-							<span className="text-xs text-amber-400 flex items-center gap-1">
+							<span className="text-xs text-neutral-800 flex items-center gap-1">
 								<Check className="h-3 w-3" />
 								Saved
 							</span>
@@ -157,7 +157,7 @@ export function CodeStep({ step, studioId }: CodeStepProps) {
 						</Button>
 						<Button
 							size="sm"
-							className="gap-2 bg-amber-600 hover:bg-amber-700"
+							className="gap-2 bg-neutral-800 hover:bg-neutral-700"
 							onClick={handleRun}
 							disabled={isRunning}
 						>
@@ -195,10 +195,10 @@ export function CodeStep({ step, studioId }: CodeStepProps) {
 									hasError ? (
 										<XCircle className="h-3.5 w-3.5 text-red-400" />
 									) : (
-										<CheckCircle className="h-3.5 w-3.5 text-amber-400" />
+										<CheckCircle className="h-3.5 w-3.5 text-neutral-800" />
 									)
 								}
-								<span className={hasError ? "text-red-400" : "text-amber-400"}>
+								<span className={hasError ? "text-red-400" : "text-neutral-800"}>
 									Output
 								</span>
 							</div>

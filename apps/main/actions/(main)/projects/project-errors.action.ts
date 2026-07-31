@@ -3,7 +3,8 @@
 import { getSession } from "@repo/auth";
 import { headers } from "next/headers";
 import {
-    db, projectV2Errors, projectV2ErrorVotes, projectsV2, userProjectV2Progress, projectV2Tasks
+    db, projectV2Errors, projectV2ErrorVotes, projectsV2, userProjectV2Progress, projectV2Tasks,
+    withTransaction
 } from "@repo/db";
 import { eq, and, desc, asc, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -475,7 +476,7 @@ export async function voteOnError(
 
         if (existingVote) {
             // Remove vote
-            await db.transaction(async (tx) => {
+            await withTransaction(async (tx) => {
                 await tx.delete(projectV2ErrorVotes).where(eq(projectV2ErrorVotes.id, existingVote.id));
                 await tx
                     .update(projectV2Errors)
@@ -499,7 +500,7 @@ export async function voteOnError(
         }
 
         // Add vote
-        await db.transaction(async (tx) => {
+        await withTransaction(async (tx) => {
             await tx.insert(projectV2ErrorVotes).values({
                 errorId,
                 userId: user.id,

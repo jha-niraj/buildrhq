@@ -43,9 +43,9 @@ interface MockData {
 }
 
 const levelColors = {
-    'BEGINNER': 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-900/50',
+    'BEGINNER': 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800/50',
     'INTERMEDIATE': 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700',
-    'ADVANCED': 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-900/50',
+    'ADVANCED': 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800/50',
     'EXPERT': 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 border-red-200 dark:border-red-900/50',
 }
 
@@ -85,7 +85,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                                 </Badge>
                                 {
                                     shouldShowAdminBadge && (
-                                        <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs">
+                                        <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 text-xs">
                                             <Shield className="w-3 h-3 mr-1" />
                                             Official
                                         </Badge>
@@ -96,7 +96,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                         </div>
                         {
                             isUserGenerated && mock.isPublic && (
-                                <Globe className="w-4 h-4 text-orange-600 dark:text-orange-400" />
+                                <Globe className="w-4 h-4 text-neutral-800 dark:text-neutral-100" />
                             )
                         }
                     </div>
@@ -111,7 +111,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                             <span>{mock.duration}m</span>
                         </div>
                         <div className="flex items-center gap-1">
-                            <Sparkles className="w-4 h-4 text-orange-600" />
+                            <Sparkles className="w-4 h-4 text-neutral-800" />
                             <span>{mock.creditsRequired}c</span>
                         </div>
                     </div>
@@ -135,11 +135,11 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                 onHoverEnd={() => setIsHovered(false)}
                 className="h-full"
             >
-                <Card className="relative overflow-hidden h-full flex flex-col border-2 border-amber-200 dark:border-amber-900/40 hover:border-amber-300 dark:hover:border-amber-800/60 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-amber-50/50 via-yellow-50/30 to-orange-50/30 dark:from-amber-950/20 dark:via-yellow-950/10 dark:to-orange-950/10">
+                <Card className="relative overflow-hidden h-full flex flex-col border-2 border-neutral-200 dark:border-neutral-800/40 hover:border-neutral-300 dark:hover:border-neutral-800/60 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-neutral-50/50 via-neutral-50/30 to-neutral-50/30 dark:from-neutral-900/20 dark:via-neutral-900/10 dark:to-neutral-900/10">
                     <div className="absolute top-0 right-0 z-10">
                         <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 blur-sm"></div>
-                            <div className="relative bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-1.5 text-xs font-bold rounded-bl-xl shadow-md flex items-center gap-1.5">
+                            <div className="absolute inset-0 bg-gradient-to-r from-neutral-900 to-neutral-900 blur-sm"></div>
+                            <div className="relative bg-gradient-to-r from-neutral-900 to-neutral-900 text-white px-4 py-1.5 text-xs font-bold rounded-bl-xl shadow-md flex items-center gap-1.5">
                                 <Star className="w-3 h-3 fill-current" />
                                 FEATURED
                             </div>
@@ -160,7 +160,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                                         </Badge>
                                         {
                                             shouldShowAdminBadge && (
-                                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs mb-1">
+                                                <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 text-xs mb-1">
                                                     <Shield className="w-3 h-3 mr-1" />
                                                     Official
                                                 </Badge>
@@ -172,7 +172,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                             </div>
                             {
                                 mock.popularity && (
-                                    <div className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30 px-3 py-1.5 rounded-full">
+                                    <div className="flex items-center gap-1.5 text-neutral-800 dark:text-neutral-100 bg-neutral-100 dark:bg-neutral-800/30 px-3 py-1.5 rounded-full">
                                         <Star className="w-4 h-4 fill-current" />
                                         <span className="text-sm font-semibold">{mock.popularity}%</span>
                                     </div>
@@ -189,7 +189,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                                 <div className="flex flex-wrap gap-2">
                                     {
                                         mock.tags?.map((tag, idx) => (
-                                            <Badge key={idx} variant="outline" className="text-xs border-amber-300 dark:border-amber-800 text-amber-700 dark:text-amber-400">
+                                            <Badge key={idx} variant="outline" className="text-xs border-neutral-300 dark:border-neutral-800 text-neutral-700 dark:text-neutral-100">
                                                 {tag}
                                             </Badge>
                                         ))
@@ -198,22 +198,22 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                             )
                         }
                         <div className="grid grid-cols-3 gap-4 pt-2">
-                            <div className="flex flex-col items-center p-3 bg-white/60 dark:bg-neutral-900/40 rounded-lg border border-amber-200 dark:border-amber-900/40">
-                                <Clock className="w-5 h-5 text-amber-600 dark:text-amber-400 mb-2" />
+                            <div className="flex flex-col items-center p-3 bg-white/60 dark:bg-neutral-900/40 rounded-lg border border-neutral-200 dark:border-neutral-800/40">
+                                <Clock className="w-5 h-5 text-neutral-800 dark:text-neutral-100 mb-2" />
                                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Duration</p>
                                 <p className="font-bold text-neutral-900 dark:text-white">{mock.duration} min</p>
                             </div>
                             {
                                 mock.questionsCount && (
-                                    <div className="flex flex-col items-center p-3 bg-white/60 dark:bg-neutral-900/40 rounded-lg border border-amber-200 dark:border-amber-900/40">
-                                        <Brain className="w-5 h-5 text-amber-600 dark:text-amber-400 mb-2" />
+                                    <div className="flex flex-col items-center p-3 bg-white/60 dark:bg-neutral-900/40 rounded-lg border border-neutral-200 dark:border-neutral-800/40">
+                                        <Brain className="w-5 h-5 text-neutral-800 dark:text-neutral-100 mb-2" />
                                         <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Questions</p>
                                         <p className="font-bold text-neutral-900 dark:text-white">{mock.questionsCount}</p>
                                     </div>
                                 )
                             }
-                            <div className="flex flex-col items-center p-3 bg-white/60 dark:bg-neutral-900/40 rounded-lg border border-amber-200 dark:border-amber-900/40">
-                                <Sparkles className="w-5 h-5 text-amber-600 dark:text-amber-400 mb-2" />
+                            <div className="flex flex-col items-center p-3 bg-white/60 dark:bg-neutral-900/40 rounded-lg border border-neutral-200 dark:border-neutral-800/40">
+                                <Sparkles className="w-5 h-5 text-neutral-800 dark:text-neutral-100 mb-2" />
                                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Credits</p>
                                 <p className="font-bold text-neutral-900 dark:text-white">{mock.creditsRequired}</p>
                             </div>
@@ -222,7 +222,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                     <CardFooter className="px-6 pb-6 mt-auto">
                         <Button
                             onClick={() => onStart?.(mock.id)}
-                            className="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:via-orange-600 hover:to-amber-700 text-white font-semibold shadow-md hover:shadow-lg transition-all"
+                            className="w-full bg-gradient-to-r from-neutral-900 via-neutral-900 to-neutral-800 hover:from-neutral-800 hover:via-neutral-800 hover:to-neutral-700 text-white font-semibold shadow-md hover:shadow-lg transition-all"
                             size="lg"
                         >
                             <Sparkles className="w-4 h-4 mr-2" />
@@ -256,7 +256,7 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                             </Badge>
                             {
                                 shouldShowAdminBadge && (
-                                    <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs">
+                                    <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 text-xs">
                                         <Shield className="w-3 h-3 mr-1" />
                                         Official
                                     </Badge>
@@ -283,8 +283,8 @@ export function MockInterviewCard({ mock, onStart, variant = 'default', showAdmi
                             }
                             {
                                 mock.popularity && mock.popularity > 80 && (
-                                    <div className="p-1.5 bg-amber-100 dark:bg-amber-900/30 rounded">
-                                        <TrendingUp className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                                    <div className="p-1.5 bg-neutral-100 dark:bg-neutral-800/30 rounded">
+                                        <TrendingUp className="w-3.5 h-3.5 text-neutral-800 dark:text-neutral-100" />
                                     </div>
                                 )
                             }

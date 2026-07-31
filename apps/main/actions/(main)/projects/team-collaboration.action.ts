@@ -9,6 +9,7 @@ import {
     projectsV2,
     projectV2Members,
     projectV2Invitations,
+    withTransaction
 } from "@repo/db";
 import { eq, and, or } from "drizzle-orm";
 
@@ -156,7 +157,7 @@ export async function acceptInvitation(
             return { success: false, error: 'This invitation has expired' }
         }
 
-        await db.transaction(async (tx) => {
+        await withTransaction(async (tx) => {
             await tx.insert(projectV2Members).values({
                 projectId: invitation.projectId,
                 userId: user.id,

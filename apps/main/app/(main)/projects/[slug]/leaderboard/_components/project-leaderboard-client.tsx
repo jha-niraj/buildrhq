@@ -24,6 +24,7 @@ import {
     formatScore, getScoreColor, getRankBadgeColor, getRankSuffix
 } from '@/lib/project-scoring'
 import { UserProgressSheet } from '@/components/projects/user-progress-sheet'
+import { projectLeaderboardUrl } from "@/lib/urls"
 
 interface LeaderboardEntry {
     id: string
@@ -104,7 +105,7 @@ export function ProjectLeaderboardClient({
     }
 
     const handleShare = (username: string) => {
-        const shareUrl = `${window.location.origin}/projects/${project.slug}/leaderboard?username=${username}&showProgress=true`
+        const shareUrl = projectLeaderboardUrl(project.slug, username)
         navigator.clipboard.writeText(shareUrl)
         setCopied(true)
         toast.success('Share link copied to clipboard!')
@@ -141,8 +142,8 @@ export function ProjectLeaderboardClient({
                     <Card>
                         <CardContent className="pt-6">
                             <div className="flex items-center gap-3">
-                                <div className="p-3 bg-orange-500/10 rounded-lg">
-                                    <Users className="w-6 h-6 text-orange-500" />
+                                <div className="p-3 bg-neutral-900/10 rounded-lg">
+                                    <Users className="w-6 h-6 text-neutral-900" />
                                 </div>
                                 <div>
                                     <p className="text-2xl font-bold">{project.totalStarted}</p>
@@ -154,8 +155,8 @@ export function ProjectLeaderboardClient({
                     <Card>
                         <CardContent className="pt-6">
                             <div className="flex items-center gap-3">
-                                <div className="p-3 bg-amber-500/10 rounded-lg">
-                                    <Trophy className="w-6 h-6 text-amber-500" />
+                                <div className="p-3 bg-neutral-900/10 rounded-lg">
+                                    <Trophy className="w-6 h-6 text-neutral-900" />
                                 </div>
                                 <div>
                                     <p className="text-2xl font-bold">{project.totalCompleted}</p>
@@ -167,8 +168,8 @@ export function ProjectLeaderboardClient({
                     <Card>
                         <CardContent className="pt-6">
                             <div className="flex items-center gap-3">
-                                <div className="p-3 bg-orange-500/10 rounded-lg">
-                                    <TrendingUp className="w-6 h-6 text-orange-500" />
+                                <div className="p-3 bg-neutral-900/10 rounded-lg">
+                                    <TrendingUp className="w-6 h-6 text-neutral-900" />
                                 </div>
                                 <div>
                                     <p className="text-2xl font-bold">{pagination?.total || 0}</p>
@@ -217,12 +218,12 @@ export function ProjectLeaderboardClient({
                             {
                                 top3[0] && (
                                     <div className="flex flex-col items-center -mt-8">
-                                        <Trophy className="w-16 h-16 text-yellow-500 mb-2 animate-pulse" />
-                                        <Avatar className="h-28 w-28 mb-3 ring-4 ring-yellow-500">
+                                        <Trophy className="w-16 h-16 text-neutral-900 mb-2 animate-pulse" />
+                                        <Avatar className="h-28 w-28 mb-3 ring-4 ring-neutral-900">
                                             <AvatarImage src={top3[0].user.image!} />
                                             <AvatarFallback>{top3[0].user.name?.[0] || 'U'}</AvatarFallback>
                                         </Avatar>
-                                        <Badge className="mb-2 bg-yellow-500 hover:bg-yellow-600">1st</Badge>
+                                        <Badge className="mb-2 bg-neutral-900 hover:bg-neutral-800">1st</Badge>
                                         <p className="font-bold text-lg text-center">{top3[0].user.name}</p>
                                         <p className="text-sm text-muted-foreground">@{top3[0].user.username || 'user'}</p>
                                         <p className={`text-3xl font-bold mt-2 ${getScoreColor(top3[0].score)}`}>
@@ -242,12 +243,12 @@ export function ProjectLeaderboardClient({
                             {
                                 top3[2] && (
                                     <div className="flex flex-col items-center">
-                                        <Trophy className="w-12 h-12 text-amber-600 mb-2" />
-                                        <Avatar className="h-20 w-20 mb-3 ring-4 ring-amber-600">
+                                        <Trophy className="w-12 h-12 text-neutral-800 mb-2" />
+                                        <Avatar className="h-20 w-20 mb-3 ring-4 ring-neutral-800">
                                             <AvatarImage src={top3[2].user.image!} />
                                             <AvatarFallback>{top3[2].user.name?.[0] || 'U'}</AvatarFallback>
                                         </Avatar>
-                                        <Badge className="mb-2 bg-amber-600 hover:bg-amber-700">3rd</Badge>
+                                        <Badge className="mb-2 bg-neutral-800 hover:bg-neutral-700">3rd</Badge>
                                         <p className="font-semibold text-center">{top3[2].user.name}</p>
                                         <p className="text-sm text-muted-foreground">@{top3[2].user.username || 'user'}</p>
                                         <p className={`text-2xl font-bold mt-2 ${getScoreColor(top3[2].score)}`}>

@@ -95,7 +95,7 @@ export function SavedJobsContent({ initialData, isAuthenticated }: SavedJobsCont
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center">
                         <Bookmark className="w-5 h-5 text-white" />
                     </div>
                     <div>
@@ -174,8 +174,8 @@ function AuthRequiredState() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-16 px-4"
         >
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-pink-100 dark:from-orange-900/30 dark:to-pink-900/30 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <UserCheck className="w-10 h-10 text-orange-600 dark:text-orange-400" />
+            <div className="w-20 h-20 bg-gradient-to-br from-neutral-100 to-pink-100 dark:from-neutral-800/30 dark:to-pink-900/30 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                <UserCheck className="w-10 h-10 text-neutral-800 dark:text-neutral-100" />
             </div>
             <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
                 Sign in to see your saved jobs
@@ -199,8 +199,8 @@ function SavedEmptyState() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center py-16 px-4"
         >
-            <div className="w-20 h-20 bg-gradient-to-br from-yellow-100 to-amber-100 dark:from-yellow-900/30 dark:to-amber-900/30 rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <Bookmark className="w-10 h-10 text-yellow-600 dark:text-yellow-400" />
+            <div className="w-20 h-20 bg-gradient-to-br from-neutral-100 to-neutral-100 dark:from-neutral-800/30 dark:to-neutral-800/30 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                <Bookmark className="w-10 h-10 text-neutral-800 dark:text-neutral-100" />
             </div>
             <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-2">
                 No saved jobs yet

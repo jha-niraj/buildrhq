@@ -1362,8 +1362,8 @@ export default function JobFormContent({ interviewProcesses }: JobFormContentPro
                                                 }
                                             </>
                                         ) : (
-                                            <div className="p-4 bg-amber-50 dark:bg-amber-950/30 rounded-lg border border-amber-200 dark:border-amber-800/50">
-                                                <p className="text-sm text-amber-800 dark:text-amber-300">
+                                            <div className="p-4 bg-neutral-50 dark:bg-neutral-900/30 rounded-lg border border-neutral-200 dark:border-neutral-800/50">
+                                                <p className="text-sm text-neutral-800 dark:text-neutral-100">
                                                     <span className="font-medium">Assignment details will be added later.</span>{" "}
                                                     You can configure the assignment from the job settings after publishing. 
                                                     Candidates won&apos;t see the assignment until you complete it.
@@ -1393,8 +1393,8 @@ export default function JobFormContent({ interviewProcesses }: JobFormContentPro
                                 </p>
                             </div>
                         </div>
-                        <div className="mb-4 p-3 bg-orange-50 dark:bg-orange-950/30 rounded-lg border border-orange-200 dark:border-orange-800/50">
-                            <p className="text-sm text-orange-800 dark:text-orange-300">
+                        <div className="mb-4 p-3 bg-neutral-50 dark:bg-neutral-900/30 rounded-lg border border-neutral-200 dark:border-neutral-800/50">
+                            <p className="text-sm text-neutral-800 dark:text-neutral-100">
                                 <span className="font-medium">Tip:</span> Use custom questions to gather information not covered in the standard application form.
                                 Examples: availability date, portfolio links, specific experience questions.
                             </p>

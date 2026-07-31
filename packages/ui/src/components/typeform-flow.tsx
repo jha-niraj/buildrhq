@@ -241,7 +241,7 @@ export function TypeformFlow({
 	submitLabel = "Submit",
 	thankYouTitle = "You're all set!",
 	thankYouDesc = "We'll be in touch soon.",
-	accentColor = "#f97316",
+	accentColor = "#171717",
 	themed = false,
 	renderSidePanel,
 	background,

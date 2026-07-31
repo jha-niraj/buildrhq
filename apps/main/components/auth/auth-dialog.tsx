@@ -166,7 +166,7 @@ export function AuthDialog() {
 												type="email"
 												value={email}
 												onChange={(e) => setEmail(e.target.value)}
-												className="pl-11 h-12 bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500/50 backdrop-blur-sm text-gray-900 dark:text-gray-100"
+												className="pl-11 h-12 bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 rounded-xl focus:ring-2 focus:ring-neutral-900/20 focus:border-neutral-900/50 backdrop-blur-sm text-gray-900 dark:text-gray-100"
 												placeholder="Enter your email"
 												required
 											/>
@@ -182,7 +182,7 @@ export function AuthDialog() {
 												type={showPw ? "text" : "password"}
 												value={password}
 												onChange={(e) => setPassword(e.target.value)}
-												className="pr-11 h-12 bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 rounded-xl focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500/50 backdrop-blur-sm text-gray-900 dark:text-gray-100"
+												className="pr-11 h-12 bg-white/80 dark:bg-gray-800/80 border border-gray-200/50 dark:border-gray-700/50 rounded-xl focus:ring-2 focus:ring-neutral-900/20 focus:border-neutral-900/50 backdrop-blur-sm text-gray-900 dark:text-gray-100"
 												placeholder="Enter your password"
 												required
 											/>
@@ -233,11 +233,14 @@ export function AuthDialog() {
 											variant="outline"
 											className="w-full h-12 bg-transparent hover:bg-white/50 dark:hover:bg-gray-800/50 border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 font-medium rounded-xl transition-all duration-200 backdrop-blur-sm"
 											onClick={() => {
-												const signupUrl = new URL('/signup', window.location.origin)
-												if (resolvedCallback) {
-													signupUrl.searchParams.set('callbackUrl', resolvedCallback)
-												}
-												router.push(signupUrl.toString())
+												// Was `/signup`, which is not a route — this app registers at
+												// /register, so the button 404'd. Relative too: an in-app
+												// navigation never needed an absolute URL, and building one
+												// from window.location.origin only added a browser dependency.
+												const params = new URLSearchParams()
+												if (resolvedCallback) params.set('callbackUrl', resolvedCallback)
+												const query = params.toString()
+												router.push(`/register${query ? `?${query}` : ''}`)
 												closeAuth()
 											}}
 										>

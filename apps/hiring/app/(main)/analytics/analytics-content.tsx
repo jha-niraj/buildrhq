@@ -91,54 +91,54 @@ export function AnalyticsContent({ analytics, recruiterPerformance }: AnalyticsC
             label: "Total Views",
             value: overview.totalViews.toLocaleString(),
             icon: <Eye className="w-5 h-5" />,
-            color: "text-orange-500",
-            bgColor: "bg-orange-100 dark:bg-orange-900/30"
+            color: "text-neutral-900",
+            bgColor: "bg-neutral-100 dark:bg-neutral-800/30"
         },
         {
             label: "Applications",
             value: overview.totalApplications.toLocaleString(),
             change: overview.applicationChange,
             icon: <Users className="w-5 h-5" />,
-            color: "text-orange-500",
-            bgColor: "bg-orange-100 dark:bg-orange-900/30"
+            color: "text-neutral-900",
+            bgColor: "bg-neutral-100 dark:bg-neutral-800/30"
         },
         {
             label: "Active Jobs",
             value: overview.activeJobs.toString(),
             icon: <Briefcase className="w-5 h-5" />,
-            color: "text-amber-500",
-            bgColor: "bg-amber-100 dark:bg-amber-900/30"
+            color: "text-neutral-900",
+            bgColor: "bg-neutral-100 dark:bg-neutral-800/30"
         },
         {
             label: "Avg. Time to Hire",
             value: overview.avgTimeToHire,
             icon: <Clock className="w-5 h-5" />,
-            color: "text-orange-500",
-            bgColor: "bg-orange-100 dark:bg-orange-900/30"
+            color: "text-neutral-900",
+            bgColor: "bg-neutral-100 dark:bg-neutral-800/30"
         },
         {
             label: "Total Hired",
             value: overview.hiredCount.toString(),
             icon: <CheckCircle className="w-5 h-5" />,
-            color: "text-amber-500",
-            bgColor: "bg-amber-100 dark:bg-amber-900/30"
+            color: "text-neutral-900",
+            bgColor: "bg-neutral-100 dark:bg-neutral-800/30"
         },
         {
             label: "Conversion Rate",
             value: `${overview.conversionRate}%`,
             icon: <Target className="w-5 h-5" />,
-            color: "text-orange-500",
-            bgColor: "bg-orange-100 dark:bg-orange-900/30"
+            color: "text-neutral-900",
+            bgColor: "bg-neutral-100 dark:bg-neutral-800/30"
         },
     ]
 
     const pipelineStages = [
-        { label: "Applied", count: pipeline.applied, color: "bg-orange-500" },
-        { label: "Reviewing", count: pipeline.reviewing, color: "bg-yellow-500" },
-        { label: "Shortlisted", count: pipeline.shortlisted, color: "bg-orange-500" },
-        { label: "Interviewing", count: pipeline.interviewing, color: "bg-orange-500" },
-        { label: "Offered", count: pipeline.offered, color: "bg-orange-500" },
-        { label: "Hired", count: pipeline.hired, color: "bg-amber-500" },
+        { label: "Applied", count: pipeline.applied, color: "bg-neutral-900" },
+        { label: "Reviewing", count: pipeline.reviewing, color: "bg-neutral-900" },
+        { label: "Shortlisted", count: pipeline.shortlisted, color: "bg-neutral-900" },
+        { label: "Interviewing", count: pipeline.interviewing, color: "bg-neutral-900" },
+        { label: "Offered", count: pipeline.offered, color: "bg-neutral-900" },
+        { label: "Hired", count: pipeline.hired, color: "bg-neutral-900" },
         { label: "Rejected", count: pipeline.rejected, color: "bg-red-500" },
     ]
 
@@ -173,7 +173,7 @@ export function AnalyticsContent({ analytics, recruiterPerformance }: AnalyticsC
                                     <span className="text-xs text-neutral-500">{stat.label}</span>
                                     {
                                         stat.change !== undefined && (
-                                            <span className={`text-xs flex items-center gap-0.5 ${stat.change >= 0 ? "text-amber-600" : "text-red-600"}`}>
+                                            <span className={`text-xs flex items-center gap-0.5 ${stat.change >= 0 ? "text-neutral-800" : "text-red-600"}`}>
                                                 {stat.change >= 0 ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
                                                 {Math.abs(stat.change)}%
                                             </span>
@@ -256,9 +256,9 @@ export function AnalyticsContent({ analytics, recruiterPerformance }: AnalyticsC
                                             transition={{ delay: 0.5 + i * 0.05 }}
                                             className="flex items-center gap-3"
                                         >
-                                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold ${i === 0 ? "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600" :
+                                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold ${i === 0 ? "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800" :
                                                 i === 1 ? "bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-300" :
-                                                    i === 2 ? "bg-orange-100 dark:bg-orange-900/30 text-orange-600" :
+                                                    i === 2 ? "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800" :
                                                         "bg-neutral-100 dark:bg-neutral-800 text-neutral-500"
                                                 }`}>
                                                 {i + 1}
@@ -298,7 +298,7 @@ export function AnalyticsContent({ analytics, recruiterPerformance }: AnalyticsC
                         className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6"
                     >
                         <h2 className="font-semibold text-lg text-neutral-900 dark:text-white mb-6 flex items-center gap-2">
-                            <Award className="w-5 h-5 text-yellow-500" />
+                            <Award className="w-5 h-5 text-neutral-900" />
                             Team Performance
                         </h2>
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">

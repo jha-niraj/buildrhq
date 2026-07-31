@@ -2,7 +2,7 @@
 
 import { getSession } from '@repo/auth';
 import { headers } from 'next/headers';
-import { db, users, levels, xpTransactions, creditTransactions, userLevelProgress } from '@repo/db';
+import { db, users, levels, xpTransactions, creditTransactions, userLevelProgress, withTransaction } from '@repo/db';
 import { eq } from 'drizzle-orm';
 import { sql } from 'drizzle-orm';
 
@@ -84,7 +84,7 @@ function calculateLevelFromXp(totalXp: number) {
 // Add XP to user and handle level ups
 export async function addXpToUser(userId: string, xpAmount: number, description: string, type: "EARN" | "SPEND" | "REWARD" | "BONUS" | "PENALTY" = "REWARD") {
     try {
-        return await db.transaction(async (tx) => {
+        return await withTransaction(async (tx) => {
             // Get current user data
             const user = await tx.query.users.findFirst({
                 where: eq(users.id, userId),
@@ -278,7 +278,7 @@ export async function convertCurrentXpToCredits(xpAmount: number) {
 
         const creditsToAdd = Math.floor(xpAmount / 10); // 10 XP = 1 Credit
 
-        const result = await db.transaction(async (tx) => {
+        const result = await withTransaction(async (tx) => {
             // Update user XP and credits
             const [updatedUser] = await tx.update(users).set({
                 currentXp: sql`${users.currentXp} - ${xpAmount}`,

@@ -89,8 +89,8 @@ export function AddSkillsSheet({ open, onOpenChange, onSuccess, existingSkills =
             <SheetContent side="right" className="w-full sm:max-w-lg overflow-y-auto flex flex-col p-0">
                 <SheetHeader className="px-6 pt-6 pb-4 border-b border-neutral-100 dark:border-neutral-800">
                     <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                            <Code2 className="w-4 h-4 text-amber-500" />
+                        <div className="w-8 h-8 rounded-lg bg-neutral-900/10 flex items-center justify-center">
+                            <Code2 className="w-4 h-4 text-neutral-900" />
                         </div>
                         <div>
                             <SheetTitle>Manage Skills</SheetTitle>
@@ -145,7 +145,7 @@ export function AddSkillsSheet({ open, onOpenChange, onSuccess, existingSkills =
                             <p className="text-xs font-medium text-neutral-500">Ready to save ({pending.length})</p>
                             <div className="flex flex-wrap gap-2">
                                 {pending.map(s => (
-                                    <Badge key={s.name} className="gap-1.5 pr-1.5 bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-400 border-amber-200 dark:border-amber-900/40">
+                                    <Badge key={s.name} className="gap-1.5 pr-1.5 bg-neutral-50 text-neutral-700 dark:bg-neutral-800/20 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800/40">
                                         {s.name}
                                         <span className="text-[10px] opacity-70">{s.level}</span>
                                         <button onClick={() => removePending(s.name)} className="ml-0.5 hover:text-red-500">

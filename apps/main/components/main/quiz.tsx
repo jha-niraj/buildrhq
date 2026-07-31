@@ -104,10 +104,10 @@ export interface QuizResult {
 
 // Difficulty colors
 const DIFFICULTY_COLORS = {
-    EASY: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
-    MEDIUM: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400",
-    INTERMEDIATE: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400",
-    HARD: "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400",
+    EASY: "bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100",
+    MEDIUM: "bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100",
+    INTERMEDIATE: "bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100",
+    HARD: "bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100",
 };
 
 // ==================== COMPONENT ====================
@@ -565,7 +565,7 @@ export default function Quiz({
                                                 size="icon"
                                                 onClick={handleFlagQuestion}
                                                 className={cn(
-                                                    flaggedQuestions.has(currentQuestion.id) && "text-orange-500"
+                                                    flaggedQuestions.has(currentQuestion.id) && "text-neutral-900"
                                                 )}
                                             >
                                                 <Flag className="h-4 w-4" />
@@ -586,7 +586,7 @@ export default function Quiz({
                                                 size="icon"
                                                 onClick={toggleHint}
                                                 className={cn(
-                                                    usedHints.has(currentQuestion.id) && "text-amber-500"
+                                                    usedHints.has(currentQuestion.id) && "text-neutral-900"
                                                 )}
                                             >
                                                 <Lightbulb className="h-4 w-4" />
@@ -621,9 +621,9 @@ export default function Quiz({
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: "auto" }}
                                 exit={{ opacity: 0, height: 0 }}
-                                className="mb-4 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg"
+                                className="mb-4 p-3 bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-lg"
                             >
-                                <p className="text-sm text-amber-800 dark:text-amber-200">
+                                <p className="text-sm text-neutral-800 dark:text-neutral-700">
                                     <strong>Hint:</strong> {currentQuestion.hint}
                                 </p>
                             </motion.div>
@@ -655,7 +655,7 @@ export default function Quiz({
                                                     "flex items-center space-x-3 p-3 rounded-lg border-2 transition-colors cursor-pointer",
                                                     !showResult && !isSelected && "border-border hover:border-primary/50 hover:bg-accent",
                                                     !showResult && isSelected && "border-primary bg-primary/10",
-                                                    isCorrect && "border-amber-500 bg-amber-50 dark:bg-amber-900/20",
+                                                    isCorrect && "border-neutral-900 bg-neutral-50 dark:bg-neutral-800/20",
                                                     isWrong && "border-red-500 bg-red-50 dark:bg-red-900/20"
                                                 )}
                                             >
@@ -664,7 +664,7 @@ export default function Quiz({
                                                     "w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium",
                                                     !showResult && !isSelected && "bg-muted",
                                                     !showResult && isSelected && "bg-primary text-primary-foreground",
-                                                    isCorrect && "bg-amber-500 text-white",
+                                                    isCorrect && "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900",
                                                     isWrong && "bg-red-500 text-white"
                                                 )}>
                                                     {
@@ -702,7 +702,7 @@ export default function Quiz({
                                                     "flex items-center space-x-3 p-3 rounded-lg border-2 transition-colors cursor-pointer",
                                                     !showResult && !isSelected && "border-border hover:border-primary/50 hover:bg-accent",
                                                     !showResult && isSelected && "border-primary bg-primary/10",
-                                                    isCorrect && "border-amber-500 bg-amber-50 dark:bg-amber-900/20",
+                                                    isCorrect && "border-neutral-900 bg-neutral-50 dark:bg-neutral-800/20",
                                                     isWrong && "border-red-500 bg-red-50 dark:bg-red-900/20"
                                                 )}
                                             >
@@ -716,7 +716,7 @@ export default function Quiz({
                                                     "w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium",
                                                     !showResult && !isSelected && "bg-muted",
                                                     !showResult && isSelected && "bg-primary text-primary-foreground",
-                                                    isCorrect && "bg-amber-500 text-white",
+                                                    isCorrect && "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900",
                                                     isWrong && "bg-red-500 text-white"
                                                 )}>
                                                     {
@@ -747,8 +747,8 @@ export default function Quiz({
                                 className={cn(
                                     "mt-4 p-4 rounded-lg border",
                                     lastResult.isCorrect
-                                        ? "bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800"
-                                        : "bg-orange-50 dark:bg-orange-900/20 border-orange-200 dark:border-orange-800"
+                                        ? "bg-neutral-50 dark:bg-neutral-800/20 border-neutral-200 dark:border-neutral-800"
+                                        : "bg-neutral-50 dark:bg-neutral-800/20 border-neutral-200 dark:border-neutral-800"
                                 )}
                             >
                                 <p className="text-sm font-medium mb-1">
@@ -786,7 +786,7 @@ export default function Quiz({
                                     // Last question: single "Submit Quiz" button that saves answer and triggers completion
                                     <Button
                                         variant="default"
-                                        className="bg-amber-600 hover:bg-amber-700"
+                                        className="bg-neutral-800 hover:bg-neutral-700"
                                         disabled={
                                             isSubmitting ||
                                             !getCurrentAnswer() ||
@@ -864,16 +864,16 @@ export default function Quiz({
                                             "w-8 h-8 rounded-full text-xs font-medium transition-all relative",
                                             !isAnswered && !isCurrent && "bg-muted hover:bg-muted/80",
                                             isCurrent && "bg-primary text-primary-foreground ring-2 ring-primary ring-offset-2",
-                                            isAnswered && isCorrectResult && "bg-amber-500 text-white",
+                                            isAnswered && isCorrectResult && "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900",
                                             isAnswered && !isCorrectResult && isCorrectResult !== undefined && "bg-red-500 text-white",
-                                            isAnswered && isCorrectResult === undefined && "bg-orange-500 text-white",
+                                            isAnswered && isCorrectResult === undefined && "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900",
                                             (!allowQuestionNavigation && mode !== "practice") && "cursor-default"
                                         )}
                                     >
                                         {idx + 1}
                                         {
                                             isFlagged && (
-                                                <span className="absolute -top-1 -right-1 w-2 h-2 bg-orange-500 rounded-full" />
+                                                <span className="absolute -top-1 -right-1 w-2 h-2 bg-neutral-900 rounded-full" />
                                             )
                                         }
                                     </button>
@@ -893,7 +893,7 @@ export default function Quiz({
                             Are you sure you want to submit your quiz? You have answered {answeredCount} out of {questions.length} questions.
                             {
                                 answeredCount < questions.length && (
-                                    <span className="block mt-2 text-amber-600">
+                                    <span className="block mt-2 text-neutral-800">
                                         You still have {questions.length - answeredCount} unanswered questions.
                                     </span>
                                 )
@@ -905,7 +905,7 @@ export default function Quiz({
                             <RotateCcw className="h-4 w-4 mr-2" />
                             Continue Quiz
                         </Button>
-                        <Button onClick={handleSubmitConfirm} className="bg-amber-600 hover:bg-amber-700">
+                        <Button onClick={handleSubmitConfirm} className="bg-neutral-800 hover:bg-neutral-700">
                             Submit
                         </Button>
                     </DialogFooter>
@@ -917,7 +917,7 @@ export default function Quiz({
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle className="flex items-center gap-2">
-                            <AlertTriangle className="h-5 w-5 text-amber-500" />
+                            <AlertTriangle className="h-5 w-5 text-neutral-900" />
                             Leave Quiz?
                         </DialogTitle>
                         <DialogDescription>

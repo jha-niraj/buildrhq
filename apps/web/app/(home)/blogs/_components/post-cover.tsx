@@ -11,13 +11,13 @@ interface Props {
 // Per-category accent so covers are visually distinguishable at a glance while staying
 // inside the brand's warm neutral palette.
 const ACCENTS: Record<BlogCategory, string> = {
-    'interview-prep': 'from-orange-500/25 via-amber-500/10',
-    'career': 'from-amber-500/25 via-orange-500/10',
-    'resume': 'from-rose-500/20 via-orange-500/10',
+    'interview-prep': 'from-neutral-900/25 via-neutral-900/10',
+    'career': 'from-neutral-900/25 via-neutral-900/10',
+    'resume': 'from-rose-500/20 via-neutral-900/10',
     'dsa': 'from-emerald-500/20 via-teal-500/10',
-    'portfolio': 'from-orange-400/25 via-rose-500/10',
+    'portfolio': 'from-neutral-800/25 via-rose-500/10',
     'open-source': 'from-teal-500/20 via-emerald-500/10',
-    'ai-tools': 'from-amber-400/25 via-orange-500/10',
+    'ai-tools': 'from-neutral-800/25 via-neutral-900/10',
 }
 
 /**
@@ -55,7 +55,7 @@ export function PostCover({ title, category, heroImage, priority = false }: Prop
                 }}
             />
             <div className="relative w-full p-8 sm:p-12">
-                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-orange-400 sm:text-[11px]">
+                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-neutral-800 sm:text-[11px]">
                     BuildrHQ · {BLOG_CATEGORIES[category]}
                 </p>
                 <p className="max-w-[85%] text-xl font-bold leading-[1.15] tracking-tight text-white sm:text-3xl">

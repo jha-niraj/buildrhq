@@ -12,7 +12,7 @@ const adminControlConfig = {
     name: "Admin Control",
     icon: Shield,
     color: "bg-red-500",
-    bgColor: "bg-gradient-to-br from-red-500 to-orange-500",
+    bgColor: "bg-gradient-to-br from-red-500 to-neutral-900",
     textColor: "text-red-600 dark:text-red-400",
     overviewHref: "/admins",
     navItems: [
@@ -65,7 +65,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
             <main className={cn(
                 "h-screen transition-all duration-300",
                 "lg:ml-[17rem] p-3",
-                isCollapsed && "lg:ml-[6.25rem]"
+                isCollapsed && "lg:ml-[106px]"
             )}>
                 <div className="h-screen bg-white dark:bg-neutral-950 lg:rounded-l-3xl lg:border-l border-neutral-200 dark:border-neutral-800 shadow-xl overflow-hidden">
                     <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-700 scrollbar-track-transparent">

@@ -13,6 +13,7 @@ import {
     creditTransactions,
     subTransactions,
     earnings,
+    withTransaction
 } from '@repo/db'
 import { eq, and, desc, asc, sql } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
@@ -262,7 +263,7 @@ export async function copyPathfinderGoal(goalId: string) {
             }
         })()
 
-        const result = await db.transaction(async (tx) => {
+        const result = await withTransaction(async (tx) => {
             const [newGoal] = await tx.insert(pathfinderGoals).values({
                 userId: session.user!.id!,
                 title: source.title,

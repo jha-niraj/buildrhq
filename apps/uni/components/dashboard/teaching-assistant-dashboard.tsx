@@ -44,7 +44,7 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
             </div>
             {change && (
                 <div className={`mt-3 text-xs font-medium ${
-                    changeType === "positive" ? "text-amber-600 dark:text-amber-400" :
+                    changeType === "positive" ? "text-neutral-800 dark:text-neutral-100" :
                     changeType === "negative" ? "text-red-600 dark:text-red-400" :
                     "text-neutral-500"
                 }`}>
@@ -171,7 +171,7 @@ export function TeachingAssistantDashboard({ userName, stats }: TeachingAssistan
                         </p>
                         <div className="space-y-3">
                             <div className="flex items-center gap-3 text-sm">
-                                <CheckCircle2 className="w-4 h-4 text-amber-500" />
+                                <CheckCircle2 className="w-4 h-4 text-neutral-900" />
                                 <span className="text-neutral-700 dark:text-neutral-300">Profile completed</span>
                             </div>
                             <div className="flex items-center gap-3 text-sm text-neutral-500">

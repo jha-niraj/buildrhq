@@ -169,7 +169,7 @@ export default function OnboardingPage() {
                         <Button variant="outline" onClick={() => setShowExitDialog(false)} className="cursor-pointer border-neutral-200 dark:border-neutral-800">
                             Continue Setup
                         </Button>
-                        <Button onClick={handleLogout} disabled={loggingOut} className="cursor-pointer bg-orange-600 hover:bg-orange-700 text-white">
+                        <Button onClick={handleLogout} disabled={loggingOut} className="cursor-pointer bg-neutral-800 hover:bg-neutral-700 text-white">
                             {
                                 loggingOut ? (
                                     <>
@@ -193,11 +193,11 @@ export default function OnboardingPage() {
                         onClick={() => setShowExitDialog(true)}
                         className="flex items-center gap-2 hover:opacity-80 transition-opacity"
                     >
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-600 to-orange-600 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neutral-800 to-neutral-800 flex items-center justify-center">
                             <GraduationCap className="w-4 h-4 text-white" />
                         </div>
                         <span className="text-lg font-bold text-neutral-900 dark:text-white">
-                            Coder&apos;z <span className="text-orange-600 font-mono font-normal text-sm">UNIVERSITY</span>
+                            Coder&apos;z <span className="text-neutral-800 font-mono font-normal text-sm">UNIVERSITY</span>
                         </span>
                     </button>
                     <div className="flex items-center gap-4">
@@ -234,7 +234,7 @@ export default function OnboardingPage() {
                         className="mb-8"
                     >
                         <div className="text-center mb-8">
-                            <span className="text-[10px] font-mono uppercase tracking-widest text-orange-600 mb-2 block">
+                            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-800 mb-2 block">
                                 University Portal Setup
                             </span>
                             <h1 className="text-3xl font-bold text-neutral-900 dark:text-white tracking-tight">
@@ -248,9 +248,9 @@ export default function OnboardingPage() {
                                         <div className={cn(
                                             "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all border",
                                             idx < currentStep
-                                                ? 'bg-orange-600 text-white border-transparent'
+                                                ? 'bg-neutral-800 text-white border-transparent'
                                                 : idx === currentStep
-                                                    ? 'bg-white dark:bg-neutral-950 text-orange-600 border-orange-600'
+                                                    ? 'bg-white dark:bg-neutral-950 text-neutral-800 border-neutral-800'
                                                     : 'bg-neutral-100 dark:bg-neutral-900 text-neutral-400 border-neutral-200 dark:border-neutral-800'
                                         )}>
                                             {idx < currentStep ? <CheckCircle2 className="w-4 h-4" /> : idx + 1}
@@ -267,7 +267,7 @@ export default function OnboardingPage() {
                                             idx < steps.length - 1 && (
                                                 <div className={cn(
                                                     "w-8 h-px",
-                                                    idx < currentStep ? 'bg-orange-600' : 'bg-neutral-200 dark:bg-neutral-800'
+                                                    idx < currentStep ? 'bg-neutral-800' : 'bg-neutral-200 dark:bg-neutral-800'
                                                 )} />
                                             )
                                         }
@@ -363,7 +363,7 @@ export default function OnboardingPage() {
                                                                         <span>{role.label}</span>
                                                                         {
                                                                             role.isHead && (
-                                                                                <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+                                                                                <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100">
                                                                                     Admin
                                                                                 </span>
                                                                             )
@@ -437,16 +437,16 @@ export default function OnboardingPage() {
                                                                 className={cn(
                                                                     "p-4 rounded-xl border-2 transition-all text-left cursor-pointer",
                                                                     isSelected
-                                                                        ? 'border-orange-600 bg-orange-600 text-white'
-                                                                        : 'border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 hover:border-orange-400 dark:hover:border-orange-700'
+                                                                        ? 'border-neutral-800 bg-neutral-800 text-white'
+                                                                        : 'border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 hover:border-neutral-800 dark:hover:border-neutral-700'
                                                                 )}
                                                             >
                                                                 <div className="flex items-center gap-3">
                                                                     <div className={cn(
                                                                         "p-2 rounded-lg",
-                                                                        isSelected ? 'bg-white/20' : 'bg-orange-100 dark:bg-orange-900/30'
+                                                                        isSelected ? 'bg-white/20' : 'bg-neutral-100 dark:bg-neutral-800/30'
                                                                     )}>
-                                                                        <BookOpen className={cn("w-4 h-4", isSelected ? "text-white" : "text-orange-600")} />
+                                                                        <BookOpen className={cn("w-4 h-4", isSelected ? "text-white" : "text-neutral-800")} />
                                                                     </div>
                                                                     <span className="font-medium">{dept.label}</span>
                                                                     {isSelected && <CheckCircle2 className="w-4 h-4 ml-auto" />}
@@ -504,27 +504,27 @@ export default function OnboardingPage() {
                                             </div>
 
                                             {/* Summary */}
-                                            <div className="mt-8 p-6 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
-                                                <h3 className="font-bold text-orange-800 dark:text-orange-300 mb-4 flex items-center gap-2">
+                                            <div className="mt-8 p-6 rounded-xl bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800">
+                                                <h3 className="font-bold text-neutral-800 dark:text-neutral-100 mb-4 flex items-center gap-2">
                                                     <GraduationCap className="w-5 h-5" />
                                                     Quick Summary
                                                 </h3>
                                                 <div className="space-y-2 text-sm">
                                                     <div className="flex justify-between">
-                                                        <span className="text-orange-600/80">University:</span>
-                                                        <span className="font-medium text-orange-800 dark:text-orange-300">{universityName || '-'}</span>
+                                                        <span className="text-neutral-800/80">University:</span>
+                                                        <span className="font-medium text-neutral-800 dark:text-neutral-100">{universityName || '-'}</span>
                                                     </div>
                                                     <div className="flex justify-between">
-                                                        <span className="text-orange-600/80">Email Domain:</span>
-                                                        <span className="font-medium text-orange-800 dark:text-orange-300">{emailDomain || '-'}</span>
+                                                        <span className="text-neutral-800/80">Email Domain:</span>
+                                                        <span className="font-medium text-neutral-800 dark:text-neutral-100">{emailDomain || '-'}</span>
                                                     </div>
                                                     <div className="flex justify-between">
-                                                        <span className="text-orange-600/80">Departments:</span>
-                                                        <span className="font-medium text-orange-800 dark:text-orange-300">{selectedDepartments.length} selected</span>
+                                                        <span className="text-neutral-800/80">Departments:</span>
+                                                        <span className="font-medium text-neutral-800 dark:text-neutral-100">{selectedDepartments.length} selected</span>
                                                     </div>
                                                     <div className="flex justify-between">
-                                                        <span className="text-orange-600/80">Your Role:</span>
-                                                        <span className="font-medium text-orange-800 dark:text-orange-300">
+                                                        <span className="text-neutral-800/80">Your Role:</span>
+                                                        <span className="font-medium text-neutral-800 dark:text-neutral-100">
                                                             {ROLE_OPTIONS.find(r => r.value === userRole)?.label || '-'}
                                                         </span>
                                                     </div>
@@ -549,7 +549,7 @@ export default function OnboardingPage() {
                                         <Button
                                             onClick={() => setCurrentStep(prev => prev + 1)}
                                             disabled={!canProceed()}
-                                            className="cursor-pointer h-12 px-6 rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white"
+                                            className="cursor-pointer h-12 px-6 rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white"
                                         >
                                             Next
                                             <ArrowRight className="w-4 h-4 ml-2" />
@@ -558,7 +558,7 @@ export default function OnboardingPage() {
                                         <Button
                                             onClick={handleComplete}
                                             disabled={loading || !canProceed()}
-                                            className="cursor-pointer h-12 px-6 rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white"
+                                            className="cursor-pointer h-12 px-6 rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white"
                                         >
                                             {
                                                 loading ? (

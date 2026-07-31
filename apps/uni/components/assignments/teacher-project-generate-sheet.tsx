@@ -38,19 +38,19 @@ interface TeacherProjectGenerateSheetProps {
 }
 
 const GENERATION_TYPES = [
-    { value: 'FULL_STACK', label: 'Full Stack', icon: Code2, color: 'from-orange-500 to-amber-500', description: 'Complete web application' },
-    { value: 'FRONTEND', label: 'Frontend', icon: Brain, color: 'from-orange-500 to-pink-500', description: 'UI-focused project' },
-    { value: 'APP', label: 'Mobile App', icon: Rocket, color: 'from-amber-500 to-amber-500', description: 'iOS & Android apps' },
-    { value: 'PROGRAMS', label: 'Programs', icon: Rocket, color: 'from-orange-500 to-red-500', description: 'CLI tools & scripts' },
-    { value: 'AI/ML', label: 'AI/ML', icon: Sparkles, color: 'from-amber-500 to-amber-500', description: 'AI & Machine Learning' },
-    { value: 'AI_AGENT', label: 'AI Agent', icon: Zap, color: 'from-yellow-500 to-amber-500', description: 'Autonomous AI systems' },
+    { value: 'FULL_STACK', label: 'Full Stack', icon: Code2, color: 'from-neutral-900 to-neutral-900', description: 'Complete web application' },
+    { value: 'FRONTEND', label: 'Frontend', icon: Brain, color: 'from-neutral-900 to-pink-500', description: 'UI-focused project' },
+    { value: 'APP', label: 'Mobile App', icon: Rocket, color: 'from-neutral-900 to-neutral-900', description: 'iOS & Android apps' },
+    { value: 'PROGRAMS', label: 'Programs', icon: Rocket, color: 'from-neutral-900 to-red-500', description: 'CLI tools & scripts' },
+    { value: 'AI/ML', label: 'AI/ML', icon: Sparkles, color: 'from-neutral-900 to-neutral-900', description: 'AI & Machine Learning' },
+    { value: 'AI_AGENT', label: 'AI Agent', icon: Zap, color: 'from-neutral-900 to-neutral-900', description: 'Autonomous AI systems' },
     { value: 'OTHER', label: 'Other', icon: Code2, color: 'from-gray-500 to-slate-500', description: 'Custom project type' },
 ] as const
 
 const DIFFICULTY_LEVELS = [
-    { value: 'BEGINNER', label: 'Beginner', desc: '0-6 months experience', color: 'text-amber-500 bg-amber-100 dark:bg-amber-900/30' },
-    { value: 'INTERMEDIATE', label: 'Intermediate', desc: '6-18 months experience', color: 'text-orange-500 bg-orange-100 dark:bg-orange-900/30' },
-    { value: 'ADVANCED', label: 'Advanced', desc: '18+ months experience', color: 'text-orange-500 bg-orange-100 dark:bg-orange-900/30' },
+    { value: 'BEGINNER', label: 'Beginner', desc: '0-6 months experience', color: 'text-neutral-900 bg-neutral-100 dark:bg-neutral-800/30' },
+    { value: 'INTERMEDIATE', label: 'Intermediate', desc: '6-18 months experience', color: 'text-neutral-900 bg-neutral-100 dark:bg-neutral-800/30' },
+    { value: 'ADVANCED', label: 'Advanced', desc: '18+ months experience', color: 'text-neutral-900 bg-neutral-100 dark:bg-neutral-800/30' },
 ] as const
 
 const FRONTEND_STACKS = ['React', 'Next.js', 'Vue', 'Angular', 'HTML/CSS/JS', 'Svelte']
@@ -352,7 +352,7 @@ export default function TeacherProjectGenerateSheet({
             <SheetTrigger asChild>
                 {
                     trigger || (
-                        <Button className="bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white rounded-xl">
+                        <Button className="bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white rounded-xl">
                             <Sparkles className="w-4 h-4 mr-2" />
                             Create Project Assignment
                         </Button>
@@ -363,7 +363,7 @@ export default function TeacherProjectGenerateSheet({
                 <div className="max-w-3xl mx-auto">
                     <SheetHeader className="mb-6">
                         <SheetTitle className="text-2xl flex items-center gap-3">
-                            <div className="p-2 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl">
+                            <div className="p-2 bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-xl">
                                 <GraduationCap className="w-6 h-6 text-white" />
                             </div>
                             Create Project Assignment
@@ -383,19 +383,19 @@ export default function TeacherProjectGenerateSheet({
                                     className="flex flex-col items-center justify-center py-16"
                                 >
                                     <div className="relative mb-8">
-                                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500 via-orange-500 to-orange-500 blur-2xl opacity-30 animate-pulse" />
+                                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-neutral-900 via-neutral-900 to-neutral-900 blur-2xl opacity-30 animate-pulse" />
                                         <motion.div
                                             animate={{ rotate: 360 }}
                                             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                                            className="relative w-28 h-28 rounded-full bg-gradient-to-br from-orange-500 via-orange-600 to-orange-500 flex items-center justify-center"
+                                            className="relative w-28 h-28 rounded-full bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900 flex items-center justify-center"
                                         >
                                             <div className="w-24 h-24 rounded-full bg-white dark:bg-neutral-950 flex items-center justify-center">
                                                 <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
                                                     {
                                                         jobStatus === 'completed' ? (
-                                                            <Check className="w-10 h-10 text-amber-500" />
+                                                            <Check className="w-10 h-10 text-neutral-900" />
                                                         ) : (
-                                                            <Sparkles className="w-10 h-10 text-orange-500" />
+                                                            <Sparkles className="w-10 h-10 text-neutral-900" />
                                                         )
                                                     }
                                                 </motion.div>
@@ -431,9 +431,9 @@ export default function TeacherProjectGenerateSheet({
                                                 >
                                                     {
                                                         progressPercent >= step.threshold + 10 ? (
-                                                            <Check className="w-4 h-4 text-amber-500" />
+                                                            <Check className="w-4 h-4 text-neutral-900" />
                                                         ) : progressPercent >= step.threshold ? (
-                                                            <Loader2 className="w-4 h-4 text-orange-500 animate-spin" />
+                                                            <Loader2 className="w-4 h-4 text-neutral-900 animate-spin" />
                                                         ) : (
                                                             <div className="w-4 h-4 rounded-full border-2 border-neutral-300 dark:border-neutral-700" />
                                                         )
@@ -457,8 +457,8 @@ export default function TeacherProjectGenerateSheet({
                                                     <div key={step.id} className="flex-1 text-center">
                                                         <div className={cn(
                                                             "w-8 h-8 rounded-full mx-auto mb-1 flex items-center justify-center text-sm font-medium transition-all",
-                                                            index < currentStep ? "bg-amber-500 text-white" :
-                                                                index === currentStep ? "bg-orange-500 text-white" :
+                                                            index < currentStep ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900" :
+                                                                index === currentStep ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900" :
                                                                     "bg-neutral-200 dark:bg-neutral-700 text-neutral-500"
                                                         )}>
                                                             {index < currentStep ? <Check className="w-4 h-4" /> : index + 1}
@@ -532,7 +532,7 @@ export default function TeacherProjectGenerateSheet({
                                                                                 className={cn(
                                                                                     "p-3 rounded-xl border-2 transition-all text-left",
                                                                                     isSelected
-                                                                                        ? "border-orange-500 bg-orange-50 dark:bg-orange-950"
+                                                                                        ? "border-neutral-900 bg-neutral-50 dark:bg-neutral-900"
                                                                                         : "border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 bg-white dark:bg-neutral-900"
                                                                                 )}
                                                                             >
@@ -560,7 +560,7 @@ export default function TeacherProjectGenerateSheet({
                                                                                 className={cn(
                                                                                     "p-4 rounded-xl border-2 transition-all text-center",
                                                                                     isSelected
-                                                                                        ? "border-orange-500 bg-orange-50 dark:bg-orange-950"
+                                                                                        ? "border-neutral-900 bg-neutral-50 dark:bg-neutral-900"
                                                                                         : "border-neutral-200 dark:border-neutral-700 hover:border-neutral-300 bg-white dark:bg-neutral-900"
                                                                                 )}
                                                                             >
@@ -692,7 +692,7 @@ export default function TeacherProjectGenerateSheet({
                                                             {
                                                                 loadingClasses ? (
                                                                     <div className="flex items-center justify-center py-8">
-                                                                        <Loader2 className="w-6 h-6 animate-spin text-orange-500" />
+                                                                        <Loader2 className="w-6 h-6 animate-spin text-neutral-900" />
                                                                     </div>
                                                                 ) : classes.length === 0 ? (
                                                                     <div className="text-center py-8 text-neutral-500">
@@ -712,7 +712,7 @@ export default function TeacherProjectGenerateSheet({
                                                                                         className={cn(
                                                                                             "p-3 rounded-lg border-2 transition-all text-left flex items-center gap-3",
                                                                                             isSelected
-                                                                                                ? "border-orange-500 bg-orange-50 dark:bg-orange-950"
+                                                                                                ? "border-neutral-900 bg-neutral-50 dark:bg-neutral-900"
                                                                                                 : "border-neutral-200 dark:border-neutral-700 hover:border-neutral-300"
                                                                                         )}
                                                                                     >
@@ -732,7 +732,7 @@ export default function TeacherProjectGenerateSheet({
                                                             }
                                                             {
                                                                 formData.classIds.length > 0 && (
-                                                                    <p className="text-sm text-orange-600">{formData.classIds.length} class(es) selected</p>
+                                                                    <p className="text-sm text-neutral-800">{formData.classIds.length} class(es) selected</p>
                                                                 )
                                                             }
                                                         </div>
@@ -792,7 +792,7 @@ export default function TeacherProjectGenerateSheet({
                                         <Button
                                             onClick={nextStep}
                                             disabled={!canProceed()}
-                                            className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700"
+                                            className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700"
                                         >
                                             {
                                                 currentStep === steps.length - 1 ? (

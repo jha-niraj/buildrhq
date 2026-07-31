@@ -130,7 +130,7 @@ export function AssignGoalSheet({ open, onOpenChange, goalId, groups, onAssign }
                                             </div>
                                             {
                                                 selectedGroupId === group.id && (
-                                                    <Check className="w-4 h-4 text-amber-500" />
+                                                    <Check className="w-4 h-4 text-neutral-900" />
                                                 )
                                             }
                                         </button>

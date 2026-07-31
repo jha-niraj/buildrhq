@@ -44,15 +44,15 @@ interface CandidateDetailSheetProps {
 }
 
 const statusColors: Record<string, string> = {
-    INTERESTED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    PREPARING: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
-    APPLIED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    UNDER_REVIEW: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    SHORTLISTED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-    INTERVIEW_SCHEDULED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
-    INTERVIEWED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-    OFFER_EXTENDED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-    HIRED: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+    INTERESTED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    PREPARING: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    APPLIED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    UNDER_REVIEW: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    SHORTLISTED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    INTERVIEW_SCHEDULED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    INTERVIEWED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    OFFER_EXTENDED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+    HIRED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
     REJECTED: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
     WITHDRAWN: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-400",
 }
@@ -187,15 +187,15 @@ export function CandidateDetailSheet({ candidate, onClose }: CandidateDetailShee
 
                 {
                     candidate.matchScore && (
-                        <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+                        <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                    <TrendingUp className="w-5 h-5 text-amber-600 dark:text-amber-400" />
-                                    <span className="font-medium text-amber-700 dark:text-amber-300">
+                                    <TrendingUp className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
+                                    <span className="font-medium text-neutral-700 dark:text-neutral-100">
                                         Profile Match Score
                                     </span>
                                 </div>
-                                <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">
+                                <span className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">
                                     {candidate.matchScore}%
                                 </span>
                             </div>
@@ -206,7 +206,7 @@ export function CandidateDetailSheet({ candidate, onClose }: CandidateDetailShee
                     candidate.coverLetter && (
                         <div>
                             <h4 className="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                <FileText className="w-5 h-5 text-orange-500" />
+                                <FileText className="w-5 h-5 text-neutral-900" />
                                 Cover Letter
                             </h4>
                             <p className="text-neutral-600 dark:text-neutral-400 whitespace-pre-line bg-neutral-50 dark:bg-neutral-800 p-4 rounded-xl">
@@ -219,7 +219,7 @@ export function CandidateDetailSheet({ candidate, onClose }: CandidateDetailShee
                     candidate.resumeUrl && (
                         <div>
                             <h4 className="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                <FileText className="w-5 h-5 text-orange-500" />
+                                <FileText className="w-5 h-5 text-neutral-900" />
                                 Resume
                             </h4>
                             <Link

@@ -296,7 +296,7 @@ export default function KnowMeLandingPage({ isLoggedIn, profile }: KnowMeLanding
                                         disabled={isLoading}
                                         className={cn(
                                             "h-14 px-8 text-base rounded-2xl font-bold transition-all duration-300",
-                                            "bg-neutral-900 text-white hover:bg-neutral-800 shadow-xl shadow-neutral-900/10",
+                                            "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200 shadow-xl shadow-neutral-900/10",
                                             "dark:bg-white dark:text-black dark:hover:bg-neutral-200"
                                         )}
                                     >

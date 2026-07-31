@@ -71,15 +71,15 @@ function UniversityCard({ university, onApprove, onReject, isLoading }: Universi
             >
                 <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center">
-                            <GraduationCap className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                        <div className="w-12 h-12 rounded-xl bg-neutral-50 dark:bg-neutral-800/20 flex items-center justify-center">
+                            <GraduationCap className="w-6 h-6 text-neutral-800 dark:text-neutral-100" />
                         </div>
                         <div>
                             <h3 className="font-semibold text-neutral-900 dark:text-white">{university.name}</h3>
                             <p className="text-sm text-neutral-500">{location || "Location not specified"}</p>
                         </div>
                     </div>
-                    <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 text-xs font-medium">
+                    <span className="flex items-center gap-1 px-2 py-1 rounded-full bg-neutral-50 dark:bg-neutral-800/20 text-neutral-800 dark:text-neutral-100 text-xs font-medium">
                         <Clock className="w-3 h-3" />
                         Pending
                     </span>
@@ -137,7 +137,7 @@ function UniversityCard({ university, onApprove, onReject, isLoading }: Universi
                             size="sm"
                             onClick={() => onApprove(university.id)}
                             disabled={isLoading}
-                            className="text-xs bg-orange-600 hover:bg-orange-700"
+                            className="text-xs bg-neutral-800 hover:bg-neutral-700"
                         >
                             {
                                 isLoading ? (
@@ -155,7 +155,7 @@ function UniversityCard({ university, onApprove, onReject, isLoading }: Universi
                 <DialogContent className="max-w-lg">
                     <DialogHeader>
                         <DialogTitle className="flex items-center gap-2">
-                            <GraduationCap className="w-5 h-5 text-orange-600" />
+                            <GraduationCap className="w-5 h-5 text-neutral-800" />
                             {university.name}
                         </DialogTitle>
                         <DialogDescription>University verification details</DialogDescription>
@@ -166,7 +166,7 @@ function UniversityCard({ university, onApprove, onReject, isLoading }: Universi
                                 <p className="text-xs text-neutral-500 uppercase tracking-wider mb-1">Website</p>
                                 {
                                     university.website ? (
-                                        <a href={university.website} target="_blank" rel="noopener noreferrer" className="text-sm text-orange-600 hover:underline flex items-center gap-1">
+                                        <a href={university.website} target="_blank" rel="noopener noreferrer" className="text-sm text-neutral-800 hover:underline flex items-center gap-1">
                                             {university.website} <ExternalLink className="w-3 h-3" />
                                         </a>
                                     ) : (
@@ -333,7 +333,7 @@ export default function UniversityVerificationPage() {
         return (
             <div className="p-6 lg:p-8 flex items-center justify-center min-h-[400px]">
                 <div className="text-center">
-                    <Loader2 className="w-12 h-12 animate-spin text-orange-400 mx-auto mb-4" />
+                    <Loader2 className="w-12 h-12 animate-spin text-neutral-800 mx-auto mb-4" />
                     <p className="text-neutral-500">Loading verification queue...</p>
                 </div>
             </div>
@@ -348,7 +348,7 @@ export default function UniversityVerificationPage() {
                     Back to University Platform
                 </Link>
                 <div className="flex items-center gap-3">
-                    <div className="w-3 h-8 rounded-full bg-orange-500" />
+                    <div className="w-3 h-8 rounded-full bg-neutral-900" />
                     <div>
                         <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">
                             University Verification
@@ -360,19 +360,19 @@ export default function UniversityVerificationPage() {
                 </div>
             </div>
             <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800">
-                    <div className="flex items-center gap-2 text-amber-600 dark:text-amber-400">
+                <div className="bg-neutral-50 dark:bg-neutral-800/20 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800">
+                    <div className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
                         <Clock className="w-5 h-5" />
                         <span className="text-2xl font-bold">{stats.pending}</span>
                     </div>
-                    <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">Pending Review</p>
+                    <p className="text-sm text-neutral-700 dark:text-neutral-100 mt-1">Pending Review</p>
                 </div>
-                <div className="bg-orange-50 dark:bg-orange-900/20 rounded-xl p-4 border border-orange-200 dark:border-orange-800">
-                    <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
+                <div className="bg-neutral-50 dark:bg-neutral-800/20 rounded-xl p-4 border border-neutral-200 dark:border-neutral-800">
+                    <div className="flex items-center gap-2 text-neutral-800 dark:text-neutral-100">
                         <CheckCircle className="w-5 h-5" />
                         <span className="text-2xl font-bold">{stats.verified}</span>
                     </div>
-                    <p className="text-sm text-orange-700 dark:text-orange-300 mt-1">Approved</p>
+                    <p className="text-sm text-neutral-700 dark:text-neutral-100 mt-1">Approved</p>
                 </div>
                 <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-4 border border-red-200 dark:border-red-800">
                     <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
@@ -399,7 +399,7 @@ export default function UniversityVerificationPage() {
                     </div>
                 ) : (
                     <div className="text-center py-16 bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800">
-                        <CheckCircle className="w-12 h-12 text-orange-500 mx-auto mb-4" />
+                        <CheckCircle className="w-12 h-12 text-neutral-900 mx-auto mb-4" />
                         <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2">
                             All caught up!
                         </h3>

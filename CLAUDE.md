@@ -1,0 +1,58 @@
+# BuildrHQ — working agreement
+
+Turborepo. `apps/{main,web,uni,hiring,admin,coderzworker,generationworker}` and
+`packages/{auth,db,email,ui,eslint-config,typescript-config}`.
+
+## Verification: what to run, and when
+
+**Do not run `eslint`, `pnpm lint`, or any production build (`next build`,
+`turbo build`) unless explicitly asked.** Niraj runs those himself, normally once
+at the end of a feature, and will say so. Running them mid-feature costs minutes
+per pass and re-checks code the current task never touched.
+
+**`tsc --noEmit` is the exception — run it freely.** It catches problems in the
+code just written, so it is part of building the feature rather than a final
+gate.
+
+Scope every check to the app or package being edited:
+
+```bash
+cd apps/main && npx tsc --noEmit     # yes
+npx turbo run check-types lint       # no — ~3 min across 8 packages
+```
+
+Widen only when a change genuinely crosses package boundaries. Editing
+`packages/{ui,db,auth,email}` does affect consumers, so typecheck the directly
+affected apps in that case.
+
+## Database
+
+`db` from `@repo/db` is the **neon-http** driver, which has no transaction
+support — `db.transaction()` throws at runtime, and the surrounding try/catch
+usually swallows it into `{ success: false }`. For atomic multi-statement writes
+use `withTransaction(async (tx) => …)`; for a fixed set of independent
+statements use `db.batch([...])`. Never introduce `db.transaction(`.
+
+Migrations: `pnpm db:generate` then `pnpm db:migrate` from `packages/db`. Never
+`db:push`. Report what a generated migration contains before applying it.
+
+## App shell (apps/main)
+
+`app/(main)/layout.tsx` floats three rounded cards on a neutral backdrop: the
+sidebar, the page, and the AI rail. On `lg+` the AI panel is a real docked
+column that narrows the page — **never** a Sheet; below `lg` the same component
+mounts inside a Sheet.
+
+The page card sets `--page-h: calc(100vh - 1rem)`, and a rule in
+`packages/ui/src/styles/globals.css` retargets `h-screen` / `min-h-screen` inside
+`[data-app-page]` at it, so full-height pages need no per-page change.
+
+## Conventions
+
+- Navigate with `<Link>`, not `router.push`, wherever a link is possible.
+- Every route gets a `loading.tsx` whose skeleton matches the real layout. A
+  skeleton that does not match is worse than none — the page visibly reflows.
+- `catch (error: unknown)`, narrowed before use. Never `catch (error: any)`.
+- Shareable URLs come from `apps/main/lib/urls.ts`, never from
+  `window.location.origin` — that is the author's host, not the recipient's.
+- Palette is monochrome black/neutral. No orange, yellow, blue, indigo or purple.

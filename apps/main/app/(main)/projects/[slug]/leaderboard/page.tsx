@@ -121,8 +121,8 @@ export default async function ProjectLeaderboardPage({
                 <Card className="max-w-md w-full bg-gradient-to-b from-neutral-50 to-white dark:from-neutral-950 dark:to-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-2xl flex items-center justify-center p-4">
                     <CardHeader className="flex items-center justify-center">
                         <div className="flex items-center gap-3 mb-2">
-                            <div className="p-2 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg">
-                                <Lock className="w-6 h-6 text-yellow-600 dark:text-yellow-400" />
+                            <div className="p-2 bg-neutral-100 dark:bg-neutral-800/30 rounded-lg">
+                                <Lock className="w-6 h-6 text-neutral-800 dark:text-neutral-100" />
                             </div>
                             <CardTitle>Private Project</CardTitle>
                         </div>

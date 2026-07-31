@@ -9,6 +9,7 @@ import {
 	interviewPlanPurchase,
 	users,
 	creditTransactions,
+    withTransaction
 } from '@repo/db'
 import { eq, and, desc, sql } from 'drizzle-orm'
 import { getSession } from '@repo/auth'
@@ -578,7 +579,7 @@ export async function generateJobInterviewQuestions(
 		const slug = generateSlug(position);
 
 		// Save to database and handle credits in a transaction
-		const result = await db.transaction(async (tx) => {
+		const result = await withTransaction(async (tx) => {
 			// Deduct credits
 			await tx.update(users)
 				.set({ credits: sql`${users.credits} - ${requiredCredits}` })
@@ -2084,7 +2085,7 @@ export async function purchaseInterviewPlan(planId: string) {
 		// Generate new slug for the purchased plan
 		const newSlug = generateSlug(publicPlan.position);
 
-		const result = await db.transaction(async (tx) => {
+		const result = await withTransaction(async (tx) => {
 			// Deduct credits from buyer
 			await tx.update(users)
 				.set({ credits: sql`${users.credits} - ${cost}` })

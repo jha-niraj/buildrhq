@@ -282,13 +282,13 @@ export default function ProfilePage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden mb-8"
                 >
-                    <div className="relative bg-gradient-to-br from-orange-500 via-orange-500 to-orange-500 h-32">
+                    <div className="relative bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-900 h-32">
                         <div className="absolute inset-0 bg-black/10" />
                     </div>
                     <div className="relative px-6 pb-6 -mt-12">
                         <div className="flex flex-col sm:flex-row sm:items-end gap-4">
                             <div className="relative shrink-0">
-                                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-orange-100 to-orange-100 dark:from-orange-900/30 dark:to-orange-900/30 border-4 border-white dark:border-neutral-950 flex items-center justify-center overflow-hidden shadow-lg">
+                                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-neutral-100 to-neutral-100 dark:from-neutral-800/30 dark:to-neutral-800/30 border-4 border-white dark:border-neutral-950 flex items-center justify-center overflow-hidden shadow-lg">
                                     {
                                         userProfile?.image ? (
                                             <Image
@@ -299,13 +299,13 @@ export default function ProfilePage() {
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
-                                            <User className="w-10 h-10 text-orange-500 dark:text-orange-400" />
+                                            <User className="w-10 h-10 text-neutral-900 dark:text-neutral-100" />
                                         )
                                     }
                                 </div>
                                 {
                                     memberRole === "FOUNDER" && (
-                                        <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center border-2 border-white dark:border-neutral-950">
+                                        <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-neutral-900 flex items-center justify-center border-2 border-white dark:border-neutral-950">
                                             <Crown className="w-3 h-3 text-white" />
                                         </div>
                                     )
@@ -317,7 +317,7 @@ export default function ProfilePage() {
                                 </h2>
                                 <p className="text-neutral-500 truncate">{userProfile?.email}</p>
                                 <div className="flex flex-wrap items-center gap-2 mt-2">
-                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                         <Briefcase className="w-3 h-3" />
                                         {
                                             memberJobTitle === "OTHER" && memberJobTitleCustom
@@ -328,7 +328,7 @@ export default function ProfilePage() {
                                         }
                                     </span>
                                     <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${memberRole === "FOUNDER"
-                                        ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
+                                        ? "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100"
                                         : "bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
                                         }`}>
                                         <Shield className="w-3 h-3" />
@@ -464,7 +464,7 @@ export default function ProfilePage() {
                                             </Button>
                                             {
                                                 profileMessage && (
-                                                    <span className={`text-sm flex items-center gap-1 ${profileMessage.type === "success" ? "text-amber-500" : "text-red-500"
+                                                    <span className={`text-sm flex items-center gap-1 ${profileMessage.type === "success" ? "text-neutral-900" : "text-red-500"
                                                         }`}>
                                                         {
                                                             profileMessage.type === "success" ? (
@@ -552,7 +552,7 @@ export default function ProfilePage() {
                                     Company Details
                                     {
                                         isHead && (
-                                            <span className="ml-2 text-xs font-normal text-amber-500 flex items-center gap-1">
+                                            <span className="ml-2 text-xs font-normal text-neutral-900 flex items-center gap-1">
                                                 <Crown className="w-3 h-3" /> Admin
                                             </span>
                                         )
@@ -704,7 +704,7 @@ export default function ProfilePage() {
                                             </Button>
                                             {
                                                 companyMessage && (
-                                                    <span className={`text-sm flex items-center gap-1 ${companyMessage.type === "success" ? "text-amber-500" : "text-red-500"
+                                                    <span className={`text-sm flex items-center gap-1 ${companyMessage.type === "success" ? "text-neutral-900" : "text-red-500"
                                                         }`}>
                                                         {
                                                             companyMessage.type === "success" ? (
@@ -746,7 +746,7 @@ export default function ProfilePage() {
                                                                     href={companyDetails.website}
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
-                                                                    className="text-sm font-medium text-orange-600 dark:text-orange-400 hover:underline truncate block"
+                                                                    className="text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:underline truncate block"
                                                                 >
                                                                     {companyDetails.website}
                                                                 </Link>
@@ -802,10 +802,10 @@ export default function ProfilePage() {
                                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                         {
                                                             companyDetails?.address && (
-                                                                <div className="flex items-center gap-3 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/30">
-                                                                    <MapPin className="w-5 h-5 text-amber-500" />
+                                                                <div className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30">
+                                                                    <MapPin className="w-5 h-5 text-neutral-900" />
                                                                     <div className="min-w-0">
-                                                                        <p className="text-xs text-amber-600 dark:text-amber-400">Address</p>
+                                                                        <p className="text-xs text-neutral-800 dark:text-neutral-100">Address</p>
                                                                         <p className="text-sm font-medium text-neutral-900 dark:text-white">
                                                                             {companyDetails.address}
                                                                         </p>
@@ -815,10 +815,10 @@ export default function ProfilePage() {
                                                         }
                                                         {
                                                             (companyDetails?.city || companyDetails?.state) && (
-                                                                <div className="flex items-center gap-3 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/30">
-                                                                    <MapPin className="w-5 h-5 text-amber-500" />
+                                                                <div className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30">
+                                                                    <MapPin className="w-5 h-5 text-neutral-900" />
                                                                     <div className="min-w-0">
-                                                                        <p className="text-xs text-amber-600 dark:text-amber-400">City, State</p>
+                                                                        <p className="text-xs text-neutral-800 dark:text-neutral-100">City, State</p>
                                                                         <p className="text-sm font-medium text-neutral-900 dark:text-white">
                                                                             {[companyDetails?.city, companyDetails?.state].filter(Boolean).join(", ") || "Not set"}
                                                                         </p>
@@ -828,10 +828,10 @@ export default function ProfilePage() {
                                                         }
                                                         {
                                                             companyDetails?.country && (
-                                                                <div className="flex items-center gap-3 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/30">
-                                                                    <Globe className="w-5 h-5 text-amber-500" />
+                                                                <div className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30">
+                                                                    <Globe className="w-5 h-5 text-neutral-900" />
                                                                     <div className="min-w-0">
-                                                                        <p className="text-xs text-amber-600 dark:text-amber-400">Country</p>
+                                                                        <p className="text-xs text-neutral-800 dark:text-neutral-100">Country</p>
                                                                         <p className="text-sm font-medium text-neutral-900 dark:text-white">
                                                                             {companyDetails.country}
                                                                         </p>
@@ -841,10 +841,10 @@ export default function ProfilePage() {
                                                         }
                                                         {
                                                             companyDetails?.pincode && (
-                                                                <div className="flex items-center gap-3 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/30">
-                                                                    <MapPin className="w-5 h-5 text-amber-500" />
+                                                                <div className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30">
+                                                                    <MapPin className="w-5 h-5 text-neutral-900" />
                                                                     <div className="min-w-0">
-                                                                        <p className="text-xs text-amber-600 dark:text-amber-400">Pincode</p>
+                                                                        <p className="text-xs text-neutral-800 dark:text-neutral-100">Pincode</p>
                                                                         <p className="text-sm font-medium text-neutral-900 dark:text-white">
                                                                             {companyDetails.pincode}
                                                                         </p>
@@ -854,14 +854,14 @@ export default function ProfilePage() {
                                                         }
                                                     </div>
                                                     <div className="mt-4 grid grid-cols-2 gap-4">
-                                                        <div className="p-4 rounded-xl bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 border border-orange-100 dark:border-orange-800/30">
-                                                            <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
+                                                        <div className="p-4 rounded-xl bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 border border-neutral-100 dark:border-neutral-800/30">
+                                                            <p className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">
                                                                 {companyDetails?.memberCount || 0}
                                                             </p>
                                                             <p className="text-sm text-neutral-600 dark:text-neutral-400">Team Members</p>
                                                         </div>
-                                                        <div className="p-4 rounded-xl bg-gradient-to-br from-amber-50 to-amber-50 dark:from-amber-900/20 dark:to-amber-900/20 border border-amber-100 dark:border-amber-800/30">
-                                                            <p className="text-2xl font-bold text-amber-600 dark:text-amber-400">
+                                                        <div className="p-4 rounded-xl bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 border border-neutral-100 dark:border-neutral-800/30">
+                                                            <p className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">
                                                                 {companyDetails?.jobCount || 0}
                                                             </p>
                                                             <p className="text-sm text-neutral-600 dark:text-neutral-400">Active Jobs</p>
@@ -970,7 +970,7 @@ export default function ProfilePage() {
                                     </Button>
                                     {
                                         passwordMessage && (
-                                            <span className={`text-sm flex items-center gap-1 ${passwordMessage.type === "success" ? "text-amber-500" : "text-red-500"
+                                            <span className={`text-sm flex items-center gap-1 ${passwordMessage.type === "success" ? "text-neutral-900" : "text-red-500"
                                                 }`}>
                                                 {
                                                     passwordMessage.type === "success" ? (
@@ -1007,7 +1007,7 @@ export default function ProfilePage() {
                                             memberPermissions.map((permission) => (
                                                 <span
                                                     key={permission}
-                                                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
+                                                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-medium bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100"
                                                 >
                                                     <Check className="w-3 h-3" />
                                                     {permission.replace(/_/g, " ")}

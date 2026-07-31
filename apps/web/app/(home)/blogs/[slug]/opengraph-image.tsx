@@ -41,7 +41,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
                             width: 44,
                             height: 44,
                             borderRadius: 12,
-                            background: '#f97316',
+                            background: '#171717',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
@@ -77,7 +77,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                    <div style={{ width: 40, height: 3, background: '#f97316' }} />
+                    <div style={{ width: 40, height: 3, background: '#171717' }} />
                     <span style={{ color: '#d4d4d4', fontSize: 22 }}>{author}</span>
                     {readingTime ? (
                         <span style={{ color: '#737373', fontSize: 22 }}>· {readingTime}</span>

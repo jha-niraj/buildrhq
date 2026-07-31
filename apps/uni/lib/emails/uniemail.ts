@@ -1,7 +1,5 @@
 import { Resend } from "resend";
-import { shell } from "@repo/email";
-
-const DEFAULT_FROM = "BuildrHQ University <noreply@coderzai.xyz>";
+import { shell, resolveFromAddress } from "@repo/email";
 
 function getResend(): Resend {
     if (!process.env.RESEND_API_KEY) {
@@ -11,7 +9,7 @@ function getResend(): Resend {
 }
 
 function fromEmail(): string {
-    return process.env.RESEND_FROM_EMAIL || DEFAULT_FROM;
+    return resolveFromAddress();
 }
 
 function appUrl(): string {

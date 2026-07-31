@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import "@repo/ui/styles/globals.css";
 import { ThemeProvider } from "@repo/ui/components/themeprovider";
-import { Geist, Space_Grotesk, Geist_Mono } from "next/font/google";
+import { Geist, Space_Grotesk, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import { Toaster as SonnerToaster } from "@repo/ui/components/ui/sonner";
 import { Providers } from "./providers/providers";
+
+// Canonical origin for this deploy. Overridable per environment so preview
+// builds emit their own absolute URLs instead of the production ones.
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://hiring.buildrhq.com'
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -18,6 +22,16 @@ const spaceGrotesk = Space_Grotesk({
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	subsets: ["latin"],
+});
+
+const bricolage = Bricolage_Grotesque({
+	subsets: ["latin"],
+	weight: ["200", "300", "400", "500", "600", "700", "800"],
+	display: "swap",
+	// Registered as --font-display, which globals.css maps to the `font-display`
+	// utility — so every h1/h2 and the sidebar pick it up without each app
+	// restating the stack.
+	variable: "--font-display",
 });
 
 export const metadata: Metadata = {
@@ -41,14 +55,14 @@ export const metadata: Metadata = {
 	authors: [{ name: "BuildrHQ Team" }],
 	creator: "BuildrHQ",
 	publisher: "BuildrHQ",
-	metadataBase: new URL("https://hiring.coderzai.xyz"),
+	metadataBase: new URL(BASE_URL),
 	alternates: {
 		canonical: "/",
 	},
 	openGraph: {
 		type: "website",
 		locale: "en_US",
-		url: "https://hiring.coderzai.xyz",
+		url: BASE_URL,
 		siteName: "BuildrHQ Hiring",
 		title: "BuildrHQ Hiring - AI-Powered Recruitment Platform",
 		description: "The intelligent hiring platform for tech companies. Find pre-vetted engineers with verified skills through real projects and AI-powered assessments.",
@@ -98,7 +112,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`
-				${spaceGrotesk.className} ${geistSans.variable} ${geistMono.variable} antialiased 
+				${spaceGrotesk.className} ${bricolage.variable} ${geistSans.variable} ${geistMono.variable} antialiased 
 			`}>
 				<Providers>
 					<ThemeProvider

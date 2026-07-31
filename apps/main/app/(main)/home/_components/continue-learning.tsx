@@ -58,13 +58,13 @@ export default function ContinueLearning({ projects, studios }: ContinueLearning
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty.toLowerCase()) {
             case "easy":
-                return "bg-amber-500/10 text-amber-500";
+                return "bg-neutral-900/10 text-neutral-900";
             case "medium":
-                return "bg-yellow-500/10 text-yellow-500";
+                return "bg-neutral-900/10 text-neutral-900";
             case "hard":
                 return "bg-red-500/10 text-red-500";
             default:
-                return "bg-orange-500/10 text-orange-500";
+                return "bg-neutral-900/10 text-neutral-900";
         }
     };
 
@@ -160,10 +160,10 @@ export default function ContinueLearning({ projects, studios }: ContinueLearning
                                 className="flex-shrink-0 w-[260px]"
                             >
                                 <Link href={`/studio/${studio.slug || studio.id}`}>
-                                    <Card className="h-full hover:shadow-md transition-shadow cursor-pointer border-neutral-200 dark:border-neutral-700 hover:border-orange-500/30 rounded-xl bg-neutral-50 dark:bg-neutral-800/50">
+                                    <Card className="h-full hover:shadow-md transition-shadow cursor-pointer border-neutral-200 dark:border-neutral-700 hover:border-neutral-900/30 rounded-xl bg-neutral-50 dark:bg-neutral-800/50">
                                         <CardHeader className="pb-2">
                                             <div className="flex items-start justify-between">
-                                                <div className="p-2 rounded-lg bg-orange-500/10 text-lg">
+                                                <div className="p-2 rounded-lg bg-neutral-900/10 text-lg">
                                                     {studio.emoji || "📚"}
                                                 </div>
                                                 <span className="text-xs text-muted-foreground">

@@ -1,6 +1,6 @@
 "use server"
 
-import { db, users, universityMembers, departments, universityMemberInvitations } from "@repo/db"
+import { db, users, universityMembers, departments, universityMemberInvitations, withTransaction } from "@repo/db"
 import { eq, and, desc, asc } from "drizzle-orm"
 import { getSession } from "@repo/auth"
 import { headers } from "next/headers"
@@ -701,7 +701,7 @@ export async function inviteTeacherWithCredentials(payload: InviteTeacherWithCre
         }
 
         // Create user and university member in a transaction
-        const result = await db.transaction(async (tx) => {
+        const result = await withTransaction(async (tx) => {
             // Create the user with UNI role and temporary password
             const newUserRows = await tx.insert(users).values({
                 email: payload.email,

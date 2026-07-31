@@ -143,7 +143,7 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
                         </li>
                     ),
                     blockquote: ({ children }) => (
-                        <blockquote className="border-l-4 border-orange-500 pl-4 py-2 my-4 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg text-neutral-700 dark:text-neutral-300 italic">
+                        <blockquote className="border-l-4 border-neutral-900 pl-4 py-2 my-4 bg-neutral-50 dark:bg-neutral-900/30 rounded-r-lg text-neutral-700 dark:text-neutral-300 italic">
                             {children}
                         </blockquote>
                     ),
@@ -162,7 +162,7 @@ export function MarkdownRenderer({ content, className = "" }: MarkdownRendererPr
                             href={href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 underline underline-offset-2"
+                            className="text-neutral-800 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-100 underline underline-offset-2"
                         >
                             {children}
                         </a>

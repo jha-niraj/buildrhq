@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -17,14 +18,14 @@ import Image from "next/image";
 import { AddProblemSheet } from "./add-problem-sheet";
 
 const DIFFICULTY_COLORS = {
-    EASY: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800",
-    MEDIUM: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800",
+    EASY: "text-neutral-800 dark:text-neutral-100 bg-neutral-50 dark:bg-neutral-800/20 border-neutral-200 dark:border-neutral-800",
+    MEDIUM: "text-neutral-800 dark:text-neutral-100 bg-neutral-50 dark:bg-neutral-800/20 border-neutral-200 dark:border-neutral-800",
     HARD: "text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800",
 };
 
 const STATUS_ICON = {
-    COMPLETED: <CheckCircle2 className="h-4 w-4 text-amber-500" />,
-    IN_PROGRESS: <Clock className="h-4 w-4 text-amber-500" />,
+    COMPLETED: <CheckCircle2 className="h-4 w-4 text-neutral-900" />,
+    IN_PROGRESS: <Clock className="h-4 w-4 text-neutral-900" />,
     NOT_STARTED: <Circle className="h-4 w-4 text-neutral-300 dark:text-neutral-600" />,
 };
 
@@ -70,22 +71,16 @@ export function ModuleContent({
             <div className="flex items-center justify-between">
                 <div>
                     <div className="flex items-center gap-2 text-xs text-neutral-400 mb-1">
-                        <button
-                            onClick={() => router.push("/practice")}
-                            className="hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
-                        >
+                        <Link href="/practice" className="hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
                             Practice
-                        </button>
+                        </Link>
                         <ChevronRight className="h-3 w-3" />
                         {
                             activeCategory ? (
                                 <>
-                                    <button
-                                        onClick={() => router.push(basePath)}
-                                        className="hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
-                                    >
+                                    <Link href={basePath} className="hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors">
                                         {moduleLabel}
-                                    </button>
+                                    </Link>
                                     <ChevronRight className="h-3 w-3" />
                                     <span className="text-neutral-600 dark:text-neutral-300">
                                         {activeCategoryName}
@@ -137,17 +132,13 @@ export function ModuleContent({
                     <div className="flex flex-wrap gap-2">
                         {
                             categories.map((cat) => (
-                                <button
-                                    key={cat.slug}
-                                    onClick={() => router.push(`${basePath}?topic=${cat.slug}`)}
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors"
-                                >
+                                <Link href={`${basePath}?topic=${cat.slug}`} key={cat.slug} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 text-xs font-medium text-neutral-600 dark:text-neutral-400 hover:border-neutral-400 dark:hover:border-neutral-500 transition-colors">
                                     <span>{cat.icon}</span>
                                     <span>{cat.name}</span>
                                     <span className="text-neutral-300 dark:text-neutral-600 ml-1">
                                         {cat.completedCount}/{cat.problemCount}
                                     </span>
-                                </button>
+                                </Link>
                             ))
                         }
                     </div>
@@ -174,7 +165,7 @@ export function ModuleContent({
                 </div>
                 <div className="rounded-xl border border-neutral-200 dark:border-neutral-800 p-5 h-fit sticky top-6">
                     <div className="flex items-center gap-2 mb-4">
-                        <Trophy className="h-4 w-4 text-amber-500" />
+                        <Trophy className="h-4 w-4 text-neutral-900" />
                         <h2 className="text-sm font-semibold text-neutral-900 dark:text-white">
                             Leaderboard
                         </h2>
@@ -298,18 +289,18 @@ function ModeSelectionDialog({
                 <div className="p-5 space-y-3">
                     <button
                         onClick={() => selectMode("assist")}
-                        className="w-full p-4 rounded-xl border-2 border-orange-200 dark:border-orange-800/50 bg-orange-50/50 dark:bg-orange-900/10 hover:border-orange-400 dark:hover:border-orange-600 transition-all text-left group"
+                        className="w-full p-4 rounded-xl border-2 border-neutral-200 dark:border-neutral-800/50 bg-neutral-50/50 dark:bg-neutral-800/10 hover:border-neutral-800 dark:hover:border-neutral-300 transition-all text-left group"
                     >
                         <div className="flex items-start gap-3">
-                            <div className="h-10 w-10 rounded-lg bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center flex-shrink-0">
-                                <Sparkles className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+                            <div className="h-10 w-10 rounded-lg bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center flex-shrink-0">
+                                <Sparkles className="h-5 w-5 text-neutral-800 dark:text-neutral-100" />
                             </div>
                             <div>
                                 <div className="flex items-center gap-2">
                                     <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">
                                         Assist Mode
                                     </h3>
-                                    <Badge className="text-[9px] bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 border-0">
+                                    <Badge className="text-[9px] bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100 border-0">
                                         Recommended
                                     </Badge>
                                 </div>
@@ -363,9 +354,9 @@ function ModeSelectionDialog({
 
 function LeaderboardRow({ entry }: { entry: PracticeLeaderboardEntry }) {
     const rankColors: Record<number, string> = {
-        1: "text-amber-500",
+        1: "text-neutral-900",
         2: "text-neutral-400",
-        3: "text-amber-700",
+        3: "text-neutral-700",
     };
 
     return (

@@ -6,7 +6,8 @@ import {
     db, users, workExperiences, portfolioProjects, projectLinks, projectMedia,
     socialLinks, userEducations, skills, skillEndorsements, certifications,
     userProfiles, profileViews, achievements, recentActivities,
-    follow, userProjectV2Progress
+    follow, userProjectV2Progress,
+    withTransaction
 } from "@repo/db";
 import { revalidatePath } from "next/cache";
 import { eq, and, desc, asc, sql } from "drizzle-orm";
@@ -238,7 +239,7 @@ export async function updatePortfolioProject(id: string, data: {
 
         const { links, media, ...projectData } = data;
 
-        await db.transaction(async (tx) => {
+        await withTransaction(async (tx) => {
             if (Object.keys(projectData).length > 0) {
                 await tx.update(portfolioProjects).set(projectData).where(eq(portfolioProjects.id, id));
             }

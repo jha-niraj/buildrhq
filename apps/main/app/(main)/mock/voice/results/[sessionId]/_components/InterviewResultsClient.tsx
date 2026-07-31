@@ -114,7 +114,7 @@ export default function ResultsPage({
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
-                    <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-orange-600" />
+                    <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-neutral-800" />
                     <p className="text-neutral-600 dark:text-neutral-400">Loading your results...</p>
                 </div>
             </div>
@@ -153,7 +153,7 @@ export default function ResultsPage({
                             >
                                 <Button
                                     onClick={() => setReviewSheetOpen(true)}
-                                    className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white shadow-lg"
+                                    className="bg-gradient-to-r from-neutral-900 to-neutral-900 hover:from-neutral-800 hover:to-neutral-800 text-white shadow-lg"
                                     size="lg"
                                 >
                                     <Star className="w-5 h-5 mr-2" />
@@ -167,10 +167,10 @@ export default function ResultsPage({
                             <Button
                                 onClick={() => setReviewSheetOpen(true)}
                                 variant="outline"
-                                className="border-2 border-amber-300 dark:border-amber-700"
+                                className="border-2 border-neutral-300 dark:border-neutral-700"
                                 size="lg"
                             >
-                                <Star className="w-5 h-5 mr-2 fill-amber-400 text-amber-400" />
+                                <Star className="w-5 h-5 mr-2 fill-neutral-800 text-neutral-800" />
                                 Your Rating: {sessionData.userRating}/5
                             </Button>
                         )
@@ -190,7 +190,7 @@ export default function ResultsPage({
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-lg flex items-center gap-2">
-                                <Trophy className="w-5 h-5 text-amber-600" />
+                                <Trophy className="w-5 h-5 text-neutral-800" />
                                 Overall Score
                             </CardTitle>
                         </CardHeader>
@@ -202,7 +202,7 @@ export default function ResultsPage({
                                         <span className="text-sm">Calculating...</span>
                                     </div>
                                 ) : (
-                                    <div className="text-4xl font-bold text-orange-600">
+                                    <div className="text-4xl font-bold text-neutral-800">
                                         {feedback?.overallScore || '--'}/100
                                     </div>
                                 )
@@ -212,7 +212,7 @@ export default function ResultsPage({
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-lg flex items-center gap-2">
-                                <MessageSquare className="w-5 h-5 text-amber-600" />
+                                <MessageSquare className="w-5 h-5 text-neutral-800" />
                                 Duration
                             </CardTitle>
                         </CardHeader>
@@ -228,7 +228,7 @@ export default function ResultsPage({
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-lg flex items-center gap-2">
-                                <Target className="w-5 h-5 text-orange-600" />
+                                <Target className="w-5 h-5 text-neutral-800" />
                                 Level
                             </CardTitle>
                         </CardHeader>
@@ -244,7 +244,7 @@ export default function ResultsPage({
                         <Card className="mb-8">
                             <CardContent className="py-12">
                                 <div className="text-center">
-                                    <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-orange-600" />
+                                    <Loader2 className="w-12 h-12 animate-spin mx-auto mb-4 text-neutral-800" />
                                     <h3 className="text-xl font-semibold mb-2">Generating AI Feedback</h3>
                                     <p className="text-neutral-600 dark:text-neutral-400">
                                         Our AI is analyzing your performance. This may take a moment...
@@ -301,7 +301,7 @@ export default function ResultsPage({
                             <div className="grid md:grid-cols-2 gap-6 mb-8">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle className="flex items-center gap-2 text-amber-600">
+                                        <CardTitle className="flex items-center gap-2 text-neutral-800">
                                             <CheckCircle className="w-5 h-5" />
                                             Strengths
                                         </CardTitle>
@@ -311,7 +311,7 @@ export default function ResultsPage({
                                             {
                                                 feedback.strengths.map((strength: string, idx: number) => (
                                                     <li key={idx} className="flex items-start gap-2">
-                                                        <CheckCircle className="w-4 h-4 text-amber-600 mt-1 flex-shrink-0" />
+                                                        <CheckCircle className="w-4 h-4 text-neutral-800 mt-1 flex-shrink-0" />
                                                         <span className="text-sm">{strength}</span>
                                                     </li>
                                                 ))
@@ -321,7 +321,7 @@ export default function ResultsPage({
                                 </Card>
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle className="flex items-center gap-2 text-amber-600">
+                                        <CardTitle className="flex items-center gap-2 text-neutral-800">
                                             <TrendingUp className="w-5 h-5" />
                                             Areas for Improvement
                                         </CardTitle>
@@ -331,7 +331,7 @@ export default function ResultsPage({
                                             {
                                                 feedback.improvements.map((improvement: string, idx: number) => (
                                                     <li key={idx} className="flex items-start gap-2">
-                                                        <AlertTriangle className="w-4 h-4 text-amber-600 mt-1 flex-shrink-0" />
+                                                        <AlertTriangle className="w-4 h-4 text-neutral-800 mt-1 flex-shrink-0" />
                                                         <span className="text-sm text-left">{improvement}</span>
                                                     </li>
                                                 ))
@@ -354,7 +354,7 @@ export default function ResultsPage({
                     ) : (
                         <Card className="mb-8">
                             <CardContent className="py-12 text-center">
-                                <AlertTriangle className="w-12 h-12 mx-auto mb-4 text-amber-600" />
+                                <AlertTriangle className="w-12 h-12 mx-auto mb-4 text-neutral-800" />
                                 <h3 className="text-xl font-semibold mb-2">Feedback Not Available</h3>
                                 <p className="text-neutral-600 dark:text-neutral-400">
                                     We couldn&apos;t generate feedback for this session. Please try again or contact support.

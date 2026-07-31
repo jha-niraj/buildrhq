@@ -27,13 +27,13 @@ const STYLES = `
     --bhq-dim: #d4d4d4;
     --bhq-mid: #737373;
     --bhq-hot: #171717;
-    --bhq-accent: #f97316;
+    --bhq-accent: #171717;
 }
 .dark .bhq-root {
     --bhq-dim: #404040;
     --bhq-mid: #a3a3a3;
     --bhq-hot: #fafafa;
-    --bhq-accent: #fb923c;
+    --bhq-accent: #e5e5e5;
 }
 .bhq-logo-wrap {
     position: relative;

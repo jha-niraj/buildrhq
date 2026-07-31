@@ -138,7 +138,7 @@ export default function SystemSettingsPage() {
                 <Button
                     onClick={handleClearCache}
                     disabled={clearingCache}
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-orange-500 rounded-lg hover:from-red-600 hover:to-orange-600 disabled:opacity-50 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-neutral-900 rounded-lg hover:from-red-600 hover:to-neutral-800 disabled:opacity-50 transition-colors"
                 >
                     {
                         clearingCache ? (
@@ -234,11 +234,11 @@ export default function SystemSettingsPage() {
                     </div>
                 )
             }
-            <div className="mt-8 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-6">
-                <h3 className="text-sm font-semibold text-orange-900 dark:text-orange-200 mb-2">
+            <div className="mt-8 bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6">
+                <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-700 mb-2">
                     ℹ️ Important Notes
                 </h3>
-                <ul className="text-sm text-orange-800 dark:text-orange-300 space-y-1">
+                <ul className="text-sm text-neutral-800 dark:text-neutral-100 space-y-1">
                     <li>• Changes take effect immediately across the platform</li>
                     <li>• Maintenance mode will show a maintenance page to all users</li>
                     <li>• Credit rewards apply to new actions after the change</li>

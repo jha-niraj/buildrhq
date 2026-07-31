@@ -285,8 +285,8 @@ export default function KnowMeSettings({ profile, apiConfig, initialTab }: KnowM
                                     onToggle={() => setIncludePlatformData(!includePlatformData)}
                                 />
 
-                                <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-4">
-                                    <p className="text-sm text-orange-700 dark:text-orange-300">
+                                <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4">
+                                    <p className="text-sm text-neutral-700 dark:text-neutral-100">
                                         <strong>Coming Soon:</strong> Connect GitHub, LeetCode, and other platforms to automatically import your projects, contributions, and achievements. Enable this toggle to be ready when platform integrations launch.
                                     </p>
                                 </div>
@@ -411,14 +411,14 @@ export default function KnowMeSettings({ profile, apiConfig, initialTab }: KnowM
                                                 className={cn(
                                                     "flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all",
                                                     isSelected
-                                                        ? "bg-orange-50 dark:bg-orange-900/20 border-orange-500"
+                                                        ? "bg-neutral-50 dark:bg-neutral-800/20 border-neutral-900"
                                                         : "bg-slate-50 dark:bg-neutral-800 border-slate-200 dark:border-neutral-700 hover:border-slate-300"
                                                 )}
                                             >
                                                 <div className="flex items-center gap-3">
                                                     <div className={cn(
                                                         "w-10 h-10 rounded-lg flex items-center justify-center",
-                                                        isSelected ? "bg-orange-500 text-white" : "bg-slate-200 dark:bg-neutral-700"
+                                                        isSelected ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900" : "bg-slate-200 dark:bg-neutral-700"
                                                     )}>
                                                         <Icon className="w-5 h-5" />
                                                     </div>
@@ -426,7 +426,7 @@ export default function KnowMeSettings({ profile, apiConfig, initialTab }: KnowM
                                                 </div>
                                                 <div className={cn(
                                                     "w-5 h-5 rounded-full border-2",
-                                                    isSelected ? "bg-orange-500 border-orange-500" : "border-slate-300"
+                                                    isSelected ? "bg-neutral-900 border-neutral-900" : "border-slate-300"
                                                 )}>
                                                     {isSelected && <Check className="w-full h-full text-white p-0.5" />}
                                                 </div>
@@ -526,7 +526,7 @@ export default function KnowMeSettings({ profile, apiConfig, initialTab }: KnowM
                                                     }
                                                 </Button>
                                             </div>
-                                            <p className="text-xs text-amber-600 dark:text-amber-400">
+                                            <p className="text-xs text-neutral-800 dark:text-neutral-100">
                                                 Keep this key secret! Anyone with it can access your AI.
                                             </p>
                                         </div>
@@ -683,7 +683,7 @@ function DataToggle({
                 locked
                     ? "bg-slate-50 dark:bg-neutral-800"
                     : enabled
-                        ? "bg-amber-50 dark:bg-amber-900/20 cursor-pointer"
+                        ? "bg-neutral-50 dark:bg-neutral-800/20 cursor-pointer"
                         : "bg-slate-50 dark:bg-neutral-800 cursor-pointer hover:bg-slate-100 dark:hover:bg-neutral-700"
             )}
             onClick={locked ? undefined : onToggle}
@@ -691,7 +691,7 @@ function DataToggle({
             <div className="flex items-center gap-3">
                 <div className={cn(
                     "w-10 h-10 rounded-lg flex items-center justify-center",
-                    enabled ? "bg-amber-500 text-white" : "bg-slate-200 dark:bg-neutral-700"
+                    enabled ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900" : "bg-slate-200 dark:bg-neutral-700"
                 )}>
                     {icon}
                 </div>
@@ -706,7 +706,7 @@ function DataToggle({
             {
                 !locked && (
                     enabled ? (
-                        <ToggleRight className="w-8 h-8 text-amber-500" />
+                        <ToggleRight className="w-8 h-8 text-neutral-900" />
                     ) : (
                         <ToggleLeft className="w-8 h-8 text-slate-400" />
                     )

@@ -299,7 +299,7 @@ function OnboardingContent() {
                                                         placeholder="acme-corp"
                                                         className={cn(
                                                             "pl-10 pr-10 rounded-xl",
-                                                            slugStatus === "available" && "border-amber-500 focus-visible:ring-amber-500",
+                                                            slugStatus === "available" && "border-neutral-900 focus-visible:ring-neutral-900",
                                                             slugStatus === "taken" && "border-red-500 focus-visible:ring-red-500"
                                                         )}
                                                     />
@@ -311,7 +311,7 @@ function OnboardingContent() {
                                                         }
                                                         {
                                                         slugStatus === "available" && (
-                                                            <CheckCircle2 className="w-4 h-4 text-amber-500" />
+                                                            <CheckCircle2 className="w-4 h-4 text-neutral-900" />
                                                         )
                                                         
                                                         

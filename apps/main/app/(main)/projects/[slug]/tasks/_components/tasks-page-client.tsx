@@ -106,15 +106,15 @@ function TaskItem({
     const [isGeneratingDetail, setIsGeneratingDetail] = useState(false)
 
     const difficultyColors = {
-        BEGINNER: 'bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-400 border-amber-200 dark:border-amber-800',
-        INTERMEDIATE: 'bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-400 border-orange-200 dark:border-orange-800',
-        ADVANCED: 'bg-orange-100 text-orange-700 dark:bg-orange-900/50 dark:text-orange-400 border-orange-200 dark:border-orange-800',
+        BEGINNER: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/50 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800',
+        INTERMEDIATE: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/50 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800',
+        ADVANCED: 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/50 dark:text-neutral-100 border-neutral-200 dark:border-neutral-800',
     }
 
     const statusStyles = {
         TO_DO: 'border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900',
-        IN_PROGRESS: 'border-orange-300 dark:border-orange-700 bg-orange-50/50 dark:bg-orange-900/20 ring-1 ring-orange-200 dark:ring-orange-800',
-        COMPLETED: 'border-amber-300 dark:border-amber-700 bg-amber-50/50 dark:bg-amber-900/20',
+        IN_PROGRESS: 'border-neutral-300 dark:border-neutral-700 bg-neutral-50/50 dark:bg-neutral-800/20 ring-1 ring-neutral-200 dark:ring-neutral-800',
+        COMPLETED: 'border-neutral-300 dark:border-neutral-700 bg-neutral-50/50 dark:bg-neutral-800/20',
     }
 
     const handleStatusToggle = async () => {
@@ -228,13 +228,13 @@ function TaskItem({
                                 <button
                                     onClick={handleStartTask}
                                     disabled={isUpdating}
-                                    className="w-6 h-6 rounded-full border-2 border-neutral-300 dark:border-neutral-600 hover:border-orange-500 dark:hover:border-orange-400 flex items-center justify-center transition-colors group"
+                                    className="w-6 h-6 rounded-full border-2 border-neutral-300 dark:border-neutral-600 hover:border-neutral-900 dark:hover:border-neutral-100 flex items-center justify-center transition-colors group"
                                 >
                                     {
                                         isUpdating ? (
-                                            <Loader2 className="w-4 h-4 animate-spin text-orange-500" />
+                                            <Loader2 className="w-4 h-4 animate-spin text-neutral-900" />
                                         ) : (
-                                            <Play className="w-3 h-3 text-neutral-400 group-hover:text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                            <Play className="w-3 h-3 text-neutral-400 group-hover:text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity" />
                                         )
                                     }
                                 </button>
@@ -246,12 +246,12 @@ function TaskItem({
                                 >
                                     {
                                         isUpdating ? (
-                                            <Loader2 className="w-6 h-6 animate-spin text-orange-500" />
+                                            <Loader2 className="w-6 h-6 animate-spin text-neutral-900" />
                                         ) : task.status === 'COMPLETED' ? (
-                                            <CheckCircle2 className="w-6 h-6 text-amber-500 fill-amber-500" />
+                                            <CheckCircle2 className="w-6 h-6 text-neutral-900 fill-neutral-900" />
                                         ) : (
-                                            <div className="w-6 h-6 rounded-full border-2 border-orange-500 bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
-                                                <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+                                            <div className="w-6 h-6 rounded-full border-2 border-neutral-900 bg-neutral-100 dark:bg-neutral-800/50 flex items-center justify-center">
+                                                <div className="w-2 h-2 rounded-full bg-neutral-900 animate-pulse" />
                                             </div>
                                         )
                                     }
@@ -271,7 +271,7 @@ function TaskItem({
                                     </Badge>
                                     {
                                         task.status === 'IN_PROGRESS' && (
-                                            <Badge className="text-[10px] px-1.5 py-0 bg-orange-500 text-white animate-pulse">
+                                            <Badge className="text-[10px] px-1.5 py-0 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 animate-pulse">
                                                 IN PROGRESS
                                             </Badge>
                                         )
@@ -346,7 +346,7 @@ function TaskItem({
                                     <div className="mb-4">
                                         <div className="flex items-center justify-between mb-2">
                                             <div className="flex items-center gap-2">
-                                                <Sparkles className="w-4 h-4 text-orange-500" />
+                                                <Sparkles className="w-4 h-4 text-neutral-900" />
                                                 <span className="text-sm font-semibold text-neutral-900 dark:text-white">
                                                     Detailed Roadmap
                                                 </span>
@@ -377,9 +377,9 @@ function TaskItem({
 
                                         {
                                             hasDetailAccess && taskDetail && (
-                                                <div className="space-y-3 bg-orange-50 dark:bg-orange-900/10 rounded-lg p-3 border border-orange-200 dark:border-orange-800">
+                                                <div className="space-y-3 bg-neutral-50 dark:bg-neutral-800/10 rounded-lg p-3 border border-neutral-200 dark:border-neutral-800">
                                                     <div>
-                                                        <p className="text-xs font-semibold text-orange-900 dark:text-orange-100 mb-2">
+                                                        <p className="text-xs font-semibold text-neutral-900 dark:text-neutral-800 mb-2">
                                                             Sub-tasks Breakdown:
                                                         </p>
                                                         <div className="space-y-2">
@@ -389,7 +389,7 @@ function TaskItem({
                                                                         key={idx}
                                                                         className="flex items-start gap-2 text-xs bg-white dark:bg-neutral-900 p-2 rounded-lg"
                                                                     >
-                                                                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-orange-100 dark:bg-orange-900 text-orange-600 dark:text-orange-400 flex items-center justify-center text-[10px] font-bold">
+                                                                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-100 flex items-center justify-center text-[10px] font-bold">
                                                                             {idx + 1}
                                                                         </span>
                                                                         <div>
@@ -397,7 +397,7 @@ function TaskItem({
                                                                             <p className="text-neutral-600 dark:text-neutral-400">{sub.description}</p>
                                                                             {
                                                                                 sub.command && (
-                                                                                    <code className="block mt-1 bg-neutral-900 text-amber-400 px-2 py-1 rounded text-[10px] font-mono">
+                                                                                    <code className="block mt-1 bg-neutral-900 text-neutral-800 px-2 py-1 rounded text-[10px] font-mono">
                                                                                         {sub.command}
                                                                                     </code>
                                                                                 )
@@ -410,15 +410,15 @@ function TaskItem({
                                                     </div>
                                                     {
                                                         (taskDetail.commonErrors.length > 0 || taskDetail.errorsToWatchout.length > 0) && (
-                                                            <div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-2 border border-amber-200 dark:border-amber-800">
-                                                                <p className="text-xs font-semibold text-amber-900 dark:text-amber-100 mb-1 flex items-center gap-1">
+                                                            <div className="bg-neutral-50 dark:bg-neutral-800/20 rounded-lg p-2 border border-neutral-200 dark:border-neutral-800">
+                                                                <p className="text-xs font-semibold text-neutral-900 dark:text-neutral-800 mb-1 flex items-center gap-1">
                                                                     <AlertCircle className="w-3 h-3" />
                                                                     Watch Out For:
                                                                 </p>
                                                                 <ul className="space-y-1">
                                                                     {
                                                                         [...taskDetail.commonErrors, ...taskDetail.errorsToWatchout].slice(0, 3).map((err, idx) => (
-                                                                            <li key={idx} className="text-[11px] text-amber-800 dark:text-amber-200 flex items-start gap-1">
+                                                                            <li key={idx} className="text-[11px] text-neutral-800 dark:text-neutral-700 flex items-start gap-1">
                                                                                 <span>⚠️</span>
                                                                                 <span>{err}</span>
                                                                             </li>
@@ -473,7 +473,7 @@ function TaskItem({
                                             <Zap className="w-4 h-4" />
                                             Terminal Command
                                         </h5>
-                                        <code className="block bg-neutral-900 text-amber-400 p-3 rounded-lg text-sm font-mono overflow-x-auto">
+                                        <code className="block bg-neutral-900 text-neutral-800 p-3 rounded-lg text-sm font-mono overflow-x-auto">
                                             {task.terminalCommand}
                                         </code>
                                     </div>
@@ -484,14 +484,14 @@ function TaskItem({
                                 task.criteria && task.criteria.length > 0 && (
                                     <div className="mb-4">
                                         <h5 className="text-sm font-semibold text-neutral-900 dark:text-white mb-2 flex items-center gap-2">
-                                            <CheckCircle2 className="w-4 h-4 text-amber-600" />
+                                            <CheckCircle2 className="w-4 h-4 text-neutral-800" />
                                             Success Criteria
                                         </h5>
                                         <ul className="space-y-1">
                                             {
                                                 task.criteria.map((criterion, idx) => (
                                                     <li key={idx} className="flex items-start gap-2 text-sm text-neutral-700 dark:text-neutral-300">
-                                                        <CheckCircle2 className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                                                        <CheckCircle2 className="w-4 h-4 text-neutral-900 flex-shrink-0 mt-0.5" />
                                                         <span>{criterion}</span>
                                                     </li>
                                                 ))
@@ -505,13 +505,13 @@ function TaskItem({
                                 task.hints && task.hints.length > 0 && (
                                     <div className="mb-4">
                                         <h5 className="text-sm font-semibold text-neutral-900 dark:text-white mb-2 flex items-center gap-2">
-                                            <Info className="w-4 h-4 text-orange-600" />
+                                            <Info className="w-4 h-4 text-neutral-800" />
                                             Hints
                                         </h5>
                                         <div className="space-y-1">
                                             {
                                                 task.hints.map((hint, idx) => (
-                                                    <p key={idx} className="text-sm text-neutral-600 dark:text-neutral-400 bg-orange-50 dark:bg-orange-900/20 p-2 rounded-lg">
+                                                    <p key={idx} className="text-sm text-neutral-600 dark:text-neutral-400 bg-neutral-50 dark:bg-neutral-800/20 p-2 rounded-lg">
                                                         💡 {hint}
                                                     </p>
                                                 ))
@@ -526,7 +526,7 @@ function TaskItem({
                                         <Button
                                             onClick={handleStartTask}
                                             disabled={isUpdating}
-                                            className="flex-1 bg-orange-600 hover:bg-orange-700"
+                                            className="flex-1 bg-neutral-800 hover:bg-neutral-700"
                                         >
                                             {isUpdating ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <Play className="w-4 h-4 mr-2" />}
                                             Start Task
@@ -539,7 +539,7 @@ function TaskItem({
                                             <Button
                                                 onClick={handleStatusToggle}
                                                 disabled={isUpdating}
-                                                className="flex-1 bg-amber-600 hover:bg-amber-700"
+                                                className="flex-1 bg-neutral-800 hover:bg-neutral-700"
                                             >
                                                 {isUpdating ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <CheckCircle2 className="w-4 h-4 mr-2" />}
                                                 Mark Complete
@@ -584,7 +584,7 @@ function TaskItem({
                 <DialogContent className="sm:max-w-md">
                     <DialogHeader>
                         <DialogTitle className="flex items-center gap-2">
-                            <Sparkles className="w-5 h-5 text-orange-600" />
+                            <Sparkles className="w-5 h-5 text-neutral-800" />
                             Unlock Detailed Roadmap?
                         </DialogTitle>
                         <DialogDescription>
@@ -592,24 +592,24 @@ function TaskItem({
                         </DialogDescription>
                     </DialogHeader>
                     <div className="py-4 space-y-3">
-                        <div className="bg-orange-50 dark:bg-orange-900/10 rounded-lg p-3 border border-orange-200 dark:border-orange-800">
+                        <div className="bg-neutral-50 dark:bg-neutral-800/10 rounded-lg p-3 border border-neutral-200 dark:border-neutral-800">
                             <ul className="space-y-2 text-sm">
-                                <li className="flex items-center gap-2 text-orange-800 dark:text-orange-200">
+                                <li className="flex items-center gap-2 text-neutral-800 dark:text-neutral-700">
                                     <CheckCircle2 className="w-4 h-4" />
                                     Step-by-step sub-tasks
                                 </li>
-                                <li className="flex items-center gap-2 text-orange-800 dark:text-orange-200">
+                                <li className="flex items-center gap-2 text-neutral-800 dark:text-neutral-700">
                                     <CheckCircle2 className="w-4 h-4" />
                                     Terminal commands
                                 </li>
-                                <li className="flex items-center gap-2 text-orange-800 dark:text-orange-200">
+                                <li className="flex items-center gap-2 text-neutral-800 dark:text-neutral-700">
                                     <CheckCircle2 className="w-4 h-4" />
                                     Common errors to avoid
                                 </li>
                             </ul>
                         </div>
-                        <div className="flex items-center justify-between bg-amber-50 dark:bg-amber-900/10 rounded-lg p-2 border border-amber-200 dark:border-amber-800">
-                            <span className="text-sm font-medium text-amber-900 dark:text-amber-100">
+                        <div className="flex items-center justify-between bg-neutral-50 dark:bg-neutral-800/10 rounded-lg p-2 border border-neutral-200 dark:border-neutral-800">
+                            <span className="text-sm font-medium text-neutral-900 dark:text-neutral-800">
                                 Cost: 1 Credit
                             </span>
                         </div>
@@ -621,7 +621,7 @@ function TaskItem({
                         <Button
                             onClick={handleGenerateDetail}
                             disabled={isGeneratingDetail}
-                            className="bg-orange-600 hover:bg-orange-700"
+                            className="bg-neutral-800 hover:bg-neutral-700"
                         >
                             {
                                 isGeneratingDetail ? (
@@ -708,7 +708,7 @@ export default function TasksPageClient({ project, tasks, userProgress }: TasksP
                     transition={{ delay: 0.2 }}
                     className="mb-6"
                 >
-                    <Card className="bg-gradient-to-r from-orange-500/10 via-orange-500/10 to-pink-500/10 border-orange-200 dark:border-orange-800">
+                    <Card className="bg-gradient-to-r from-neutral-900/10 via-neutral-900/10 to-pink-500/10 border-neutral-200 dark:border-neutral-800">
                         <CardContent className="p-6">
                             <div className="flex items-center justify-between mb-4">
                                 <div>
@@ -720,7 +720,7 @@ export default function TasksPageClient({ project, tasks, userProgress }: TasksP
                                     </p>
                                 </div>
                                 <div className="text-right">
-                                    <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-orange-600">
+                                    <div className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-800 to-neutral-800">
                                         {Math.round(progressPercentage)}%
                                     </div>
                                 </div>
@@ -733,28 +733,28 @@ export default function TasksPageClient({ project, tasks, userProgress }: TasksP
                                     </div>
                                     <div className="text-xs text-neutral-600 dark:text-neutral-400">To Do</div>
                                 </div>
-                                <div className="bg-orange-50/50 dark:bg-orange-900/20 rounded-xl p-3 border border-orange-200 dark:border-orange-800">
-                                    <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
+                                <div className="bg-neutral-50/50 dark:bg-neutral-800/20 rounded-xl p-3 border border-neutral-200 dark:border-neutral-800">
+                                    <div className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">
                                         {tasks.inProgress.length}
                                     </div>
-                                    <div className="text-xs text-orange-600 dark:text-orange-400">In Progress</div>
+                                    <div className="text-xs text-neutral-800 dark:text-neutral-100">In Progress</div>
                                 </div>
-                                <div className="bg-amber-50/50 dark:bg-amber-900/20 rounded-xl p-3 border border-amber-200 dark:border-amber-800">
-                                    <div className="text-2xl font-bold text-amber-600 dark:text-amber-400">
+                                <div className="bg-neutral-50/50 dark:bg-neutral-800/20 rounded-xl p-3 border border-neutral-200 dark:border-neutral-800">
+                                    <div className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">
                                         {tasks.completed.length}
                                     </div>
-                                    <div className="text-xs text-amber-600 dark:text-amber-400">Completed</div>
+                                    <div className="text-xs text-neutral-800 dark:text-neutral-100">Completed</div>
                                 </div>
                             </div>
                             <div className="flex justify-between mt-4 text-xs text-neutral-500 dark:text-neutral-400">
-                                <span className={progressPercentage >= 0 ? 'text-amber-600 font-medium' : ''}>Start</span>
-                                <span className={progressPercentage >= 50 ? 'text-amber-600 font-medium' : ''}>
+                                <span className={progressPercentage >= 0 ? 'text-neutral-800 font-medium' : ''}>Start</span>
+                                <span className={progressPercentage >= 50 ? 'text-neutral-800 font-medium' : ''}>
                                     50% → Quiz 🧠
                                 </span>
-                                <span className={progressPercentage >= 75 ? 'text-amber-600 font-medium' : ''}>
+                                <span className={progressPercentage >= 75 ? 'text-neutral-800 font-medium' : ''}>
                                     75% → Mock 🎤
                                 </span>
-                                <span className={progressPercentage >= 100 ? 'text-amber-600 font-medium' : ''}>
+                                <span className={progressPercentage >= 100 ? 'text-neutral-800 font-medium' : ''}>
                                     Complete 🏆
                                 </span>
                             </div>
@@ -782,8 +782,8 @@ export default function TasksPageClient({ project, tasks, userProgress }: TasksP
                                 const colors = {
                                     ALL: '',
                                     TO_DO: '',
-                                    IN_PROGRESS: 'border-orange-300 dark:border-orange-700',
-                                    COMPLETED: 'border-amber-300 dark:border-amber-700',
+                                    IN_PROGRESS: 'border-neutral-300 dark:border-neutral-700',
+                                    COMPLETED: 'border-neutral-300 dark:border-neutral-700',
                                 }
                                 return (
                                     <button

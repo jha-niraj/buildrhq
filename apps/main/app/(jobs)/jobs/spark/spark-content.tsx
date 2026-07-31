@@ -126,7 +126,7 @@ export function SparkContent({ initialJobs, pagination, isAuthenticated }: Spark
             {/* Header */}
             <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center">
                         <Sparkles className="w-5 h-5 text-white" />
                     </div>
                     <div>
@@ -207,7 +207,7 @@ export function SparkContent({ initialJobs, pagination, isAuthenticated }: Spark
                 <DialogContent className="max-w-md">
                     <DialogHeader>
                         <DialogTitle className="flex items-center gap-2 text-xl">
-                            <PartyPopper className="w-6 h-6 text-amber-500" />
+                            <PartyPopper className="w-6 h-6 text-neutral-900" />
                             Great Choice!
                         </DialogTitle>
                         <DialogDescription>
@@ -215,8 +215,8 @@ export function SparkContent({ initialJobs, pagination, isAuthenticated }: Spark
                         </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-4 mt-4">
-                        <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl">
-                            <p className="text-sm text-amber-700 dark:text-amber-300">
+                        <div className="p-4 bg-neutral-50 dark:bg-neutral-800/20 rounded-xl">
+                            <p className="text-sm text-neutral-700 dark:text-neutral-100">
                                 You can review your saved jobs and apply when you&apos;re ready. We recommend preparing by practicing mock interviews for this role.
                             </p>
                         </div>
@@ -256,8 +256,8 @@ function AllCaughtUpState({
             animate={{ opacity: 1, scale: 1 }}
             className="flex flex-col items-center justify-center py-16 px-4 text-center"
         >
-            <div className="w-24 h-24 bg-gradient-to-br from-amber-100 to-amber-100 dark:from-amber-900/30 dark:to-amber-900/30 rounded-3xl flex items-center justify-center mb-6">
-                <PartyPopper className="w-12 h-12 text-amber-600 dark:text-amber-400" />
+            <div className="w-24 h-24 bg-gradient-to-br from-neutral-100 to-neutral-100 dark:from-neutral-800/30 dark:to-neutral-800/30 rounded-3xl flex items-center justify-center mb-6">
+                <PartyPopper className="w-12 h-12 text-neutral-800 dark:text-neutral-100" />
             </div>
             <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">
                 You&apos;re All Caught Up!
@@ -265,7 +265,7 @@ function AllCaughtUpState({
             <p className="text-neutral-500 max-w-md mb-6">
                 You&apos;ve reviewed all available jobs. 
                 {interestedCount > 0 && (
-                    <span className="block mt-1 text-amber-600 dark:text-amber-400 font-medium">
+                    <span className="block mt-1 text-neutral-800 dark:text-neutral-100 font-medium">
                         {interestedCount} jobs saved to your list!
                     </span>
                 )}

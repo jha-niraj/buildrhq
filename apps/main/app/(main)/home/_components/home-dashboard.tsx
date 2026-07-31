@@ -75,15 +75,19 @@ function titleCase(s: string) {
 // SVG `stroke`/`fill` attributes, where a class name means nothing. Orange is the
 // brand line, emerald the "completed / positive" line, neutral the context line.
 const INK = "#525252"
-const ACCENT = "#f97316"
+const ACCENT = "#171717"
 const OK = "#10b981"
 
-const MIX_COLORS = ["#f97316", "#10b981", "#525252", "#f59e0b", "#ef4444", "#0ea5e9", "#8b5cf6", "#14b8a6"]
+// Categorical ramp for the activity-mix bars. Ordered by LUMINANCE, not hue, so
+// the categories stay distinguishable in a monochrome brand — and readable for
+// anyone who cannot separate hues. The two non-neutrals are the semantic pair
+// (green = positive, red = attention) that still carry meaning elsewhere.
+const MIX_COLORS = ["#171717", "#404040", "#10b981", "#737373", "#a3a3a3", "#ef4444", "#525252", "#d4d4d4"]
 
 type Tone = "default" | "ok" | "warn" | "bad"
 const toneCls = (t?: Tone) =>
 	t === "ok" ? "text-emerald-600 dark:text-emerald-400"
-		: t === "warn" ? "text-amber-600 dark:text-amber-400"
+		: t === "warn" ? "text-neutral-800 dark:text-neutral-100"
 			: t === "bad" ? "text-red-600 dark:text-red-400"
 				: "text-neutral-900 dark:text-white"
 
@@ -180,8 +184,8 @@ function ModuleRow({ title, icon: Icon, href, hrefLabel, stats, lines, data, rev
 		>
 			<div className="mb-4 flex items-center justify-between">
 				<div className="flex items-center gap-2">
-					<div className="flex h-8 w-8 items-center justify-center rounded-xl bg-orange-500/10">
-						<Icon className="h-4 w-4 text-orange-500" />
+					<div className="flex h-8 w-8 items-center justify-center rounded-xl bg-neutral-900/10">
+						<Icon className="h-4 w-4 text-neutral-900" />
 					</div>
 					<h3 className="text-sm font-semibold text-neutral-900 dark:text-white">{title}</h3>
 				</div>
@@ -305,7 +309,7 @@ export default function HomeDashboard({
 						className="rounded-2xl border border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900"
 					>
 						<div className="flex items-center gap-2">
-							<s.icon className="h-3.5 w-3.5 text-orange-500" />
+							<s.icon className="h-3.5 w-3.5 text-neutral-900" />
 							<p className="text-xs font-medium text-neutral-500 dark:text-neutral-400">{s.label}</p>
 						</div>
 						<p className={cn("mt-1.5 text-2xl font-bold tabular-nums", toneCls(s.tone))}>{s.value}</p>
@@ -319,9 +323,9 @@ export default function HomeDashboard({
 					initial={{ opacity: 0, y: 8 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.3, delay: 0.08 }}
-					className="flex flex-wrap items-center gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 dark:border-amber-900/50 dark:bg-amber-950/30"
+					className="flex flex-wrap items-center gap-3 rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 dark:border-neutral-800/50 dark:bg-neutral-900/30"
 				>
-					<div className="flex items-center gap-2 text-amber-700 dark:text-amber-400">
+					<div className="flex items-center gap-2 text-neutral-700 dark:text-neutral-100">
 						<AlertTriangle className="h-4 w-4 flex-shrink-0" />
 						<span className="text-sm font-semibold">Worth a look:</span>
 					</div>
@@ -329,7 +333,7 @@ export default function HomeDashboard({
 						<Link
 							key={alert.label}
 							href={alert.href}
-							className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-amber-200 bg-amber-100 px-2.5 py-1 text-sm font-medium text-amber-800 transition-colors hover:bg-amber-200 dark:border-amber-800/50 dark:bg-amber-900/40 dark:text-amber-300 dark:hover:bg-amber-900/70"
+							className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-neutral-200 bg-neutral-100 px-2.5 py-1 text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-200 dark:border-neutral-800/50 dark:bg-neutral-800/40 dark:text-neutral-100 dark:hover:bg-neutral-800/70"
 						>
 							{alert.label}
 						</Link>
@@ -472,8 +476,8 @@ export default function HomeDashboard({
 									{i !== Math.min(recentActivity.length, 6) - 1 && (
 										<div className="absolute bottom-0 left-3.5 top-7 w-px bg-neutral-200 dark:bg-neutral-800" />
 									)}
-									<div className="z-10 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-2 border-white bg-orange-500/10 dark:border-neutral-900">
-										<Clock className="h-3 w-3 text-orange-500" />
+									<div className="z-10 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-2 border-white bg-neutral-900/10 dark:border-neutral-900">
+										<Clock className="h-3 w-3 text-neutral-900" />
 									</div>
 									<div className="min-w-0 pt-0.5">
 										<p className="text-sm leading-snug text-neutral-700 dark:text-neutral-300">
@@ -509,7 +513,7 @@ function EmptyBlock({ icon: Icon, title, action }: {
 			{action && (
 				<Link
 					href={action.href}
-					className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-orange-500 hover:underline"
+					className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-neutral-900 hover:underline"
 				>
 					<Plus className="h-3.5 w-3.5" /> {action.label}
 				</Link>

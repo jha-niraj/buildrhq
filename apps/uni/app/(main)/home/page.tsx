@@ -48,7 +48,7 @@ export default function UniversityHomePage() {
         return (
             <div className="min-h-full flex items-center justify-center">
                 <div className="flex flex-col items-center gap-4">
-                    <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+                    <Loader2 className="w-8 h-8 animate-spin text-neutral-900" />
                     <p className="text-sm text-neutral-500 font-mono">Loading dashboard...</p>
                 </div>
             </div>

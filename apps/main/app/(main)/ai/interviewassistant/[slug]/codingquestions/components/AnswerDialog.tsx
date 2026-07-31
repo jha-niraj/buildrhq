@@ -49,7 +49,7 @@ export default function AnswerDialog({
 			<DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
 				<DialogHeader>
 					<DialogTitle className="flex items-center gap-2">
-						<BookOpen className="h-5 w-5 text-orange-600" />
+						<BookOpen className="h-5 w-5 text-neutral-800" />
 						Expert Solution
 						<Badge variant="outline" className="ml-2">
 							{language.charAt(0).toUpperCase() + language.slice(1)}
@@ -62,12 +62,12 @@ export default function AnswerDialog({
 				<div className="space-y-6">
 					{
 						answer.answer?.explanation && (
-							<div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
-								<h4 className="text-sm font-semibold text-orange-900 dark:text-orange-100 mb-2 flex items-center gap-2">
+							<div className="p-4 bg-neutral-50 dark:bg-neutral-800/20 rounded-lg border border-neutral-200 dark:border-neutral-800">
+								<h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-800 mb-2 flex items-center gap-2">
 									<BookOpen className="h-4 w-4" />
 									Explanation
 								</h4>
-								<p className="text-sm text-orange-800 dark:text-orange-200 whitespace-pre-wrap">
+								<p className="text-sm text-neutral-800 dark:text-neutral-700 whitespace-pre-wrap">
 									{answer.answer.explanation}
 								</p>
 							</div>
@@ -101,12 +101,12 @@ export default function AnswerDialog({
 					}
 					{
 						answer.answer?.approach && (
-							<div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg border border-amber-200 dark:border-amber-800">
-								<h4 className="text-sm font-semibold text-amber-900 dark:text-amber-100 mb-2 flex items-center gap-2">
+							<div className="p-4 bg-neutral-50 dark:bg-neutral-800/20 rounded-lg border border-neutral-200 dark:border-neutral-800">
+								<h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-800 mb-2 flex items-center gap-2">
 									<Zap className="h-4 w-4" />
 									Approach
 								</h4>
-								<p className="text-sm text-amber-800 dark:text-amber-200 whitespace-pre-wrap">
+								<p className="text-sm text-neutral-800 dark:text-neutral-700 whitespace-pre-wrap">
 									{answer.answer.approach}
 								</p>
 							</div>
@@ -114,11 +114,11 @@ export default function AnswerDialog({
 					}
 					{
 						answer.answer?.keyPoints && answer.answer.keyPoints.length > 0 && (
-							<div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
-								<h4 className="text-sm font-semibold text-orange-900 dark:text-orange-100 mb-2">
+							<div className="p-4 bg-neutral-50 dark:bg-neutral-800/20 rounded-lg border border-neutral-200 dark:border-neutral-800">
+								<h4 className="text-sm font-semibold text-neutral-900 dark:text-neutral-800 mb-2">
 									Key Points
 								</h4>
-								<ul className="text-sm text-orange-800 dark:text-orange-200 space-y-1">
+								<ul className="text-sm text-neutral-800 dark:text-neutral-700 space-y-1">
 									{
 										answer.answer.keyPoints.map((point: string, index: number) => (
 											<li key={index}>• {point}</li>
@@ -133,23 +133,23 @@ export default function AnswerDialog({
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 								{
 									answer.answer?.timeComplexity && (
-										<div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
-											<h5 className="text-sm font-semibold text-orange-900 dark:text-orange-100 mb-1 flex items-center gap-2">
+										<div className="p-3 bg-neutral-50 dark:bg-neutral-800/20 rounded-lg border border-neutral-200 dark:border-neutral-800">
+											<h5 className="text-sm font-semibold text-neutral-900 dark:text-neutral-800 mb-1 flex items-center gap-2">
 												<Clock className="h-4 w-4" />
 												Time Complexity
 											</h5>
-											<p className="text-sm text-orange-800 dark:text-orange-200">{answer.answer.timeComplexity}</p>
+											<p className="text-sm text-neutral-800 dark:text-neutral-700">{answer.answer.timeComplexity}</p>
 										</div>
 									)
 								}
 								{
 									answer.answer?.spaceComplexity && (
-										<div className="p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
-											<h5 className="text-sm font-semibold text-orange-900 dark:text-orange-100 mb-1 flex items-center gap-2">
+										<div className="p-3 bg-neutral-50 dark:bg-neutral-800/20 rounded-lg border border-neutral-200 dark:border-neutral-800">
+											<h5 className="text-sm font-semibold text-neutral-900 dark:text-neutral-800 mb-1 flex items-center gap-2">
 												<Zap className="h-4 w-4" />
 												Space Complexity
 											</h5>
-											<p className="text-sm text-orange-800 dark:text-orange-200">{answer.answer.spaceComplexity}</p>
+											<p className="text-sm text-neutral-800 dark:text-neutral-700">{answer.answer.spaceComplexity}</p>
 										</div>
 									)
 								}

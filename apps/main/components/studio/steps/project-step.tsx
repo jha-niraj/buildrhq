@@ -52,10 +52,10 @@ export function ProjectStep({ step }: ProjectStepProps) {
             key={project.id}
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            className="rounded-2xl overflow-hidden bg-gradient-to-br from-orange-50 to-pink-50 dark:from-orange-950/20 dark:to-pink-950/20 border border-orange-200 dark:border-orange-800 p-6 hover:shadow-lg transition-shadow"
+            className="rounded-2xl overflow-hidden bg-gradient-to-br from-neutral-50 to-pink-50 dark:from-neutral-900/20 dark:to-pink-950/20 border border-neutral-200 dark:border-neutral-800 p-6 hover:shadow-lg transition-shadow"
           >
             <div className="flex items-start gap-4">
-              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center shrink-0">
+              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-neutral-900 to-pink-500 flex items-center justify-center shrink-0">
                 {project.projectType === "major" ? (
                   <Briefcase className="h-6 w-6 text-white" />
                 ) : (
@@ -68,8 +68,8 @@ export function ProjectStep({ step }: ProjectStepProps) {
                     {project.title}
                   </h3>
                   <span className={`px-2 py-1 text-xs rounded-full font-medium ${project.projectType === "major"
-                      ? "bg-gradient-to-r from-orange-500 to-pink-500 text-white"
-                      : "bg-orange-100 dark:bg-orange-950/30 text-orange-700 dark:text-orange-300"
+                      ? "bg-gradient-to-r from-neutral-900 to-pink-500 text-white"
+                      : "bg-neutral-100 dark:bg-neutral-900/30 text-neutral-700 dark:text-neutral-100"
                     }`}>
                     {project.projectType === "major" ? "🎯 Major" : "🚀 Minor"}
                   </span>
@@ -113,7 +113,7 @@ export function ProjectStep({ step }: ProjectStepProps) {
                   <div className="mb-4 space-y-1">
                     {project.features.slice(0, 5).map((feature, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-                        <span className="text-orange-500 mt-0.5">•</span>
+                        <span className="text-neutral-900 mt-0.5">•</span>
                         {feature}
                       </div>
                     ))}
@@ -126,7 +126,7 @@ export function ProjectStep({ step }: ProjectStepProps) {
                     <>
                       {addedToPortfolio[project.id] ? (
                         <Button size="sm" variant="outline" disabled className="gap-2">
-                          <CheckCircle className="h-4 w-4 text-amber-500" />
+                          <CheckCircle className="h-4 w-4 text-neutral-900" />
                           Added to Portfolio
                         </Button>
                       ) : (
@@ -144,7 +144,7 @@ export function ProjectStep({ step }: ProjectStepProps) {
                   ) : (
                     <Button
                       size="sm"
-                      className="gap-2 bg-gradient-to-r from-orange-600 to-pink-600 hover:from-orange-700 hover:to-pink-700"
+                      className="gap-2 bg-gradient-to-r from-neutral-800 to-pink-600 hover:from-neutral-700 hover:to-pink-700"
                       onClick={() => handleCreateProject(project)}
                     >
                       <ArrowRight className="h-4 w-4" />

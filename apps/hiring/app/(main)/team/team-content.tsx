@@ -121,7 +121,7 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
     const getRoleBadge = (role: string) => {
         if (role === "FOUNDER") {
             return (
-                <Badge className="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 gap-1">
+                <Badge className="bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100 gap-1">
                     <Crown className="w-3 h-3" />
                     Founder
                 </Badge>
@@ -129,7 +129,7 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
         }
         if (role === "ADMIN") {
             return (
-                <Badge className="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400">
+                <Badge className="bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100">
                     Admin
                 </Badge>
             )
@@ -247,10 +247,10 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4"
                         >
                             <div className="flex items-center gap-2 mb-2">
-                                <Clock className="w-4 h-4 text-yellow-500" />
+                                <Clock className="w-4 h-4 text-neutral-900" />
                                 <span className="text-xs text-neutral-500">Pending</span>
                             </div>
-                            <span className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{stats.pendingInvites}</span>
+                            <span className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">{stats.pendingInvites}</span>
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -259,10 +259,10 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4"
                         >
                             <div className="flex items-center gap-2 mb-2">
-                                <Briefcase className="w-4 h-4 text-orange-500" />
+                                <Briefcase className="w-4 h-4 text-neutral-900" />
                                 <span className="text-xs text-neutral-500">Jobs Posted</span>
                             </div>
-                            <span className="text-2xl font-bold text-orange-600 dark:text-orange-400">{stats.jobsPosted}</span>
+                            <span className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">{stats.jobsPosted}</span>
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -271,10 +271,10 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
                             className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4"
                         >
                             <div className="flex items-center gap-2 mb-2">
-                                <CheckCircle className="w-4 h-4 text-amber-500" />
+                                <CheckCircle className="w-4 h-4 text-neutral-900" />
                                 <span className="text-xs text-neutral-500">Processed</span>
                             </div>
-                            <span className="text-2xl font-bold text-amber-600 dark:text-amber-400">{stats.candidatesProcessed}</span>
+                            <span className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">{stats.candidatesProcessed}</span>
                         </motion.div>
                     </div>
                 )
@@ -283,7 +283,7 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
                 invites.length > 0 && (
                     <div className="mb-8">
                         <h2 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4 flex items-center gap-2">
-                            <Clock className="w-5 h-5 text-yellow-500" />
+                            <Clock className="w-5 h-5 text-neutral-900" />
                             Pending Invitations
                         </h2>
                         <div className="space-y-3">
@@ -296,12 +296,12 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
                                             animate={{ opacity: 1, x: 0 }}
                                             exit={{ opacity: 0, x: 20 }}
                                             transition={{ delay: index * 0.05 }}
-                                            className="bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-800/30 rounded-xl p-4"
+                                            className="bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30 rounded-xl p-4"
                                         >
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-4">
-                                                    <div className="w-10 h-10 rounded-full bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center">
-                                                        <Mail className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+                                                    <div className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                                                        <Mail className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                                     </div>
                                                     <div>
                                                         <p className="font-medium text-neutral-900 dark:text-white">{invite.email}</p>
@@ -316,7 +316,7 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
                                                         size="sm"
                                                         onClick={() => handleResendInvite(invite.id)}
                                                         disabled={isPending}
-                                                        className="text-yellow-600 hover:text-yellow-700"
+                                                        className="text-neutral-800 hover:text-neutral-700"
                                                     >
                                                         <RefreshCw className="w-4 h-4 mr-1" />
                                                         Resend
@@ -379,7 +379,7 @@ export function TeamContent({ initialMembers, initialInvites, stats }: TeamConte
                                                         {member.user.name || member.user.email}
                                                         {
                                                             isCurrentUser && (
-                                                                <Badge className="bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs">
+                                                                <Badge className="bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100 text-xs">
                                                                     You
                                                                 </Badge>
                                                             )

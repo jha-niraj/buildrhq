@@ -146,6 +146,6 @@ Proprietary - All rights reserved.
 
 ## Support
 
-- Documentation: [docs.coderzai.xyz](https://docs.coderzai.xyz)
-- Email: support@coderzai.xyz
+- Documentation: [docs.buildrhq.com](https://docs.buildrhq.com)
+- Email: support@buildrhq.com
 - Discord: [Join our community](https://discord.gg/coderzai)

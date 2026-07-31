@@ -145,9 +145,9 @@ export default function ProjectGenerateSheet({
                 <SheetContent side="right" className="w-full sm:max-w-[560px] p-0 flex flex-col">
                     <div className="flex flex-1 flex-col items-center justify-center gap-8 px-8">
                         <div className="relative flex h-20 w-20 items-center justify-center">
-                            <div className="absolute inset-0 rounded-full border-2 border-orange-500/20" />
-                            <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-orange-500 animate-spin" />
-                            <Sparkles className="h-7 w-7 text-orange-500" />
+                            <div className="absolute inset-0 rounded-full border-2 border-neutral-900/20" />
+                            <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-neutral-900 animate-spin" />
+                            <Sparkles className="h-7 w-7 text-neutral-900" />
                         </div>
                         <div className="text-center">
                             <h3 className="text-lg font-bold text-neutral-900 dark:text-white">Building your project</h3>
@@ -166,8 +166,8 @@ export default function ProjectGenerateSheet({
                                 const done = PHASES.indexOf(phaseLabel) > i
                                 return (
                                     <div key={p} className="flex items-center gap-2.5 text-sm">
-                                        {done ? <Check className="h-4 w-4 text-orange-500" />
-                                            : active ? <Loader2 className="h-4 w-4 animate-spin text-orange-500" />
+                                        {done ? <Check className="h-4 w-4 text-neutral-900" />
+                                            : active ? <Loader2 className="h-4 w-4 animate-spin text-neutral-900" />
                                                 : <div className="h-4 w-4 rounded-full border border-neutral-300 dark:border-neutral-700" />}
                                         <span className={cn(done || active ? 'text-neutral-900 dark:text-white' : 'text-neutral-400')}>{p}</span>
                                     </div>
@@ -188,7 +188,7 @@ export default function ProjectGenerateSheet({
             <SheetContent side="right" className="w-full sm:max-w-[560px] p-0 flex flex-col gap-0">
                 <SheetHeader className="border-b border-neutral-200 dark:border-neutral-800 px-6 py-4 space-y-0">
                     <div className="flex items-center gap-3">
-                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange-500 text-white">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900">
                             <Sparkles className="h-5 w-5" />
                         </div>
                         <div>
@@ -198,7 +198,7 @@ export default function ProjectGenerateSheet({
                     </div>
                     <div className="mt-3 flex gap-1.5">
                         {[0, 1].map(i => (
-                            <div key={i} className={cn('h-1 flex-1 rounded-full transition-colors', i <= step ? 'bg-orange-500' : 'bg-neutral-200 dark:bg-neutral-800')} />
+                            <div key={i} className={cn('h-1 flex-1 rounded-full transition-colors', i <= step ? 'bg-neutral-900' : 'bg-neutral-200 dark:bg-neutral-800')} />
                         ))}
                     </div>
                 </SheetHeader>
@@ -223,8 +223,8 @@ export default function ProjectGenerateSheet({
                                             return (
                                                 <button key={t.value} type="button" onClick={() => set('generationType', t.value)}
                                                     className={cn('flex items-start gap-2.5 rounded-xl border p-3 text-left transition-colors',
-                                                        active ? 'border-orange-500 bg-orange-50 dark:bg-orange-500/10' : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700')}>
-                                                    <t.icon className={cn('h-4.5 w-4.5 mt-0.5 shrink-0', active ? 'text-orange-500' : 'text-neutral-500')} />
+                                                        active ? 'border-neutral-900 bg-neutral-50 dark:bg-neutral-200/10' : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700')}>
+                                                    <t.icon className={cn('h-4.5 w-4.5 mt-0.5 shrink-0', active ? 'text-neutral-900' : 'text-neutral-500')} />
                                                     <div className="min-w-0">
                                                         <p className="text-sm font-semibold text-neutral-900 dark:text-white">{t.label}</p>
                                                         <p className="text-[11px] text-neutral-500 truncate">{t.description}</p>
@@ -242,7 +242,7 @@ export default function ProjectGenerateSheet({
                                             return (
                                                 <button key={d.value} type="button" onClick={() => set('difficulty', d.value)}
                                                     className={cn('rounded-xl border p-3 text-center transition-colors',
-                                                        active ? 'border-orange-500 bg-orange-50 dark:bg-orange-500/10' : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300')}>
+                                                        active ? 'border-neutral-900 bg-neutral-50 dark:bg-neutral-200/10' : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300')}>
                                                     <p className="text-sm font-semibold text-neutral-900 dark:text-white">{d.label}</p>
                                                     <p className="text-[11px] text-neutral-500">{d.desc}</p>
                                                 </button>
@@ -274,8 +274,8 @@ export default function ProjectGenerateSheet({
                                             return (
                                                 <button key={v.value} type="button" onClick={() => set('visibility', v.value)}
                                                     className={cn('flex items-start gap-2.5 rounded-xl border p-3 text-left transition-colors',
-                                                        active ? 'border-orange-500 bg-orange-50 dark:bg-orange-500/10' : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300')}>
-                                                    <v.icon className={cn('h-4 w-4 mt-0.5', active ? 'text-orange-500' : 'text-neutral-500')} />
+                                                        active ? 'border-neutral-900 bg-neutral-50 dark:bg-neutral-200/10' : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300')}>
+                                                    <v.icon className={cn('h-4 w-4 mt-0.5', active ? 'text-neutral-900' : 'text-neutral-500')} />
                                                     <div>
                                                         <p className="text-sm font-semibold text-neutral-900 dark:text-white">{v.label}</p>
                                                         <p className="text-[11px] text-neutral-500">{v.desc}</p>
@@ -288,15 +288,15 @@ export default function ProjectGenerateSheet({
 
                                 <button type="button" onClick={() => set('includeAssessment', !form.includeAssessment)}
                                     className={cn('flex w-full items-center justify-between rounded-xl border p-3 text-left transition-colors',
-                                        form.includeAssessment ? 'border-orange-500 bg-orange-50 dark:bg-orange-500/10' : 'border-neutral-200 dark:border-neutral-800')}>
+                                        form.includeAssessment ? 'border-neutral-900 bg-neutral-50 dark:bg-neutral-200/10' : 'border-neutral-200 dark:border-neutral-800')}>
                                     <div className="flex items-center gap-2.5">
-                                        <Cpu className={cn('h-4 w-4', form.includeAssessment ? 'text-orange-500' : 'text-neutral-500')} />
+                                        <Cpu className={cn('h-4 w-4', form.includeAssessment ? 'text-neutral-900' : 'text-neutral-500')} />
                                         <div>
                                             <p className="text-sm font-semibold text-neutral-900 dark:text-white">Add skill assessment</p>
                                             <p className="text-[11px] text-neutral-500">Auto-graded checkpoints · +30 credits</p>
                                         </div>
                                     </div>
-                                    <div className={cn('h-5 w-9 rounded-full p-0.5 transition-colors', form.includeAssessment ? 'bg-orange-500' : 'bg-neutral-300 dark:bg-neutral-700')}>
+                                    <div className={cn('h-5 w-9 rounded-full p-0.5 transition-colors', form.includeAssessment ? 'bg-neutral-900' : 'bg-neutral-300 dark:bg-neutral-700')}>
                                         <div className={cn('h-4 w-4 rounded-full bg-white transition-transform', form.includeAssessment && 'translate-x-4')} />
                                     </div>
                                 </button>
@@ -324,7 +324,7 @@ export default function ProjectGenerateSheet({
                             Continue <ArrowRight className="ml-1.5 h-4 w-4" />
                         </Button>
                     ) : (
-                        <Button onClick={handleSubmit} className="bg-orange-500 text-white hover:bg-orange-600">
+                        <Button onClick={handleSubmit} className="bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200">
                             <Sparkles className="mr-1.5 h-4 w-4" /> Generate · {cost} credits
                         </Button>
                     )}
@@ -344,7 +344,7 @@ function StackRow({ label, options, value, onSelect }: { label: string; options:
                     return (
                         <button key={o} type="button" onClick={() => onSelect(o)}
                             className={cn('rounded-full border px-2.5 py-1 text-xs transition-colors',
-                                active ? 'border-orange-500 bg-orange-500 text-white' : 'border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:border-neutral-300')}>
+                                active ? 'border-neutral-900 bg-neutral-900 text-white' : 'border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:border-neutral-300')}>
                             {o}
                         </button>
                     )

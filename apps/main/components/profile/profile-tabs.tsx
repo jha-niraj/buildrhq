@@ -102,7 +102,7 @@ export function ProfileTabs({
 										isActive && (
 											<motion.div
 												layoutId="activeTabIndicator"
-												className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-yellow-500 to-amber-500"
+												className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-neutral-900 to-neutral-900"
 												initial={false}
 												transition={{
 													type: "spring",

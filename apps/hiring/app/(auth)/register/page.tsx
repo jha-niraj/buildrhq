@@ -152,12 +152,12 @@ function SignUpForm() {
                         <p className="text-neutral-400 text-lg mb-8">
                             Initialize your workspace and gain access to pre-vetted engineering resources.
                         </p>
-                        <div className="p-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 mb-6">
+                        <div className="p-4 rounded-2xl border border-neutral-900/30 bg-neutral-900/10 mb-6">
                             <div className="flex items-start gap-3">
-                                <ShieldCheck className="h-5 w-5 text-amber-400 mt-0.5 shrink-0" />
+                                <ShieldCheck className="h-5 w-5 text-neutral-800 mt-0.5 shrink-0" />
                                 <div>
-                                    <p className="text-amber-200 font-medium text-sm">Founder Registration Only</p>
-                                    <p className="text-amber-200/70 text-xs mt-1">
+                                    <p className="text-neutral-200 font-medium text-sm">Founder Registration Only</p>
+                                    <p className="text-neutral-200/70 text-xs mt-1">
                                         This registration is exclusively for company founders, CEOs, and executives who are setting up their organization&apos;s hiring workspace.
                                     </p>
                                 </div>
@@ -210,10 +210,10 @@ function SignUpForm() {
                             CODER&apos;Z <span className="text-neutral-500 font-mono font-normal">HIRING</span>
                         </span>
                     </div>
-                    <div className="lg:hidden p-3 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 mb-6">
+                    <div className="lg:hidden p-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/20 mb-6">
                         <div className="flex items-start gap-2">
-                            <Info className="h-4 w-4 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                            <p className="text-amber-800 dark:text-amber-200 text-xs">
+                            <Info className="h-4 w-4 text-neutral-800 dark:text-neutral-100 mt-0.5 shrink-0" />
+                            <p className="text-neutral-800 dark:text-neutral-700 text-xs">
                                 <strong>Founders & Executives Only.</strong> Team members should sign in with credentials provided by their company admin.
                             </p>
                         </div>

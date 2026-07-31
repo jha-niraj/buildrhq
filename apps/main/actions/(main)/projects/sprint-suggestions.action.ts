@@ -4,7 +4,8 @@ import { getSession } from '@repo/auth'
 import { headers } from 'next/headers'
 import {
     db, projectV2SprintSuggestions, projectsV2, projectV2Sprints, projectV2Tasks,
-    userProjectV2Progress
+    userProjectV2Progress,
+    withTransaction
 } from '@repo/db'
 import { eq, and, desc } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
@@ -184,7 +185,7 @@ export async function reviewSprintSuggestion({
         }
 
         if (action === 'APPROVED') {
-            const result = await db.transaction(async (tx) => {
+            const result = await withTransaction(async (tx) => {
                 const [sprint] = await tx
                     .insert(projectV2Sprints)
                     .values({

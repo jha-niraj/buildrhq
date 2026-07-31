@@ -267,21 +267,21 @@ export default function PricingPage() {
                 <div className="max-w-7xl mx-auto px-6 mb-16 relative">
                     <div className="text-center mb-8">
                         <Link href="/" className="inline-flex items-center gap-2 mb-6">
-                            <div className="w-10 h-10 rounded-xl bg-orange-600 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-xl bg-neutral-800 flex items-center justify-center">
                                 <GraduationCap className="w-5 h-5 text-white" />
                             </div>
                             <span className="text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
-                                CODER&apos;Z <span className="text-orange-500 font-mono font-normal">UNI</span>
+                                CODER&apos;Z <span className="text-neutral-900 font-mono font-normal">UNI</span>
                             </span>
                         </Link>
                     </div>
                     <div className="flex flex-col md:flex-row justify-between items-end gap-8">
                         <div>
-                            <Badge variant="outline" className="mb-6 border-orange-300 dark:border-orange-700 text-orange-600 dark:text-orange-400">
+                            <Badge variant="outline" className="mb-6 border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-neutral-100">
                                 University Pricing
                             </Badge>
                             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-6">
-                                Invest in <span className="text-orange-500">Education.</span><br />
+                                Invest in <span className="text-neutral-900">Education.</span><br />
                                 <span className="text-neutral-400 dark:text-neutral-600">Empower Students.</span>
                             </h1>
                             <p className="text-lg text-neutral-500 max-w-2xl font-light">
@@ -295,7 +295,7 @@ export default function PricingPage() {
                                         key={cur}
                                         onClick={() => setCurrency(cur)}
                                         className={`cursor-pointer px-4 py-2 rounded-lg text-xs font-bold font-mono transition-all ${currency === cur
-                                            ? "bg-orange-600 text-white shadow-md"
+                                            ? "bg-neutral-800 text-white shadow-md"
                                             : "text-neutral-500 hover:bg-neutral-100 dark:hover:bg-neutral-800"
                                             }`}
                                     >
@@ -309,13 +309,13 @@ export default function PricingPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     <Tabs defaultValue="credits" value={activeTab} onValueChange={setActiveTab} className="space-y-12">
                         <div className="overflow-x-auto pb-4 scrollbar-hide">
-                            <TabsList className="inline-flex h-auto p-1 bg-orange-50 dark:bg-neutral-900 border border-orange-200 dark:border-neutral-800 rounded-2xl">
+                            <TabsList className="inline-flex h-auto p-1 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl">
                                 {
                                     Object.entries(pricingData).map(([key, data]) => (
                                         <TabsTrigger
                                             key={key}
                                             value={key}
-                                            className="px-6 py-3 cursor-pointer rounded-xl text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-800 data-[state=active]:text-orange-600 dark:data-[state=active]:text-orange-400 data-[state=active]:shadow-sm transition-all flex items-center gap-2"
+                                            className="px-6 py-3 cursor-pointer rounded-xl text-sm font-medium data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-800 data-[state=active]:text-neutral-800 dark:data-[state=active]:text-neutral-800 data-[state=active]:shadow-sm transition-all flex items-center gap-2"
                                         >
                                             <data.icon className="w-4 h-4" />
                                             {data.title}
@@ -343,13 +343,13 @@ export default function PricingPage() {
                                                         animate={{ opacity: 1, y: 0 }}
                                                         transition={{ delay: index * 0.1 }}
                                                         className={`relative p-8 rounded-3xl border flex flex-col ${tier.popular
-                                                            ? "bg-gradient-to-br from-orange-600 to-orange-600 text-white border-orange-600 shadow-2xl scale-105 z-10"
-                                                            : "bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-colors"
+                                                            ? "bg-gradient-to-br from-neutral-800 to-neutral-800 text-white border-neutral-800 shadow-2xl scale-105 z-10"
+                                                            : "bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors"
                                                             }`}
                                                     >
                                                         {
                                                             tier.popular && (
-                                                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg tracking-wider">
+                                                                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-neutral-800 to-neutral-900 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg tracking-wider">
                                                                     MOST POPULAR
                                                                 </div>
                                                             )
@@ -357,13 +357,13 @@ export default function PricingPage() {
                                                         <div className="mb-8">
                                                             <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${tier.popular
                                                                 ? "bg-white/20"
-                                                                : "bg-orange-50 dark:bg-orange-900/30"
+                                                                : "bg-neutral-50 dark:bg-neutral-800/30"
                                                                 }`}>
-                                                                <tier.icon className={`w-6 h-6 ${tier.popular ? "text-white" : "text-orange-600 dark:text-orange-400"}`} />
+                                                                <tier.icon className={`w-6 h-6 ${tier.popular ? "text-white" : "text-neutral-800 dark:text-neutral-100"}`} />
                                                             </div>
                                                             <h3 className="text-xl font-bold mb-2">{tier.name}</h3>
                                                             <p className={`text-sm leading-relaxed ${tier.popular
-                                                                ? "text-orange-200"
+                                                                ? "text-neutral-200"
                                                                 : "text-neutral-500"
                                                                 }`}>
                                                                 {tier.description}
@@ -376,7 +376,7 @@ export default function PricingPage() {
                                                                 </span>
                                                             </div>
                                                             <span className={`text-sm ${tier.popular
-                                                                ? "text-orange-300"
+                                                                ? "text-neutral-300"
                                                                 : "text-neutral-500"
                                                                 }`}>
                                                                 {tier.suffix}
@@ -387,8 +387,8 @@ export default function PricingPage() {
                                                                 tier.features.map((feature, i) => (
                                                                     <div key={i} className="flex items-start gap-3 text-sm">
                                                                         <Check className={`w-5 h-5 shrink-0 ${tier.popular
-                                                                            ? "text-amber-300"
-                                                                            : "text-amber-600 dark:text-amber-400"
+                                                                            ? "text-neutral-300"
+                                                                            : "text-neutral-800 dark:text-neutral-100"
                                                                             }`} />
                                                                         <span>{feature}</span>
                                                                     </div>
@@ -405,8 +405,8 @@ export default function PricingPage() {
                                                         </div>
                                                         <Link href="/contactus" className="w-full mt-auto">
                                                             <button className={`cursor-pointer w-full py-4 rounded-xl font-bold transition-all ${tier.popular
-                                                                ? "bg-white text-orange-600 hover:bg-orange-50"
-                                                                : "bg-orange-600 text-white hover:bg-orange-700"
+                                                                ? "bg-white text-neutral-800 hover:bg-neutral-50"
+                                                                : "bg-neutral-800 text-white hover:bg-neutral-700"
                                                                 }`}>
                                                                 Select {tier.name}
                                                             </button>
@@ -422,7 +422,7 @@ export default function PricingPage() {
                     </Tabs>
                 </div>
                 <div className="max-w-7xl mx-auto px-6 mt-24">
-                    <div className="bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 rounded-3xl border border-orange-200 dark:border-orange-800 p-8 md:p-12 text-center">
+                    <div className="bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 rounded-3xl border border-neutral-200 dark:border-neutral-800 p-8 md:p-12 text-center">
                         <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-4">
                             Need a Custom Solution for Your University?
                         </h2>
@@ -432,7 +432,7 @@ export default function PricingPage() {
                         </p>
                         <Link
                             href="/contactus"
-                            className="cursor-pointer inline-flex items-center font-bold text-orange-600 dark:text-orange-400 border-b border-orange-600 dark:border-orange-400 pb-0.5 hover:opacity-70 transition-opacity"
+                            className="cursor-pointer inline-flex items-center font-bold text-neutral-800 dark:text-neutral-100 border-b border-neutral-800 dark:border-neutral-100 pb-0.5 hover:opacity-70 transition-opacity"
                         >
                             Schedule a University Demo <ArrowRight className="ml-2 w-4 h-4" />
                         </Link>

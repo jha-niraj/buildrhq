@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
@@ -62,18 +63,15 @@ export function PracticeSidebar({ activeModule, activeCategory }: PracticeSideba
     return (
         <aside className="w-[280px] border-r border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 flex-shrink-0 hidden lg:flex flex-col">
             <div className="p-4 border-b border-neutral-200 dark:border-neutral-800">
-                <button
-                    onClick={() => router.push("/practice")}
-                    className={cn(
+                <Link href="/practice" className={cn(
                         "cursor-pointer flex items-center gap-2 w-full px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                         isDashboard
                             ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white"
                             : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-900"
-                    )}
-                >
+                    )}>
                     <BarChart3 className="h-4 w-4" />
                     Dashboard
-                </button>
+                </Link>
             </div>
             <ScrollArea className="flex-1">
                 <div className="p-3 space-y-1">

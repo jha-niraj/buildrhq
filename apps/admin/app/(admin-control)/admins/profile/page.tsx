@@ -56,7 +56,7 @@ export default function AdminProfilePage() {
                         <div key={mod} className="border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 bg-white dark:bg-neutral-900">
                             <div className="flex items-center justify-between mb-2">
                                 <span className="font-medium text-neutral-900 dark:text-white capitalize">{mod}</span>
-                                <BadgeCheck className="w-4 h-4 text-amber-500" />
+                                <BadgeCheck className="w-4 h-4 text-neutral-900" />
                             </div>
                             <div className="flex flex-wrap gap-2">
                                 {
@@ -93,7 +93,7 @@ export default function AdminProfilePage() {
             </div>
             <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6 mb-8">
                 <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-white text-xl font-bold">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-red-500 to-neutral-900 flex items-center justify-center text-white text-xl font-bold">
                         {admin?.name?.charAt(0) || 'A'}
                     </div>
                     <div>
@@ -153,7 +153,7 @@ export default function AdminProfilePage() {
                         <button
                             type="submit"
                             disabled={changing}
-                            className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-orange-500 rounded-lg hover:from-red-600 hover:to-orange-600 disabled:opacity-50"
+                            className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-neutral-900 rounded-lg hover:from-red-600 hover:to-neutral-800 disabled:opacity-50"
                         >
                             {changing ? (<span className="flex items-center gap-2"><Loader2 className="w-4 h-4 animate-spin" /> Saving</span>) : 'Change Password'}
                         </button>

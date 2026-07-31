@@ -6,10 +6,12 @@ import { useRouter } from "next/navigation"
 import { Zap, Sparkles, User, Settings } from "lucide-react"
 import { useSession, signOut } from "@repo/auth/client"
 import { toast } from "@repo/ui/components/ui/sonner"
+import { cn } from "@repo/ui/lib/utils"
 import { AppSidebar, type AppSidebarNotification } from "@repo/ui/components/app-sidebar"
 import { useSidebar } from "@/components/common/sidebarprovider"
 import { mainNavigation } from "@/lib/navigation"
 import { useUserStore } from "@/app/store/useUserStore"
+import { useAIPanelStore } from "@/app/store/aiPanelStore"
 import { getNotifications, markAsRead, markAllAsRead } from "@/actions/(main)/notifications/notification.action"
 
 export default function Sidebar() {
@@ -19,6 +21,10 @@ export default function Sidebar() {
 
     const credits = useUserStore((s) => s.credits)
     const fetchCreditsAndXp = useUserStore((s) => s.fetchCreditsAndXp)
+    // The AI control lives in the sidebar footer rather than only in the floating
+    // launcher, so the panel has a permanent home the user can find twice.
+    const aiOpen = useAIPanelStore((s) => s.isOpen)
+    const toggleAI = useAIPanelStore((s) => s.toggle)
 
     const [notifs, setNotifs] = useState<AppSidebarNotification[]>([])
     const [unreadCount, setUnreadCount] = useState(0)
@@ -70,7 +76,7 @@ export default function Sidebar() {
                 subtitle: "Developer Suite",
                 homeHref: "/home",
                 logo: (
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-orange-500 text-white text-sm font-bold">B</div>
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-bold">B</div>
                 ),
             }}
             primary={mainNavigation.primary}
@@ -97,14 +103,52 @@ export default function Sidebar() {
             footerExtra={
                 <div className="flex items-center gap-1.5">
                     <Link href="/purchase" className="flex flex-1 items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium text-neutral-600 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors min-w-0">
-                        <Zap className="h-3.5 w-3.5 text-amber-500 shrink-0" />
+                        <Zap className="h-3.5 w-3.5 text-neutral-900 dark:text-white shrink-0" />
                         <span className="truncate">{typeof credits === "number" ? `${credits.toLocaleString()} credits` : "Credits"}</span>
                     </Link>
-                    <Link href="/ai" className="flex flex-1 items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium text-neutral-600 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors min-w-0">
-                        <Sparkles className="h-3.5 w-3.5 text-orange-500 shrink-0" />
-                        <span className="truncate">AI Tools</span>
-                    </Link>
+                    {/* A button, not a Link: this opens the docked panel in place.
+                        Sending the user to /ai instead would navigate away from the
+                        page they wanted help with. */}
+                    <button
+                        type="button"
+                        onClick={toggleAI}
+                        aria-pressed={aiOpen}
+                        className={cn(
+                            "flex flex-1 cursor-pointer items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors min-w-0",
+                            aiOpen
+                                ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900"
+                                : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800",
+                        )}
+                    >
+                        <Sparkles className={cn("h-3.5 w-3.5 shrink-0", !aiOpen && "text-neutral-900 dark:text-white")} />
+                        <span className="truncate">Ask AI</span>
+                    </button>
                 </div>
+            }
+            footerExtraCollapsed={
+                <>
+                    <Link
+                        href="/purchase"
+                        title={typeof credits === "number" ? `${credits.toLocaleString()} credits` : "Credits"}
+                        className="flex h-9 w-9 items-center justify-center rounded-lg text-neutral-600 transition-colors hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800"
+                    >
+                        <Zap className="h-5 w-5" />
+                    </Link>
+                    <button
+                        type="button"
+                        onClick={toggleAI}
+                        aria-pressed={aiOpen}
+                        title="Ask AI"
+                        className={cn(
+                            "flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors",
+                            aiOpen
+                                ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900"
+                                : "text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800",
+                        )}
+                    >
+                        <Sparkles className="h-5 w-5" />
+                    </button>
+                </>
             }
         />
     )

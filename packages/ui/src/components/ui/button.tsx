@@ -10,6 +10,28 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default: "bg-primary text-primary-foreground hover:bg-primary/90",
+				/**
+				 * The primary CTA for a monochrome brand.
+				 *
+				 * INVERTS with the theme — ink-on-white in light mode, white-on-ink in
+				 * dark — so it is always the highest-contrast element on its surface.
+				 * A fixed dark button disappears entirely on a dark card, which is
+				 * exactly what happened when the orange accent was retired.
+				 *
+				 * `group` + the ::after sweep give it the sheen: a soft highlight
+				 * travels across on hover. `overflow-hidden` clips it to the pill and
+				 * `motion-reduce` drops it for anyone who asked for less motion.
+				 */
+				sheen: [
+					"relative overflow-hidden isolate group",
+					"bg-neutral-900 text-white hover:bg-neutral-800",
+					"dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200",
+					"after:absolute after:inset-0 after:-translate-x-full after:content-['']",
+					"after:bg-gradient-to-r after:from-transparent after:via-white/25 after:to-transparent",
+					"dark:after:via-neutral-900/20",
+					"hover:after:translate-x-full after:transition-transform after:duration-700",
+					"motion-reduce:after:hidden",
+				].join(" "),
 				destructive:
 					"bg-destructive text-destructive-foreground hover:bg-destructive/90",
 				outline:

@@ -1,7 +1,8 @@
 'use client'
+import Link from "next/link";
+import { useRouter } from 'next/navigation'
 
 import { useState, useTransition } from 'react'
-import { useRouter } from 'next/navigation'
 import { Button } from '@repo/ui/components/ui/button'
 import { Badge } from '@repo/ui/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@repo/ui/components/ui/tabs'
@@ -24,6 +25,7 @@ import {
 import { importAndCreateDraft } from '@/actions/(main)/ai/resume-import.action'
 import { PLATFORM_TEMPLATES } from '@/types/resume-draft'
 import { cn } from '@repo/ui/lib/utils'
+import { resumeShareUrl } from "@/lib/urls"
 
 interface Draft {
     id: string
@@ -60,10 +62,10 @@ interface Props {
 }
 
 const TEMPLATE_COLORS: Record<string, string> = {
-    'clean-minimal': 'from-orange-500/10 to-orange-500/10 border-orange-200 dark:border-orange-800',
-    'developer-pro': 'from-orange-500/10 to-orange-500/10 border-orange-200 dark:border-orange-800',
-    'executive-classic': 'from-amber-500/10 to-orange-500/10 border-amber-200 dark:border-amber-800',
-    'ats-optimizer': 'from-amber-500/10 to-amber-500/10 border-amber-200 dark:border-amber-800',
+    'clean-minimal': 'from-neutral-900/10 to-neutral-900/10 border-neutral-200 dark:border-neutral-800',
+    'developer-pro': 'from-neutral-900/10 to-neutral-900/10 border-neutral-200 dark:border-neutral-800',
+    'executive-classic': 'from-neutral-900/10 to-neutral-900/10 border-neutral-200 dark:border-neutral-800',
+    'ats-optimizer': 'from-neutral-900/10 to-neutral-900/10 border-neutral-200 dark:border-neutral-800',
     'modern-creative': 'from-rose-500/10 to-pink-500/10 border-rose-200 dark:border-rose-800',
 }
 
@@ -183,7 +185,7 @@ function NewResumeSheet({ templates, open, onClose }: {
                                 <div className="space-y-3">
                                     <div className="space-y-1.5">
                                         <Label className="text-xs font-medium flex items-center gap-1.5">
-                                            <Linkedin className="w-3.5 h-3.5 text-orange-600" /> LinkedIn URL
+                                            <Linkedin className="w-3.5 h-3.5 text-neutral-800" /> LinkedIn URL
                                         </Label>
                                         <Input placeholder="https://linkedin.com/in/username" value={linkedinUrl} onChange={e => setLinkedinUrl(e.target.value)} />
                                     </div>
@@ -230,7 +232,7 @@ function NewResumeSheet({ templates, open, onClose }: {
                                                     <p className="text-xs font-semibold truncate">{t.name}</p>
                                                     <p className="text-[10px] text-neutral-500 truncate">{t.description}</p>
                                                 </div>
-                                                {selectedTemplate === t.slug && <CheckCircle2 className="w-4 h-4 text-amber-500 flex-shrink-0" />}
+                                                {selectedTemplate === t.slug && <CheckCircle2 className="w-4 h-4 text-neutral-900 flex-shrink-0" />}
                                             </button>
                                         )
                                     })}
@@ -264,7 +266,6 @@ function ResumeCard({ draft, onDelete, onTogglePublic, onDuplicate }: {
     onTogglePublic: (id: string, val: boolean) => void
     onDuplicate: (id: string) => void
 }) {
-    const router = useRouter()
     const colorClass = TEMPLATE_COLORS[draft.templateSlug] ?? TEMPLATE_COLORS['clean-minimal']
 
     return (
@@ -280,8 +281,8 @@ function ResumeCard({ draft, onDelete, onTogglePublic, onDuplicate }: {
                 {draft.atsScore !== null && (
                     <div className={cn(
                         'text-xs font-bold px-2 py-0.5 rounded-full flex-shrink-0',
-                        draft.atsScore >= 80 ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
-                            : draft.atsScore >= 60 ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400'
+                        draft.atsScore >= 80 ? 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100'
+                            : draft.atsScore >= 60 ? 'bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100'
                             : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
                     )}>
                         ATS {draft.atsScore}
@@ -303,7 +304,7 @@ function ResumeCard({ draft, onDelete, onTogglePublic, onDuplicate }: {
 
             {/* Public indicator */}
             {draft.isPublic && (
-                <div className="flex items-center gap-1.5 text-[10px] text-amber-600 dark:text-amber-400">
+                <div className="flex items-center gap-1.5 text-[10px] text-neutral-800 dark:text-neutral-100">
                     <Globe className="w-3 h-3" />
                     Public · {draft.viewCount} views
                 </div>
@@ -311,13 +312,9 @@ function ResumeCard({ draft, onDelete, onTogglePublic, onDuplicate }: {
 
             {/* Actions */}
             <div className="flex items-center gap-1.5 pt-1 border-t border-black/5 dark:border-white/5">
-                <Button
-                    size="sm"
-                    className="flex-1 h-7 text-xs bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90"
-                    onClick={() => router.push(`/ai/resume/draft/${draft.id}`)}
-                >
+                <Button size="sm" className="flex-1 h-7 text-xs bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90" asChild><Link href={`/ai/resume/draft/${draft.id}`}>
                     <Settings className="w-3 h-3 mr-1" /> Edit
-                </Button>
+                </Link></Button>
                 <Button
                     size="sm"
                     variant="outline"
@@ -334,7 +331,7 @@ function ResumeCard({ draft, onDelete, onTogglePublic, onDuplicate }: {
                     title={draft.isPublic ? 'Make private' : 'Make public'}
                     onClick={() => onTogglePublic(draft.id, !draft.isPublic)}
                 >
-                    {draft.isPublic ? <Eye className="w-3 h-3 text-amber-500" /> : <Lock className="w-3 h-3" />}
+                    {draft.isPublic ? <Eye className="w-3 h-3 text-neutral-900" /> : <Lock className="w-3 h-3" />}
                 </Button>
                 <Button
                     size="sm"
@@ -342,7 +339,7 @@ function ResumeCard({ draft, onDelete, onTogglePublic, onDuplicate }: {
                     className="h-7 w-7 p-0"
                     title="Copy share link"
                     onClick={() => {
-                        const url = `${window.location.origin}/r/${draft.shareSlug}`
+                        const url = resumeShareUrl(draft.shareSlug)
                         navigator.clipboard.writeText(url)
                         toast.success('Share link copied!')
                         if (!draft.isPublic) {
@@ -387,7 +384,6 @@ function ResumeCard({ draft, onDelete, onTogglePublic, onDuplicate }: {
 
 // ─── Main Hub ────────────────────────────────────────────────────────────────
 export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
-    const router = useRouter()
     const [drafts, setDrafts] = useState<Draft[]>(initialDrafts)
     const [sheetOpen, setSheetOpen] = useState(false)
     const [, startTransition] = useTransition()
@@ -434,24 +430,15 @@ export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
                             </p>
                         </div>
                         <div className="flex items-center gap-2 flex-wrap justify-end">
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => router.push('/blueprint/resume')}
-                            >
+                            <Button variant="outline" size="sm" asChild><Link href='/blueprint/resume'>
                                 <Store className="w-3.5 h-3.5 mr-1.5" />
                                 Blueprint
-                            </Button>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => router.push('/ai/resume/import')}
-                                className="border-orange-200 dark:border-orange-800 text-orange-700 dark:text-orange-300 hover:bg-orange-50 dark:hover:bg-orange-950"
-                            >
+                            </Link></Button>
+                            <Button variant="outline" size="sm" className="border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-900" asChild><Link href='/ai/resume/import'>
                                 <Linkedin className="w-3.5 h-3.5 mr-1" />
                                 <Github className="w-3.5 h-3.5 mr-1.5" />
                                 AI Import
-                            </Button>
+                            </Link></Button>
                             <Button
                                 size="sm"
                                 className="bg-neutral-900 text-white dark:bg-white dark:text-black hover:opacity-90"
@@ -466,17 +453,17 @@ export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
                     {/* Quick stats */}
                     <div className="flex items-center gap-6 mt-5 text-sm">
                         <div className="flex items-center gap-1.5">
-                            <FileText className="w-3.5 h-3.5 text-orange-500" />
+                            <FileText className="w-3.5 h-3.5 text-neutral-900" />
                             <span className="font-semibold">{drafts.length}</span>
                             <span className="text-neutral-500">resumes</span>
                         </div>
                         <div className="flex items-center gap-1.5">
-                            <Globe className="w-3.5 h-3.5 text-amber-500" />
+                            <Globe className="w-3.5 h-3.5 text-neutral-900" />
                             <span className="font-semibold">{drafts.filter(d => d.isPublic).length}</span>
                             <span className="text-neutral-500">public</span>
                         </div>
                         <div className="flex items-center gap-1.5">
-                            <LayoutTemplate className="w-3.5 h-3.5 text-orange-500" />
+                            <LayoutTemplate className="w-3.5 h-3.5 text-neutral-900" />
                             <span className="font-semibold">{platformTemplates.length}</span>
                             <span className="text-neutral-500">templates</span>
                         </div>
@@ -518,14 +505,11 @@ export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
                                     <span className="text-sm font-medium">New Resume</span>
                                 </button>
                                 {/* Import from LinkedIn / GitHub tile */}
-                                <button
-                                    onClick={() => router.push('/ai/resume/import')}
-                                    className="rounded-2xl border-2 border-dashed border-orange-200 dark:border-orange-900 p-5 flex flex-col items-center justify-center gap-2 hover:border-orange-400 dark:hover:border-orange-700 transition-colors min-h-[180px] text-orange-500 dark:text-orange-400"
-                                >
+                                <Link href='/ai/resume/import' className="rounded-2xl border-2 border-dashed border-neutral-200 dark:border-neutral-800 p-5 flex flex-col items-center justify-center gap-2 hover:border-neutral-800 dark:hover:border-neutral-700 transition-colors min-h-[180px] text-neutral-900 dark:text-neutral-100">
                                     <Globe className="w-6 h-6" />
                                     <span className="text-sm font-medium">Import from LinkedIn &amp; GitHub</span>
                                     <span className="text-[10px] text-neutral-500">Scrape &amp; auto-fill your resume</span>
-                                </button>
+                                </Link>
                                 {drafts.map(d => (
                                     <ResumeCard
                                         key={d.id}
@@ -546,7 +530,7 @@ export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
                             <div>
                                 <div className="flex items-center gap-2 mb-4">
                                     <h2 className="text-base font-semibold">BuildrHQ Templates</h2>
-                                    <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs">Official</Badge>
+                                    <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 text-xs">Official</Badge>
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                     {platformTemplates.map(t => {
@@ -566,7 +550,7 @@ export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
                                                     ))}
                                                 </div>
                                                 <div className="flex items-center justify-between pt-2 border-t border-neutral-100 dark:border-neutral-800">
-                                                    <span className="text-xs text-amber-600 font-medium">Free</span>
+                                                    <span className="text-xs text-neutral-800 font-medium">Free</span>
                                                     <Button
                                                         size="sm"
                                                         className="h-7 text-xs"
@@ -586,9 +570,9 @@ export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
                                 <div>
                                     <div className="flex items-center justify-between mb-4">
                                         <h2 className="text-base font-semibold">Community Templates</h2>
-                                        <Button variant="ghost" size="sm" onClick={() => router.push('/blueprint/resume')}>
+                                        <Button variant="ghost" size="sm" asChild><Link href='/blueprint/resume'>
                                             Browse Blueprint <ExternalLink className="w-3 h-3 ml-1" />
-                                        </Button>
+                                        </Link></Button>
                                     </div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                                         {communityTemplates.slice(0, 6).map(t => (
@@ -596,10 +580,10 @@ export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
                                                 <p className="font-semibold text-sm">{t.name}</p>
                                                 <p className="text-xs text-neutral-500 mt-1 line-clamp-2">{t.description}</p>
                                                 <div className="flex items-center justify-between mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800">
-                                                    <span className="text-xs font-semibold text-orange-600">{t.marketplacePrice} credits</span>
-                                                    <Button size="sm" className="h-7 text-xs" onClick={() => router.push('/blueprint/resume')}>
+                                                    <span className="text-xs font-semibold text-neutral-800">{t.marketplacePrice} credits</span>
+                                                    <Button size="sm" className="h-7 text-xs" asChild><Link href='/blueprint/resume'>
                                                         View in Blueprint
-                                                    </Button>
+                                                    </Link></Button>
                                                 </div>
                                             </div>
                                         ))}
@@ -616,9 +600,9 @@ export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
                                     <p className="font-semibold text-sm">Create & Sell Your Template</p>
                                     <p className="text-xs text-neutral-500 mt-0.5">Upload your own resume template to Blueprint marketplace and earn credits</p>
                                 </div>
-                                <Button variant="outline" size="sm" onClick={() => router.push('/blueprint/resume?tab=sell')}>
+                                <Button variant="outline" size="sm" asChild><Link href='/blueprint/resume?tab=sell'>
                                     <Store className="w-3.5 h-3.5 mr-1.5" /> Open Blueprint
-                                </Button>
+                                </Link></Button>
                             </div>
                         </div>
                     </TabsContent>

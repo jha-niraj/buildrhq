@@ -63,7 +63,7 @@ export default function Footer() {
                         © {new Date().getFullYear()} BuildrHQ - All rights reserved
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-neutral-900 animate-pulse" />
                         <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Platform Online</span>
                     </div>
                 </div>

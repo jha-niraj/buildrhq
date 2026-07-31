@@ -21,8 +21,8 @@ export function AITriggerButton({ className }: { className?: string }) {
 			aria-label="Open BuildrHQ AI"
 			className={cn(
 				"fixed bottom-6 right-6 z-40 inline-flex items-center gap-2 rounded-full",
-				"bg-orange-500 px-4 py-3 text-sm font-semibold text-white shadow-lg",
-				"transition-all hover:bg-orange-600 hover:shadow-xl active:scale-95 cursor-pointer",
+				"bg-neutral-900 dark:bg-white px-4 py-3 text-sm font-semibold text-white dark:text-neutral-900 shadow-lg",
+				"transition-all hover:bg-neutral-800 hover:shadow-xl active:scale-95 cursor-pointer",
 				className,
 			)}
 		>

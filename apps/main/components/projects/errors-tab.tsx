@@ -75,20 +75,20 @@ interface ErrorsTabProps {
 const categoryConfig: Record<string, { icon: typeof Bug; color: string; label: string }> = {
     SETUP: { icon: Settings, color: 'bg-slate-500', label: 'Setup' },
     CONFIGURATION: { icon: Settings, color: 'bg-gray-500', label: 'Configuration' },
-    DATABASE: { icon: Database, color: 'bg-orange-500', label: 'Database' },
-    API: { icon: Globe, color: 'bg-orange-500', label: 'API' },
+    DATABASE: { icon: Database, color: 'bg-neutral-900', label: 'Database' },
+    API: { icon: Globe, color: 'bg-neutral-900', label: 'API' },
     UI: { icon: Layers, color: 'bg-pink-500', label: 'UI' },
-    STATE: { icon: Zap, color: 'bg-yellow-500', label: 'State' },
-    DEPLOYMENT: { icon: Globe, color: 'bg-amber-500', label: 'Deployment' },
+    STATE: { icon: Zap, color: 'bg-neutral-900', label: 'State' },
+    DEPLOYMENT: { icon: Globe, color: 'bg-neutral-900', label: 'Deployment' },
     SECURITY: { icon: Shield, color: 'bg-red-500', label: 'Security' },
-    PERFORMANCE: { icon: Zap, color: 'bg-orange-500', label: 'Performance' },
+    PERFORMANCE: { icon: Zap, color: 'bg-neutral-900', label: 'Performance' },
     OTHER: { icon: Bug, color: 'bg-neutral-500', label: 'Other' },
 }
 
 const severityConfig = {
     HIGH: { color: 'bg-red-100 text-red-700 border-red-200 dark:bg-red-900/30 dark:text-red-400 dark:border-red-800', label: 'Common' },
-    MEDIUM: { color: 'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800', label: 'Occasional' },
-    LOW: { color: 'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800', label: 'Rare' },
+    MEDIUM: { color: 'bg-neutral-100 text-neutral-700 border-neutral-200 dark:bg-neutral-800/30 dark:text-neutral-100 dark:border-neutral-800', label: 'Occasional' },
+    LOW: { color: 'bg-neutral-100 text-neutral-700 border-neutral-200 dark:bg-neutral-800/30 dark:text-neutral-100 dark:border-neutral-800', label: 'Rare' },
 }
 
 // ============================================================================
@@ -152,8 +152,8 @@ function ErrorCard({
                                     className={cn(
                                         'flex items-center gap-1 px-2 py-1 rounded-lg text-xs transition-colors',
                                         error.hasVotedHelpful
-                                            ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400'
-                                            : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-amber-100 dark:hover:bg-amber-900/30'
+                                            ? 'bg-neutral-100 dark:bg-neutral-800/30 text-neutral-700 dark:text-neutral-100'
+                                            : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800/30'
                                     )}
                                 >
                                     <ThumbsUp className="w-3 h-3" />
@@ -164,8 +164,8 @@ function ErrorCard({
                                     className={cn(
                                         'flex items-center gap-1 px-2 py-1 rounded-lg text-xs transition-colors',
                                         error.hasVotedEncountered
-                                            ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400'
-                                            : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-amber-100 dark:hover:bg-amber-900/30'
+                                            ? 'bg-neutral-100 dark:bg-neutral-800/30 text-neutral-700 dark:text-neutral-100'
+                                            : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800/30'
                                     )}
                                 >
                                     <AlertCircle className="w-3 h-3" />
@@ -174,7 +174,7 @@ function ErrorCard({
                             </div>
                             <button
                                 onClick={() => setIsExpanded(!isExpanded)}
-                                className="text-xs text-orange-600 dark:text-orange-400 hover:underline flex items-center gap-1"
+                                className="text-xs text-neutral-800 dark:text-neutral-100 hover:underline flex items-center gap-1"
                             >
                                 {isExpanded ? 'Hide' : 'View'} Solution
                                 <ChevronDown className={cn('w-3 h-3 transition-transform', isExpanded && 'rotate-180')} />
@@ -195,7 +195,7 @@ function ErrorCard({
                         >
                             <div className="px-4 pb-4 pt-2 border-t border-neutral-200 dark:border-neutral-800 space-y-4">
                                 <div>
-                                    <h5 className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-2">
+                                    <h5 className="text-sm font-semibold text-neutral-700 dark:text-neutral-100 mb-2 flex items-center gap-2">
                                         <CheckCircle2 className="w-4 h-4" />
                                         Solution
                                     </h5>
@@ -219,12 +219,12 @@ function ErrorCard({
                                 {
                                     error.fixedCode && (
                                         <div>
-                                            <h5 className="text-sm font-semibold text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-2">
+                                            <h5 className="text-sm font-semibold text-neutral-700 dark:text-neutral-100 mb-2 flex items-center gap-2">
                                                 <CheckCircle2 className="w-4 h-4" />
                                                 Corrected Code
                                             </h5>
-                                            <pre className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-3 text-xs overflow-x-auto">
-                                                <code className="text-amber-800 dark:text-amber-200">{error.fixedCode}</code>
+                                            <pre className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-lg p-3 text-xs overflow-x-auto">
+                                                <code className="text-neutral-800 dark:text-neutral-700">{error.fixedCode}</code>
                                             </pre>
                                         </div>
                                     )
@@ -325,7 +325,7 @@ function SubmitErrorSheet({
     return (
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-                <Button className="gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:opacity-90">
+                <Button className="gap-2 bg-gradient-to-r from-neutral-900 to-neutral-800 hover:opacity-90">
                     <Plus className="w-4 h-4" />
                     Share Error
                 </Button>
@@ -334,7 +334,7 @@ function SubmitErrorSheet({
                 <section className="w-full max-w-5xl mx-auto">
                     <SheetHeader>
                         <SheetTitle className="flex items-center gap-2">
-                            <AlertTriangle className="w-5 h-5 text-amber-500" />
+                            <AlertTriangle className="w-5 h-5 text-neutral-900" />
                             Share an Error or Mistake
                         </SheetTitle>
                         <SheetDescription>
@@ -441,7 +441,7 @@ function SubmitErrorSheet({
                         <Button
                             onClick={handleSubmit}
                             disabled={loading || !form.title || !form.description || !form.solution}
-                            className="w-full bg-gradient-to-r from-amber-500 to-orange-600"
+                            className="w-full bg-gradient-to-r from-neutral-900 to-neutral-800"
                         >
                             {
                                 loading ? (
@@ -534,7 +534,7 @@ export default function ErrorsTab({ projectId, isEnrolled, isCreator }: ErrorsTa
             <div className="flex items-center justify-between">
                 <div>
                     <h3 className="text-lg font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                        <AlertTriangle className="w-5 h-5 text-amber-500" />
+                        <AlertTriangle className="w-5 h-5 text-neutral-900" />
                         Errors & Mistakes
                     </h3>
                     <p className="text-sm text-neutral-600 dark:text-neutral-400">
@@ -550,10 +550,10 @@ export default function ErrorsTab({ projectId, isEnrolled, isCreator }: ErrorsTa
             {
                 stats && stats.totalErrors > 0 && (
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        <Card className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border-amber-200 dark:border-amber-800">
+                        <Card className="bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 border-neutral-200 dark:border-neutral-800">
                             <CardContent className="p-4">
-                                <div className="text-2xl font-bold text-amber-700 dark:text-amber-400">{stats.totalErrors}</div>
-                                <div className="text-xs text-amber-600 dark:text-amber-500">Total Errors</div>
+                                <div className="text-2xl font-bold text-neutral-700 dark:text-neutral-100">{stats.totalErrors}</div>
+                                <div className="text-xs text-neutral-800 dark:text-neutral-200">Total Errors</div>
                             </CardContent>
                         </Card>
                         <Card className="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20 border-red-200 dark:border-red-800">
@@ -562,16 +562,16 @@ export default function ErrorsTab({ projectId, isEnrolled, isCreator }: ErrorsTa
                                 <div className="text-xs text-red-600 dark:text-red-500">Common</div>
                             </CardContent>
                         </Card>
-                        <Card className="bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 border-orange-200 dark:border-orange-800">
+                        <Card className="bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 border-neutral-200 dark:border-neutral-800">
                             <CardContent className="p-4">
-                                <div className="text-2xl font-bold text-orange-700 dark:text-orange-400">{stats.bySeverity?.MEDIUM || 0}</div>
-                                <div className="text-xs text-orange-600 dark:text-orange-500">Occasional</div>
+                                <div className="text-2xl font-bold text-neutral-700 dark:text-neutral-100">{stats.bySeverity?.MEDIUM || 0}</div>
+                                <div className="text-xs text-neutral-800 dark:text-neutral-200">Occasional</div>
                             </CardContent>
                         </Card>
-                        <Card className="bg-gradient-to-br from-amber-50 to-amber-50 dark:from-amber-900/20 dark:to-amber-900/20 border-amber-200 dark:border-amber-800">
+                        <Card className="bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 border-neutral-200 dark:border-neutral-800">
                             <CardContent className="p-4">
-                                <div className="text-2xl font-bold text-amber-700 dark:text-amber-400">{stats.bySeverity?.LOW || 0}</div>
-                                <div className="text-xs text-amber-600 dark:text-amber-500">Rare</div>
+                                <div className="text-2xl font-bold text-neutral-700 dark:text-neutral-100">{stats.bySeverity?.LOW || 0}</div>
+                                <div className="text-xs text-neutral-800 dark:text-neutral-200">Rare</div>
                             </CardContent>
                         </Card>
                     </div>

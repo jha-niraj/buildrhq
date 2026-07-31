@@ -11,6 +11,7 @@ import {
     projectV2QuizQuestions,
     projectV2QuizAttempts,
     projectV2QuizAnswers,
+    withTransaction
 } from "@repo/db";
 import { eq, and, sql } from "drizzle-orm";
 import { openai } from '@/lib/openai-client'
@@ -169,7 +170,7 @@ Return ONLY a valid JSON array with 20 questions following this exact structure:
             }
         }
 
-        await db.transaction(async (tx) => {
+        await withTransaction(async (tx) => {
             await tx.update(users)
                 .set({ credits: sql`${users.credits} - ${QUIZ_CREDIT_COST}` })
                 .where(eq(users.id, session.user.id));

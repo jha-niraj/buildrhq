@@ -181,7 +181,7 @@ export default function OnboardingWizard({ profile }: OnboardingWizardProps) {
                     className="text-center"
                 >
                     <div className="flex items-center justify-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                             <Bot className="w-6 h-6 text-white" />
                         </div>
                         <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
@@ -234,7 +234,7 @@ export default function OnboardingWizard({ profile }: OnboardingWizardProps) {
                                     <Button
                                         onClick={handleNext}
                                         disabled={isLoading}
-                                        className="gap-2 bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700"
+                                        className="gap-2 bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700"
                                     >
                                         {
                                             isLoading ? (
@@ -251,7 +251,7 @@ export default function OnboardingWizard({ profile }: OnboardingWizardProps) {
                                     <Button
                                         onClick={handleCreateAI}
                                         disabled={isProcessing}
-                                        className="gap-2 bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700"
+                                        className="gap-2 bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700"
                                     >
                                         {
                                             isProcessing ? (
@@ -285,7 +285,7 @@ function WelcomeStep({ onNext, isLoading }: { onNext: () => void; isLoading: boo
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center"
+                className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center"
             >
                 <Sparkles className="w-10 h-10 text-white" />
             </motion.div>
@@ -303,19 +303,19 @@ function WelcomeStep({ onNext, isLoading }: { onNext: () => void; isLoading: boo
                 </p>
                 <div className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                     <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400 text-xs font-bold">
+                        <div className="w-6 h-6 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center text-neutral-800 dark:text-neutral-100 text-xs font-bold">
                             1
                         </div>
                         <span>Choose your data sources (30 sec)</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400 text-xs font-bold">
+                        <div className="w-6 h-6 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center text-neutral-800 dark:text-neutral-100 text-xs font-bold">
                             2
                         </div>
                         <span>Connect platforms (optional, 60 sec)</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400 text-xs font-bold">
+                        <div className="w-6 h-6 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center text-neutral-800 dark:text-neutral-100 text-xs font-bold">
                             3
                         </div>
                         <span>Set privacy preferences (30 sec)</span>
@@ -325,7 +325,7 @@ function WelcomeStep({ onNext, isLoading }: { onNext: () => void; isLoading: boo
             <Button
                 onClick={onNext}
                 disabled={isLoading}
-                className="w-full gap-2 bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 py-6"
+                className="w-full gap-2 bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 py-6"
                 size="lg"
             >
                 {
@@ -362,7 +362,7 @@ function DataSourcesStep({
     return (
         <div className="space-y-6">
             <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-500 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-900 flex items-center justify-center">
                     <Database className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
@@ -397,8 +397,8 @@ function DataSourcesStep({
                     onToggle={() => setIncludeAssessments(!includeAssessments)}
                 />
             </div>
-            <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-4">
-                <p className="text-sm text-amber-800 dark:text-amber-200 flex items-start gap-2">
+            <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4">
+                <p className="text-sm text-neutral-800 dark:text-neutral-700 flex items-start gap-2">
                     <Sparkles className="w-4 h-4 mt-0.5 flex-shrink-0" />
                     <span>
                         <strong>Tip:</strong> More data = better answers.
@@ -426,7 +426,7 @@ function PlatformsStep({
     return (
         <div className="space-y-6">
             <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-neutral-900 to-pink-500 flex items-center justify-center">
                     <Github className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
@@ -438,16 +438,16 @@ function PlatformsStep({
             </div>
 
             {/* Info Card */}
-            <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-5">
+            <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-xl p-5">
                 <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center flex-shrink-0">
-                        <Sparkles className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                    <div className="w-10 h-10 rounded-lg bg-neutral-100 dark:bg-neutral-800/50 flex items-center justify-center flex-shrink-0">
+                        <Sparkles className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                     </div>
                     <div>
-                        <h4 className="font-medium text-orange-900 dark:text-orange-100 mb-1">
+                        <h4 className="font-medium text-neutral-900 dark:text-neutral-800 mb-1">
                             First, let&apos;s train with Coderz data
                         </h4>
-                        <p className="text-sm text-orange-700 dark:text-orange-300">
+                        <p className="text-sm text-neutral-700 dark:text-neutral-100">
                             Your AI will be trained on your Coderz profile, projects, and assessments first. 
                             Once your AI is ready, you can connect external platforms from the Settings page.
                         </p>
@@ -489,8 +489,8 @@ function PlatformsStep({
             </div>
 
             {/* Tip */}
-            <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-4">
-                <p className="text-sm text-amber-800 dark:text-amber-200 flex items-start gap-2">
+            <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4">
+                <p className="text-sm text-neutral-800 dark:text-neutral-700 flex items-start gap-2">
                     <Sparkles className="w-4 h-4 mt-0.5 flex-shrink-0" />
                     <span>
                         <strong>Tip:</strong> You can also train your AI by chatting with it! 
@@ -513,7 +513,7 @@ function PrivacyStep({
     return (
         <div className="space-y-6">
             <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-neutral-900 to-neutral-900 flex items-center justify-center">
                     <Shield className="w-8 h-8 text-white" />
                 </div>
                 <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
@@ -536,14 +536,14 @@ function PrivacyStep({
                                 className={cn(
                                     "flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all",
                                     isSelected
-                                        ? "bg-orange-50 dark:bg-orange-900/20 border-orange-500"
+                                        ? "bg-neutral-50 dark:bg-neutral-800/20 border-neutral-900"
                                         : "bg-slate-50 dark:bg-neutral-800 border-slate-200 dark:border-neutral-700 hover:border-slate-300 dark:hover:border-neutral-600"
                                 )}
                             >
                                 <div className="flex items-center gap-3">
                                     <div className={cn(
                                         "w-10 h-10 rounded-lg flex items-center justify-center",
-                                        isSelected ? "bg-orange-500 text-white" : "bg-slate-200 dark:bg-neutral-700 text-slate-600 dark:text-slate-400"
+                                        isSelected ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900" : "bg-slate-200 dark:bg-neutral-700 text-slate-600 dark:text-slate-400"
                                     )}>
                                         <Icon className="w-5 h-5" />
                                     </div>
@@ -552,7 +552,7 @@ function PrivacyStep({
                                             {option.label}
                                             {
                                                 'recommended' in option && option.recommended === true && (
-                                                    <Badge className="text-xs bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
+                                                    <Badge className="text-xs bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                                         Recommended
                                                     </Badge>
                                                 )
@@ -566,7 +566,7 @@ function PrivacyStep({
                                 <div className={cn(
                                     "w-6 h-6 rounded-full border-2 flex items-center justify-center",
                                     isSelected
-                                        ? "border-orange-500 bg-orange-500"
+                                        ? "border-neutral-900 bg-neutral-900"
                                         : "border-slate-300 dark:border-neutral-600"
                                 )}>
                                     {isSelected && <Check className="w-4 h-4 text-white" />}
@@ -604,7 +604,7 @@ function DataSourceOption({
             className={cn(
                 "flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all",
                 enabled
-                    ? "bg-amber-50 dark:bg-amber-900/20 border-amber-500"
+                    ? "bg-neutral-50 dark:bg-neutral-800/20 border-neutral-900"
                     : "bg-slate-50 dark:bg-neutral-800 border-slate-200 dark:border-neutral-700 hover:border-slate-300 dark:hover:border-neutral-600"
             )}
             onClick={onToggle}
@@ -612,7 +612,7 @@ function DataSourceOption({
             <div className="flex items-center gap-3">
                 <div className={cn(
                     "w-10 h-10 rounded-lg flex items-center justify-center",
-                    enabled ? "bg-amber-500 text-white" : "bg-slate-200 dark:bg-neutral-700 text-slate-600 dark:text-slate-400"
+                    enabled ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900" : "bg-slate-200 dark:bg-neutral-700 text-slate-600 dark:text-slate-400"
                 )}>
                     {icon}
                 </div>
@@ -621,7 +621,7 @@ function DataSourceOption({
                         {title}
                         {
                             recommended && enabled && (
-                                <Check className="w-4 h-4 text-amber-500" />
+                                <Check className="w-4 h-4 text-neutral-900" />
                             )
                         }
                     </h4>
@@ -632,7 +632,7 @@ function DataSourceOption({
             </div>
             {
                 enabled ? (
-                    <ToggleRight className="w-8 h-8 text-amber-500" />
+                    <ToggleRight className="w-8 h-8 text-neutral-900" />
                 ) : (
                     <ToggleLeft className="w-8 h-8 text-slate-400" />
                 )

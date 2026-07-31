@@ -128,7 +128,7 @@ const ResetPassword = (): JSX.Element | null => {
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        className="w-20 h-20 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6 text-amber-600 dark:text-amber-400"
+                        className="w-20 h-20 bg-neutral-100 dark:bg-neutral-800/30 rounded-full flex items-center justify-center mx-auto mb-6 text-neutral-800 dark:text-neutral-100"
                     >
                         <CheckCircle2 className="w-10 h-10" />
                     </motion.div>

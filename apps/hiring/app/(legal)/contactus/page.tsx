@@ -78,8 +78,8 @@ export default function ContactPage() {
                             <p className="text-neutral-500 text-sm mb-4">
                                 Custom solutions for large organizations with complex needs.
                             </p>
-                            <a href="mailto:sales@coderzai.xyz" className="flex items-center gap-2 font-medium text-sm text-neutral-900 dark:text-white hover:underline">
-                                sales@coderzai.xyz <ArrowRight className="w-4 h-4" />
+                            <a href="mailto:sales@buildrhq.com" className="flex items-center gap-2 font-medium text-sm text-neutral-900 dark:text-white hover:underline">
+                                sales@buildrhq.com <ArrowRight className="w-4 h-4" />
                             </a>
                         </div>
                         <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
@@ -90,8 +90,8 @@ export default function ContactPage() {
                             <p className="text-neutral-500 text-sm mb-4">
                                 Get help with platform issues and technical questions.
                             </p>
-                            <a href="mailto:support@coderzai.xyz" className="flex items-center gap-2 font-medium text-sm text-neutral-900 dark:text-white hover:underline">
-                                support@coderzai.xyz <ArrowRight className="w-4 h-4" />
+                            <a href="mailto:support@buildrhq.com" className="flex items-center gap-2 font-medium text-sm text-neutral-900 dark:text-white hover:underline">
+                                support@buildrhq.com <ArrowRight className="w-4 h-4" />
                             </a>
                         </div>
                     </motion.div>
@@ -117,10 +117,10 @@ export default function ContactPage() {
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.95 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-8 text-center"
+                                        className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 text-center"
                                     >
-                                        <div className="w-16 h-16 rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mx-auto mb-4">
-                                            <Mail className="w-8 h-8 text-amber-600 dark:text-amber-400" />
+                                        <div className="w-16 h-16 rounded-full bg-neutral-100 dark:bg-neutral-800/40 flex items-center justify-center mx-auto mb-4">
+                                            <Mail className="w-8 h-8 text-neutral-800 dark:text-neutral-100" />
                                         </div>
                                         <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
                                             Message Sent!
@@ -224,8 +224,8 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-neutral-900 dark:text-white mb-1">Email</p>
-                                        <a href="mailto:hello@coderzai.xyz" className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                                            hello@coderzai.xyz
+                                        <a href="mailto:hello@buildrhq.com" className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                            hello@buildrhq.com
                                         </a>
                                     </div>
                                 </div>

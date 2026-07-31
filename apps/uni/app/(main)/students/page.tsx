@@ -27,7 +27,7 @@ export default function StudentsPage() {
                         <Filter className="w-4 h-4 mr-2" />
                         Filter
                     </Button>
-                    <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
+                    <Button className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white">
                         <Plus className="w-4 h-4 mr-2" />
                         Bulk Import
                     </Button>
@@ -57,21 +57,21 @@ export default function StudentsPage() {
                 transition={{ delay: 0.15 }}
                 className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"
             >
-                <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-4">
+                <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4">
                     <div className="flex items-center gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-amber-600" />
+                        <CheckCircle2 className="w-5 h-5 text-neutral-800" />
                         <div>
-                            <p className="text-2xl font-bold text-amber-700 dark:text-amber-400">0</p>
-                            <p className="text-sm text-amber-600/80">Verified Students</p>
+                            <p className="text-2xl font-bold text-neutral-700 dark:text-neutral-100">0</p>
+                            <p className="text-sm text-neutral-800/80">Verified Students</p>
                         </div>
                     </div>
                 </div>
-                <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-4">
+                <div className="bg-neutral-50 dark:bg-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-4">
                     <div className="flex items-center gap-3">
-                        <Clock className="w-5 h-5 text-amber-600" />
+                        <Clock className="w-5 h-5 text-neutral-800" />
                         <div>
-                            <p className="text-2xl font-bold text-amber-700 dark:text-amber-400">0</p>
-                            <p className="text-sm text-amber-600/80">Pending Verification</p>
+                            <p className="text-2xl font-bold text-neutral-700 dark:text-neutral-100">0</p>
+                            <p className="text-sm text-neutral-800/80">Pending Verification</p>
                         </div>
                     </div>
                 </div>
@@ -94,8 +94,8 @@ export default function StudentsPage() {
                 className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-12"
             >
                 <div className="text-center max-w-md mx-auto">
-                    <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mx-auto mb-4">
-                        <Users className="w-8 h-8 text-orange-600" />
+                    <div className="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mx-auto mb-4">
+                        <Users className="w-8 h-8 text-neutral-800" />
                     </div>
                     <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
                         No students yet
@@ -108,7 +108,7 @@ export default function StudentsPage() {
                             <MoreVertical className="w-4 h-4 mr-2" />
                             View Pending
                         </Button>
-                        <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
+                        <Button className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white">
                             <Plus className="w-4 h-4 mr-2" />
                             Bulk Import Students
                         </Button>

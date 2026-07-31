@@ -344,11 +344,11 @@ export function SubmitProjectIdeaSheet({ open, onOpenChange }: SubmitProjectIdea
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <button
                                         onClick={() => setIdeaType('problem')}
-                                        className="cursor-pointer group text-left bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-6 hover:border-amber-400 dark:hover:border-amber-600 transition-all hover:shadow-lg"
+                                        className="cursor-pointer group text-left bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 hover:border-neutral-800 dark:hover:border-neutral-300 transition-all hover:shadow-lg"
                                     >
                                         <div className="flex items-center gap-3 mb-4">
-                                            <div className="p-3 bg-amber-100 dark:bg-amber-900/50 rounded-xl">
-                                                <Target className="w-6 h-6 text-amber-600 dark:text-amber-400" />
+                                            <div className="p-3 bg-neutral-100 dark:bg-neutral-800/50 rounded-xl">
+                                                <Target className="w-6 h-6 text-neutral-800 dark:text-neutral-100" />
                                             </div>
                                             <div>
                                                 <h3 className="text-lg font-bold text-neutral-900 dark:text-white">Problem Statement</h3>
@@ -359,18 +359,18 @@ export function SubmitProjectIdeaSheet({ open, onOpenChange }: SubmitProjectIdea
                                             Submit a challenge or problem that developers can solve using any tech stack they prefer.
                                             Great for real-world scenarios and open-ended projects.
                                         </p>
-                                        <div className="mt-4 flex items-center text-sm font-medium text-amber-600 dark:text-amber-400 group-hover:gap-2 transition-all">
+                                        <div className="mt-4 flex items-center text-sm font-medium text-neutral-800 dark:text-neutral-100 group-hover:gap-2 transition-all">
                                             Choose this
                                             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                                         </div>
                                     </button>
                                     <button
                                         onClick={() => setIdeaType('technology')}
-                                        className="cursor-pointer group text-left bg-gradient-to-br from-orange-50 to-orange-50 dark:from-orange-900/20 dark:to-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-xl p-6 hover:border-orange-400 dark:hover:border-orange-600 transition-all hover:shadow-lg"
+                                        className="cursor-pointer group text-left bg-gradient-to-br from-neutral-50 to-neutral-50 dark:from-neutral-800/20 dark:to-neutral-800/20 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6 hover:border-neutral-800 dark:hover:border-neutral-300 transition-all hover:shadow-lg"
                                     >
                                         <div className="flex items-center gap-3 mb-4">
-                                            <div className="p-3 bg-orange-100 dark:bg-orange-900/50 rounded-xl">
-                                                <Code2 className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                                            <div className="p-3 bg-neutral-100 dark:bg-neutral-800/50 rounded-xl">
+                                                <Code2 className="w-6 h-6 text-neutral-800 dark:text-neutral-100" />
                                             </div>
                                             <div>
                                                 <h3 className="text-lg font-bold text-neutral-900 dark:text-white">Technology Specific</h3>
@@ -381,7 +381,7 @@ export function SubmitProjectIdeaSheet({ open, onOpenChange }: SubmitProjectIdea
                                             Submit a project idea with a specific technology stack.
                                             Best for tutorials, guided projects, and learning paths.
                                         </p>
-                                        <div className="mt-4 flex items-center text-sm font-medium text-orange-600 dark:text-orange-400 group-hover:gap-2 transition-all">
+                                        <div className="mt-4 flex items-center text-sm font-medium text-neutral-800 dark:text-neutral-100 group-hover:gap-2 transition-all">
                                             Choose this
                                             <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                                         </div>
@@ -405,7 +405,7 @@ export function SubmitProjectIdeaSheet({ open, onOpenChange }: SubmitProjectIdea
                                         </Button>
                                         <div>
                                             <SheetTitle className="flex items-center gap-2">
-                                                <Target className="w-5 h-5 text-amber-600" />
+                                                <Target className="w-5 h-5 text-neutral-800" />
                                                 Submit Problem Statement
                                             </SheetTitle>
                                             <SheetDescription>
@@ -565,7 +565,7 @@ export function SubmitProjectIdeaSheet({ open, onOpenChange }: SubmitProjectIdea
                                         </Button>
                                         <div>
                                             <SheetTitle className="flex items-center gap-2">
-                                                <Code2 className="w-5 h-5 text-orange-600" />
+                                                <Code2 className="w-5 h-5 text-neutral-800" />
                                                 Submit Technology-Specific Idea
                                             </SheetTitle>
                                             <SheetDescription>

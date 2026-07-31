@@ -22,6 +22,7 @@ import {
 } from "@/actions/(main)/user/profile.action"
 import { updateUserSkills, deleteSkill } from "@/actions/(main)/user/user.action"
 import { ResumePublicView } from "@/components/resume/resume-public-view"
+import { publicResumeUrl } from "@/lib/urls"
 import { ExperienceTabForm } from "./experience-tab-form"
 import { ProjectsTabForm } from "./projects-tab-form"
 import { SocialsTabForm } from "./socials-tab-form"
@@ -107,9 +108,9 @@ export function ResumeCreatorTabs({ defaultTab = "experience", onSaved: _onSaved
         )
     }
 
-    const shareUrl = profile.username
-        ? `${typeof window !== "undefined" ? window.location.origin : ""}/resume/${profile.username}`
-        : null
+    // Was `${window.location.origin}/resume/${username}` — no such route; the
+    // published resume lives at /ai/resume/[username]. See lib/urls.ts.
+    const shareUrl = profile.username ? publicResumeUrl(profile.username) : null
 
     const copyShareUrl = () => {
         if (shareUrl) {
@@ -164,7 +165,7 @@ export function ResumeCreatorTabs({ defaultTab = "experience", onSaved: _onSaved
                                     /resume/{profile.username}
                                 </code>
                                 <Button variant="outline" size="sm" onClick={copyShareUrl}>
-                                    {copied ? <Check className="w-4 h-4 text-amber-500" /> : <Copy className="w-4 h-4" />}
+                                    {copied ? <Check className="w-4 h-4 text-neutral-900" /> : <Copy className="w-4 h-4" />}
                                 </Button>
                                 <Button variant="outline" size="sm" asChild>
                                     <Link href={shareUrl} target="_blank" rel="noopener noreferrer">

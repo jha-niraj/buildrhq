@@ -295,15 +295,15 @@ export interface StatusConfig {
 }
 
 export const PATHFINDER_CATEGORIES: Record<PathfinderCategory, CategoryConfig> = {
-    DSA: { emoji: '🧮', color: 'text-orange-600', bg: 'bg-orange-500/10' },
-    WEB_DEVELOPMENT: { emoji: '🌐', color: 'text-amber-600', bg: 'bg-amber-500/10' },
+    DSA: { emoji: '🧮', color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+    WEB_DEVELOPMENT: { emoji: '🌐', color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
     FRONTEND: { emoji: '🎨', color: 'text-pink-600', bg: 'bg-pink-500/10' },
-    BACKEND: { emoji: '⚙️', color: 'text-orange-600', bg: 'bg-orange-500/10' },
-    DEVOPS: { emoji: '🚀', color: 'text-orange-600', bg: 'bg-orange-500/10' },
-    AI_ML: { emoji: '🤖', color: 'text-amber-600', bg: 'bg-amber-500/10' },
-    DATABASE: { emoji: '🗄️', color: 'text-yellow-600', bg: 'bg-yellow-500/10' },
+    BACKEND: { emoji: '⚙️', color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+    DEVOPS: { emoji: '🚀', color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+    AI_ML: { emoji: '🤖', color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+    DATABASE: { emoji: '🗄️', color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
     SYSTEM_DESIGN: { emoji: '🏗️', color: 'text-slate-600', bg: 'bg-slate-500/10' },
-    MOBILE: { emoji: '📱', color: 'text-amber-600', bg: 'bg-amber-500/10' },
+    MOBILE: { emoji: '📱', color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
     OTHER: { emoji: '📚', color: 'text-neutral-600', bg: 'bg-neutral-500/10' },
 }
 

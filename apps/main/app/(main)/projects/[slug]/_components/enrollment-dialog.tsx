@@ -107,7 +107,7 @@ export function EnrollmentDialog({
 						<>
 							<DialogHeader>
 								<DialogTitle className="flex items-center gap-2 text-2xl">
-									<Sparkles className="h-6 w-6 text-yellow-500" />
+									<Sparkles className="h-6 w-6 text-neutral-900" />
 									Enroll in Project
 								</DialogTitle>
 								<DialogDescription>
@@ -124,24 +124,24 @@ export function EnrollmentDialog({
 								</div>
 								<div className="space-y-2">
 									<h4 className="font-semibold flex items-center gap-2">
-										<CheckCircle2 className="h-4 w-4 text-amber-500" />
+										<CheckCircle2 className="h-4 w-4 text-neutral-900" />
 										What you&apos;ll get:
 									</h4>
 									<ul className="space-y-2 text-sm text-muted-foreground ml-6">
 										<li className="flex items-start gap-2">
-											<FileCode className="h-4 w-4 mt-0.5 text-orange-500" />
+											<FileCode className="h-4 w-4 mt-0.5 text-neutral-900" />
 											<span>Complete project blueprint with all tasks</span>
 										</li>
 										<li className="flex items-start gap-2">
-											<ListChecks className="h-4 w-4 mt-0.5 text-orange-500" />
+											<ListChecks className="h-4 w-4 mt-0.5 text-neutral-900" />
 											<span>Progress tracking for each task</span>
 										</li>
 										<li className="flex items-start gap-2">
-											<Sparkles className="h-4 w-4 mt-0.5 text-yellow-500" />
+											<Sparkles className="h-4 w-4 mt-0.5 text-neutral-900" />
 											<span>Access to suggest and vote on features</span>
 										</li>
 										<li className="flex items-start gap-2">
-											<CheckCircle2 className="h-4 w-4 mt-0.5 text-amber-500" />
+											<CheckCircle2 className="h-4 w-4 mt-0.5 text-neutral-900" />
 											<span>Lifetime access to project updates</span>
 										</li>
 									</ul>
@@ -149,7 +149,7 @@ export function EnrollmentDialog({
 								<div className="rounded-lg border-2 border-primary/20 bg-primary/5 p-4">
 									<div className="flex items-center justify-between">
 										<div className="flex items-center gap-2">
-											<Coins className="h-5 w-5 text-yellow-500" />
+											<Coins className="h-5 w-5 text-neutral-900" />
 											<span className="font-semibold">Enrollment Cost</span>
 										</div>
 										<Badge variant="secondary" className="text-lg font-bold">
@@ -243,17 +243,17 @@ export function EnrollmentDialog({
 						<>
 							<DialogHeader>
 								<DialogTitle className="text-center text-2xl flex items-center justify-center gap-2">
-									<PartyPopper className="h-6 w-6 text-yellow-500" />
+									<PartyPopper className="h-6 w-6 text-neutral-900" />
 									Enrollment Successful!
 								</DialogTitle>
 							</DialogHeader>
 							<div className="py-8 flex flex-col items-center justify-center space-y-6">
 								<div className="relative">
-									<div className="h-24 w-24 rounded-full bg-amber-500/20 flex items-center justify-center">
-										<CheckCircle2 className="h-16 w-16 text-amber-500 animate-pulse" />
+									<div className="h-24 w-24 rounded-full bg-neutral-900/20 flex items-center justify-center">
+										<CheckCircle2 className="h-16 w-16 text-neutral-900 animate-pulse" />
 									</div>
 									<div className="absolute -top-2 -right-2">
-										<Sparkles className="h-8 w-8 text-yellow-500 animate-bounce" />
+										<Sparkles className="h-8 w-8 text-neutral-900 animate-bounce" />
 									</div>
 								</div>
 								<div className="text-center space-y-2">
@@ -272,7 +272,7 @@ export function EnrollmentDialog({
 										<div className="text-xs text-muted-foreground">Tasks Ready</div>
 									</div>
 									<div className="rounded-lg border bg-muted/50 p-3 text-center">
-										<div className="text-2xl font-bold text-amber-500">
+										<div className="text-2xl font-bold text-neutral-900">
 											-{enrollmentData?.creditsSpent}
 										</div>
 										<div className="text-xs text-muted-foreground">Credits Used</div>

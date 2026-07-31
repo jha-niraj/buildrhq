@@ -95,7 +95,7 @@ export default function AdminAccessPage() {
 								<div key={a.id} className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6">
 									<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
 										<div className="flex items-center gap-3">
-											<div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-orange-500 text-white flex items-center justify-center font-semibold">
+											<div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-neutral-900 text-white flex items-center justify-center font-semibold">
 												{(a.user?.name || a.user?.email || 'A').charAt(0).toUpperCase()}
 											</div>
 											<div>
@@ -105,7 +105,7 @@ export default function AdminAccessPage() {
 											</div>
 										</div>
 										<div className="flex items-center gap-2">
-											<button onClick={() => setStatus(a.id, 'ACTIVE')} className="px-3 py-1.5 text-xs rounded-lg bg-amber-600 text-white">Activate</button>
+											<button onClick={() => setStatus(a.id, 'ACTIVE')} className="px-3 py-1.5 text-xs rounded-lg bg-neutral-800 text-white">Activate</button>
 											<button onClick={() => setStatus(a.id, 'INACTIVE')} className="px-3 py-1.5 text-xs rounded-lg bg-neutral-200 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">Inactive</button>
 											<button onClick={() => setStatus(a.id, 'SUSPENDED')} className="px-3 py-1.5 text-xs rounded-lg bg-red-600 text-white">Suspend</button>
 										</div>
@@ -134,7 +134,7 @@ export default function AdminAccessPage() {
 																		<td key={lvl} className="p-3 text-center">
 																			<button
 																				onClick={() => togglePerm(idx, key, lvl as Level)}
-																				className={`inline-flex items-center justify-center w-8 h-8 rounded-md border ${checked ? 'bg-amber-50 dark:bg-amber-900/30 border-amber-300 dark:border-amber-700 text-amber-600' : 'bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-700 text-neutral-400'}`}
+																				className={`inline-flex items-center justify-center w-8 h-8 rounded-md border ${checked ? 'bg-neutral-50 dark:bg-neutral-800/30 border-neutral-300 dark:border-neutral-700 text-neutral-800' : 'bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-700 text-neutral-400'}`}
 																				aria-pressed={checked}
 																			>
 																				{checked ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
@@ -153,7 +153,7 @@ export default function AdminAccessPage() {
 										<button
 											onClick={() => save(idx)}
 											disabled={savingId === a.id}
-											className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg text-white bg-gradient-to-r from-red-500 to-orange-500 disabled:opacity-50"
+											className="inline-flex items-center gap-2 px-4 py-2 text-sm rounded-lg text-white bg-gradient-to-r from-red-500 to-neutral-900 disabled:opacity-50"
 										>
 											{savingId === a.id ? (<><Loader2 className="w-4 h-4 animate-spin" /> Saving</>) : (<><Settings className="w-4 h-4" /> Save Changes</>)}
 										</button>

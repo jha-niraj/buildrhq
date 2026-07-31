@@ -16,6 +16,7 @@ import {
 	MessageCircle, Code, Download, QrCode, Share2
 } from "lucide-react";
 import toast from "@repo/ui/components/ui/sonner";
+import { publicProfileUrl } from "@/lib/urls";
 
 interface ShareProfileModalProps {
 	isOpen: boolean;
@@ -33,8 +34,14 @@ export function ShareProfileModal({
 }: ShareProfileModalProps) {
 	const [copied, setCopied] = useState<string | null>(null);
 
-	const profileUrl = `${typeof window !== "undefined" ? window.location.origin : ""}/u/${username}`;
-	const embedCode = `<iframe src="${profileUrl}/embed" width="400" height="600" frameborder="0"></iframe>`;
+	// Was `${window.location.origin}/u/${username}` — a route this app does not
+	// have, so every copied link 404'd, and the origin read degraded to "" on any
+	// server render. See lib/urls.ts.
+	const profileUrl = publicProfileUrl(username);
+	// NOTE: there is no `/embed` view. This iframes the profile page itself, so
+	// the snippet resolves rather than 404s — but it will render the full page,
+	// not a widget, and only once public profiles are readable signed-out.
+	const embedCode = `<iframe src="${profileUrl}" width="400" height="600" frameborder="0"></iframe>`;
 
 	const copyToClipboard = async (text: string, type: string) => {
 		try {
@@ -104,7 +111,7 @@ export function ShareProfileModal({
 								>
 									{
 										copied === "link" ? (
-											<Check className="w-4 h-4 text-amber-500" />
+											<Check className="w-4 h-4 text-neutral-900" />
 										) : (
 											<Copy className="w-4 h-4" />
 										)
@@ -204,7 +211,7 @@ export function ShareProfileModal({
 									{
 										copied === "embed" ? (
 											<>
-												<Check className="w-3 h-3 text-amber-500" />
+												<Check className="w-3 h-3 text-neutral-900" />
 												Copied
 											</>
 										) : (

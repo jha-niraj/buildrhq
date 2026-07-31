@@ -151,7 +151,7 @@ export default function SprintMockInterview({
             sprintNumber: sprintNumber.toString(),
             sprintName
         },
-        orbColors: ['#6366f1', '#8b5cf6'],
+        orbColors: ['#6366f1', '#404040'],
         title: `Sprint ${sprintNumber} Mock Interview`,
         subtitle: sprintName,
         stateLabels: {
@@ -186,13 +186,13 @@ export default function SprintMockInterview({
 
     if (mockStatus?.hasCompleted && !isSessionActive) {
         return (
-            <Card className="border-amber-200 dark:border-amber-900 bg-amber-50/50 dark:bg-amber-950/20">
+            <Card className="border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/20">
                 <CardHeader className="pb-3">
-                    <CardTitle className="text-base flex items-center gap-2 text-amber-700 dark:text-amber-400">
+                    <CardTitle className="text-base flex items-center gap-2 text-neutral-700 dark:text-neutral-100">
                         <CheckCircle2 className="w-5 h-5" />
                         Sprint Review Completed!
                     </CardTitle>
-                    <CardDescription className="text-amber-600 dark:text-amber-500">
+                    <CardDescription className="text-neutral-800 dark:text-neutral-200">
                         You scored {mockStatus.score}% on the {sprintName} mock interview.
                     </CardDescription>
                 </CardHeader>
@@ -267,7 +267,7 @@ export default function SprintMockInterview({
             <Card className="border-neutral-200 dark:border-neutral-800">
                 <CardHeader className="pb-3">
                     <CardTitle className="text-base flex items-center gap-2">
-                        <MonitorPlay className="w-5 h-5 text-orange-600" />
+                        <MonitorPlay className="w-5 h-5 text-neutral-800" />
                         {sprintName} Mock Interview
                     </CardTitle>
                     <CardDescription>
@@ -299,14 +299,14 @@ export default function SprintMockInterview({
                         </div>
                     )}
 
-                    <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 rounded-lg p-3">
-                        <p className="text-sm text-amber-800 dark:text-amber-300">
+                    <div className="bg-neutral-50 dark:bg-neutral-900/30 border border-neutral-200 dark:border-neutral-800 rounded-lg p-3">
+                        <p className="text-sm text-neutral-800 dark:text-neutral-100">
                             💡 Make sure you&apos;ve completed all tasks in sprints 1-{sprintNumber} before starting the mock interview for the best experience.
                         </p>
                     </div>
 
-                    <div className="bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-900 rounded-lg p-3">
-                        <p className="text-sm text-orange-800 dark:text-orange-300">
+                    <div className="bg-neutral-50 dark:bg-neutral-900/30 border border-neutral-200 dark:border-neutral-800 rounded-lg p-3">
+                        <p className="text-sm text-neutral-800 dark:text-neutral-100">
                             🎙️ This interview uses voice AI. Make sure your microphone is enabled and you&apos;re in a quiet environment.
                         </p>
                     </div>
@@ -314,7 +314,7 @@ export default function SprintMockInterview({
                     <Button
                         onClick={handleStartInterview}
                         disabled={isLoading}
-                        className="w-full bg-orange-600 hover:bg-orange-700 text-white"
+                        className="w-full bg-neutral-800 hover:bg-neutral-700 text-white"
                     >
                         <MonitorPlay className="w-4 h-4 mr-2" />
                         Start Mock Interview
@@ -333,7 +333,7 @@ export default function SprintMockInterview({
             <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                     <CardTitle className="text-base flex items-center gap-2">
-                        <MonitorPlay className="w-5 h-5 text-orange-600" />
+                        <MonitorPlay className="w-5 h-5 text-neutral-800" />
                         Sprint {sprintNumber} Mock Interview
                     </CardTitle>
                     <Badge variant="secondary" className="text-xs">
@@ -350,21 +350,21 @@ export default function SprintMockInterview({
                         "p-3 rounded-lg",
                         "bg-neutral-50 dark:bg-neutral-900"
                     )}>
-                        <p className="text-2xl font-bold text-orange-600">{sprintNumber}</p>
+                        <p className="text-2xl font-bold text-neutral-800">{sprintNumber}</p>
                         <p className="text-xs text-neutral-500">Sprints</p>
                     </div>
                     <div className={cn(
                         "p-3 rounded-lg",
                         "bg-neutral-50 dark:bg-neutral-900"
                     )}>
-                        <p className="text-2xl font-bold text-orange-600">~10</p>
+                        <p className="text-2xl font-bold text-neutral-800">~10</p>
                         <p className="text-xs text-neutral-500">Minutes</p>
                     </div>
                     <div className={cn(
                         "p-3 rounded-lg",
                         "bg-neutral-50 dark:bg-neutral-900"
                     )}>
-                        <p className="text-2xl font-bold text-orange-600">5-8</p>
+                        <p className="text-2xl font-bold text-neutral-800">5-8</p>
                         <p className="text-xs text-neutral-500">Questions</p>
                     </div>
                 </div>

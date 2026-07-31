@@ -95,7 +95,7 @@ export default function AnalyticsPage() {
                         Insights and metrics for your platform
                     </p>
                 </div>
-                <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-orange-500 rounded-lg hover:from-red-600 hover:to-orange-600 transition-colors">
+                <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-neutral-900 rounded-lg hover:from-red-600 hover:to-neutral-800 transition-colors">
                     <Download className="w-4 h-4" />
                     Export Report
                 </button>
@@ -105,7 +105,7 @@ export default function AnalyticsPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                         <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6">
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                                     <Users className="w-5 h-5 text-white" />
                                 </div>
                                 <div>
@@ -115,13 +115,13 @@ export default function AnalyticsPage() {
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400">Total Users</p>
                                 </div>
                             </div>
-                            <p className="text-xs text-amber-500">
+                            <p className="text-xs text-neutral-900">
                                 +{overviewStats.newUsers} new this period
                             </p>
                         </div>
                         <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6">
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center">
+                                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                                     <TrendingUp className="w-5 h-5 text-white" />
                                 </div>
                                 <div>
@@ -134,7 +134,7 @@ export default function AnalyticsPage() {
                         </div>
                         <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6">
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center">
+                                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                                     <Activity className="w-5 h-5 text-white" />
                                 </div>
                                 <div>
@@ -147,7 +147,7 @@ export default function AnalyticsPage() {
                         </div>
                         <div className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 p-6">
                             <div className="flex items-center gap-3 mb-2">
-                                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center">
+                                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
                                     <BarChart3 className="w-5 h-5 text-white" />
                                 </div>
                                 <div>
@@ -172,7 +172,7 @@ export default function AnalyticsPage() {
                                 userGrowth.chartData?.slice(0, 30).map((item: ChartData, index: number) => (
                                     <div key={index} className="flex-1 flex flex-col items-center gap-2">
                                         <div
-                                            className="w-full bg-gradient-to-t from-orange-500 to-orange-400 rounded-t"
+                                            className="w-full bg-gradient-to-t from-neutral-900 to-neutral-800 rounded-t"
                                             style={{
                                                 height: `${Math.max((item.value / Math.max(...userGrowth.chartData.map((d: ChartData) => d.value))) * 100, 5)}%`,
                                             }}
@@ -241,7 +241,7 @@ export default function AnalyticsPage() {
                                             </div>
                                             <div className="w-full bg-neutral-200 dark:bg-neutral-800 rounded-full h-2">
                                                 <div
-                                                    className="bg-gradient-to-r from-red-500 to-orange-500 h-2 rounded-full"
+                                                    className="bg-gradient-to-r from-red-500 to-neutral-900 h-2 rounded-full"
                                                     style={{
                                                         width: `${Math.max((module.count / Math.max(...moduleUsage.modules.map((m: ModuleItem) => m.count))) * 100, 5)}%`,
                                                     }}

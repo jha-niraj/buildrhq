@@ -15,7 +15,7 @@ export default function CreditsSystem() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-orange-600 dark:text-orange-500 mb-2 block">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-800 dark:text-neutral-200 mb-2 block">
                         Resource Allocation
                     </span>
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white">
@@ -29,9 +29,9 @@ export default function CreditsSystem() {
                         </div>
                         <h3 className="text-lg font-bold text-neutral-900 dark:text-white mb-2">Acquisition</h3>
                         <p className="text-sm text-neutral-500 mb-4">University purchases bulk credit pools.</p>
-                        <div className="mt-auto py-2 px-4 bg-orange-50 dark:bg-orange-900/10 border border-orange-200 dark:border-orange-900/30 rounded-lg">
-                            <span className="text-2xl font-bold text-orange-600 dark:text-orange-500">500</span>
-                            <span className="text-[10px] font-mono uppercase text-orange-600/70 ml-2">Credits / Student</span>
+                        <div className="mt-auto py-2 px-4 bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30 rounded-lg">
+                            <span className="text-2xl font-bold text-neutral-800 dark:text-neutral-200">500</span>
+                            <span className="text-[10px] font-mono uppercase text-neutral-800/70 ml-2">Credits / Student</span>
                         </div>
                     </div>
                     <div className="hidden md:flex flex-col items-center justify-center relative z-0">

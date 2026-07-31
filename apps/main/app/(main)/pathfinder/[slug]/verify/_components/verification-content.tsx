@@ -101,9 +101,9 @@ const statusIcons: Record<VerificationSectionStatus, React.ReactNode> = {
 
 const statusColors: Record<VerificationSectionStatus, string> = {
     LOCKED: 'text-neutral-400 bg-neutral-100 dark:bg-neutral-800',
-    PENDING: 'text-orange-600 bg-orange-100 dark:bg-orange-900/30',
-    IN_PROGRESS: 'text-yellow-600 bg-yellow-100 dark:bg-yellow-900/30',
-    COMPLETED: 'text-amber-600 bg-amber-100 dark:bg-amber-900/30',
+    PENDING: 'text-neutral-800 bg-neutral-100 dark:bg-neutral-800/30',
+    IN_PROGRESS: 'text-neutral-800 bg-neutral-100 dark:bg-neutral-800/30',
+    COMPLETED: 'text-neutral-800 bg-neutral-100 dark:bg-neutral-800/30',
     FAILED: 'text-red-600 bg-red-100 dark:bg-red-900/30',
 }
 
@@ -149,7 +149,7 @@ function CompletionScreen({ verification }: { verification: Verification }) {
             className="flex-1 flex items-center justify-center"
         >
             <div className="text-center max-w-md">
-                <div className={`w-24 h-24 mx-auto rounded-full ${passed ? 'bg-amber-500' : 'bg-red-500'} flex items-center justify-center mb-6`}>
+                <div className={`w-24 h-24 mx-auto rounded-full ${passed ? 'bg-neutral-900' : 'bg-red-500'} flex items-center justify-center mb-6`}>
                     {
                         passed ? (
                             <Trophy className="w-12 h-12 text-white" />

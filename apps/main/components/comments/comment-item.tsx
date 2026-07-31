@@ -127,7 +127,7 @@ export function CommentItem({
                                     type="button"
                                     variant="ghost"
                                     size="sm"
-                                    className="h-7 px-2 text-xs text-neutral-500 hover:text-orange-500"
+                                    className="h-7 px-2 text-xs text-neutral-500 hover:text-neutral-900"
                                     onClick={() => setReplying((v) => !v)}
                                 >
                                     <MessageSquare className="h-3 w-3 mr-1" />

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProfileByUsername } from "@/actions/(main)/user/profile.action";
 import { PublicProfileClient } from "./_components/public-profile-client";
+import { publicProfileUrl } from "@/lib/urls";
 
 interface PageProps {
     params: Promise<{
@@ -36,7 +37,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             description,
             type: "profile",
             images: user.image ? [{ url: user.image }] : [],
-            url: `https://buildrhq.com/u/${user.username}`,
+            // Was a hardcoded `https://buildrhq.com/u/{username}` — wrong host AND
+            // a route that does not exist, so every link preview pointed at a 404.
+            url: publicProfileUrl(user.username!),
         },
         twitter: {
             card: "summary_large_image",

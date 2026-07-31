@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 
 import { usePathname, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
@@ -46,7 +47,7 @@ const tabs: TabConfig[] = [
         href: "/jobs",
         icon: Sparkles,
         countKey: "spark",
-        color: "text-amber-500",
+        color: "text-neutral-900",
         requiresAuth: false
     },
     {
@@ -55,7 +56,7 @@ const tabs: TabConfig[] = [
         href: "/jobs/following",
         icon: UserCheck,
         countKey: "following",
-        color: "text-orange-500",
+        color: "text-neutral-900",
         requiresAuth: true
     },
     {
@@ -64,7 +65,7 @@ const tabs: TabConfig[] = [
         href: "/jobs/saved",
         icon: Bookmark,
         countKey: "saved",
-        color: "text-yellow-500",
+        color: "text-neutral-900",
         requiresAuth: true
     },
     {
@@ -73,7 +74,7 @@ const tabs: TabConfig[] = [
         href: "/jobs/applications",
         icon: FileText,
         countKey: "applied",
-        color: "text-amber-500",
+        color: "text-neutral-900",
         requiresAuth: true
     },
     {
@@ -115,16 +116,12 @@ export function JobsTabs({ counts, isAuthenticated }: JobsTabsProps) {
                     const showCount = count > 0 && (isAuthenticated || !tab.requiresAuth)
 
                     return (
-                        <button
-                            key={tab.id}
-                            onClick={() => router.push(tab.href)}
-                            className={cn(
+                        <Link href={tab.href} key={tab.id} className={cn(
                                 "relative flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all",
                                 isActive
                                     ? "text-neutral-900 dark:text-white"
                                     : "text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300"
-                            )}
-                        >
+                            )}>
                             {isActive && (
                                 <motion.div
                                     layoutId="activeTab"
@@ -147,7 +144,7 @@ export function JobsTabs({ counts, isAuthenticated }: JobsTabsProps) {
                                     </Badge>
                                 )}
                             </span>
-                        </button>
+                        </Link>
                     )
                 })}
             </div>
@@ -202,7 +199,7 @@ export function JobsTabs({ counts, isAuthenticated }: JobsTabsProps) {
                                             </Badge>
                                         )}
                                         {isActive && (
-                                            <Check className="w-4 h-4 text-amber-500" />
+                                            <Check className="w-4 h-4 text-neutral-900" />
                                         )}
                                     </span>
                                 </DropdownMenuItem>

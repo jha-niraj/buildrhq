@@ -143,11 +143,11 @@ export default function PublicGenerationsPage() {
     }
 
     return (
-        <main className="min-h-screen bg-gradient-to-br dark:from-black dark:via-amber-850 dark:to-black">
+        <main className="min-h-screen bg-gradient-to-br dark:from-black dark:via-neutral-900 dark:to-black">
             <section className="border-b border-border/50">
                 <div className="mx-auto max-w-7xl px-4 py-10">
                     <div className="mb-6">
-                        <Link href="/ai/jobinterviewassistant" className="flex items-center border w-fit p-2 rounded-lg mb-4 border-amber-200 hover:border-amber-300 text-amber-700 dark:text-amber-300 shadow-md hover:shadow-lg transition-all">
+                        <Link href="/ai/jobinterviewassistant" className="flex items-center border w-fit p-2 rounded-lg mb-4 border-neutral-200 hover:border-neutral-300 text-neutral-700 dark:text-neutral-100 shadow-md hover:shadow-lg transition-all">
                             <ArrowLeft className="h-4 w-4" />
                             Back
                         </Link>
@@ -205,8 +205,8 @@ export default function PublicGenerationsPage() {
                         </div>
                     ) : filtered.length === 0 ? (
                         <div className="text-center py-16">
-                            <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <Search className="h-8 w-8 text-amber-600 dark:text-amber-400" />
+                            <div className="w-16 h-16 bg-neutral-100 dark:bg-neutral-800/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <Search className="h-8 w-8 text-neutral-800 dark:text-neutral-100" />
                             </div>
                             <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
                                 {plans.length === 0 ? "No public plans available" : "No plans match your filters"}

@@ -126,7 +126,7 @@ export default async function TopicPage({ params }: Props) {
                                     href={`/blogs/${post.slug}`}
                                     className="group flex w-full flex-col rounded-2xl border border-neutral-200 p-6 transition-colors hover:border-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-600"
                                 >
-                                    <h2 className="mb-3 text-lg font-semibold leading-snug tracking-tight text-neutral-900 group-hover:text-orange-600 dark:text-white dark:group-hover:text-orange-400">
+                                    <h2 className="mb-3 text-lg font-semibold leading-snug tracking-tight text-neutral-900 group-hover:text-neutral-800 dark:text-white dark:group-hover:text-neutral-100">
                                         {post.title}
                                     </h2>
                                     <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">

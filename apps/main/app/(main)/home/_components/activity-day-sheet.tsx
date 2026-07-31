@@ -57,20 +57,20 @@ function getActivityColor(type: string) {
         case "project":
         case "project_completed":
         case "project_started":
-            return "text-orange-500 bg-orange-500/10";
+            return "text-neutral-900 bg-neutral-900/10";
         case "studio":
         case "studio_created":
         case "note_created":
-            return "text-orange-500 bg-orange-500/10";
+            return "text-neutral-900 bg-neutral-900/10";
         case "dsa":
         case "problem_solved":
-            return "text-amber-500 bg-amber-500/10";
+            return "text-neutral-900 bg-neutral-900/10";
         case "chat":
         case "ai_chat":
-            return "text-orange-500 bg-orange-500/10";
+            return "text-neutral-900 bg-neutral-900/10";
         case "achievement":
         case "achievement_unlocked":
-            return "text-yellow-500 bg-yellow-500/10";
+            return "text-neutral-900 bg-neutral-900/10";
         default:
             return "text-primary bg-primary/10";
     }
@@ -170,7 +170,7 @@ export default function ActivityDaySheet({
                                                 </div>
                                                 {
                                                     activity.xpEarned > 0 && (
-                                                        <span className="font-medium text-amber-500 shrink-0">
+                                                        <span className="font-medium text-neutral-900 shrink-0">
                                                             +{activity.xpEarned} XP
                                                         </span>
                                                     )

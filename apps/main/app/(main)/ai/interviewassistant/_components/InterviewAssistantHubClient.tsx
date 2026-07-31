@@ -70,29 +70,29 @@ const features = [
         icon: Brain,
         title: "Technical Deep Dives",
         description: "Role-specific architecture & Learn questions.",
-        color: "text-orange-500",
-        bg: "bg-orange-500/10"
+        color: "text-neutral-900",
+        bg: "bg-neutral-900/10"
     },
     {
         icon: Code,
         title: "Coding Challenges",
         description: "Real-world problems with AI solution analysis.",
-        color: "text-amber-500",
-        bg: "bg-amber-500/10"
+        color: "text-neutral-900",
+        bg: "bg-neutral-900/10"
     },
     {
         icon: MessageSquare,
         title: "Behavioral Mastery",
         description: "STAR method scenarios with soft-skill feedback.",
-        color: "text-orange-500",
-        bg: "bg-orange-500/10"
+        color: "text-neutral-900",
+        bg: "bg-neutral-900/10"
     },
     {
         icon: Target,
         title: "Company Targeting",
         description: "Questions tailored to specific company cultures.",
-        color: "text-amber-500",
-        bg: "bg-amber-500/10"
+        color: "text-neutral-900",
+        bg: "bg-neutral-900/10"
     }
 ]
 
@@ -231,11 +231,11 @@ export default function JobInterviewAssistant() {
     }
 
     return (
-        <div className="font-sans selection:bg-amber-100 dark:selection:bg-amber-900/50">
+        <div className="font-sans selection:bg-neutral-100 dark:selection:bg-neutral-800/50">
             {/* Background Decor Elements */}
             <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-amber-500/5 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-orange-500/5 rounded-full blur-[120px]" />
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-neutral-900/5 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-neutral-900/5 rounded-full blur-[120px]" />
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
@@ -248,12 +248,12 @@ export default function JobInterviewAssistant() {
                     className="text-center mb-16 space-y-4"
                 >
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-sm font-medium text-neutral-600 dark:text-neutral-300 mb-2">
-                        <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                        <Sparkles className="w-3.5 h-3.5 text-neutral-900" />
                         <span>AI-Powered Career Architect</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-neutral-900 dark:text-white">
                         Master Your Next <br className="hidden md:block" />
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-amber-600 to-amber-600 dark:from-amber-400 dark:via-amber-400 dark:to-amber-400">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-800 via-neutral-800 to-neutral-800 dark:from-neutral-100 dark:via-neutral-100 dark:to-neutral-100">
                             Technical Interview
                         </span>
                     </h1>
@@ -281,7 +281,7 @@ export default function JobInterviewAssistant() {
                                 <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                                     <div className="space-y-1">
                                         <h3 className="text-xl font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                                            <Shield className="w-5 h-5 text-amber-500" />
+                                            <Shield className="w-5 h-5 text-neutral-900" />
                                             Resume Context
                                         </h3>
                                         <p className="text-neutral-500 dark:text-neutral-400 text-sm max-w-md">
@@ -293,18 +293,18 @@ export default function JobInterviewAssistant() {
                                         {user?.resume ? (
                                             <div className="flex flex-col items-end gap-2">
                                                 <Link href={user.resume} target="_blank">
-                                                    <Button className="bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200 dark:bg-amber-950/30 dark:text-amber-400 dark:border-amber-900/50 dark:hover:bg-amber-900/50 h-11 px-6">
+                                                    <Button className="bg-neutral-50 text-neutral-700 hover:bg-neutral-100 border border-neutral-200 dark:bg-neutral-900/30 dark:text-neutral-100 dark:border-neutral-800/50 dark:hover:bg-neutral-800/50 h-11 px-6">
                                                         <CheckCircle className="w-4 h-4 mr-2" />
                                                         Resume Active
                                                     </Button>
                                                 </Link>
-                                                <span className="text-xs text-amber-600 dark:text-amber-500 font-medium">Ready for analysis</span>
+                                                <span className="text-xs text-neutral-800 dark:text-neutral-200 font-medium">Ready for analysis</span>
                                             </div>
                                         ) : (
                                             <Button
                                                 onClick={() => setShowUploadDialog(true)}
                                                 variant="outline"
-                                                className="h-11 border-dashed border-2 px-6 hover:border-amber-500 hover:text-amber-600 dark:hover:text-amber-400 dark:border-neutral-700 transition-all"
+                                                className="h-11 border-dashed border-2 px-6 hover:border-neutral-900 hover:text-neutral-800 dark:hover:text-neutral-100 dark:border-neutral-700 transition-all"
                                             >
                                                 <Upload className="w-4 h-4 mr-2" />
                                                 Upload PDF Resume
@@ -324,7 +324,7 @@ export default function JobInterviewAssistant() {
                             <div className="bg-white dark:bg-neutral-900 shadow-2xl rounded-xl p-8 border border-neutral-100 dark:border-neutral-800">
                                 <div className="mb-8">
                                     <h2 className="text-2xl font-bold text-neutral-900 dark:text-white flex items-center gap-3">
-                                        <Cpu className="w-6 h-6 text-amber-500" />
+                                        <Cpu className="w-6 h-6 text-neutral-900" />
                                         Interview Configuration
                                     </h2>
                                     <p className="text-neutral-500 dark:text-neutral-400 mt-2">
@@ -346,7 +346,7 @@ export default function JobInterviewAssistant() {
                                                 value={position}
                                                 onChange={(e) => setPosition(e.target.value)}
                                                 required
-                                                className="pl-12 h-14 bg-neutral-50 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 rounded-lg text-lg focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-all"
+                                                className="pl-12 h-14 bg-neutral-50 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 rounded-lg text-lg focus:ring-2 focus:ring-neutral-900/20 focus:border-neutral-900 transition-all"
                                             />
                                         </div>
                                     </div>
@@ -356,7 +356,7 @@ export default function JobInterviewAssistant() {
                                         <button
                                             type="button"
                                             onClick={() => setShowOptional(!showOptional)}
-                                            className="flex items-center gap-2 text-sm font-medium text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors mb-6"
+                                            className="flex items-center gap-2 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:text-neutral-700 dark:hover:text-neutral-100 transition-colors mb-6"
                                         >
                                             {showOptional ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                                             {showOptional ? "Hide Advanced Options" : "Show Advanced Options (Recommended)"}
@@ -377,7 +377,7 @@ export default function JobInterviewAssistant() {
                                                                 placeholder="Paste the full job description here. The AI will analyze keywords, tech stack requirements, and soft skills to generate highly relevant questions."
                                                                 value={jobDescription}
                                                                 onChange={(e) => setJobDescription(e.target.value)}
-                                                                className="min-h-[150px] bg-neutral-50 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 rounded-lg focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 resize-none p-4"
+                                                                className="min-h-[150px] bg-neutral-50 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 rounded-lg focus:ring-2 focus:ring-neutral-900/20 focus:border-neutral-900 resize-none p-4"
                                                             />
                                                         </div>
 
@@ -389,7 +389,7 @@ export default function JobInterviewAssistant() {
                                                                     placeholder="https://company.com"
                                                                     value={companyUrl}
                                                                     onChange={(e) => setCompanyUrl(e.target.value)}
-                                                                    className="pl-11 h-11 bg-neutral-50 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 rounded-lg focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500"
+                                                                    className="pl-11 h-11 bg-neutral-50 dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 rounded-lg focus:ring-2 focus:ring-neutral-900/20 focus:border-neutral-900"
                                                                 />
                                                             </div>
                                                         </div>
@@ -419,7 +419,7 @@ export default function JobInterviewAssistant() {
                                             </div>
                                         )}
                                         {/* Subtle gradient overlay on hover */}
-                                        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/0 via-amber-500/10 to-amber-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/0 via-neutral-900/10 to-neutral-900/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                                     </Button>
                                 </form>
                             </div>
@@ -437,10 +437,10 @@ export default function JobInterviewAssistant() {
                             <div className="bg-white dark:bg-neutral-900 shadow-2xl rounded-xl p-6 border border-neutral-100 dark:border-neutral-800 flex flex-col h-full">
                                 <div className="flex items-center justify-between mb-6">
                                     <h3 className="font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                                        <Clock className="w-4 h-4 text-amber-500" />
+                                        <Clock className="w-4 h-4 text-neutral-900" />
                                         Recent Sessions
                                     </h3>
-                                    <Link href="/ai/jobinterviewassistant/generations" className="text-xs font-medium text-amber-600 dark:text-amber-400 hover:underline">
+                                    <Link href="/ai/jobinterviewassistant/generations" className="text-xs font-medium text-neutral-800 dark:text-neutral-100 hover:underline">
                                         View All
                                     </Link>
                                 </div>
@@ -451,7 +451,7 @@ export default function JobInterviewAssistant() {
                                             <Link href={`/ai/jobinterviewassistant/${gen.slug}`} key={gen.id}>
                                                 <div className="group p-3 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800/50 border border-transparent hover:border-neutral-200 dark:hover:border-neutral-700 transition-all cursor-pointer">
                                                     <div className="flex justify-between items-start">
-                                                        <p className="text-sm font-semibold text-neutral-800 dark:text-neutral-200 line-clamp-1 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                                                        <p className="text-sm font-semibold text-neutral-800 dark:text-neutral-200 line-clamp-1 group-hover:text-neutral-800 dark:group-hover:text-neutral-100 transition-colors">
                                                             {gen.position}
                                                         </p>
                                                         <ChevronRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform" />
@@ -462,7 +462,7 @@ export default function JobInterviewAssistant() {
                                                             {format(new Date(gen.createdAt), "MMM d")}
                                                         </span>
                                                         {gen.includeAnswers && (
-                                                            <span className="text-[10px] bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-1.5 py-0.5 rounded-full font-medium">
+                                                            <span className="text-[10px] bg-neutral-100 dark:bg-neutral-800/30 text-neutral-700 dark:text-neutral-100 px-1.5 py-0.5 rounded-full font-medium">
                                                                 With Answers
                                                             </span>
                                                         )}
@@ -487,7 +487,7 @@ export default function JobInterviewAssistant() {
                         >
                             <div className="bg-white dark:bg-neutral-900 shadow-2xl rounded-xl p-6 border border-neutral-100 dark:border-neutral-800">
                                 <h3 className="font-bold text-neutral-900 dark:text-white mb-6 flex items-center gap-2">
-                                    <Zap className="w-4 h-4 text-amber-500" />
+                                    <Zap className="w-4 h-4 text-neutral-900" />
                                     Included Features
                                 </h3>
                                 <div className="space-y-4">

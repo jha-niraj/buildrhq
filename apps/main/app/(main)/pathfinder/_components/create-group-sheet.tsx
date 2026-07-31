@@ -22,8 +22,8 @@ interface CreateGroupSheetProps {
 }
 
 const colorOptions = [
-    '#7c3aed', '#3b82f6', '#10b981', '#f59e0b',
-    '#ef4444', '#ec4899', '#8b5cf6', '#06b6d4',
+    '#7c3aed', '#3b82f6', '#10b981', '#525252',
+    '#ef4444', '#ec4899', '#404040', '#06b6d4',
 ]
 
 const emojiOptions = ['📁', '🎯', '💻', '🚀', '📚', '🧠', '⚡', '🔥', '💡', '🎨']

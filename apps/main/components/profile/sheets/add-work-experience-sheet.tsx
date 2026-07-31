@@ -136,8 +136,8 @@ export function AddWorkExperienceSheet({ open, onOpenChange, onSuccess, editExpe
             <SheetContent side="right" className="w-full sm:max-w-lg overflow-y-auto flex flex-col p-0">
                 <SheetHeader className="px-6 pt-6 pb-4 border-b border-neutral-100 dark:border-neutral-800">
                     <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
-                            <Briefcase className="w-4 h-4 text-orange-500" />
+                        <div className="w-8 h-8 rounded-lg bg-neutral-900/10 flex items-center justify-center">
+                            <Briefcase className="w-4 h-4 text-neutral-900" />
                         </div>
                         <div>
                             <SheetTitle>{isEditing ? 'Edit Experience' : 'Add Work Experience'}</SheetTitle>

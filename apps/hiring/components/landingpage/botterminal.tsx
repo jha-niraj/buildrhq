@@ -19,14 +19,14 @@ export default function BotTerminal() {
                         <div className="flex items-center px-4 py-3 bg-neutral-900 border-b border-neutral-800">
                             <div className="flex gap-2">
                                 <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
-                                <div className="w-3 h-3 rounded-full bg-amber-500/20 border border-amber-500/50" />
+                                <div className="w-3 h-3 rounded-full bg-neutral-900/20 border border-neutral-900/50" />
+                                <div className="w-3 h-3 rounded-full bg-neutral-900/20 border border-neutral-900/50" />
                             </div>
                             <div className="ml-4 text-[10px] font-mono text-neutral-500">coderz-bot — analysis — bash</div>
                         </div>
                         <div className="p-6 font-mono text-sm space-y-2">
                             <div className="flex">
-                                <span className="text-amber-500 mr-2">➜</span>
+                                <span className="text-neutral-900 mr-2">➜</span>
                                 <span className="text-white">git push origin feat/payment-integration</span>
                             </div>
                             <motion.div
@@ -43,13 +43,13 @@ export default function BotTerminal() {
                                 transition={{ delay: 1 }}
                                 className="space-y-1 pt-2"
                             >
-                                <div className="flex items-center text-orange-400">
+                                <div className="flex items-center text-neutral-800">
                                     <span className="mr-2">ℹ</span> Cyclomatic Complexity: Low (3.2)
                                 </div>
-                                <div className="flex items-center text-amber-400">
+                                <div className="flex items-center text-neutral-800">
                                     <span className="mr-2">✔</span> Test Coverage: 94% (+2%)
                                 </div>
-                                <div className="flex items-center text-yellow-500">
+                                <div className="flex items-center text-neutral-900">
                                     <span className="mr-2">⚠</span> Pattern Detection: Factory Pattern Implemented Correctly
                                 </div>
                             </motion.div>

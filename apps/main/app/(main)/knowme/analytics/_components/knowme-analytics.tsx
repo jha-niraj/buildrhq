@@ -41,23 +41,23 @@ const categoryLabels: Record<string, string> = {
 };
 
 const categoryColors: Record<string, string> = {
-    TECHNICAL_SKILLS: "bg-orange-500",
-    PROJECTS: "bg-orange-500",
-    WORK_EXPERIENCE: "bg-amber-500",
-    EDUCATION: "bg-amber-500",
+    TECHNICAL_SKILLS: "bg-neutral-900",
+    PROJECTS: "bg-neutral-900",
+    WORK_EXPERIENCE: "bg-neutral-900",
+    EDUCATION: "bg-neutral-900",
     ASSESSMENTS: "bg-pink-500",
-    AVAILABILITY: "bg-amber-500",
+    AVAILABILITY: "bg-neutral-900",
     COMPENSATION: "bg-red-500",
-    SOFT_SKILLS: "bg-orange-500",
+    SOFT_SKILLS: "bg-neutral-900",
     GENERAL: "bg-slate-500",
     OTHER: "bg-gray-500",
 };
 
 const insightIcons: Record<string, React.ReactNode> = {
-    strength: <Sparkles className="w-4 h-4 text-amber-500" />,
-    suggestion: <Lightbulb className="w-4 h-4 text-amber-500" />,
+    strength: <Sparkles className="w-4 h-4 text-neutral-900" />,
+    suggestion: <Lightbulb className="w-4 h-4 text-neutral-900" />,
     warning: <AlertTriangle className="w-4 h-4 text-red-500" />,
-    info: <Info className="w-4 h-4 text-orange-500" />,
+    info: <Info className="w-4 h-4 text-neutral-900" />,
 };
 
 export default function KnowMeAnalytics({ analytics, initialRange }: KnowMeAnalyticsProps) {
@@ -238,7 +238,7 @@ export default function KnowMeAnalytics({ analytics, initialRange }: KnowMeAnaly
                                             key={index}
                                             className="flex items-start gap-3 p-3 bg-slate-50 dark:bg-neutral-800 rounded-xl"
                                         >
-                                            <div className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400 text-xs font-bold flex-shrink-0">
+                                            <div className="w-6 h-6 rounded-full bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center text-neutral-800 dark:text-neutral-100 text-xs font-bold flex-shrink-0">
                                                 {index + 1}
                                             </div>
                                             <div className="flex-1 min-w-0">
@@ -326,7 +326,7 @@ export default function KnowMeAnalytics({ analytics, initialRange }: KnowMeAnaly
                     className="bg-white dark:bg-neutral-900 rounded-2xl border border-slate-200 dark:border-neutral-800 p-6"
                 >
                     <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                        <Lightbulb className="w-5 h-5 text-amber-500" />
+                        <Lightbulb className="w-5 h-5 text-neutral-900" />
                         Insights
                     </h2>
 
@@ -339,10 +339,10 @@ export default function KnowMeAnalytics({ analytics, initialRange }: KnowMeAnaly
                                             key={index}
                                             className={cn(
                                                 "p-4 rounded-xl border",
-                                                insight.type === "strength" && "bg-amber-50 dark:bg-amber-900/10 border-amber-200 dark:border-amber-900/30",
-                                                insight.type === "suggestion" && "bg-amber-50 dark:bg-amber-900/10 border-amber-200 dark:border-amber-900/30",
+                                                insight.type === "strength" && "bg-neutral-50 dark:bg-neutral-800/10 border-neutral-200 dark:border-neutral-800/30",
+                                                insight.type === "suggestion" && "bg-neutral-50 dark:bg-neutral-800/10 border-neutral-200 dark:border-neutral-800/30",
                                                 insight.type === "warning" && "bg-red-50 dark:bg-red-900/10 border-red-200 dark:border-red-900/30",
-                                                insight.type === "info" && "bg-orange-50 dark:bg-orange-900/10 border-orange-200 dark:border-orange-900/30"
+                                                insight.type === "info" && "bg-neutral-50 dark:bg-neutral-800/10 border-neutral-200 dark:border-neutral-800/30"
                                             )}
                                         >
                                             <div className="flex items-start gap-3">
@@ -408,7 +408,7 @@ export default function KnowMeAnalytics({ analytics, initialRange }: KnowMeAnaly
                                                 transition={{ duration: 0.3, delay: index * 0.01 }}
                                                 className={cn(
                                                     "w-full rounded-t-sm transition-colors",
-                                                    height > 0 ? "bg-orange-500 hover:bg-orange-600" : "bg-slate-200 dark:bg-neutral-700"
+                                                    height > 0 ? "bg-neutral-900 hover:bg-neutral-800" : "bg-slate-200 dark:bg-neutral-700"
                                                 )}
                                             />
                                         </div>
@@ -438,10 +438,10 @@ function StatCard({
     color: "blue" | "purple" | "emerald" | "amber";
 }) {
     const colorClasses = {
-        blue: "bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400",
-        purple: "bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400",
-        emerald: "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400",
-        amber: "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400",
+        blue: "bg-neutral-50 dark:bg-neutral-800/20 text-neutral-800 dark:text-neutral-100",
+        purple: "bg-neutral-50 dark:bg-neutral-800/20 text-neutral-800 dark:text-neutral-100",
+        emerald: "bg-neutral-50 dark:bg-neutral-800/20 text-neutral-800 dark:text-neutral-100",
+        amber: "bg-neutral-50 dark:bg-neutral-800/20 text-neutral-800 dark:text-neutral-100",
     };
 
     const getTrendIcon = (direction: "up" | "down" | "stable") => {
@@ -465,7 +465,7 @@ function StatCard({
                     trend && (
                         <div className={cn(
                             "flex items-center gap-1 text-xs font-medium",
-                            trend.direction === "up" && "text-amber-600",
+                            trend.direction === "up" && "text-neutral-800",
                             trend.direction === "down" && "text-red-600",
                             trend.direction === "stable" && "text-slate-400"
                         )}>

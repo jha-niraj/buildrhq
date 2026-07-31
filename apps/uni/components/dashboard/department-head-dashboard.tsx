@@ -33,13 +33,13 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
     <Link href={href}>
         <motion.div
             whileHover={{ y: -2 }}
-            className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-orange-300 dark:hover:border-orange-700 transition-all cursor-pointer group"
+            className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all cursor-pointer group"
         >
             <div className="flex items-start justify-between mb-4">
                 <div className="p-3 rounded-xl bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 group-hover:scale-105 transition-transform">
                     {icon}
                 </div>
-                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors" />
+                <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-800 dark:group-hover:text-neutral-100 transition-colors" />
             </div>
             <div className="space-y-1">
                 <p className="text-3xl font-bold text-neutral-900 dark:text-white">{value}</p>
@@ -47,7 +47,7 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
             </div>
             {change && (
                 <div className={`mt-3 text-xs font-medium ${
-                    changeType === "positive" ? "text-amber-600 dark:text-amber-400" :
+                    changeType === "positive" ? "text-neutral-800 dark:text-neutral-100" :
                     changeType === "negative" ? "text-red-600 dark:text-red-400" :
                     "text-neutral-500"
                 }`}>
@@ -64,28 +64,28 @@ export function DepartmentHeadDashboard({ userName, departmentName, stats }: Dep
             title: "Department Students", 
             value: stats?.totalStudents || 0, 
             change: "View all students",
-            icon: <Users className="w-5 h-5 text-orange-600" />, 
+            icon: <Users className="w-5 h-5 text-neutral-800" />, 
             href: "/students" 
         },
         { 
             title: "Faculty Members", 
             value: stats?.totalFaculty || 0, 
             change: "Manage faculty",
-            icon: <GraduationCap className="w-5 h-5 text-orange-600" />, 
+            icon: <GraduationCap className="w-5 h-5 text-neutral-800" />, 
             href: "/faculty" 
         },
         { 
             title: "Active Classes", 
             value: stats?.totalClasses || 0, 
             change: "View classes",
-            icon: <School className="w-5 h-5 text-orange-600" />, 
+            icon: <School className="w-5 h-5 text-neutral-800" />, 
             href: "/classes" 
         },
         { 
             title: "Assignments", 
             value: stats?.totalAssignments || 0, 
             change: stats?.pendingSubmissions ? `${stats.pendingSubmissions} pending review` : "No pending",
-            icon: <BookOpen className="w-5 h-5 text-orange-600" />, 
+            icon: <BookOpen className="w-5 h-5 text-neutral-800" />, 
             href: "/assignments" 
         },
     ]
@@ -101,8 +101,8 @@ export function DepartmentHeadDashboard({ userName, departmentName, stats }: Dep
                 >
                     <div>
                         <div className="flex items-center gap-2 mb-2">
-                            <Building className="w-5 h-5 text-orange-500" />
-                            <span className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase tracking-wider">
+                            <Building className="w-5 h-5 text-neutral-900" />
+                            <span className="text-xs font-bold text-neutral-800 dark:text-neutral-100 uppercase tracking-wider">
                                 Department Head {departmentName ? `• ${departmentName}` : ""}
                             </span>
                         </div>
@@ -121,7 +121,7 @@ export function DepartmentHeadDashboard({ userName, departmentName, stats }: Dep
                             </Button>
                         </Link>
                         <Link href="/assignments/new">
-                            <Button className="rounded-xl bg-gradient-to-r from-orange-600 to-orange-600 hover:from-orange-700 hover:to-orange-700 text-white">
+                            <Button className="rounded-xl bg-gradient-to-r from-neutral-800 to-neutral-800 hover:from-neutral-700 hover:to-neutral-700 text-white">
                                 <Plus className="w-4 h-4 mr-2" />
                                 Create Assignment
                             </Button>
@@ -161,8 +161,8 @@ export function DepartmentHeadDashboard({ userName, departmentName, stats }: Dep
                     </div>
                     
                     <div className="text-center py-12">
-                        <div className="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mx-auto mb-4">
-                            <AlertCircle className="w-8 h-8 text-orange-500" />
+                        <div className="w-16 h-16 rounded-2xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center mx-auto mb-4">
+                            <AlertCircle className="w-8 h-8 text-neutral-900" />
                         </div>
                         <h3 className="font-semibold text-neutral-900 dark:text-white mb-2">No recent activity</h3>
                         <p className="text-sm text-neutral-500 mb-4 max-w-sm mx-auto">
@@ -185,26 +185,26 @@ export function DepartmentHeadDashboard({ userName, departmentName, stats }: Dep
                     className="space-y-4"
                 >
                     {/* Getting Started */}
-                    <div className="bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl p-6 text-white">
+                    <div className="bg-gradient-to-br from-neutral-800 to-neutral-700 rounded-2xl p-6 text-white">
                         <h3 className="font-bold text-lg mb-2">Department Setup</h3>
-                        <p className="text-orange-200 text-sm mb-4">
+                        <p className="text-neutral-200 text-sm mb-4">
                             Complete these steps to get started.
                         </p>
                         <div className="space-y-3">
                             <div className="flex items-center gap-3 text-sm">
-                                <CheckCircle2 className="w-4 h-4 text-amber-300" />
+                                <CheckCircle2 className="w-4 h-4 text-neutral-300" />
                                 <span>Department assigned</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-orange-200">
-                                <div className="w-4 h-4 rounded-full border-2 border-orange-300" />
+                            <div className="flex items-center gap-3 text-sm text-neutral-200">
+                                <div className="w-4 h-4 rounded-full border-2 border-neutral-300" />
                                 <span>Create classes</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-orange-200">
-                                <div className="w-4 h-4 rounded-full border-2 border-orange-300" />
+                            <div className="flex items-center gap-3 text-sm text-neutral-200">
+                                <div className="w-4 h-4 rounded-full border-2 border-neutral-300" />
                                 <span>Assign faculty to classes</span>
                             </div>
-                            <div className="flex items-center gap-3 text-sm text-orange-200">
-                                <div className="w-4 h-4 rounded-full border-2 border-orange-300" />
+                            <div className="flex items-center gap-3 text-sm text-neutral-200">
+                                <div className="w-4 h-4 rounded-full border-2 border-neutral-300" />
                                 <span>Create first assignment</span>
                             </div>
                         </div>
@@ -214,7 +214,7 @@ export function DepartmentHeadDashboard({ userName, departmentName, stats }: Dep
                     <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800">
-                                <UserPlus className="w-4 h-4 text-orange-600" />
+                                <UserPlus className="w-4 h-4 text-neutral-800" />
                             </div>
                             <h3 className="font-bold text-neutral-900 dark:text-white">Faculty</h3>
                         </div>

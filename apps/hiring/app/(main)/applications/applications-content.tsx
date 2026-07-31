@@ -52,9 +52,9 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                 const Icon = stat.icon
                                 const value = stats[stat.key as keyof ApplicationStats]
                                 const colorClasses = {
-                                    violet: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400",
-                                    blue: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400",
-                                    green: "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400",
+                                    violet: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
+                                    blue: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
+                                    green: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
                                     red: "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400"
                                 }
 
@@ -72,7 +72,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                             </div>
                                             {
                                                 stat.key === "new" && stats.thisWeek > 0 && (
-                                                    <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                                                    <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                                         <TrendingUp className="w-3 h-3 mr-1" />
                                                         +{stats.thisWeek} this week
                                                     </Badge>
@@ -118,11 +118,11 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                     transition={{ delay: index * 0.05 }}
                                 >
                                     <Link href={`/applications/${job.jobSlug}`}>
-                                        <div className="bg-white dark:bg-neutral-950 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700 transition-colors cursor-pointer">
+                                        <div className="bg-white dark:bg-neutral-950 rounded-2xl p-5 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors cursor-pointer">
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-4">
-                                                    <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                                                        <Briefcase className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                                                    <div className="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                                                        <Briefcase className="w-6 h-6 text-neutral-800 dark:text-neutral-100" />
                                                     </div>
                                                     <div>
                                                         <h3 className="font-semibold text-neutral-900 dark:text-white">
@@ -137,21 +137,21 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                     <div className="hidden sm:flex items-center gap-2">
                                                         {
                                                             job.new > 0 && (
-                                                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                                                                <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                                                     {job.new} new
                                                                 </Badge>
                                                             )
                                                         }
                                                         {
                                                             job.shortlisted > 0 && (
-                                                                <Badge className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
+                                                                <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                                                     {job.shortlisted} shortlisted
                                                                 </Badge>
                                                             )
                                                         }
                                                         {
                                                             job.interviewing > 0 && (
-                                                                <Badge className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                                                                <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                                                     {job.interviewing} interviewing
                                                                 </Badge>
                                                             )
@@ -167,7 +167,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                         {
                                                             job.new > 0 && (
                                                                 <div
-                                                                    className="bg-orange-500"
+                                                                    className="bg-neutral-900"
                                                                     style={{ width: `${(job.new / job.total) * 100}%` }}
                                                                 />
                                                             )
@@ -175,7 +175,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                         {
                                                             job.underReview > 0 && (
                                                                 <div
-                                                                    className="bg-yellow-500"
+                                                                    className="bg-neutral-900"
                                                                     style={{ width: `${(job.underReview / job.total) * 100}%` }}
                                                                 />
                                                             )
@@ -183,7 +183,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                         {
                                                             job.shortlisted > 0 && (
                                                                 <div
-                                                                    className="bg-amber-500"
+                                                                    className="bg-neutral-900"
                                                                     style={{ width: `${(job.shortlisted / job.total) * 100}%` }}
                                                                 />
                                                             )
@@ -191,7 +191,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                         {
                                                             job.interviewing > 0 && (
                                                                 <div
-                                                                    className="bg-orange-500"
+                                                                    className="bg-neutral-900"
                                                                     style={{ width: `${(job.interviewing / job.total) * 100}%` }}
                                                                 />
                                                             )
@@ -199,7 +199,7 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                                                         {
                                                             job.hired > 0 && (
                                                                 <div
-                                                                    className="bg-amber-500"
+                                                                    className="bg-neutral-900"
                                                                     style={{ width: `${(job.hired / job.total) * 100}%` }}
                                                                 />
                                                             )
@@ -258,23 +258,23 @@ export function ApplicationsContent({ stats, jobStats }: ApplicationsContentProp
                 filteredJobs.some(j => j.total > 0) && (
                     <div className="mt-6 flex flex-wrap gap-4 text-sm text-neutral-500">
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-orange-500" />
+                            <div className="w-3 h-3 rounded-full bg-neutral-900" />
                             <span>New</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                            <div className="w-3 h-3 rounded-full bg-neutral-900" />
                             <span>Under Review</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-amber-500" />
+                            <div className="w-3 h-3 rounded-full bg-neutral-900" />
                             <span>Shortlisted</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-orange-500" />
+                            <div className="w-3 h-3 rounded-full bg-neutral-900" />
                             <span>Interviewing</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-amber-500" />
+                            <div className="w-3 h-3 rounded-full bg-neutral-900" />
                             <span>Hired</span>
                         </div>
                         <div className="flex items-center gap-2">

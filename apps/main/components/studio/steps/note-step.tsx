@@ -43,7 +43,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 				},
 				blockquote: {
 					HTMLAttributes: {
-						class: "border-l-4 border-amber-400 pl-4 py-1 my-4 italic text-neutral-600 dark:text-neutral-400",
+						class: "border-l-4 border-neutral-800 pl-4 py-1 my-4 italic text-neutral-600 dark:text-neutral-400",
 					},
 				},
 			}),
@@ -51,7 +51,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 			LinkExt.configure({
 				openOnClick: false,
 				HTMLAttributes: {
-					class: "text-amber-600 dark:text-amber-400 underline cursor-pointer",
+					class: "text-neutral-800 dark:text-neutral-100 underline cursor-pointer",
 				},
 			}),
 			Placeholder.configure({
@@ -152,7 +152,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 	if (!editor) {
 		return (
 			<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="py-8">
-				<div className="rounded-2xl bg-amber-50 dark:bg-amber-950/10 p-6 animate-pulse">
+				<div className="rounded-2xl bg-neutral-50 dark:bg-neutral-900/10 p-6 animate-pulse">
 					<div className="h-[200px]" />
 				</div>
 			</motion.div>
@@ -165,12 +165,12 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 			animate={{ opacity: 1, y: 0 }}
 			className="py-8"
 		>
-			<div className="rounded-2xl bg-amber-50 dark:bg-amber-950/10 overflow-hidden">
+			<div className="rounded-2xl bg-neutral-50 dark:bg-neutral-900/10 overflow-hidden">
 				{/* Header */}
 				<div className="flex items-center justify-between px-6 pt-5 pb-3">
 					<div className="flex items-center gap-2">
-						<StickyNote className="h-5 w-5 text-amber-600 dark:text-amber-400" />
-						<span className="text-sm font-medium text-amber-900 dark:text-amber-100">
+						<StickyNote className="h-5 w-5 text-neutral-800 dark:text-neutral-100" />
+						<span className="text-sm font-medium text-neutral-900 dark:text-neutral-800">
 							Personal Note
 						</span>
 					</div>
@@ -186,7 +186,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 							<motion.span
 								initial={{ opacity: 0, scale: 0.8 }}
 								animate={{ opacity: 1, scale: 1 }}
-								className="text-xs text-amber-600 dark:text-amber-400 flex items-center gap-1"
+								className="text-xs text-neutral-800 dark:text-neutral-100 flex items-center gap-1"
 							>
 								<Check className="h-3 w-3" />
 								Saved
@@ -207,7 +207,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 				</div>
 
 				{/* Toolbar */}
-				<div className="flex items-center gap-1 px-6 pb-3 flex-wrap border-b border-amber-200 dark:border-amber-900/30">
+				<div className="flex items-center gap-1 px-6 pb-3 flex-wrap border-b border-neutral-200 dark:border-neutral-800/30">
 					<ToolbarButton
 						onClick={() => editor.chain().focus().toggleBold().run()}
 						active={editor.isActive("bold")}
@@ -230,7 +230,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 						<Underline className="h-3.5 w-3.5" />
 					</ToolbarButton>
 
-					<div className="w-px h-5 bg-amber-300 dark:bg-amber-800 mx-1" />
+					<div className="w-px h-5 bg-neutral-300 dark:bg-neutral-800 mx-1" />
 
 					<ToolbarButton
 						onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
@@ -254,7 +254,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 						<Heading3 className="h-3.5 w-3.5" />
 					</ToolbarButton>
 
-					<div className="w-px h-5 bg-amber-300 dark:bg-amber-800 mx-1" />
+					<div className="w-px h-5 bg-neutral-300 dark:bg-neutral-800 mx-1" />
 
 					<ToolbarButton
 						onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -271,7 +271,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 						<ListOrdered className="h-3.5 w-3.5" />
 					</ToolbarButton>
 
-					<div className="w-px h-5 bg-amber-300 dark:bg-amber-800 mx-1" />
+					<div className="w-px h-5 bg-neutral-300 dark:bg-neutral-800 mx-1" />
 
 					<ToolbarButton
 						onClick={() => editor.chain().focus().toggleCodeBlock().run()}
@@ -295,7 +295,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 						<LinkIcon className="h-3.5 w-3.5" />
 					</ToolbarButton>
 
-					<div className="w-px h-5 bg-amber-300 dark:bg-amber-800 mx-1" />
+					<div className="w-px h-5 bg-neutral-300 dark:bg-neutral-800 mx-1" />
 
 					<ToolbarButton
 						onClick={() => editor.chain().focus().undo().run()}
@@ -312,7 +312,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 						<Redo className="h-3.5 w-3.5" />
 					</ToolbarButton>
 
-					<div className="w-px h-5 bg-amber-300 dark:bg-amber-800 mx-1" />
+					<div className="w-px h-5 bg-neutral-300 dark:bg-neutral-800 mx-1" />
 
 					<button
 						type="button"
@@ -322,8 +322,8 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 						className={cn(
 							"flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all",
 							isEnhancing
-								? "bg-orange-200 dark:bg-orange-800 text-orange-700 dark:text-orange-200 cursor-wait"
-								: "bg-gradient-to-r from-orange-100 to-pink-100 dark:from-orange-900/40 dark:to-pink-900/40 text-orange-700 dark:text-orange-300 hover:from-orange-200 hover:to-pink-200 dark:hover:from-orange-900/60 dark:hover:to-pink-900/60"
+								? "bg-neutral-200 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-700 cursor-wait"
+								: "bg-gradient-to-r from-neutral-100 to-pink-100 dark:from-neutral-800/40 dark:to-pink-900/40 text-neutral-700 dark:text-neutral-100 hover:from-neutral-200 hover:to-pink-200 dark:hover:from-neutral-800/60 dark:hover:to-pink-900/60"
 						)}
 					>
 						{isEnhancing ? (
@@ -336,7 +336,7 @@ export function NoteStep({ step, studioId }: NoteStepProps) {
 				</div>
 
 				{/* Editor */}
-				<div className="bg-white dark:bg-neutral-900 mx-4 mb-4 mt-3 rounded-xl border border-amber-200 dark:border-amber-900/30">
+				<div className="bg-white dark:bg-neutral-900 mx-4 mb-4 mt-3 rounded-xl border border-neutral-200 dark:border-neutral-800/30">
 					<EditorContent editor={editor} />
 				</div>
 
@@ -370,8 +370,8 @@ function ToolbarButton({
 			className={cn(
 				"p-1.5 rounded-md transition-colors",
 				active
-					? "bg-amber-200 dark:bg-amber-800 text-amber-900 dark:text-amber-100"
-					: "text-neutral-600 dark:text-neutral-400 hover:bg-amber-100 dark:hover:bg-amber-900/30",
+					? "bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-800"
+					: "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800/30",
 				disabled && "opacity-40 cursor-not-allowed"
 			)}
 		>

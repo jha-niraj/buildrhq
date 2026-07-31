@@ -141,7 +141,7 @@ export default function AdminSignInPage() {
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:14px_24px]" />
                 <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-neutral-900/10 rounded-full blur-3xl" />
             </div>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -150,7 +150,7 @@ export default function AdminSignInPage() {
                 className="relative z-10 w-full max-w-2xl"
             >
                 <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-orange-500 mb-4 shadow-lg">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-neutral-900 mb-4 shadow-lg">
                         <Shield className="w-8 h-8 text-white" />
                     </div>
                     <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">Admin Panel</h1>
@@ -206,7 +206,7 @@ export default function AdminSignInPage() {
                                 <button
                                     type="submit"
                                     disabled={isLoading}
-                                    className="cursor-pointer w-full py-3 px-4 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-medium rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-red-500/20"
+                                    className="cursor-pointer w-full py-3 px-4 bg-gradient-to-r from-red-500 to-neutral-900 hover:from-red-600 hover:to-neutral-800 text-white font-medium rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-red-500/20"
                                 >
                                     {
                                         isLoading ? (
@@ -261,7 +261,7 @@ export default function AdminSignInPage() {
                                 <button
                                     type="submit"
                                     disabled={isLoading}
-                                    className="w-full py-3 px-4 bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-medium rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-red-500/20"
+                                    className="w-full py-3 px-4 bg-gradient-to-r from-red-500 to-neutral-900 hover:from-red-600 hover:to-neutral-800 text-white font-medium rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-red-500/20"
                                 >
                                     {
                                         isLoading ? (

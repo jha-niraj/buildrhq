@@ -7,6 +7,7 @@ import {
     users,
     creditTransactions,
     creditTransfers,
+    withTransaction
 } from "@repo/db"
 import { eq, sql, desc } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
@@ -57,7 +58,7 @@ export async function convertXpToCredits(xpToConvert: number) {
             throw new Error('XP amount must be positive')
         }
 
-        const result = await db.transaction(async (tx) => {
+        const result = await withTransaction(async (tx) => {
             const user = await tx.query.users.findFirst({
                 where: eq(users.id, session.user.id),
                 columns: { currentXp: true, credits: true, totalXp: true },
@@ -119,7 +120,7 @@ export async function transferCredits(senderId: string, receiverId: string, amou
     if (!sender || !receiver) throw new Error("Sender or receiver not found")
     if (sender.credits < amount) throw new Error("Insufficient credits")
 
-    const result = await db.transaction(async (tx) => {
+    const result = await withTransaction(async (tx) => {
         await tx.update(users)
             .set({
                 credits: sql`${users.credits} - ${amount}`,

@@ -1,10 +1,9 @@
 "use client";
+import Link from "next/link";
 
 import { Button } from "@repo/ui/components/ui/button";
-import { useRouter } from "next/navigation";
 
 export default function NotFoundPage() {
-    const router = useRouter();
 
     return (
         <section className="bg-white font-serif min-h-screen flex items-center justify-center">
@@ -26,13 +25,9 @@ export default function NotFoundPage() {
                             <p className="mb-6 text-black sm:mb-5">
                                 The page you are looking for is not available!
                             </p>
-                            <Button
-                                variant="default"
-                                onClick={() => router.push("/")}
-                                className="my-5 bg-amber-600 hover:bg-amber-700 "
-                            >
+                            <Button variant="default" className="my-5 bg-neutral-800 hover:bg-neutral-700 " asChild><Link href="/">
                                 Go to Home
-                            </Button>
+                            </Link></Button>
                         </div>
                     </div>
                 </div>

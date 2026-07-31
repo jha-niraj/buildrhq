@@ -109,7 +109,7 @@ export function CommentComposer({
                         size="sm"
                         onClick={() => void handleSubmit()}
                         disabled={!canSubmit}
-                        className="bg-orange-500 hover:bg-orange-600 text-white"
+                        className="bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900"
                     >
                         {submitting ? (
                             <><Loader2 className="h-3.5 w-3.5 mr-1 animate-spin" />Posting…</>

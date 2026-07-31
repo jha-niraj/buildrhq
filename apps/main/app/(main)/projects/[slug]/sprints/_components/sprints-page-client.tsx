@@ -552,14 +552,14 @@ export default function SprintsPageClient({
 
     const statusOptions = [
         { value: 'TO_DO', label: 'To Do', color: 'text-neutral-500 bg-neutral-100' },
-        { value: 'IN_PROGRESS', label: 'In Progress', color: 'text-yellow-600 bg-yellow-100' },
-        { value: 'COMPLETED', label: 'Completed', color: 'text-amber-600 bg-amber-100' }
+        { value: 'IN_PROGRESS', label: 'In Progress', color: 'text-neutral-800 bg-neutral-100' },
+        { value: 'COMPLETED', label: 'Completed', color: 'text-neutral-800 bg-neutral-100' }
     ] as const
 
     const difficultyColors: Record<string, string> = {
-        BEGINNER: 'text-amber-600 bg-amber-50 dark:bg-amber-950/30',
-        INTERMEDIATE: 'text-orange-600 bg-orange-50 dark:bg-orange-950/30',
-        ADVANCED: 'text-orange-600 bg-orange-50 dark:bg-orange-950/30'
+        BEGINNER: 'text-neutral-800 bg-neutral-50 dark:bg-neutral-900/30',
+        INTERMEDIATE: 'text-neutral-800 bg-neutral-50 dark:bg-neutral-900/30',
+        ADVANCED: 'text-neutral-800 bg-neutral-50 dark:bg-neutral-900/30'
     }
 
     return (
@@ -644,7 +644,7 @@ export default function SprintsPageClient({
                                                 <div className="flex items-center justify-between mb-1">
                                                     <span className={cn(
                                                         "text-xs font-bold uppercase tracking-wider",
-                                                        selectedSprintId === sprint.id && !selectedMockSprintId ? "text-orange-600 dark:text-orange-400" : "text-neutral-500"
+                                                        selectedSprintId === sprint.id && !selectedMockSprintId ? "text-neutral-800 dark:text-neutral-100" : "text-neutral-500"
                                                     )}>
                                                         Sprint {sprint.sprintNumber}
                                                     </span>
@@ -652,7 +652,7 @@ export default function SprintsPageClient({
                                                         unlocked && completionPct > 0 && (
                                                             <span className={cn(
                                                                 "text-xs font-medium",
-                                                                completionPct === 100 ? "text-amber-600 dark:text-amber-400" : "text-orange-600 dark:text-orange-400"
+                                                                completionPct === 100 ? "text-neutral-800 dark:text-neutral-100" : "text-neutral-800 dark:text-neutral-100"
                                                             )}>
                                                                 {completionPct}%
                                                             </span>
@@ -677,7 +677,7 @@ export default function SprintsPageClient({
                                                     unlocked && completionPct > 0 && completionPct < 100 && (
                                                         <div className="mt-2 h-1 w-full bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
                                                             <div
-                                                                className="h-full bg-orange-500 rounded-full transition-all"
+                                                                className="h-full bg-neutral-900 rounded-full transition-all"
                                                                 style={{ width: `${completionPct}%` }}
                                                             />
                                                         </div>
@@ -697,7 +697,7 @@ export default function SprintsPageClient({
                                                         className={cn(
                                                             "w-full text-left p-2 mt-1 rounded-lg transition-all border",
                                                             selectedMockSprintId === sprint.id
-                                                                ? "bg-orange-50 dark:bg-orange-950/30 border-orange-200 dark:border-orange-800"
+                                                                ? "bg-neutral-50 dark:bg-neutral-900/30 border-neutral-200 dark:border-neutral-800"
                                                                 : "bg-neutral-50 dark:bg-neutral-900/50 border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900"
                                                         )}
                                                     >
@@ -705,8 +705,8 @@ export default function SprintsPageClient({
                                                             <div className={cn(
                                                                 "w-6 h-6 rounded-full flex items-center justify-center",
                                                                 selectedMockSprintId === sprint.id
-                                                                    ? "bg-orange-500 text-white"
-                                                                    : "bg-orange-100 dark:bg-orange-900/50 text-orange-600"
+                                                                    ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900"
+                                                                    : "bg-neutral-100 dark:bg-neutral-800/50 text-neutral-800"
                                                             )}>
                                                                 <Brain className="w-3 h-3" />
                                                             </div>
@@ -714,7 +714,7 @@ export default function SprintsPageClient({
                                                                 <p className={cn(
                                                                     "text-xs font-medium truncate",
                                                                     selectedMockSprintId === sprint.id
-                                                                        ? "text-orange-800 dark:text-orange-300"
+                                                                        ? "text-neutral-800 dark:text-neutral-100"
                                                                         : "text-neutral-700 dark:text-neutral-300"
                                                                 )}>
                                                                     Mock Interview
@@ -854,7 +854,7 @@ export default function SprintsPageClient({
                             disabled={progressPercent <= 50}
                             className={cn("hidden lg:flex gap-2", progressPercent <= 50 && "opacity-50 cursor-not-allowed")}
                         >
-                            <Brain className="w-4 h-4 text-orange-600" />
+                            <Brain className="w-4 h-4 text-neutral-800" />
                             Final Quiz
                             {progressPercent <= 50 && <Lock className="w-3 h-3 ml-1" />}
                         </Button>
@@ -863,7 +863,7 @@ export default function SprintsPageClient({
                             disabled={progressPercent <= 75}
                             className={cn("hidden lg:flex gap-2", progressPercent <= 75 && "opacity-50 cursor-not-allowed")}
                         >
-                            <MonitorPlay className="w-4 h-4 text-orange-600" />
+                            <MonitorPlay className="w-4 h-4 text-neutral-800" />
                             Final Mock Interview
                             {progressPercent <= 75 && <Lock className="w-3 h-3 ml-1" />}
                         </Button>
@@ -888,10 +888,10 @@ export default function SprintsPageClient({
                                                         className={cn(
                                                             "group relative p-4 rounded-xl border transition-all duration-200 cursor-pointer",
                                                             isSelected
-                                                                ? "bg-orange-50 dark:bg-orange-950/20 border-orange-300 dark:border-orange-700 ring-1 ring-orange-300 dark:ring-orange-700"
+                                                                ? "bg-neutral-50 dark:bg-neutral-900/20 border-neutral-300 dark:border-neutral-700 ring-1 ring-neutral-300 dark:ring-neutral-700"
                                                                 : isCompleted
-                                                                    ? "bg-amber-50/50 dark:bg-amber-950/10 border-amber-200 dark:border-amber-900/30"
-                                                                    : "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 hover:border-orange-300 dark:hover:border-orange-700"
+                                                                    ? "bg-neutral-50/50 dark:bg-neutral-900/10 border-neutral-200 dark:border-neutral-800/30"
+                                                                    : "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700"
                                                         )}
                                                     >
                                                         <div className="flex items-start gap-3">
@@ -906,8 +906,8 @@ export default function SprintsPageClient({
                                                                 className={cn(
                                                                     "mt-0.5 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors shrink-0",
                                                                     isCompleted
-                                                                        ? "bg-amber-500 border-amber-500 text-white"
-                                                                        : "border-neutral-300 dark:border-neutral-600 hover:border-orange-500 text-transparent"
+                                                                        ? "bg-neutral-900 dark:bg-white border-neutral-900 text-white dark:text-neutral-900"
+                                                                        : "border-neutral-300 dark:border-neutral-600 hover:border-neutral-900 text-transparent"
                                                                 )}
                                                             >
                                                                 <CheckCircle2 className="w-3 h-3" />
@@ -988,7 +988,7 @@ export default function SprintsPageClient({
                                         value="standup"
                                         className="flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm transition-all data-[state=active]:bg-white data-[state=active]:shadow-sm dark:data-[state=active]:bg-neutral-800"
                                     >
-                                        <Mic className="h-4 w-4 text-amber-600" />
+                                        <Mic className="h-4 w-4 text-neutral-800" />
                                         <span className="hidden sm:inline">Daily Standup</span>
                                     </TabsTrigger>
                                     <TabsTrigger
@@ -1072,7 +1072,7 @@ export default function SprintsPageClient({
                                                                             onClick={() => handleTaskStatusChange(selectedTask.id, option.value)}
                                                                             className={cn(
                                                                                 'gap-1',
-                                                                                taskStatuses[selectedTask.id] === option.value && 'bg-orange-600 hover:bg-orange-700'
+                                                                                taskStatuses[selectedTask.id] === option.value && 'bg-neutral-800 hover:bg-neutral-700'
                                                                             )}
                                                                         >
                                                                             {option.label}
@@ -1086,7 +1086,7 @@ export default function SprintsPageClient({
                                                             selectedTask.Learns && selectedTask.Learns.length > 0 && (
                                                                 <div>
                                                                     <h4 className="text-sm font-semibold text-neutral-700 dark:text-neutral-300 mb-3 flex items-center gap-2">
-                                                                        <Lightbulb className="w-4 h-4 text-amber-500" />
+                                                                        <Lightbulb className="w-4 h-4 text-neutral-900" />
                                                                         Key Learns
                                                                     </h4>
                                                                     <div className="space-y-3">
@@ -1094,21 +1094,21 @@ export default function SprintsPageClient({
                                                                             selectedTask.Learns.map((learn, idx) => (
                                                                                 <Collapsible key={idx}>
                                                                                     <CollapsibleTrigger asChild>
-                                                                                        <div className="p-3 bg-amber-50 dark:bg-amber-950/20 rounded-lg border border-amber-200 dark:border-amber-800 cursor-pointer hover:bg-amber-100 dark:hover:bg-amber-950/30 transition-colors">
+                                                                                        <div className="p-3 bg-neutral-50 dark:bg-neutral-900/20 rounded-lg border border-neutral-200 dark:border-neutral-800 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-900/30 transition-colors">
                                                                                             <div className="flex items-center justify-between">
-                                                                                                <p className="font-medium text-sm text-amber-800 dark:text-amber-300">{learn.title}</p>
-                                                                                                <ChevronDown className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                                                                                                <p className="font-medium text-sm text-neutral-800 dark:text-neutral-100">{learn.title}</p>
+                                                                                                <ChevronDown className="w-4 h-4 text-neutral-800 dark:text-neutral-100" />
                                                                                             </div>
-                                                                                            <p className="text-xs text-amber-700 dark:text-amber-400 mt-1">{learn.summary}</p>
+                                                                                            <p className="text-xs text-neutral-700 dark:text-neutral-100 mt-1">{learn.summary}</p>
                                                                                         </div>
                                                                                     </CollapsibleTrigger>
                                                                                     <CollapsibleContent>
-                                                                                        <div className="mt-2 p-3 bg-amber-50/50 dark:bg-amber-950/10 rounded-lg space-y-3 text-sm">
+                                                                                        <div className="mt-2 p-3 bg-neutral-50/50 dark:bg-neutral-900/10 rounded-lg space-y-3 text-sm">
                                                                                             {
                                                                                                 learn.keyPoints && learn.keyPoints.length > 0 && (
                                                                                                     <div>
-                                                                                                        <p className="font-medium text-amber-800 dark:text-amber-300 text-xs mb-1">Key Points:</p>
-                                                                                                        <ul className="list-disc list-inside text-xs text-amber-700 dark:text-amber-400 space-y-1">
+                                                                                                        <p className="font-medium text-neutral-800 dark:text-neutral-100 text-xs mb-1">Key Points:</p>
+                                                                                                        <ul className="list-disc list-inside text-xs text-neutral-700 dark:text-neutral-100 space-y-1">
                                                                                                             {
                                                                                                                 learn.keyPoints.slice(0, 5).map((point, pidx) => (
                                                                                                                     <li key={pidx}>{point}</li>
@@ -1121,8 +1121,8 @@ export default function SprintsPageClient({
                                                                                             {
                                                                                                 learn.bestPractices && learn.bestPractices.length > 0 && (
                                                                                                     <div>
-                                                                                                        <p className="font-medium text-amber-800 dark:text-amber-300 text-xs mb-1">Best Practices:</p>
-                                                                                                        <ul className="list-disc list-inside text-xs text-amber-700 dark:text-amber-400 space-y-1">
+                                                                                                        <p className="font-medium text-neutral-800 dark:text-neutral-100 text-xs mb-1">Best Practices:</p>
+                                                                                                        <ul className="list-disc list-inside text-xs text-neutral-700 dark:text-neutral-100 space-y-1">
                                                                                                             {
                                                                                                                 learn.bestPractices.slice(0, 3).map((practice, pidx) => (
                                                                                                                     <li key={pidx}>{practice}</li>
@@ -1166,7 +1166,7 @@ export default function SprintsPageClient({
                                                                         {
                                                                             selectedTask.description.map((step, idx) => (
                                                                                 <li key={idx} className="flex gap-3 text-sm text-neutral-600 dark:text-neutral-400">
-                                                                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center text-xs font-medium">
+                                                                                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100 flex items-center justify-center text-xs font-medium">
                                                                                         {idx + 1}
                                                                                     </span>
                                                                                     <span className="leading-relaxed pt-0.5">{step}</span>
@@ -1188,7 +1188,7 @@ export default function SprintsPageClient({
                                                                         {
                                                                             selectedTask.criteria.map((criterion, idx) => (
                                                                                 <li key={idx} className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-                                                                                    <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                                                                                    <CheckCircle2 className="w-4 h-4 text-neutral-800 flex-shrink-0 mt-0.5" />
                                                                                     {criterion}
                                                                                 </li>
                                                                             ))
@@ -1201,8 +1201,8 @@ export default function SprintsPageClient({
                                                             selectedTask.hints && selectedTask.hints.length > 0 && (
                                                                 <Collapsible open={hintsOpen} onOpenChange={setHintsOpen}>
                                                                     <CollapsibleTrigger asChild>
-                                                                        <Button variant="ghost" className="w-full justify-between p-4 bg-amber-50 dark:bg-amber-900/20 hover:bg-amber-100 dark:hover:bg-amber-900/30 rounded-xl">
-                                                                            <span className="flex items-center gap-2 text-amber-700 dark:text-amber-400">
+                                                                        <Button variant="ghost" className="w-full justify-between p-4 bg-neutral-50 dark:bg-neutral-800/20 hover:bg-neutral-100 dark:hover:bg-neutral-800/30 rounded-xl">
+                                                                            <span className="flex items-center gap-2 text-neutral-700 dark:text-neutral-100">
                                                                                 <Lightbulb className="w-4 h-4" />
                                                                                 {selectedTask.hints.length} Hints Available
                                                                             </span>
@@ -1210,10 +1210,10 @@ export default function SprintsPageClient({
                                                                         </Button>
                                                                     </CollapsibleTrigger>
                                                                     <CollapsibleContent>
-                                                                        <ul className="mt-3 space-y-2 p-4 bg-amber-50/50 dark:bg-amber-900/10 rounded-xl">
+                                                                        <ul className="mt-3 space-y-2 p-4 bg-neutral-50/50 dark:bg-neutral-800/10 rounded-xl">
                                                                             {
                                                                                 selectedTask.hints.map((hint, idx) => (
-                                                                                    <li key={idx} className="flex items-start gap-2 text-sm text-amber-800 dark:text-amber-300">
+                                                                                    <li key={idx} className="flex items-start gap-2 text-sm text-neutral-800 dark:text-neutral-100">
                                                                                         <Lightbulb className="w-4 h-4 flex-shrink-0 mt-0.5" />
                                                                                         {hint}
                                                                                     </li>
@@ -1232,7 +1232,7 @@ export default function SprintsPageClient({
                                                                         Terminal Command
                                                                     </h4>
                                                                     <div className="flex items-center gap-2 p-3 bg-neutral-900 dark:bg-black rounded-xl">
-                                                                        <code className="flex-1 text-sm text-amber-400 font-mono">
+                                                                        <code className="flex-1 text-sm text-neutral-800 font-mono">
                                                                             $ {selectedTask.terminalCommand}
                                                                         </code>
                                                                         <Button
@@ -1259,23 +1259,23 @@ export default function SprintsPageClient({
                                                                                 <div className={cn(
                                                                                     "p-3 rounded-lg border",
                                                                                     assessmentStatus.passed
-                                                                                        ? "bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800"
-                                                                                        : "bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800"
+                                                                                        ? "bg-neutral-50 dark:bg-neutral-900/20 border-neutral-200 dark:border-neutral-800"
+                                                                                        : "bg-neutral-50 dark:bg-neutral-900/20 border-neutral-200 dark:border-neutral-800"
                                                                                 )}>
                                                                                     <div className="flex items-center justify-between">
                                                                                         <div className="flex items-center gap-2">
                                                                                             {
                                                                                                 assessmentStatus.passed ? (
-                                                                                                    <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                                                                                                    <CheckCircle2 className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                                                                                 ) : (
-                                                                                                    <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                                                                                                    <AlertTriangle className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                                                                                 )
                                                                                             }
                                                                                             <span className={cn(
                                                                                                 "font-medium text-sm",
                                                                                                 assessmentStatus.passed
-                                                                                                    ? "text-amber-800 dark:text-amber-300"
-                                                                                                    : "text-amber-800 dark:text-amber-300"
+                                                                                                    ? "text-neutral-800 dark:text-neutral-100"
+                                                                                                    : "text-neutral-800 dark:text-neutral-100"
                                                                                             )}>
                                                                                                 {assessmentStatus.passed ? "Assessment Passed!" : "Not Passed Yet"}
                                                                                             </span>
@@ -1284,8 +1284,8 @@ export default function SprintsPageClient({
                                                                                             <p className={cn(
                                                                                                 "text-lg font-bold",
                                                                                                 assessmentStatus.passed
-                                                                                                    ? "text-amber-600 dark:text-amber-400"
-                                                                                                    : "text-amber-600 dark:text-amber-400"
+                                                                                                    ? "text-neutral-800 dark:text-neutral-100"
+                                                                                                    : "text-neutral-800 dark:text-neutral-100"
                                                                                             )}>
                                                                                                 {assessmentStatus.score ?? 0}%
                                                                                             </p>
@@ -1302,8 +1302,8 @@ export default function SprintsPageClient({
                                                                             className={cn(
                                                                                 "w-full",
                                                                                 selectedTask.assessmentType === 'QUIZ'
-                                                                                    ? "bg-orange-600 hover:bg-orange-700 text-white"
-                                                                                    : "bg-orange-600 hover:bg-orange-700 text-white"
+                                                                                    ? "bg-neutral-800 hover:bg-neutral-700 text-white"
+                                                                                    : "bg-neutral-800 hover:bg-neutral-700 text-white"
                                                                             )}
                                                                         >
                                                                             {
@@ -1350,7 +1350,7 @@ export default function SprintsPageClient({
                                                 ) : selectedTask ? (
                                                     isLoadingAssessment ? (
                                                         <div className="flex flex-col items-center justify-center h-[50vh]">
-                                                            <Loader2 className="w-8 h-8 animate-spin text-orange-600 mb-4" />
+                                                            <Loader2 className="w-8 h-8 animate-spin text-neutral-800 mb-4" />
                                                             <p className="text-sm text-neutral-500">Loading assessment...</p>
                                                         </div>
                                                     ) : selectedTask.assessmentType === 'QUIZ' && quizQuestions.length > 0 ? (
@@ -1370,11 +1370,11 @@ export default function SprintsPageClient({
                                                         />
                                                     ) : selectedTask.assessmentType === 'CODE' && codeInstructions ? (
                                                         <div className="space-y-4">
-                                                            <div className="p-4 bg-orange-50 dark:bg-orange-950/30 rounded-lg border border-orange-200 dark:border-orange-800">
-                                                                <h3 className="font-semibold text-orange-800 dark:text-orange-300 mb-2">
+                                                            <div className="p-4 bg-neutral-50 dark:bg-neutral-900/30 rounded-lg border border-neutral-200 dark:border-neutral-800">
+                                                                <h3 className="font-semibold text-neutral-800 dark:text-neutral-100 mb-2">
                                                                     Code Challenge: {selectedTask.title}
                                                                 </h3>
-                                                                <p className="text-sm text-orange-700 dark:text-orange-400 whitespace-pre-wrap">
+                                                                <p className="text-sm text-neutral-700 dark:text-neutral-100 whitespace-pre-wrap">
                                                                     {codeInstructions}
                                                                 </p>
                                                             </div>
@@ -1396,15 +1396,15 @@ export default function SprintsPageClient({
                                                                     <div className={cn(
                                                                         "p-4 rounded-lg border-2",
                                                                         codeResult.passed
-                                                                            ? "border-amber-200 dark:border-amber-900 bg-amber-50/50 dark:bg-amber-950/20"
-                                                                            : "border-amber-200 dark:border-amber-900 bg-amber-50/50 dark:bg-amber-950/20"
+                                                                            ? "border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/20"
+                                                                            : "border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/20"
                                                                     )}>
                                                                         <div className="flex items-center gap-2 mb-2">
                                                                             {
                                                                                 codeResult.passed ? (
-                                                                                    <CheckCircle2 className="w-5 h-5 text-amber-600" />
+                                                                                    <CheckCircle2 className="w-5 h-5 text-neutral-800" />
                                                                                 ) : (
-                                                                                    <AlertTriangle className="w-5 h-5 text-amber-600" />
+                                                                                    <AlertTriangle className="w-5 h-5 text-neutral-800" />
                                                                                 )
                                                                             }
                                                                             <span className="font-semibold">
@@ -1445,7 +1445,7 @@ export default function SprintsPageClient({
                                                                 <Button
                                                                     onClick={handleSubmitCode}
                                                                     disabled={isLoadingAssessment || !userCode.trim()}
-                                                                    className="bg-orange-600 hover:bg-orange-700 text-white"
+                                                                    className="bg-neutral-800 hover:bg-neutral-700 text-white"
                                                                 >
                                                                     {
                                                                         isLoadingAssessment ? (

@@ -18,10 +18,10 @@ type AdminRole = "SUPER_ADMIN" | "CONTENT_ADMIN" | "FINANCE_ADMIN" | "COMMUNITY_
 
 const roleColors: Record<AdminRole, string> = {
     SUPER_ADMIN: "bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400",
-    CONTENT_ADMIN: "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400",
-    FINANCE_ADMIN: "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400",
-    COMMUNITY_ADMIN: "bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400",
-    MODULE_MANAGER: "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400",
+    CONTENT_ADMIN: "bg-neutral-50 dark:bg-neutral-200/10 text-neutral-800 dark:text-neutral-100",
+    FINANCE_ADMIN: "bg-neutral-50 dark:bg-neutral-200/10 text-neutral-800 dark:text-neutral-100",
+    COMMUNITY_ADMIN: "bg-neutral-50 dark:bg-neutral-200/10 text-neutral-800 dark:text-neutral-100",
+    MODULE_MANAGER: "bg-neutral-50 dark:bg-neutral-200/10 text-neutral-800 dark:text-neutral-100",
     VIEWER: "bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400",
 }
 
@@ -132,7 +132,7 @@ export default function AdminManagementPage() {
                 </div>
                 <button
                     onClick={() => setShowInviteModal(true)}
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-orange-500 rounded-lg hover:from-red-600 hover:to-orange-600 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-neutral-900 rounded-lg hover:from-red-600 hover:to-neutral-800 transition-colors"
                 >
                     <UserPlus className="w-4 h-4" />
                     Invite Admin
@@ -153,7 +153,7 @@ export default function AdminManagementPage() {
                         activeTab === "admins" && (
                             <motion.div
                                 layoutId="adminTab"
-                                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 to-orange-500"
+                                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 to-neutral-900"
                             />
                         )
                     }
@@ -172,7 +172,7 @@ export default function AdminManagementPage() {
                         activeTab === "invitations" && (
                             <motion.div
                                 layoutId="adminTab"
-                                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 to-orange-500"
+                                className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 to-neutral-900"
                             />
                         )
                     }
@@ -208,7 +208,7 @@ export default function AdminManagementPage() {
                                                     >
                                                         <td className="p-4">
                                                             <div className="flex items-center gap-3">
-                                                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
+                                                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-neutral-900 flex items-center justify-center">
                                                                     <span className="text-white font-bold">{(admin.name || admin.email || "A")[0]}</span>
                                                                 </div>
                                                                 <div>
@@ -230,12 +230,12 @@ export default function AdminManagementPage() {
                                                             <span className={cn(
                                                                 "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium",
                                                                 admin.status === "ACTIVE"
-                                                                    ? "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400"
+                                                                    ? "bg-neutral-50 dark:bg-neutral-200/10 text-neutral-800 dark:text-neutral-100"
                                                                     : "bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400"
                                                             )}>
                                                                 <span className={cn(
                                                                     "w-1.5 h-1.5 rounded-full mr-1.5",
-                                                                    admin.status === "ACTIVE" ? "bg-amber-500" : "bg-neutral-400"
+                                                                    admin.status === "ACTIVE" ? "bg-neutral-900" : "bg-neutral-400"
                                                                 )} />
                                                                 {admin.status}
                                                             </span>
@@ -328,7 +328,7 @@ export default function AdminManagementPage() {
                                                             <span className={cn(
                                                                 "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium",
                                                                 {
-                                                                    "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400": invite.status === "PENDING" || invite.status === "USED",
+                                                                    "bg-neutral-50 dark:bg-neutral-200/10 text-neutral-800 dark:text-neutral-100": invite.status === "PENDING" || invite.status === "USED",
                                                                     "bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400": invite.status === "EXPIRED",
                                                                 }
                                                             )}>
@@ -414,7 +414,7 @@ export default function AdminManagementPage() {
                                 <button
                                     onClick={handleCreateInvitation}
                                     disabled={submitting}
-                                    className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-orange-500 rounded-lg hover:from-red-600 hover:to-orange-600 transition-colors disabled:opacity-50 flex items-center gap-2"
+                                    className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-neutral-900 rounded-lg hover:from-red-600 hover:to-neutral-800 transition-colors disabled:opacity-50 flex items-center gap-2"
                                 >
                                     {
                                         submitting ? (

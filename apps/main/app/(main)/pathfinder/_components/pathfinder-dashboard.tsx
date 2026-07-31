@@ -46,14 +46,14 @@ interface PathfinderDashboardProps {
 const categoryConfig = PATHFINDER_CATEGORIES
 
 const statusConfig: Record<PathfinderStatus, { label: string; icon: React.ReactNode; color: string; bg: string }> = {
-    ACTIVE: { label: 'Active', icon: <Play className="w-3 h-3" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
-    VERIFICATION: { label: 'Verifying', icon: <Zap className="w-3 h-3" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
-    COMPLETED: { label: 'Completed', icon: <CheckCircle className="w-3 h-3" />, color: 'text-orange-600', bg: 'bg-orange-500/10' },
+    ACTIVE: { label: 'Active', icon: <Play className="w-3 h-3" />, color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+    VERIFICATION: { label: 'Verifying', icon: <Zap className="w-3 h-3" />, color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+    COMPLETED: { label: 'Completed', icon: <CheckCircle className="w-3 h-3" />, color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
     FAILED: { label: 'Retry', icon: <XCircle className="w-3 h-3" />, color: 'text-red-600', bg: 'bg-red-500/10' },
     ABANDONED: { label: 'Paused', icon: <PauseCircle className="w-3 h-3" />, color: 'text-neutral-600', bg: 'bg-neutral-500/10' },
 }
 
-const PIE_COLORS = ['#10b981', '#f59e0b', '#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4', '#f97316', '#6366f1', '#14b8a6', '#e11d48']
+const PIE_COLORS = ['#10b981', '#525252', '#3b82f6', '#404040', '#ec4899', '#06b6d4', '#171717', '#6366f1', '#14b8a6', '#e11d48']
 
 function GoalCard({ goal, onAssign }: { goal: Goal; onAssign: () => void }) {
     const category = categoryConfig[goal.category]
@@ -96,19 +96,19 @@ function GoalCard({ goal, onAssign }: { goal: Goal; onAssign: () => void }) {
                     </div>
                     <div className="flex items-center gap-3 text-[11px] text-neutral-500 mb-3">
                         <div className="flex items-center gap-1">
-                            <CheckCircle2 className="w-3 h-3 text-amber-500" />
+                            <CheckCircle2 className="w-3 h-3 text-neutral-900" />
                             <span>{goal.completedSubGoals}/{goal.totalSubGoals}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                            <Brain className="w-3 h-3 text-orange-500" />
+                            <Brain className="w-3 h-3 text-neutral-900" />
                             <span>{goal.totalQuizAnswered}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                            <Code2 className="w-3 h-3 text-orange-500" />
+                            <Code2 className="w-3 h-3 text-neutral-900" />
                             <span>{goal.totalCodingSolved}</span>
                         </div>
                         {goal.streakDays > 0 && (
-                            <div className="flex items-center gap-1 text-orange-500">
+                            <div className="flex items-center gap-1 text-neutral-900">
                                 <Flame className="w-3 h-3" />
                                 <span>{goal.streakDays}d</span>
                             </div>
@@ -180,12 +180,12 @@ function StatsSection({ goals }: { goals: Goal[] }) {
     const maxStreak = Math.max(...goals.map(g => g.streakDays), 0)
 
     const stats = [
-        { label: 'Active', value: activeGoals.length, icon: <Target className="w-4 h-4" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
-        { label: 'Done', value: completedGoals.length, icon: <Trophy className="w-4 h-4" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
-        { label: 'Tasks', value: `${completedTasks}/${totalTasks}`, icon: <CheckCircle2 className="w-4 h-4" />, color: 'text-orange-600', bg: 'bg-orange-500/10' },
-        { label: 'Quiz', value: totalQuiz, icon: <Brain className="w-4 h-4" />, color: 'text-orange-600', bg: 'bg-orange-500/10' },
-        { label: 'Code', value: totalCoding, icon: <Code2 className="w-4 h-4" />, color: 'text-amber-600', bg: 'bg-amber-500/10' },
-        { label: 'Streak', value: `${maxStreak}d`, icon: <Flame className="w-4 h-4" />, color: 'text-orange-600', bg: 'bg-orange-500/10' },
+        { label: 'Active', value: activeGoals.length, icon: <Target className="w-4 h-4" />, color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+        { label: 'Done', value: completedGoals.length, icon: <Trophy className="w-4 h-4" />, color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+        { label: 'Tasks', value: `${completedTasks}/${totalTasks}`, icon: <CheckCircle2 className="w-4 h-4" />, color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+        { label: 'Quiz', value: totalQuiz, icon: <Brain className="w-4 h-4" />, color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+        { label: 'Code', value: totalCoding, icon: <Code2 className="w-4 h-4" />, color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
+        { label: 'Streak', value: `${maxStreak}d`, icon: <Flame className="w-4 h-4" />, color: 'text-neutral-800', bg: 'bg-neutral-900/10' },
     ]
 
     return (
@@ -230,14 +230,14 @@ function ActivityChart({ goals }: { goals: Goal[] }) {
                             labelStyle={{ fontWeight: 600 }}
                         />
                         <Bar dataKey="tasks" fill="#10b981" radius={[3, 3, 0, 0]} name="Tasks" />
-                        <Bar dataKey="quiz" fill="#8b5cf6" radius={[3, 3, 0, 0]} name="Quiz" />
+                        <Bar dataKey="quiz" fill="#404040" radius={[3, 3, 0, 0]} name="Quiz" />
                         <Bar dataKey="code" fill="#3b82f6" radius={[3, 3, 0, 0]} name="Code" />
                     </BarChart>
                 </ResponsiveContainer>
                 <div className="flex items-center justify-center gap-4 mt-2">
-                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-amber-500" />Tasks</span>
-                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-orange-500" />Quiz</span>
-                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-orange-500" />Code</span>
+                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-neutral-900" />Tasks</span>
+                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-neutral-900" />Quiz</span>
+                    <span className="flex items-center gap-1.5 text-[10px] text-neutral-500"><span className="w-2 h-2 rounded-sm bg-neutral-900" />Code</span>
                 </div>
             </div>
         </div>

@@ -60,13 +60,13 @@ export default function ActivityCalendar({ data }: ActivityCalendarProps) {
             case 0:
                 return "bg-muted";
             case 1:
-                return "bg-amber-200 dark:bg-amber-900";
+                return "bg-neutral-200 dark:bg-neutral-800";
             case 2:
-                return "bg-amber-400 dark:bg-amber-700";
+                return "bg-neutral-800 dark:bg-neutral-700";
             case 3:
-                return "bg-amber-500 dark:bg-amber-500";
+                return "bg-neutral-900 dark:bg-neutral-200";
             case 4:
-                return "bg-amber-600 dark:bg-amber-400";
+                return "bg-neutral-800 dark:bg-neutral-100";
             default:
                 return "bg-muted";
         }
@@ -138,13 +138,13 @@ export default function ActivityCalendar({ data }: ActivityCalendarProps) {
             <div className="h-full rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
                 <div className="flex items-center justify-between mb-5">
                     <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                            <CalendarDays className="h-4 w-4 text-amber-500" />
+                        <div className="w-8 h-8 rounded-lg bg-neutral-900/10 flex items-center justify-center">
+                            <CalendarDays className="h-4 w-4 text-neutral-900" />
                         </div>
                         <span className="font-semibold text-sm">Activity</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                        <Flame className="h-4 w-4 text-orange-500" />
+                        <Flame className="h-4 w-4 text-neutral-900" />
                         <span className="font-bold text-sm">{currentStreak}</span>
                         <span className="text-xs text-neutral-500">day streak</span>
                     </div>

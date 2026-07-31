@@ -52,7 +52,7 @@ const StatCard = ({ title, value, change, changeType = "neutral", icon, href }: 
             </div>
             {
                 change && (
-                    <div className={`mt-3 text-xs font-medium ${changeType === "positive" ? "text-amber-600 dark:text-amber-400" :
+                    <div className={`mt-3 text-xs font-medium ${changeType === "positive" ? "text-neutral-800 dark:text-neutral-100" :
                             changeType === "negative" ? "text-red-600 dark:text-red-400" :
                                 "text-neutral-500"
                         }`}>
@@ -81,10 +81,10 @@ const _ActivityItem = ({ type, title, subtitle, time }: _ActivityItemProps) => {
     }
 
     const colors = {
-        application: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400",
-        review: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400",
-        interview: "bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400",
-        offer: "bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400",
+        application: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
+        review: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
+        interview: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
+        offer: "bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-100",
     }
 
     return (
@@ -135,11 +135,11 @@ export default function HomeContent({ userName, candidateStats, interviewProcess
     ]
 
     const pipelineStats = [
-        { label: "New Applications", value: candidateStats?.new || 0, color: "bg-orange-500" },
-        { label: "Screening", value: candidateStats?.screening || 0, color: "bg-yellow-500" },
-        { label: "Interviewing", value: candidateStats?.interviewing || 0, color: "bg-orange-500" },
-        { label: "Offer Extended", value: candidateStats?.offered || 0, color: "bg-amber-500" },
-        { label: "Hired", value: candidateStats?.hired || 0, color: "bg-amber-600" },
+        { label: "New Applications", value: candidateStats?.new || 0, color: "bg-neutral-900" },
+        { label: "Screening", value: candidateStats?.screening || 0, color: "bg-neutral-900" },
+        { label: "Interviewing", value: candidateStats?.interviewing || 0, color: "bg-neutral-900" },
+        { label: "Offer Extended", value: candidateStats?.offered || 0, color: "bg-neutral-900" },
+        { label: "Hired", value: candidateStats?.hired || 0, color: "bg-neutral-800" },
     ]
 
     const totalInPipeline = pipelineStats.reduce((acc, curr) => acc + curr.value, 0)
@@ -260,17 +260,17 @@ export default function HomeContent({ userName, candidateStats, interviewProcess
                     transition={{ delay: 0.3 }}
                     className="space-y-4"
                 >
-                    <div className="bg-gradient-to-br from-orange-600 to-orange-600 rounded-2xl p-6 text-white">
+                    <div className="bg-gradient-to-br from-neutral-800 to-neutral-800 rounded-2xl p-6 text-white">
                         <div className="flex items-center gap-2 mb-3">
                             <Zap className="w-5 h-5" />
                             <span className="text-xs font-medium bg-white/20 px-2 py-0.5 rounded-full">New Feature</span>
                         </div>
                         <h3 className="font-bold text-lg mb-2">Interview Processes</h3>
-                        <p className="text-orange-100 text-sm mb-4">
+                        <p className="text-neutral-100 text-sm mb-4">
                             Define transparent interview pipelines. Students can prepare for each round before applying!
                         </p>
                         <Link href="/interview-config">
-                            <Button className="w-full bg-white text-orange-600 hover:bg-orange-50 rounded-xl">
+                            <Button className="w-full bg-white text-neutral-800 hover:bg-neutral-50 rounded-xl">
                                 Configure Processes
                                 <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
@@ -280,13 +280,13 @@ export default function HomeContent({ userName, candidateStats, interviewProcess
                         <h3 className="font-bold text-lg mb-4 text-neutral-900 dark:text-white">Getting Started</h3>
                         <div className="space-y-3">
                             <div className="flex items-center gap-3 text-sm">
-                                <CheckCircle2 className="w-4 h-4 text-amber-500" />
+                                <CheckCircle2 className="w-4 h-4 text-neutral-900" />
                                 <span className="text-neutral-700 dark:text-neutral-300">Create your company profile</span>
                             </div>
                             <div className="flex items-center gap-3 text-sm">
                                 {
                                     interviewProcessCount > 0 ? (
-                                        <CheckCircle2 className="w-4 h-4 text-amber-500" />
+                                        <CheckCircle2 className="w-4 h-4 text-neutral-900" />
                                     ) : (
                                         <div className="w-4 h-4 rounded-full border-2 border-neutral-300 dark:border-neutral-600" />
                                     )

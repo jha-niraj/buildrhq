@@ -116,13 +116,19 @@
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
 
-    /* Display face — Space Grotesk, loaded by each app's root layout as
-       `--font-space-grotesk`. Registering it here is what makes the `font-display`
-       utility exist (Tailwind v4 generates font-* utilities from --font-* theme
-       keys), so headings in shared components can ask for the display face by
-       name instead of hardcoding a stack. Falls back to the sans stack in any app
-       that hasn't wired the variable. */
-    --font-display: var(--font-space-grotesk), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+    /* Display face — Bricolage Grotesque, loaded by each app's root layout via
+       next/font/google and exposed as `--font-display`. Registering it here is what
+       makes the `font-display` utility exist (Tailwind v4 generates font-*
+       utilities from --font-* theme keys). The chain falls back through Space
+       Grotesk to the sans stack, so an app that has not wired the variable still
+       renders something deliberate rather than Times.
+
+       NOTE: next/font/google fetches the file at BUILD time and, if that fetch
+       fails, prints a warning and silently ships the fallback instead of failing
+       the build. If headings ever render in the wrong face after a deploy, check
+       the build log for "Failed to download Bricolage Grotesque" before looking
+       anywhere else. Self-hosting via next/font/local removes that failure mode. */
+    --font-display-family: var(--font-display), var(--font-space-grotesk), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -431,4 +437,85 @@ html[data-theme-transition] .theme-vt-glass {
     ::view-transition-new(root) {
         animation: none !important;
     }
+}
+
+
+/* ── Typography ───────────────────────────────────────────────────────────────
+   Every h1-h3 and the sidebar use the display face. Done here rather than by
+   adding `font-display` to hundreds of call sites, so a future face swap is a
+   one-line change and no heading can be accidentally left behind. */
+h1, h2, h3,
+.font-display {
+    font-family: var(--font-display-family);
+    letter-spacing: -0.02em;
+}
+
+/* The sidebar is a dense nav surface — the display face's tighter, more
+   characterful letterforms hold up better at small sizes than the body face.
+   Tag the sidebar root with `data-sidebar` (or the .app-sidebar class) to opt in. */
+[data-sidebar],
+.app-sidebar {
+    font-family: var(--font-display-family);
+}
+[data-sidebar] a,
+[data-sidebar] button,
+.app-sidebar a,
+.app-sidebar button {
+    font-family: var(--font-display-family);
+    letter-spacing: -0.01em;
+}
+
+/* ── Skeleton shimmer ─────────────────────────────────────────────────────────
+   Defined globally so BOTH skeleton paths share one animation: the route-level
+   `loading.tsx` files built from <Shimmer>, and the in-component loading states
+   built from the <Skeleton> primitive. Before this, the first was a background
+   sweep and the second was `animate-pulse`, so handing off from a route skeleton
+   to a component's own skeleton visibly changed the animation mid-load.
+
+   `<ShimmerStyles />` still injects an identical copy — duplicate rules are
+   harmless and keep skeleton-kit usable in isolation. */
+@keyframes sk-sweep {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+.sk-shimmer {
+    background-color: color-mix(in oklab, var(--foreground) 8%, transparent);
+    background-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        color-mix(in oklab, var(--foreground) 6%, transparent) 45%,
+        color-mix(in oklab, var(--foreground) 10%, transparent) 50%,
+        color-mix(in oklab, var(--foreground) 6%, transparent) 55%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: sk-sweep 1.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+    .sk-shimmer { animation: none; }
+}
+
+/* ── Full-height pages inside an inset app shell ──────────────────────────────
+   The app shell (apps/main app/(main)/layout.tsx) floats the page as a card with
+   a 0.5rem margin, so the box a page actually occupies is `100vh - 1rem`, not
+   `100vh`. A page written with `h-screen` / `min-h-screen` therefore overflows
+   its own card by exactly 16px and shows a scrollbar over a strip of nothing.
+
+   Retargeting the two utilities at the shell's `--page-h` fixes every such page
+   at once, instead of editing ~49 files and requiring every future one to
+   remember. `[class~=...]` matches the class TOKEN, and the extra ancestor makes
+   this more specific than Tailwind's own single-class rule, so it wins.
+
+   The `:*` variants cover responsive/state forms (`lg:h-screen`, `md:min-h-screen`).
+   Portals — dialogs, sheets, tooltips — render outside [data-app-page] and are
+   deliberately untouched: those really do want the whole viewport.
+
+   The `100vh` fallback keeps this a no-op anywhere the variable is not set. */
+[data-app-page] [class~="h-screen"],
+[data-app-page] [class*=":h-screen"] {
+    height: var(--page-h, 100vh);
+}
+[data-app-page] [class~="min-h-screen"],
+[data-app-page] [class*=":min-h-screen"] {
+    min-height: var(--page-h, 100vh);
 }

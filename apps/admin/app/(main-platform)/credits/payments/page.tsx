@@ -56,10 +56,10 @@ export default function CreditPaymentsPage() {
 
     function getStatusBadge(status: string) {
         const styles = {
-            SUCCESS: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-            PENDING: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+            SUCCESS: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
+            PENDING: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
             FAILED: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
-            REFUNDED: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+            REFUNDED: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100",
         }
         return styles[status as keyof typeof styles] || styles.PENDING
     }
@@ -149,7 +149,7 @@ export default function CreditPaymentsPage() {
                                                 <tr key={payment.id} className="hover:bg-neutral-50 dark:hover:bg-neutral-800/30">
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="flex items-center">
-                                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-white text-sm font-medium">
+                                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-neutral-900 flex items-center justify-center text-white text-sm font-medium">
                                                                 {payment.user?.name?.charAt(0) || "U"}
                                                             </div>
                                                             <div className="ml-3">
@@ -174,7 +174,7 @@ export default function CreditPaymentsPage() {
                                                         </div>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        <span className="text-sm font-semibold text-amber-600 dark:text-amber-400">
+                                                        <span className="text-sm font-semibold text-neutral-800 dark:text-neutral-100">
                                                             {payment.credits} credits
                                                         </span>
                                                     </td>

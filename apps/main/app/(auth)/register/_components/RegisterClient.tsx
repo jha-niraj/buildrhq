@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { signIn, signUp, emailOtp } from "@repo/auth/client";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-    Eye, EyeOff, Check, X, Gift, Code2, ArrowLeft, Loader2, MailCheck,
+    Eye, EyeOff, Check, X, Gift, ArrowLeft, Loader2, MailCheck, Wand2,
 } from "lucide-react";
 import { Input } from "@repo/ui/components/ui/input";
 import { Button } from "@repo/ui/components/ui/button";
@@ -16,6 +16,7 @@ import { useAppContext } from "@/app/context/usercontext";
 import toast from "@repo/ui/components/ui/sonner";
 import { getAuthErrorMessage } from "@/lib/auth-errors";
 import { finalizeSignup } from "@/actions/(auth)/auth/signup.actions";
+import { AuthShell } from "../../_components/auth-shell";
 
 const RESEND_COOLDOWN_SECONDS = 30;
 
@@ -31,6 +32,8 @@ function SignUpForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [isGoogleLoading, setIsGoogleLoading] = useState(false);
     const [isGitHubLoading, setIsGitHubLoading] = useState(false);
+    const [isMagicLoading, setIsMagicLoading] = useState(false);
+    const [magicSent, setMagicSent] = useState(false);
     const [error, setError] = useState("");
     const [referralCode, setReferralCode] = useState<string | null>(null);
     const [agreedToTerms, setAgreedToTerms] = useState(false);
@@ -214,7 +217,40 @@ function SignUpForm() {
         }
     };
 
-    // ── Social ────────────────────────────────────────────────────────────────
+    // ── Sign up with a magic link (no password) ───────────────────────────────
+    // A clicked link proves the address, so better-auth creates the account already
+    // verified — no OTP step needed. `newUserCallbackURL` routes a brand-new account
+    // to onboarding while an existing one goes straight into the app.
+    const handleMagicSignUp = async () => {
+        const trimmed = email.trim().toLowerCase();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+            setError("Enter your email address above first, then tap this.");
+            return;
+        }
+        setIsMagicLoading(true);
+        setError("");
+        try {
+            const ssoCallback = sessionStorage.getItem("sso_callback");
+            const result = await signIn.magicLink({
+                email: trimmed,
+                callbackURL: ssoCallback || "/home",
+                newUserCallbackURL: "/onboarding",
+                errorCallbackURL: "/signin",
+            });
+            if (result?.error) {
+                setError(getAuthErrorMessage(result.error.code ?? result.error.message));
+                return;
+            }
+            setMagicSent(true);
+            toast.success("Check your inbox for your sign-up link");
+        } catch {
+            setError("Could not send the link. Please try again.");
+        } finally {
+            setIsMagicLoading(false);
+        }
+    };
+
+    // ── Social ─────────────────────────────────────────────────────────────────
     // better-auth knows whether the OAuth callback just created the account or
     // matched an existing one, so `newUserCallbackURL` routes first-timers to
     // setup and returning users straight into the app — no guessing client-side.
@@ -250,70 +286,11 @@ function SignUpForm() {
     };
 
     return (
-        <div className="min-h-screen flex">
-            <div className="hidden lg:flex lg:w-1/2 relative bg-zinc-950 flex-col justify-center items-center overflow-hidden">
-                <div className="absolute left-8 top-1/4 flex flex-col gap-2">
-                    <div className="w-1 h-24 bg-gradient-to-b from-orange-500 to-transparent rounded-full" />
-                    <div className="w-1 h-16 bg-gradient-to-b from-orange-400/60 to-transparent rounded-full" />
-                    <div className="w-1 h-8 bg-gradient-to-b from-orange-300/40 to-transparent rounded-full" />
-                </div>
-
-                <div className="absolute right-16 top-1/3 w-32 h-32 rounded-full bg-orange-500/20 blur-xl" />
-                <div className="absolute right-20 top-1/3 w-24 h-24 rounded-full bg-orange-500/30 blur-lg" />
-
-                <div className="relative z-10 px-12 max-w-lg">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <div className="flex items-center gap-3 mb-8">
-                            <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/20">
-                                <Code2 className="h-8 w-8 text-orange-500" />
-                            </div>
-                            <span className="text-2xl font-bold text-white">BuildrHQ</span>
-                        </div>
-
-                        <h1 className="text-4xl font-bold text-white mb-4">
-                            Join the <span className="text-orange-500">Community</span>
-                        </h1>
-                        <p className="text-zinc-400 text-lg mb-8">
-                            Build projects, learn from peers, and grow your skills with
-                            thousands of developers worldwide.
-                        </p>
-                        <div className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-xl p-6">
-                            <p className="text-zinc-300 italic text-lg">
-                                &quot;Every expert was once a beginner.&quot;
-                            </p>
-                            <p className="text-orange-500 mt-2 text-sm">
-                                — Start your journey today
-                            </p>
-                        </div>
-                    </motion.div>
-                </div>
-                <div className="absolute bottom-8 left-8 right-8 flex justify-between items-center">
-                    <div className="flex gap-2">
-                        <div className="w-2 h-2 rounded-full bg-orange-500" />
-                        <div className="w-2 h-2 rounded-full bg-orange-500/50" />
-                        <div className="w-2 h-2 rounded-full bg-orange-500/25" />
-                    </div>
-                    <p className="text-zinc-500 text-sm">Empowering developers since 2024</p>
-                </div>
-            </div>
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white dark:bg-zinc-900">
-                <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="w-full max-w-md"
-                >
-                    <div className="lg:hidden flex items-center gap-2 mb-8 justify-center">
-                        <div className="p-2 rounded-lg bg-orange-500/10 border border-orange-500/20">
-                            <Code2 className="h-6 w-6 text-orange-500" />
-                        </div>
-                        <span className="text-xl font-bold dark:text-white">BuildrHQ</span>
-                    </div>
-
+        <AuthShell
+            headline={<>Join the <span className="text-white/50">community</span>.</>}
+            sub="Build projects, learn from peers, and grow your skills with thousands of developers."
+            quote="Every expert was once a beginner."
+        >
                     <AnimatePresence mode="wait">
                         {phase === "details" ? (
                             <motion.div
@@ -331,10 +308,10 @@ function SignUpForm() {
                                 </div>
 
                                 {referralCode && (
-                                    <div className="mb-6 p-4 bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/20 rounded-xl">
+                                    <div className="mb-6 p-4 bg-gradient-to-r from-neutral-900/10 to-neutral-900/10 border border-neutral-900/20 rounded-xl">
                                         <div className="flex items-center gap-3">
-                                            <div className="p-2 bg-orange-500/20 rounded-lg">
-                                                <Gift className="h-5 w-5 text-orange-500" />
+                                            <div className="p-2 bg-neutral-900/20 rounded-lg">
+                                                <Gift className="h-5 w-5 text-neutral-900" />
                                             </div>
                                             <div>
                                                 <p className="text-sm font-medium dark:text-white">
@@ -419,7 +396,7 @@ function SignUpForm() {
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             required
-                                            className="h-12 dark:bg-zinc-800 dark:border-zinc-700 dark:focus:border-orange-500"
+                                            className="h-12 dark:bg-zinc-800 dark:border-zinc-700 dark:focus:border-neutral-200"
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -433,7 +410,7 @@ function SignUpForm() {
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             required
-                                            className="h-12 dark:bg-zinc-800 dark:border-zinc-700 dark:focus:border-orange-500"
+                                            className="h-12 dark:bg-zinc-800 dark:border-zinc-700 dark:focus:border-neutral-200"
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -448,7 +425,7 @@ function SignUpForm() {
                                                 value={password}
                                                 onChange={(e) => setPassword(e.target.value)}
                                                 required
-                                                className="h-12 pr-12 dark:bg-zinc-800 dark:border-zinc-700 dark:focus:border-orange-500"
+                                                className="h-12 pr-12 dark:bg-zinc-800 dark:border-zinc-700 dark:focus:border-neutral-200"
                                             />
                                             <button
                                                 type="button"
@@ -481,18 +458,18 @@ function SignUpForm() {
                                             id="terms"
                                             checked={agreedToTerms}
                                             onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)}
-                                            className="cursor-pointer mt-0.5 border-zinc-300 dark:border-zinc-600 data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+                                            className="cursor-pointer mt-0.5 border-zinc-300 dark:border-zinc-600 data-[state=checked]:bg-neutral-900 data-[state=checked]:border-neutral-900"
                                         />
                                         <Label
                                             htmlFor="terms"
                                             className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed cursor-pointer"
                                         >
                                             I agree to the{" "}
-                                            <Link href="/termsofservice" className="text-orange-500 hover:underline">
+                                            <Link href="/termsofservice" className="text-neutral-900 hover:underline">
                                                 Terms of Service
                                             </Link>{" "}
                                             and{" "}
-                                            <Link href="/privacypolicy" className="text-orange-500 hover:underline">
+                                            <Link href="/privacypolicy" className="text-neutral-900 hover:underline">
                                                 Privacy Policy
                                             </Link>
                                         </Label>
@@ -500,7 +477,7 @@ function SignUpForm() {
                                     <Button
                                         type="submit"
                                         disabled={isLoading || !agreedToTerms}
-                                        className="w-full h-12 bg-orange-500 hover:bg-orange-600 text-white font-medium mt-6"
+                                        className="w-full h-12 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-medium mt-6"
                                     >
                                         {isLoading ? (
                                             <div className="flex items-center gap-2">
@@ -511,12 +488,40 @@ function SignUpForm() {
                                             "Create Account"
                                         )}
                                     </Button>
+
+                                    <div className="relative py-1">
+                                        <div className="absolute inset-0 flex items-center">
+                                            <div className="w-full border-t border-zinc-200 dark:border-zinc-700" />
+                                        </div>
+                                        <div className="relative flex justify-center text-xs">
+                                            <span className="bg-white px-2 text-zinc-400 dark:bg-zinc-900">or</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Passwordless sign-up. Not inside the <form> submit path — it
+                                        only needs the email field, so it must not be blocked by the
+                                        password rules or the terms checkbox validation above. */}
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        onClick={handleMagicSignUp}
+                                        disabled={isMagicLoading || magicSent}
+                                        className="w-full h-12 gap-2 border-neutral-900/30 font-medium text-neutral-800 transition-colors hover:border-neutral-900/60 hover:bg-neutral-900/5 hover:text-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-200/10"
+                                    >
+                                        {isMagicLoading ? (
+                                            <><Loader2 className="h-4 w-4 animate-spin" />Sending link…</>
+                                        ) : magicSent ? (
+                                            <><MailCheck className="h-4 w-4" />Link sent — check your inbox</>
+                                        ) : (
+                                            <><Wand2 className="h-4 w-4" />Sign up without a password</>
+                                        )}
+                                    </Button>
                                 </form>
                                 <p className="mt-8 text-center text-zinc-500 dark:text-zinc-400">
                                     Already have an account?{" "}
                                     <Link
                                         href="/signin"
-                                        className="text-orange-500 hover:text-orange-600 font-medium hover:underline"
+                                        className="font-semibold text-neutral-900 underline-offset-4 hover:underline dark:text-white"
                                     >
                                         Sign in
                                     </Link>
@@ -531,8 +536,8 @@ function SignUpForm() {
                                 transition={{ duration: 0.25 }}
                             >
                                 <div className="text-center mb-8">
-                                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10 border border-orange-500/20">
-                                        <MailCheck className="h-7 w-7 text-orange-500" />
+                                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-neutral-900/10 border border-neutral-900/20">
+                                        <MailCheck className="h-7 w-7 text-neutral-900" />
                                     </div>
                                     <h2 className="text-2xl font-bold dark:text-white">Check your email</h2>
                                     <p className="text-zinc-500 dark:text-zinc-400 mt-2">
@@ -561,7 +566,7 @@ function SignUpForm() {
                                             onKeyDown={(e) => handleOtpKeyDown(i, e)}
                                             onPaste={handleOtpPaste}
                                             disabled={isVerifying}
-                                            className="h-14 w-12 rounded-xl border-2 border-zinc-200 bg-white text-center text-xl font-semibold text-zinc-900 outline-none transition-colors focus:border-orange-500 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+                                            className="h-14 w-12 rounded-xl border-2 border-zinc-200 bg-white text-center text-xl font-semibold text-zinc-900 outline-none transition-colors focus:border-neutral-900 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
                                         />
                                     ))}
                                 </div>
@@ -570,7 +575,7 @@ function SignUpForm() {
                                     type="button"
                                     onClick={() => void verify(code.join(""))}
                                     disabled={isVerifying || code.join("").length !== 6}
-                                    className="w-full h-12 bg-orange-500 hover:bg-orange-600 text-white font-medium"
+                                    className="w-full h-12 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-medium"
                                 >
                                     {isVerifying ? (
                                         <div className="flex items-center gap-2">
@@ -588,7 +593,7 @@ function SignUpForm() {
                                         type="button"
                                         onClick={handleResend}
                                         disabled={cooldown > 0 || isResending}
-                                        className="font-medium text-orange-500 hover:underline disabled:cursor-not-allowed disabled:text-zinc-400 disabled:no-underline dark:disabled:text-zinc-600"
+                                        className="font-medium text-neutral-900 hover:underline disabled:cursor-not-allowed disabled:text-zinc-400 disabled:no-underline dark:disabled:text-zinc-600"
                                     >
                                         {isResending
                                             ? "Sending…"
@@ -609,9 +614,7 @@ function SignUpForm() {
                             </motion.div>
                         )}
                     </AnimatePresence>
-                </motion.div>
-            </div>
-        </div>
+        </AuthShell>
     );
 }
 
@@ -619,11 +622,11 @@ function Requirement({ met, label }: { met: boolean; label: string }) {
     return (
         <div className="flex items-center gap-2">
             {met ? (
-                <Check className="h-3.5 w-3.5 text-amber-500" />
+                <Check className="h-3.5 w-3.5 text-neutral-900" />
             ) : (
                 <X className="h-3.5 w-3.5 text-zinc-400" />
             )}
-            <span className={`text-xs ${met ? "text-amber-500" : "text-zinc-500 dark:text-zinc-400"}`}>
+            <span className={`text-xs ${met ? "text-neutral-900" : "text-zinc-500 dark:text-zinc-400"}`}>
                 {label}
             </span>
         </div>
@@ -635,7 +638,7 @@ export default function RegisterPage() {
         <Suspense
             fallback={
                 <div className="min-h-screen flex items-center justify-center bg-white dark:bg-zinc-900">
-                    <div className="h-8 w-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
+                    <div className="h-8 w-8 border-2 border-neutral-900 border-t-transparent rounded-full animate-spin" />
                 </div>
             }
         >

@@ -201,7 +201,7 @@ export function CommentThread({
     return (
         <section className={cn("w-full", className)}>
             <div className="flex items-center gap-2 mb-3">
-                <MessageSquare className="h-4 w-4 text-orange-500" />
+                <MessageSquare className="h-4 w-4 text-neutral-900" />
                 <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">
                     {count === 1 ? "1 Comment" : `${count} Comments`}
                 </h3>
@@ -216,7 +216,7 @@ export function CommentThread({
                     <p className="text-sm text-neutral-600 dark:text-neutral-400">
                         Sign in to join the discussion.
                     </p>
-                    <Button asChild size="sm" className="bg-orange-500 hover:bg-orange-600 text-white shrink-0">
+                    <Button asChild size="sm" className="bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 shrink-0">
                         <Link href="/signin">
                             <LogIn className="h-3.5 w-3.5 mr-1.5" />
                             Sign in

@@ -57,7 +57,7 @@ export function SessionCard({ session, userCredits, onRetake, retakingId }: Sess
                     </CardTitle>
                     <Badge
                         variant={isCompleted ? 'default' : 'secondary'}
-                        className={isCompleted ? 'bg-amber-600' : 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400'}
+                        className={isCompleted ? 'bg-neutral-800' : 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800/30 dark:text-neutral-100'}
                     >
                         {isCompleted ? <CheckCircle2 className="w-3 h-3 mr-1" /> : <Clock className="w-3 h-3 mr-1" />}
                         {isCompleted ? 'Completed' : session.status}

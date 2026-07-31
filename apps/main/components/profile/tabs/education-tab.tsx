@@ -44,7 +44,7 @@ export function EducationTab({ user, isOwnProfile, onRefresh }: EducationTabProp
                     <CardHeader className="pb-3">
                         <div className="flex items-center justify-between">
                             <CardTitle className="text-lg flex items-center gap-2">
-                                <GraduationCap className="w-5 h-5 text-orange-500" />
+                                <GraduationCap className="w-5 h-5 text-neutral-900" />
                                 Education
                             </CardTitle>
                             {isOwnProfile && (
@@ -65,8 +65,8 @@ export function EducationTab({ user, isOwnProfile, onRefresh }: EducationTabProp
                                         transition={{ delay: idx * 0.05 }}
                                         className="flex items-start gap-4"
                                     >
-                                        <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                            <GraduationCap className="w-5 h-5 text-orange-500" />
+                                        <div className="w-10 h-10 rounded-lg bg-neutral-900/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                            <GraduationCap className="w-5 h-5 text-neutral-900" />
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-start justify-between gap-2">
@@ -96,7 +96,7 @@ export function EducationTab({ user, isOwnProfile, onRefresh }: EducationTabProp
                                                 <ul className="mt-2 space-y-1">
                                                     {edu.bulletPoints.map((p, i) => (
                                                         <li key={i} className="text-sm text-muted-foreground flex gap-2">
-                                                            <span className="text-orange-500 flex-shrink-0">•</span>
+                                                            <span className="text-neutral-900 flex-shrink-0">•</span>
                                                             <span>{p}</span>
                                                         </li>
                                                     ))}

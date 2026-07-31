@@ -33,8 +33,8 @@ const features: Feature[] = [
         description: "Build real-world projects with guidance",
         icon: FolderKanban,
         href: "/projects",
-        color: "text-orange-500",
-        bgColor: "bg-orange-500/10",
+        color: "text-neutral-900",
+        bgColor: "bg-neutral-900/10",
         status: "available",
     },
     {
@@ -42,8 +42,8 @@ const features: Feature[] = [
         description: "Practice with AI voice interviewer",
         icon: Mic,
         href: "/mock/voice",
-        color: "text-amber-500",
-        bgColor: "bg-amber-500/10",
+        color: "text-neutral-900",
+        bgColor: "bg-neutral-900/10",
         status: "available",
     },
     {
@@ -51,8 +51,8 @@ const features: Feature[] = [
         description: "AI-powered interview preparation",
         icon: Briefcase,
         href: "/ai/jobinterviewassistant",
-        color: "text-orange-500",
-        bgColor: "bg-orange-500/10",
+        color: "text-neutral-900",
+        bgColor: "bg-neutral-900/10",
         status: "available",
     },
     {
@@ -69,8 +69,8 @@ const features: Feature[] = [
         description: "Learn Git & contribute to projects",
         icon: BookOpen,
         href: "/opensource/learn",
-        color: "text-amber-500",
-        bgColor: "bg-amber-500/10",
+        color: "text-neutral-900",
+        bgColor: "bg-neutral-900/10",
         status: "available",
     },
     {
@@ -78,8 +78,8 @@ const features: Feature[] = [
         description: "Get certified in Git",
         icon: ClipboardCheck,
         href: "/opensource/exam",
-        color: "text-amber-500",
-        bgColor: "bg-amber-500/10",
+        color: "text-neutral-900",
+        bgColor: "bg-neutral-900/10",
         status: "available",
     },
     {
@@ -87,8 +87,8 @@ const features: Feature[] = [
         description: "AI portfolio assistant",
         icon: Bot,
         href: "/knowme",
-        color: "text-orange-500",
-        bgColor: "bg-orange-500/10",
+        color: "text-neutral-900",
+        bgColor: "bg-neutral-900/10",
         status: "available",
     },
     {
@@ -96,8 +96,8 @@ const features: Feature[] = [
         description: "AI notes & dashboards",
         icon: Layout,
         href: "#",
-        color: "text-orange-500",
-        bgColor: "bg-orange-500/10",
+        color: "text-neutral-900",
+        bgColor: "bg-neutral-900/10",
         status: "locked",
     },
     {
@@ -114,8 +114,8 @@ const features: Feature[] = [
         description: "Learning paths & goals",
         icon: Map,
         href: "#",
-        color: "text-orange-500",
-        bgColor: "bg-orange-500/10",
+        color: "text-neutral-900",
+        bgColor: "bg-neutral-900/10",
         status: "locked",
     },
 ];
@@ -135,7 +135,7 @@ export default function FeatureDiscovery({
             return (
                 <Badge
                     variant="outline"
-                    className="text-[10px] px-1.5 py-0 border-yellow-500/50 text-yellow-500 bg-yellow-500/10"
+                    className="text-[10px] px-1.5 py-0 border-neutral-900/50 text-neutral-900 bg-neutral-900/10"
                 >
                     Coming Soon
                 </Badge>
@@ -173,7 +173,7 @@ export default function FeatureDiscovery({
                 <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                            <div className="p-2 rounded-lg bg-gradient-to-br from-primary/10 to-orange-500/10">
+                            <div className="p-2 rounded-lg bg-gradient-to-br from-primary/10 to-neutral-900/10">
                                 <Sparkles className="h-4 w-4 text-primary" />
                             </div>
                             <CardTitle className="text-lg">Discover Features</CardTitle>

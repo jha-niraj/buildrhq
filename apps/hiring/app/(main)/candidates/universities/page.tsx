@@ -87,11 +87,11 @@ export default function UniversityPartnersPage() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl p-6 text-white"
+                    className="bg-gradient-to-br from-neutral-800 to-neutral-700 rounded-2xl p-6 text-white"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <GraduationCap className="w-5 h-5 text-orange-200" />
-                        <span className="text-orange-200 text-sm">Partner Universities</span>
+                        <GraduationCap className="w-5 h-5 text-neutral-200" />
+                        <span className="text-neutral-200 text-sm">Partner Universities</span>
                     </div>
                     <p className="text-3xl font-bold">{mockUniversities.length}</p>
                 </motion.div>
@@ -102,7 +102,7 @@ export default function UniversityPartnersPage() {
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <Users className="w-5 h-5 text-orange-600" />
+                        <Users className="w-5 h-5 text-neutral-800" />
                         <span className="text-neutral-500 text-sm">Verified Students</span>
                     </div>
                     <p className="text-3xl font-bold text-neutral-900 dark:text-white">
@@ -116,7 +116,7 @@ export default function UniversityPartnersPage() {
                     className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6"
                 >
                     <div className="flex items-center gap-3 mb-2">
-                        <TrendingUp className="w-5 h-5 text-amber-600" />
+                        <TrendingUp className="w-5 h-5 text-neutral-800" />
                         <span className="text-neutral-500 text-sm">Total Placements</span>
                     </div>
                     <p className="text-3xl font-bold text-neutral-900 dark:text-white">
@@ -130,26 +130,26 @@ export default function UniversityPartnersPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-2xl p-6 mb-8"
+                className="bg-neutral-50 dark:bg-neutral-900/30 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 mb-8"
             >
                 <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-amber-100 dark:bg-amber-900/50">
-                        <GraduationCap className="w-6 h-6 text-amber-600 dark:text-amber-400" />
+                    <div className="p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800/50">
+                        <GraduationCap className="w-6 h-6 text-neutral-800 dark:text-neutral-100" />
                     </div>
                     <div>
-                        <h3 className="font-bold text-amber-900 dark:text-amber-200 mb-1">
+                        <h3 className="font-bold text-neutral-900 dark:text-neutral-700 mb-1">
                             University Verified Candidates
                         </h3>
-                        <p className="text-amber-800 dark:text-amber-300 text-sm">
+                        <p className="text-neutral-800 dark:text-neutral-100 text-sm">
                             Students verified through university partnerships have their academic credentials confirmed 
                             by their institution. This ensures authentic profiles and pre-vetted talent for your hiring needs.
                         </p>
                         <div className="mt-3 flex items-center gap-4 text-sm">
-                            <div className="flex items-center gap-1 text-amber-600 dark:text-amber-400">
+                            <div className="flex items-center gap-1 text-neutral-800 dark:text-neutral-100">
                                 <CheckCircle2 className="w-4 h-4" />
                                 <span>Verified Academic Credentials</span>
                             </div>
-                            <div className="flex items-center gap-1 text-amber-600 dark:text-amber-400">
+                            <div className="flex items-center gap-1 text-neutral-800 dark:text-neutral-100">
                                 <CheckCircle2 className="w-4 h-4" />
                                 <span>University Endorsed</span>
                             </div>
@@ -191,12 +191,12 @@ export default function UniversityPartnersPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 * index }}
-                        className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-orange-300 dark:hover:border-orange-700 transition-colors"
+                        className="bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors"
                     >
                         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                             <div className="flex items-start gap-4">
-                                <div className="w-14 h-14 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center shrink-0">
-                                    <Building2 className="w-7 h-7 text-orange-600 dark:text-orange-400" />
+                                <div className="w-14 h-14 rounded-xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center shrink-0">
+                                    <Building2 className="w-7 h-7 text-neutral-800 dark:text-neutral-100" />
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-2">
@@ -204,7 +204,7 @@ export default function UniversityPartnersPage() {
                                             {uni.name}
                                         </h3>
                                         {uni.isPartner && (
-                                            <span className="px-2 py-0.5 text-xs rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400">
+                                            <span className="px-2 py-0.5 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800/30 text-neutral-700 dark:text-neutral-100">
                                                 Partner
                                             </span>
                                         )}
@@ -224,13 +224,13 @@ export default function UniversityPartnersPage() {
                                     <p className="text-xs text-neutral-500">Verified Students</p>
                                 </div>
                                 <div className="text-center">
-                                    <p className="text-2xl font-bold text-amber-600 dark:text-amber-400">
+                                    <p className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">
                                         {uni.placedStudents.toLocaleString()}
                                     </p>
                                     <p className="text-xs text-neutral-500">Placements</p>
                                 </div>
                                 <div className="text-center">
-                                    <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
+                                    <p className="text-2xl font-bold text-neutral-800 dark:text-neutral-100">
                                         {uni.avgPackage}
                                     </p>
                                     <p className="text-xs text-neutral-500">Avg Package</p>

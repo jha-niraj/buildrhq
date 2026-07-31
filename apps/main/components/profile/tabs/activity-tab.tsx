@@ -42,11 +42,11 @@ const activityConfig: Record<
         label: string;
     }
 > = {
-    LESSON_COMPLETED: { icon: BookOpen, color: "text-orange-500", label: "Lesson" },
-    PROJECT_COMPLETED: { icon: Code, color: "text-amber-500", label: "Project" },
-    QUIZ_COMPLETED: { icon: Award, color: "text-orange-500", label: "Quiz" },
-    ACHIEVEMENT_UNLOCKED: { icon: Star, color: "text-yellow-500", label: "Achievement" },
-    FEEDBACK_SUBMITTED: { icon: MessageSquare, color: "text-orange-500", label: "Feedback" },
+    LESSON_COMPLETED: { icon: BookOpen, color: "text-neutral-900", label: "Lesson" },
+    PROJECT_COMPLETED: { icon: Code, color: "text-neutral-900", label: "Project" },
+    QUIZ_COMPLETED: { icon: Award, color: "text-neutral-900", label: "Quiz" },
+    ACHIEVEMENT_UNLOCKED: { icon: Star, color: "text-neutral-900", label: "Achievement" },
+    FEEDBACK_SUBMITTED: { icon: MessageSquare, color: "text-neutral-900", label: "Feedback" },
     DEFAULT: { icon: Activity, color: "text-gray-500", label: "Activity" },
 };
 
@@ -68,10 +68,10 @@ function generateContributionData(
 // Get color intensity based on contribution count
 function getContributionColor(count: number): string {
     if (count === 0) return "bg-muted";
-    if (count === 1) return "bg-amber-200 dark:bg-amber-900";
-    if (count <= 3) return "bg-amber-300 dark:bg-amber-700";
-    if (count <= 5) return "bg-amber-400 dark:bg-amber-600";
-    return "bg-amber-500 dark:bg-amber-500";
+    if (count === 1) return "bg-neutral-200 dark:bg-neutral-800";
+    if (count <= 3) return "bg-neutral-300 dark:bg-neutral-700";
+    if (count <= 5) return "bg-neutral-800 dark:bg-neutral-300";
+    return "bg-neutral-900 dark:bg-neutral-200";
 }
 
 export function ActivityTab({ user }: ActivityTabProps) {
@@ -149,7 +149,7 @@ export function ActivityTab({ user }: ActivityTabProps) {
                 >
                     <Card>
                         <CardContent className="p-4 text-center">
-                            <Flame className="w-6 h-6 mx-auto mb-2 text-orange-500" />
+                            <Flame className="w-6 h-6 mx-auto mb-2 text-neutral-900" />
                             <p className="text-2xl font-bold">{stats.streak}</p>
                             <p className="text-xs text-muted-foreground">Day Streak</p>
                         </CardContent>
@@ -162,7 +162,7 @@ export function ActivityTab({ user }: ActivityTabProps) {
                 >
                     <Card>
                         <CardContent className="p-4 text-center">
-                            <Calendar className="w-6 h-6 mx-auto mb-2 text-orange-500" />
+                            <Calendar className="w-6 h-6 mx-auto mb-2 text-neutral-900" />
                             <p className="text-2xl font-bold">{stats.last7Days}</p>
                             <p className="text-xs text-muted-foreground">This Week</p>
                         </CardContent>
@@ -175,7 +175,7 @@ export function ActivityTab({ user }: ActivityTabProps) {
                 >
                     <Card>
                         <CardContent className="p-4 text-center">
-                            <TrendingUp className="w-6 h-6 mx-auto mb-2 text-amber-500" />
+                            <TrendingUp className="w-6 h-6 mx-auto mb-2 text-neutral-900" />
                             <p className="text-2xl font-bold">{stats.last30Days}</p>
                             <p className="text-xs text-muted-foreground">This Month</p>
                         </CardContent>
@@ -188,7 +188,7 @@ export function ActivityTab({ user }: ActivityTabProps) {
                 >
                     <Card>
                         <CardContent className="p-4 text-center">
-                            <Activity className="w-6 h-6 mx-auto mb-2 text-orange-500" />
+                            <Activity className="w-6 h-6 mx-auto mb-2 text-neutral-900" />
                             <p className="text-2xl font-bold">{stats.totalContributions}</p>
                             <p className="text-xs text-muted-foreground">Total Activities</p>
                         </CardContent>
@@ -203,7 +203,7 @@ export function ActivityTab({ user }: ActivityTabProps) {
                 <Card>
                     <CardHeader className="pb-2">
                         <CardTitle className="text-lg flex items-center gap-2">
-                            <Activity className="w-5 h-5 text-amber-500" />
+                            <Activity className="w-5 h-5 text-neutral-900" />
                             Contribution Graph
                         </CardTitle>
                     </CardHeader>
@@ -281,10 +281,10 @@ export function ActivityTab({ user }: ActivityTabProps) {
                                         <span>Less</span>
                                         <div className="flex gap-1">
                                             <div className="w-3 h-3 rounded-sm bg-muted" />
-                                            <div className="w-3 h-3 rounded-sm bg-amber-200 dark:bg-amber-900" />
-                                            <div className="w-3 h-3 rounded-sm bg-amber-300 dark:bg-amber-700" />
-                                            <div className="w-3 h-3 rounded-sm bg-amber-400 dark:bg-amber-600" />
-                                            <div className="w-3 h-3 rounded-sm bg-amber-500" />
+                                            <div className="w-3 h-3 rounded-sm bg-neutral-200 dark:bg-neutral-800" />
+                                            <div className="w-3 h-3 rounded-sm bg-neutral-300 dark:bg-neutral-700" />
+                                            <div className="w-3 h-3 rounded-sm bg-neutral-800 dark:bg-neutral-300" />
+                                            <div className="w-3 h-3 rounded-sm bg-neutral-900" />
                                         </div>
                                         <span>More</span>
                                     </div>
@@ -302,7 +302,7 @@ export function ActivityTab({ user }: ActivityTabProps) {
                 <Card>
                     <CardHeader className="pb-2">
                         <CardTitle className="text-lg flex items-center gap-2">
-                            <Clock className="w-5 h-5 text-orange-500" />
+                            <Clock className="w-5 h-5 text-neutral-900" />
                             Recent Activity
                         </CardTitle>
                     </CardHeader>

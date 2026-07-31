@@ -37,16 +37,16 @@ interface ApplicationDetailSheetProps {
 
 const statusConfig: Record<string, { label: string; color: string }> = {
     INTERESTED: { label: "Interested", color: "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400" },
-    PREPARING: { label: "Preparing", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
-    APPLIED: { label: "Applied", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
-    UNDER_REVIEW: { label: "Under Review", color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400" },
-    SHORTLISTED: { label: "Shortlisted", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
-    ASSIGNMENT_SENT: { label: "Assignment Sent", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
-    ASSIGNMENT_SUBMITTED: { label: "Assignment Done", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
-    INTERVIEW_SCHEDULED: { label: "Interview Set", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
-    INTERVIEWED: { label: "Interviewed", color: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400" },
-    OFFER_EXTENDED: { label: "Offer Extended", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
-    HIRED: { label: "Hired", color: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400" },
+    PREPARING: { label: "Preparing", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100" },
+    APPLIED: { label: "Applied", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100" },
+    UNDER_REVIEW: { label: "Under Review", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100" },
+    SHORTLISTED: { label: "Shortlisted", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100" },
+    ASSIGNMENT_SENT: { label: "Assignment Sent", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100" },
+    ASSIGNMENT_SUBMITTED: { label: "Assignment Done", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100" },
+    INTERVIEW_SCHEDULED: { label: "Interview Set", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100" },
+    INTERVIEWED: { label: "Interviewed", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100" },
+    OFFER_EXTENDED: { label: "Offer Extended", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100" },
+    HIRED: { label: "Hired", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100" },
     REJECTED: { label: "Rejected", color: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400" },
     WITHDRAWN: { label: "Withdrawn", color: "bg-neutral-100 text-neutral-700 dark:bg-neutral-900/30 dark:text-neutral-400" },
 }
@@ -108,7 +108,7 @@ export function ApplicationDetailSheet({
                                     {
                                         isLoading ? (
                                             <div className="flex items-center justify-center h-full">
-                                                <Loader2 className="w-8 h-8 animate-spin text-orange-600" />
+                                                <Loader2 className="w-8 h-8 animate-spin text-neutral-800" />
                                             </div>
                                         ) : application ? (
                                             <div className="space-y-6">
@@ -123,8 +123,8 @@ export function ApplicationDetailSheet({
                                                                     fill
                                                                 />
                                                             ) : (
-                                                                <div className="w-16 h-16 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                                                                    <span className="text-xl font-bold text-orange-600 dark:text-orange-400">
+                                                                <div className="w-16 h-16 rounded-xl bg-neutral-100 dark:bg-neutral-800/30 flex items-center justify-center">
+                                                                    <span className="text-xl font-bold text-neutral-800 dark:text-neutral-100">
                                                                         {getInitials(getCandidateName(application))}
                                                                     </span>
                                                                 </div>
@@ -145,15 +145,15 @@ export function ApplicationDetailSheet({
                                                         application.matchScore && (
                                                             <div className="text-center">
                                                                 <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${application.matchScore >= 80
-                                                                    ? "bg-amber-100 dark:bg-amber-900/30"
+                                                                    ? "bg-neutral-100 dark:bg-neutral-800/30"
                                                                     : application.matchScore >= 60
-                                                                        ? "bg-yellow-100 dark:bg-yellow-900/30"
+                                                                        ? "bg-neutral-100 dark:bg-neutral-800/30"
                                                                         : "bg-red-100 dark:bg-red-900/30"
                                                                     }`}>
                                                                     <span className={`text-lg font-bold ${application.matchScore >= 80
-                                                                        ? "text-amber-600 dark:text-amber-400"
+                                                                        ? "text-neutral-800 dark:text-neutral-100"
                                                                         : application.matchScore >= 60
-                                                                            ? "text-yellow-600 dark:text-yellow-400"
+                                                                            ? "text-neutral-800 dark:text-neutral-100"
                                                                             : "text-red-600 dark:text-red-400"
                                                                         }`}>
                                                                         {application.matchScore}%
@@ -253,10 +253,10 @@ export function ApplicationDetailSheet({
 
                                                 {
                                                     application.resumeUrl && (
-                                                        <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-xl border border-orange-200 dark:border-orange-800">
+                                                        <div className="p-4 bg-neutral-50 dark:bg-neutral-800/20 rounded-xl border border-neutral-200 dark:border-neutral-800">
                                                             <div className="flex items-center justify-between">
                                                                 <div className="flex items-center gap-3">
-                                                                    <FileText className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+                                                                    <FileText className="w-5 h-5 text-neutral-800 dark:text-neutral-100" />
                                                                     <div>
                                                                         <p className="font-medium text-neutral-900 dark:text-white">Resume</p>
                                                                         <p className="text-sm text-neutral-500">View candidate&apos;s resume</p>
@@ -354,7 +354,7 @@ export function ApplicationDetailSheet({
                                                                             key={index}
                                                                             variant="outline"
                                                                             className={`rounded-lg ${application.candidate?.skills?.includes(skill)
-                                                                                ? "border-amber-500 text-amber-600 dark:border-amber-600 dark:text-amber-400"
+                                                                                ? "border-neutral-900 text-neutral-800 dark:border-neutral-300 dark:text-neutral-100"
                                                                                 : ""
                                                                                 }`}
                                                                         >
@@ -379,7 +379,7 @@ export function ApplicationDetailSheet({
                                                                 <Star className="w-5 h-5" />
                                                                 HR Notes
                                                             </h4>
-                                                            <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-xl border border-yellow-200 dark:border-yellow-800">
+                                                            <div className="p-4 bg-neutral-50 dark:bg-neutral-800/20 rounded-xl border border-neutral-200 dark:border-neutral-800">
                                                                 <p className="text-sm text-neutral-700 dark:text-neutral-300 whitespace-pre-wrap">
                                                                     {application.hrNotes}
                                                                 </p>
@@ -395,7 +395,7 @@ export function ApplicationDetailSheet({
                                                                 <Calendar className="w-5 h-5" />
                                                                 Interview
                                                             </h4>
-                                                            <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-xl border border-orange-200 dark:border-orange-800">
+                                                            <div className="p-4 bg-neutral-50 dark:bg-neutral-800/20 rounded-xl border border-neutral-200 dark:border-neutral-800">
                                                                 <p className="text-sm font-medium text-neutral-900 dark:text-white">
                                                                     Scheduled for: {format(new Date(application.interviewScheduledAt), "MMMM d, yyyy 'at' h:mm a")}
                                                                 </p>
@@ -431,7 +431,7 @@ export function ApplicationDetailSheet({
                                                                 Reject
                                                             </Button>
                                                             <Button
-                                                                className="rounded-xl bg-amber-600 hover:bg-amber-700"
+                                                                className="rounded-xl bg-neutral-800 hover:bg-neutral-700"
                                                                 onClick={() => setShowAcceptDialog(true)}
                                                             >
                                                                 <CheckCircle className="w-4 h-4 mr-2" />
@@ -745,15 +745,15 @@ function AcceptDialog({
                 <DialogContent className="sm:max-w-lg">
                     <DialogHeader>
                         <DialogTitle className="flex items-center gap-2">
-                            <CheckCircle className="w-5 h-5 text-amber-500" />
+                            <CheckCircle className="w-5 h-5 text-neutral-900" />
                             Interview Scheduled!
                         </DialogTitle>
                         <DialogDescription>
                             The interview has been scheduled with {candidateName}.
                         </DialogDescription>
                     </DialogHeader>
-                    <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-xl border border-amber-200 dark:border-amber-800">
-                        <p className="text-sm font-medium text-amber-800 dark:text-amber-200 mb-2">
+                    <div className="p-4 bg-neutral-50 dark:bg-neutral-800/20 rounded-xl border border-neutral-200 dark:border-neutral-800">
+                        <p className="text-sm font-medium text-neutral-800 dark:text-neutral-700 mb-2">
                             Interview Link
                         </p>
                         <div className="flex items-center gap-2">
@@ -786,7 +786,7 @@ function AcceptDialog({
             <DialogContent className="sm:max-w-lg">
                 <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5 text-amber-500" />
+                        <CheckCircle className="w-5 h-5 text-neutral-900" />
                         {isSchedulingInterview ? "Schedule Interview" : "Shortlist Candidate"}
                     </DialogTitle>
                     <DialogDescription>
@@ -842,7 +842,7 @@ function AcceptDialog({
                         Cancel
                     </Button>
                     <Button
-                        className="bg-amber-600 hover:bg-amber-700"
+                        className="bg-neutral-800 hover:bg-neutral-700"
                         onClick={handleAccept}
                         disabled={isPending || (isSchedulingInterview && (!interviewDate || !interviewTime))}
                     >

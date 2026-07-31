@@ -1,14 +1,13 @@
 "use client"
+import Link from "next/link";
 
 import {
     Building2, Users, Code, BarChart3, ArrowRight
 } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
-import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 
 export default function HeroSection() {
-    const router = useRouter()
 
     return (
         <div className="relative min-h-screen w-full overflow-hidden bg-white dark:bg-neutral-950 flex flex-col items-center justify-center pt-20">
@@ -47,16 +46,13 @@ export default function HeroSection() {
                         transition={{ delay: 0.3 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
                     >
-                        <Button
-                            onClick={() => router.push("/register")}
-                            className="cursor-pointer h-12 px-8 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-bold transition-all hover:scale-105"
-                        >
+                        <Button className="cursor-pointer h-12 px-8 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-bold transition-all hover:scale-105" asChild><Link href="/register">
                             <Building2 className="mr-2 h-4 w-4" />
                             Start Hiring
-                        </Button>
+                        </Link></Button>
                         <Button
                             variant="outline"
-                            className="cursor-pointer h-12 px-8 rounded-full border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900"
+                            className="cursor-pointer h-12 px-8 rounded-full border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white dark:text-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-900 dark:bg-white"
                         >
                             View Schematic
                             <ArrowRight className="ml-2 h-4 w-4" />

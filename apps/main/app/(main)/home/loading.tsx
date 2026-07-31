@@ -1,3 +1,4 @@
+// Hand-matched to the home dashboard — see _components/skeletons.tsx (HomeDashboardSkeleton).
 import {
     HomeDashboardSkeleton, ContinueLearningSkeleton, ActivityCalendarSkeleton,
 } from "./_components/skeletons";

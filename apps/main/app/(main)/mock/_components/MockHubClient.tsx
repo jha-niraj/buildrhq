@@ -128,7 +128,7 @@ export default function MockInterviewLandingPage() {
                         <div className="flex flex-wrap gap-2">
                             <Button
                                 size="sm"
-                                className="h-9 rounded-xl bg-orange-500 text-white hover:bg-orange-600 font-medium"
+                                className="h-9 rounded-xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200 font-medium"
                                 asChild
                             >
                                 <Link href="/mock/voice">
@@ -151,10 +151,10 @@ export default function MockInterviewLandingPage() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
                         {
                             [
-                                { value: `${stats.totalVoiceInterviews.toLocaleString()}+`, label: 'Interviews Conducted', icon: Mic, iconColor: "bg-orange-50 text-orange-600 dark:bg-orange-950 dark:text-orange-400" },
-                                { value: `${stats.activeUsers.toLocaleString()}+`, label: 'Active Users', icon: Users, iconColor: "bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-400" },
-                                { value: `${stats.averageRating}/5`, label: 'Average Rating', icon: Star, iconColor: "bg-amber-50 text-amber-600 dark:bg-amber-950 dark:text-amber-400" },
-                                { value: `${stats.successRate}%`, label: 'Success Rate', icon: Trophy, iconColor: "bg-orange-50 text-orange-600 dark:bg-orange-950 dark:text-orange-400" },
+                                { value: `${stats.totalVoiceInterviews.toLocaleString()}+`, label: 'Interviews Conducted', icon: Mic, iconColor: "bg-neutral-50 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" },
+                                { value: `${stats.activeUsers.toLocaleString()}+`, label: 'Active Users', icon: Users, iconColor: "bg-neutral-50 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" },
+                                { value: `${stats.averageRating}/5`, label: 'Average Rating', icon: Star, iconColor: "bg-neutral-50 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" },
+                                { value: `${stats.successRate}%`, label: 'Success Rate', icon: Trophy, iconColor: "bg-neutral-50 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" },
                             ].map((stat, index) => (
                                 <motion.div
                                     key={index}
@@ -206,10 +206,10 @@ export default function MockInterviewLandingPage() {
                                             <Card className="h-full bg-white dark:bg-neutral-900 shadow-lg border border-neutral-200 dark:border-neutral-800 p-4 transition-all duration-300 group hover:shadow-2xl cursor-pointer">
                                                 <CardHeader className="space-y-4">
                                                     <div className="flex items-start justify-between">
-                                                        <div className="p-3 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400">
+                                                        <div className="p-3 rounded-xl bg-neutral-100 dark:bg-neutral-800/30 text-neutral-700 dark:text-neutral-100">
                                                             {type.icon}
                                                         </div>
-                                                        <Badge className="bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border-0">
+                                                        <Badge className="bg-neutral-100 dark:bg-neutral-800/30 text-neutral-700 dark:text-neutral-100 border-0">
                                                             <CheckCircle className="w-3 h-3 mr-1" />
                                                             Active
                                                         </Badge>
@@ -228,7 +228,7 @@ export default function MockInterviewLandingPage() {
                                                         {
                                                             type.features.map((feature, idx) => (
                                                                 <div key={idx} className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400">
-                                                                    <CheckCircle className="w-4 h-4 flex-shrink-0 text-orange-500" />
+                                                                    <CheckCircle className="w-4 h-4 flex-shrink-0 text-neutral-900" />
                                                                     <span>{feature}</span>
                                                                 </div>
                                                             ))

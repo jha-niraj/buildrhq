@@ -34,14 +34,14 @@ const statusConfig = {
     PAID: { 
         label: "Paid", 
         icon: CheckCircle, 
-        color: "text-amber-600 dark:text-amber-400",
-        bg: "bg-amber-100 dark:bg-amber-900/30"
+        color: "text-neutral-800 dark:text-neutral-100",
+        bg: "bg-neutral-100 dark:bg-neutral-800/30"
     },
     PENDING: { 
         label: "Pending", 
         icon: Clock, 
-        color: "text-amber-600 dark:text-amber-400",
-        bg: "bg-amber-100 dark:bg-amber-900/30"
+        color: "text-neutral-800 dark:text-neutral-100",
+        bg: "bg-neutral-100 dark:bg-neutral-800/30"
     },
     DRAFT: { 
         label: "Draft", 
@@ -295,7 +295,7 @@ function InvoiceDetailDialog({
                                 </div>
                             )}
                             {invoice.discount > 0 && (
-                                <div className="flex justify-between text-amber-600">
+                                <div className="flex justify-between text-neutral-800">
                                     <span>Discount</span>
                                     <span>
                                         -{invoice.currency === "INR" ? "₹" : "$"}
@@ -470,7 +470,7 @@ export default function InvoicesPage() {
                         <CardDescription>Paid</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-2xl font-bold text-amber-600">{paidInvoices.length}</p>
+                        <p className="text-2xl font-bold text-neutral-800">{paidInvoices.length}</p>
                     </CardContent>
                 </Card>
                 <Card>
@@ -478,7 +478,7 @@ export default function InvoicesPage() {
                         <CardDescription>Pending</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-2xl font-bold text-amber-600">{pendingInvoices.length}</p>
+                        <p className="text-2xl font-bold text-neutral-800">{pendingInvoices.length}</p>
                     </CardContent>
                 </Card>
             </div>

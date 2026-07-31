@@ -51,9 +51,9 @@ export function SkillGapModal({ job, open, onClose }: SkillGapModalProps) {
 
     const getRecommendationColor = (rec: string) => {
         switch (rec) {
-            case "HIGHLY_RECOMMENDED": return "text-amber-600 bg-amber-100 dark:bg-amber-900/30"
-            case "RECOMMENDED": return "text-orange-600 bg-orange-100 dark:bg-orange-900/30"
-            case "CONSIDER": return "text-yellow-600 bg-yellow-100 dark:bg-yellow-900/30"
+            case "HIGHLY_RECOMMENDED": return "text-neutral-800 bg-neutral-100 dark:bg-neutral-800/30"
+            case "RECOMMENDED": return "text-neutral-800 bg-neutral-100 dark:bg-neutral-800/30"
+            case "CONSIDER": return "text-neutral-800 bg-neutral-100 dark:bg-neutral-800/30"
             default: return "text-red-600 bg-red-100 dark:bg-red-900/30"
         }
     }
@@ -114,8 +114,8 @@ export function SkillGapModal({ job, open, onClose }: SkillGapModalProps) {
                                     <div className="text-center p-3 bg-white dark:bg-neutral-800 rounded-lg">
                                         <div className={cn(
                                             "text-2xl font-bold",
-                                            shouldApply.competition.level === "LOW" ? "text-amber-600" :
-                                                shouldApply.competition.level === "HIGH" ? "text-red-600" : "text-yellow-600"
+                                            shouldApply.competition.level === "LOW" ? "text-neutral-800" :
+                                                shouldApply.competition.level === "HIGH" ? "text-red-600" : "text-neutral-800"
                                         )}>
                                             {shouldApply.competition.level}
                                         </div>
@@ -131,7 +131,7 @@ export function SkillGapModal({ job, open, onClose }: SkillGapModalProps) {
                                 <div className="space-y-2">
                                     {shouldApply.reasons.map((reason, i) => (
                                         <div key={i} className="flex items-start gap-2 text-sm">
-                                            <CheckCircle2 className="w-4 h-4 text-amber-500 mt-0.5 shrink-0" />
+                                            <CheckCircle2 className="w-4 h-4 text-neutral-900 mt-0.5 shrink-0" />
                                             <span className="text-neutral-600 dark:text-neutral-300">{reason}</span>
                                         </div>
                                     ))}
@@ -143,12 +143,12 @@ export function SkillGapModal({ job, open, onClose }: SkillGapModalProps) {
                             <>
                                 <div>
                                     <h3 className="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                        <Award className="w-5 h-5 text-amber-500" />
+                                        <Award className="w-5 h-5 text-neutral-900" />
                                         Skills You Have ({data.matchedSkills.length})
                                     </h3>
                                     <div className="flex flex-wrap gap-2">
                                         {data.matchedSkills.map((skill, i) => (
-                                            <Badge key={i} className="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
+                                            <Badge key={i} className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100">
                                                 <CheckCircle2 className="w-3 h-3 mr-1" />
                                                 {skill}
                                             </Badge>
@@ -162,12 +162,12 @@ export function SkillGapModal({ job, open, onClose }: SkillGapModalProps) {
                                 {data.missingRequired.length > 0 && (
                                     <div>
                                         <h3 className="font-semibold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-                                            <AlertCircle className="w-5 h-5 text-orange-500" />
+                                            <AlertCircle className="w-5 h-5 text-neutral-900" />
                                             Skills You Need ({data.missingRequired.length})
                                         </h3>
                                         <div className="flex flex-wrap gap-2">
                                             {data.missingRequired.map((skill, i) => (
-                                                <Badge key={i} variant="outline" className="text-orange-600 border-orange-300">
+                                                <Badge key={i} variant="outline" className="text-neutral-800 border-neutral-300">
                                                     {skill}
                                                 </Badge>
                                             ))}
@@ -176,9 +176,9 @@ export function SkillGapModal({ job, open, onClose }: SkillGapModalProps) {
                                 )}
 
                                 {data.learningRecommendations.length > 0 && (
-                                    <div className="bg-gradient-to-br from-orange-50 to-orange-50/50 dark:from-orange-900/20 dark:to-orange-900/20 rounded-xl p-5 border border-orange-200 dark:border-orange-800">
+                                    <div className="bg-gradient-to-br from-neutral-50 to-neutral-50/50 dark:from-neutral-800/20 dark:to-neutral-800/20 rounded-xl p-5 border border-neutral-200 dark:border-neutral-800">
                                         <h3 className="font-semibold text-neutral-900 dark:text-white mb-1 flex items-center gap-2">
-                                            <GraduationCap className="w-5 h-5 text-orange-500" />
+                                            <GraduationCap className="w-5 h-5 text-neutral-900" />
                                             Learn & Boost Your Match
                                         </h3>
                                         <p className="text-sm text-neutral-500 mb-4">
@@ -193,14 +193,14 @@ export function SkillGapModal({ job, open, onClose }: SkillGapModalProps) {
                                                     className="flex items-center justify-between p-3 bg-white dark:bg-neutral-800 rounded-lg hover:shadow-md transition-all group"
                                                 >
                                                     <div>
-                                                        <div className="font-medium text-neutral-900 dark:text-white group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                                                        <div className="font-medium text-neutral-900 dark:text-white group-hover:text-neutral-800 dark:group-hover:text-neutral-100 transition-colors">
                                                             {rec.projectTitle}
                                                         </div>
                                                         <div className="text-xs text-neutral-500">
-                                                            learn: <span className="text-orange-600">{rec.skill}</span> • ~{rec.estimatedHours}h
+                                                            learn: <span className="text-neutral-800">{rec.skill}</span> • ~{rec.estimatedHours}h
                                                         </div>
                                                     </div>
-                                                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-orange-600 transition-colors" />
+                                                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-800 transition-colors" />
                                                 </Link>
                                             ))}
                                         </div>
