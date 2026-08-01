@@ -17,26 +17,26 @@ import { users } from "./schema";
 // Enums
 // ===========================
 
-export const practiceModuleEnum = pgEnum("PracticeModule", [
+export const practiceModuleEnum = pgEnum("practice_module", [
     "DSA",
     "SYSTEM_DESIGN",
     "WEB_FRONTEND",
     "WEB_BACKEND",
 ]);
 
-export const practiceDifficultyEnum = pgEnum("PracticeDifficulty", [
+export const practiceDifficultyEnum = pgEnum("practice_difficulty", [
     "EASY",
     "MEDIUM",
     "HARD",
 ]);
 
-export const practiceSessionStatusEnum = pgEnum("PracticeSessionStatus", [
+export const practiceSessionStatusEnum = pgEnum("practice_session_status", [
     "NOT_STARTED",
     "IN_PROGRESS",
     "COMPLETED",
 ]);
 
-export const practiceModeEnum = pgEnum("PracticeMode", [
+export const practiceModeEnum = pgEnum("practice_mode", [
     "EXAM",
     "ASSIST",
 ]);
@@ -46,7 +46,7 @@ export const practiceModeEnum = pgEnum("PracticeMode", [
 // ===========================
 
 export const practiceProblem = pgTable(
-    "PracticeProblem",
+    "practice_problem",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
         slug: text("slug").notNull().unique(),
@@ -57,100 +57,100 @@ export const practiceProblem = pgTable(
         difficulty: practiceDifficultyEnum("difficulty").notNull(),
         requirements: text("requirements").array().notNull().default([]),
         hints: text("hints").array().notNull().default([]),
-        starterCode: text("starterCode"),
-        starterCss: text("starterCss"),
-        testCases: jsonb("testCases"),
+        starterCode: text("starter_code"),
+        starterCss: text("starter_css"),
+        testCases: jsonb("test_cases"),
         tags: text("tags").array().notNull().default([]),
-        sortOrder: integer("sortOrder").notNull().default(0),
-        isActive: boolean("isActive").notNull().default(true),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+        sortOrder: integer("sort_order").notNull().default(0),
+        isActive: boolean("is_active").notNull().default(true),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_practiceProblem_module_category").on(table.module, table.category),
-        index("idx_practiceProblem_module_difficulty").on(table.module, table.difficulty),
-        index("idx_practiceProblem_slug").on(table.slug),
+        index("idx_practice_problem_module_category").on(table.module, table.category),
+        index("idx_practice_problem_module_difficulty").on(table.module, table.difficulty),
+        index("idx_practice_problem_slug").on(table.slug),
     ],
 );
 
 export const practiceUserSession = pgTable(
-    "PracticeUserSession",
+    "practice_user_session",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-        problemId: text("problemId").notNull().references(() => practiceProblem.id, { onDelete: "cascade" }),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+        problemId: text("problem_id").notNull().references(() => practiceProblem.id, { onDelete: "cascade" }),
         module: practiceModuleEnum("module").notNull(),
         mode: practiceModeEnum("mode").notNull(),
         status: practiceSessionStatusEnum("status").notNull().default("IN_PROGRESS"),
         code: text("code"),
-        cssCode: text("cssCode"),
-        canvasData: jsonb("canvasData"),
+        cssCode: text("css_code"),
+        canvasData: jsonb("canvas_data"),
         language: text("language").default("javascript"),
         attempts: integer("attempts").notNull().default(0),
-        bestScore: integer("bestScore").notNull().default(0),
-        lastFeedback: text("lastFeedback"),
-        requirementsMet: jsonb("requirementsMet"),
-        totalTimeSeconds: integer("totalTimeSeconds").notNull().default(0),
-        startedAt: timestamp("startedAt").notNull().defaultNow(),
-        completedAt: timestamp("completedAt"),
-        voiceUsed: boolean("voiceUsed").notNull().default(false),
-        chatHistory: jsonb("chatHistory"),
-        xpAwarded: integer("xpAwarded").notNull().default(0),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+        bestScore: integer("best_score").notNull().default(0),
+        lastFeedback: text("last_feedback"),
+        requirementsMet: jsonb("requirements_met"),
+        totalTimeSeconds: integer("total_time_seconds").notNull().default(0),
+        startedAt: timestamp("started_at").notNull().defaultNow(),
+        completedAt: timestamp("completed_at"),
+        voiceUsed: boolean("voice_used").notNull().default(false),
+        chatHistory: jsonb("chat_history"),
+        xpAwarded: integer("xp_awarded").notNull().default(0),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("uq_practiceUserSession_userId_problemId_mode").on(table.userId, table.problemId, table.mode),
-        index("idx_practiceUserSession_userId_module").on(table.userId, table.module),
-        index("idx_practiceUserSession_userId_problemId").on(table.userId, table.problemId),
-        index("idx_practiceUserSession_userId_module_status").on(table.userId, table.module, table.status),
+        uniqueIndex("uq_practice_user_session_user_id_problem_id_mode").on(table.userId, table.problemId, table.mode),
+        index("idx_practice_user_session_user_id_module").on(table.userId, table.module),
+        index("idx_practice_user_session_user_id_problem_id").on(table.userId, table.problemId),
+        index("idx_practice_user_session_user_id_module_status").on(table.userId, table.module, table.status),
     ],
 );
 
 export const practiceModuleProgress = pgTable(
-    "PracticeModuleProgress",
+    "practice_module_progress",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         module: practiceModuleEnum("module").notNull(),
-        totalProblems: integer("totalProblems").notNull().default(0),
+        totalProblems: integer("total_problems").notNull().default(0),
         completed: integer("completed").notNull().default(0),
-        inProgress: integer("inProgress").notNull().default(0),
-        totalXP: integer("totalXP").notNull().default(0),
-        currentStreak: integer("currentStreak").notNull().default(0),
-        longestStreak: integer("longestStreak").notNull().default(0),
-        lastPracticedAt: timestamp("lastPracticedAt"),
-        easyCompleted: integer("easyCompleted").notNull().default(0),
-        mediumCompleted: integer("mediumCompleted").notNull().default(0),
-        hardCompleted: integer("hardCompleted").notNull().default(0),
-        averageScore: integer("averageScore").notNull().default(0),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+        inProgress: integer("in_progress").notNull().default(0),
+        totalXP: integer("total_xp").notNull().default(0),
+        currentStreak: integer("current_streak").notNull().default(0),
+        longestStreak: integer("longest_streak").notNull().default(0),
+        lastPracticedAt: timestamp("last_practiced_at"),
+        easyCompleted: integer("easy_completed").notNull().default(0),
+        mediumCompleted: integer("medium_completed").notNull().default(0),
+        hardCompleted: integer("hard_completed").notNull().default(0),
+        averageScore: integer("average_score").notNull().default(0),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("uq_practiceModuleProgress_userId_module").on(table.userId, table.module),
-        index("idx_practiceModuleProgress_userId").on(table.userId),
-        index("idx_practiceModuleProgress_module").on(table.module),
+        uniqueIndex("uq_practice_module_progress_user_id_module").on(table.userId, table.module),
+        index("idx_practice_module_progress_user_id").on(table.userId),
+        index("idx_practice_module_progress_module").on(table.module),
     ],
 );
 
 export const practiceLeaderboard = pgTable(
-    "PracticeLeaderboard",
+    "practice_leaderboard",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         module: practiceModuleEnum("module").notNull(),
         rank: integer("rank").notNull().default(0),
-        totalXP: integer("totalXP").notNull().default(0),
+        totalXP: integer("total_xp").notNull().default(0),
         completed: integer("completed").notNull().default(0),
-        averageScore: integer("averageScore").notNull().default(0),
+        averageScore: integer("average_score").notNull().default(0),
         streak: integer("streak").notNull().default(0),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("uq_practiceLeaderboard_userId_module").on(table.userId, table.module),
-        index("idx_practiceLeaderboard_module").on(table.module),
-        index("idx_practiceLeaderboard_module_rank").on(table.module, table.rank),
+        uniqueIndex("uq_practice_leaderboard_user_id_module").on(table.userId, table.module),
+        index("idx_practice_leaderboard_module").on(table.module),
+        index("idx_practice_leaderboard_module_rank").on(table.module, table.rank),
     ],
 );
 

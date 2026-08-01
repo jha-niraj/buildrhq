@@ -46,12 +46,12 @@ export default function AdminSignInPage() {
         setIsLoading(true)
 
         try {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const result = await (signIn as any)("credentials", {
-                email,
-                password,
-                redirect: false,
-            })
+            // better-auth's `signIn` is an object of methods, not a callable.
+            // This was `(signIn as any)("credentials", ...)` -- the NextAuth
+            // signature, cast through `any` so the compiler could not object --
+            // which threw "signIn is not a function" at runtime, making the admin
+            // login unusable on both tabs.
+            const result = await signIn.email({ email, password })
 
             if (result?.error) {
                 toast.error("Sign in failed", {
@@ -99,14 +99,10 @@ export default function AdminSignInPage() {
                 throw new Error(data.message || "Invalid access code")
             }
 
-            // If valid, sign in with credentials
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const result = await (signIn as any)("credentials", {
-                email,
-                password: accessCode, // Use access code as temporary password
-                isAccessCode: true,
-                redirect: false,
-            })
+            // If valid, sign in with the access code as the password. The route
+            // above stores it as this account's credential, so better-auth can
+            // verify it here.
+            const result = await signIn.email({ email, password: accessCode })
 
             if (result?.error) {
                 toast.error("Sign in failed", {

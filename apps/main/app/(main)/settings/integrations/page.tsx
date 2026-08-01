@@ -13,7 +13,7 @@ export default async function IntegrationsPage() {
     const session = await getSession(headers())
 
     if (!session?.user) {
-        redirect('/login')
+        redirect('/signin')
     }
 
     const result = await getSocialConnections()

@@ -10,11 +10,10 @@ import {
 import { useRouter, useSearchParams } from "next/navigation"
 import toast from '@repo/ui/components/ui/sonner'
 import { motion } from "framer-motion"
-import axios from "axios"
 import Link from "next/link"
 import { cn } from "@repo/ui/lib/utils"
 import { Label } from "@repo/ui/components/ui/label"
-import { signIn } from "@repo/auth/client"
+import { emailOtp } from "@repo/auth/client"
 
 function VerifyContent() {
     const [isLoading, setIsLoading] = useState(false)
@@ -84,15 +83,15 @@ function VerifyContent() {
     const handleResend = async () => {
         if (!email) return
         try {
-            const response = await axios.post('/api/resend-verification', { email })
-            if (response.data.success) {
-                toast.success("Verification code sent!")
-                setCanResend(false)
-                setTimer(30)
-                setCode(["", "", "", "", "", ""])
-            } else {
-                toast.error(response.data.error || "Failed to resend")
+            const { error } = await emailOtp.sendVerificationOtp({ email, type: "email-verification" })
+            if (error) {
+                toast.error(error.message || "Failed to resend")
+                return
             }
+            toast.success("Verification code sent!")
+            setCanResend(false)
+            setTimer(30)
+            setCode(["", "", "", "", "", ""])
         } catch {
             toast.error("Failed to resend code")
         }
@@ -105,37 +104,30 @@ function VerifyContent() {
 
         setIsLoading(true)
         try {
-            const otp = code.join("")
-            const response = await axios.post('/api/verify-otp', { email, otp })
+            // `verifyEmail` checks the code AND mints the session in one call.
+            //
+            // What was here before could not work: it POSTed to /api/verify-otp
+            // (which compared against `users.verifyOTP`, a column better-auth
+            // never writes) and then tried to sign in with the literal string
+            // 'verified' as the password. Both halves failed, so every user was
+            // dumped on /signin?verified=true — where their real password also
+            // failed, because registration never created the `account` row that
+            // better-auth checks.
+            const { error } = await emailOtp.verifyEmail({ email, otp: code.join("") })
 
-            if (response.data.success) {
-                setIsVerified(true)
-                toast.success("Email verified successfully!")
-
-                // Auto-signin using the "verified" password flow
-                const result = await signIn.email({
-                    email,
-                    password: 'verified',
-                    callbackURL: inviteBy
-                        ? `/onboarding?inviteBy=${encodeURIComponent(inviteBy)}`
-                        : '/onboarding'
-                })
-
-                if (result?.data) {
-                    // Redirect to onboarding after successful auto-signin, forwarding inviteBy if present
-                    const onboardingUrl = inviteBy
-                        ? `/onboarding?inviteBy=${encodeURIComponent(inviteBy)}`
-                        : '/onboarding'
-                    setTimeout(() => router.push(onboardingUrl), 1000)
-                } else {
-                    // Fallback to signin page if auto-signin fails
-                    setTimeout(() => router.push('/signin?verified=true'), 1500)
-                }
-            } else {
-                toast.error(response.data.error || "Invalid code")
+            if (error) {
+                toast.error(error.message || "Invalid code")
                 setCode(["", "", "", "", "", ""])
                 inputRefs[0]?.current?.focus()
+                return
             }
+
+            setIsVerified(true)
+            toast.success("Email verified successfully!")
+            const onboardingUrl = inviteBy
+                ? `/onboarding?inviteBy=${encodeURIComponent(inviteBy)}`
+                : '/onboarding'
+            setTimeout(() => router.push(onboardingUrl), 1000)
         } catch {
             toast.error("Verification failed")
         } finally {

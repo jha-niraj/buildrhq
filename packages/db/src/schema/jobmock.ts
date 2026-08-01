@@ -19,7 +19,7 @@ import { companies } from "./hiring";
 // Enums
 // ===========================
 
-export const interviewRoundTypeEnum = pgEnum("InterviewRoundType", [
+export const interviewRoundTypeEnum = pgEnum("interview_round_type", [
     "PHONE_SCREEN",
     "TECHNICAL_CODING",
     "SYSTEM_DESIGN",
@@ -32,7 +32,7 @@ export const interviewRoundTypeEnum = pgEnum("InterviewRoundType", [
     "CUSTOM",
 ]);
 
-export const interviewFormatEnum = pgEnum("InterviewFormat", [
+export const interviewFormatEnum = pgEnum("interview_format", [
     "VOICE",
     "VIDEO",
     "IN_PERSON",
@@ -41,14 +41,14 @@ export const interviewFormatEnum = pgEnum("InterviewFormat", [
     "WHITEBOARD",
 ]);
 
-export const jobMockSessionTypeEnum = pgEnum("JobMockSessionType", [
+export const jobMockSessionTypeEnum = pgEnum("job_mock_session_type", [
     "VOICE",
     "CODING",
     "SYSTEM_DESIGN",
     "BEHAVIORAL",
 ]);
 
-export const jobMockStatusEnum = pgEnum("JobMockStatus", [
+export const jobMockStatusEnum = pgEnum("job_mock_status", [
     "SCHEDULED",
     "IN_PROGRESS",
     "COMPLETED",
@@ -61,160 +61,160 @@ export const jobMockStatusEnum = pgEnum("JobMockStatus", [
 // ===========================
 
 export const interviewProcesses = pgTable(
-    "InterviewProcess",
+    "interview_process",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        companyId: text("companyId")
+        companyId: text("company_id")
             .notNull()
             .references(() => companies.id, { onDelete: "cascade" }),
         name: text("name").notNull(),
         description: text("description"),
-        isDefault: boolean("isDefault").notNull().default(false),
-        estimatedDurationWeeks: real("estimatedDurationWeeks"),
-        avgTimeToHireDays: integer("avgTimeToHireDays"),
-        responseRatePercent: real("responseRatePercent"),
-        applicationToInterviewPercent: real("applicationToInterviewPercent"),
-        interviewToOfferPercent: real("interviewToOfferPercent"),
-        isActive: boolean("isActive").notNull().default(true),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        isDefault: boolean("is_default").notNull().default(false),
+        estimatedDurationWeeks: real("estimated_duration_weeks"),
+        avgTimeToHireDays: integer("avg_time_to_hire_days"),
+        responseRatePercent: real("response_rate_percent"),
+        applicationToInterviewPercent: real("application_to_interview_percent"),
+        interviewToOfferPercent: real("interview_to_offer_percent"),
+        isActive: boolean("is_active").notNull().default(true),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_interviewProcess_companyId").on(table.companyId),
-        index("idx_interviewProcess_isDefault").on(table.isDefault),
+        index("idx_interview_process_company_id").on(table.companyId),
+        index("idx_interview_process_is_default").on(table.isDefault),
     ],
 );
 
 export const interviewRounds = pgTable(
-    "InterviewRound",
+    "interview_round",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        processId: text("processId")
+        processId: text("process_id")
             .notNull()
             .references(() => interviewProcesses.id, { onDelete: "cascade" }),
-        roundNumber: integer("roundNumber").notNull(),
-        roundType: interviewRoundTypeEnum("roundType").notNull(),
+        roundNumber: integer("round_number").notNull(),
+        roundType: interviewRoundTypeEnum("round_type").notNull(),
         title: text("title").notNull(),
-        durationMinutes: integer("durationMinutes"),
+        durationMinutes: integer("duration_minutes"),
         format: interviewFormatEnum("format").notNull().default("VIDEO"),
         description: text("description").notNull(),
-        whatToExpect: jsonb("whatToExpect"),
-        sampleQuestions: jsonb("sampleQuestions"),
-        evaluationCriteria: jsonb("evaluationCriteria"),
-        topicsCovered: jsonb("topicsCovered"),
-        tipsForCandidates: jsonb("tipsForCandidates"),
-        passRatePercent: real("passRatePercent"),
-        daysToNextRound: integer("daysToNextRound"),
-        internalNotes: text("internalNotes"),
-        interviewerGuide: text("interviewerGuide"),
-        hasMockInterview: boolean("hasMockInterview").notNull().default(true),
-        mockKnowledgeBase: text("mockKnowledgeBase"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        whatToExpect: jsonb("what_to_expect"),
+        sampleQuestions: jsonb("sample_questions"),
+        evaluationCriteria: jsonb("evaluation_criteria"),
+        topicsCovered: jsonb("topics_covered"),
+        tipsForCandidates: jsonb("tips_for_candidates"),
+        passRatePercent: real("pass_rate_percent"),
+        daysToNextRound: integer("days_to_next_round"),
+        internalNotes: text("internal_notes"),
+        interviewerGuide: text("interviewer_guide"),
+        hasMockInterview: boolean("has_mock_interview").notNull().default(true),
+        mockKnowledgeBase: text("mock_knowledge_base"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("uq_interviewRound_processId_roundNumber").on(
+        uniqueIndex("uq_interview_round_process_id_round_number").on(
             table.processId,
             table.roundNumber,
         ),
-        index("idx_interviewRound_processId").on(table.processId),
-        index("idx_interviewRound_roundType").on(table.roundType),
+        index("idx_interview_round_process_id").on(table.processId),
+        index("idx_interview_round_round_type").on(table.roundType),
     ],
 );
 
 export const jobMockSessions = pgTable(
-    "JobMockSession",
+    "job_mock_session",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        jobId: text("jobId"),
-        companyId: text("companyId")
+        jobId: text("job_id"),
+        companyId: text("company_id")
             .notNull()
             .references(() => companies.id, { onDelete: "cascade" }),
-        roundId: text("roundId")
+        roundId: text("round_id")
             .notNull()
             .references(() => interviewRounds.id, { onDelete: "cascade" }),
-        sessionType: jobMockSessionTypeEnum("sessionType").notNull().default("VOICE"),
+        sessionType: jobMockSessionTypeEnum("session_type").notNull().default("VOICE"),
         status: jobMockStatusEnum("status").notNull().default("SCHEDULED"),
-        conversationId: text("conversationId").unique(),
-        agentId: text("agentId"),
+        conversationId: text("conversation_id").unique(),
+        agentId: text("agent_id"),
         variables: jsonb("variables"),
-        scheduledFor: timestamp("scheduledFor"),
-        startedAt: timestamp("startedAt"),
-        completedAt: timestamp("completedAt"),
-        durationSeconds: integer("durationSeconds"),
-        recordingUrl: text("recordingUrl"),
-        transcriptUrl: text("transcriptUrl"),
+        scheduledFor: timestamp("scheduled_for"),
+        startedAt: timestamp("started_at"),
+        completedAt: timestamp("completed_at"),
+        durationSeconds: integer("duration_seconds"),
+        recordingUrl: text("recording_url"),
+        transcriptUrl: text("transcript_url"),
         transcript: text("transcript"),
-        codeSubmission: text("codeSubmission"),
-        codeLanguage: text("codeLanguage"),
-        testResults: jsonb("testResults"),
-        diagramUrl: text("diagramUrl"),
-        designNotes: text("designNotes"),
-        overallScore: integer("overallScore"),
-        aiAnalysis: jsonb("aiAnalysis"),
-        categoryScores: jsonb("categoryScores"),
+        codeSubmission: text("code_submission"),
+        codeLanguage: text("code_language"),
+        testResults: jsonb("test_results"),
+        diagramUrl: text("diagram_url"),
+        designNotes: text("design_notes"),
+        overallScore: integer("overall_score"),
+        aiAnalysis: jsonb("ai_analysis"),
+        categoryScores: jsonb("category_scores"),
         strengths: jsonb("strengths"),
         improvements: jsonb("improvements"),
-        percentileRank: integer("percentileRank"),
+        percentileRank: integer("percentile_rank"),
         trend: text("trend"),
-        userRating: integer("userRating"),
-        userFeedback: text("userFeedback"),
-        creditsUsed: integer("creditsUsed").notNull().default(15),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        userRating: integer("user_rating"),
+        userFeedback: text("user_feedback"),
+        creditsUsed: integer("credits_used").notNull().default(15),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_jobMockSession_userId").on(table.userId),
-        index("idx_jobMockSession_jobId").on(table.jobId),
-        index("idx_jobMockSession_companyId").on(table.companyId),
-        index("idx_jobMockSession_roundId").on(table.roundId),
-        index("idx_jobMockSession_status").on(table.status),
-        index("idx_jobMockSession_conversationId").on(table.conversationId),
+        index("idx_job_mock_session_user_id").on(table.userId),
+        index("idx_job_mock_session_job_id").on(table.jobId),
+        index("idx_job_mock_session_company_id").on(table.companyId),
+        index("idx_job_mock_session_round_id").on(table.roundId),
+        index("idx_job_mock_session_status").on(table.status),
+        index("idx_job_mock_session_conversation_id").on(table.conversationId),
     ],
 );
 
 export const interviewPrepProgress = pgTable(
-    "InterviewPrepProgress",
+    "interview_prep_progress",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        applicationId: text("applicationId").notNull().unique(),
-        userId: text("userId")
+        applicationId: text("application_id").notNull().unique(),
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        overallReadinessScore: integer("overallReadinessScore").notNull().default(0),
-        targetReadinessScore: integer("targetReadinessScore").notNull().default(80),
-        roundsCompleted: integer("roundsCompleted").notNull().default(0),
-        totalRounds: integer("totalRounds").notNull().default(0),
-        lastPracticedAt: timestamp("lastPracticedAt"),
-        totalPracticeSessions: integer("totalPracticeSessions").notNull().default(0),
-        totalPracticeMinutes: integer("totalPracticeMinutes").notNull().default(0),
-        bestScores: jsonb("bestScores"),
-        nextRecommendedRound: text("nextRecommendedRound"),
-        recommendedResources: jsonb("recommendedResources"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        overallReadinessScore: integer("overall_readiness_score").notNull().default(0),
+        targetReadinessScore: integer("target_readiness_score").notNull().default(80),
+        roundsCompleted: integer("rounds_completed").notNull().default(0),
+        totalRounds: integer("total_rounds").notNull().default(0),
+        lastPracticedAt: timestamp("last_practiced_at"),
+        totalPracticeSessions: integer("total_practice_sessions").notNull().default(0),
+        totalPracticeMinutes: integer("total_practice_minutes").notNull().default(0),
+        bestScores: jsonb("best_scores"),
+        nextRecommendedRound: text("next_recommended_round"),
+        recommendedResources: jsonb("recommended_resources"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_interviewPrepProgress_userId").on(table.userId),
+        index("idx_interview_prep_progress_user_id").on(table.userId),
     ],
 );
 

@@ -3,10 +3,11 @@
 import { Button } from "@repo/ui/components/ui/button";
 import { Input } from "@repo/ui/components/ui/input";
 import { Label } from "@repo/ui/components/ui/label";
-import axios from "axios";
 import React, { useState } from "react";
 import toast from "@repo/ui/components/ui/sonner";
 import { useRouter } from "next/navigation";
+import { emailOtp } from "@repo/auth/client";
+import { getAuthErrorMessage } from "@/lib/auth-errors";
 import {
     ArrowLeft, KeyRound, Loader2, Mail
 } from "lucide-react";
@@ -17,23 +18,39 @@ export default function ForgotPassword() {
     const [sending, setIsSending] = useState<boolean>(false);
     const router = useRouter();
 
+    // better-auth owns the reset code end to end. This used to POST to a
+    // hand-rolled /api/forgotpassword route that wrote an OTP onto
+    // `users.resetOTP` and, on the other side, hashed the new password into
+    // `users.hashedPassword` -- a column better-auth never reads. Credential
+    // passwords live on the `account` row, so that flow reported success and
+    // changed nothing: the old password kept working.
+    //
+    // `requestPasswordReset` mails a "forget-password" OTP through the same
+    // sender configured in packages/auth/src/auth.ts, and
+    // `emailOtp.resetPassword` on the next page writes the password where
+    // better-auth actually looks.
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!email) return toast.error("Please enter your email");
+        if (!email.trim()) return toast.error("Please enter your email");
 
         setIsSending(true);
 
         try {
-            const response = await axios.post('/api/forgotpassword', { email, emailType: "RESET_PASSWORD_OTP" });
-            if (response.status == 200) {
-                toast.success('Reset instructions sent to your email');
-                router.push(`/resetpassword?email=${encodeURIComponent(email)}`);
-            } else {
-                toast.error('Error sending reset code');
+            const { error } = await emailOtp.requestPasswordReset({ email: email.trim().toLowerCase() });
+
+            if (error) {
+                toast.error(getAuthErrorMessage(error.code ?? error.message));
+                return;
             }
-        } catch (error) {
+
+            // Deliberately not branching on "no such user": better-auth answers
+            // identically either way, so the page cannot be used to probe which
+            // addresses have accounts.
+            toast.success("If that address has an account, a reset code is on its way");
+            router.push(`/resetpassword?email=${encodeURIComponent(email.trim().toLowerCase())}`);
+        } catch (error: unknown) {
             console.error("Error sending password reset email:", error);
-            toast.error('Failed to send reset email. Please try again.');
+            toast.error("Failed to send reset email. Please try again.");
         } finally {
             setIsSending(false);
         }

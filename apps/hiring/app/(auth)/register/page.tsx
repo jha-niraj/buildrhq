@@ -3,8 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn } from '@repo/auth/client';
-import axios from "axios";
+import { signIn, signUp } from '@repo/auth/client';
 import { motion, AnimatePresence } from "framer-motion";
 import {
     Eye, EyeOff, Check, X, Building2, ArrowRight, Loader2, ShieldCheck,
@@ -89,29 +88,36 @@ function SignUpForm() {
         setError("");
 
         try {
-            const response = await axios.post("/api/auth/register", {
+            // better-auth owns sign-up now. The old POST to /api/auth/register
+            // inserted a `users` row with a bcrypt hash in `users.hashedPassword`
+            // and never created the `account` row that better-auth checks at
+            // sign-in, so an email+password account could be registered and
+            // verified and then never sign in. That route also silently dropped
+            // `companyName`/`founderRole` (it only destructured name/email/
+            // password), which is why they are not passed here either — onboarding
+            // is where those are actually collected and persisted.
+            const normalisedEmail = email.trim().toLowerCase();
+            const { error } = await signUp.email({
                 name,
-                email,
+                email: normalisedEmail,
                 password,
-                companyName,
-                role: "RECRUITER",
-                founderRole
             });
 
-            if (response.data.success) {
-                toast.success("Account created! Please check your email for verification code.");
-                // Forward inviteBy to verify page so it can be passed to onboarding
-                const verifyUrl = inviteBy 
-                    ? `/verify?email=${encodeURIComponent(email)}&inviteBy=${encodeURIComponent(inviteBy)}`
-                    : `/verify?email=${encodeURIComponent(email)}`;
-                router.push(verifyUrl);
+            if (error) {
+                setError(error.message || "An error occurred during registration");
+                return;
             }
-        } catch (err: unknown) {
-            if (axios.isAxiosError(err)) {
-                setError(err.response?.data?.error || "An error occurred during registration");
-            } else {
-                setError("An unexpected error occurred");
-            }
+
+            // `sendVerificationOnSignUp` mails the code as part of this call, so
+            // the verify page has one waiting for it.
+            toast.success("Account created! Please check your email for verification code.");
+            // Forward inviteBy to verify page so it can be passed to onboarding
+            const verifyUrl = inviteBy
+                ? `/verify?email=${encodeURIComponent(normalisedEmail)}&inviteBy=${encodeURIComponent(inviteBy)}`
+                : `/verify?email=${encodeURIComponent(normalisedEmail)}`;
+            router.push(verifyUrl);
+        } catch {
+            setError("An unexpected error occurred");
         } finally {
             setIsLoading(false);
         }

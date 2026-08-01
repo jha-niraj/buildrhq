@@ -24,7 +24,7 @@ import { users, xpTransactionPropsEnum } from "./schema";
 // Enums
 // ===========================
 
-export const socialProviderEnum = pgEnum("SocialProvider", [
+export const socialProviderEnum = pgEnum("social_provider", [
     "TWITTER",
     "LINKEDIN",
 ]);
@@ -34,7 +34,7 @@ export const socialProviderEnum = pgEnum("SocialProvider", [
 // ===========================
 
 export const levels = pgTable(
-    "Level",
+    "level",
     {
         id: serial("id").primaryKey(),
         level: integer("level").unique().notNull(),
@@ -42,13 +42,13 @@ export const levels = pgTable(
         description: text("description"),
         icon: text("icon"),
         color: text("color"),
-        xpRequired: integer("xpRequired").notNull(),
-        xpReward: integer("xpReward").notNull().default(0),
-        creditsReward: integer("creditsReward").notNull().default(0),
+        xpRequired: integer("xp_required").notNull(),
+        xpReward: integer("xp_reward").notNull().default(0),
+        creditsReward: integer("credits_reward").notNull().default(0),
         perks: jsonb("perks"),
-        isActive: boolean("isActive").notNull().default(true),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        isActive: boolean("is_active").notNull().default(true),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
@@ -58,80 +58,80 @@ export const levels = pgTable(
 );
 
 export const userLevelProgress = pgTable(
-    "UserLevelProgress",
+    "user_level_progress",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
         level: integer("level")
             .notNull()
             .references(() => levels.level, { onDelete: "cascade" }),
-        xpEarned: integer("xpEarned").notNull().default(0),
-        creditsEarned: integer("creditsEarned").notNull().default(0),
-        achievedAt: timestamp("achievedAt").notNull().defaultNow(),
-        sharedToSocial: boolean("sharedToSocial").notNull().default(false),
+        xpEarned: integer("xp_earned").notNull().default(0),
+        creditsEarned: integer("credits_earned").notNull().default(0),
+        achievedAt: timestamp("achieved_at").notNull().defaultNow(),
+        sharedToSocial: boolean("shared_to_social").notNull().default(false),
     },
     (table) => [
-        uniqueIndex("uq_userLevelProgress_userId_level").on(table.userId, table.level),
-        index("idx_userLevelProgress_userId").on(table.userId),
-        index("idx_userLevelProgress_level").on(table.level),
+        uniqueIndex("uq_user_level_progress_user_id_level").on(table.userId, table.level),
+        index("idx_user_level_progress_user_id").on(table.userId),
+        index("idx_user_level_progress_level").on(table.level),
     ],
 );
 
 export const xpTransactions = pgTable(
-    "XpTransaction",
+    "xp_transaction",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id),
         amount: integer("amount").notNull(),
         description: text("description").notNull(),
         type: xpTransactionPropsEnum("type").notNull().default("REWARD"),
         source: text("source"),
-        sourceId: text("sourceId"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        sourceId: text("source_id"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_xpTransaction_userId").on(table.userId),
-        index("idx_xpTransaction_createdAt").on(table.createdAt),
-        index("idx_xpTransaction_type").on(table.type),
+        index("idx_xp_transaction_user_id").on(table.userId),
+        index("idx_xp_transaction_created_at").on(table.createdAt),
+        index("idx_xp_transaction_type").on(table.type),
     ],
 );
 
 export const socialConnections = pgTable(
-    "SocialConnection",
+    "social_connection",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
         provider: socialProviderEnum("provider").notNull(),
-        providerAccountId: text("providerAccountId").notNull(),
-        accessToken: text("accessToken").notNull(),
-        refreshToken: text("refreshToken"),
-        tokenExpiresAt: timestamp("tokenExpiresAt"),
-        accountName: text("accountName"),
-        accountHandle: text("accountHandle"),
-        accountImage: text("accountImage"),
-        isActive: boolean("isActive").notNull().default(true),
-        lastUsedAt: timestamp("lastUsedAt"),
-        connectedAt: timestamp("connectedAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        providerAccountId: text("provider_account_id").notNull(),
+        accessToken: text("access_token").notNull(),
+        refreshToken: text("refresh_token"),
+        tokenExpiresAt: timestamp("token_expires_at"),
+        accountName: text("account_name"),
+        accountHandle: text("account_handle"),
+        accountImage: text("account_image"),
+        isActive: boolean("is_active").notNull().default(true),
+        lastUsedAt: timestamp("last_used_at"),
+        connectedAt: timestamp("connected_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("uq_socialConnection_userId_provider").on(table.userId, table.provider),
-        index("idx_socialConnection_userId").on(table.userId),
-        index("idx_socialConnection_provider").on(table.provider),
+        uniqueIndex("uq_social_connection_user_id_provider").on(table.userId, table.provider),
+        index("idx_social_connection_user_id").on(table.userId),
+        index("idx_social_connection_provider").on(table.provider),
     ],
 );
 

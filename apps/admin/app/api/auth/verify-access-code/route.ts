@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { db, users, adminAccess, adminInvitations, adminAuditLogs } from "@repo/db"
+import { db, users, accounts, adminAccess, adminInvitations, adminAuditLogs } from "@repo/db"
 import { eq, and } from "drizzle-orm"
 import bcrypt from "bcryptjs"
 
@@ -46,27 +46,48 @@ export async function POST(request: NextRequest) {
             where: eq(users.email, email.toLowerCase())
         })
 
+        // The access code becomes this account's credential password so the client
+        // can immediately sign in with it. It has to land on the `account` row:
+        // better-auth verifies against that, and never reads
+        // `users.hashedPassword` (which is what this route used to set, so the
+        // sign-in that follows could never succeed).
+        const hashedPassword = await bcrypt.hash(accessCode, 12)
+
         if (!user) {
-            // Create user with the access code as temporary password
-            const hashedPassword = await bcrypt.hash(accessCode, 12)
             const newUsers = await db.insert(users).values({
                 email: email.toLowerCase(),
                 name: invitation.name || email.split("@")[0],
-                hashedPassword,
                 emailVerified: true,
                 role: "Admin"
             }).returning()
             user = newUsers[0]
         } else {
-            // Update password to access code for this login
-            const hashedPassword = await bcrypt.hash(accessCode, 12)
             await db.update(users)
-                .set({ hashedPassword, role: "Admin" })
+                .set({ role: "Admin" })
                 .where(eq(users.id, user.id))
         }
 
         if (!user) {
             return NextResponse.json({ success: false, message: "Failed to create user" }, { status: 500 })
+        }
+
+        // Upsert the credential account. `accountId` mirrors the user id, which is
+        // what better-auth stores for the credential provider.
+        const existingCredential = await db.query.accounts.findFirst({
+            where: and(eq(accounts.userId, user.id), eq(accounts.providerId, "credential")),
+        })
+
+        if (existingCredential) {
+            await db.update(accounts)
+                .set({ password: hashedPassword })
+                .where(eq(accounts.id, existingCredential.id))
+        } else {
+            await db.insert(accounts).values({
+                userId: user.id,
+                accountId: user.id,
+                providerId: "credential",
+                password: hashedPassword,
+            })
         }
 
         // Check if admin access already exists

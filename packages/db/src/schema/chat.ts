@@ -18,7 +18,7 @@ import { users } from "./schema";
 // Enums
 // ===========================
 
-export const followRequestStatusEnum = pgEnum("FollowRequestStatus", [
+export const followRequestStatusEnum = pgEnum("follow_request_status", [
     "PENDING",
     "ACCEPTED",
     "REJECTED",
@@ -29,17 +29,17 @@ export const followRequestStatusEnum = pgEnum("FollowRequestStatus", [
 // ===========================
 
 export const follow = pgTable(
-    "Follow",
+    "follow",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        followerId: text("followerId").notNull().references(() => users.id, { onDelete: "cascade" }),
-        followingId: text("followingId").notNull().references(() => users.id, { onDelete: "cascade" }),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        followerId: text("follower_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+        followingId: text("following_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (t) => [
-        uniqueIndex("follow_followerId_followingId_key").on(t.followerId, t.followingId),
-        index("follow_followerId_idx").on(t.followerId),
-        index("follow_followingId_idx").on(t.followingId),
+        uniqueIndex("follow_follower_id_following_id_key").on(t.followerId, t.followingId),
+        index("follow_follower_id_idx").on(t.followerId),
+        index("follow_following_id_idx").on(t.followingId),
     ]
 );
 
@@ -61,19 +61,19 @@ export const followRelations = relations(follow, ({ one }) => ({
 // ===========================
 
 export const followRequest = pgTable(
-    "FollowRequest",
+    "follow_request",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        senderId: text("senderId").notNull().references(() => users.id, { onDelete: "cascade" }),
-        receiverId: text("receiverId").notNull().references(() => users.id, { onDelete: "cascade" }),
+        senderId: text("sender_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+        receiverId: text("receiver_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         status: followRequestStatusEnum("status").notNull().default("PENDING"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().defaultNow().$onUpdateFn(() => new Date()),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdateFn(() => new Date()),
     },
     (t) => [
-        uniqueIndex("followRequest_senderId_receiverId_key").on(t.senderId, t.receiverId),
-        index("followRequest_senderId_idx").on(t.senderId),
-        index("followRequest_receiverId_idx").on(t.receiverId),
+        uniqueIndex("follow_request_sender_id_receiver_id_key").on(t.senderId, t.receiverId),
+        index("follow_request_sender_id_idx").on(t.senderId),
+        index("follow_request_receiver_id_idx").on(t.receiverId),
     ]
 );
 

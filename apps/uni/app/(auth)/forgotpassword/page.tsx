@@ -3,7 +3,6 @@
 import { Button } from "@repo/ui/components/ui/button";
 import { Input } from "@repo/ui/components/ui/input";
 import { Label } from "@repo/ui/components/ui/label";
-import axios from "axios";
 import React, { useState } from "react";
 import toast from "@repo/ui/components/ui/sonner";
 import { useRouter } from "next/navigation";
@@ -11,6 +10,7 @@ import {
     ArrowLeft, KeyRound, Loader2, Mail, Building2, ArrowRight
 } from "lucide-react";
 import Link from "next/link";
+import { emailOtp } from "@repo/auth/client";
 import { motion } from "framer-motion";
 import { cn } from "@repo/ui/lib/utils";
 
@@ -26,14 +26,25 @@ export default function ForgotPassword() {
         setIsSending(true);
 
         try {
-            const response = await axios.post('/api/forgotpassword', { email, emailType: "RESET_PASSWORD_OTP" });
-            if (response.status == 200) {
-                toast.success('Reset code sent to your email');
-                router.push(`/resetpassword?email=${encodeURIComponent(email)}`);
-            } else {
-                toast.error('Error sending reset code');
+            // better-auth owns the reset code end to end. This used to POST to a
+            // hand-rolled /api/forgotpassword route that wrote an OTP onto
+            // `users.resetOTP`, paired with an /api/resetpassword route that
+            // hashed the new password into `users.hashedPassword` -- a column
+            // better-auth never reads. Credential passwords live on the `account`
+            // row, so the flow reported success and changed nothing.
+            const { error } = await emailOtp.requestPasswordReset({ email: email.trim().toLowerCase() });
+
+            if (error) {
+                toast.error(error.message || 'Error sending reset code');
+                return;
             }
-        } catch (error) {
+
+            // Deliberately not branching on "no such user": better-auth answers
+            // identically either way, so the page cannot be used to probe which
+            // addresses have accounts.
+            toast.success('If that address has an account, a reset code is on its way');
+            router.push(`/resetpassword?email=${encodeURIComponent(email.trim().toLowerCase())}`);
+        } catch (error: unknown) {
             console.error("Error sending password reset email:", error);
             toast.error('Failed to send reset email. Please try again.');
         } finally {

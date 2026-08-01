@@ -16,20 +16,20 @@ import { createId } from "@paralleldrive/cuid2";
 // Enums
 // ===========================
 
-export const roleEnum = pgEnum("Role", [
+export const roleEnum = pgEnum("role", [
     "Student",
     "Admin",
     "HR",
     "UNI",
 ]);
 
-export const contributionStatusEnum = pgEnum("ContributionStatus", [
+export const contributionStatusEnum = pgEnum("contribution_status", [
     "InProgress",
     "Completed",
     "Abandoned",
 ]);
 
-export const contributionTypeEnum = pgEnum("ContributionType", [
+export const contributionTypeEnum = pgEnum("contribution_type", [
     "PR",
     "ISSUE",
     "COMMIT",
@@ -37,26 +37,26 @@ export const contributionTypeEnum = pgEnum("ContributionType", [
     "COMMENT",
 ]);
 
-export const openSourceDifficultyEnum = pgEnum("OpenSourceDifficulty", [
+export const openSourceDifficultyEnum = pgEnum("open_source_difficulty", [
     "BEGINNER",
     "INTERMEDIATE",
     "ADVANCED",
 ]);
 
-export const issueDifficultyEnum = pgEnum("IssueDifficulty", [
+export const issueDifficultyEnum = pgEnum("issue_difficulty", [
     "EASY",
     "MEDIUM",
     "HARD",
 ]);
 
-export const syncStatusEnum = pgEnum("SyncStatus", [
+export const syncStatusEnum = pgEnum("sync_status", [
     "PENDING",
     "SYNCING",
     "SUCCESS",
     "FAILED",
 ]);
 
-export const mockCategoryEnum = pgEnum("MockCategory", [
+export const mockCategoryEnum = pgEnum("mock_category", [
     "TECHNICAL",
     "BEHAVIORAL",
     "HR",
@@ -68,25 +68,25 @@ export const mockCategoryEnum = pgEnum("MockCategory", [
     "GENERAL",
 ]);
 
-export const mockLevelEnum = pgEnum("MockLevel", [
+export const mockLevelEnum = pgEnum("mock_level", [
     "BEGINNER",
     "INTERMEDIATE",
     "ADVANCED",
     "EXPERT",
 ]);
 
-export const projectTierEnum = pgEnum("ProjectTier", [
+export const projectTierEnum = pgEnum("project_tier", [
     "Free",
     "Paid",
 ]);
 
-export const projectStatusEnum = pgEnum("ProjectStatus", [
+export const projectStatusEnum = pgEnum("project_status", [
     "NotStarted",
     "InProgress",
     "Completed",
 ]);
 
-export const skillCategoryEnum = pgEnum("SkillCategory", [
+export const skillCategoryEnum = pgEnum("skill_category", [
     "FRONTEND",
     "LANGUAGES",
     "BACKEND",
@@ -100,33 +100,33 @@ export const skillCategoryEnum = pgEnum("SkillCategory", [
     "AI_TOOLS",
 ]);
 
-export const feedbackCategoryEnum = pgEnum("FeedbackCategory", [
+export const feedbackCategoryEnum = pgEnum("feedback_category", [
     "BUG",
     "FEATURE",
     "UI",
     "OTHER",
 ]);
 
-export const feedbackStatusEnum = pgEnum("FeedbackStatus", [
+export const feedbackStatusEnum = pgEnum("feedback_status", [
     "UNDER_REVIEW",
     "PLANNED",
     "COMPLETED",
 ]);
 
-export const creditTypeEnum = pgEnum("CreditType", [
+export const creditTypeEnum = pgEnum("credit_type", [
     "PURCHASE",
     "SPEND",
     "BONUS",
     "REWARD",
 ]);
 
-export const creditRequestStatusEnum = pgEnum("CreditRequestStatus", [
+export const creditRequestStatusEnum = pgEnum("credit_request_status", [
     "PENDING",
     "APPROVED",
     "REJECTED",
 ]);
 
-export const resourceTypeEnum = pgEnum("ResourceType", [
+export const resourceTypeEnum = pgEnum("resource_type", [
     "YOUTUBE_VIDEO",
     "VIDEO",
     "DOCUMENTATION",
@@ -140,7 +140,7 @@ export const resourceTypeEnum = pgEnum("ResourceType", [
     "OTHER",
 ]);
 
-export const paymentStatusEnum = pgEnum("PaymentStatus", [
+export const paymentStatusEnum = pgEnum("payment_status", [
     "PENDING",
     "COMPLETED",
     "FAILED",
@@ -148,7 +148,7 @@ export const paymentStatusEnum = pgEnum("PaymentStatus", [
     "CANCELLED",
 ]);
 
-export const activityTypeEnum = pgEnum("ActivityType", [
+export const activityTypeEnum = pgEnum("activity_type", [
     "REFERRAL_BONUS",
     "SIGNUP",
     "FEEDBACK_SUBMITTED",
@@ -178,20 +178,20 @@ export const activityTypeEnum = pgEnum("ActivityType", [
     "PATHFINDER_GOAL_STARTED",
 ]);
 
-export const learnDifficultyEnum = pgEnum("LearnDifficulty", [
+export const learnDifficultyEnum = pgEnum("learn_difficulty", [
     "BEGINNER",
     "INTERMEDIATE",
     "ADVANCED",
     "EXPERT",
 ]);
 
-export const learnStatusEnum = pgEnum("LearnStatus", [
+export const learnStatusEnum = pgEnum("learn_status", [
     "DRAFT",
     "PUBLISHED",
     "ARCHIVED",
 ]);
 
-export const learnStepTypeEnum = pgEnum("LearnStepType", [
+export const learnStepTypeEnum = pgEnum("learn_step_type", [
     "EXPLANATION",
     "QUIZ",
     "CODE_CHALLENGE",
@@ -201,33 +201,33 @@ export const learnStepTypeEnum = pgEnum("LearnStepType", [
     "INTERVIEW_QUESTIONS",
 ]);
 
-export const quizQuestionTypeEnum = pgEnum("QuizQuestionType", [
+export const quizQuestionTypeEnum = pgEnum("quiz_question_type", [
     "SINGLE_CHOICE",
     "MULTIPLE_CHOICE",
     "TRUE_FALSE",
     "CODE_OUTPUT",
 ]);
 
-export const quizDifficultyEnum = pgEnum("QuizDifficulty", [
+export const quizDifficultyEnum = pgEnum("quiz_difficulty", [
     "EASY",
     "MEDIUM",
     "HARD",
 ]);
 
-export const interviewCardDifficultyEnum = pgEnum("InterviewCardDifficulty", [
+export const interviewCardDifficultyEnum = pgEnum("interview_card_difficulty", [
     "EASY",
     "MEDIUM",
     "HARD",
 ]);
 
-export const learnRequestStatusEnum = pgEnum("LearnRequestStatus", [
+export const learnRequestStatusEnum = pgEnum("learn_request_status", [
     "PENDING",
     "IN_PROGRESS",
     "COMPLETED",
     "REJECTED",
 ]);
 
-export const xpTransactionPropsEnum = pgEnum("XpTransactionProps", [
+export const xpTransactionPropsEnum = pgEnum("xp_transaction_props", [
     "EARN",
     "SPEND",
     "REWARD",
@@ -235,7 +235,7 @@ export const xpTransactionPropsEnum = pgEnum("XpTransactionProps", [
     "PENALTY",
 ]);
 
-export const currencyEnum = pgEnum("Currency", [
+export const currencyEnum = pgEnum("currency", [
     "INR",
     "USD",
     "EUR",
@@ -244,14 +244,14 @@ export const currencyEnum = pgEnum("Currency", [
 
 // Renamed to notificationEnum to avoid collision with the Notification table.
 // Prisma enum name: NotificationEnum (used as the column type below)
-export const notificationTypeEnum = pgEnum("NotificationType", [
+export const notificationTypeEnum = pgEnum("notification_type", [
     "INFO",
     "SUCCESS",
     "WARNING",
     "ERROR",
 ]);
 
-export const platformEnum = pgEnum("Platform", [
+export const platformEnum = pgEnum("platform", [
     "MAIN",
     "HIRING",
     "UNI",
@@ -263,31 +263,31 @@ export const platformEnum = pgEnum("Platform", [
 // ===========================
 
 export const users = pgTable(
-    "User",
+    "user",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
         // BetterAuth core
         name: text("name"),
         email: text("email").unique().notNull(),
-        emailVerified: boolean("emailVerified").notNull().default(false),
+        emailVerified: boolean("email_verified").notNull().default(false),
         image: text("image").default("https://tse4.mm.bing.net/th?id=OIP.-BS8Y2nH1k93GJiitUVBCAHaHa&pid=Api&P=0"),
         // Auth
-        hashedPassword: text("hashedPassword"),
-        mustChangePassword: boolean("mustChangePassword").notNull().default(false),
+        hashedPassword: text("hashed_password"),
+        mustChangePassword: boolean("must_change_password").notNull().default(false),
         role: roleEnum("role").notNull().default("Student"),
         // Email OTP verification
-        verifyToken: text("verifyToken"),
-        verifyTokenExpiry: timestamp("verifyTokenExpiry"),
-        verifyOTP: text("verifyOTP"),
-        verifyOTPExpiry: timestamp("verifyOTPExpiry"),
+        verifyToken: text("verify_token"),
+        verifyTokenExpiry: timestamp("verify_token_expiry"),
+        verifyOTP: text("verify_otp"),
+        verifyOTPExpiry: timestamp("verify_otp_expiry"),
         // Password reset
-        resetToken: text("resetToken"),
-        restTokenExpiry: timestamp("restTokenExpiry"),
-        resetOTP: text("resetOTP"),
-        resetOTPExpiry: timestamp("resetOTPExpiry"),
+        resetToken: text("reset_token"),
+        restTokenExpiry: timestamp("rest_token_expiry"),
+        resetOTP: text("reset_otp"),
+        resetOTPExpiry: timestamp("reset_otp_expiry"),
         // Onboarding
-        onboardingCompleted: boolean("onboardingCompleted").notNull().default(false),
-        onboardingStep: integer("onboardingStep").notNull().default(0),
+        onboardingCompleted: boolean("onboarding_completed").notNull().default(false),
+        onboardingStep: integer("onboarding_step").notNull().default(0),
         // Profile basics
         username: text("username").unique(),
         bio: text("bio"),
@@ -302,109 +302,109 @@ export const users = pgTable(
         occupation: text("occupation"),
         website: text("website"),
         // Resume
-        hasResume: boolean("hasResume").notNull().default(false),
+        hasResume: boolean("has_resume").notNull().default(false),
         resume: text("resume"),
-        resumeText: text("resumeText"),
+        resumeText: text("resume_text"),
         // Career preferences
         interests: text("interests").array().notNull().default([]),
-        learningPreferences: text("learningPreferences").array().notNull().default([]),
-        careerGoals: text("careerGoals").array().notNull().default([]),
-        targetCompanies: text("targetCompanies").array().notNull().default([]),
-        expectedSalary: text("expectedSalary"),
-        noticePeriod: text("noticePeriod"),
-        workExperience: text("workExperience"),
-        openToWork: boolean("openToWork").notNull().default(false),
+        learningPreferences: text("learning_preferences").array().notNull().default([]),
+        careerGoals: text("career_goals").array().notNull().default([]),
+        targetCompanies: text("target_companies").array().notNull().default([]),
+        expectedSalary: text("expected_salary"),
+        noticePeriod: text("notice_period"),
+        workExperience: text("work_experience"),
+        openToWork: boolean("open_to_work").notNull().default(false),
         // Credits & XP
         credits: integer("credits").notNull().default(100),
-        totalCredits: integer("totalCredits").notNull().default(0),
-        creditsShared: integer("creditsShared").notNull().default(0),
-        totalCreditsShared: integer("totalCreditsShared").notNull().default(0),
-        maxCreditsShared: integer("maxCreditsShared").notNull().default(500),
-        currentXp: integer("currentXp").notNull().default(250),
-        totalXp: integer("totalXp").notNull().default(250),
-        currentLevel: integer("currentLevel").notNull().default(1),
-        referralCode: text("referralCode").unique(),
-        referralCount: integer("referralCount").notNull().default(0),
+        totalCredits: integer("total_credits").notNull().default(0),
+        creditsShared: integer("credits_shared").notNull().default(0),
+        totalCreditsShared: integer("total_credits_shared").notNull().default(0),
+        maxCreditsShared: integer("max_credits_shared").notNull().default(500),
+        currentXp: integer("current_xp").notNull().default(250),
+        totalXp: integer("total_xp").notNull().default(250),
+        currentLevel: integer("current_level").notNull().default(1),
+        referralCode: text("referral_code").unique(),
+        referralCount: integer("referral_count").notNull().default(0),
         // Activity
         streak: integer("streak").notNull().default(0),
-        lastActiveDate: timestamp("lastActiveDate"),
+        lastActiveDate: timestamp("last_active_date"),
         // Social links (quick access)
-        githubUrl: text("githubUrl"),
-        linkedinUrl: text("linkedinUrl"),
-        twitterUrl: text("twitterUrl"),
-        websiteUrl: text("websiteUrl"),
+        githubUrl: text("github_url"),
+        linkedinUrl: text("linkedin_url"),
+        twitterUrl: text("twitter_url"),
+        websiteUrl: text("website_url"),
         // Profile meta
-        profileViews: integer("profileViews").notNull().default(0),
-        isPublicProfile: boolean("isPublicProfile").notNull().default(true),
-        yearsOfExperience: integer("yearsOfExperience"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+        profileViews: integer("profile_views").notNull().default(0),
+        isPublicProfile: boolean("is_public_profile").notNull().default(true),
+        yearsOfExperience: integer("years_of_experience"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
     },
     (table) => [
         index("idx_user_username").on(table.username),
         index("idx_user_email").on(table.email),
         index("idx_user_role").on(table.role),
-        index("idx_user_referralCode").on(table.referralCode),
+        index("idx_user_referral_code").on(table.referralCode),
     ],
 );
 
 // BetterAuth-compatible account table
 export const accounts = pgTable(
-    "Account",
+    "account",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        accountId: text("accountId").notNull(),       // provider's user ID
-        providerId: text("providerId").notNull(),      // "google" | "github" | "credential"
-        accessToken: text("accessToken"),
-        refreshToken: text("refreshToken"),
-        accessTokenExpiresAt: timestamp("accessTokenExpiresAt"),
-        refreshTokenExpiresAt: timestamp("refreshTokenExpiresAt"),
+        accountId: text("account_id").notNull(),       // provider's user ID
+        providerId: text("provider_id").notNull(),      // "google" | "github" | "credential"
+        accessToken: text("access_token"),
+        refreshToken: text("refresh_token"),
+        accessTokenExpiresAt: timestamp("access_token_expires_at"),
+        refreshTokenExpiresAt: timestamp("refresh_token_expires_at"),
         scope: text("scope"),
-        idToken: text("idToken"),
+        idToken: text("id_token"),
         password: text("password"),                   // hashed, for credential provider
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("uq_account_providerId_accountId").on(table.providerId, table.accountId),
-        index("idx_account_userId").on(table.userId),
+        uniqueIndex("uq_account_provider_id_account_id").on(table.providerId, table.accountId),
+        index("idx_account_user_id").on(table.userId),
     ],
 );
 
 // BetterAuth-compatible session table
 export const sessions = pgTable(
-    "Session",
+    "session",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
         token: text("token").unique().notNull(),
-        expiresAt: timestamp("expiresAt").notNull(),
-        ipAddress: text("ipAddress"),
-        userAgent: text("userAgent"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+        expiresAt: timestamp("expires_at").notNull(),
+        ipAddress: text("ip_address"),
+        userAgent: text("user_agent"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_session_userId").on(table.userId),
+        index("idx_session_user_id").on(table.userId),
         index("idx_session_token").on(table.token),
     ],
 );
 
 // BetterAuth-compatible verification table
 export const verifications = pgTable(
-    "Verification",
+    "verification",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
         identifier: text("identifier").notNull(),
         value: text("value").notNull(),
-        expiresAt: timestamp("expiresAt").notNull(),
-        createdAt: timestamp("createdAt").defaultNow(),
-        updatedAt: timestamp("updatedAt").$onUpdateFn(() => new Date()),
+        expiresAt: timestamp("expires_at").notNull(),
+        createdAt: timestamp("created_at").defaultNow(),
+        updatedAt: timestamp("updated_at").$onUpdateFn(() => new Date()),
     },
     (table) => [
         index("idx_verification_identifier").on(table.identifier),
@@ -412,12 +412,12 @@ export const verifications = pgTable(
 );
 
 export const userSkills = pgTable(
-    "UserSkill",
+    "user_skill",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
         name: text("name").notNull(),
@@ -426,58 +426,58 @@ export const userSkills = pgTable(
         order: integer("order").notNull().default(0),
     },
     (table) => [
-        uniqueIndex("uq_userSkill_userId_name").on(table.userId, table.name),
-        index("idx_userSkill_userId").on(table.userId),
-        index("idx_userSkill_category").on(table.category),
+        uniqueIndex("uq_user_skill_user_id_name").on(table.userId, table.name),
+        index("idx_user_skill_user_id").on(table.userId),
+        index("idx_user_skill_category").on(table.category),
     ],
 );
 
 // portfolioProjects is defined in profile.ts (full version matching Prisma schema)
 
 export const feedbacks = pgTable(
-    "Feedback",
+    "feedback",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
         category: feedbackCategoryEnum("category").notNull().default("OTHER"),
         title: text("title").notNull(),
         description: text("description").notNull(),
         status: feedbackStatusEnum("status").notNull().default("UNDER_REVIEW"),
-        isAnonymous: boolean("isAnonymous").notNull().default(false),
+        isAnonymous: boolean("is_anonymous").notNull().default(false),
         upvotes: integer("upvotes").notNull().default(0),
-        adminNotes: text("adminNotes"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        adminNotes: text("admin_notes"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_feedback_userId").on(table.userId),
+        index("idx_feedback_user_id").on(table.userId),
         index("idx_feedback_category").on(table.category),
         index("idx_feedback_status").on(table.status),
     ],
 );
 
 export const notifications = pgTable(
-    "Notification",
+    "notification",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         title: text("title").notNull(),
         message: text("message").notNull(),
         type: notificationTypeEnum("type").notNull().default("INFO"),
         platform: platformEnum("platform").notNull().default("MAIN"),
         read: boolean("read").notNull().default(false),
-        actionUrl: text("actionUrl"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+        actionUrl: text("action_url"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_notification_userId").on(table.userId),
+        index("idx_notification_user_id").on(table.userId),
         index("idx_notification_read").on(table.read),
         index("idx_notification_platform").on(table.platform),
     ],

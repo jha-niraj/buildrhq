@@ -12,8 +12,8 @@ import {
 } from "lucide-react";
 import toast from '@repo/ui/components/ui/sonner';
 import { motion } from 'framer-motion';
-import axios from 'axios';
 import Link from 'next/link';
+import { emailOtp } from '@repo/auth/client';
 import { cn } from "@repo/ui/lib/utils";
 
 const ResetPassword = (): JSX.Element | null => {
@@ -83,15 +83,15 @@ const ResetPassword = (): JSX.Element | null => {
     const handleResend = async () => {
         if (!email) return;
         try {
-            const response = await axios.post('/api/forgotpassword', { email, emailType: "RESET_PASSWORD_OTP" });
-            if (response.status === 200) {
-                toast.success("Reset code sent!");
-                setCanResend(false);
-                setTimer(30);
-                setOtp(["", "", "", "", "", ""]);
-            } else {
-                toast.error("Failed to resend code");
+            const { error } = await emailOtp.requestPasswordReset({ email });
+            if (error) {
+                toast.error(error.message || "Failed to resend code");
+                return;
             }
+            toast.success("Reset code sent!");
+            setCanResend(false);
+            setTimer(30);
+            setOtp(["", "", "", "", "", ""]);
         } catch {
             toast.error("Failed to resend code");
         }
@@ -101,26 +101,34 @@ const ResetPassword = (): JSX.Element | null => {
         e.preventDefault();
         if (!email) return toast.error("Session invalid. Restart process.");
         if (password !== confirmPassword) return toast.error('Passwords do not match');
-        if (password.length < 6) return toast.error('Password too short (min 6 chars)');
+        // Matches `minPasswordLength` in packages/auth/src/auth.ts. This used to
+        // say 6, so a 6- or 7-character password passed here and was then
+        // rejected by the server with a less helpful message.
+        if (password.length < 8) return toast.error('Password too short (min 8 characters)');
         if (otp.join("").length !== 6) return toast.error("Enter full 6-digit code");
 
         setIsLoading(true);
         try {
-            const response = await axios.post('/api/resetpassword', {
+            // Writes the password where better-auth actually looks (the `account`
+            // row). The previous /api/resetpassword route hashed it into
+            // `users.hashedPassword`, which better-auth never reads -- so it
+            // always reported success while leaving the old password in force.
+            const { error } = await emailOtp.resetPassword({
                 email,
                 otp: otp.join(""),
-                password
+                password,
             });
 
-            if (response.data.success) {
-                setIsSuccess(true);
-                toast.success("Password reset successfully!");
-                setTimeout(() => router.push('/signin'), 2000);
-            } else {
-                toast.error(response.data.error || "Reset failed");
+            if (error) {
+                toast.error(error.message || "Reset failed");
                 setOtp(["", "", "", "", "", ""]);
                 inputRefs[0]?.current?.focus();
+                return;
             }
+
+            setIsSuccess(true);
+            toast.success("Password reset successfully!");
+            setTimeout(() => router.push('/signin'), 2000);
         } catch {
             toast.error("An unexpected error occurred");
         } finally {

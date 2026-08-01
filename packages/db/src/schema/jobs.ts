@@ -18,13 +18,13 @@ import { companies, companyMembers } from "./hiring";
 // Enums
 // ===========================
 
-export const jobLocationTypeEnum = pgEnum("JobLocationType", [
+export const jobLocationTypeEnum = pgEnum("job_location_type", [
     "REMOTE",
     "HYBRID",
     "ONSITE",
 ]);
 
-export const employmentTypeEnum = pgEnum("EmploymentType", [
+export const employmentTypeEnum = pgEnum("employment_type", [
     "FULL_TIME",
     "PART_TIME",
     "CONTRACT",
@@ -32,7 +32,7 @@ export const employmentTypeEnum = pgEnum("EmploymentType", [
     "FREELANCE",
 ]);
 
-export const jobStatusEnum = pgEnum("JobStatus", [
+export const jobStatusEnum = pgEnum("job_status", [
     "DRAFT",
     "ACTIVE",
     "PAUSED",
@@ -40,12 +40,12 @@ export const jobStatusEnum = pgEnum("JobStatus", [
     "FILLED",
 ]);
 
-export const jobVisibilityEnum = pgEnum("JobVisibility", [
+export const jobVisibilityEnum = pgEnum("job_visibility", [
     "PUBLIC",
     "INVITE_ONLY",
 ]);
 
-export const applicationStatusEnum = pgEnum("ApplicationStatus", [
+export const applicationStatusEnum = pgEnum("application_status", [
     "INTERESTED",
     "PREPARING",
     "APPLIED",
@@ -61,7 +61,7 @@ export const applicationStatusEnum = pgEnum("ApplicationStatus", [
     "WITHDRAWN",
 ]);
 
-export const applicationActivityTypeEnum = pgEnum("ApplicationActivityType", [
+export const applicationActivityTypeEnum = pgEnum("application_activity_type", [
     "MOCK_INTERVIEW",
     "AI_RESUME_REVIEW",
     "Learn_REVIEW",
@@ -77,15 +77,15 @@ export const applicationActivityTypeEnum = pgEnum("ApplicationActivityType", [
 // ===========================
 
 export const jobs = pgTable(
-    "Job",
+    "job",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        companyId: text("companyId")
+        companyId: text("company_id")
             .notNull()
             .references(() => companies.id, { onDelete: "cascade" }),
-        postedById: text("postedById")
+        postedById: text("posted_by_id")
             .notNull()
             .references(() => companyMembers.id),
         title: text("title").notNull(),
@@ -95,63 +95,63 @@ export const jobs = pgTable(
         responsibilities: jsonb("responsibilities"),
         benefits: jsonb("benefits"),
         location: text("location"),
-        locationType: jobLocationTypeEnum("locationType").notNull().default("REMOTE"),
-        employmentType: employmentTypeEnum("employmentType").notNull().default("FULL_TIME"),
-        experienceMin: integer("experienceMin"),
-        experienceMax: integer("experienceMax"),
-        salaryMin: integer("salaryMin"),
-        salaryMax: integer("salaryMax"),
-        salaryCurrency: text("salaryCurrency").notNull().default("INR"),
-        salaryDisclosed: boolean("salaryDisclosed").notNull().default(true),
-        skillsRequired: jsonb("skillsRequired").notNull().default([]),
-        skillsPreferred: jsonb("skillsPreferred").notNull().default([]),
-        hasAssignment: boolean("hasAssignment").notNull().default(false),
-        assignmentStudioId: text("assignmentStudioId"),
-        assignmentProjectId: text("assignmentProjectId"),
-        assignmentDeadlineDays: integer("assignmentDeadlineDays"),
-        evaluationCriteria: jsonb("evaluationCriteria"),
-        assignmentDetails: jsonb("assignmentDetails"),
-        assignmentInstructions: text("assignmentInstructions"),
-        customQuestions: jsonb("customQuestions").default([]),
+        locationType: jobLocationTypeEnum("location_type").notNull().default("REMOTE"),
+        employmentType: employmentTypeEnum("employment_type").notNull().default("FULL_TIME"),
+        experienceMin: integer("experience_min"),
+        experienceMax: integer("experience_max"),
+        salaryMin: integer("salary_min"),
+        salaryMax: integer("salary_max"),
+        salaryCurrency: text("salary_currency").notNull().default("INR"),
+        salaryDisclosed: boolean("salary_disclosed").notNull().default(true),
+        skillsRequired: jsonb("skills_required").notNull().default([]),
+        skillsPreferred: jsonb("skills_preferred").notNull().default([]),
+        hasAssignment: boolean("has_assignment").notNull().default(false),
+        assignmentStudioId: text("assignment_studio_id"),
+        assignmentProjectId: text("assignment_project_id"),
+        assignmentDeadlineDays: integer("assignment_deadline_days"),
+        evaluationCriteria: jsonb("evaluation_criteria"),
+        assignmentDetails: jsonb("assignment_details"),
+        assignmentInstructions: text("assignment_instructions"),
+        customQuestions: jsonb("custom_questions").default([]),
         status: jobStatusEnum("status").notNull().default("DRAFT"),
         visibility: jobVisibilityEnum("visibility").notNull().default("PUBLIC"),
         featured: boolean("featured").notNull().default(false),
-        viewsCount: integer("viewsCount").notNull().default(0),
-        applicationsCount: integer("applicationsCount").notNull().default(0),
-        matchingCriteria: jsonb("matchingCriteria"),
-        interviewProcessId: text("interviewProcessId"),
-        expiresAt: timestamp("expiresAt"),
-        publishedAt: timestamp("publishedAt"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        viewsCount: integer("views_count").notNull().default(0),
+        applicationsCount: integer("applications_count").notNull().default(0),
+        matchingCriteria: jsonb("matching_criteria"),
+        interviewProcessId: text("interview_process_id"),
+        expiresAt: timestamp("expires_at"),
+        publishedAt: timestamp("published_at"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_job_companyId").on(table.companyId),
+        index("idx_job_company_id").on(table.companyId),
         index("idx_job_slug").on(table.slug),
         index("idx_job_status").on(table.status),
-        index("idx_job_locationType").on(table.locationType),
-        index("idx_job_employmentType").on(table.employmentType),
-        index("idx_job_postedById").on(table.postedById),
+        index("idx_job_location_type").on(table.locationType),
+        index("idx_job_employment_type").on(table.employmentType),
+        index("idx_job_posted_by_id").on(table.postedById),
     ],
 );
 
 export const jobApplications = pgTable(
-    "JobApplication",
+    "job_application",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        jobId: text("jobId")
+        jobId: text("job_id")
             .notNull()
             .references(() => jobs.id, { onDelete: "cascade" }),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
         status: applicationStatusEnum("status").notNull().default("INTERESTED"),
-        currentStage: integer("currentStage"),
-        preparationStatus: jsonb("preparationStatus")
+        currentStage: integer("current_stage"),
+        preparationStatus: jsonb("preparation_status")
             .notNull()
             .default({
                 profile_complete: false,
@@ -161,112 +161,112 @@ export const jobApplications = pgTable(
                 assignment_started: false,
                 assignment_completed: false,
             }),
-        preparationScore: integer("preparationScore").notNull().default(0),
-        isReadyToApply: boolean("isReadyToApply").notNull().default(false),
-        assignmentProjectCloneId: text("assignmentProjectCloneId"),
-        assignmentStartedAt: timestamp("assignmentStartedAt"),
-        assignmentSubmittedAt: timestamp("assignmentSubmittedAt"),
-        assignmentScore: integer("assignmentScore"),
-        assignmentFeedback: text("assignmentFeedback"),
-        interviewId: text("interviewId"),
-        interviewScheduledAt: timestamp("interviewScheduledAt"),
-        interviewCompletedAt: timestamp("interviewCompletedAt"),
-        interviewFeedback: jsonb("interviewFeedback"),
+        preparationScore: integer("preparation_score").notNull().default(0),
+        isReadyToApply: boolean("is_ready_to_apply").notNull().default(false),
+        assignmentProjectCloneId: text("assignment_project_clone_id"),
+        assignmentStartedAt: timestamp("assignment_started_at"),
+        assignmentSubmittedAt: timestamp("assignment_submitted_at"),
+        assignmentScore: integer("assignment_score"),
+        assignmentFeedback: text("assignment_feedback"),
+        interviewId: text("interview_id"),
+        interviewScheduledAt: timestamp("interview_scheduled_at"),
+        interviewCompletedAt: timestamp("interview_completed_at"),
+        interviewFeedback: jsonb("interview_feedback"),
         // reviewedById references CompanyMember but is plain text to avoid circular imports
-        reviewedById: text("reviewedById"),
-        reviewedAt: timestamp("reviewedAt"),
-        rejectionReason: text("rejectionReason"),
-        hrNotes: text("hrNotes"),
-        matchScore: integer("matchScore"),
-        coverLetter: text("coverLetter"),
-        resumeUrl: text("resumeUrl"),
-        customQuestionResponses: jsonb("customQuestionResponses").default([]),
-        appliedAt: timestamp("appliedAt"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        reviewedById: text("reviewed_by_id"),
+        reviewedAt: timestamp("reviewed_at"),
+        rejectionReason: text("rejection_reason"),
+        hrNotes: text("hr_notes"),
+        matchScore: integer("match_score"),
+        coverLetter: text("cover_letter"),
+        resumeUrl: text("resume_url"),
+        customQuestionResponses: jsonb("custom_question_responses").default([]),
+        appliedAt: timestamp("applied_at"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("uq_jobApplication_jobId_userId").on(table.jobId, table.userId),
-        index("idx_jobApplication_jobId").on(table.jobId),
-        index("idx_jobApplication_userId").on(table.userId),
-        index("idx_jobApplication_status").on(table.status),
-        index("idx_jobApplication_reviewedById").on(table.reviewedById),
+        uniqueIndex("uq_job_application_job_id_user_id").on(table.jobId, table.userId),
+        index("idx_job_application_job_id").on(table.jobId),
+        index("idx_job_application_user_id").on(table.userId),
+        index("idx_job_application_status").on(table.status),
+        index("idx_job_application_reviewed_by_id").on(table.reviewedById),
     ],
 );
 
 export const applicationActivities = pgTable(
-    "ApplicationActivity",
+    "application_activity",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        applicationId: text("applicationId")
+        applicationId: text("application_id")
             .notNull()
             .references(() => jobApplications.id, { onDelete: "cascade" }),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        activityType: applicationActivityTypeEnum("activityType").notNull(),
-        activityId: text("activityId"),
+        activityType: applicationActivityTypeEnum("activity_type").notNull(),
+        activityId: text("activity_id"),
         metadata: jsonb("metadata"),
         score: integer("score"),
-        completedAt: timestamp("completedAt"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        completedAt: timestamp("completed_at"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_applicationActivity_applicationId").on(table.applicationId),
-        index("idx_applicationActivity_userId").on(table.userId),
-        index("idx_applicationActivity_activityType").on(table.activityType),
+        index("idx_application_activity_application_id").on(table.applicationId),
+        index("idx_application_activity_user_id").on(table.userId),
+        index("idx_application_activity_activity_type").on(table.activityType),
     ],
 );
 
 export const jobRecommendations = pgTable(
-    "JobRecommendation",
+    "job_recommendation",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        jobId: text("jobId")
+        jobId: text("job_id")
             .notNull()
             .references(() => jobs.id, { onDelete: "cascade" }),
-        matchScore: integer("matchScore").notNull(),
-        matchReasons: jsonb("matchReasons"),
-        isDismissed: boolean("isDismissed").notNull().default(false),
-        isSaved: boolean("isSaved").notNull().default(false),
-        viewedAt: timestamp("viewedAt"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        matchScore: integer("match_score").notNull(),
+        matchReasons: jsonb("match_reasons"),
+        isDismissed: boolean("is_dismissed").notNull().default(false),
+        isSaved: boolean("is_saved").notNull().default(false),
+        viewedAt: timestamp("viewed_at"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        uniqueIndex("uq_jobRecommendation_userId_jobId").on(table.userId, table.jobId),
-        index("idx_jobRecommendation_userId").on(table.userId),
-        index("idx_jobRecommendation_jobId").on(table.jobId),
-        index("idx_jobRecommendation_matchScore").on(table.matchScore),
+        uniqueIndex("uq_job_recommendation_user_id_job_id").on(table.userId, table.jobId),
+        index("idx_job_recommendation_user_id").on(table.userId),
+        index("idx_job_recommendation_job_id").on(table.jobId),
+        index("idx_job_recommendation_match_score").on(table.matchScore),
     ],
 );
 
 export const savedJobs = pgTable(
-    "SavedJob",
+    "saved_job",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        jobId: text("jobId")
+        jobId: text("job_id")
             .notNull()
             .references(() => jobs.id, { onDelete: "cascade" }),
         notes: text("notes"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        uniqueIndex("uq_savedJob_userId_jobId").on(table.userId, table.jobId),
-        index("idx_savedJob_userId").on(table.userId),
+        uniqueIndex("uq_saved_job_user_id_job_id").on(table.userId, table.jobId),
+        index("idx_saved_job_user_id").on(table.userId),
     ],
 );
 

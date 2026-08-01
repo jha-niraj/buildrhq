@@ -18,38 +18,38 @@ import { users } from "./schema";
 // ===========================
 
 export const jobInterviewAssistant = pgTable(
-    "JobInterviewAssistant",
+    "job_interview_assistant",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         position: text("position").notNull(),
-        jobDescription: text("jobDescription").notNull(),
-        companyUrl: text("companyUrl").notNull(),
-        companyInfo: jsonb("companyInfo"),
-        generatedContent: jsonb("generatedContent").notNull(),
-        includeAnswers: boolean("includeAnswers").notNull().default(false),
-        includePractice: boolean("includePractice").notNull().default(false),
-        searchHash: text("searchHash"),
+        jobDescription: text("job_description").notNull(),
+        companyUrl: text("company_url").notNull(),
+        companyInfo: jsonb("company_info"),
+        generatedContent: jsonb("generated_content").notNull(),
+        includeAnswers: boolean("include_answers").notNull().default(false),
+        includePractice: boolean("include_practice").notNull().default(false),
+        searchHash: text("search_hash"),
         slug: text("slug").notNull().unique().default("niraj jha"),
-        technicalCount: integer("technicalCount").notNull().default(8),
-        behavioralCount: integer("behavioralCount").notNull().default(8),
-        codingCount: integer("codingCount").notNull().default(3),
-        isPublic: boolean("isPublic").notNull().default(false),
-        publicCost: integer("publicCost"),
+        technicalCount: integer("technical_count").notNull().default(8),
+        behavioralCount: integer("behavioral_count").notNull().default(8),
+        codingCount: integer("coding_count").notNull().default(3),
+        isPublic: boolean("is_public").notNull().default(false),
+        publicCost: integer("public_cost"),
         description: text("description"),
-        creditsCost: integer("creditsCost"),
-        purchaseCount: integer("purchaseCount").notNull().default(0),
-        viewCount: integer("viewCount").notNull().default(0),
+        creditsCost: integer("credits_cost"),
+        purchaseCount: integer("purchase_count").notNull().default(0),
+        viewCount: integer("view_count").notNull().default(0),
         rating: real("rating"),
         tags: text("tags").array().notNull().default([]),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().defaultNow().$onUpdateFn(() => new Date()),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdateFn(() => new Date()),
     },
     (t) => [
-        index("jobInterviewAssistant_userId_idx").on(t.userId),
-        index("jobInterviewAssistant_searchHash_idx").on(t.searchHash),
-        index("jobInterviewAssistant_isPublic_idx").on(t.isPublic),
-        index("jobInterviewAssistant_position_idx").on(t.position),
+        index("job_interview_assistant_user_id_idx").on(t.userId),
+        index("job_interview_assistant_search_hash_idx").on(t.searchHash),
+        index("job_interview_assistant_is_public_idx").on(t.isPublic),
+        index("job_interview_assistant_position_idx").on(t.position),
     ]
 );
 
@@ -70,26 +70,26 @@ export const jobInterviewAssistantRelations = relations(jobInterviewAssistant, (
 // ===========================
 
 export const codeEvaluation = pgTable(
-    "CodeEvaluation",
+    "code_evaluation",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        questionText: text("questionText").notNull(),
-        userCode: text("userCode").notNull(),
+        questionText: text("question_text").notNull(),
+        userCode: text("user_code").notNull(),
         language: text("language").notNull(),
         evaluation: jsonb("evaluation"),
         score: integer("score"),
         feedback: text("feedback"),
         strengths: text("strengths").array().notNull().default([]),
         improvements: text("improvements").array().notNull().default([]),
-        isSubmitted: boolean("isSubmitted").notNull().default(false),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().defaultNow().$onUpdateFn(() => new Date()),
-        interviewId: text("interviewId").notNull().references(() => jobInterviewAssistant.id, { onDelete: "cascade" }),
+        isSubmitted: boolean("is_submitted").notNull().default(false),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdateFn(() => new Date()),
+        interviewId: text("interview_id").notNull().references(() => jobInterviewAssistant.id, { onDelete: "cascade" }),
     },
     (t) => [
-        index("codeEvaluation_interviewId_idx").on(t.interviewId),
-        index("codeEvaluation_language_idx").on(t.language),
-        index("codeEvaluation_isSubmitted_idx").on(t.isSubmitted),
+        index("code_evaluation_interview_id_idx").on(t.interviewId),
+        index("code_evaluation_language_idx").on(t.language),
+        index("code_evaluation_is_submitted_idx").on(t.isSubmitted),
     ]
 );
 
@@ -105,22 +105,22 @@ export const codeEvaluationRelations = relations(codeEvaluation, ({ one }) => ({
 // ===========================
 
 export const questionAnswer = pgTable(
-    "QuestionAnswer",
+    "question_answer",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        questionText: text("questionText").notNull(),
-        questionType: text("questionType").notNull(),
+        questionText: text("question_text").notNull(),
+        questionType: text("question_type").notNull(),
         language: text("language"),
         answer: jsonb("answer").notNull(),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().defaultNow().$onUpdateFn(() => new Date()),
-        interviewId: text("interviewId").notNull().references(() => jobInterviewAssistant.id, { onDelete: "cascade" }),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdateFn(() => new Date()),
+        interviewId: text("interview_id").notNull().references(() => jobInterviewAssistant.id, { onDelete: "cascade" }),
     },
     (t) => [
-        uniqueIndex("questionAnswer_interviewId_questionText_language_key").on(t.interviewId, t.questionText, t.language),
-        index("questionAnswer_interviewId_idx").on(t.interviewId),
-        index("questionAnswer_questionType_idx").on(t.questionType),
-        index("questionAnswer_language_idx").on(t.language),
+        uniqueIndex("question_answer_interview_id_question_text_language_key").on(t.interviewId, t.questionText, t.language),
+        index("question_answer_interview_id_idx").on(t.interviewId),
+        index("question_answer_question_type_idx").on(t.questionType),
+        index("question_answer_language_idx").on(t.language),
     ]
 );
 
@@ -136,26 +136,26 @@ export const questionAnswerRelations = relations(questionAnswer, ({ one }) => ({
 // ===========================
 
 export const userQuestionResponse = pgTable(
-    "UserQuestionResponse",
+    "user_question_response",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().defaultNow().$onUpdateFn(() => new Date()),
-        interviewId: text("interviewId").notNull().references(() => jobInterviewAssistant.id, { onDelete: "cascade" }),
-        questionText: text("questionText").notNull(),
-        questionType: text("questionType").notNull(),
-        questionIndex: integer("questionIndex").notNull(),
-        userAnswer: text("userAnswer").notNull(),
-        answerMethod: text("answerMethod").notNull().default("text"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdateFn(() => new Date()),
+        interviewId: text("interview_id").notNull().references(() => jobInterviewAssistant.id, { onDelete: "cascade" }),
+        questionText: text("question_text").notNull(),
+        questionType: text("question_type").notNull(),
+        questionIndex: integer("question_index").notNull(),
+        userAnswer: text("user_answer").notNull(),
+        answerMethod: text("answer_method").notNull().default("text"),
         score: integer("score").notNull(),
         feedback: text("feedback").notNull(),
         strengths: text("strengths").array().notNull().default([]),
         improvements: text("improvements").array().notNull().default([]),
-        comparedToExpert: jsonb("comparedToExpert").notNull(),
-        evaluationDetails: jsonb("evaluationDetails"),
+        comparedToExpert: jsonb("compared_to_expert").notNull(),
+        evaluationDetails: jsonb("evaluation_details"),
     },
     (t) => [
-        uniqueIndex("userQuestionResponse_interviewId_questionType_questionIndex_key").on(
+        uniqueIndex("user_question_response_interview_id_question_type_question_index_key").on(
             t.interviewId,
             t.questionType,
             t.questionIndex
@@ -174,13 +174,13 @@ export const userQuestionResponseRelations = relations(userQuestionResponse, ({ 
 // interviewPlanPurchase
 // ===========================
 
-export const interviewPlanPurchase = pgTable("InterviewPlanPurchase", {
+export const interviewPlanPurchase = pgTable("interview_plan_purchase", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    buyerId: text("buyerId").notNull(),
-    interviewPlanId: text("interviewPlanId").notNull().references(() => jobInterviewAssistant.id),
+    buyerId: text("buyer_id").notNull(),
+    interviewPlanId: text("interview_plan_id").notNull().references(() => jobInterviewAssistant.id),
     cost: integer("cost").notNull(),
-    purchasedAt: timestamp("purchasedAt").notNull().defaultNow(),
-    newInterviewPlanId: text("newInterviewPlanId").references(() => jobInterviewAssistant.id),
+    purchasedAt: timestamp("purchased_at").notNull().defaultNow(),
+    newInterviewPlanId: text("new_interview_plan_id").references(() => jobInterviewAssistant.id),
 });
 
 export const interviewPlanPurchaseRelations = relations(interviewPlanPurchase, ({ one }) => ({
@@ -201,23 +201,23 @@ export const interviewPlanPurchaseRelations = relations(interviewPlanPurchase, (
 // ===========================
 
 export const coverLetter = pgTable(
-    "CoverLetter",
+    "cover_letter",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-        jobUrl: text("jobUrl").notNull(),
-        companyName: text("companyName"),
-        jobTitle: text("jobTitle"),
-        jobDescription: text("jobDescription"),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+        jobUrl: text("job_url").notNull(),
+        companyName: text("company_name"),
+        jobTitle: text("job_title"),
+        jobDescription: text("job_description"),
         questions: jsonb("questions"),
         answers: jsonb("answers"),
         tone: text("tone").default("Professional"),
-        generatedContent: text("generatedContent"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().defaultNow().$onUpdateFn(() => new Date()),
+        generatedContent: text("generated_content"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdateFn(() => new Date()),
     },
     (t) => [
-        index("coverLetter_userId_idx").on(t.userId),
+        index("cover_letter_user_id_idx").on(t.userId),
     ]
 );
 
@@ -232,26 +232,26 @@ export const coverLetterRelations = relations(coverLetter, ({ one }) => ({
 // resumeTemplate
 // ===========================
 
-export const resumeTemplate = pgTable("ResumeTemplate", {
+export const resumeTemplate = pgTable("resume_template", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
     slug: text("slug").notNull().unique(),
     name: text("name").notNull(),
     description: text("description").notNull(),
-    previewImageUrl: text("previewImageUrl").notNull(),
-    sectionOrder: jsonb("sectionOrder").notNull(),
-    isDefault: boolean("isDefault").notNull().default(false),
-    creditsCost: integer("creditsCost").notNull().default(10),
-    isPlatform: boolean("isPlatform").notNull().default(false),
-    createdById: text("createdById").references(() => users.id, { onDelete: "set null" }),
-    isMarketplace: boolean("isMarketplace").notNull().default(false),
-    isFeatured: boolean("isFeatured").notNull().default(false),
-    marketplacePrice: integer("marketplacePrice").notNull().default(0),
+    previewImageUrl: text("preview_image_url").notNull(),
+    sectionOrder: jsonb("section_order").notNull(),
+    isDefault: boolean("is_default").notNull().default(false),
+    creditsCost: integer("credits_cost").notNull().default(10),
+    isPlatform: boolean("is_platform").notNull().default(false),
+    createdById: text("created_by_id").references(() => users.id, { onDelete: "set null" }),
+    isMarketplace: boolean("is_marketplace").notNull().default(false),
+    isFeatured: boolean("is_featured").notNull().default(false),
+    marketplacePrice: integer("marketplace_price").notNull().default(0),
     config: jsonb("config"),
-    totalSales: integer("totalSales").notNull().default(0),
-    totalRevenue: integer("totalRevenue").notNull().default(0),
+    totalSales: integer("total_sales").notNull().default(0),
+    totalRevenue: integer("total_revenue").notNull().default(0),
     tags: text("tags").array().notNull().default([]),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-    updatedAt: timestamp("updatedAt").notNull().defaultNow().$onUpdateFn(() => new Date()),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdateFn(() => new Date()),
 });
 
 export const resumeTemplateRelations = relations(resumeTemplate, ({ one, many }) => ({
@@ -269,18 +269,18 @@ export const resumeTemplateRelations = relations(resumeTemplate, ({ one, many })
 // ===========================
 
 export const resumeTemplateGeneration = pgTable(
-    "ResumeTemplateGeneration",
+    "resume_template_generation",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-        templateId: text("templateId").notNull().references(() => resumeTemplate.id, { onDelete: "cascade" }),
-        generatedContent: jsonb("generatedContent"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+        templateId: text("template_id").notNull().references(() => resumeTemplate.id, { onDelete: "cascade" }),
+        generatedContent: jsonb("generated_content"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (t) => [
-        index("resumeTemplateGeneration_userId_idx").on(t.userId),
-        index("resumeTemplateGeneration_templateId_idx").on(t.templateId),
-        index("resumeTemplateGeneration_userId_templateId_idx").on(t.userId, t.templateId),
+        index("resume_template_generation_user_id_idx").on(t.userId),
+        index("resume_template_generation_template_id_idx").on(t.templateId),
+        index("resume_template_generation_user_id_template_id_idx").on(t.userId, t.templateId),
     ]
 );
 
@@ -301,28 +301,28 @@ export const resumeTemplateGenerationRelations = relations(resumeTemplateGenerat
 // ===========================
 
 export const resumeDraft = pgTable(
-    "ResumeDraft",
+    "resume_draft",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         name: text("name").notNull(),
-        templateSlug: text("templateSlug").notNull().default("clean-minimal"),
+        templateSlug: text("template_slug").notNull().default("clean-minimal"),
         content: jsonb("content").notNull(),
-        tailoredFor: text("tailoredFor"),
-        jdSnapshot: text("jdSnapshot"),
-        atsScore: integer("atsScore"),
-        isPublic: boolean("isPublic").notNull().default(false),
-        shareSlug: text("shareSlug").notNull().unique().$defaultFn(() => createId()),
-        viewCount: integer("viewCount").notNull().default(0),
-        importedFrom: text("importedFrom"),
-        importedUrl: text("importedUrl"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().defaultNow().$onUpdateFn(() => new Date()),
+        tailoredFor: text("tailored_for"),
+        jdSnapshot: text("jd_snapshot"),
+        atsScore: integer("ats_score"),
+        isPublic: boolean("is_public").notNull().default(false),
+        shareSlug: text("share_slug").notNull().unique().$defaultFn(() => createId()),
+        viewCount: integer("view_count").notNull().default(0),
+        importedFrom: text("imported_from"),
+        importedUrl: text("imported_url"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().defaultNow().$onUpdateFn(() => new Date()),
     },
     (t) => [
-        index("resumeDraft_userId_idx").on(t.userId),
-        index("resumeDraft_shareSlug_idx").on(t.shareSlug),
-        index("resumeDraft_isPublic_idx").on(t.isPublic),
+        index("resume_draft_user_id_idx").on(t.userId),
+        index("resume_draft_share_slug_idx").on(t.shareSlug),
+        index("resume_draft_is_public_idx").on(t.isPublic),
     ]
 );
 
@@ -339,20 +339,20 @@ export const resumeDraftRelations = relations(resumeDraft, ({ one }) => ({
 // ===========================
 
 export const templatePurchase = pgTable(
-    "TemplatePurchase",
+    "template_purchase",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        buyerId: text("buyerId").notNull().references(() => users.id),
-        templateId: text("templateId").notNull().references(() => resumeTemplate.id),
-        pricePaid: integer("pricePaid").notNull(),
-        creatorEarning: integer("creatorEarning").notNull(),
-        platformFee: integer("platformFee").notNull(),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        buyerId: text("buyer_id").notNull().references(() => users.id),
+        templateId: text("template_id").notNull().references(() => resumeTemplate.id),
+        pricePaid: integer("price_paid").notNull(),
+        creatorEarning: integer("creator_earning").notNull(),
+        platformFee: integer("platform_fee").notNull(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (t) => [
-        uniqueIndex("templatePurchase_buyerId_templateId_key").on(t.buyerId, t.templateId),
-        index("templatePurchase_buyerId_idx").on(t.buyerId),
-        index("templatePurchase_templateId_idx").on(t.templateId),
+        uniqueIndex("template_purchase_buyer_id_template_id_key").on(t.buyerId, t.templateId),
+        index("template_purchase_buyer_id_idx").on(t.buyerId),
+        index("template_purchase_template_id_idx").on(t.templateId),
     ]
 );
 

@@ -18,133 +18,133 @@ import { users, activityTypeEnum } from "./schema";
 // ===========================
 
 export const dailyActivities = pgTable(
-    "DailyActivity",
+    "daily_activity",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id),
         date: date("date").unique().notNull(),
-        hasActivity: boolean("hasActivity").notNull().default(false),
-        totalXpEarned: integer("totalXpEarned").notNull().default(0),
-        totalCreditsEarned: integer("totalCreditsEarned").notNull().default(0),
-        totalTimeSpent: integer("totalTimeSpent").notNull().default(0),
-        activitiesCount: integer("activitiesCount").notNull().default(0),
-        isStreakDay: boolean("isStreakDay").notNull().default(false),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        hasActivity: boolean("has_activity").notNull().default(false),
+        totalXpEarned: integer("total_xp_earned").notNull().default(0),
+        totalCreditsEarned: integer("total_credits_earned").notNull().default(0),
+        totalTimeSpent: integer("total_time_spent").notNull().default(0),
+        activitiesCount: integer("activities_count").notNull().default(0),
+        isStreakDay: boolean("is_streak_day").notNull().default(false),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("uq_dailyActivity_userId_date").on(table.userId, table.date),
-        index("idx_dailyActivity_userId").on(table.userId),
-        index("idx_dailyActivity_date").on(table.date),
-        index("idx_dailyActivity_userId_date").on(table.userId, table.date),
-        index("idx_dailyActivity_isStreakDay").on(table.isStreakDay),
+        uniqueIndex("uq_daily_activity_user_id_date").on(table.userId, table.date),
+        index("idx_daily_activity_user_id").on(table.userId),
+        index("idx_daily_activity_date").on(table.date),
+        index("idx_daily_activity_user_id_date").on(table.userId, table.date),
+        index("idx_daily_activity_is_streak_day").on(table.isStreakDay),
     ],
 );
 
 export const activityEntries = pgTable(
-    "ActivityEntry",
+    "activity_entry",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        dailyActivityId: text("dailyActivityId")
+        dailyActivityId: text("daily_activity_id")
             .notNull()
             .references(() => dailyActivities.id, { onDelete: "cascade" }),
-        activityType: activityTypeEnum("activityType").notNull(),
+        activityType: activityTypeEnum("activity_type").notNull(),
         title: text("title").notNull(),
         description: text("description"),
-        xpEarned: integer("xpEarned").notNull().default(0),
-        creditsEarned: integer("creditsEarned").notNull().default(0),
-        timeSpent: integer("timeSpent").notNull().default(0),
+        xpEarned: integer("xp_earned").notNull().default(0),
+        creditsEarned: integer("credits_earned").notNull().default(0),
+        timeSpent: integer("time_spent").notNull().default(0),
         metadata: jsonb("metadata"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_activityEntry_userId").on(table.userId),
-        index("idx_activityEntry_dailyActivityId").on(table.dailyActivityId),
-        index("idx_activityEntry_activityType").on(table.activityType),
-        index("idx_activityEntry_userId_createdAt").on(table.userId, table.createdAt),
+        index("idx_activity_entry_user_id").on(table.userId),
+        index("idx_activity_entry_daily_activity_id").on(table.dailyActivityId),
+        index("idx_activity_entry_activity_type").on(table.activityType),
+        index("idx_activity_entry_user_id_created_at").on(table.userId, table.createdAt),
     ],
 );
 
 export const userStats = pgTable(
-    "UserStats",
+    "user_stats",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .unique()
             .notNull()
             .references(() => users.id),
-        currentStreak: integer("currentStreak").notNull().default(0),
-        longestStreak: integer("longestStreak").notNull().default(0),
-        totalSpeakingTime: integer("totalSpeakingTime").notNull().default(0),
-        weeklyTalkingTime: integer("weeklyTalkingTime").notNull().default(0),
-        totalConversations: integer("totalConversations").notNull().default(0),
-        weeklyConversations: integer("weeklyConversations").notNull().default(0),
-        lastActivityDate: timestamp("lastActivityDate"),
-        weekStartDate: timestamp("weekStartDate").notNull().defaultNow(),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        currentStreak: integer("current_streak").notNull().default(0),
+        longestStreak: integer("longest_streak").notNull().default(0),
+        totalSpeakingTime: integer("total_speaking_time").notNull().default(0),
+        weeklyTalkingTime: integer("weekly_talking_time").notNull().default(0),
+        totalConversations: integer("total_conversations").notNull().default(0),
+        weeklyConversations: integer("weekly_conversations").notNull().default(0),
+        lastActivityDate: timestamp("last_activity_date"),
+        weekStartDate: timestamp("week_start_date").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_userStats_userId").on(table.userId),
+        index("idx_user_stats_user_id").on(table.userId),
     ],
 );
 
 export const streakRewards = pgTable(
-    "StreakReward",
+    "streak_reward",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id),
-        streakDays: integer("streakDays").notNull(),
-        creditsAwarded: integer("creditsAwarded").notNull(),
-        awardedAt: timestamp("awardedAt").notNull().defaultNow(),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        streakDays: integer("streak_days").notNull(),
+        creditsAwarded: integer("credits_awarded").notNull(),
+        awardedAt: timestamp("awarded_at").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        uniqueIndex("uq_streakReward_userId_streakDays").on(table.userId, table.streakDays),
-        index("idx_streakReward_userId").on(table.userId),
+        uniqueIndex("uq_streak_reward_user_id_streak_days").on(table.userId, table.streakDays),
+        index("idx_streak_reward_user_id").on(table.userId),
     ],
 );
 
 export const userAchievements = pgTable(
-    "UserAchievement",
+    "user_achievement",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id),
-        achievementType: text("achievementType").notNull(),
+        achievementType: text("achievement_type").notNull(),
         title: text("title").notNull(),
         description: text("description").notNull(),
-        badgeIcon: text("badgeIcon").notNull(),
-        badgeColor: text("badgeColor").notNull(),
-        creditsAwarded: integer("creditsAwarded").notNull().default(0),
-        unlockedAt: timestamp("unlockedAt").notNull().defaultNow(),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        badgeIcon: text("badge_icon").notNull(),
+        badgeColor: text("badge_color").notNull(),
+        creditsAwarded: integer("credits_awarded").notNull().default(0),
+        unlockedAt: timestamp("unlocked_at").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_userAchievement_userId").on(table.userId),
-        index("idx_userAchievement_achievementType").on(table.achievementType),
+        index("idx_user_achievement_user_id").on(table.userId),
+        index("idx_user_achievement_achievement_type").on(table.achievementType),
     ],
 );
 

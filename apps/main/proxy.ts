@@ -72,12 +72,11 @@ const apiRoutes = [
 	'/api/health',
 	'/api/user',
 	'/api/webhooks',
-	'/api/forgotpassword',
 ]
 
 const PRODUCTION_ORIGIN = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.buildrhq.com'
 
-export default async function middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
 	const { nextUrl } = req
 	const pathname = nextUrl.pathname
 

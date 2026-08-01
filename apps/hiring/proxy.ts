@@ -25,26 +25,22 @@ async function getSessionFromRequest(request: NextRequest): Promise<SessionData 
     }
 }
 
-function redirectToSignIn(req: NextRequest): NextResponse {
-    const url = new URL("/signin", req.nextUrl.origin)
-    url.searchParams.set("callbackUrl", req.nextUrl.pathname)
-    return NextResponse.redirect(url)
-}
-
 // Protected routes that require authentication
 const protectedRoutes = [
+    // '/home' is the signed-in dashboard and was missing from this list, so it
+    // rendered for logged-out visitors instead of bouncing them to /signin.
+    '/home',
     '/dashboard',
     '/settings',
     '/profile',
-    '/students',
-    '/faculty',
-    '/classes',
-    '/departments',
-    '/assignments',
+    '/jobs',
+    '/candidates',
+    '/applications',
     '/analytics',
-    '/billing',
-    '/placements',
-    '/university',
+    '/team',
+    '/company',
+    '/interviews',
+    '/assignments',
 ]
 
 // API routes that should be excluded from auth checks
@@ -52,14 +48,10 @@ const apiRoutes = [
     '/api/auth',
     '/api/health',
     '/api/webhooks',
-    '/api/verify-otp',
-    '/api/forgotpassword',
-    '/api/resetpassword',
-    '/api/resend-verification',
     '/api/user/verify-status',
 ]
 
-export default async function middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
     const { nextUrl } = req
 
     // Allow API routes to pass through
@@ -77,10 +69,10 @@ export default async function middleware(req: NextRequest) {
     }
 
     const session = await getSessionFromRequest(req)
-    const isLoggedIn = !!session
+    const isLoggedIn = !!session?.user
     const onboardingCompleted = session?.user?.onboardingCompleted ?? false
 
-    console.log(`[University] Middleware: ${nextUrl.pathname}, isLoggedIn: ${isLoggedIn}, onboarding: ${onboardingCompleted}`)
+    console.log(`[Hiring] Middleware: ${nextUrl.pathname}, isLoggedIn: ${isLoggedIn}, onboarding: ${onboardingCompleted}`)
 
     // Check if current path is a protected route
     const isProtectedRoute = protectedRoutes.some(route =>
@@ -89,7 +81,9 @@ export default async function middleware(req: NextRequest) {
 
     // If user is not logged in and trying to access protected route
     if (!isLoggedIn && isProtectedRoute) {
-        return redirectToSignIn(req)
+        const signInUrl = new URL('/signin', nextUrl.origin)
+        signInUrl.searchParams.set('callbackUrl', nextUrl.pathname)
+        return NextResponse.redirect(signInUrl)
     }
 
     // Handle post-login redirection logic
@@ -102,18 +96,18 @@ export default async function middleware(req: NextRequest) {
 
         // If onboarding is completed and user tries to access onboarding page, redirect to dashboard
         if (onboardingCompleted && nextUrl.pathname === '/onboarding') {
-            return NextResponse.redirect(new URL('/dashboard', nextUrl.origin))
+            return NextResponse.redirect(new URL('/home', nextUrl.origin))
         }
 
         // If user is trying to access signin/register, redirect based on onboarding status
         if (nextUrl.pathname === '/signin' || nextUrl.pathname === '/register') {
-            const redirectUrl = onboardingCompleted ? '/dashboard' : '/onboarding'
+            const redirectUrl = onboardingCompleted ? '/home' : '/onboarding'
             return NextResponse.redirect(new URL(redirectUrl, nextUrl.origin))
         }
 
         // For the root path, redirect authenticated users based on onboarding status
         if (nextUrl.pathname === '/') {
-            const redirectUrl = onboardingCompleted ? '/dashboard' : '/onboarding'
+            const redirectUrl = onboardingCompleted ? '/home' : '/onboarding'
             return NextResponse.redirect(new URL(redirectUrl, nextUrl.origin))
         }
     }

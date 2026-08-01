@@ -2,9 +2,8 @@
 
 import { db, users, companyMembers, companies } from "@repo/db"
 import { eq } from "drizzle-orm"
-import { getSession } from "@repo/auth"
+import { auth, getSession } from "@repo/auth"
 import { headers } from "next/headers"
-import bcrypt from "bcryptjs"
 import type {
     UserProfile, CompanyDetails, UpdateProfilePayload,
     ChangePasswordPayload, UpdateCompanyPayload, Permission,
@@ -275,38 +274,45 @@ export async function changePassword(payload: ChangePasswordPayload) {
     }
 
     try {
-        const user = await db.query.users.findFirst({
-            where: eq(users.id, session.user.id),
-            columns: { hashedPassword: true }
+        // Delegated to better-auth so the comparison runs against the stored
+        // credential and the rewrite lands on the same record. This used to
+        // compare against `users.hashedPassword` and write back to it -- a column
+        // better-auth never reads, since credential passwords live on the
+        // `account` row. That made the check answer "OAuth account" to every
+        // password user and the write a no-op.
+        await auth.api.changePassword({
+            body: {
+                currentPassword: payload.currentPassword,
+                newPassword: payload.newPassword,
+                // A password change should not leave other machines signed in.
+                revokeOtherSessions: true,
+            },
+            headers: await headers(),
         })
 
-        if (!user) {
-            return { success: false, error: "User not found" }
-        }
-
-        // Check if user has a password (might be OAuth user)
-        if (!user.hashedPassword) {
-            return { success: false, error: "Cannot change password for OAuth accounts" }
-        }
-
-        // Verify current password
-        const isValid = await bcrypt.compare(payload.currentPassword, user.hashedPassword)
-        if (!isValid) {
-            return { success: false, error: "Current password is incorrect" }
-        }
-
-        // Hash new password
-        const hashedPassword = await bcrypt.hash(payload.newPassword, 12)
-
-        // Update password
+        // App-side flag, not something better-auth knows about.
         await db.update(users)
-            .set({ hashedPassword })
+            .set({ mustChangePassword: false })
             .where(eq(users.id, session.user.id))
 
         return { success: true, message: "Password changed successfully" }
-    } catch (error) {
+    } catch (error: unknown) {
+        // better-auth signals failure by throwing an APIError carrying a code,
+        // rather than by returning a result object.
+        const body =
+            typeof error === "object" && error !== null && "body" in error
+                ? (error as { body?: { code?: string; message?: string } }).body
+                : undefined
+
+        if (body?.code === "INVALID_PASSWORD") {
+            return { success: false, error: "Current password is incorrect" }
+        }
+        if (body?.code === "CREDENTIAL_ACCOUNT_NOT_FOUND") {
+            return { success: false, error: "Cannot change password for OAuth accounts" }
+        }
+
         console.error("Change password error:", error)
-        return { success: false, error: "Failed to change password" }
+        return { success: false, error: body?.message ?? "Failed to change password" }
     }
 }
 

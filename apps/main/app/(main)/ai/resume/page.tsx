@@ -11,7 +11,7 @@ export const metadata = {
 
 export default async function ResumeHubPage() {
     const session = await getSession(headers())
-    if (!session?.user?.id) redirect('/login')
+    if (!session?.user?.id) redirect('/signin')
 
     const [draftsRes, templatesRes] = await Promise.all([
         getResumeDrafts(),

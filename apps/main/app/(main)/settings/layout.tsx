@@ -16,7 +16,7 @@ export default async function SettingsLayout({
     const session = await getSession(headers())
 
     if (!session?.user) {
-        redirect('/login')
+        redirect('/signin')
     }
 
     return (

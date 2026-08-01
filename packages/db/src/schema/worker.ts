@@ -15,27 +15,27 @@ import { users } from "./schema";
 // ===========================
 
 export const backgroundJobs = pgTable(
-    "BackgroundJob",
+    "background_job",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        jobId: text("jobId").notNull().unique(),
+        jobId: text("job_id").notNull().unique(),
         status: text("status").notNull(),
         progress: integer("progress").notNull().default(0),
         input: jsonb("input").notNull(),
         result: jsonb("result"),
         error: text("error"),
-        userId: text("userId").references(() => users.id),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        userId: text("user_id").references(() => users.id),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_backgroundJob_jobId").on(table.jobId),
-        index("idx_backgroundJob_status").on(table.status),
-        index("idx_backgroundJob_userId").on(table.userId),
+        index("idx_background_job_job_id").on(table.jobId),
+        index("idx_background_job_status").on(table.status),
+        index("idx_background_job_user_id").on(table.userId),
     ],
 );
 

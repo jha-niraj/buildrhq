@@ -32,11 +32,15 @@ async function nameForEmail(email: string): Promise<string> {
     }
 }
 
+// Last resort matches `apps/main`'s dev port (see its package.json `dev` script).
+// It read :4101 before, which is not a port anything in this repo listens on —
+// so with an unpopulated .env, better-auth would mint OAuth redirect URIs and
+// magic-link URLs pointing at a dead origin.
 const APP_URL =
     process.env.NEXT_PUBLIC_APP_URL ||
     process.env.NEXT_PUBLIC_BASE_URL ||
     process.env.BETTER_AUTH_URL ||
-    "http://localhost:4101";
+    "http://localhost:3004";
 
 export const auth = betterAuth({
     database: drizzleAdapter(db as unknown as Parameters<typeof drizzleAdapter>[0], {
@@ -216,12 +220,17 @@ export const auth = betterAuth({
         cookiePrefix: "buildrhq",
     },
 
+    // Fallbacks match the `dev` ports in each app's package.json. They were wrong
+    // before — web pointed at :3000 (it runs on :4100) and uni/admin were
+    // swapped — which only stayed invisible because .env sets these explicitly.
+    // A machine without a populated .env would have failed CSRF checks on the
+    // wrong origins with no obvious cause.
     trustedOrigins: [
-        process.env.NEXT_PUBLIC_WEB_URL || "http://localhost:3000",
-        process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:4101",
-        process.env.NEXT_PUBLIC_UNI_URL || "http://localhost:3001",
+        process.env.NEXT_PUBLIC_WEB_URL || "http://localhost:4100",
+        process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3004",
+        process.env.NEXT_PUBLIC_UNI_URL || "http://localhost:3003",
         process.env.NEXT_PUBLIC_HIRING_URL || "http://localhost:3002",
-        process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3003",
+        process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3001",
     ].filter(Boolean) as string[],
 });
 
