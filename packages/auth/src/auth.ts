@@ -230,7 +230,7 @@ export const auth = betterAuth({
         process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3004",
         process.env.NEXT_PUBLIC_UNI_URL || "http://localhost:3003",
         process.env.NEXT_PUBLIC_HIRING_URL || "http://localhost:3002",
-        process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3001",
+        process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3005",
     ].filter(Boolean) as string[],
 });
 

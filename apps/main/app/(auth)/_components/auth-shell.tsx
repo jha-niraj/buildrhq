@@ -4,7 +4,7 @@ import type { ReactNode } from "react"
 import Link from "next/link"
 import { Code2 } from "lucide-react"
 import { ThemeToggle } from "@repo/ui/components/themetoggle"
-import { AuthVisual } from "./auth-visual"
+import { AuthVisual, type AuthVisualVariant } from "@repo/ui/components/auth-visual"
 
 /**
  * The two-column shell every auth screen sits in.
@@ -21,66 +21,80 @@ import { AuthVisual } from "./auth-visual"
  * height means the layout is identical in all three modes and only the form
  * content changes.
  *
- * The theme toggle lives bottom-left, on the brand column, so it is reachable
- * before sign-in without competing with the form for attention.
+ * ── Brand column layout ──
+ * The artwork used to be absolutely positioned across the whole panel, so its
+ * wires ran straight underneath the headline and the two fought each other — a
+ * gradient mask was papering over the overlap rather than removing it. It is now
+ * an ordinary flex child BELOW the copy, so the two cannot collide at any
+ * viewport size and no mask is needed.
+ *
+ * Reading order, top to bottom: brand → headline → artwork → footer. The copy
+ * sits high, where the eye lands first; the artwork fills whatever is left
+ * instead of competing for the same space.
+ *
+ * `variant` selects the motif, so no two auth screens show the same picture.
  */
 export function AuthShell({
     children,
     headline,
     sub,
     quote,
+    variant = "contributions",
 }: {
     children: ReactNode
     headline: ReactNode
     sub?: string
     quote?: string
+    variant?: AuthVisualVariant
 }) {
     return (
         <div className="flex h-screen w-full justify-center overflow-hidden bg-neutral-100 dark:bg-neutral-900 xl:p-6">
             <div className="flex h-full w-full max-w-7xl overflow-hidden bg-white ring-neutral-200 xl:rounded-3xl xl:shadow-sm xl:ring-1 dark:bg-neutral-950 dark:ring-neutral-800">
                 {/* ── Brand column ── */}
-                <aside className="relative hidden h-full w-1/2 flex-col justify-between overflow-hidden bg-neutral-950 p-10 lg:flex xl:p-12">
-                    {/* A soft off-centre glow instead of the old 48px grid — the grid
-                        read as a form field on a dark panel and fought the animation
-                        behind it for attention. This just lifts the corner the artwork
-                        occupies so the copy keeps the contrast. */}
+                <aside className="relative hidden h-full w-1/2 flex-col overflow-hidden bg-neutral-950 p-10 lg:flex xl:p-12">
+                    {/* A soft glow low in the panel, sitting under the artwork rather
+                        than under the copy — it lifts the shape off the flat black
+                        without washing out the headline above it. */}
                     <div
                         aria-hidden
-                        className="absolute inset-0"
+                        className="absolute inset-x-0 bottom-0 h-2/3"
                         style={{
                             background:
-                                "radial-gradient(70% 55% at 78% 50%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 38%, transparent 72%)",
+                                "radial-gradient(60% 60% at 50% 70%, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.03) 45%, transparent 75%)",
                         }}
                     />
-                    {/* Pushed to the outer edge and faded toward the copy. Centred, it
-                        ran its wires straight through the headline, so the text sat on
-                        a bed of moving lines and neither read cleanly. The mask keeps
-                        the diagram legible where there is nothing behind it and lets it
-                        dissolve before it reaches the words. */}
-                    <AuthVisual
-                        className="absolute -right-24 top-1/2 h-[620px] w-[620px] -translate-y-1/2 opacity-90 [mask-image:linear-gradient(to_right,transparent_0%,black_38%,black_100%)]"
-                    />
 
-                    <Link href="/" className="relative z-10 flex w-fit items-center gap-2.5">
+                    <Link href="/" className="relative z-10 flex w-fit shrink-0 items-center gap-2.5">
                         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">
                             <Code2 className="h-5 w-5 text-white" />
                         </span>
                         <span className="text-lg font-semibold tracking-tight text-white">ShiprHQ</span>
                     </Link>
 
-                    <div className="relative z-10 max-w-sm xl:max-w-md">
+                    {/* Copy block — high in the panel, left aligned. */}
+                    <div className="relative z-10 mt-10 max-w-sm shrink-0 xl:mt-12 xl:max-w-md">
                         <h2 className="text-3xl font-bold leading-tight tracking-tight text-white xl:text-4xl">
                             {headline}
                         </h2>
                         {sub && <p className="mt-4 text-base leading-relaxed text-white/55">{sub}</p>}
                         {quote && (
-                            <p className="mt-8 border-l border-white/15 pl-4 text-sm italic leading-relaxed text-white/45">
+                            <p className="mt-6 border-l border-white/15 pl-4 text-sm italic leading-relaxed text-white/45">
                                 {quote}
                             </p>
                         )}
                     </div>
 
-                    <div className="relative z-10 flex items-center justify-between">
+                    {/* Artwork — takes whatever height is left under the copy. `min-h-0`
+                        is what lets it shrink inside the flex column on short viewports
+                        rather than pushing the footer off the bottom. */}
+                    <div className="relative z-0 flex min-h-0 flex-1 items-center justify-center py-6">
+                        <AuthVisual
+                            variant={variant}
+                            className="h-full max-h-[340px] w-full max-w-[420px] text-white/85"
+                        />
+                    </div>
+
+                    <div className="relative z-10 flex shrink-0 items-center justify-between">
                         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/35">
                             Learn · Build · Get hired
                         </p>

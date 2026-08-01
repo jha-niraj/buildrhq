@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@repo/ui/components/ui/button";
+import { AuthVisual } from "@repo/ui/components/auth-visual";
 import { Input } from "@repo/ui/components/ui/input";
 import { Label } from "@repo/ui/components/ui/label";
 import React, { useState } from "react";
@@ -54,7 +55,16 @@ export default function ForgotPassword() {
 
     return (
         <div className="min-h-screen w-full bg-white dark:bg-neutral-950 flex flex-col items-center justify-center relative p-4 mx-auto w-full max-w-7xl">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px]" />
+            <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+                {/* Replaces the static 40px grid. The grid read as a form field
+                    behind a card; a slow monochrome motif gives the panel depth
+                    without competing with the form. Held well back in opacity and
+                    CSS-animated, so a theme switch only recolours it. */}
+                <AuthVisual
+                    variant="otp-mail"
+                    className="absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 text-neutral-900/[0.07] dark:text-white/[0.07]"
+                />
+            </div>
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}

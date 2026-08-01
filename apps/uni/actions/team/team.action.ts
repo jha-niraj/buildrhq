@@ -457,7 +457,7 @@ export async function inviteTeamMember(payload: InviteTeamMemberPayload) {
             expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
         });
 
-        const inviteUrl = `${process.env.NEXT_PUBLIC_UNI_URL || "http://localhost:3001"}/invite?code=${inviteCode}`
+        const inviteUrl = `${process.env.NEXT_PUBLIC_UNI_URL || "http://localhost:3003"}/invite?code=${inviteCode}`
         try {
             const university = await db.query.universityMembers.findFirst({
                 where: eq(universityMembers.id, currentMember.id),

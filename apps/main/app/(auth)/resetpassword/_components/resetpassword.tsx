@@ -11,6 +11,7 @@ import {
 import { emailOtp } from "@repo/auth/client";
 import { getAuthErrorMessage } from "@/lib/auth-errors";
 import toast from '@repo/ui/components/ui/sonner';
+import { AuthShell } from '../../_components/auth-shell';
 import { motion } from 'framer-motion';
 
 const ResetPassword = (): JSX.Element | null => {
@@ -153,20 +154,22 @@ const ResetPassword = (): JSX.Element | null => {
     }
 
     return (
-        <div className="min-h-screen w-full bg-white dark:bg-neutral-950 flex flex-col items-center justify-center relative overflow-hidden font-sans">
-            <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]" />
-
-            <div className="w-full max-w-md px-4 relative z-10">
-                <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-xl p-8">
-                    <div className="text-center mb-8">
-                        <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 mb-4 text-neutral-900 dark:text-white">
-                            <Lock className="w-6 h-6" />
-                        </div>
-                        <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">Set New Password</h2>
-                        <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-2">
-                            Enter the code sent to <span className="font-mono text-neutral-700 dark:text-neutral-300">{email}</span>
-                        </p>
-                    </div>
+        <AuthShell
+            variant="shield"
+            headline={<>Set a new <span className="text-white/50">password</span>.</>}
+            sub="Enter the code we emailed you, then choose something you have not used before."
+            quote="A password you can remember beats a clever one you cannot."
+        >
+            <div>
+                <div className="mb-8">
+                    <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-white">
+                        <Lock className="h-5 w-5" />
+                    </span>
+                    <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">Set new password</h2>
+                    <p className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
+                        Enter the code sent to <span className="font-mono text-neutral-700 dark:text-neutral-300">{email}</span>
+                    </p>
+                </div>
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="space-y-3">
                             <Label className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">Verification Code</Label>
@@ -231,10 +234,9 @@ const ResetPassword = (): JSX.Element | null => {
                                 {canResend ? "Resend Verification Code" : `Resend available in ${timer}s`}
                             </Button>
                         </div>
-                    </form>
-                </div>
+                </form>
             </div>
-        </div>
+        </AuthShell>
     );
 };
 

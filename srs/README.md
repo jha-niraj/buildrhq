@@ -21,7 +21,7 @@ A comprehensive guide to setting up and maintaining a production-ready Turborepo
 turboeventeye/
 ├── apps/
 │   ├── main/           # Main Next.js application (port 3000)
-│   └── admin/          # Admin Next.js application (port 3001)
+│   └── admin/          # Admin Next.js application (port 3005)
 │
 ├── packages/
 │   ├── ui/             # Shared UI components (Tailwind + shadcn)

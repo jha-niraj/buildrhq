@@ -368,12 +368,16 @@ function SignUpForm() {
                                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                 </button>
                             </div>
+                            <AnimatePresence initial={false}>
                             {
-                                password && (
+                                password && !isPasswordValid && (
                                     <motion.div
+                                        key="pw-reqs"
                                         initial={{ opacity: 0, height: 0 }}
                                         animate={{ opacity: 1, height: "auto" }}
-                                        className="mt-3 p-3 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl"
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={{ duration: 0.18, ease: "easeOut" }}
+                                        className="overflow-hidden mt-3 p-3 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl"
                                     >
                                         <p className="text-[10px]  tracking-widest text-neutral-500 mb-2">
                                             Security Requirements
@@ -404,6 +408,7 @@ function SignUpForm() {
                                     </motion.div>
                                 )
                             }
+                            </AnimatePresence>
                         </div>
                         <div className="flex items-start gap-3 pt-2">
                             <Checkbox

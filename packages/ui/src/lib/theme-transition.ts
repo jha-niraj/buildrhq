@@ -8,12 +8,16 @@ import { flushSync } from "react-dom"
 // Pairs with the CSS in packages/ui/src/styles/globals.css (the
 // html[data-theme-transition] view-transition rules + the vt-theme-reveal keyframe).
 //
-// disableTransitionOnChange (set on every ThemeProvider) kills CSS transitions at
-// switch time, so a View-Transition is the only thing that animates. flushSync applies
-// the <html> class synchronously inside the callback so the "after" snapshot is
-// correct. The clip is driven by a CSS keyframe (bound with `both`), NOT a JS
-// .animate() after transition.ready - binding the keyframe means the new snapshot is
-// clipped from its first frame, so there's no flash-then-jump.
+// `disableTransitionOnChange` is deliberately NOT set on any ThemeProvider. It
+// injects `* { transition: none !important }` around the class swap, which kills
+// the colour crossfade this transition depends on — the theme then snapped
+// between states instead of animating, which is what read as flicker.
+//
+// flushSync applies the <html> class synchronously inside the callback so the
+// "after" snapshot is correct. The clip is driven by a CSS keyframe (bound with
+// `both`), NOT a JS .animate() after transition.ready - binding the keyframe
+// means the new snapshot is clipped from its first frame, so there's no
+// flash-then-jump.
 
 /** The click point the reveal expands from (its presence = reveal vs fade). */
 export type ThemeTransitionOrigin = { x: number; y: number }

@@ -102,10 +102,20 @@ const nextConfig = {
             // Fingerprinted build assets never change under a given hash - cache them hard so
             // repeat visitors and crawlers do not re-fetch them. Safe because the filenames are
             // content-hashed; a new build produces new URLs.
-            {
-                source: "/_next/static/(.*)",
-                headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
-            },
+            //
+            // PRODUCTION ONLY. `headers()` runs in dev too, and Turbopack's dev chunk
+            // names are not content-hashed the way production filenames are — so in dev
+            // this told the browser to pin a dev chunk for a year and never revalidate
+            // it. A browser that does that keeps serving chunks from an older
+            // dependency tree after you reinstall, which surfaces as Turbopack's
+            // "module factory is not available" and needs a manual cache clear to
+            // escape. Next warns about custom Cache-Control on /_next for this reason.
+            ...(process.env.NODE_ENV === "production"
+                ? [{
+                    source: "/_next/static/(.*)",
+                    headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+                }]
+                : []),
             // Generated OG cards and static brand assets: long-lived but revalidatable.
             {
                 source: "/og/(.*)",

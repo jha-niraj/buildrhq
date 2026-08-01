@@ -277,6 +277,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
 
     return (
         <AuthShell
+            variant="contributions"
             headline={<>Build projects. Crack interviews. <span className="text-white/50">Land the job.</span></>}
             sub="Sign in to pick up where you left off."
             quote="Every expert was once a beginner. Start your journey today."

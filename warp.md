@@ -283,7 +283,7 @@ DATABASE_URL="postgresql://..."
 # NextAuth
 NEXTAUTH_SECRET="..."
 NEXTAUTH_URL="http://localhost:3000"
-ADMIN_NEXTAUTH_URL="http://localhost:3001"
+ADMIN_NEXTAUTH_URL="http://localhost:3005"
 
 # Add others as needed
 ```
@@ -307,7 +307,7 @@ pnpm dev              # Start all apps in dev mode
 
 # Individual apps
 pnpm --filter main dev       # Start main app (port 3000)
-pnpm --filter admin dev      # Start admin app (port 3001)
+pnpm --filter admin dev      # Start admin app (port 3005)
 ```
 
 ---

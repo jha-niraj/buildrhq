@@ -519,3 +519,69 @@ h1, h2, h3,
 [data-app-page] [class*=":min-h-screen"] {
     min-height: var(--page-h, 100vh);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Auth panel artwork.
+
+   Drives the motifs in @repo/ui/components/auth-visual — a contribution grid, a
+   commit graph, an OTP entry, a build log, and so on. Each one depicts something
+   the product actually does, so the panel carries meaning rather than being an
+   abstract pattern.
+
+   Deliberately CSS keyframes rather than framer-motion. A motion `initial ->
+   animate` one-shot restarts whenever React re-renders the element, and the
+   theme toggle re-renders synchronously (flushSync, inside
+   startViewTransition) — which is why the artwork replayed its draw-in every
+   time the theme was switched. A CSS animation is bound to the element and is
+   untouched by re-renders, so a theme switch now only recolours it.
+
+   Every value is an opacity of currentColor, so a motif inherits the panel's
+   colour with no per-theme branching.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Transforming an SVG child needs its own box as the origin, otherwise the
+   transform resolves against the whole viewBox and the shape flies off. */
+.av-o  { transform-box: fill-box; transform-origin: center; }
+.av-ol { transform-box: fill-box; transform-origin: left center; }
+.av-ob { transform-box: fill-box; transform-origin: center bottom; }
+
+@keyframes av-draw    { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes av-travel  { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes av-cell    { 0%, 8% { opacity: .06; } 26%, 74% { opacity: 1; } 92%, 100% { opacity: .06; } }
+@keyframes av-pop     { 0%, 6% { opacity: 0; transform: scale(.4); } 18%, 82% { opacity: 1; transform: scale(1); } 94%, 100% { opacity: 0; transform: scale(.4); } }
+@keyframes av-type    { 0%, 4% { transform: scaleX(0); } 22%, 86% { transform: scaleX(1); } 98%, 100% { transform: scaleX(0); } }
+@keyframes av-meter   { 0%, 6% { transform: scaleX(0); } 34%, 88% { transform: scaleX(1); } 98%, 100% { transform: scaleX(0); } }
+@keyframes av-flare   { 0%, 100% { opacity: .2; transform: scale(.88); } 45% { opacity: 1; transform: scale(1.1); } }
+@keyframes av-ripple  { 0% { opacity: .45; transform: scale(1); } 100% { opacity: 0; transform: scale(2.2); } }
+@keyframes av-caret   { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes av-lift    { 0%, 100% { transform: translateY(3px); opacity: .45; } 50% { transform: translateY(-3px); opacity: 1; } }
+@keyframes av-slide   { 0%, 10% { transform: translateX(0); opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 90%, 100% { transform: translateX(var(--av-dx, 96px)); opacity: 0; } }
+@keyframes av-breathe { 0%, 100% { opacity: .1; } 50% { opacity: .26; } }
+
+.av-draw    { animation: av-draw    1.7s cubic-bezier(.22,1,.36,1) forwards; }
+.av-travel  { animation: av-travel  2.6s linear infinite; }
+.av-cell    { animation: av-cell    5.2s ease-in-out infinite; }
+.av-pop     { animation: av-pop     5.2s ease-in-out infinite; }
+.av-type    { animation: av-type    5.2s cubic-bezier(.6,0,.4,1) infinite; }
+.av-meter   { animation: av-meter   5.2s cubic-bezier(.4,0,.2,1) infinite; }
+.av-flare   { animation: av-flare   3.4s ease-in-out infinite; }
+.av-ripple  { animation: av-ripple  3.4s ease-out infinite; }
+.av-caret   { animation: av-caret   1.05s steps(1) infinite; }
+.av-lift    { animation: av-lift    4.2s ease-in-out infinite; }
+.av-slide   { animation: av-slide   5.2s cubic-bezier(.5,0,.3,1) infinite; }
+.av-breathe { animation: av-breathe 6s ease-in-out infinite; }
+
+/* The artwork is decoration, so it stops entirely rather than being reduced.
+   `forwards` on the draw keeps the finished shape on screen instead of leaving
+   an empty panel. */
+@media (prefers-reduced-motion: reduce) {
+    .av-travel, .av-cell, .av-pop, .av-type, .av-meter, .av-flare,
+    .av-ripple, .av-caret, .av-lift, .av-slide, .av-breathe {
+        animation: none !important;
+    }
+    .av-draw { animation-duration: .01ms !important; }
+    /* Without the animation these sit at their start value (collapsed), so pin
+       them open — a static panel should still read as the finished picture. */
+    .av-type, .av-meter { transform: scaleX(1); }
+    .av-cell, .av-pop   { opacity: 1; }
+}

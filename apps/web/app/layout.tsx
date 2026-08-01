@@ -191,7 +191,10 @@ export default function RootLayout({
 						attribute="class"
 						defaultTheme="system"
 						enableSystem
-						disableTransitionOnChange
+						// NOT disableTransitionOnChange: that injects `* { transition: none !important }`
+						// around the class swap, which cancels the colour crossfade that
+						// packages/ui/src/lib/theme-transition.ts installs for the switch. With it
+						// on, the theme snapped between states instead of animating — the flicker.
 					>
 						{children}
 						<SonnerToaster position="top-center" closeButton richColors />

@@ -13,6 +13,7 @@ const nextConfig = {
     serverExternalPackages: ["@prisma/client", "prisma", "sass"],
 
     reactStrictMode: true,
+
 };
 
 export default nextConfig;

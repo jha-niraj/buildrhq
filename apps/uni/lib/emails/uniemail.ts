@@ -16,7 +16,7 @@ function appUrl(): string {
     return (
         process.env.NEXT_PUBLIC_UNI_URL ||
         process.env.NEXTAUTH_URL ||
-        "http://localhost:3001"
+        "http://localhost:3003"
     );
 }
 

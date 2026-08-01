@@ -292,6 +292,7 @@ function SignUpForm() {
 
     return (
         <AuthShell
+            variant="commit-graph"
             headline={<>Join the <span className="text-white/50">community</span>.</>}
             sub="Build projects, learn from peers, and grow your skills with thousands of developers."
             quote="Every expert was once a beginner."
@@ -440,11 +441,21 @@ function SignUpForm() {
                                                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                                             </button>
                                         </div>
-                                        {password && (
+                                        {/* Shown only while it is still useful: it appears on the first keystroke
+                                            and collapses once every rule passes. Gating on `password`
+                                            alone meant the checklist stayed on screen for the rest of the
+                                            form even after the password was valid, pushing the terms
+                                            checkbox and submit button down and drawing the eye to
+                                            something already dealt with. */}
+                                        <AnimatePresence initial={false}>
+                                        {password && !isPasswordValid && (
                                             <motion.div
+                                                key="pw-reqs"
                                                 initial={{ opacity: 0, height: 0 }}
                                                 animate={{ opacity: 1, height: "auto" }}
-                                                className="mt-3 p-3 bg-zinc-50 dark:bg-zinc-800 rounded-lg"
+                                                exit={{ opacity: 0, height: 0 }}
+                                                transition={{ duration: 0.18, ease: "easeOut" }}
+                                                className="overflow-hidden mt-3 p-3 bg-zinc-50 dark:bg-zinc-800 rounded-lg"
                                             >
                                                 <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 mb-2">
                                                     Password requirements:
@@ -457,6 +468,7 @@ function SignUpForm() {
                                                 </div>
                                             </motion.div>
                                         )}
+                                        </AnimatePresence>
                                     </div>
                                     <div className="flex items-start gap-3 pt-2">
                                         <Checkbox

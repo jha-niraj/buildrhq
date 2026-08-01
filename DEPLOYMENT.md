@@ -9,7 +9,7 @@ through `@opennextjs/cloudflare`; the two background workers are plain Workers.
 |---|---|---|---|
 | `apps/web` | Next (marketing, `shiprhq.com`) | `shiprhq-web` | 4100 |
 | `apps/main` | Next (product, `app.shiprhq.com`) | `shiprhq-main` | 4101 |
-| `apps/admin` | Next | `shiprhq-admin` | 3001 |
+| `apps/admin` | Next | `shiprhq-admin` | 3005 |
 | `apps/hiring` | Next | `shiprhq-hiring` | 3002 |
 | `apps/uni` | Next | `shiprhq-uni` | 3003 |
 | `apps/shiprworker` | Cloudflare Worker | `shiprhq-shiprworker` | - |
