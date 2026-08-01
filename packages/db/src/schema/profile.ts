@@ -8,233 +8,233 @@ import { users, skillCategoryEnum } from "./schema";
 
 // ─── Enums ────────────────────────────────────────────────────────────────────
 
-export const profileThemeEnum = pgEnum("ProfileTheme", [
+export const profileThemeEnum = pgEnum("profile_theme", [
     "OCEAN_BLUE", "SUNSET_ORANGE", "FOREST_GREEN", "PURPLE_DREAM", "DARK_MODE",
 ]);
 
-export const profileLayoutEnum = pgEnum("ProfileLayout", [
+export const profileLayoutEnum = pgEnum("profile_layout", [
     "DEFAULT", "MINIMAL", "SHOWCASE", "PORTFOLIO",
 ]);
 
-export const profileVisibilityEnum = pgEnum("ProfileVisibility", [
+export const profileVisibilityEnum = pgEnum("profile_visibility", [
     "PUBLIC", "FOLLOWERS", "PRIVATE",
 ]);
 
-export const portfolioProjectSourceEnum = pgEnum("PortfolioProjectSource", [
+export const portfolioProjectSourceEnum = pgEnum("portfolio_project_source", [
     "PROFILE", "CONCEPTS", "RESUMECREATOR",
 ]);
 
 // ─── Work Experience ──────────────────────────────────────────────────────────
 
-export const workExperiences = pgTable("WorkExperience", {
+export const workExperiences = pgTable("work_experience", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-    companyName: text("companyName").notNull(),
-    companyLogo: text("companyLogo"),
-    roleTitle: text("roleTitle").notNull(),
-    companyWebsite: text("companyWebsite"),
+    userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+    companyName: text("company_name").notNull(),
+    companyLogo: text("company_logo"),
+    roleTitle: text("role_title").notNull(),
+    companyWebsite: text("company_website"),
     description: text("description"),
-    bulletPoints: text("bulletPoints").array().notNull().default([]),
-    startDate: timestamp("startDate").notNull(),
-    endDate: timestamp("endDate"),
-    isCurrentlyWorking: boolean("isCurrentlyWorking").notNull().default(false),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-    updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
-}, (t) => [index("idx_workExp_userId").on(t.userId)]);
+    bulletPoints: text("bullet_points").array().notNull().default([]),
+    startDate: timestamp("start_date").notNull(),
+    endDate: timestamp("end_date"),
+    isCurrentlyWorking: boolean("is_currently_working").notNull().default(false),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
+}, (t) => [index("idx_work_exp_user_id").on(t.userId)]);
 
 // ─── User Education ───────────────────────────────────────────────────────────
 
-export const userEducations = pgTable("UserEducation", {
+export const userEducations = pgTable("user_education", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+    userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
     degree: text("degree"),
     institution: text("institution").notNull(),
-    startDate: timestamp("startDate").notNull(),
-    endDate: timestamp("endDate"),
-    bulletPoints: text("bulletPoints").array().notNull().default([]),
+    startDate: timestamp("start_date").notNull(),
+    endDate: timestamp("end_date"),
+    bulletPoints: text("bullet_points").array().notNull().default([]),
     order: integer("order").notNull().default(0),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-    updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
-}, (t) => [index("idx_userEdu_userId").on(t.userId)]);
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
+}, (t) => [index("idx_user_edu_user_id").on(t.userId)]);
 
 // ─── Social Links ─────────────────────────────────────────────────────────────
 
-export const socialLinks = pgTable("SocialLink", {
+export const socialLinks = pgTable("social_link", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+    userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
     platform: text("platform").notNull(),
     url: text("url").notNull(),
     label: text("label"),
     order: integer("order").notNull().default(0),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-    updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
 }, (t) => [
-    uniqueIndex("uq_socialLink_userId_platform").on(t.userId, t.platform),
-    index("idx_socialLink_userId").on(t.userId),
+    uniqueIndex("uq_social_link_user_id_platform").on(t.userId, t.platform),
+    index("idx_social_link_user_id").on(t.userId),
 ]);
 
 // ─── Portfolio Projects ───────────────────────────────────────────────────────
 
-export const portfolioProjects = pgTable("PortfolioProject", {
+export const portfolioProjects = pgTable("portfolio_project", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-    projectName: text("projectName").notNull(),
-    projectType: text("projectType").notNull(),
+    userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+    projectName: text("project_name").notNull(),
+    projectType: text("project_type").notNull(),
     description: text("description"),
-    bulletPoints: text("bulletPoints").array().notNull().default([]),
+    bulletPoints: text("bullet_points").array().notNull().default([]),
     status: text("status").notNull().default("In Progress"),
     visibility: text("visibility").notNull().default("Public"),
     technologies: text("technologies").array().notNull().default([]),
-    startDate: timestamp("startDate").notNull(),
-    endDate: timestamp("endDate"),
-    thumbnailUrl: text("thumbnailUrl"),
+    startDate: timestamp("start_date").notNull(),
+    endDate: timestamp("end_date"),
+    thumbnailUrl: text("thumbnail_url"),
     source: portfolioProjectSourceEnum("source").notNull().default("PROFILE"),
-    learnStepId: text("learnStepId"),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-    updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+    learnStepId: text("learn_step_id"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
 }, (t) => [
-    index("idx_portfolio_userId").on(t.userId),
-    index("idx_portfolio_learnStepId").on(t.learnStepId),
+    index("idx_portfolio_user_id").on(t.userId),
+    index("idx_portfolio_learn_step_id").on(t.learnStepId),
     index("idx_portfolio_source").on(t.source),
 ]);
 
-export const projectLinks = pgTable("ProjectLink", {
+export const projectLinks = pgTable("project_link", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    projectId: text("projectId").notNull().references(() => portfolioProjects.id, { onDelete: "cascade" }),
-    linkType: text("linkType").notNull(),
+    projectId: text("project_id").notNull().references(() => portfolioProjects.id, { onDelete: "cascade" }),
+    linkType: text("link_type").notNull(),
     url: text("url").notNull(),
     description: text("description"),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-}, (t) => [index("idx_projectLink_projectId").on(t.projectId)]);
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+}, (t) => [index("idx_project_link_project_id").on(t.projectId)]);
 
-export const projectMedia = pgTable("ProjectMedia", {
+export const projectMedia = pgTable("project_media", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    projectId: text("projectId").notNull().references(() => portfolioProjects.id, { onDelete: "cascade" }),
-    mediaUrl: text("mediaUrl").notNull(),
-    mediaType: text("mediaType").notNull(),
+    projectId: text("project_id").notNull().references(() => portfolioProjects.id, { onDelete: "cascade" }),
+    mediaUrl: text("media_url").notNull(),
+    mediaType: text("media_type").notNull(),
     caption: text("caption"),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-}, (t) => [index("idx_projectMedia_projectId").on(t.projectId)]);
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+}, (t) => [index("idx_project_media_project_id").on(t.projectId)]);
 
 // ─── Skills (legacy relation model) ──────────────────────────────────────────
 
-export const skills = pgTable("Skills", {
+export const skills = pgTable("skills", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
     name: text("name").notNull(),
     level: text("level").notNull(),
     category: skillCategoryEnum("category").notNull(),
     order: integer("order").notNull().default(0),
-    userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-}, (t) => [index("idx_skills_userId").on(t.userId)]);
+    userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+}, (t) => [index("idx_skills_user_id").on(t.userId)]);
 
-export const skillEndorsements = pgTable("SkillEndorsement", {
+export const skillEndorsements = pgTable("skill_endorsement", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    skillId: text("skillId").notNull().references(() => skills.id, { onDelete: "cascade" }),
-    endorserId: text("endorserId").notNull(),
+    skillId: text("skill_id").notNull().references(() => skills.id, { onDelete: "cascade" }),
+    endorserId: text("endorser_id").notNull(),
     message: text("message"),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
 }, (t) => [
-    uniqueIndex("uq_skillEndorse_skillId_endorserId").on(t.skillId, t.endorserId),
-    index("idx_skillEndorse_skillId").on(t.skillId),
-    index("idx_skillEndorse_endorserId").on(t.endorserId),
+    uniqueIndex("uq_skill_endorse_skill_id_endorser_id").on(t.skillId, t.endorserId),
+    index("idx_skill_endorse_skill_id").on(t.skillId),
+    index("idx_skill_endorse_endorser_id").on(t.endorserId),
 ]);
 
 // ─── Certifications ───────────────────────────────────────────────────────────
 
-export const certifications = pgTable("Certifications", {
+export const certifications = pgTable("certifications", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
     name: text("name").notNull(),
     issuer: text("issuer").notNull(),
-    issuedDate: timestamp("issuedDate").notNull(),
+    issuedDate: timestamp("issued_date").notNull(),
     link: text("link").notNull(),
-    userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-}, (t) => [index("idx_cert_userId").on(t.userId)]);
+    userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+}, (t) => [index("idx_cert_user_id").on(t.userId)]);
 
 // ─── Recent Activity (legacy) ─────────────────────────────────────────────────
 
-export const recentActivities = pgTable("RecentActivity", {
+export const recentActivities = pgTable("recent_activity", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-    activityType: text("activityType"),
+    userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+    activityType: text("activity_type"),
     description: text("description"),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-}, (t) => [index("idx_recentActivity_userId").on(t.userId)]);
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+}, (t) => [index("idx_recent_activity_user_id").on(t.userId)]);
 
 // ─── Achievements (legacy) ────────────────────────────────────────────────────
 
-export const achievements = pgTable("Achievements", {
+export const achievements = pgTable("achievements", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
     title: text("title").notNull(),
     description: text("description").notNull(),
-    userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-}, (t) => [index("idx_achievements_userId").on(t.userId)]);
+    userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+}, (t) => [index("idx_achievements_user_id").on(t.userId)]);
 
 // ─── Reward ───────────────────────────────────────────────────────────────────
 
-export const rewards = pgTable("Reward", {
+export const rewards = pgTable("reward", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
     type: text("type").notNull(),
     xp: integer("xp"),
     credits: integer("credits").notNull(),
     amount: integer("amount"),
     description: text("description").notNull(),
-    feedbackId: text("feedbackId").unique().notNull(),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-    updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+    feedbackId: text("feedback_id").unique().notNull(),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
 });
 
 // ─── User Profile ─────────────────────────────────────────────────────────────
 
-export const userProfiles = pgTable("UserProfile", {
+export const userProfiles = pgTable("user_profile", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    userId: text("userId").unique().notNull().references(() => users.id, { onDelete: "cascade" }),
-    coverGradient: text("coverGradient").default("#F59E0B,#FBBF24"),
+    userId: text("user_id").unique().notNull().references(() => users.id, { onDelete: "cascade" }),
+    coverGradient: text("cover_gradient").default("#F59E0B,#FBBF24"),
     theme: profileThemeEnum("theme").notNull().default("OCEAN_BLUE"),
     layout: profileLayoutEnum("layout").notNull().default("DEFAULT"),
     tagline: text("tagline"),
     visibility: profileVisibilityEnum("visibility").notNull().default("PUBLIC"),
-    showEmail: boolean("showEmail").notNull().default(false),
-    showResume: boolean("showResume").notNull().default(true),
-    showActivity: boolean("showActivity").notNull().default(true),
-    showStats: boolean("showStats").notNull().default(true),
-    allowEndorsements: boolean("allowEndorsements").notNull().default(true),
-    allowMessages: boolean("allowMessages").notNull().default(true),
-    profileViews: integer("profileViews").notNull().default(0),
-    completionScore: integer("completionScore").notNull().default(0),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
-    updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+    showEmail: boolean("show_email").notNull().default(false),
+    showResume: boolean("show_resume").notNull().default(true),
+    showActivity: boolean("show_activity").notNull().default(true),
+    showStats: boolean("show_stats").notNull().default(true),
+    allowEndorsements: boolean("allow_endorsements").notNull().default(true),
+    allowMessages: boolean("allow_messages").notNull().default(true),
+    profileViews: integer("profile_views").notNull().default(0),
+    completionScore: integer("completion_score").notNull().default(0),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
 });
 
-export const profileViews = pgTable("ProfileView", {
+export const profileViews = pgTable("profile_view", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    profileId: text("profileId").notNull().references(() => userProfiles.id, { onDelete: "cascade" }),
-    viewerId: text("viewerId"),
+    profileId: text("profile_id").notNull().references(() => userProfiles.id, { onDelete: "cascade" }),
+    viewerId: text("viewer_id"),
     source: text("source"),
     referrer: text("referrer"),
-    userAgent: text("userAgent"),
-    ipAddress: text("ipAddress"),
+    userAgent: text("user_agent"),
+    ipAddress: text("ip_address"),
     country: text("country"),
     city: text("city"),
-    viewedAt: timestamp("viewedAt").notNull().defaultNow(),
+    viewedAt: timestamp("viewed_at").notNull().defaultNow(),
 }, (t) => [
-    index("idx_profileView_profileId").on(t.profileId),
-    index("idx_profileView_viewerId").on(t.viewerId),
-    index("idx_profileView_viewedAt").on(t.viewedAt),
+    index("idx_profile_view_profile_id").on(t.profileId),
+    index("idx_profile_view_viewer_id").on(t.viewerId),
+    index("idx_profile_view_viewed_at").on(t.viewedAt),
 ]);
 
 // ─── Newsletter ───────────────────────────────────────────────────────────────
 
-export const newsletters = pgTable("Newsletter", {
+export const newsletters = pgTable("newsletter", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
     email: text("email").unique().notNull(),
-    subscribedAt: timestamp("subscribedAt").notNull().defaultNow(),
-    isActive: boolean("isActive").notNull().default(true),
+    subscribedAt: timestamp("subscribed_at").notNull().defaultNow(),
+    isActive: boolean("is_active").notNull().default(true),
 }, (t) => [
     index("idx_newsletter_email").on(t.email),
-    index("idx_newsletter_subscribedAt").on(t.subscribedAt),
+    index("idx_newsletter_subscribed_at").on(t.subscribedAt),
 ]);
 
 // ─── Contact Messages ─────────────────────────────────────────────────────────
@@ -245,31 +245,31 @@ export const contactMessages = pgTable("contact_submissions", {
     email: text("email").notNull(),
     subject: text("subject").notNull(),
     message: text("message"),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
 // ─── Config (system-level key-value) ─────────────────────────────────────────
 
-export const configs = pgTable("Config", {
+export const configs = pgTable("config", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
     key: text("key").unique().notNull(),
     value: jsonb("value").notNull(),
     description: text("description"),
-    updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+    updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
 }, (t) => [index("idx_config_key").on(t.key)]);
 
 // ─── User DSA Tracking ────────────────────────────────────────────────────────
 
-export const userDSATrackingEntries = pgTable("UserDSATrackingEntry", {
+export const userDSATrackingEntries = pgTable("user_dsa_tracking_entry", {
     id: text("id").primaryKey().$defaultFn(() => createId()),
-    userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
-    problemId: text("problemId").notNull(),
+    userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+    problemId: text("problem_id").notNull(),
     status: text("status").notNull().default("IN_PROGRESS"),
-    lastAttemptAt: timestamp("lastAttemptAt").notNull().defaultNow(),
-    updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+    lastAttemptAt: timestamp("last_attempt_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
 }, (t) => [
-    uniqueIndex("uq_dsaTrack_userId_problemId").on(t.userId, t.problemId),
-    index("idx_dsaTrack_userId").on(t.userId),
+    uniqueIndex("uq_dsa_track_user_id_problem_id").on(t.userId, t.problemId),
+    index("idx_dsa_track_user_id").on(t.userId),
 ]);
 
 // ─── Relations ────────────────────────────────────────────────────────────────

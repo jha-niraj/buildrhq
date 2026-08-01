@@ -179,12 +179,16 @@ export async function getResumeHubStats() {
         const user = await getCurrentUser()
 
         const [workExpCount, coverLetterCount, templateGenCount, totalTemplateCount] = await Promise.all([
+            // eq() rather than a raw `sql`"userId" = ...`` predicate: the raw form
+            // hardcodes a physical column name, so it silently survives a rename
+            // and then fails at runtime. The column reference is resolved by
+            // Drizzle and moves with the schema.
             db.select({ count: sql<number>`count(*)` })
                 .from(workExperiences)
-                .where(sql`"userId" = ${user.id}`).catch(() => [{ count: 0 }]),
+                .where(eq(workExperiences.userId, user.id)).catch(() => [{ count: 0 }]),
             db.select({ count: sql<number>`count(*)` })
                 .from(coverLetter)
-                .where(sql`"userId" = ${user.id}`).catch(() => [{ count: 0 }]),
+                .where(eq(coverLetter.userId, user.id)).catch(() => [{ count: 0 }]),
             db.select({ count: sql<number>`count(*)` })
                 .from(resumeTemplateGeneration)
                 .where(eq(resumeTemplateGeneration.userId, user.id)),

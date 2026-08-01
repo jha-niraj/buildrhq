@@ -17,7 +17,7 @@ import { users } from "./schema";
 // Enums
 // ===========================
 
-export const studioCategoryEnum = pgEnum("StudioCategory", [
+export const studioCategoryEnum = pgEnum("studio_category", [
     "GENERAL",
     "PROGRAMMING",
     "WEB_DEVELOPMENT",
@@ -32,7 +32,7 @@ export const studioCategoryEnum = pgEnum("StudioCategory", [
     "OTHER",
 ]);
 
-export const studioBlockTypeEnum = pgEnum("StudioBlockType", [
+export const studioBlockTypeEnum = pgEnum("studio_block_type", [
     "TEXT",
     "HEADING",
     "CODE",
@@ -49,19 +49,19 @@ export const studioBlockTypeEnum = pgEnum("StudioBlockType", [
     "NUMBERED_LIST",
 ]);
 
-export const studioVisibilityEnum = pgEnum("StudioVisibility", [
+export const studioVisibilityEnum = pgEnum("studio_visibility", [
     "PRIVATE",
     "PUBLIC",
     "COMMUNITY",
 ]);
 
-export const studioSourceEnum = pgEnum("StudioSource", [
+export const studioSourceEnum = pgEnum("studio_source", [
     "MANUAL",
     "PATHFINDER",
     "SPACE",
 ]);
 
-export const studioStepTypeEnum = pgEnum("StudioStepType", [
+export const studioStepTypeEnum = pgEnum("studio_step_type", [
     "EXPLANATION",
     "NOTE",
     "QUIZ",
@@ -74,18 +74,18 @@ export const studioStepTypeEnum = pgEnum("StudioStepType", [
     "FLASHCARD",
 ]);
 
-export const studioStepStatusEnum = pgEnum("StudioStepStatus", [
+export const studioStepStatusEnum = pgEnum("studio_step_status", [
     "DRAFT",
     "COMPLETED",
     "ARCHIVED",
 ]);
 
-export const contentSourceEnum = pgEnum("ContentSource", [
+export const contentSourceEnum = pgEnum("content_source", [
     "AI",
     "USER",
 ]);
 
-export const studioMediaTypeEnum = pgEnum("StudioMediaType", [
+export const studioMediaTypeEnum = pgEnum("studio_media_type", [
     "IMAGE",
     "VIDEO",
     "DIAGRAM",
@@ -97,7 +97,7 @@ export const studioMediaTypeEnum = pgEnum("StudioMediaType", [
 // ===========================
 
 export const studios = pgTable(
-    "Studio",
+    "studio",
     {
         id: text("id")
             .primaryKey()
@@ -106,226 +106,226 @@ export const studios = pgTable(
         title: text("title").notNull(),
         description: text("description"),
         emoji: text("emoji").default("📚"),
-        coverImage: text("coverImage"),
+        coverImage: text("cover_image"),
         source: studioSourceEnum("source").notNull().default("MANUAL"),
-        sourceId: text("sourceId"),
-        stepCount: integer("stepCount").notNull().default(0),
+        sourceId: text("source_id"),
+        stepCount: integer("step_count").notNull().default(0),
         category: studioCategoryEnum("category").notNull().default("GENERAL"),
         tags: text("tags").array().notNull().default([]),
         visibility: studioVisibilityEnum("visibility").notNull().default("PRIVATE"),
-        isTemplate: boolean("isTemplate").notNull().default(false),
+        isTemplate: boolean("is_template").notNull().default(false),
         views: integer("views").notNull().default(0),
         clones: integer("clones").notNull().default(0),
         likes: integer("likes").notNull().default(0),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        projectId: text("projectId"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        projectId: text("project_id"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
-        lastEditedAt: timestamp("lastEditedAt").notNull().defaultNow(),
+        lastEditedAt: timestamp("last_edited_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_studio_userId").on(table.userId),
+        index("idx_studio_user_id").on(table.userId),
         index("idx_studio_category").on(table.category),
         index("idx_studio_visibility").on(table.visibility),
-        index("idx_studio_source_sourceId").on(table.source, table.sourceId),
+        index("idx_studio_source_source_id").on(table.source, table.sourceId),
     ],
 );
 
 export const studioSteps = pgTable(
-    "StudioStep",
+    "studio_step",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        studioId: text("studioId")
+        studioId: text("studio_id")
             .notNull()
             .references(() => studios.id, { onDelete: "cascade" }),
-        orderNumber: integer("orderNumber").notNull(),
+        orderNumber: integer("order_number").notNull(),
         type: studioStepTypeEnum("type").notNull(),
         content: text("content"),
         metadata: jsonb("metadata").notNull().default({}),
         source: contentSourceEnum("source").notNull(),
         status: studioStepStatusEnum("status").notNull().default("COMPLETED"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_ss_studioId_orderNumber").on(table.studioId, table.orderNumber),
+        index("idx_ss_studio_id_order_number").on(table.studioId, table.orderNumber),
         index("idx_ss_type").on(table.type),
     ],
 );
 
 export const studioQuizzes = pgTable(
-    "StudioQuiz",
+    "studio_quiz",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        blockId: text("blockId").notNull(),
+        blockId: text("block_id").notNull(),
         title: text("title").notNull(),
         questions: jsonb("questions").notNull(),
-        timeLimit: integer("timeLimit"),
-        shuffleQuestions: boolean("shuffleQuestions").notNull().default(true),
-        showCorrectAnswers: boolean("showCorrectAnswers").notNull().default(true),
-        studioId: text("studioId")
+        timeLimit: integer("time_limit"),
+        shuffleQuestions: boolean("shuffle_questions").notNull().default(true),
+        showCorrectAnswers: boolean("show_correct_answers").notNull().default(true),
+        studioId: text("studio_id")
             .notNull()
             .references(() => studios.id, { onDelete: "cascade" }),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_sq_studioId").on(table.studioId),
-        index("idx_sq_blockId").on(table.blockId),
+        index("idx_sq_studio_id").on(table.studioId),
+        index("idx_sq_block_id").on(table.blockId),
     ],
 );
 
 export const studioQuizAttempts = pgTable(
-    "StudioQuizAttempt",
+    "studio_quiz_attempt",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        quizId: text("quizId")
+        quizId: text("quiz_id")
             .notNull()
             .references(() => studioQuizzes.id, { onDelete: "cascade" }),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
         score: integer("score").notNull(),
-        maxScore: integer("maxScore").notNull(),
+        maxScore: integer("max_score").notNull(),
         answers: jsonb("answers").notNull(),
-        timeTaken: integer("timeTaken"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        timeTaken: integer("time_taken"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_sqa_quizId").on(table.quizId),
-        index("idx_sqa_userId").on(table.userId),
+        index("idx_sqa_quiz_id").on(table.quizId),
+        index("idx_sqa_user_id").on(table.userId),
     ],
 );
 
 export const studioFlashcardDecks = pgTable(
-    "StudioFlashcardDeck",
+    "studio_flashcard_deck",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        blockId: text("blockId").notNull(),
+        blockId: text("block_id").notNull(),
         title: text("title").notNull(),
         cards: jsonb("cards").notNull(),
-        studioId: text("studioId")
+        studioId: text("studio_id")
             .notNull()
             .references(() => studios.id, { onDelete: "cascade" }),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_sfd_studioId").on(table.studioId),
-        index("idx_sfd_blockId").on(table.blockId),
+        index("idx_sfd_studio_id").on(table.studioId),
+        index("idx_sfd_block_id").on(table.blockId),
     ],
 );
 
 export const studioFlashcardSessions = pgTable(
-    "StudioFlashcardSession",
+    "studio_flashcard_session",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        deckId: text("deckId")
+        deckId: text("deck_id")
             .notNull()
             .references(() => studioFlashcardDecks.id, { onDelete: "cascade" }),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        cardsStudied: integer("cardsStudied").notNull(),
-        correctCount: integer("correctCount").notNull(),
-        studyTime: integer("studyTime").notNull(),
-        cardProgress: jsonb("cardProgress").notNull(),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        cardsStudied: integer("cards_studied").notNull(),
+        correctCount: integer("correct_count").notNull(),
+        studyTime: integer("study_time").notNull(),
+        cardProgress: jsonb("card_progress").notNull(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_sfs_deckId").on(table.deckId),
-        index("idx_sfs_userId").on(table.userId),
+        index("idx_sfs_deck_id").on(table.deckId),
+        index("idx_sfs_user_id").on(table.userId),
     ],
 );
 
 export const studioCodeBlocks = pgTable(
-    "StudioCodeBlock",
+    "studio_code_block",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        blockId: text("blockId").notNull(),
+        blockId: text("block_id").notNull(),
         language: text("language").notNull(),
         code: text("code").notNull(),
-        isPractice: boolean("isPractice").notNull().default(false),
-        problemTitle: text("problemTitle"),
-        problemDescription: text("problemDescription"),
-        testCases: jsonb("testCases"),
+        isPractice: boolean("is_practice").notNull().default(false),
+        problemTitle: text("problem_title"),
+        problemDescription: text("problem_description"),
+        testCases: jsonb("test_cases"),
         hints: text("hints").array().notNull().default([]),
         solution: text("solution"),
-        studioId: text("studioId")
+        studioId: text("studio_id")
             .notNull()
             .references(() => studios.id, { onDelete: "cascade" }),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_scb_studioId").on(table.studioId),
-        index("idx_scb_blockId").on(table.blockId),
+        index("idx_scb_studio_id").on(table.studioId),
+        index("idx_scb_block_id").on(table.blockId),
     ],
 );
 
 export const studioMediaBlocks = pgTable(
-    "StudioMediaBlock",
+    "studio_media_block",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        blockId: text("blockId").notNull(),
+        blockId: text("block_id").notNull(),
         type: studioMediaTypeEnum("type").notNull(),
         url: text("url").notNull(),
         prompt: text("prompt"),
         width: integer("width"),
         height: integer("height"),
         duration: integer("duration"),
-        studioId: text("studioId")
+        studioId: text("studio_id")
             .notNull()
             .references(() => studios.id, { onDelete: "cascade" }),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_smb_studioId").on(table.studioId),
-        index("idx_smb_blockId").on(table.blockId),
+        index("idx_smb_studio_id").on(table.studioId),
+        index("idx_smb_block_id").on(table.blockId),
     ],
 );
 
 export const studioChatMessages = pgTable(
-    "StudioChatMessage",
+    "studio_chat_message",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        studioId: text("studioId")
+        studioId: text("studio_id")
             .notNull()
             .references(() => studios.id, { onDelete: "cascade" }),
         role: text("role").notNull(),
         content: text("content").notNull(),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_scm_studioId").on(table.studioId),
+        index("idx_scm_studio_id").on(table.studioId),
     ],
 );
 

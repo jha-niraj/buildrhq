@@ -18,7 +18,7 @@ import { users } from "./schema";
 // Enums
 // ===========================
 
-export const companyMemberRoleEnum = pgEnum("CompanyMemberRole", [
+export const companyMemberRoleEnum = pgEnum("company_member_role", [
     "FOUNDER",
     "ADMIN",
     "HIRING_MANAGER",
@@ -26,7 +26,7 @@ export const companyMemberRoleEnum = pgEnum("CompanyMemberRole", [
     "INTERVIEWER",
 ]);
 
-export const companyMemberJobTitleEnum = pgEnum("CompanyMemberJobTitle", [
+export const companyMemberJobTitleEnum = pgEnum("company_member_job_title", [
     "CEO",
     "CTO",
     "COFOUNDER",
@@ -42,33 +42,33 @@ export const companyMemberJobTitleEnum = pgEnum("CompanyMemberJobTitle", [
     "OTHER",
 ]);
 
-export const companyVerificationStatusEnum = pgEnum("CompanyVerificationStatus", [
+export const companyVerificationStatusEnum = pgEnum("company_verification_status", [
     "PENDING",
     "VERIFIED",
     "REJECTED",
 ]);
 
-export const memberInviteStatusEnum = pgEnum("MemberInviteStatus", [
+export const memberInviteStatusEnum = pgEnum("member_invite_status", [
     "PENDING",
     "ACCEPTED",
     "REVOKED",
     "EXPIRED",
 ]);
 
-export const companyInvitationStatusEnum = pgEnum("CompanyInvitationStatus", [
+export const companyInvitationStatusEnum = pgEnum("company_invitation_status", [
     "PENDING",
     "ACCEPTED",
     "EXPIRED",
     "REVOKED",
 ]);
 
-export const hiringSubscriptionPlanEnum = pgEnum("HiringSubscriptionPlan", [
+export const hiringSubscriptionPlanEnum = pgEnum("hiring_subscription_plan", [
     "FREE",
     "PRO",
     "ENTERPRISE",
 ]);
 
-export const hiringSubscriptionStatusEnum = pgEnum("HiringSubscriptionStatus", [
+export const hiringSubscriptionStatusEnum = pgEnum("hiring_subscription_status", [
     "ACTIVE",
     "CANCELLED",
     "EXPIRED",
@@ -76,7 +76,7 @@ export const hiringSubscriptionStatusEnum = pgEnum("HiringSubscriptionStatus", [
     "TRIALING",
 ]);
 
-export const hiringPaymentStatusEnum = pgEnum("HiringPaymentStatus", [
+export const hiringPaymentStatusEnum = pgEnum("hiring_payment_status", [
     "PENDING",
     "PROCESSING",
     "SUCCEEDED",
@@ -85,7 +85,7 @@ export const hiringPaymentStatusEnum = pgEnum("HiringPaymentStatus", [
     "CANCELLED",
 ]);
 
-export const hiringInvoiceStatusEnum = pgEnum("HiringInvoiceStatus", [
+export const hiringInvoiceStatusEnum = pgEnum("hiring_invoice_status", [
     "DRAFT",
     "PENDING",
     "PAID",
@@ -93,14 +93,14 @@ export const hiringInvoiceStatusEnum = pgEnum("HiringInvoiceStatus", [
     "UNCOLLECTIBLE",
 ]);
 
-export const templateStyleEnum = pgEnum("TemplateStyle", [
+export const templateStyleEnum = pgEnum("template_style", [
     "STARTUP",
     "FAANG",
     "MNC",
     "CUSTOM",
 ]);
 
-export const templateCategoryEnum = pgEnum("TemplateCategory", [
+export const templateCategoryEnum = pgEnum("template_category", [
     "ENGINEERING",
     "PRODUCT",
     "DESIGN",
@@ -117,21 +117,21 @@ export const templateCategoryEnum = pgEnum("TemplateCategory", [
 // ===========================
 
 export const companies = pgTable(
-    "Company",
+    "company",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
         name: text("name").notNull(),
         slug: text("slug").notNull().unique(),
-        logoUrl: text("logoUrl"),
+        logoUrl: text("logo_url"),
         website: text("website"),
         description: text("description"),
         industry: text("industry"),
-        companySize: text("companySize"),
-        foundedYear: integer("foundedYear"),
+        companySize: text("company_size"),
+        foundedYear: integer("founded_year"),
         headquarters: text("headquarters"),
-        socialLinks: jsonb("socialLinks"),
+        socialLinks: jsonb("social_links"),
         address: text("address"),
         city: text("city"),
         state: text("state"),
@@ -139,287 +139,287 @@ export const companies = pgTable(
         pincode: text("pincode"),
         culture: text("culture"),
         benefits: jsonb("benefits"),
-        techStack: jsonb("techStack"),
-        mediaGallery: jsonb("mediaGallery"),
-        responseRatePercent: real("responseRatePercent"),
-        avgTimeToHireDays: integer("avgTimeToHireDays"),
-        interviewToOfferPercent: real("interviewToOfferPercent"),
-        totalHired: integer("totalHired").notNull().default(0),
-        totalApplications: integer("totalApplications").notNull().default(0),
-        verificationStatus: companyVerificationStatusEnum("verificationStatus")
+        techStack: jsonb("tech_stack"),
+        mediaGallery: jsonb("media_gallery"),
+        responseRatePercent: real("response_rate_percent"),
+        avgTimeToHireDays: integer("avg_time_to_hire_days"),
+        interviewToOfferPercent: real("interview_to_offer_percent"),
+        totalHired: integer("total_hired").notNull().default(0),
+        totalApplications: integer("total_applications").notNull().default(0),
+        verificationStatus: companyVerificationStatusEnum("verification_status")
             .notNull()
             .default("PENDING"),
-        verifiedAt: timestamp("verifiedAt"),
-        verifiedBy: text("verifiedBy"),
-        inviteCode: text("inviteCode").unique(),
-        createdByUserId: text("createdByUserId").references(() => users.id, {
+        verifiedAt: timestamp("verified_at"),
+        verifiedBy: text("verified_by"),
+        inviteCode: text("invite_code").unique(),
+        createdByUserId: text("created_by_user_id").references(() => users.id, {
             onDelete: "set null",
         }),
-        hasInterviewProcess: boolean("hasInterviewProcess").notNull().default(false),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        hasInterviewProcess: boolean("has_interview_process").notNull().default(false),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
         index("idx_company_slug").on(table.slug),
-        index("idx_company_verificationStatus").on(table.verificationStatus),
-        index("idx_company_createdByUserId").on(table.createdByUserId),
+        index("idx_company_verification_status").on(table.verificationStatus),
+        index("idx_company_created_by_user_id").on(table.createdByUserId),
     ],
 );
 
 export const companyFollowers = pgTable(
-    "CompanyFollower",
+    "company_follower",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        companyId: text("companyId")
+        companyId: text("company_id")
             .notNull()
             .references(() => companies.id, { onDelete: "cascade" }),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        uniqueIndex("uq_companyFollower_userId_companyId").on(table.userId, table.companyId),
-        index("idx_companyFollower_userId").on(table.userId),
-        index("idx_companyFollower_companyId").on(table.companyId),
+        uniqueIndex("uq_company_follower_user_id_company_id").on(table.userId, table.companyId),
+        index("idx_company_follower_user_id").on(table.userId),
+        index("idx_company_follower_company_id").on(table.companyId),
     ],
 );
 
 export const companyMembers = pgTable(
-    "CompanyMember",
+    "company_member",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        companyId: text("companyId")
+        companyId: text("company_id")
             .notNull()
             .references(() => companies.id, { onDelete: "cascade" }),
         role: companyMemberRoleEnum("role").notNull().default("RECRUITER"),
-        jobTitle: companyMemberJobTitleEnum("jobTitle").notNull().default("OTHER"),
-        jobTitleCustom: text("jobTitleCustom"),
-        displayName: text("displayName"),
+        jobTitle: companyMemberJobTitleEnum("job_title").notNull().default("OTHER"),
+        jobTitleCustom: text("job_title_custom"),
+        displayName: text("display_name"),
         email: text("email").notNull(),
         phone: text("phone"),
         permissions: jsonb("permissions")
             .notNull()
             .default(["view_jobs", "post_jobs", "view_applications", "review_candidates"]),
-        inviteStatus: memberInviteStatusEnum("inviteStatus").notNull().default("ACCEPTED"),
-        invitedById: text("invitedById"),
-        invitedAt: timestamp("invitedAt"),
-        acceptedAt: timestamp("acceptedAt"),
-        isActive: boolean("isActive").notNull().default(true),
-        lastActiveAt: timestamp("lastActiveAt"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        inviteStatus: memberInviteStatusEnum("invite_status").notNull().default("ACCEPTED"),
+        invitedById: text("invited_by_id"),
+        invitedAt: timestamp("invited_at"),
+        acceptedAt: timestamp("accepted_at"),
+        isActive: boolean("is_active").notNull().default(true),
+        lastActiveAt: timestamp("last_active_at"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("uq_companyMember_userId_companyId").on(table.userId, table.companyId),
-        index("idx_companyMember_userId").on(table.userId),
-        index("idx_companyMember_companyId").on(table.companyId),
-        index("idx_companyMember_email").on(table.email),
-        index("idx_companyMember_role").on(table.role),
+        uniqueIndex("uq_company_member_user_id_company_id").on(table.userId, table.companyId),
+        index("idx_company_member_user_id").on(table.userId),
+        index("idx_company_member_company_id").on(table.companyId),
+        index("idx_company_member_email").on(table.email),
+        index("idx_company_member_role").on(table.role),
     ],
 );
 
 export const memberInvitations = pgTable(
-    "MemberInvitation",
+    "member_invitation",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        companyId: text("companyId")
+        companyId: text("company_id")
             .notNull()
             .references(() => companies.id, { onDelete: "cascade" }),
         email: text("email").notNull(),
         name: text("name"),
         role: companyMemberRoleEnum("role").notNull().default("RECRUITER"),
-        jobTitle: companyMemberJobTitleEnum("jobTitle").notNull().default("RECRUITER"),
-        inviteCode: text("inviteCode").notNull().unique(),
-        invitedById: text("invitedById")
+        jobTitle: companyMemberJobTitleEnum("job_title").notNull().default("RECRUITER"),
+        inviteCode: text("invite_code").notNull().unique(),
+        invitedById: text("invited_by_id")
             .notNull()
             .references(() => companyMembers.id, { onDelete: "cascade" }),
         status: memberInviteStatusEnum("status").notNull().default("PENDING"),
         message: text("message"),
-        expiresAt: timestamp("expiresAt"),
-        acceptedAt: timestamp("acceptedAt"),
-        resultingMemberId: text("resultingMemberId"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        expiresAt: timestamp("expires_at"),
+        acceptedAt: timestamp("accepted_at"),
+        resultingMemberId: text("resulting_member_id"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_memberInvitation_email").on(table.email),
-        index("idx_memberInvitation_inviteCode").on(table.inviteCode),
-        index("idx_memberInvitation_status").on(table.status),
-        index("idx_memberInvitation_companyId").on(table.companyId),
+        index("idx_member_invitation_email").on(table.email),
+        index("idx_member_invitation_invite_code").on(table.inviteCode),
+        index("idx_member_invitation_status").on(table.status),
+        index("idx_member_invitation_company_id").on(table.companyId),
     ],
 );
 
 export const companyInvitations = pgTable(
-    "CompanyInvitation",
+    "company_invitation",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
         email: text("email").notNull(),
-        companyName: text("companyName"),
-        invitedBy: text("invitedBy"),
-        inviteCode: text("inviteCode").notNull().unique(),
+        companyName: text("company_name"),
+        invitedBy: text("invited_by"),
+        inviteCode: text("invite_code").notNull().unique(),
         status: companyInvitationStatusEnum("status").notNull().default("PENDING"),
-        acceptedAt: timestamp("acceptedAt"),
-        expiresAt: timestamp("expiresAt"),
+        acceptedAt: timestamp("accepted_at"),
+        expiresAt: timestamp("expires_at"),
         metadata: jsonb("metadata"),
-        companyId: text("companyId").references(() => companies.id),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        companyId: text("company_id").references(() => companies.id),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_companyInvitation_email").on(table.email),
-        index("idx_companyInvitation_inviteCode").on(table.inviteCode),
-        index("idx_companyInvitation_status").on(table.status),
+        index("idx_company_invitation_email").on(table.email),
+        index("idx_company_invitation_invite_code").on(table.inviteCode),
+        index("idx_company_invitation_status").on(table.status),
     ],
 );
 
 export const companySubscriptions = pgTable(
-    "CompanySubscription",
+    "company_subscription",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        companyId: text("companyId")
+        companyId: text("company_id")
             .notNull()
             .unique()
             .references(() => companies.id, { onDelete: "cascade" }),
         plan: hiringSubscriptionPlanEnum("plan").notNull().default("FREE"),
         status: hiringSubscriptionStatusEnum("status").notNull().default("ACTIVE"),
-        dodoSubscriptionId: text("dodoSubscriptionId").unique(),
-        dodoProductId: text("dodoProductId"),
-        dodoPriceId: text("dodoPriceId"),
-        maxJobPosts: integer("maxJobPosts").notNull().default(3),
-        maxApplications: integer("maxApplications").notNull().default(50),
-        maxInterviewTemplates: integer("maxInterviewTemplates").notNull().default(1),
-        maxTeamMembers: integer("maxTeamMembers").notNull().default(1),
-        hasAIScreening: boolean("hasAIScreening").notNull().default(false),
-        hasCustomAssignments: boolean("hasCustomAssignments").notNull().default(false),
-        hasPrioritySupport: boolean("hasPrioritySupport").notNull().default(false),
-        hasAPIAccess: boolean("hasAPIAccess").notNull().default(false),
-        hasSSO: boolean("hasSSO").notNull().default(false),
-        hasWhiteLabel: boolean("hasWhiteLabel").notNull().default(false),
+        dodoSubscriptionId: text("dodo_subscription_id").unique(),
+        dodoProductId: text("dodo_product_id"),
+        dodoPriceId: text("dodo_price_id"),
+        maxJobPosts: integer("max_job_posts").notNull().default(3),
+        maxApplications: integer("max_applications").notNull().default(50),
+        maxInterviewTemplates: integer("max_interview_templates").notNull().default(1),
+        maxTeamMembers: integer("max_team_members").notNull().default(1),
+        hasAIScreening: boolean("has_ai_screening").notNull().default(false),
+        hasCustomAssignments: boolean("has_custom_assignments").notNull().default(false),
+        hasPrioritySupport: boolean("has_priority_support").notNull().default(false),
+        hasAPIAccess: boolean("has_api_access").notNull().default(false),
+        hasSSO: boolean("has_sso").notNull().default(false),
+        hasWhiteLabel: boolean("has_white_label").notNull().default(false),
         amount: real("amount").notNull().default(0),
         currency: text("currency").notNull().default("INR"),
-        billingCycle: text("billingCycle").notNull().default("monthly"),
-        currentPeriodStart: timestamp("currentPeriodStart").notNull().defaultNow(),
-        currentPeriodEnd: timestamp("currentPeriodEnd"),
-        trialStart: timestamp("trialStart"),
-        trialEnd: timestamp("trialEnd"),
-        cancelledAt: timestamp("cancelledAt"),
+        billingCycle: text("billing_cycle").notNull().default("monthly"),
+        currentPeriodStart: timestamp("current_period_start").notNull().defaultNow(),
+        currentPeriodEnd: timestamp("current_period_end"),
+        trialStart: timestamp("trial_start"),
+        trialEnd: timestamp("trial_end"),
+        cancelledAt: timestamp("cancelled_at"),
         metadata: jsonb("metadata"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_companySubscription_companyId").on(table.companyId),
-        index("idx_companySubscription_status").on(table.status),
-        index("idx_companySubscription_dodoSubscriptionId").on(table.dodoSubscriptionId),
+        index("idx_company_subscription_company_id").on(table.companyId),
+        index("idx_company_subscription_status").on(table.status),
+        index("idx_company_subscription_dodo_subscription_id").on(table.dodoSubscriptionId),
     ],
 );
 
 export const companyPayments = pgTable(
-    "CompanyPayment",
+    "company_payment",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        companyId: text("companyId")
+        companyId: text("company_id")
             .notNull()
             .references(() => companies.id, { onDelete: "cascade" }),
-        subscriptionId: text("subscriptionId").references(() => companySubscriptions.id),
-        dodoPaymentId: text("dodoPaymentId").unique(),
-        dodoCheckoutSessionId: text("dodoCheckoutSessionId").unique(),
+        subscriptionId: text("subscription_id").references(() => companySubscriptions.id),
+        dodoPaymentId: text("dodo_payment_id").unique(),
+        dodoCheckoutSessionId: text("dodo_checkout_session_id").unique(),
         amount: real("amount").notNull(),
         currency: text("currency").notNull().default("INR"),
         status: hiringPaymentStatusEnum("status").notNull().default("PENDING"),
-        paymentMethod: text("paymentMethod"),
-        billingEmail: text("billingEmail"),
-        billingName: text("billingName"),
+        paymentMethod: text("payment_method"),
+        billingEmail: text("billing_email"),
+        billingName: text("billing_name"),
         description: text("description"),
         metadata: jsonb("metadata"),
-        paidAt: timestamp("paidAt"),
-        failedAt: timestamp("failedAt"),
-        refundedAt: timestamp("refundedAt"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        paidAt: timestamp("paid_at"),
+        failedAt: timestamp("failed_at"),
+        refundedAt: timestamp("refunded_at"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_companyPayment_companyId").on(table.companyId),
-        index("idx_companyPayment_subscriptionId").on(table.subscriptionId),
-        index("idx_companyPayment_status").on(table.status),
-        index("idx_companyPayment_dodoPaymentId").on(table.dodoPaymentId),
-        index("idx_companyPayment_dodoCheckoutSessionId").on(table.dodoCheckoutSessionId),
+        index("idx_company_payment_company_id").on(table.companyId),
+        index("idx_company_payment_subscription_id").on(table.subscriptionId),
+        index("idx_company_payment_status").on(table.status),
+        index("idx_company_payment_dodo_payment_id").on(table.dodoPaymentId),
+        index("idx_company_payment_dodo_checkout_session_id").on(table.dodoCheckoutSessionId),
     ],
 );
 
 export const companyInvoices = pgTable(
-    "CompanyInvoice",
+    "company_invoice",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        companyId: text("companyId")
+        companyId: text("company_id")
             .notNull()
             .references(() => companies.id, { onDelete: "cascade" }),
-        paymentId: text("paymentId")
+        paymentId: text("payment_id")
             .notNull()
             .unique()
             .references(() => companyPayments.id),
-        invoiceNumber: text("invoiceNumber").notNull().unique(),
+        invoiceNumber: text("invoice_number").notNull().unique(),
         status: hiringInvoiceStatusEnum("status").notNull().default("DRAFT"),
-        lineItems: jsonb("lineItems").notNull(),
+        lineItems: jsonb("line_items").notNull(),
         subtotal: real("subtotal").notNull(),
-        taxAmount: real("taxAmount").notNull().default(0),
-        taxRate: real("taxRate").notNull().default(0),
+        taxAmount: real("tax_amount").notNull().default(0),
+        taxRate: real("tax_rate").notNull().default(0),
         discount: real("discount").notNull().default(0),
-        totalAmount: real("totalAmount").notNull(),
+        totalAmount: real("total_amount").notNull(),
         currency: text("currency").notNull().default("INR"),
-        billingName: text("billingName"),
-        billingEmail: text("billingEmail"),
-        billingAddress: text("billingAddress"),
-        billingCity: text("billingCity"),
-        billingState: text("billingState"),
-        billingCountry: text("billingCountry"),
-        billingPincode: text("billingPincode"),
-        gstNumber: text("gstNumber"),
-        invoiceDate: timestamp("invoiceDate").notNull().defaultNow(),
-        dueDate: timestamp("dueDate"),
-        paidAt: timestamp("paidAt"),
-        pdfUrl: text("pdfUrl"),
+        billingName: text("billing_name"),
+        billingEmail: text("billing_email"),
+        billingAddress: text("billing_address"),
+        billingCity: text("billing_city"),
+        billingState: text("billing_state"),
+        billingCountry: text("billing_country"),
+        billingPincode: text("billing_pincode"),
+        gstNumber: text("gst_number"),
+        invoiceDate: timestamp("invoice_date").notNull().defaultNow(),
+        dueDate: timestamp("due_date"),
+        paidAt: timestamp("paid_at"),
+        pdfUrl: text("pdf_url"),
         notes: text("notes"),
         metadata: jsonb("metadata"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_companyInvoice_companyId").on(table.companyId),
-        index("idx_companyInvoice_status").on(table.status),
-        index("idx_companyInvoice_invoiceNumber").on(table.invoiceNumber),
-        index("idx_companyInvoice_invoiceDate").on(table.invoiceDate),
+        index("idx_company_invoice_company_id").on(table.companyId),
+        index("idx_company_invoice_status").on(table.status),
+        index("idx_company_invoice_invoice_number").on(table.invoiceNumber),
+        index("idx_company_invoice_invoice_date").on(table.invoiceDate),
     ],
 );
 
 export const interviewProcessTemplates = pgTable(
-    "InterviewProcessTemplate",
+    "interview_process_template",
     {
         id: text("id")
             .primaryKey()
@@ -429,24 +429,24 @@ export const interviewProcessTemplates = pgTable(
         style: templateStyleEnum("style").notNull().default("CUSTOM"),
         category: templateCategoryEnum("category").notNull().default("GENERAL"),
         rounds: jsonb("rounds").notNull(),
-        estimatedDurationWeeks: integer("estimatedDurationWeeks"),
-        roundCount: integer("roundCount").notNull().default(0),
-        isAiGenerated: boolean("isAiGenerated").notNull().default(false),
-        aiPrompt: text("aiPrompt"),
-        isPublic: boolean("isPublic").notNull().default(true),
-        usageCount: integer("usageCount").notNull().default(0),
-        createdByCompanyId: text("createdByCompanyId"),
-        createdByUserId: text("createdByUserId"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        estimatedDurationWeeks: integer("estimated_duration_weeks"),
+        roundCount: integer("round_count").notNull().default(0),
+        isAiGenerated: boolean("is_ai_generated").notNull().default(false),
+        aiPrompt: text("ai_prompt"),
+        isPublic: boolean("is_public").notNull().default(true),
+        usageCount: integer("usage_count").notNull().default(0),
+        createdByCompanyId: text("created_by_company_id"),
+        createdByUserId: text("created_by_user_id"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_interviewProcessTemplate_style").on(table.style),
-        index("idx_interviewProcessTemplate_category").on(table.category),
-        index("idx_interviewProcessTemplate_isPublic").on(table.isPublic),
-        index("idx_interviewProcessTemplate_usageCount").on(table.usageCount),
+        index("idx_interview_process_template_style").on(table.style),
+        index("idx_interview_process_template_category").on(table.category),
+        index("idx_interview_process_template_is_public").on(table.isPublic),
+        index("idx_interview_process_template_usage_count").on(table.usageCount),
     ],
 );
 

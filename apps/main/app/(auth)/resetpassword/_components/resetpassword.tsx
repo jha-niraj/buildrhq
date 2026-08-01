@@ -8,9 +8,8 @@ import { Button } from "@repo/ui/components/ui/button";
 import {
     RefreshCw, CheckCircle2, Lock, Loader2
 } from "lucide-react";
-import {
-    resetPasswordWithOTP, sendPasswordResetOTP
-} from "@/actions/(auth)/auth/auth.actions";
+import { emailOtp } from "@repo/auth/client";
+import { getAuthErrorMessage } from "@/lib/auth-errors";
 import toast from '@repo/ui/components/ui/sonner';
 import { motion } from 'framer-motion';
 
@@ -81,39 +80,53 @@ const ResetPassword = (): JSX.Element | null => {
     const handleResend = async () => {
         if (!email) return;
         try {
-            const result = await sendPasswordResetOTP(email);
-            if (result.success) {
-                toast.success(result.message);
-                setCanResend(false);
-                setTimer(30);
-                setOtp(["", "", "", "", "", ""]);
-            } else {
-                toast.error(result.error || "Failed to resend code");
+            const { error } = await emailOtp.requestPasswordReset({ email });
+            if (error) {
+                toast.error(getAuthErrorMessage(error.code ?? error.message));
+                return;
             }
+            toast.success("A new code is on its way");
+            setCanResend(false);
+            setTimer(30);
+            setOtp(["", "", "", "", "", ""]);
         } catch {
             toast.error("Failed to resend code");
         }
     };
 
+    // `emailOtp.resetPassword` verifies the code and writes the new password
+    // through better-auth, which stores credential passwords on the `account`
+    // row. The previous implementation hashed into `users.hashedPassword` --
+    // a column better-auth never reads -- so it always reported success while
+    // leaving the old password in force.
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         if (!email) return toast.error("Session invalid. Restart process.");
         if (password !== confirmPassword) return toast.error('Passwords do not match');
-        if (password.length < 6) return toast.error('Password too short (min 6 chars)');
+        // Matches `minPasswordLength` in packages/auth/src/auth.ts. This used to
+        // say 6, so a 6- or 7-character password passed here and was then
+        // rejected by the server with a less helpful message.
+        if (password.length < 8) return toast.error('Password too short (min 8 characters)');
         if (otp.join("").length !== 6) return toast.error("Enter full 6-digit code");
 
         setIsLoading(true);
         try {
-            const result = await resetPasswordWithOTP(email, otp.join(""), password);
-            if (result.success) {
-                setIsSuccess(true);
-                toast.success("Password reset successfully!");
-                setTimeout(() => router.push('/signin'), 2000);
-            } else {
-                toast.error(result.error || "Reset failed");
+            const { error } = await emailOtp.resetPassword({
+                email,
+                otp: otp.join(""),
+                password,
+            });
+
+            if (error) {
+                toast.error(getAuthErrorMessage(error.code ?? error.message));
                 setOtp(["", "", "", "", "", ""]);
                 inputRefs[0]?.current?.focus();
+                return;
             }
+
+            setIsSuccess(true);
+            toast.success("Password reset successfully!");
+            setTimeout(() => router.push('/signin'), 2000);
         } catch {
             toast.error("An unexpected error occurred");
         } finally {

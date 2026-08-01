@@ -18,7 +18,7 @@ import { users, creditTypeEnum, creditRequestStatusEnum, paymentStatusEnum, curr
 // Enums
 // ===========================
 
-export const moduleEnum = pgEnum("Module", [
+export const moduleEnum = pgEnum("module", [
     "PATHFINDER",
     "CONCEPTS",
     "RESUME_TEMPLATE",
@@ -30,160 +30,160 @@ export const moduleEnum = pgEnum("Module", [
 // ===========================
 
 export const subTransactions = pgTable(
-    "SubTransaction",
+    "sub_transaction",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        creditTransactionId: text("creditTransactionId").notNull().unique().references(() => creditTransactions.id, { onDelete: "cascade" }),
+        creditTransactionId: text("credit_transaction_id").notNull().unique().references(() => creditTransactions.id, { onDelete: "cascade" }),
         module: moduleEnum("module").notNull(),
-        referenceId: text("referenceId"),
+        referenceId: text("reference_id"),
         metadata: jsonb("metadata"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (t) => [
-        index("subTransaction_module_idx").on(t.module),
-        index("subTransaction_referenceId_idx").on(t.referenceId),
-        index("subTransaction_module_referenceId_idx").on(t.module, t.referenceId),
+        index("sub_transaction_module_idx").on(t.module),
+        index("sub_transaction_reference_id_idx").on(t.referenceId),
+        index("sub_transaction_module_reference_id_idx").on(t.module, t.referenceId),
     ]
 );
 
 export const earnings = pgTable(
-    "Earning",
+    "earning",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull(),
+        userId: text("user_id").notNull(),
         module: moduleEnum("module").notNull(),
-        referenceId: text("referenceId"),
+        referenceId: text("reference_id"),
         amount: integer("amount").notNull(),
-        sourceUserId: text("sourceUserId"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        sourceUserId: text("source_user_id"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (t) => [
-        index("earning_userId_idx").on(t.userId),
+        index("earning_user_id_idx").on(t.userId),
         index("earning_module_idx").on(t.module),
-        index("earning_referenceId_idx").on(t.referenceId),
-        index("earning_userId_module_idx").on(t.userId, t.module),
+        index("earning_reference_id_idx").on(t.referenceId),
+        index("earning_user_id_module_idx").on(t.userId, t.module),
     ]
 );
 
 export const referrals = pgTable(
-    "Referral",
+    "referral",
     {
         id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
-        referrerId: text("referrerId").notNull().references(() => users.id),
-        referredUserId: text("referredUserId").notNull().unique().references(() => users.id),
-        referralCode: text("referralCode").notNull(),
-        pointsAwarded: boolean("pointsAwarded").notNull().default(false),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        referrerId: text("referrer_id").notNull().references(() => users.id),
+        referredUserId: text("referred_user_id").notNull().unique().references(() => users.id),
+        referralCode: text("referral_code").notNull(),
+        pointsAwarded: boolean("points_awarded").notNull().default(false),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (t) => [
-        index("referral_referrerId_idx").on(t.referrerId),
-        index("referral_referralCode_idx").on(t.referralCode),
+        index("referral_referrer_id_idx").on(t.referrerId),
+        index("referral_referral_code_idx").on(t.referralCode),
     ]
 );
 
 export const creditTransfers = pgTable(
-    "CreditTransfer",
+    "credit_transfer",
     {
         id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
-        senderId: text("senderId").notNull().references(() => users.id),
-        receiverId: text("receiverId").notNull().references(() => users.id),
+        senderId: text("sender_id").notNull().references(() => users.id),
+        receiverId: text("receiver_id").notNull().references(() => users.id),
         amount: integer("amount").notNull(),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        transferReference: text("transferReference").notNull().unique().$defaultFn(() => createId()),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        transferReference: text("transfer_reference").notNull().unique().$defaultFn(() => createId()),
     },
     (t) => [
-        index("creditTransfer_senderId_idx").on(t.senderId),
-        index("creditTransfer_receiverId_idx").on(t.receiverId),
+        index("credit_transfer_sender_id_idx").on(t.senderId),
+        index("credit_transfer_receiver_id_idx").on(t.receiverId),
     ]
 );
 
 export const creditTransactions = pgTable(
-    "CreditTransaction",
+    "credit_transaction",
     {
         id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
-        userId: text("userId").notNull().references(() => users.id),
+        userId: text("user_id").notNull().references(() => users.id),
         currency: currencyEnum("currency").notNull(),
         amount: integer("amount").notNull(),
         type: creditTypeEnum("type").notNull(),
         description: text("description").notNull(),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        paymentId: text("paymentId"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        paymentId: text("payment_id"),
     },
     (t) => [
-        index("creditTransaction_userId_idx").on(t.userId),
-        index("creditTransaction_paymentId_idx").on(t.paymentId),
-        index("creditTransaction_createdAt_idx").on(t.createdAt),
+        index("credit_transaction_user_id_idx").on(t.userId),
+        index("credit_transaction_payment_id_idx").on(t.paymentId),
+        index("credit_transaction_created_at_idx").on(t.createdAt),
     ]
 );
 
 export const creditRequests = pgTable(
-    "CreditRequest",
+    "credit_request",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id),
-        requestedCredits: integer("requestedCredits").notNull(),
-        linkedinPostUrl: text("linkedinPostUrl").notNull(),
-        twitterPostUrl: text("twitterPostUrl"),
+        userId: text("user_id").notNull().references(() => users.id),
+        requestedCredits: integer("requested_credits").notNull(),
+        linkedinPostUrl: text("linkedin_post_url").notNull(),
+        twitterPostUrl: text("twitter_post_url"),
         status: creditRequestStatusEnum("status").notNull().default("PENDING"),
-        adminNotes: text("adminNotes"),
-        processedAt: timestamp("processedAt"),
-        processedBy: text("processedBy"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+        adminNotes: text("admin_notes"),
+        processedAt: timestamp("processed_at"),
+        processedBy: text("processed_by"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
     },
     (t) => [
-        index("creditRequest_userId_idx").on(t.userId),
-        index("creditRequest_status_idx").on(t.status),
-        index("creditRequest_createdAt_idx").on(t.createdAt),
+        index("credit_request_user_id_idx").on(t.userId),
+        index("credit_request_status_idx").on(t.status),
+        index("credit_request_created_at_idx").on(t.createdAt),
     ]
 );
 
 export const creditTransferOuts = pgTable(
-    "CreditTransferOut",
+    "credit_transfer_out",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id),
-        userEmail: text("userEmail").notNull(),
-        creditsTransferred: integer("creditsTransferred").notNull(),
-        destinationPlatform: text("destinationPlatform").notNull().default("truefool"),
-        transferId: text("transferId").notNull(),
+        userId: text("user_id").notNull().references(() => users.id),
+        userEmail: text("user_email").notNull(),
+        creditsTransferred: integer("credits_transferred").notNull(),
+        destinationPlatform: text("destination_platform").notNull().default("truefool"),
+        transferId: text("transfer_id").notNull(),
         status: text("status").notNull().default("COMPLETED"),
-        ipAddress: text("ipAddress"),
-        userAgent: text("userAgent"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        ipAddress: text("ip_address"),
+        userAgent: text("user_agent"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (t) => [
-        index("creditTransferOut_userId_idx").on(t.userId),
-        index("creditTransferOut_transferId_idx").on(t.transferId),
-        index("creditTransferOut_createdAt_idx").on(t.createdAt),
+        index("credit_transfer_out_user_id_idx").on(t.userId),
+        index("credit_transfer_out_transfer_id_idx").on(t.transferId),
+        index("credit_transfer_out_created_at_idx").on(t.createdAt),
     ]
 );
 
 export const payments = pgTable(
-    "Payment",
+    "payment",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        userId: text("userId").notNull().references(() => users.id),
+        userId: text("user_id").notNull().references(() => users.id),
         credits: integer("credits").notNull(),
         amount: decimal("amount", { precision: 10, scale: 2 }).notNull(),
         currency: currencyEnum("currency").notNull().default("INR"),
         status: paymentStatusEnum("status").notNull().default("PENDING"),
-        orderId: text("orderId").unique(),
-        paymentId: text("paymentId").unique(),
-        razorpayOrderId: text("razorpayOrderId").unique(),
+        orderId: text("order_id").unique(),
+        paymentId: text("payment_id").unique(),
+        razorpayOrderId: text("razorpay_order_id").unique(),
         signature: text("signature"),
         receipt: text("receipt"),
         notes: jsonb("notes"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
-        completedAt: timestamp("completedAt"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
+        completedAt: timestamp("completed_at"),
     },
     (t) => [
-        index("payment_userId_idx").on(t.userId),
+        index("payment_user_id_idx").on(t.userId),
         index("payment_status_idx").on(t.status),
-        index("payment_orderId_idx").on(t.orderId),
-        index("payment_paymentId_idx").on(t.paymentId),
-        index("payment_createdAt_idx").on(t.createdAt),
+        index("payment_order_id_idx").on(t.orderId),
+        index("payment_payment_id_idx").on(t.paymentId),
+        index("payment_created_at_idx").on(t.createdAt),
     ]
 );
 

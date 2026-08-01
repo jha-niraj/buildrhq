@@ -19,7 +19,7 @@ import { users } from "./schema";
 // Enums
 // ===========================
 
-export const pathfinderCategoryEnum = pgEnum("PathfinderCategory", [
+export const pathfinderCategoryEnum = pgEnum("pathfinder_category", [
     "DSA",
     "WEB_DEVELOPMENT",
     "FRONTEND",
@@ -32,14 +32,14 @@ export const pathfinderCategoryEnum = pgEnum("PathfinderCategory", [
     "OTHER",
 ]);
 
-export const pathfinderLevelEnum = pgEnum("PathfinderLevel", [
+export const pathfinderLevelEnum = pgEnum("pathfinder_level", [
     "BEGINNER",
     "INTERMEDIATE",
     "ADVANCED",
     "EXPERT",
 ]);
 
-export const pathfinderStatusEnum = pgEnum("PathfinderStatus", [
+export const pathfinderStatusEnum = pgEnum("pathfinder_status", [
     "ACTIVE",
     "VERIFICATION",
     "COMPLETED",
@@ -47,7 +47,7 @@ export const pathfinderStatusEnum = pgEnum("PathfinderStatus", [
     "ABANDONED",
 ]);
 
-export const pathfinderGoalDurationEnum = pgEnum("PathfinderGoalDuration", [
+export const pathfinderGoalDurationEnum = pgEnum("pathfinder_goal_duration", [
     "ONE_WEEK",
     "FORTNIGHT",
     "ONE_MONTH",
@@ -57,7 +57,7 @@ export const pathfinderGoalDurationEnum = pgEnum("PathfinderGoalDuration", [
     "CUSTOM",
 ]);
 
-export const verificationSectionStatusEnum = pgEnum("VerificationSectionStatus", [
+export const verificationSectionStatusEnum = pgEnum("verification_section_status", [
     "LOCKED",
     "PENDING",
     "IN_PROGRESS",
@@ -65,7 +65,7 @@ export const verificationSectionStatusEnum = pgEnum("VerificationSectionStatus",
     "FAILED",
 ]);
 
-export const subGoalStatusEnum = pgEnum("SubGoalStatus", [
+export const subGoalStatusEnum = pgEnum("sub_goal_status", [
     "PENDING",
     "IN_PROGRESS",
     "COMPLETED",
@@ -77,12 +77,12 @@ export const subGoalStatusEnum = pgEnum("SubGoalStatus", [
 // ===========================
 
 export const pathfinderGroups = pgTable(
-    "PathfinderGroup",
+    "pathfinder_group",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
         name: text("name").notNull(),
@@ -90,283 +90,283 @@ export const pathfinderGroups = pgTable(
         color: text("color").default("#7c3aed"),
         description: text("description"),
         order: integer("order").notNull().default(0),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("idx_pfg_userId_name").on(table.userId, table.name),
-        index("idx_pfg_userId").on(table.userId),
+        uniqueIndex("idx_pfg_user_id_name").on(table.userId, table.name),
+        index("idx_pfg_user_id").on(table.userId),
     ],
 );
 
 export const pathfinderGoals = pgTable(
-    "PathfinderGoal",
+    "pathfinder_goal",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        groupId: text("groupId").references(() => pathfinderGroups.id, { onDelete: "set null" }),
+        groupId: text("group_id").references(() => pathfinderGroups.id, { onDelete: "set null" }),
         title: text("title").notNull(),
         slug: text("slug").notNull(),
         category: pathfinderCategoryEnum("category").notNull(),
         level: pathfinderLevelEnum("level").notNull(),
-        focusAreas: text("focusAreas").array().notNull().default([]),
-        targetDate: timestamp("targetDate"),
+        focusAreas: text("focus_areas").array().notNull().default([]),
+        targetDate: timestamp("target_date"),
         duration: pathfinderGoalDurationEnum("duration"),
-        isPublic: boolean("isPublic").notNull().default(true),
-        forkedFromId: text("forkedFromId"),
-        creditPrice: integer("creditPrice"),
+        isPublic: boolean("is_public").notNull().default(true),
+        forkedFromId: text("forked_from_id"),
+        creditPrice: integer("credit_price"),
         overview: text("overview"),
-        estimatedDays: integer("estimatedDays"),
-        estimatedHours: integer("estimatedHours"),
-        learningObjectives: text("learningObjectives").array().notNull().default([]),
+        estimatedDays: integer("estimated_days"),
+        estimatedHours: integer("estimated_hours"),
+        learningObjectives: text("learning_objectives").array().notNull().default([]),
         prerequisites: text("prerequisites").array().notNull().default([]),
         status: pathfinderStatusEnum("status").notNull().default("ACTIVE"),
-        progressPercent: integer("progressPercent").notNull().default(0),
-        totalSubGoals: integer("totalSubGoals").notNull().default(0),
-        completedSubGoals: integer("completedSubGoals").notNull().default(0),
-        totalQuizAnswered: integer("totalQuizAnswered").notNull().default(0),
-        totalCodingSolved: integer("totalCodingSolved").notNull().default(0),
-        streakDays: integer("streakDays").notNull().default(0),
-        lastActivityAt: timestamp("lastActivityAt"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        progressPercent: integer("progress_percent").notNull().default(0),
+        totalSubGoals: integer("total_sub_goals").notNull().default(0),
+        completedSubGoals: integer("completed_sub_goals").notNull().default(0),
+        totalQuizAnswered: integer("total_quiz_answered").notNull().default(0),
+        totalCodingSolved: integer("total_coding_solved").notNull().default(0),
+        streakDays: integer("streak_days").notNull().default(0),
+        lastActivityAt: timestamp("last_activity_at"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
-        startedAt: timestamp("startedAt"),
-        verificationStartedAt: timestamp("verificationStartedAt"),
-        completedAt: timestamp("completedAt"),
+        startedAt: timestamp("started_at"),
+        verificationStartedAt: timestamp("verification_started_at"),
+        completedAt: timestamp("completed_at"),
     },
     (table) => [
-        uniqueIndex("idx_pfgoal_userId_slug").on(table.userId, table.slug),
-        index("idx_pfgoal_userId").on(table.userId),
-        index("idx_pfgoal_groupId").on(table.groupId),
+        uniqueIndex("idx_pfgoal_user_id_slug").on(table.userId, table.slug),
+        index("idx_pfgoal_user_id").on(table.userId),
+        index("idx_pfgoal_group_id").on(table.groupId),
         index("idx_pfgoal_status").on(table.status),
         index("idx_pfgoal_category").on(table.category),
-        index("idx_pfgoal_createdAt").on(table.createdAt),
+        index("idx_pfgoal_created_at").on(table.createdAt),
     ],
 );
 
 export const pathfinderDailySessions = pgTable(
-    "PathfinderDailySession",
+    "pathfinder_daily_session",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        goalId: text("goalId")
+        goalId: text("goal_id")
             .notNull()
             .references(() => pathfinderGoals.id, { onDelete: "cascade" }),
-        userId: text("userId").notNull(),
+        userId: text("user_id").notNull(),
         date: date("date").notNull(),
-        totalSubGoals: integer("totalSubGoals").notNull().default(0),
-        completedSubGoals: integer("completedSubGoals").notNull().default(0),
-        totalQuizQuestions: integer("totalQuizQuestions").notNull().default(0),
-        correctQuizAnswers: integer("correctQuizAnswers").notNull().default(0),
-        totalCodingProblems: integer("totalCodingProblems").notNull().default(0),
-        solvedCodingProblems: integer("solvedCodingProblems").notNull().default(0),
-        totalTimeMinutes: integer("totalTimeMinutes").notNull().default(0),
+        totalSubGoals: integer("total_sub_goals").notNull().default(0),
+        completedSubGoals: integer("completed_sub_goals").notNull().default(0),
+        totalQuizQuestions: integer("total_quiz_questions").notNull().default(0),
+        correctQuizAnswers: integer("correct_quiz_answers").notNull().default(0),
+        totalCodingProblems: integer("total_coding_problems").notNull().default(0),
+        solvedCodingProblems: integer("solved_coding_problems").notNull().default(0),
+        totalTimeMinutes: integer("total_time_minutes").notNull().default(0),
         notes: text("notes"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        uniqueIndex("idx_pfds_goalId_date").on(table.goalId, table.date),
-        index("idx_pfds_goalId").on(table.goalId),
-        index("idx_pfds_userId").on(table.userId),
+        uniqueIndex("idx_pfds_goal_id_date").on(table.goalId, table.date),
+        index("idx_pfds_goal_id").on(table.goalId),
+        index("idx_pfds_user_id").on(table.userId),
         index("idx_pfds_date").on(table.date),
     ],
 );
 
 export const pathfinderSubGoals = pgTable(
-    "PathfinderSubGoal",
+    "pathfinder_sub_goal",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        goalId: text("goalId")
+        goalId: text("goal_id")
             .notNull()
             .references(() => pathfinderGoals.id, { onDelete: "cascade" }),
-        sessionId: text("sessionId")
+        sessionId: text("session_id")
             .notNull()
             .references(() => pathfinderDailySessions.id, { onDelete: "cascade" }),
         title: text("title").notNull(),
         description: text("description"),
         source: text("source").notNull().default("text"),
-        voiceTranscript: text("voiceTranscript"),
+        voiceTranscript: text("voice_transcript"),
         status: subGoalStatusEnum("status").notNull().default("PENDING"),
         order: integer("order").notNull().default(0),
-        isAIGenerated: boolean("isAIGenerated").notNull().default(false),
-        isContentLoaded: boolean("isContentLoaded").notNull().default(false),
-        aiCodingProblem: jsonb("aiCodingProblem"),
-        hasCoding: boolean("hasCoding").notNull().default(false),
+        isAIGenerated: boolean("is_ai_generated").notNull().default(false),
+        isContentLoaded: boolean("is_content_loaded").notNull().default(false),
+        aiCodingProblem: jsonb("ai_coding_problem"),
+        hasCoding: boolean("has_coding").notNull().default(false),
         // studioId is a soft FK to Studio (defined in studio.ts) — no .references() to avoid circular imports
-        studioId: text("studioId").unique(),
-        quizCompleted: boolean("quizCompleted").notNull().default(false),
-        quizScore: integer("quizScore"),
-        codingCompleted: boolean("codingCompleted").notNull().default(false),
-        codingPassed: boolean("codingPassed").notNull().default(false),
-        codingProgress: jsonb("codingProgress"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        studioId: text("studio_id").unique(),
+        quizCompleted: boolean("quiz_completed").notNull().default(false),
+        quizScore: integer("quiz_score"),
+        codingCompleted: boolean("coding_completed").notNull().default(false),
+        codingPassed: boolean("coding_passed").notNull().default(false),
+        codingProgress: jsonb("coding_progress"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
-        completedAt: timestamp("completedAt"),
+        completedAt: timestamp("completed_at"),
     },
     (table) => [
-        index("idx_pfsg_goalId").on(table.goalId),
-        index("idx_pfsg_sessionId").on(table.sessionId),
+        index("idx_pfsg_goal_id").on(table.goalId),
+        index("idx_pfsg_session_id").on(table.sessionId),
         index("idx_pfsg_status").on(table.status),
     ],
 );
 
 export const pathfinderVerifications = pgTable(
-    "PathfinderVerification",
+    "pathfinder_verification",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        goalId: text("goalId")
+        goalId: text("goal_id")
             .notNull()
             .unique()
             .references(() => pathfinderGoals.id, { onDelete: "cascade" }),
-        overallScore: integer("overallScore"),
+        overallScore: integer("overall_score"),
         passed: boolean("passed").notNull().default(false),
-        quizStatus: verificationSectionStatusEnum("quizStatus").notNull().default("PENDING"),
-        codingStatus: verificationSectionStatusEnum("codingStatus").notNull().default("LOCKED"),
-        mockStatus: verificationSectionStatusEnum("mockStatus").notNull().default("LOCKED"),
-        projectStatus: verificationSectionStatusEnum("projectStatus").notNull().default("LOCKED"),
-        quizScore: integer("quizScore"),
-        codingScore: integer("codingScore"),
-        mockScore: integer("mockScore"),
-        projectComplete: boolean("projectComplete").notNull().default(false),
-        quizAttempts: integer("quizAttempts").notNull().default(0),
-        codingAttempts: integer("codingAttempts").notNull().default(0),
-        mockAttempts: integer("mockAttempts").notNull().default(0),
-        verificationCreditsCharged: integer("verificationCreditsCharged").notNull().default(0),
-        generatedPlan: jsonb("generatedPlan"),
-        mockInterviewId: text("mockInterviewId"),
-        mockSessionId: text("mockSessionId"),
-        projectType: text("projectType"),
-        projectId: text("projectId"),
-        startedAt: timestamp("startedAt").notNull().defaultNow(),
-        quizCompletedAt: timestamp("quizCompletedAt"),
-        codingCompletedAt: timestamp("codingCompletedAt"),
-        mockCompletedAt: timestamp("mockCompletedAt"),
-        projectCompletedAt: timestamp("projectCompletedAt"),
-        completedAt: timestamp("completedAt"),
+        quizStatus: verificationSectionStatusEnum("quiz_status").notNull().default("PENDING"),
+        codingStatus: verificationSectionStatusEnum("coding_status").notNull().default("LOCKED"),
+        mockStatus: verificationSectionStatusEnum("mock_status").notNull().default("LOCKED"),
+        projectStatus: verificationSectionStatusEnum("project_status").notNull().default("LOCKED"),
+        quizScore: integer("quiz_score"),
+        codingScore: integer("coding_score"),
+        mockScore: integer("mock_score"),
+        projectComplete: boolean("project_complete").notNull().default(false),
+        quizAttempts: integer("quiz_attempts").notNull().default(0),
+        codingAttempts: integer("coding_attempts").notNull().default(0),
+        mockAttempts: integer("mock_attempts").notNull().default(0),
+        verificationCreditsCharged: integer("verification_credits_charged").notNull().default(0),
+        generatedPlan: jsonb("generated_plan"),
+        mockInterviewId: text("mock_interview_id"),
+        mockSessionId: text("mock_session_id"),
+        projectType: text("project_type"),
+        projectId: text("project_id"),
+        startedAt: timestamp("started_at").notNull().defaultNow(),
+        quizCompletedAt: timestamp("quiz_completed_at"),
+        codingCompletedAt: timestamp("coding_completed_at"),
+        mockCompletedAt: timestamp("mock_completed_at"),
+        projectCompletedAt: timestamp("project_completed_at"),
+        completedAt: timestamp("completed_at"),
     },
     (table) => [
-        index("idx_pfv_goalId").on(table.goalId),
+        index("idx_pfv_goal_id").on(table.goalId),
     ],
 );
 
 export const pathfinderQuizAttempts = pgTable(
-    "PathfinderQuizAttempt",
+    "pathfinder_quiz_attempt",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        goalId: text("goalId")
+        goalId: text("goal_id")
             .notNull()
             .references(() => pathfinderGoals.id, { onDelete: "cascade" }),
-        userId: text("userId").notNull(),
-        quizType: text("quizType").notNull(),
-        dayNumber: integer("dayNumber"),
+        userId: text("user_id").notNull(),
+        quizType: text("quiz_type").notNull(),
+        dayNumber: integer("day_number"),
         score: integer("score").notNull(),
-        correctCount: integer("correctCount").notNull(),
-        totalQuestions: integer("totalQuestions").notNull(),
-        timeTaken: integer("timeTaken").notNull(),
+        correctCount: integer("correct_count").notNull(),
+        totalQuestions: integer("total_questions").notNull(),
+        timeTaken: integer("time_taken").notNull(),
         answers: jsonb("answers").notNull(),
-        startedAt: timestamp("startedAt").notNull(),
-        completedAt: timestamp("completedAt").notNull().defaultNow(),
+        startedAt: timestamp("started_at").notNull(),
+        completedAt: timestamp("completed_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_pfqa_goalId").on(table.goalId),
-        index("idx_pfqa_userId").on(table.userId),
-        index("idx_pfqa_quizType").on(table.quizType),
+        index("idx_pfqa_goal_id").on(table.goalId),
+        index("idx_pfqa_user_id").on(table.userId),
+        index("idx_pfqa_quiz_type").on(table.quizType),
     ],
 );
 
 export const pathfinderCodingSubmissions = pgTable(
-    "PathfinderCodingSubmission",
+    "pathfinder_coding_submission",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        goalId: text("goalId")
+        goalId: text("goal_id")
             .notNull()
             .references(() => pathfinderGoals.id, { onDelete: "cascade" }),
-        userId: text("userId").notNull(),
-        submissionType: text("submissionType").notNull(),
-        dayNumber: integer("dayNumber"),
-        problemId: text("problemId").notNull(),
+        userId: text("user_id").notNull(),
+        submissionType: text("submission_type").notNull(),
+        dayNumber: integer("day_number"),
+        problemId: text("problem_id").notNull(),
         code: text("code").notNull(),
         language: text("language").notNull(),
         passed: boolean("passed").notNull().default(false),
-        testsPassed: integer("testsPassed").notNull().default(0),
-        totalTests: integer("totalTests").notNull().default(0),
-        executionTime: integer("executionTime"),
-        testResults: jsonb("testResults"),
-        submittedAt: timestamp("submittedAt").notNull().defaultNow(),
+        testsPassed: integer("tests_passed").notNull().default(0),
+        totalTests: integer("total_tests").notNull().default(0),
+        executionTime: integer("execution_time"),
+        testResults: jsonb("test_results"),
+        submittedAt: timestamp("submitted_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_pfcs_goalId").on(table.goalId),
-        index("idx_pfcs_userId").on(table.userId),
-        index("idx_pfcs_problemId").on(table.problemId),
+        index("idx_pfcs_goal_id").on(table.goalId),
+        index("idx_pfcs_user_id").on(table.userId),
+        index("idx_pfcs_problem_id").on(table.problemId),
     ],
 );
 
 export const pathfinderUsageLedger = pgTable(
-    "PathfinderUsageLedger",
+    "pathfinder_usage_ledger",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        goalId: text("goalId")
+        goalId: text("goal_id")
             .notNull()
             .references(() => pathfinderGoals.id, { onDelete: "cascade" }),
-        userId: text("userId").notNull(),
+        userId: text("user_id").notNull(),
         action: text("action").notNull(),
         provider: text("provider").notNull(),
-        inputTokens: integer("inputTokens").notNull().default(0),
-        outputTokens: integer("outputTokens").notNull().default(0),
-        creditsCost: integer("creditsCost").notNull().default(0),
+        inputTokens: integer("input_tokens").notNull().default(0),
+        outputTokens: integer("output_tokens").notNull().default(0),
+        creditsCost: integer("credits_cost").notNull().default(0),
         deducted: boolean("deducted").notNull().default(false),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_pful_goalId").on(table.goalId),
-        index("idx_pful_userId").on(table.userId),
-        index("idx_pful_createdAt").on(table.createdAt),
+        index("idx_pful_goal_id").on(table.goalId),
+        index("idx_pful_user_id").on(table.userId),
+        index("idx_pful_created_at").on(table.createdAt),
     ],
 );
 
 export const pathfinderGoalPurchases = pgTable(
-    "PathfinderGoalPurchase",
+    "pathfinder_goal_purchase",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        goalId: text("goalId")
+        goalId: text("goal_id")
             .notNull()
             .references(() => pathfinderGoals.id, { onDelete: "cascade" }),
-        buyerId: text("buyerId")
+        buyerId: text("buyer_id")
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        creditsPaid: integer("creditsPaid").notNull(),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        creditsPaid: integer("credits_paid").notNull(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        uniqueIndex("idx_pfgp_goalId_buyerId").on(table.goalId, table.buyerId),
-        index("idx_pfgp_goalId").on(table.goalId),
-        index("idx_pfgp_buyerId").on(table.buyerId),
+        uniqueIndex("idx_pfgp_goal_id_buyer_id").on(table.goalId, table.buyerId),
+        index("idx_pfgp_goal_id").on(table.goalId),
+        index("idx_pfgp_buyer_id").on(table.buyerId),
     ],
 );
 

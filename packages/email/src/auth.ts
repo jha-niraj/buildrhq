@@ -41,7 +41,9 @@ function appUrl(): string {
 		process.env.NEXT_PUBLIC_BASE_URL ||
 		process.env.BETTER_AUTH_URL ||
 		process.env.NEXTAUTH_URL ||
-		"http://localhost:4101"
+		// Matches apps/main's dev port; :4101 (the old value) is not served by
+		// anything in this repo, so links in local emails pointed nowhere.
+		"http://localhost:3004"
 	);
 }
 

@@ -1,8 +1,8 @@
 "use server"
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { db, users, adminAccess, adminInvitations, adminAuditLogs } from "@repo/db"
-import { eq, gte, count } from "drizzle-orm"
+import { db, users, accounts, adminAccess, adminInvitations, adminAuditLogs } from "@repo/db"
+import { eq, and, gte, count } from "drizzle-orm"
 import { getSession } from "@repo/auth"
 import { headers } from "next/headers"
 import { revalidatePath } from "next/cache"
@@ -233,11 +233,11 @@ export async function verifyAccessCode(email: string, accessCode: string): Promi
             const newUsers = await db.insert(users).values({
                 email: email.toLowerCase(),
                 name: invitation.name || email.split("@")[0],
-                hashedPassword: tempPassword,
                 emailVerified: true,
                 role: "Admin"
             }).returning()
             user = newUsers[0]
+            if (user) await writeCredentialPassword(user.id, tempPassword)
         }
 
         if (!user) {
@@ -521,6 +521,37 @@ export async function getAuditLogs(page: number = 1, limit: number = 20): Promis
     }
 }
 
+// better-auth verifies credential sign-in against the `account` row
+// (providerId "credential"), never `users.hashedPassword`. Every password write
+// in this file used to target that dead column, so an admin could be issued a
+// password that could not sign them in. This routes the write to the record
+// better-auth actually reads.
+async function writeCredentialPassword(userId: string, hashedPassword: string): Promise<void> {
+    const existing = await db.query.accounts.findFirst({
+        where: and(eq(accounts.userId, userId), eq(accounts.providerId, "credential")),
+    })
+
+    if (existing) {
+        await db.update(accounts).set({ password: hashedPassword }).where(eq(accounts.id, existing.id))
+    } else {
+        await db.insert(accounts).values({
+            userId,
+            accountId: userId,
+            providerId: "credential",
+            password: hashedPassword,
+        })
+    }
+}
+
+/** The stored credential hash for a user, or null if they have no password. */
+async function readCredentialPassword(userId: string): Promise<string | null> {
+    const existing = await db.query.accounts.findFirst({
+        where: and(eq(accounts.userId, userId), eq(accounts.providerId, "credential")),
+        columns: { password: true },
+    })
+    return existing?.password ?? null
+}
+
 // Set admin password (after initial access code login)
 export async function setAdminPassword(newPassword: string): Promise<AdminResponse> {
     try {
@@ -536,10 +567,8 @@ export async function setAdminPassword(newPassword: string): Promise<AdminRespon
             .set({ hashedPassword, accessCode: null, accessCodeExpiry: null })
             .where(eq(adminAccess.userId, session.user.id))
 
-        // Also update user password
-        await db.update(users)
-            .set({ hashedPassword })
-            .where(eq(users.id, session.user.id))
+        // ...and the credential better-auth signs the admin in with.
+        await writeCredentialPassword(session.user.id, hashedPassword)
 
         return { success: true }
     } catch (error) {
@@ -558,19 +587,24 @@ export async function changeAdminPassword(currentPassword: string, newPassword: 
 
         const user = await db.query.users.findFirst({
             where: eq(users.id, session.user.id),
-            columns: { id: true, hashedPassword: true }
+            columns: { id: true }
         })
-        if (!user || !user.hashedPassword) {
+        if (!user) {
             return { success: false, error: "User not found" }
         }
 
-        const valid = await bcrypt.compare(currentPassword, user.hashedPassword)
+        const currentHash = await readCredentialPassword(user.id)
+        if (!currentHash) {
+            return { success: false, error: "This account has no password set" }
+        }
+
+        const valid = await bcrypt.compare(currentPassword, currentHash)
         if (!valid) {
             return { success: false, error: "Current password is incorrect" }
         }
 
         const hashedNew = await bcrypt.hash(newPassword, 12)
-        await db.update(users).set({ hashedPassword: hashedNew }).where(eq(users.id, user.id))
+        await writeCredentialPassword(user.id, hashedNew)
 
         const adminRecord = await db.query.adminAccess.findFirst({ where: eq(adminAccess.userId, user.id) })
         if (adminRecord) {

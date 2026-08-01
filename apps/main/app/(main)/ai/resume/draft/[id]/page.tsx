@@ -12,7 +12,7 @@ export default async function ResumeEditorPage({
 }) {
     const { id } = await params
     const session = await getSession(headers())
-    if (!session?.user?.id) redirect('/login')
+    if (!session?.user?.id) redirect('/signin')
 
     const [draftRes, templatesRes] = await Promise.all([
         getResumeDraft(id),

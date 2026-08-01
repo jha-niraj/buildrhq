@@ -16,7 +16,7 @@ export default async function CoverLetterPage(props: {
     const user = session?.user
 
     if (!user) {
-        redirect("/login")
+        redirect("/signin")
     }
 
     const result = await getCoverLetters()

@@ -10,7 +10,7 @@ export const metadata = {
 
 export default async function ImportPage() {
     const session = await getSession(headers())
-    if (!session?.user?.id) redirect("/login")
+    if (!session?.user?.id) redirect("/signin")
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

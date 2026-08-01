@@ -15,6 +15,34 @@
       "when": 1785441779031,
       "tag": "0001_spicy_gravity",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1785566983718,
+      "tag": "0002_rename_tables_to_camel_case",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1785567570079,
+      "tag": "0003_drop_orphan_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1785567797702,
+      "tag": "0004_adopt_snake_case",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1785568338142,
+      "tag": "0005_snake_case_columns",
+      "breakpoints": true
     }
   ]
 }

@@ -17,7 +17,7 @@ import { users } from "./schema";
 // Enums
 // ===========================
 
-export const adminRoleEnum = pgEnum("AdminRole", [
+export const adminRoleEnum = pgEnum("admin_role", [
     "SUPER_ADMIN",
     "CONTENT_ADMIN",
     "FINANCE_ADMIN",
@@ -26,13 +26,13 @@ export const adminRoleEnum = pgEnum("AdminRole", [
     "VIEWER",
 ]);
 
-export const adminStatusEnum = pgEnum("AdminStatus", [
+export const adminStatusEnum = pgEnum("admin_status", [
     "ACTIVE",
     "INACTIVE",
     "SUSPENDED",
 ]);
 
-export const adminInviteStatusEnum = pgEnum("AdminInviteStatus", [
+export const adminInviteStatusEnum = pgEnum("admin_invite_status", [
     "PENDING",
     "USED",
     "EXPIRED",
@@ -44,39 +44,39 @@ export const adminInviteStatusEnum = pgEnum("AdminInviteStatus", [
 // ===========================
 
 export const adminAccess = pgTable(
-    "AdminAccess",
+    "admin_access",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        userId: text("userId")
+        userId: text("user_id")
             .unique()
             .notNull()
             .references(() => users.id, { onDelete: "cascade" }),
-        adminRole: adminRoleEnum("adminRole").notNull().default("MODULE_MANAGER"),
+        adminRole: adminRoleEnum("admin_role").notNull().default("MODULE_MANAGER"),
         status: adminStatusEnum("status").notNull().default("ACTIVE"),
         permissions: jsonb("permissions").notNull().default({}),
-        lastLoginAt: timestamp("lastLoginAt"),
-        loginCount: integer("loginCount").notNull().default(0),
-        invitedBy: text("invitedBy"),
-        inviteCode: text("inviteCode"),
-        hashedPassword: text("hashedPassword"),
-        accessCode: text("accessCode"),
-        accessCodeExpiry: timestamp("accessCodeExpiry"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        lastLoginAt: timestamp("last_login_at"),
+        loginCount: integer("login_count").notNull().default(0),
+        invitedBy: text("invited_by"),
+        inviteCode: text("invite_code"),
+        hashedPassword: text("hashed_password"),
+        accessCode: text("access_code"),
+        accessCodeExpiry: timestamp("access_code_expiry"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_adminAccess_adminRole").on(table.adminRole),
-        index("idx_adminAccess_status").on(table.status),
-        index("idx_adminAccess_userId").on(table.userId),
+        index("idx_admin_access_admin_role").on(table.adminRole),
+        index("idx_admin_access_status").on(table.status),
+        index("idx_admin_access_user_id").on(table.userId),
     ],
 );
 
 export const adminInvitations = pgTable(
-    "AdminInvitation",
+    "admin_invitation",
     {
         id: text("id")
             .primaryKey()
@@ -87,97 +87,97 @@ export const adminInvitations = pgTable(
             .$defaultFn(() => createId()),
         email: text("email").notNull(),
         name: text("name"),
-        adminRole: adminRoleEnum("adminRole").notNull(),
+        adminRole: adminRoleEnum("admin_role").notNull(),
         permissions: jsonb("permissions").notNull().default({}),
         status: adminInviteStatusEnum("status").notNull().default("PENDING"),
-        usedBy: text("usedBy"),
-        usedAt: timestamp("usedAt"),
-        expiresAt: timestamp("expiresAt").notNull(),
-        createdById: text("createdById")
+        usedBy: text("used_by"),
+        usedAt: timestamp("used_at"),
+        expiresAt: timestamp("expires_at").notNull(),
+        createdById: text("created_by_id")
             .notNull()
             .references(() => adminAccess.id, { onDelete: "cascade" }),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_adminInvitation_code").on(table.code),
-        index("idx_adminInvitation_email").on(table.email),
-        index("idx_adminInvitation_status").on(table.status),
-        index("idx_adminInvitation_expiresAt").on(table.expiresAt),
-        index("idx_adminInvitation_createdById").on(table.createdById),
+        index("idx_admin_invitation_code").on(table.code),
+        index("idx_admin_invitation_email").on(table.email),
+        index("idx_admin_invitation_status").on(table.status),
+        index("idx_admin_invitation_expires_at").on(table.expiresAt),
+        index("idx_admin_invitation_created_by_id").on(table.createdById),
     ],
 );
 
 export const adminAuditLogs = pgTable(
-    "AdminAuditLog",
+    "admin_audit_log",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        adminId: text("adminId")
+        adminId: text("admin_id")
             .notNull()
             .references(() => adminAccess.id, { onDelete: "cascade" }),
         action: text("action").notNull(),
         module: text("module").notNull(),
-        resourceType: text("resourceType"),
-        resourceId: text("resourceId"),
+        resourceType: text("resource_type"),
+        resourceId: text("resource_id"),
         description: text("description"),
         changes: jsonb("changes"),
         metadata: jsonb("metadata"),
-        ipAddress: text("ipAddress"),
-        userAgent: text("userAgent"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        ipAddress: text("ip_address"),
+        userAgent: text("user_agent"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_adminAuditLog_adminId").on(table.adminId),
-        index("idx_adminAuditLog_module").on(table.module),
-        index("idx_adminAuditLog_action").on(table.action),
-        index("idx_adminAuditLog_createdAt").on(table.createdAt),
-        index("idx_adminAuditLog_resourceType_resourceId").on(table.resourceType, table.resourceId),
+        index("idx_admin_audit_log_admin_id").on(table.adminId),
+        index("idx_admin_audit_log_module").on(table.module),
+        index("idx_admin_audit_log_action").on(table.action),
+        index("idx_admin_audit_log_created_at").on(table.createdAt),
+        index("idx_admin_audit_log_resource_type_resource_id").on(table.resourceType, table.resourceId),
     ],
 );
 
 export const adminDashboardStats = pgTable(
-    "AdminDashboardStats",
+    "admin_dashboard_stats",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        statType: text("statType").unique().notNull(),
+        statType: text("stat_type").unique().notNull(),
         data: jsonb("data").notNull(),
-        lastUpdatedAt: timestamp("lastUpdatedAt").notNull().defaultNow(),
+        lastUpdatedAt: timestamp("last_updated_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_adminDashboardStats_statType").on(table.statType),
-        index("idx_adminDashboardStats_lastUpdatedAt").on(table.lastUpdatedAt),
+        index("idx_admin_dashboard_stats_stat_type").on(table.statType),
+        index("idx_admin_dashboard_stats_last_updated_at").on(table.lastUpdatedAt),
     ],
 );
 
 export const adminNotifications = pgTable(
-    "AdminNotification",
+    "admin_notification",
     {
         id: text("id")
             .primaryKey()
             .$defaultFn(() => createId()),
-        adminId: text("adminId"),
+        adminId: text("admin_id"),
         title: text("title").notNull(),
         message: text("message").notNull(),
         type: text("type").notNull().default("info"),
-        actionUrl: text("actionUrl"),
-        actionLabel: text("actionLabel"),
-        isRead: boolean("isRead").notNull().default(false),
-        readAt: timestamp("readAt"),
+        actionUrl: text("action_url"),
+        actionLabel: text("action_label"),
+        isRead: boolean("is_read").notNull().default(false),
+        readAt: timestamp("read_at"),
         metadata: jsonb("metadata"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (table) => [
-        index("idx_adminNotification_adminId").on(table.adminId),
-        index("idx_adminNotification_isRead").on(table.isRead),
-        index("idx_adminNotification_createdAt").on(table.createdAt),
+        index("idx_admin_notification_admin_id").on(table.adminId),
+        index("idx_admin_notification_is_read").on(table.isRead),
+        index("idx_admin_notification_created_at").on(table.createdAt),
     ],
 );
 
 export const adminSystemSettings = pgTable(
-    "AdminSystemSettings",
+    "admin_system_settings",
     {
         id: text("id")
             .primaryKey()
@@ -185,14 +185,14 @@ export const adminSystemSettings = pgTable(
         key: text("key").unique().notNull(),
         value: jsonb("value").notNull(),
         description: text("description"),
-        lastModifiedBy: text("lastModifiedBy"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt")
+        lastModifiedBy: text("last_modified_by"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at")
             .notNull()
             .$onUpdateFn(() => new Date()),
     },
     (table) => [
-        index("idx_adminSystemSettings_key").on(table.key),
+        index("idx_admin_system_settings_key").on(table.key),
     ],
 );
 

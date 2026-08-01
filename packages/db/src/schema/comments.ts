@@ -33,34 +33,34 @@ import { users } from "./schema";
 
 // Seeded with the two consumers that exist today. Adding a value here (BLOG_POST,
 // …) is all a new commentable entity needs on the schema side.
-export const commentEntityTypeEnum = pgEnum("CommentEntityType", [
+export const commentEntityTypeEnum = pgEnum("comment_entity_type", [
     "PROJECT_IDEA",
     "PROJECT",
 ]);
 
 export const comments = pgTable(
-    "Comment",
+    "comment",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
-        entityType: commentEntityTypeEnum("entityType").notNull(),
+        entityType: commentEntityTypeEnum("entity_type").notNull(),
         // Intentionally no .references() — see the polymorphic note above.
-        entityId: text("entityId").notNull(),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+        entityId: text("entity_id").notNull(),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         // Self-reference needs the explicit AnyPgColumn return type; without it
         // TypeScript hits a circular inference on `comments` and widens to any.
-        parentId: text("parentId").references((): AnyPgColumn => comments.id, { onDelete: "cascade" }),
+        parentId: text("parent_id").references((): AnyPgColumn => comments.id, { onDelete: "cascade" }),
         body: text("body").notNull(),
-        isDeleted: boolean("isDeleted").notNull().default(false),
-        isEdited: boolean("isEdited").notNull().default(false),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        updatedAt: timestamp("updatedAt").notNull().$onUpdateFn(() => new Date()),
+        isDeleted: boolean("is_deleted").notNull().default(false),
+        isEdited: boolean("is_edited").notNull().default(false),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        updatedAt: timestamp("updated_at").notNull().$onUpdateFn(() => new Date()),
     },
     (table) => [
         // The read path for a thread is "every comment on this entity, ordered by
         // time", so the three columns are indexed together in that order.
-        index("idx_comment_entityType_entityId_createdAt").on(table.entityType, table.entityId, table.createdAt),
-        index("idx_comment_parentId").on(table.parentId),
-        index("idx_comment_userId").on(table.userId),
+        index("idx_comment_entity_type_entity_id_created_at").on(table.entityType, table.entityId, table.createdAt),
+        index("idx_comment_parent_id").on(table.parentId),
+        index("idx_comment_user_id").on(table.userId),
     ],
 );
 

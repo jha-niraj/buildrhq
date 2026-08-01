@@ -14,21 +14,21 @@ import { users } from "./schema";
 // ===========================
 
 export const projectV2Bookmark = pgTable(
-    "ProjectV2Bookmark",
+    "project_v2_bookmark",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
         // No .references() to avoid circular import with projects.ts
-        projectId: text("projectId").notNull(),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+        projectId: text("project_id").notNull(),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         folder: text("folder").default("Saved"),
         notes: text("notes"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (t) => [
-        uniqueIndex("projectV2Bookmark_projectId_userId_key").on(t.projectId, t.userId),
-        index("projectV2Bookmark_projectId_idx").on(t.projectId),
-        index("projectV2Bookmark_userId_idx").on(t.userId),
-        index("projectV2Bookmark_folder_idx").on(t.folder),
+        uniqueIndex("project_v2_bookmark_project_id_user_id_key").on(t.projectId, t.userId),
+        index("project_v2_bookmark_project_id_idx").on(t.projectId),
+        index("project_v2_bookmark_user_id_idx").on(t.userId),
+        index("project_v2_bookmark_folder_idx").on(t.folder),
     ]
 );
 
@@ -45,21 +45,21 @@ export const projectV2BookmarkRelations = relations(projectV2Bookmark, ({ one })
 // ===========================
 
 export const communityPostBookmark = pgTable(
-    "CommunityPostBookmark",
+    "community_post_bookmark",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
         // No .references() to avoid circular import with community posts table
-        postId: text("postId").notNull(),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+        postId: text("post_id").notNull(),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         folder: text("folder").default("Saved"),
         notes: text("notes"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
     },
     (t) => [
-        uniqueIndex("communityPostBookmark_postId_userId_key").on(t.postId, t.userId),
-        index("communityPostBookmark_postId_idx").on(t.postId),
-        index("communityPostBookmark_userId_idx").on(t.userId),
-        index("communityPostBookmark_folder_idx").on(t.folder),
+        uniqueIndex("community_post_bookmark_post_id_user_id_key").on(t.postId, t.userId),
+        index("community_post_bookmark_post_id_idx").on(t.postId),
+        index("community_post_bookmark_user_id_idx").on(t.userId),
+        index("community_post_bookmark_folder_idx").on(t.folder),
     ]
 );
 
@@ -76,22 +76,22 @@ export const communityPostBookmarkRelations = relations(communityPostBookmark, (
 // ===========================
 
 export const mockInterviewBookmark = pgTable(
-    "MockInterviewBookmark",
+    "mock_interview_bookmark",
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
         // No .references() to avoid circular import with mock interview sessions table
-        sessionId: text("sessionId").notNull(),
-        userId: text("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+        sessionId: text("session_id").notNull(),
+        userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         folder: text("folder").default("Saved"),
         notes: text("notes"),
-        createdAt: timestamp("createdAt").notNull().defaultNow(),
-        mockVoiceSessionId: text("mockVoiceSessionId"),
+        createdAt: timestamp("created_at").notNull().defaultNow(),
+        mockVoiceSessionId: text("mock_voice_session_id"),
     },
     (t) => [
-        uniqueIndex("mockInterviewBookmark_sessionId_userId_key").on(t.sessionId, t.userId),
-        index("mockInterviewBookmark_sessionId_idx").on(t.sessionId),
-        index("mockInterviewBookmark_userId_idx").on(t.userId),
-        index("mockInterviewBookmark_folder_idx").on(t.folder),
+        uniqueIndex("mock_interview_bookmark_session_id_user_id_key").on(t.sessionId, t.userId),
+        index("mock_interview_bookmark_session_id_idx").on(t.sessionId),
+        index("mock_interview_bookmark_user_id_idx").on(t.userId),
+        index("mock_interview_bookmark_folder_idx").on(t.folder),
     ]
 );
 

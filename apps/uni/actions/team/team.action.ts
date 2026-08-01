@@ -1,6 +1,6 @@
 "use server"
 
-import { db, users, universityMembers, departments, universityMemberInvitations, withTransaction } from "@repo/db"
+import { db, users, accounts, universityMembers, departments, universityMemberInvitations, withTransaction } from "@repo/db"
 import { eq, and, desc, asc } from "drizzle-orm"
 import { getSession } from "@repo/auth"
 import { headers } from "next/headers"
@@ -707,7 +707,6 @@ export async function inviteTeacherWithCredentials(payload: InviteTeacherWithCre
                 email: payload.email,
                 name: payload.name,
                 role: "UNI",
-                hashedPassword: hashedPassword,
                 emailVerified: true,
                 onboardingCompleted: true,
                 mustChangePassword: true,
@@ -717,6 +716,23 @@ export async function inviteTeacherWithCredentials(payload: InviteTeacherWithCre
             if (!newUser) {
                 throw new Error("Failed to create user");
             }
+
+            // The credential record better-auth actually checks at sign-in.
+            // Without this row the invited member could never log in: the temp
+            // password was written only to `users.hashedPassword`, which
+            // better-auth never reads, so the emailed credentials were rejected
+            // and there was no way to recover the account.
+            //
+            // `accountId` mirrors the user id, which is what better-auth stores
+            // for the credential provider, and the bcrypt hash is compatible
+            // with the verify() configured in packages/auth/src/auth.ts (bcrypt
+            // encodes its own cost, so 12 here vs 10 there is fine).
+            await tx.insert(accounts).values({
+                userId: newUser.id,
+                accountId: newUser.id,
+                providerId: "credential",
+                password: hashedPassword,
+            });
 
             // Create the university member
             const newMemberRows = await tx.insert(universityMembers).values({
