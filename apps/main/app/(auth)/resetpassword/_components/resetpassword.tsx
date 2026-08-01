@@ -12,7 +12,6 @@ import { emailOtp } from "@repo/auth/client";
 import { getAuthErrorMessage } from "@/lib/auth-errors";
 import toast from '@repo/ui/components/ui/sonner';
 import { AuthShell } from '../../_components/auth-shell';
-import { motion } from 'framer-motion';
 
 const ResetPassword = (): JSX.Element | null => {
     const [password, setPassword] = useState<string>("");
@@ -139,13 +138,12 @@ const ResetPassword = (): JSX.Element | null => {
         return (
             <div className="min-h-screen w-full bg-white dark:bg-neutral-950 flex flex-col items-center justify-center font-sans">
                 <div className="w-full max-w-md p-8 text-center">
-                    <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        className="w-20 h-20 bg-neutral-100 dark:bg-neutral-800/30 rounded-full flex items-center justify-center mx-auto mb-6 text-neutral-800 dark:text-neutral-100"
-                    >
+                    {/* CSS, not framer-motion: this was the last motion usage on the
+                        route, so the reset screen no longer pulls motion-dom into its
+                        client graph. See .auth-pop in globals.css. */}
+                    <div className="auth-pop w-20 h-20 bg-neutral-100 dark:bg-neutral-800/30 rounded-full flex items-center justify-center mx-auto mb-6 text-neutral-800 dark:text-neutral-100">
                         <CheckCircle2 className="w-10 h-10" />
-                    </motion.div>
+                    </div>
                     <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2">Password Reset</h2>
                     <p className="text-neutral-500 dark:text-neutral-400">Your security has been restored. Redirecting...</p>
                 </div>

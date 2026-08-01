@@ -585,3 +585,46 @@ h1, h2, h3,
     .av-type, .av-meter { transform: scaleX(1); }
     .av-cell, .av-pop   { opacity: 1; }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Auth screen entrance.
+
+   CSS rather than framer-motion, deliberately. framer-motion pulls `motion-dom`
+   into the route's client graph, and motion-dom is what drags in Next's
+   process.js polyfill — the pair at the centre of the recurring
+   "module factory is not available" error in dev. Every auth screen that gets
+   its entrance from these classes is one fewer route carrying that dependency,
+   and it costs no JS at all.
+
+   `.auth-enter`   — one element fading up.
+   `.auth-stagger` — its direct children fading up in sequence.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@keyframes auth-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.auth-enter { animation: auth-in .5s cubic-bezier(.22, 1, .36, 1) both; }
+
+.auth-stagger > * { animation: auth-in .5s cubic-bezier(.22, 1, .36, 1) both; }
+.auth-stagger > *:nth-child(1) { animation-delay: .04s; }
+.auth-stagger > *:nth-child(2) { animation-delay: .10s; }
+.auth-stagger > *:nth-child(3) { animation-delay: .16s; }
+.auth-stagger > *:nth-child(4) { animation-delay: .22s; }
+.auth-stagger > *:nth-child(5) { animation-delay: .28s; }
+.auth-stagger > *:nth-child(6) { animation-delay: .34s; }
+.auth-stagger > *:nth-child(7) { animation-delay: .40s; }
+.auth-stagger > *:nth-child(8) { animation-delay: .46s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .auth-enter, .auth-stagger > * { animation: none !important; }
+}
+
+/* Success confirmation: a mark that scales in once. */
+@keyframes auth-pop-in {
+    from { opacity: 0; transform: scale(.8); }
+    to   { opacity: 1; transform: scale(1); }
+}
+.auth-pop { animation: auth-pop-in .45s cubic-bezier(.34, 1.56, .64, 1) both; }
+@media (prefers-reduced-motion: reduce) { .auth-pop { animation: none !important; } }

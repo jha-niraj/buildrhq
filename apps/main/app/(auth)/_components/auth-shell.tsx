@@ -51,7 +51,7 @@ export function AuthShell({
         <div className="flex h-screen w-full justify-center overflow-hidden bg-neutral-100 dark:bg-neutral-900 xl:p-6">
             <div className="flex h-full w-full max-w-7xl overflow-hidden bg-white ring-neutral-200 xl:rounded-3xl xl:shadow-sm xl:ring-1 dark:bg-neutral-950 dark:ring-neutral-800">
                 {/* ── Brand column ── */}
-                <aside className="relative hidden h-full w-1/2 flex-col overflow-hidden bg-neutral-950 p-10 lg:flex xl:p-12">
+                <aside className="auth-stagger relative hidden h-full w-1/2 flex-col overflow-hidden bg-neutral-950 p-10 lg:flex xl:p-12">
                     {/* A soft glow low in the panel, sitting under the artwork rather
                         than under the copy — it lifts the shape off the flat black
                         without washing out the headline above it. */}
@@ -119,7 +119,10 @@ export function AuthShell({
                                 <ThemeToggle />
                             </div>
 
-                            {children}
+                            {/* Entrance for whatever the screen renders. Done in CSS so a
+                                screen does not have to pull framer-motion in just to fade
+                                its form in — see the .auth-enter note in globals.css. */}
+                            <div className="auth-enter">{children}</div>
                         </div>
                     </div>
                 </main>

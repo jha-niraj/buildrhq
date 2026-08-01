@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { emailOtp } from "@repo/auth/client";
-import { motion } from "framer-motion";
 import { cn } from "@repo/ui/lib/utils";
 
 export default function ForgotPassword() {
@@ -66,11 +65,11 @@ export default function ForgotPassword() {
                 />
             </div>
 
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="w-full max-w-md relative z-10"
-            >
+            {/* CSS entrance instead of framer-motion: this was the only motion
+                usage on the route, so dropping it takes motion-dom (and the
+                next/process.js polyfill it pulls in) out of this route's client
+                graph entirely. See .auth-enter in globals.css. */}
+            <div className="auth-enter w-full max-w-md relative z-10">
                 <div className="flex justify-center mb-8">
                     <Link href="/" className="flex items-center gap-2">
                         <div className="w-10 h-10 rounded-xl bg-neutral-900 dark:bg-white flex items-center justify-center">
@@ -147,7 +146,7 @@ export default function ForgotPassword() {
                         </Link>
                     </div>
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 }
