@@ -13,7 +13,7 @@ interface ThemeToggleProps {
 export function ThemeToggle({ className }: ThemeToggleProps) {
     const { resolvedTheme, setTheme } = useTheme()
 
-    // `resolvedTheme` is undefined during SSR and on the first client render —
+    // `resolvedTheme` is undefined during SSR and on the first client render -
     // next-themes can only know the real theme once it has read localStorage and
     // the <html> class. Branching on it directly made the server emit the light
     // classes and the client emit the dark ones, which React reported as a

@@ -28,7 +28,7 @@ const faqData = [
     {
         id: "item-4",
         question: "Can I ask questions or get help if I am stuck?",
-        answer: "Yes — you can reach our support team any time, and the AI tools (mock interviews, resume, project mentor) give you personalized, on-demand guidance as you build."
+        answer: "Yes - you can reach our support team any time, and the AI tools (mock interviews, resume, project mentor) give you personalized, on-demand guidance as you build."
     },
     {
         id: "item-5",
@@ -48,7 +48,7 @@ const faqData = [
     {
         id: "item-8",
         question: "Are there any costs associated with using ShiprHQ?",
-        answer: "ShiprHQ is credit-based — new accounts start with free credits, and you can top up whenever you want to run more AI generations, mock interviews, or assessments. See the pricing page for details."
+        answer: "ShiprHQ is credit-based - new accounts start with free credits, and you can top up whenever you want to run more AI generations, mock interviews, or assessments. See the pricing page for details."
     },
     {
         id: "item-9",

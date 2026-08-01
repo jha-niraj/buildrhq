@@ -28,7 +28,7 @@ function initials(name: string | null): string {
     return name.trim().split(/\s+/).slice(0, 2).map((p) => p[0]?.toUpperCase() ?? "").join("") || "?"
 }
 
-/** "just now" / "3h" / "12 Mar" — compact enough for a dense thread. */
+/** "just now" / "3h" / "12 Mar" - compact enough for a dense thread. */
 function timeAgo(date: Date | string): string {
     const then = new Date(date).getTime()
     const seconds = Math.floor((Date.now() - then) / 1000)
@@ -47,7 +47,7 @@ export function CommentItem({
     const [deleting, setDeleting] = useState(false)
 
     // Indentation stops after COMMENT_MAX_INDENT_DEPTH levels. Nesting in the DATA
-    // stays unlimited — this is purely so a 12-deep thread doesn't slide off a
+    // stays unlimited - this is purely so a 12-deep thread doesn't slide off a
     // phone screen. Deeper replies still render, just flush with their ancestor.
     const isIndented = depth > 0 && depth <= COMMENT_MAX_INDENT_DEPTH
 

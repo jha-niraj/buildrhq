@@ -34,8 +34,8 @@ const GENERATION_TYPES = [
 ] as const
 
 const DIFFICULTY_LEVELS = [
-    { value: 'BEGINNER', label: 'Beginner', desc: '0–6 months' },
-    { value: 'INTERMEDIATE', label: 'Intermediate', desc: '6–18 months' },
+    { value: 'BEGINNER', label: 'Beginner', desc: '0-6 months' },
+    { value: 'INTERMEDIATE', label: 'Intermediate', desc: '6-18 months' },
     { value: 'ADVANCED', label: 'Advanced', desc: '18+ months' },
 ] as const
 
@@ -157,7 +157,7 @@ export default function ProjectGenerateSheet({
                             <Progress value={progress} className="h-1.5" />
                             <div className="mt-2 flex justify-between font-mono text-[11px] text-neutral-400">
                                 <span>{progress}%</span>
-                                <span>~1–2 min</span>
+                                <span>~1-2 min</span>
                             </div>
                         </div>
                         <div className="w-full max-w-sm space-y-2">
@@ -174,7 +174,7 @@ export default function ProjectGenerateSheet({
                                 )
                             })}
                         </div>
-                        <Button variant="outline" onClick={() => setOpen(false)} className="mt-2">Close — keep generating</Button>
+                        <Button variant="outline" onClick={() => setOpen(false)} className="mt-2">Close - keep generating</Button>
                     </div>
                 </SheetContent>
             </Sheet>

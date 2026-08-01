@@ -245,7 +245,7 @@ export default function ProjectIdeasPage() {
                         className="w-full"
                     >
                         <div className="flex min-h-[calc(100vh-4rem)]">
-                            {/* LEFT SIDEBAR — Categories */}
+                            {/* LEFT SIDEBAR - Categories */}
                             <aside className="w-64 lg:w-72 border-r border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50 flex-shrink-0 hidden md:block overflow-y-auto sticky top-16 h-[calc(100vh-4rem)]">
                                 <div className="p-4">
                                     <p className="text-[10px] font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 mb-3 px-2">
@@ -302,7 +302,7 @@ export default function ProjectIdeasPage() {
                                 </div>
                             </aside>
 
-                            {/* MAIN CONTENT — Right side */}
+                            {/* MAIN CONTENT - Right side */}
                             <main className="flex-1 overflow-y-auto">
                                 {/* Mobile category selector */}
                                 <div className="md:hidden p-4 border-b border-neutral-200 dark:border-neutral-800">
@@ -579,7 +579,7 @@ export default function ProjectIdeasPage() {
                                             <div className="flex items-center gap-2 text-xs text-neutral-400">
                                                 <span className="flex items-center gap-0.5"><Eye className="w-3 h-3" />{problem.views || 0}</span>
                                                 <span className="flex items-center gap-0.5"><Heart className="w-3 h-3" />{problem.upvotes || 0}</span>
-                                                {/* Reads the denormalised counter — no join per card. */}
+                                                {/* Reads the denormalised counter - no join per card. */}
                                                 <span className="flex items-center gap-0.5"><MessageSquare className="w-3 h-3" />{problem.commentCount || 0}</span>
                                             </div>
                                         </div>

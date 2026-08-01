@@ -31,7 +31,7 @@ export async function processReferral(
     const now = new Date();
     const todayDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-    // Note: activityEntries needs a dailyActivityId — for now we create a minimal entry.
+    // Note: activityEntries needs a dailyActivityId - for now we create a minimal entry.
     // Full activity tracking will be wired in the main app's activity service.
     // Here we just record the raw entry for the referrer and the new user.
     await db.insert(activityEntries).values([

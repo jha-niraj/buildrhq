@@ -81,7 +81,7 @@ export default async function PublicResumePage({ params }: { params: Promise<{ s
                             <div key={e.id} style={{ marginBottom: 10 }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                                     <span style={{ fontWeight: 700, fontSize: 12 }}>{e.role} <span style={{ color: '#64748b', fontWeight: 400 }}>at {e.company}</span></span>
-                                    <span style={{ color: '#94a3b8', fontSize: 10 }}>{fmt(e.startDate)} – {e.current ? 'Present' : fmt(e.endDate)}</span>
+                                    <span style={{ color: '#94a3b8', fontSize: 10 }}>{fmt(e.startDate)} - {e.current ? 'Present' : fmt(e.endDate)}</span>
                                 </div>
                                 {e.bullets.filter(Boolean).map((b, i) => (
                                     <p key={i} style={{ paddingLeft: 14, color: '#374151', marginTop: 2, lineHeight: 1.5 }}>• {b}</p>
@@ -125,7 +125,7 @@ export default async function PublicResumePage({ params }: { params: Promise<{ s
                         {education.map(e => (
                             <div key={e.id} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
                                 <span><span style={{ fontWeight: 700 }}>{e.institution}</span>{e.degree && <span style={{ color: '#64748b' }}> · {e.degree}{e.field ? `, ${e.field}` : ''}</span>}</span>
-                                <span style={{ color: '#94a3b8', fontSize: 10 }}>{fmt(e.startDate)} – {fmt(e.endDate)}</span>
+                                <span style={{ color: '#94a3b8', fontSize: 10 }}>{fmt(e.startDate)} - {fmt(e.endDate)}</span>
                             </div>
                         ))}
                     </div>

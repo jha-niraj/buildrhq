@@ -353,7 +353,7 @@ export async function tailorResumeForJD(draftId: string, jobDescription: string,
             {
                 role: 'system',
                 content: `You are an expert resume coach. Given a resume and a job description, do two things:
-1. Rewrite the experience bullet points to better match the JD language and keywords. Keep all facts accurate — only rephrase and reframe.
+1. Rewrite the experience bullet points to better match the JD language and keywords. Keep all facts accurate - only rephrase and reframe.
 2. Identify what important skills or experiences mentioned in the JD are MISSING from this resume and list them as suggestions.
 
 Return JSON in this exact format:
@@ -375,7 +375,7 @@ Return JSON in this exact format:
     const result = JSON.parse(res.choices[0]?.message?.content ?? '{}')
     const updated = result.updatedContent as ResumeDraftContent
 
-    // Update THIS draft in place — do not create a new one
+    // Update THIS draft in place - do not create a new one
     await db.update(resumeDraft)
         .set({
             content: updated as any,

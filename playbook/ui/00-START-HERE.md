@@ -1,13 +1,13 @@
-# UI Playbook — Gurukul Design System
+# UI Playbook - Gurukul Design System
 
 ## What This Is
-A complete design playbook extracted from the Gurukul school management platform — a Next.js 15 + Tailwind CSS 4 + shadcn/ui SaaS product. Use this to replicate the exact design language, layout patterns, and component conventions in any new project.
+A complete design playbook extracted from the Gurukul school management platform - a Next.js 15 + Tailwind CSS 4 + shadcn/ui SaaS product. Use this to replicate the exact design language, layout patterns, and component conventions in any new project.
 
 ## How to Use
 1. Read this file first to understand the scope
 2. Read `01-design-tokens-and-theming.md` to set up colors, typography, and spacing
 3. Read the specific files relevant to what you're building
-4. All files contain real, working code extracts — copy and adapt them
+4. All files contain real, working code extracts - copy and adapt them
 
 ---
 
@@ -50,11 +50,11 @@ A complete design playbook extracted from the Gurukul school management platform
 ## Core Design Philosophy
 
 ### Visual Language
-- **Minimal and precise** — neutral palette (whites, grays, black) with a single brand orange accent
-- **High contrast** — strong dark/light pairs, content always readable
-- **Depth through shadow** — cards and panels use `shadow-sm` to `shadow-xl` to create elevation
-- **Generous rounded corners** — `rounded-xl` to `rounded-2xl` on all cards, `rounded-full` on pill buttons
-- **Monospace accents** — section labels, role text, and metadata use `font-mono` to feel technical and precise
+- **Minimal and precise** - neutral palette (whites, grays, black) with a single brand orange accent
+- **High contrast** - strong dark/light pairs, content always readable
+- **Depth through shadow** - cards and panels use `shadow-sm` to `shadow-xl` to create elevation
+- **Generous rounded corners** - `rounded-xl` to `rounded-2xl` on all cards, `rounded-full` on pill buttons
+- **Monospace accents** - section labels, role text, and metadata use `font-mono` to feel technical and precise
 
 ### Layout Philosophy
 - **App shell**: Fixed sidebar + scrollable content. Content card "floats" with `rounded-l-4xl` edge

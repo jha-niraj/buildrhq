@@ -11,10 +11,10 @@ A **floating pill navbar** fixed to the top of the viewport. It changes appearan
 ```tsx
 <header className="fixed top-2 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-7xl -translate-x-1/2">
 ```
-- `fixed top-2` — 8px from top, floats above content
-- `left-1/2 -translate-x-1/2` — horizontally centered
-- `w-[calc(100%-1.5rem)]` — full width minus 24px (12px each side breathing room)
-- `max-w-7xl` — caps at 1280px on wide screens
+- `fixed top-2` - 8px from top, floats above content
+- `left-1/2 -translate-x-1/2` - horizontally centered
+- `w-[calc(100%-1.5rem)]` - full width minus 24px (12px each side breathing room)
+- `max-w-7xl` - caps at 1280px on wide screens
 
 ---
 
@@ -104,7 +104,7 @@ useEffect(() => {
 
 ## CTA Button Anatomy
 ```tsx
-// Primary CTA — rounded-full with arrow badge
+// Primary CTA - rounded-full with arrow badge
 <Link href="/signup" className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold">
     Begin Journey
     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-neutral-900/10">
@@ -112,7 +112,7 @@ useEffect(() => {
     </span>
 </Link>
 
-// Secondary CTA — rounded-full with border
+// Secondary CTA - rounded-full with border
 <Link href="/signin" className="rounded-full border px-4 py-2.5 text-sm font-medium">
     Sign In
 </Link>

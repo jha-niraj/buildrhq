@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Resume Draft Content — the JSON stored in ResumeDraft.content
+// Resume Draft Content - the JSON stored in ResumeDraft.content
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface ResumeHeader {

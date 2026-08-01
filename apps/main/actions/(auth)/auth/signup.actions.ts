@@ -11,14 +11,14 @@ import { sendEmail } from "@/utils/mail"
  * Post-signup side effects that better-auth doesn't own.
  *
  * The account itself is created by better-auth (`signUp.email`, a social
- * callback, or a magic link) — this runs once afterwards, from the first
+ * callback, or a magic link) - this runs once afterwards, from the first
  * authenticated request, to credit the referrer, log the signup activity and
  * send the welcome mail.
  *
  * It MUST be idempotent, because more than one caller reaches it: the register
  * page runs it right after OTP verification, and onboarding runs it too (that's
  * the only pass for users who arrived via Google or a magic link and never
- * touched the register page). The SIGNUP activity row is the marker — both the
+ * touched the register page). The SIGNUP activity row is the marker - both the
  * referred and non-referred paths write one, so checking it catches every case.
  * Keying off the `referrals` row instead would let a non-referred user log a
  * second signup and receive a second welcome email.

@@ -1,4 +1,4 @@
-# Object-Oriented Programming (OOP) — Learn Module Masterplan
+# Object-Oriented Programming (OOP) - Learn Module Masterplan
 **Platform: ShiprHQ**
 **SubCategory: OOP Concepts**
 **Total Learns: 40 | Units: 6**
@@ -16,22 +16,22 @@ LearnMainCategory: "Computer Science"
         ├── color: "#F59E0B"
         │
         └── LearnTopics:
-              ├── Unit 1 — OOP Foundations (6 Learns)
-              ├── Unit 2 — The Four Pillars of OOP (8 Learns)
-              ├── Unit 3 — Relationships & Design (6 Learns)
-              ├── Unit 4 — SOLID Principles (6 Learns)
-              ├── Unit 5 — Design Patterns (8 Learns)
-              └── Unit 6 — Advanced OOP & Interview Mastery (6 Learns)
+              ├── Unit 1 - OOP Foundations (6 Learns)
+              ├── Unit 2 - The Four Pillars of OOP (8 Learns)
+              ├── Unit 3 - Relationships & Design (6 Learns)
+              ├── Unit 4 - SOLID Principles (6 Learns)
+              ├── Unit 5 - Design Patterns (8 Learns)
+              └── Unit 6 - Advanced OOP & Interview Mastery (6 Learns)
 ```
 
 ---
 
-## UNIT 1 — OOP Foundations
-**Unit Goal:** Build the mental model for OOP from scratch — what it is, why it exists, and the core vocabulary every OOP interview starts with.
+## UNIT 1 - OOP Foundations
+**Unit Goal:** Build the mental model for OOP from scratch - what it is, why it exists, and the core vocabulary every OOP interview starts with.
 
 ---
 
-### Learn 1.1 — What is OOP? Procedural vs Object-Oriented
+### Learn 1.1 - What is OOP? Procedural vs Object-Oriented
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[oop, procedural, paradigm, objects, classes]`
 
 **Steps:** `EXPLANATION → COMPARISON(procedural vs OOP) → VISUALIZATION → QUIZ(4) → SUMMARY`
@@ -46,11 +46,11 @@ LearnMainCategory: "Computer Science"
 - OOP languages: Java, C++, Python, C#, Ruby
 - Pure OOP vs multi-paradigm languages
 
-**Interview relevance:** "What is OOP?" / "What are the advantages of OOP over procedural programming?" — always the first question.
+**Interview relevance:** "What is OOP?" / "What are the advantages of OOP over procedural programming?" - always the first question.
 
 ---
 
-### Learn 1.2 — Classes & Objects: Blueprint and Instance
+### Learn 1.2 - Classes & Objects: Blueprint and Instance
 **Difficulty:** BEGINNER | **Est. Time:** 25 min | **Tags:** `[class, object, instance, fields, methods, constructor]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(class diagram) → CODE(4 blocks: Java + C++ + Python) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -67,11 +67,11 @@ LearnMainCategory: "Computer Science"
 - The `this` reference: refers to current object instance
 - Object identity vs equality: same reference vs same value
 
-**Interview relevance:** "What is the difference between a class and an object?" — most basic OOP interview question.
+**Interview relevance:** "What is the difference between a class and an object?" - most basic OOP interview question.
 
 ---
 
-### Learn 1.3 — Constructors: Types, Overloading & Constructor Chaining
+### Learn 1.3 - Constructors: Types, Overloading & Constructor Chaining
 **Difficulty:** BEGINNER | **Est. Time:** 25 min | **Tags:** `[constructor, default-constructor, parameterized, copy-constructor, constructor-chaining, this, super]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -92,7 +92,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 1.4 — Access Modifiers & Visibility
+### Learn 1.4 - Access Modifiers & Visibility
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[access-modifiers, public, private, protected, package-private, visibility]`
 
 **Steps:** `EXPLANATION → COMPARISON(visibility table across languages) → CODE(3 blocks) → QUIZ(4) → SUMMARY`
@@ -109,11 +109,11 @@ LearnMainCategory: "Computer Science"
 - Getters and setters: controlled access to private fields
 - Access modifiers in inheritance: what gets inherited and what doesn't
 
-**Interview relevance:** "What is the difference between private and protected?" — frequently asked.
+**Interview relevance:** "What is the difference between private and protected?" - frequently asked.
 
 ---
 
-### Learn 1.5 — Static Members, Final/Const & Immutability
+### Learn 1.5 - Static Members, Final/Const & Immutability
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[static, final, const, immutable, class-variable, singleton]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON(static vs instance) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -130,11 +130,11 @@ LearnMainCategory: "Computer Science"
 - Benefits of immutability: thread safety, caching, simplicity
 - `static final` = constant (e.g., `Math.PI`)
 
-**Interview relevance:** "What does static mean?" / "What is the benefit of immutability?" — core OOP questions.
+**Interview relevance:** "What does static mean?" / "What is the benefit of immutability?" - core OOP questions.
 
 ---
 
-### Learn 1.6 — Object Lifecycle, Memory & Garbage Collection
+### Learn 1.6 - Object Lifecycle, Memory & Garbage Collection
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[object-lifecycle, heap, stack, garbage-collection, finalize, raii]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(heap vs stack diagram) → COMPARISON(GC vs manual memory) → QUIZ(4) → SUMMARY`
@@ -146,27 +146,27 @@ LearnMainCategory: "Computer Science"
 - GC roots: what keeps objects alive
 - Memory leaks in GC languages: holding references longer than needed
 - `finalize()` (deprecated) vs `try-with-resources` / `AutoCloseable`
-- C++ RAII: Resource Acquisition Is Initialization — destructor releases resources
+- C++ RAII: Resource Acquisition Is Initialization - destructor releases resources
 - C++ smart pointers vs Java GC
 - Python reference counting + cyclic GC
 - Weak references: allow GC to collect even if reference exists
 
-**Interview relevance:** "How does garbage collection work?" / "Can Java have memory leaks?" — backend interview questions.
+**Interview relevance:** "How does garbage collection work?" / "Can Java have memory leaks?" - backend interview questions.
 
 ---
 
-### Unit 1 Review — OOP Foundations
+### Unit 1 Review - OOP Foundations
 **Steps:** `SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(mini: Design a Bank Account class with all concepts applied)`
 
 ---
 ---
 
-## UNIT 2 — The Four Pillars of OOP
+## UNIT 2 - The Four Pillars of OOP
 **Unit Goal:** Master Encapsulation, Inheritance, Polymorphism, and Abstraction in complete depth. These are the core interview topics for every OOP round.
 
 ---
 
-### Learn 2.1 — Encapsulation: Data Hiding & the Law of Demeter
+### Learn 2.1 - Encapsulation: Data Hiding & the Law of Demeter
 **Difficulty:** BEGINNER | **Est. Time:** 25 min | **Tags:** `[encapsulation, data-hiding, getters, setters, law-of-demeter, information-hiding]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → VISUALIZATION(encapsulation diagram) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -178,23 +178,23 @@ LearnMainCategory: "Computer Science"
 - Why not make everything public: breaks encapsulation, hard to change internals
 - JavaBeans convention: `getX()`, `setX()`
 - Encapsulation vs access modifiers: they're related but distinct
-- Law of Demeter: "talk only to your friends" — avoid method chaining on unrelated objects
+- Law of Demeter: "talk only to your friends" - avoid method chaining on unrelated objects
 - Tell, Don't Ask principle: tell objects what to do, don't ask for data to decide
 - Immutable encapsulation: no setters at all
 - Encapsulation in real design: validating input in setters, computing derived values
 
-**Interview relevance:** "What is encapsulation?" / "Why do we use getters and setters?" — always asked.
+**Interview relevance:** "What is encapsulation?" / "Why do we use getters and setters?" - always asked.
 
 ---
 
-### Learn 2.2 — Inheritance: Single, Multilevel & Hierarchical
+### Learn 2.2 - Inheritance: Single, Multilevel & Hierarchical
 **Difficulty:** BEGINNER | **Est. Time:** 30 min | **Tags:** `[inheritance, extends, super, parent, child, method-inheritance, code-reuse]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(inheritance hierarchy diagram) → CODE(4 blocks) → QUIZ(6) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
 - Inheritance: IS-A relationship, child class gets parent's fields and methods
-- `extends` (Java), `:` (C++) — syntax for inheritance
+- `extends` (Java), `:` (C++) - syntax for inheritance
 - `super` keyword: access parent's constructor and methods
 - Types of inheritance: single, multilevel, hierarchical
 - Multiple inheritance in C++: allowed; in Java: not for classes (only interfaces)
@@ -204,11 +204,11 @@ LearnMainCategory: "Computer Science"
 - Fragile base class problem: parent changes break children
 - When to use inheritance vs composition
 
-**Interview relevance:** "Explain inheritance" / "Why doesn't Java support multiple inheritance for classes?" — core OOP.
+**Interview relevance:** "Explain inheritance" / "Why doesn't Java support multiple inheritance for classes?" - core OOP.
 
 ---
 
-### Learn 2.3 — Method Overriding & the Liskov Substitution Principle
+### Learn 2.3 - Method Overriding & the Liskov Substitution Principle
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[overriding, virtual, override, lsp, polymorphism, covariant]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → COMPARISON(overriding vs hiding) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -225,11 +225,11 @@ LearnMainCategory: "Computer Science"
 - Covariant return types: override can return more specific type
 - Contravariant parameters (Liskov): override should accept same or broader types
 
-**Interview relevance:** "What is the difference between method overloading and overriding?" — asked constantly.
+**Interview relevance:** "What is the difference between method overloading and overriding?" - asked constantly.
 
 ---
 
-### Learn 2.4 — Polymorphism: Compile-Time & Runtime
+### Learn 2.4 - Polymorphism: Compile-Time & Runtime
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[polymorphism, method-overloading, method-overriding, dynamic-dispatch, vtable]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(vtable diagram) → CODE(4 blocks) → COMPARISON(static vs dynamic polymorphism) → QUIZ(6) → CHALLENGE → SUMMARY`
@@ -240,17 +240,17 @@ LearnMainCategory: "Computer Science"
 - **Runtime (dynamic) polymorphism**: method overriding + dynamic dispatch
 - How dynamic dispatch works: runtime type determines which method runs
 - Virtual method table (vtable) in C++: how the runtime knows which method to call
-- Upcasting: `Animal a = new Dog()` — legal, uses Animal reference
-- Downcasting: `Dog d = (Dog) a` — risky, needs `instanceof` check
+- Upcasting: `Animal a = new Dog()` - legal, uses Animal reference
+- Downcasting: `Dog d = (Dog) a` - risky, needs `instanceof` check
 - `instanceof` / `is` operator for safe downcasting
 - Parametric polymorphism: generics (another form of polymorphism)
 - Why polymorphism is powerful: open-closed, extensible designs
 
-**Interview relevance:** "What is polymorphism?" / "How does method overriding work at runtime?" — deep OOP question.
+**Interview relevance:** "What is polymorphism?" / "How does method overriding work at runtime?" - deep OOP question.
 
 ---
 
-### Learn 2.5 — Abstraction: Abstract Classes
+### Learn 2.5 - Abstraction: Abstract Classes
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[abstraction, abstract-class, abstract-method, template-method, partial-implementation]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -258,7 +258,7 @@ LearnMainCategory: "Computer Science"
 **What you'll learn:**
 - Abstraction: hide implementation details, show only essential features
 - Abstract class: cannot be instantiated, may have abstract methods
-- Abstract method: declaration only, no implementation — subclass must implement
+- Abstract method: declaration only, no implementation - subclass must implement
 - Concrete class: provides implementation for all abstract methods
 - Why abstract classes: share common code while enforcing structure
 - Abstract class vs interface: when to use which
@@ -267,34 +267,34 @@ LearnMainCategory: "Computer Science"
 - `abstract` keyword in Java; pure virtual function `= 0` in C++
 - Python abstract classes: `ABC` and `@abstractmethod`
 
-**Interview relevance:** "What is an abstract class?" / "Can you instantiate an abstract class?" — standard questions.
+**Interview relevance:** "What is an abstract class?" / "Can you instantiate an abstract class?" - standard questions.
 
 ---
 
-### Learn 2.6 — Interfaces: Contracts & Multiple Inheritance
+### Learn 2.6 - Interfaces: Contracts & Multiple Inheritance
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[interface, implements, contract, multiple-interface, default-method, marker-interface]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON(interface vs abstract class) → QUIZ(6) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- Interface: 100% abstract type — a contract, not an implementation
+- Interface: 100% abstract type - a contract, not an implementation
 - `implements` keyword; a class can implement multiple interfaces
 - Interface fields: implicitly `public static final`
 - Interface methods: implicitly `public abstract` (before Java 8)
 - Java 8+: `default` methods in interfaces (backward-compatible evolution)
 - Java 8+: `static` methods in interfaces
 - Java 9+: `private` methods in interfaces (code reuse inside interface)
-- Marker interfaces: `Serializable`, `Cloneable` — convey metadata
+- Marker interfaces: `Serializable`, `Cloneable` - convey metadata
 - Functional interfaces: one abstract method, usable with lambda
 - When interface, when abstract class: the definitive rule
 - Interface segregation: many small interfaces > one large interface
 - Programming to an interface: `List<String> list = new ArrayList<>()`
 
-**Interview relevance:** "What is the difference between abstract class and interface?" — most common OOP interview question ever.
+**Interview relevance:** "What is the difference between abstract class and interface?" - most common OOP interview question ever.
 
 ---
 
-### Learn 2.7 — The Diamond Problem & Multiple Inheritance
+### Learn 2.7 - The Diamond Problem & Multiple Inheritance
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[diamond-problem, multiple-inheritance, virtual-inheritance, default-method-conflict]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(diamond diagram) → CODE(3 blocks) → QUIZ(4) → SUMMARY`
@@ -309,11 +309,11 @@ LearnMainCategory: "Computer Science"
 - Mixin pattern: using multiple interfaces/traits for composition
 - Why Java designers chose interfaces over multiple class inheritance
 
-**Interview relevance:** "What is the diamond problem?" — asked to test depth of inheritance knowledge.
+**Interview relevance:** "What is the diamond problem?" - asked to test depth of inheritance knowledge.
 
 ---
 
-### Learn 2.8 — Four Pillars Summary & Comparison
+### Learn 2.8 - Four Pillars Summary & Comparison
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[four-pillars, encapsulation, inheritance, polymorphism, abstraction, comparison]`
 
 **Steps:** `EXPLANATION → COMPARISON(pillars side-by-side) → VISUALIZATION → QUIZ(8) → MOCK_INTERVIEW → SUMMARY`
@@ -331,18 +331,18 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Unit 2 Review — Four Pillars
+### Unit 2 Review - Four Pillars
 **Steps:** `SUMMARY → QUIZ(12) → MOCK_INTERVIEW → PROJECT(mini: Design a vehicle hierarchy using all four pillars)`
 
 ---
 ---
 
-## UNIT 3 — Relationships, Composition & Class Design
-**Unit Goal:** Understand how classes relate to each other — composition, aggregation, association — and how to choose the right relationship for each design problem.
+## UNIT 3 - Relationships, Composition & Class Design
+**Unit Goal:** Understand how classes relate to each other - composition, aggregation, association - and how to choose the right relationship for each design problem.
 
 ---
 
-### Learn 3.1 — Association, Aggregation & Composition
+### Learn 3.1 - Association, Aggregation & Composition
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[association, aggregation, composition, has-a, uses-a, lifecycle]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(UML relationship diagrams) → CODE(3 blocks) → COMPARISON → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -354,21 +354,21 @@ LearnMainCategory: "Computer Science"
 - Lifecycle dependency: composition = child dies with parent, aggregation = child survives
 - UML notation: open diamond (aggregation), filled diamond (composition), arrow (association)
 - Code examples: University has Departments (aggregation), House has Rooms (composition)
-- Dependency: weakest relationship — method parameter or local variable
+- Dependency: weakest relationship - method parameter or local variable
 - Choosing relationships: is this an IS-A (inheritance) or HAS-A (composition)?
 
-**Interview relevance:** "What is the difference between aggregation and composition?" — common design question.
+**Interview relevance:** "What is the difference between aggregation and composition?" - common design question.
 
 ---
 
-### Learn 3.2 — Composition Over Inheritance
+### Learn 3.2 - Composition Over Inheritance
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[composition-over-inheritance, strategy, delegation, flexibility]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks: inheritance problem → composition solution) → COMPARISON → QUIZ(4) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
 - The problem with deep inheritance hierarchies: rigidity, fragile base class
-- "Favor composition over inheritance" — GoF principle
+- "Favor composition over inheritance" - GoF principle
 - Delegation: forward work to a contained object
 - How to replace inheritance with composition
 - Strategy Pattern as composition: inject behavior as a dependency
@@ -377,11 +377,11 @@ LearnMainCategory: "Computer Science"
 - Mixins / traits as a middle ground
 - Java's approach: `Comparable`, `Iterable` interfaces + composition
 
-**Interview relevance:** "Composition vs Inheritance" — design interview question with no single correct answer, tests reasoning.
+**Interview relevance:** "Composition vs Inheritance" - design interview question with no single correct answer, tests reasoning.
 
 ---
 
-### Learn 3.3 — Generics & Type Safety in OOP
+### Learn 3.3 - Generics & Type Safety in OOP
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[generics, type-parameter, wildcard, bounded-type, type-erasure]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -389,10 +389,10 @@ LearnMainCategory: "Computer Science"
 **What you'll learn:**
 - Generics: write code that works with any type, type-safe at compile time
 - Generic class: `class Stack<T>`, generic method: `<T> T identity(T t)`
-- Type bounds: `<T extends Comparable<T>>` — constrain type parameter
+- Type bounds: `<T extends Comparable<T>>` - constrain type parameter
 - Wildcards (Java): `List<?>`, `List<? extends Animal>`, `List<? super Dog>`
 - PECS rule: Producer Extends, Consumer Super
-- Type erasure (Java): generics removed at runtime — implications
+- Type erasure (Java): generics removed at runtime - implications
 - `instanceof` with generics: can't do `instanceof List<String>` due to erasure
 - C++ templates: compile-time, no erasure, more powerful but code bloat risk
 - Python generics: `typing.Generic`, `TypeVar`
@@ -402,7 +402,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 3.4 — Inner Classes, Anonymous Classes & Lambda
+### Learn 3.4 - Inner Classes, Anonymous Classes & Lambda
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[inner-class, anonymous-class, lambda, functional-interface, nested-class]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -414,7 +414,7 @@ LearnMainCategory: "Computer Science"
 - Anonymous class: one-off implementation of interface/abstract class, no name
 - Functional interface: one abstract method, foundation of lambdas
 - Lambda expression: compact anonymous class syntax for functional interfaces
-- Method references: `ClassName::method` — even more compact
+- Method references: `ClassName::method` - even more compact
 - `Comparator`, `Runnable`, `Predicate`, `Function`, `Consumer` as functional interfaces
 - Effectively final: local variables captured by lambda must be final or effectively final
 - When to use each: anonymous class for multiple methods, lambda for single-method interfaces
@@ -423,7 +423,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 3.5 — Exception Handling in OOP
+### Learn 3.5 - Exception Handling in OOP
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[exceptions, checked, unchecked, custom-exception, exception-hierarchy, try-catch]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(exception hierarchy) → CODE(4 blocks) → COMPARISON(checked vs unchecked) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -440,11 +440,11 @@ LearnMainCategory: "Computer Science"
 - Exception chaining: wrapping original cause
 - Best practices: catch specific, not `Exception`; don't swallow exceptions; fail fast
 
-**Interview relevance:** "Difference between checked and unchecked exceptions?" — very commonly asked Java question.
+**Interview relevance:** "Difference between checked and unchecked exceptions?" - very commonly asked Java question.
 
 ---
 
-### Learn 3.6 — Object Cloning, Serialization & Comparison
+### Learn 3.6 - Object Cloning, Serialization & Comparison
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[cloning, shallow-copy, deep-copy, serialization, equals, hashcode, comparable]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON(shallow vs deep copy) → QUIZ(4) → SUMMARY`
@@ -461,22 +461,22 @@ LearnMainCategory: "Computer Science"
 - `Comparable` vs `Comparator`: natural ordering vs custom ordering
 - Java serialization: `Serializable`, `ObjectOutputStream`, `transient` fields
 
-**Interview relevance:** "What is the contract between equals and hashCode?" — classic Java interview question.
+**Interview relevance:** "What is the contract between equals and hashCode?" - classic Java interview question.
 
 ---
 
-### Unit 3 Review — Relationships & Class Design
+### Unit 3 Review - Relationships & Class Design
 **Steps:** `SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(mini: Design an inventory system with proper relationships)`
 
 ---
 ---
 
-## UNIT 4 — SOLID Principles
+## UNIT 4 - SOLID Principles
 **Unit Goal:** Master the five most important object-oriented design principles. SOLID is asked in virtually every senior OOP and software design interview.
 
 ---
 
-### Learn 4.1 — S: Single Responsibility Principle (SRP)
+### Learn 4.1 - S: Single Responsibility Principle (SRP)
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[srp, single-responsibility, cohesion, separation-of-concerns]`
 
 **Steps:** `EXPLANATION → CODE(2 blocks: violation → fix) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -496,7 +496,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 4.2 — O: Open/Closed Principle (OCP)
+### Learn 4.2 - O: Open/Closed Principle (OCP)
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[ocp, open-closed, extension, modification, strategy-pattern, polymorphism]`
 
 **Steps:** `EXPLANATION → CODE(2 blocks: violation → fix using polymorphism) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -512,11 +512,11 @@ LearnMainCategory: "Computer Science"
 - OCP in frameworks: plugin architectures, hooks, callbacks
 - Practical balance: apply OCP where change is expected
 
-**Interview relevance:** "Explain the Open/Closed Principle with an example" — standard SOLID interview question.
+**Interview relevance:** "Explain the Open/Closed Principle with an example" - standard SOLID interview question.
 
 ---
 
-### Learn 4.3 — L: Liskov Substitution Principle (LSP)
+### Learn 4.3 - L: Liskov Substitution Principle (LSP)
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[lsp, liskov, behavioral-subtyping, contract, rectangle-square]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks: violation → fix) → VISUALIZATION → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -524,18 +524,18 @@ LearnMainCategory: "Computer Science"
 **What you'll learn:**
 - LSP: subtype must be substitutable for its supertype without altering correctness
 - Behavioral subtyping: not just type-safe, but behaviorally correct
-- Classic violation: Square extends Rectangle — breaks width/height invariant
+- Classic violation: Square extends Rectangle - breaks width/height invariant
 - LSP violations: subclass throws exception parent doesn't, subclass ignores method, subclass strengthens preconditions
 - Design by Contract: preconditions, postconditions, invariants
 - How to fix: don't inherit if behavior differs; use composition or different hierarchy
 - Covariance and contravariance in LSP
-- "Tell me when you violated LSP" — what a good answer looks like
+- "Tell me when you violated LSP" - what a good answer looks like
 
 **Interview relevance:** The Rectangle/Square problem is the most famous OOP interview question for LSP.
 
 ---
 
-### Learn 4.4 — I: Interface Segregation Principle (ISP)
+### Learn 4.4 - I: Interface Segregation Principle (ISP)
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[isp, interface-segregation, fat-interface, role-interface, cohesion]`
 
 **Steps:** `EXPLANATION → CODE(2 blocks: fat interface → segregated) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -551,31 +551,31 @@ LearnMainCategory: "Computer Science"
 - ISP in REST APIs: separate endpoints vs one mega-endpoint
 - Practical application: abstract base classes with many methods
 
-**Interview relevance:** "What is the Interface Segregation Principle?" — SOLID interview standard.
+**Interview relevance:** "What is the Interface Segregation Principle?" - SOLID interview standard.
 
 ---
 
-### Learn 4.5 — D: Dependency Inversion Principle (DIP) & Dependency Injection
+### Learn 4.5 - D: Dependency Inversion Principle (DIP) & Dependency Injection
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[dip, dependency-inversion, dependency-injection, ioc, di-container]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks: tight coupling → DIP → DI) → COMPARISON → QUIZ(5) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
 - DIP: depend on abstractions, not concretions
-- High-level modules should not depend on low-level modules — both on abstractions
+- High-level modules should not depend on low-level modules - both on abstractions
 - Tight coupling: `class OrderService { MySQLDatabase db = new MySQLDatabase(); }`
-- Loose coupling via DIP: `class OrderService { Database db; }` — interface, not class
+- Loose coupling via DIP: `class OrderService { Database db; }` - interface, not class
 - **Dependency Injection (DI)**: provide dependencies from outside (constructor, setter, field)
-- Constructor injection vs setter injection vs field injection — pros/cons
+- Constructor injection vs setter injection vs field injection - pros/cons
 - IoC Container: framework manages dependency creation and injection (Spring, .NET DI)
 - Benefits: testability (inject mocks), flexibility (swap implementations), decoupling
 - The difference between DIP (principle) and DI (technique)
 
-**Interview relevance:** "What is dependency injection?" / "What is Inversion of Control?" — extremely common in Java/Spring interviews.
+**Interview relevance:** "What is dependency injection?" / "What is Inversion of Control?" - extremely common in Java/Spring interviews.
 
 ---
 
-### Learn 4.6 — SOLID in Practice: Applying All 5 Together
+### Learn 4.6 - SOLID in Practice: Applying All 5 Together
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[solid, design, refactoring, code-review, principles]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks: before SOLID → after SOLID) → QUIZ(6) → CHALLENGE(refactor exercise) → MOCK_INTERVIEW → SUMMARY`
@@ -590,22 +590,22 @@ LearnMainCategory: "Computer Science"
 - How to communicate SOLID reasoning in a code review
 - SOLID and microservices: SOLID at the architecture level
 
-**Interview relevance:** This entire Learn is a code design walkthrough — the format of real-world OOP interviews.
+**Interview relevance:** This entire Learn is a code design walkthrough - the format of real-world OOP interviews.
 
 ---
 
-### Unit 4 Review — SOLID Principles
+### Unit 4 Review - SOLID Principles
 **Steps:** `SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(mini: Refactor a violating codebase to be SOLID-compliant)`
 
 ---
 ---
 
-## UNIT 5 — Design Patterns
-**Unit Goal:** Learn the most important and most interviewed design patterns — Creational, Structural, and Behavioral. Understand not just the pattern but *why* it exists.
+## UNIT 5 - Design Patterns
+**Unit Goal:** Learn the most important and most interviewed design patterns - Creational, Structural, and Behavioral. Understand not just the pattern but *why* it exists.
 
 ---
 
-### Learn 5.1 — Introduction to Design Patterns & GoF
+### Learn 5.1 - Introduction to Design Patterns & GoF
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[design-patterns, gof, creational, structural, behavioral, pattern-overview]`
 
 **Steps:** `EXPLANATION → COMPARISON(pattern categories) → VISUALIZATION → QUIZ(4) → SUMMARY`
@@ -621,11 +621,11 @@ LearnMainCategory: "Computer Science"
 - Pattern language: how to communicate design decisions
 - Patterns and SOLID: each pattern typically implements SOLID
 
-**Interview relevance:** "What are design patterns?" / "Name some design patterns you've used" — universal question.
+**Interview relevance:** "What are design patterns?" / "Name some design patterns you've used" - universal question.
 
 ---
 
-### Learn 5.2 — Creational Patterns: Singleton & Factory
+### Learn 5.2 - Creational Patterns: Singleton & Factory
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[singleton, factory, factory-method, simple-factory, thread-safe-singleton]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON(singleton variations) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -635,17 +635,17 @@ LearnMainCategory: "Computer Science"
 - Singleton implementation: lazy, eager, double-checked locking, enum (best in Java)
 - Thread-safety in singleton: `volatile` + synchronized, Bill Pugh idiom
 - Singleton problems: testing difficulty, global state, tight coupling
-- **Simple Factory**: static method creates objects — not a GoF pattern
+- **Simple Factory**: static method creates objects - not a GoF pattern
 - **Factory Method**: define interface for creation, subclasses decide which class
 - Factory Method vs Simple Factory: extensibility (OCP)
 - Real examples: `Calendar.getInstance()`, `NumberFormat.getInstance()`
 - Spring beans are singletons by default
 
-**Interview relevance:** "Explain Singleton pattern" / "How to make Singleton thread-safe?" — asked constantly.
+**Interview relevance:** "Explain Singleton pattern" / "How to make Singleton thread-safe?" - asked constantly.
 
 ---
 
-### Learn 5.3 — Creational Patterns: Abstract Factory & Builder
+### Learn 5.3 - Creational Patterns: Abstract Factory & Builder
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[abstract-factory, builder, fluent-interface, step-builder, telescoping-constructor]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → COMPARISON(factory vs abstract factory vs builder) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -666,13 +666,13 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 5.4 — Structural Patterns: Adapter, Decorator & Facade
+### Learn 5.4 - Structural Patterns: Adapter, Decorator & Facade
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[adapter, decorator, facade, wrapper, structural-patterns]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON → QUIZ(5) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- **Adapter**: convert one interface to another — "plug adapter" pattern
+- **Adapter**: convert one interface to another - "plug adapter" pattern
 - Object adapter vs class adapter (C++)
 - Real examples: `Arrays.asList()`, InputStreamReader wrapping InputStream
 - **Decorator**: add behavior to object dynamically without subclassing
@@ -687,7 +687,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 5.5 — Structural Patterns: Proxy, Composite & Bridge
+### Learn 5.5 - Structural Patterns: Proxy, Composite & Bridge
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[proxy, composite, bridge, virtual-proxy, lazy-loading, tree-structure]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → COMPARISON → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -708,7 +708,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 5.6 — Behavioral Patterns: Observer, Strategy & Command
+### Learn 5.6 - Behavioral Patterns: Observer, Strategy & Command
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[observer, strategy, command, event-driven, pub-sub, behavioral]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -729,7 +729,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 5.7 — Behavioral Patterns: Iterator, Template Method & State
+### Learn 5.7 - Behavioral Patterns: Iterator, Template Method & State
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[iterator, template-method, state, state-machine, behavioral]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → COMPARISON → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -750,7 +750,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 5.8 — Behavioral Patterns: Chain of Responsibility, Mediator & Flyweight
+### Learn 5.8 - Behavioral Patterns: Chain of Responsibility, Mediator & Flyweight
 **Difficulty:** ADVANCED | **Est. Time:** 20 min | **Tags:** `[chain-of-responsibility, mediator, flyweight, middleware, pipeline]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → QUIZ(3) → SUMMARY`
@@ -771,18 +771,18 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Unit 5 Review — Design Patterns
+### Unit 5 Review - Design Patterns
 **Steps:** `SUMMARY → QUIZ(12) → MOCK_INTERVIEW → PROJECT(major: Build a mini e-commerce checkout system using 5+ patterns)`
 
 ---
 ---
 
-## UNIT 6 — Advanced OOP & Interview Mastery
-**Unit Goal:** Cover advanced OOP topics — covariance, reflection, OOP in different languages — and master the interview format for OOP design questions.
+## UNIT 6 - Advanced OOP & Interview Mastery
+**Unit Goal:** Cover advanced OOP topics - covariance, reflection, OOP in different languages - and master the interview format for OOP design questions.
 
 ---
 
-### Learn 6.1 — OOP in Java vs C++ vs Python: Differences That Matter
+### Learn 6.1 - OOP in Java vs C++ vs Python: Differences That Matter
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[java-oop, cpp-oop, python-oop, language-comparison, duck-typing]`
 
 **Steps:** `EXPLANATION → COMPARISON(language feature matrix) → CODE(3 blocks: same design, 3 languages) → QUIZ(4) → SUMMARY`
@@ -801,7 +801,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 6.2 — Reflection, Annotations & Metaprogramming
+### Learn 6.2 - Reflection, Annotations & Metaprogramming
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[reflection, annotations, metadata, proxy, aop, spring]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → QUIZ(3) → SUMMARY`
@@ -814,7 +814,7 @@ LearnMainCategory: "Computer Science"
 - Retention policies: SOURCE, CLASS, RUNTIME
 - Processing annotations at compile time (annotation processors) vs runtime (reflection)
 - Annotation examples: `@Override`, `@Autowired`, `@Entity`, `@Test`
-- Dynamic proxies: `java.lang.reflect.Proxy` — runtime interface implementation
+- Dynamic proxies: `java.lang.reflect.Proxy` - runtime interface implementation
 - AOP (Aspect-Oriented Programming): cross-cutting concerns via proxies
 - Cost of reflection: performance implications
 
@@ -822,7 +822,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 6.3 — Concurrency in OOP: Thread Safety & Immutability
+### Learn 6.3 - Concurrency in OOP: Thread Safety & Immutability
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[thread-safety, immutability, synchronized, volatile, concurrent-collections]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -832,17 +832,17 @@ LearnMainCategory: "Computer Science"
 - Immutable objects are inherently thread-safe (no state to corrupt)
 - `synchronized` keyword: lock on object monitor
 - `volatile`: ensure visibility across threads (not atomicity)
-- `Atomic` classes: `AtomicInteger`, `AtomicReference` — lock-free thread safety
+- `Atomic` classes: `AtomicInteger`, `AtomicReference` - lock-free thread safety
 - Thread-safe collections: `ConcurrentHashMap`, `CopyOnWriteArrayList`, `BlockingQueue`
 - The `synchronized` pitfalls: deadlock, performance, over-synchronization
 - `java.util.concurrent` package overview
-- Thread-local storage: `ThreadLocal<T>` — per-thread object copy
+- Thread-local storage: `ThreadLocal<T>` - per-thread object copy
 
 **Interview relevance:** Concurrency in OOP is heavily tested for senior Java developer roles.
 
 ---
 
-### Learn 6.4 — Anti-Patterns & Code Smells
+### Learn 6.4 - Anti-Patterns & Code Smells
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[anti-patterns, code-smells, god-object, spaghetti, anemic-model, refactoring]`
 
 **Steps:** `EXPLANATION → COMPARISON(anti-patterns list) → CODE(2 blocks: smell → fix) → QUIZ(4) → SUMMARY`
@@ -863,7 +863,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 6.5 — Object-Oriented Design Interview: How to Approach
+### Learn 6.5 - Object-Oriented Design Interview: How to Approach
 **Difficulty:** ALL LEVELS | **Est. Time:** 30 min | **Tags:** `[ood, system-design, class-design, uml, interview-approach]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks: OOD walkthroughs) → QUIZ(5) → MOCK_INTERVIEW → SUMMARY`
@@ -887,7 +887,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 6.6 — OOP Interview Masterclass: Quick Reference & Practice
+### Learn 6.6 - OOP Interview Masterclass: Quick Reference & Practice
 **Difficulty:** ALL LEVELS | **Est. Time:** 35 min | **Tags:** `[interview-prep, cheatsheet, patterns, oop-questions, 30-questions]`
 
 **Steps:** `EXPLANATION → QUIZ(10) → MOCK_INTERVIEW → CHALLENGE(3 OOD scenarios) → SUMMARY`
@@ -902,11 +902,11 @@ LearnMainCategory: "Computer Science"
 - How to structure a 2-minute answer to "Tell me about OOP"
 - Red flags interviewers watch for in OOP answers
 
-**Interview relevance:** This entire Learn is pure interview prep — the format, the patterns, the quick reference.
+**Interview relevance:** This entire Learn is pure interview prep - the format, the patterns, the quick reference.
 
 ---
 
-### Unit 6 Review — Full OOP Mock Interview & Capstone
+### Unit 6 Review - Full OOP Mock Interview & Capstone
 **Steps:** `SUMMARY → QUIZ(15 mixed) → MOCK_INTERVIEW → PROJECT(major: Design a hotel booking system using full OOP + SOLID + patterns)`
 
 ---
@@ -930,7 +930,7 @@ LearnMainCategory: "Computer Science"
 
 | OOP Topic | Learns That Cover It |
 |-----------|---------------------|
-| Four pillars definitions | 2.1–2.6, 2.8 |
+| Four pillars definitions | 2.1-2.6, 2.8 |
 | Abstract vs interface | 2.5, 2.6 |
 | Overloading vs overriding | 2.3, 2.4 |
 | SOLID principles | All of Unit 4 |
@@ -961,4 +961,4 @@ SUMMARY(recap) → QUIZ(10-15) → MOCK_INTERVIEW → PROJECT
 
 ---
 
-*Document created for ShiprHQ — OOP Concepts Learn Module*
+*Document created for ShiprHQ - OOP Concepts Learn Module*

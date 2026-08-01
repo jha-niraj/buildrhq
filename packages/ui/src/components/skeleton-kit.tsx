@@ -8,7 +8,7 @@ import { cn } from "@repo/ui/lib/utils"
 // The point of a skeleton is that NOTHING MOVES when the real content arrives.
 // A generic "spinner in a box" fallback reflows the whole page the moment data
 // lands, which reads as slower than no skeleton at all. So these are primitives
-// to assemble a per-route shape from — a route's loading.tsx should mirror its
+// to assemble a per-route shape from - a route's loading.tsx should mirror its
 // page section for section, not reach for one generic placeholder.
 //
 // The shimmer is a CSS background sweep rather than a pulsing opacity: a pulse
@@ -38,7 +38,7 @@ const SHIMMER_STYLES = `
 }
 `
 
-/** Mounted once per skeleton tree — duplicated <style> tags are harmless but noisy. */
+/** Mounted once per skeleton tree - duplicated <style> tags are harmless but noisy. */
 export function ShimmerStyles() {
     return <style>{SHIMMER_STYLES}</style>
 }
@@ -96,7 +96,7 @@ export function ChartCardSkeleton({ height = 220, delay = 0 }: { height?: number
     )
 }
 
-/** Stats column beside a chart — the "module row" shape used on the dashboard. */
+/** Stats column beside a chart - the "module row" shape used on the dashboard. */
 export function ModuleRowSkeleton({ delay = 0 }: { delay?: number }) {
     return (
         <div className="rounded-2xl border border-border bg-card p-5 sm:p-6">
@@ -219,7 +219,7 @@ export function SkeletonPage({ children, className }: { children: React.ReactNod
 /**
  * A reasonable default for a route that has not had a bespoke skeleton written
  * yet: header, stat tiles, and a card grid. Prefer composing the primitives above
- * to match the real page — this exists so no route is left with a blank screen.
+ * to match the real page - this exists so no route is left with a blank screen.
  */
 export function GenericPageSkeleton() {
     return (

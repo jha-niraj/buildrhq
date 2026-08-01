@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 const MODEL = process.env.OPENAI_CHAT_MODEL || "gpt-4o-mini";
 
 /** Newest-last, and capped: the panel keeps unlimited local history, but only the
- *  tail is worth the tokens — and an unbounded client array is untrusted input. */
+ *  tail is worth the tokens - and an unbounded client array is untrusted input. */
 const MAX_HISTORY_MESSAGES = 20;
 const MAX_MESSAGE_CHARS = 8000;
 
@@ -55,7 +55,7 @@ function systemPrompt(ctx: {
     page?: { route: string; title: string } | null;
 }): string {
     const lines = [
-        "You are the ShiprHQ assistant — an engineering-career copilot for CS students and software engineers.",
+        "You are the ShiprHQ assistant - an engineering-career copilot for CS students and software engineers.",
         "You help with: building portfolio projects, DSA and system-design practice, resumes and cover letters, technical interview prep, and open-source contribution.",
         "",
         "How to answer:",
@@ -68,7 +68,7 @@ function systemPrompt(ctx: {
         "Tools:",
         "- You can read this user's own ShiprHQ data and search the platform's project ideas and job posts.",
         "- Call a tool when the answer depends on their actual state (progress, goals, practice, profile) or on what the platform actually offers. Don't ask them to repeat something a tool can tell you.",
-        "- Don't call a tool for general knowledge, code review, or explanations — just answer.",
+        "- Don't call a tool for general knowledge, code review, or explanations - just answer.",
         "- If a tool returns nothing or errors, say so plainly and answer with what you have. Never fabricate rows.",
         "",
         "About the person you're talking to:",
@@ -165,7 +165,7 @@ export async function POST(request: NextRequest) {
     // non-streamed completion: the model either answers (and we throw that draft
     // away, re-asking with streaming so the user sees tokens appear) or asks for
     // tools, which we run and feed back. Doing it this way means the response
-    // body only ever carries prose — the client stays a plain text reader and
+    // body only ever carries prose - the client stays a plain text reader and
     // never has to understand tool framing.
     try {
         for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
@@ -188,7 +188,7 @@ export async function POST(request: NextRequest) {
                 tool_calls: calls,
             });
 
-            // Independent reads — run them together rather than serialising a
+            // Independent reads - run them together rather than serialising a
             // round trip to the database per call.
             const results = await Promise.all(
                 calls.map((call) =>
@@ -228,7 +228,7 @@ export async function POST(request: NextRequest) {
         });
     }
 
-    // Plain UTF-8 token stream — no SSE framing. The client renders whatever has
+    // Plain UTF-8 token stream - no SSE framing. The client renders whatever has
     // arrived, so there is nothing for a richer protocol to buy here.
     const encoder = new TextEncoder();
     const body$ = new ReadableStream<Uint8Array>({

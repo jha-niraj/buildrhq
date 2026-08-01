@@ -1,4 +1,4 @@
-# SQL Learn Module — Complete Syllabus & Learn Mapping
+# SQL Learn Module - Complete Syllabus & Learn Mapping
 **Platform: ShiprHQ**
 **SubCategory: SQL**
 **Total Learns: 38 | Units: 6**
@@ -15,54 +15,54 @@ LearnMainCategory: "Programming"
         ├── color: "#F97316"
         │
         └── LearnTopics:
-              ├── Unit 1 — Foundations (6 Learns)
-              ├── Unit 2 — Core SQL (6 Learns)
-              ├── Unit 3 — Joins & Relationships (6 Learns)
-              ├── Unit 4 — Subqueries, CTEs & Window Functions (7 Learns)
-              ├── Unit 5 — Performance & Schema Design (7 Learns)
-              └── Unit 6 — Advanced & Real-World SQL (6 Learns)
+              ├── Unit 1 - Foundations (6 Learns)
+              ├── Unit 2 - Core SQL (6 Learns)
+              ├── Unit 3 - Joins & Relationships (6 Learns)
+              ├── Unit 4 - Subqueries, CTEs & Window Functions (7 Learns)
+              ├── Unit 5 - Performance & Schema Design (7 Learns)
+              └── Unit 6 - Advanced & Real-World SQL (6 Learns)
 ```
 
 ---
 
-## UNIT 1 — Foundations of SQL & Databases
+## UNIT 1 - Foundations of SQL & Databases
 **Unit Goal:** Understand what SQL is, how databases work, and the core theory you'll be asked about in any interview.
 
 ---
 
-### Learn 1.1 — What is SQL & How Databases Work
+### Learn 1.1 - What is SQL & How Databases Work
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[sql, rdbms, database, intro]`
 
 **Steps:** `EXPLANATION → COMPARISON(SQL vs NoSQL) → QUIZ(4) → SUMMARY`
 
 **What you'll learn:**
 - What a relational database is and why it exists
-- Tables, rows, columns — the mental model
+- Tables, rows, columns - the mental model
 - SQL vs NoSQL: when each is used (interview classic)
 - Popular databases: MySQL, PostgreSQL, SQL Server, SQLite, Oracle
 - The role of a DBMS
 
-**Interview relevance:** "What is SQL?" / "Difference between SQL and NoSQL?" — always asked.
+**Interview relevance:** "What is SQL?" / "Difference between SQL and NoSQL?" - always asked.
 
 ---
 
-### Learn 1.2 — ACID Properties & Database Transactions
+### Learn 1.2 - ACID Properties & Database Transactions
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[acid, transactions, atomicity, consistency]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(ACID diagram) → QUIZ(4) → SUMMARY`
 
 **What you'll learn:**
-- Atomicity, Consistency, Isolation, Durability — each defined clearly
+- Atomicity, Consistency, Isolation, Durability - each defined clearly
 - What a transaction is and why it matters
 - Real-world examples for each ACID property
 - What happens when ACID is violated (data corruption, lost updates)
 - Commit and Rollback basics
 
-**Interview relevance:** "Explain ACID properties" — top 5 SQL interview question globally.
+**Interview relevance:** "Explain ACID properties" - top 5 SQL interview question globally.
 
 ---
 
-### Learn 1.3 — Data Types, NULL & Constraints
+### Learn 1.3 - Data Types, NULL & Constraints
 **Difficulty:** BEGINNER | **Est. Time:** 25 min | **Tags:** `[datatypes, null, constraints, primary-key, foreign-key]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks: CREATE TABLE examples) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -74,11 +74,11 @@ LearnMainCategory: "Programming"
 - Why constraints exist and what they enforce
 - Common mistakes with NULL comparisons (`= NULL` vs `IS NULL`)
 
-**Interview relevance:** "What is a primary key vs foreign key?" / "What is NULL in SQL?" — foundational.
+**Interview relevance:** "What is a primary key vs foreign key?" / "What is NULL in SQL?" - foundational.
 
 ---
 
-### Learn 1.4 — Normalization & Database Design (1NF → 3NF / BCNF)
+### Learn 1.4 - Normalization & Database Design (1NF → 3NF / BCNF)
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[normalization, 1nf, 2nf, 3nf, bcnf, design]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(before/after tables) → CODE(2 blocks: schema design) → COMPARISON(NF levels) → QUIZ(5) → SUMMARY`
@@ -90,13 +90,13 @@ LearnMainCategory: "Programming"
 - 3NF: no transitive dependencies
 - BCNF: the stricter 3NF
 - When to deliberately denormalize (performance trade-off)
-- Update, insert, delete anomalies — what they are
+- Update, insert, delete anomalies - what they are
 
-**Interview relevance:** "Explain normalization" / "Difference between 2NF and 3NF?" — extremely common.
+**Interview relevance:** "Explain normalization" / "Difference between 2NF and 3NF?" - extremely common.
 
 ---
 
-### Learn 1.5 — Schema Design & Table Relationships
+### Learn 1.5 - Schema Design & Table Relationships
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[schema, relationships, one-to-many, many-to-many, erd]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(ERD diagram) → CODE(3 blocks: schema examples) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -112,7 +112,7 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 1.6 — Isolation Levels & Concurrency Problems
+### Learn 1.6 - Isolation Levels & Concurrency Problems
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[isolation, concurrency, dirty-read, phantom-read, transactions]`
 
 **Steps:** `EXPLANATION → COMPARISON(isolation levels table) → VISUALIZATION → QUIZ(4) → SUMMARY`
@@ -124,22 +124,22 @@ LearnMainCategory: "Programming"
 - Default isolation level in MySQL vs PostgreSQL
 - Performance trade-offs of higher isolation
 
-**Interview relevance:** "What are isolation levels?" — asked frequently in senior/data engineering interviews.
+**Interview relevance:** "What are isolation levels?" - asked frequently in senior/data engineering interviews.
 
 ---
 
-### Unit 1 Review — Foundations Quiz & Mock Interview
+### Unit 1 Review - Foundations Quiz & Mock Interview
 **Steps:** `SUMMARY(unit recap) → QUIZ(10 comprehensive) → MOCK_INTERVIEW → PROJECT(mini: Design a schema for an e-commerce app)`
 
 ---
 ---
 
-## UNIT 2 — Core SQL: Writing Queries
+## UNIT 2 - Core SQL: Writing Queries
 **Unit Goal:** Write confident, clean SQL queries covering everything from basic SELECT to complex filtering, aggregation and grouping.
 
 ---
 
-### Learn 2.1 — SELECT, FROM, WHERE & Filtering Basics
+### Learn 2.1 - SELECT, FROM, WHERE & Filtering Basics
 **Difficulty:** BEGINNER | **Est. Time:** 25 min | **Tags:** `[select, where, filter, comparison, logical-operators]`
 
 **Steps:** `EXPLANATION → CODE(5 blocks) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -157,7 +157,7 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 2.2 — String, Date & Type Functions
+### Learn 2.2 - String, Date & Type Functions
 **Difficulty:** BEGINNER | **Est. Time:** 25 min | **Tags:** `[string-functions, date-functions, type-casting, concat]`
 
 **Steps:** `EXPLANATION → CODE(5 blocks) → COMPARISON(MySQL vs PostgreSQL syntax) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -173,16 +173,16 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 2.3 — Aggregate Functions & GROUP BY
+### Learn 2.3 - Aggregate Functions & GROUP BY
 **Difficulty:** BEGINNER | **Est. Time:** 30 min | **Tags:** `[aggregate, count, sum, avg, min, max, group-by, having]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(GROUP BY mental model) → CODE(5 blocks) → QUIZ(5) → CHALLENGE(2) → SUMMARY`
 
 **What you'll learn:**
-- `COUNT(*)` vs `COUNT(column)` — NULL behaviour difference
+- `COUNT(*)` vs `COUNT(column)` - NULL behaviour difference
 - `SUM`, `AVG`, `MIN`, `MAX` with NULLs
-- `GROUP BY` — grouping rows into buckets
-- `HAVING` — filtering after grouping (vs WHERE which filters before)
+- `GROUP BY` - grouping rows into buckets
+- `HAVING` - filtering after grouping (vs WHERE which filters before)
 - Multiple aggregates in one query
 - Conditional aggregation: `SUM(CASE WHEN ... END)`, `COUNT(CASE WHEN ... END)`
 - `GROUP BY` with expressions and aliases
@@ -191,7 +191,7 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 2.4 — CASE Statements & Conditional Logic
+### Learn 2.4 - CASE Statements & Conditional Logic
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[case, conditional, if, coalesce, nullif]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -208,32 +208,32 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 2.5 — INSERT, UPDATE, DELETE & MERGE
+### Learn 2.5 - INSERT, UPDATE, DELETE & MERGE
 **Difficulty:** BEGINNER | **Est. Time:** 25 min | **Tags:** `[insert, update, delete, truncate, merge, upsert, dml]`
 
 **Steps:** `EXPLANATION → CODE(5 blocks) → QUIZ(4) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- `INSERT INTO` — single row, multiple rows, INSERT from SELECT
-- `UPDATE` — updating one or many rows, UPDATE with JOIN
-- `DELETE` vs `TRUNCATE` vs `DROP` — the key differences
-- `MERGE` / `UPSERT` — INSERT if not exists, UPDATE if exists
+- `INSERT INTO` - single row, multiple rows, INSERT from SELECT
+- `UPDATE` - updating one or many rows, UPDATE with JOIN
+- `DELETE` vs `TRUNCATE` vs `DROP` - the key differences
+- `MERGE` / `UPSERT` - INSERT if not exists, UPDATE if exists
 - Safe UPDATE/DELETE: always filter first, use transactions
 - Returning affected rows
 
-**Interview relevance:** "Difference between DELETE and TRUNCATE?" — nearly universal interview question.
+**Interview relevance:** "Difference between DELETE and TRUNCATE?" - nearly universal interview question.
 
 ---
 
-### Learn 2.6 — ROLLUP, CUBE & Advanced Grouping
+### Learn 2.6 - ROLLUP, CUBE & Advanced Grouping
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[rollup, cube, grouping-sets, subtotals]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → COMPARISON(ROLLUP vs CUBE vs GROUPING SETS) → QUIZ(3) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- `ROLLUP` — hierarchical subtotals (great for reports)
-- `CUBE` — all possible subtotal combinations
-- `GROUPING SETS` — custom grouping combinations
+- `ROLLUP` - hierarchical subtotals (great for reports)
+- `CUBE` - all possible subtotal combinations
+- `GROUPING SETS` - custom grouping combinations
 - `GROUPING()` function to identify subtotal rows
 - Real-world use: sales reports with subtotals per region/category/total
 
@@ -241,25 +241,25 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Unit 2 Review — Core SQL Quiz & Mock Interview
+### Unit 2 Review - Core SQL Quiz & Mock Interview
 **Steps:** `SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(mini: Sales summary report query)`
 
 ---
 ---
 
-## UNIT 3 — Joins & Multi-Table Queries
+## UNIT 3 - Joins & Multi-Table Queries
 **Unit Goal:** Master every join type, understand NULL behaviour across joins, and solve the classic "find rows with no match" pattern confidently.
 
 ---
 
-### Learn 3.1 — INNER JOIN & The Join Mental Model
+### Learn 3.1 - INNER JOIN & The Join Mental Model
 **Difficulty:** BEGINNER | **Est. Time:** 25 min | **Tags:** `[inner-join, join, foreign-key, matching]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(Venn diagrams + row matching) → CODE(4 blocks) → QUIZ(4) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
 - The join mental model: matching rows across tables
-- `INNER JOIN` — only rows that match on both sides
+- `INNER JOIN` - only rows that match on both sides
 - Join on primary key / foreign key
 - Multi-column join conditions
 - Joining on non-key columns (join conditions beyond equality)
@@ -270,17 +270,17 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 3.2 — LEFT, RIGHT & FULL OUTER JOIN
+### Learn 3.2 - LEFT, RIGHT & FULL OUTER JOIN
 **Difficulty:** BEGINNER | **Est. Time:** 25 min | **Tags:** `[left-join, right-join, full-outer-join, null-in-joins]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(Venn + table output comparison) → CODE(4 blocks) → COMPARISON(all join types) → QUIZ(5) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- `LEFT JOIN` — all rows from left, NULLs where no match on right
-- `RIGHT JOIN` — all rows from right (less common, prefer LEFT)
-- `FULL OUTER JOIN` — all rows from both sides
+- `LEFT JOIN` - all rows from left, NULLs where no match on right
+- `RIGHT JOIN` - all rows from right (less common, prefer LEFT)
+- `FULL OUTER JOIN` - all rows from both sides
 - NULL behaviour: unmatched rows get NULL for the other table's columns
-- Filtering NULLs after a LEFT JOIN (`WHERE right.id IS NULL`) — the ANTI-JOIN
+- Filtering NULLs after a LEFT JOIN (`WHERE right.id IS NULL`) - the ANTI-JOIN
 - When to use LEFT JOIN vs INNER JOIN
 - Common mistake: filtering LEFT JOIN results in WHERE (converts it to INNER)
 
@@ -288,23 +288,23 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 3.3 — SELF JOIN & CROSS JOIN
+### Learn 3.3 - SELF JOIN & CROSS JOIN
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[self-join, cross-join, cartesian-product]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → QUIZ(3) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- `SELF JOIN` — joining a table to itself (employee/manager hierarchies)
+- `SELF JOIN` - joining a table to itself (employee/manager hierarchies)
 - Use cases: comparing rows within the same table, hierarchy queries
-- `CROSS JOIN` — cartesian product, every row with every row
+- `CROSS JOIN` - cartesian product, every row with every row
 - When CROSS JOIN is intentional (generating combinations, date grids)
-- CROSS JOIN size explosion — why it's dangerous on large tables
+- CROSS JOIN size explosion - why it's dangerous on large tables
 
 **Interview relevance:** Self-join "find employees and their managers" is a classic interview question.
 
 ---
 
-### Learn 3.4 — ANTI-JOIN, SEMI-JOIN & EXISTS Pattern
+### Learn 3.4 - ANTI-JOIN, SEMI-JOIN & EXISTS Pattern
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[anti-join, semi-join, exists, not-exists, not-in]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON(EXISTS vs NOT IN vs LEFT JOIN IS NULL) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -313,7 +313,7 @@ LearnMainCategory: "Programming"
 - ANTI-JOIN: find rows in A with no match in B (3 ways to write it)
 - Method 1: `LEFT JOIN ... WHERE B.id IS NULL`
 - Method 2: `NOT EXISTS (subquery)`
-- Method 3: `NOT IN (subquery)` — and the NULL trap with NOT IN
+- Method 3: `NOT IN (subquery)` - and the NULL trap with NOT IN
 - SEMI-JOIN: filter A based on existence in B (`EXISTS`)
 - Performance comparison: which approach is fastest and why
 - Real-world: "Find customers who never placed an order"
@@ -322,7 +322,7 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 3.5 — Multi-Table Joins & JOIN with Aggregation
+### Learn 3.5 - Multi-Table Joins & JOIN with Aggregation
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[multi-join, join-aggregation, group-by-join]`
 
 **Steps:** `EXPLANATION → CODE(5 blocks) → QUIZ(5) → CHALLENGE(2) → SUMMARY`
@@ -340,13 +340,13 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 3.6 — LATERAL JOIN & Advanced Join Patterns
+### Learn 3.6 - LATERAL JOIN & Advanced Join Patterns
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[lateral-join, apply, correlated-join, advanced-join]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → COMPARISON(LATERAL vs subquery) → QUIZ(3) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- `LATERAL JOIN` (PostgreSQL) / `CROSS APPLY` (SQL Server) — what it means
+- `LATERAL JOIN` (PostgreSQL) / `CROSS APPLY` (SQL Server) - what it means
 - When LATERAL is needed: referencing outer query columns inside a subquery
 - "Top N per group" pattern using LATERAL JOIN
 - Differences from regular subqueries
@@ -356,18 +356,18 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Unit 3 Review — Joins Quiz & Mock Interview
-**Steps:** `SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(mini: Multi-table reporting query — orders, customers, products)`
+### Unit 3 Review - Joins Quiz & Mock Interview
+**Steps:** `SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(mini: Multi-table reporting query - orders, customers, products)`
 
 ---
 ---
 
-## UNIT 4 — Subqueries, CTEs & Window Functions
+## UNIT 4 - Subqueries, CTEs & Window Functions
 **Unit Goal:** Go from writing flat queries to composing complex, layered SQL. Master the tools that separate average SQL writers from strong ones.
 
 ---
 
-### Learn 4.1 — Subqueries (Scalar, IN, EXISTS, Derived Tables)
+### Learn 4.1 - Subqueries (Scalar, IN, EXISTS, Derived Tables)
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[subquery, scalar, derived-table, correlated]`
 
 **Steps:** `EXPLANATION → CODE(5 blocks) → COMPARISON(subquery types) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -384,7 +384,7 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 4.2 — Common Table Expressions (CTEs)
+### Learn 4.2 - Common Table Expressions (CTEs)
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[cte, with-clause, readability, reusable-queries]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON(CTE vs subquery vs temp table) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -402,7 +402,7 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 4.3 — Recursive CTEs & Hierarchical Data
+### Learn 4.3 - Recursive CTEs & Hierarchical Data
 **Difficulty:** ADVANCED | **Est. Time:** 30 min | **Tags:** `[recursive-cte, hierarchy, tree, org-chart, graph]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(tree traversal) → CODE(4 blocks) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -415,50 +415,50 @@ LearnMainCategory: "Programming"
 - Generating number sequences and date ranges with recursive CTEs
 - Bottom-up vs top-down traversal
 
-**Interview relevance:** "Write a query to find all employees under a given manager" — classic advanced question.
+**Interview relevance:** "Write a query to find all employees under a given manager" - classic advanced question.
 
 ---
 
-### Learn 4.4 — Window Functions: ROW_NUMBER, RANK, DENSE_RANK
+### Learn 4.4 - Window Functions: ROW_NUMBER, RANK, DENSE_RANK
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[window-functions, row-number, rank, dense-rank, partition-by]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(partition + ranking diagram) → CODE(5 blocks) → QUIZ(5) → CHALLENGE(2) → SUMMARY`
 
 **What you'll learn:**
 - What window functions are: compute across a "window" without collapsing rows
-- `OVER()` clause — the key to window functions
-- `PARTITION BY` — reset the calculation per group
-- `ORDER BY` inside OVER — controls ranking/sequence order
-- `ROW_NUMBER()` — unique sequential number per partition
-- `RANK()` — gaps after ties
-- `DENSE_RANK()` — no gaps after ties
+- `OVER()` clause - the key to window functions
+- `PARTITION BY` - reset the calculation per group
+- `ORDER BY` inside OVER - controls ranking/sequence order
+- `ROW_NUMBER()` - unique sequential number per partition
+- `RANK()` - gaps after ties
+- `DENSE_RANK()` - no gaps after ties
 - Classic use: "Get the latest order per customer" (ROW_NUMBER + CTE filter)
-- `NTILE(n)` — divide rows into n equal buckets
+- `NTILE(n)` - divide rows into n equal buckets
 
-**Interview relevance:** "Top N per group" and "Rank within a category" — the most common intermediate SQL interview question type.
+**Interview relevance:** "Top N per group" and "Rank within a category" - the most common intermediate SQL interview question type.
 
 ---
 
-### Learn 4.5 — Window Functions: LAG, LEAD, Running Totals & Frames
+### Learn 4.5 - Window Functions: LAG, LEAD, Running Totals & Frames
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[lag, lead, running-total, moving-average, window-frame]`
 
 **Steps:** `EXPLANATION → CODE(5 blocks) → VISUALIZATION(frame diagram) → QUIZ(5) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- `LAG(col, n)` — access a previous row's value
-- `LEAD(col, n)` — access a next row's value
-- `FIRST_VALUE()` / `LAST_VALUE()` — first/last in window
-- `NTH_VALUE()` — nth row in window
+- `LAG(col, n)` - access a previous row's value
+- `LEAD(col, n)` - access a next row's value
+- `FIRST_VALUE()` / `LAST_VALUE()` - first/last in window
+- `NTH_VALUE()` - nth row in window
 - Running totals: `SUM() OVER (ORDER BY date)`
 - Moving averages: `AVG() OVER (ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)`
-- Window frame: `ROWS` vs `RANGE` — the subtle and important difference
+- Window frame: `ROWS` vs `RANGE` - the subtle and important difference
 - `UNBOUNDED PRECEDING`, `CURRENT ROW`, `UNBOUNDED FOLLOWING`
 
-**Interview relevance:** "Calculate month-over-month growth" / "7-day moving average" — very common in data/analytics interviews.
+**Interview relevance:** "Calculate month-over-month growth" / "7-day moving average" - very common in data/analytics interviews.
 
 ---
 
-### Learn 4.6 — Window Functions vs GROUP BY vs Subqueries
+### Learn 4.6 - Window Functions vs GROUP BY vs Subqueries
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[window-vs-groupby, performance, when-to-use]`
 
 **Steps:** `EXPLANATION → COMPARISON(3-way comparison with examples) → CODE(3 blocks) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -475,36 +475,36 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 4.7 — Real-World Query Patterns (Interview Classics)
+### Learn 4.7 - Real-World Query Patterns (Interview Classics)
 **Difficulty:** ADVANCED | **Est. Time:** 35 min | **Tags:** `[interview-patterns, top-n, running-total, gaps-islands, pivot]`
 
 **Steps:** `EXPLANATION → CODE(6 blocks) → QUIZ(5) → CHALLENGE(3) → MOCK_INTERVIEW → SUMMARY`
 
 **What you'll learn (each is a standalone pattern):**
-- **Top N per group** — most recent order per customer, top 3 products per category
-- **Running totals & cumulative sums** — revenue over time
+- **Top N per group** - most recent order per customer, top 3 products per category
+- **Running totals & cumulative sums** - revenue over time
 - **Month-over-month / YoY comparison** using LAG
 - **Pivot: rows to columns** using CASE + GROUP BY
-- **Gaps and Islands** — finding consecutive sequences (classic hard question)
-- **Deduplication** — keep one row per duplicate group
-- **Consecutive day streaks** — login streaks, activity tracking
+- **Gaps and Islands** - finding consecutive sequences (classic hard question)
+- **Deduplication** - keep one row per duplicate group
+- **Consecutive day streaks** - login streaks, activity tracking
 
 **Interview relevance:** This entire Learn IS interview prep. These are the questions that separate strong candidates.
 
 ---
 
-### Unit 4 Review — Subqueries/CTEs/Window Functions
-**Steps:** `SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(major: Full analytics report — cohort retention, top products, MoM growth)`
+### Unit 4 Review - Subqueries/CTEs/Window Functions
+**Steps:** `SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(major: Full analytics report - cohort retention, top products, MoM growth)`
 
 ---
 ---
 
-## UNIT 5 — Query Performance & Schema Design
+## UNIT 5 - Query Performance & Schema Design
 **Unit Goal:** Understand why queries are slow, how to read execution plans, how indexes work, and how to design schemas that scale.
 
 ---
 
-### Learn 5.1 — How SQL Query Execution Works
+### Learn 5.1 - How SQL Query Execution Works
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[query-execution, execution-order, optimizer, parsing]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(execution order diagram) → CODE(3 blocks) → QUIZ(4) → SUMMARY`
@@ -516,11 +516,11 @@ LearnMainCategory: "Programming"
 - Query parsing, planning, and execution phases
 - Why understanding execution order prevents common mistakes
 
-**Interview relevance:** "Can you use a column alias in WHERE?" — tests execution order knowledge. Common gotcha question.
+**Interview relevance:** "Can you use a column alias in WHERE?" - tests execution order knowledge. Common gotcha question.
 
 ---
 
-### Learn 5.2 — Indexes: Types, How They Work & When to Use Them
+### Learn 5.2 - Indexes: Types, How They Work & When to Use Them
 **Difficulty:** INTERMEDIATE | **Est. Time:** 35 min | **Tags:** `[indexes, b-tree, composite-index, covering-index, index-design]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(B-tree diagram) → CODE(4 blocks) → COMPARISON(index types) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -535,17 +535,17 @@ LearnMainCategory: "Programming"
 - When NOT to index: write-heavy tables, low-cardinality columns
 - Index on foreign key columns (often forgotten)
 
-**Interview relevance:** "What is an index?" / "How do composite indexes work?" — very frequent in backend and data interviews.
+**Interview relevance:** "What is an index?" / "How do composite indexes work?" - very frequent in backend and data interviews.
 
 ---
 
-### Learn 5.3 — Reading EXPLAIN Plans
+### Learn 5.3 - Reading EXPLAIN Plans
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[explain, execution-plan, seq-scan, index-scan, cost]`
 
 **Steps:** `EXPLANATION → CODE(5 blocks: EXPLAIN outputs) → VISUALIZATION(plan tree) → QUIZ(4) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- `EXPLAIN` and `EXPLAIN ANALYZE` — what each shows
+- `EXPLAIN` and `EXPLAIN ANALYZE` - what each shows
 - Reading EXPLAIN output: type, key, rows, Extra columns (MySQL)
 - PostgreSQL EXPLAIN output: Seq Scan, Index Scan, Bitmap Scan, Hash Join, Nested Loop
 - Cost estimates: startup cost vs total cost
@@ -553,11 +553,11 @@ LearnMainCategory: "Programming"
 - Warning signs in EXPLAIN: full table scans, filesort, temporary tables
 - How to use EXPLAIN to validate an index is being used
 
-**Interview relevance:** Senior SQL interviews ask "How would you optimize this query?" — EXPLAIN is the answer.
+**Interview relevance:** Senior SQL interviews ask "How would you optimize this query?" - EXPLAIN is the answer.
 
 ---
 
-### Learn 5.4 — Query Optimization Techniques
+### Learn 5.4 - Query Optimization Techniques
 **Difficulty:** ADVANCED | **Est. Time:** 30 min | **Tags:** `[optimization, rewriting, sargable, index-hints, avoid-functions-on-columns]`
 
 **Steps:** `EXPLANATION → CODE(5 blocks: before/after rewrites) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -567,7 +567,7 @@ LearnMainCategory: "Programming"
 - Avoid functions on indexed columns in WHERE
 - SELECT only what you need (avoid SELECT *)
 - Prefer EXISTS over COUNT for existence checks
-- Avoid `NOT IN` with NULLs — use NOT EXISTS
+- Avoid `NOT IN` with NULLs - use NOT EXISTS
 - Optimize LIKE: `LIKE 'abc%'` uses index, `LIKE '%abc%'` does not
 - Join order and its impact on performance
 - Rewriting correlated subqueries as joins
@@ -576,16 +576,16 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 5.5 — Views, Materialized Views & Stored Procedures
+### Learn 5.5 - Views, Materialized Views & Stored Procedures
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[views, materialized-views, stored-procedures, triggers]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON(view vs materialized view) → QUIZ(4) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- `CREATE VIEW` — a saved query, always fresh data
+- `CREATE VIEW` - a saved query, always fresh data
 - Using views for security (expose only certain columns/rows)
 - Updatable vs non-updatable views
-- Materialized view — physically stores results, needs refreshing
+- Materialized view - physically stores results, needs refreshing
 - `CREATE MATERIALIZED VIEW ... WITH DATA` (PostgreSQL)
 - When to use materialized views: expensive aggregations
 - Stored procedures: parameterized reusable SQL blocks
@@ -596,7 +596,7 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 5.6 — Partitioning, Sharding & Scaling Concepts
+### Learn 5.6 - Partitioning, Sharding & Scaling Concepts
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[partitioning, sharding, horizontal-scaling, table-partitioning]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(partition diagram) → CODE(3 blocks) → COMPARISON(partitioning strategies) → QUIZ(4) → SUMMARY`
@@ -605,7 +605,7 @@ LearnMainCategory: "Programming"
 - Table partitioning: splitting one large table into smaller physical parts
 - Range partitioning (by date), List partitioning, Hash partitioning
 - Benefits: faster queries on partitions, easier data archival
-- Partition pruning — how the optimizer skips irrelevant partitions
+- Partition pruning - how the optimizer skips irrelevant partitions
 - Sharding: horizontal partitioning across multiple servers
 - Sharding vs partitioning: key conceptual difference
 - When to shard: true web-scale write/read demands
@@ -614,7 +614,7 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 5.7 — Denormalization, Caching & Real-World Trade-offs
+### Learn 5.7 - Denormalization, Caching & Real-World Trade-offs
 **Difficulty:** ADVANCED | **Est. Time:** 20 min | **Tags:** `[denormalization, caching, trade-offs, read-vs-write]`
 
 **Steps:** `EXPLANATION → COMPARISON(normalized vs denormalized) → CODE(2 blocks) → QUIZ(3) → SUMMARY`
@@ -627,29 +627,29 @@ LearnMainCategory: "Programming"
 - Trade-off framework: consistency vs performance vs simplicity
 - Real examples: social media feed, e-commerce product listing
 
-**Interview relevance:** Shows you understand production realities, not just theory — senior interview signal.
+**Interview relevance:** Shows you understand production realities, not just theory - senior interview signal.
 
 ---
 
-### Unit 5 Review — Performance & Design Quiz & Mock Interview
+### Unit 5 Review - Performance & Design Quiz & Mock Interview
 **Steps:** `SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(major: Optimize a slow query + redesign schema for scale)`
 
 ---
 ---
 
-## UNIT 6 — Advanced SQL & Interview Mastery
+## UNIT 6 - Advanced SQL & Interview Mastery
 **Unit Goal:** Cover the remaining advanced topics and prepare for real interview rounds with practice on hard SQL problems.
 
 ---
 
-### Learn 6.1 — Advanced Filtering: REGEX, Complex Patterns & NULL-Safe Logic
+### Learn 6.1 - Advanced Filtering: REGEX, Complex Patterns & NULL-Safe Logic
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[regex, like, null-safe, complex-filtering]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → QUIZ(4) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
 - `LIKE` advanced patterns and limitations
-- `REGEXP` / `RLIKE` (MySQL) / `~` (PostgreSQL) — regex in SQL
+- `REGEXP` / `RLIKE` (MySQL) / `~` (PostgreSQL) - regex in SQL
 - NULL-safe equality: `<=>` (MySQL), `IS NOT DISTINCT FROM` (PostgreSQL)
 - Filtering with subqueries and CTEs as filter sources
 - Complex multi-condition WHERE with proper parenthesization
@@ -659,24 +659,24 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 6.2 — String Aggregation, Statistical Functions & DISTINCT tricks
+### Learn 6.2 - String Aggregation, Statistical Functions & DISTINCT tricks
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[group-concat, string-agg, percentile, distinct-on]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON(MySQL vs PostgreSQL) → QUIZ(3) → CHALLENGE → SUMMARY`
 
 **What you'll learn:**
-- `GROUP_CONCAT` (MySQL) / `STRING_AGG` (PostgreSQL/SQL Server) — aggregate strings
+- `GROUP_CONCAT` (MySQL) / `STRING_AGG` (PostgreSQL/SQL Server) - aggregate strings
 - `LISTAGG` (Oracle)
-- `PERCENTILE_CONT`, `PERCENTILE_DISC` — median and percentile
-- `STDDEV`, `VARIANCE` — statistical aggregates
-- `DISTINCT ON` (PostgreSQL) — get one row per group without window functions
+- `PERCENTILE_CONT`, `PERCENTILE_DISC` - median and percentile
+- `STDDEV`, `VARIANCE` - statistical aggregates
+- `DISTINCT ON` (PostgreSQL) - get one row per group without window functions
 - `COUNT(DISTINCT col)` nuances
 
 **Interview relevance:** String aggregation is commonly tested; DISTINCT ON is a PostgreSQL power feature.
 
 ---
 
-### Learn 6.3 — Database-Specific Features: MySQL vs PostgreSQL vs SQL Server
+### Learn 6.3 - Database-Specific Features: MySQL vs PostgreSQL vs SQL Server
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[mysql, postgresql, sql-server, cross-database, differences]`
 
 **Steps:** `EXPLANATION → COMPARISON(feature matrix) → CODE(4 blocks: same query, different syntax) → QUIZ(4) → SUMMARY`
@@ -695,7 +695,7 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 6.4 — JSON in SQL (MySQL JSON & PostgreSQL JSONB)
+### Learn 6.4 - JSON in SQL (MySQL JSON & PostgreSQL JSONB)
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[json, jsonb, postgresql, mysql, semi-structured]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks) → COMPARISON(JSON vs JSONB) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -713,7 +713,7 @@ LearnMainCategory: "Programming"
 
 ---
 
-### Learn 6.5 — Transactions, Locking & Deadlocks
+### Learn 6.5 - Transactions, Locking & Deadlocks
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[transactions, locking, deadlock, row-lock, table-lock]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(deadlock diagram) → CODE(3 blocks) → QUIZ(4) → SUMMARY`
@@ -722,17 +722,17 @@ LearnMainCategory: "Programming"
 - `BEGIN`, `COMMIT`, `ROLLBACK`, `SAVEPOINT`
 - Optimistic vs pessimistic locking
 - Row-level lock vs table-level lock
-- `SELECT ... FOR UPDATE` — explicit row locking
+- `SELECT ... FOR UPDATE` - explicit row locking
 - What causes deadlocks and how to prevent them
 - `LOCK TIMEOUT` and deadlock detection
 - Two-phase locking (2PL)
 - Real-world: e-commerce inventory update with transactions
 
-**Interview relevance:** "What is a deadlock?" / "How do you handle concurrent writes?" — common in backend interviews.
+**Interview relevance:** "What is a deadlock?" / "How do you handle concurrent writes?" - common in backend interviews.
 
 ---
 
-### Learn 6.6 — SQL Interview Strategy & Problem-Solving Framework
+### Learn 6.6 - SQL Interview Strategy & Problem-Solving Framework
 **Difficulty:** ALL LEVELS | **Est. Time:** 30 min | **Tags:** `[interview-strategy, problem-solving, communication, approach]`
 
 **Steps:** `EXPLANATION → CODE(5 blocks: walk-through of 5 problems) → MOCK_INTERVIEW → CHALLENGE(3) → SUMMARY`
@@ -749,12 +749,12 @@ LearnMainCategory: "Programming"
 - Top 10 SQL interview question types and approaches
 - Platforms to practice: LeetCode SQL, StrataScratch, DataLemur, Mode Analytics
 
-**Interview relevance:** This Learn is pure interview prep — the meta-skill of solving SQL problems under pressure.
+**Interview relevance:** This Learn is pure interview prep - the meta-skill of solving SQL problems under pressure.
 
 ---
 
-### Unit 6 Review — Full SQL Mock Interview & Capstone
-**Steps:** `SUMMARY → QUIZ(15 mixed difficulty) → MOCK_INTERVIEW → PROJECT(major: Full end-to-end analytics pipeline — schema design + complex queries + optimization)`
+### Unit 6 Review - Full SQL Mock Interview & Capstone
+**Steps:** `SUMMARY → QUIZ(15 mixed difficulty) → MOCK_INTERVIEW → PROJECT(major: Full end-to-end analytics pipeline - schema design + complex queries + optimization)`
 
 ---
 ---
@@ -777,15 +777,15 @@ LearnMainCategory: "Programming"
 
 | Original Topic Area | Covered In |
 |---------------------|------------|
-| Foundational Concepts | Unit 1 (1.1–1.6) |
-| SQL Fundamentals | Unit 2 (2.1–2.6) |
+| Foundational Concepts | Unit 1 (1.1-1.6) |
+| SQL Fundamentals | Unit 2 (2.1-2.6) |
 | Advanced Filtering | Learn 2.1, 6.1 |
 | Aggregate Functions & Grouping | Learn 2.3, 2.6 |
-| Joins & Relationships | Unit 3 (3.1–3.6) |
-| Subqueries & CTEs | Learn 4.1–4.3 |
-| Window Functions | Learn 4.4–4.6 |
+| Joins & Relationships | Unit 3 (3.1-3.6) |
+| Subqueries & CTEs | Learn 4.1-4.3 |
+| Window Functions | Learn 4.4-4.6 |
 | Real-World Patterns | Learn 4.7 |
-| Query Optimization & Performance | Unit 5 (5.1–5.4) |
+| Query Optimization & Performance | Unit 5 (5.1-5.4) |
 | Database-Specific Features | Learn 6.3, 6.4 |
 | Data Modification & Transactions | Learn 2.5, 6.5 |
 | Schema Design & DDL | Learn 1.4, 1.5 |
@@ -810,4 +810,4 @@ SUMMARY(recap) → QUIZ(10-15) → MOCK_INTERVIEW → PROJECT
 
 ---
 
-*Document created for ShiprHQ — SQL Learn Module*
+*Document created for ShiprHQ - SQL Learn Module*

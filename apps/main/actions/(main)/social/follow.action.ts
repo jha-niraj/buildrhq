@@ -26,7 +26,7 @@ export async function toggleFollow(targetUserId: string) {
             return { success: true, isFollowing: false }
         }
 
-        // Check if target user has a private profile — send request instead
+        // Check if target user has a private profile - send request instead
         const target = await db.query.users.findFirst({
             where: eq(users.id, targetUserId),
             columns: { isPublicProfile: true },

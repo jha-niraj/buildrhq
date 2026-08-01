@@ -1,4 +1,4 @@
-# Next.js on Cloudflare Workers — SEO Gotchas and Fixes
+# Next.js on Cloudflare Workers - SEO Gotchas and Fixes
 
 > Deploying Next.js via opennextjs-cloudflare introduces specific SEO behaviors
 > that differ from Vercel. This documents every one of them.
@@ -25,10 +25,10 @@ On Cloudflare Workers, Next.js's built-in image optimization (`/_next/image`) hi
 
 **The solution:**
 ```typescript
-// ❌ Goes through /_next/image — not edge-cached
+// ❌ Goes through /_next/image - not edge-cached
 <Image src="/hero.jpg" width={1920} height={1080} />
 
-// ✅ Pre-generate WebP, serve unoptimized — ASSETS binding caches immutably
+// ✅ Pre-generate WebP, serve unoptimized - ASSETS binding caches immutably
 <Image src="/hero.webp" width={1920} height={1080} unoptimized />
 
 // Or with plain img tag:
@@ -43,7 +43,7 @@ images: {
   deviceSizes: [...],   // IGNORED if using unoptimized
 }
 experimental: {
-  optimizeCss: true,    // BREAKS opennextjs-cloudflare build — do NOT enable
+  optimizeCss: true,    // BREAKS opennextjs-cloudflare build - do NOT enable
 }
 ```
 
@@ -77,7 +77,7 @@ This applies to:
   Cache-Control: public, max-age=31536000, immutable
 ```
 
-> Note: Changes to `_headers` propagate on deploy, but existing cached responses at Cloudflare edge nodes honor the OLD TTL until they expire. A file with `max-age=31536000` will take up to a year to show updated headers at all edge nodes — so set headers correctly the first time.
+> Note: Changes to `_headers` propagate on deploy, but existing cached responses at Cloudflare edge nodes honor the OLD TTL until they expire. A file with `max-age=31536000` will take up to a year to show updated headers at all edge nodes - so set headers correctly the first time.
 
 ---
 
@@ -88,11 +88,11 @@ HTML pages (your Next.js routes) are served via opennext with:
 cache-control: s-maxage=31536000
 ```
 
-This means Cloudflare caches the HTML at the edge. Subsequent requests for the same page are served from edge cache (~50–80ms TTFB).
+This means Cloudflare caches the HTML at the edge. Subsequent requests for the same page are served from edge cache (~50-80ms TTFB).
 
 **How to verify edge caching is working:**
 ```bash
-# Check x-nextjs-cache header — "HIT" = served from edge cache
+# Check x-nextjs-cache header - "HIT" = served from edge cache
 curl -I https://yourdomain.com | grep -i "x-nextjs-cache"
 # Expected: x-nextjs-cache: HIT
 
@@ -115,7 +115,7 @@ const nextConfig: NextConfig = {
       {
         source: '/old-path',
         destination: '/new-path',
-        permanent: true,   // 301 redirect — tells Google to update its index
+        permanent: true,   // 301 redirect - tells Google to update its index
       },
       {
         source: '/index.html',
@@ -145,22 +145,22 @@ const nextConfig: NextConfig = {
 
 ## Headers for SEO
 
-Configure via `public/_headers` (NOT via `next.config.ts` headers — those also work but `_headers` is more predictable on Cloudflare):
+Configure via `public/_headers` (NOT via `next.config.ts` headers - those also work but `_headers` is more predictable on Cloudflare):
 
 ```
-# OG images — long cache
+# OG images - long cache
 /og/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Fonts — long cache  
+# Fonts - long cache  
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Robots.txt — short cache (you might update it)
+# Robots.txt - short cache (you might update it)
 /robots.txt
   Cache-Control: public, max-age=86400
 
-# Sitemap — short cache (new posts appear here)
+# Sitemap - short cache (new posts appear here)
 /sitemap.xml
   Cache-Control: public, max-age=3600
 ```
@@ -208,9 +208,9 @@ Before deploying:
 [ ] Sitemap uses actual dateModified per page (not new Date())
 
 After deploying:
-[ ] Visit /sitemap.xml — verify all pages listed with correct URLs
-[ ] Visit /robots.txt — verify Googlebot is allowed
-[ ] curl -I https://yourdomain.com | grep cache-control — verify caching headers
+[ ] Visit /sitemap.xml - verify all pages listed with correct URLs
+[ ] Visit /robots.txt - verify Googlebot is allowed
+[ ] curl -I https://yourdomain.com | grep cache-control - verify caching headers
 [ ] Check x-nextjs-cache: HIT on second request to same page
 [ ] GSC → Request Indexing for any new pages
 ```
@@ -222,7 +222,7 @@ After deploying:
 | Issue | Impact | Fix |
 |---|---|---|
 | `/_next/image` not edge-cached | High LCP on cold cache | Pre-generate WebP, use `unoptimized` |
-| `minimumCacheTTL` in next.config ignored | None if you use `unoptimized` | N/A — use static assets |
+| `minimumCacheTTL` in next.config ignored | None if you use `unoptimized` | N/A - use static assets |
 | `optimizeCss: true` breaks build | Build fails | Never enable on opennextjs-cloudflare |
 | ISR TTLs ignored | Pages don't revalidate on schedule | Use manual deploy for content updates |
 | `next/font` with `display: block` causes CLS | LCP image delayed | Use `display: swap` |

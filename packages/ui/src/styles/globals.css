@@ -116,7 +116,7 @@
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
 
-    /* Display face — Bricolage Grotesque, loaded by each app's root layout via
+    /* Display face - Bricolage Grotesque, loaded by each app's root layout via
        next/font/google and exposed as `--font-display`. Registering it here is what
        makes the `font-display` utility exist (Tailwind v4 generates font-*
        utilities from --font-* theme keys). The chain falls back through Space
@@ -417,7 +417,7 @@ html[data-theme-transition="fade"]::view-transition-new(root) {
 
 /* Anti-flash: backdrop-filter can't be captured in a snapshot, so it flashes over
    both. Strip the blur during the transition, and force any tagged glass surface to
-   a solid per-theme background token. The sticky navbar is the main one — it is
+   a solid per-theme background token. The sticky navbar is the main one - it is
    `backdrop-blur` + a translucent background, which is exactly the combination that
    flashes white on a dark->light wipe. */
 html[data-theme-transition] *,
@@ -450,7 +450,7 @@ h1, h2, h3,
     letter-spacing: -0.02em;
 }
 
-/* The sidebar is a dense nav surface — the display face's tighter, more
+/* The sidebar is a dense nav surface - the display face's tighter, more
    characterful letterforms hold up better at small sizes than the body face.
    Tag the sidebar root with `data-sidebar` (or the .app-sidebar class) to opt in. */
 [data-sidebar],
@@ -472,7 +472,7 @@ h1, h2, h3,
    sweep and the second was `animate-pulse`, so handing off from a route skeleton
    to a component's own skeleton visibly changed the animation mid-load.
 
-   `<ShimmerStyles />` still injects an identical copy — duplicate rules are
+   `<ShimmerStyles />` still injects an identical copy - duplicate rules are
    harmless and keep skeleton-kit usable in isolation. */
 @keyframes sk-sweep {
     0%   { background-position: 200% 0; }
@@ -507,7 +507,7 @@ h1, h2, h3,
    this more specific than Tailwind's own single-class rule, so it wins.
 
    The `:*` variants cover responsive/state forms (`lg:h-screen`, `md:min-h-screen`).
-   Portals — dialogs, sheets, tooltips — render outside [data-app-page] and are
+   Portals - dialogs, sheets, tooltips - render outside [data-app-page] and are
    deliberately untouched: those really do want the whole viewport.
 
    The `100vh` fallback keeps this a no-op anywhere the variable is not set. */
@@ -523,7 +523,7 @@ h1, h2, h3,
 /* ─────────────────────────────────────────────────────────────────────────────
    Auth panel artwork.
 
-   Drives the motifs in @repo/ui/components/auth-visual — a contribution grid, a
+   Drives the motifs in @repo/ui/components/auth-visual - a contribution grid, a
    commit graph, an OTP entry, a build log, and so on. Each one depicts something
    the product actually does, so the panel carries meaning rather than being an
    abstract pattern.
@@ -531,7 +531,7 @@ h1, h2, h3,
    Deliberately CSS keyframes rather than framer-motion. A motion `initial ->
    animate` one-shot restarts whenever React re-renders the element, and the
    theme toggle re-renders synchronously (flushSync, inside
-   startViewTransition) — which is why the artwork replayed its draw-in every
+   startViewTransition) - which is why the artwork replayed its draw-in every
    time the theme was switched. A CSS animation is bound to the element and is
    untouched by re-renders, so a theme switch now only recolours it.
 
@@ -581,7 +581,7 @@ h1, h2, h3,
     }
     .av-draw { animation-duration: .01ms !important; }
     /* Without the animation these sit at their start value (collapsed), so pin
-       them open — a static panel should still read as the finished picture. */
+       them open - a static panel should still read as the finished picture. */
     .av-type, .av-meter { transform: scaleX(1); }
     .av-cell, .av-pop   { opacity: 1; }
 }
@@ -591,13 +591,13 @@ h1, h2, h3,
 
    CSS rather than framer-motion, deliberately. framer-motion pulls `motion-dom`
    into the route's client graph, and motion-dom is what drags in Next's
-   process.js polyfill — the pair at the centre of the recurring
+   process.js polyfill - the pair at the centre of the recurring
    "module factory is not available" error in dev. Every auth screen that gets
    its entrance from these classes is one fewer route carrying that dependency,
    and it costs no JS at all.
 
-   `.auth-enter`   — one element fading up.
-   `.auth-stagger` — its direct children fading up in sequence.
+   `.auth-enter`   - one element fading up.
+   `.auth-stagger` - its direct children fading up in sequence.
    ───────────────────────────────────────────────────────────────────────────── */
 
 @keyframes auth-in {
@@ -628,3 +628,73 @@ h1, h2, h3,
 }
 .auth-pop { animation: auth-pop-in .45s cubic-bezier(.34, 1.56, .64, 1) both; }
 @media (prefers-reduced-motion: reduce) { .auth-pop { animation: none !important; } }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Centring content inside a Radix ScrollArea.
+
+   Radix's ScrollArea.Viewport wraps its children in an element it styles inline
+   with `display: table; min-width: 100%`. A table box does not resolve a
+   percentage height from its parent, so `min-h-full` on anything inside it
+   collapses to the content height - which is why a `flex min-h-full
+   items-center` wrapper still rendered hard against the top of the panel.
+
+   Opt in with `.tf-center-scroll` on the ScrollArea. `margin-block: auto`
+   rather than `align-items: center` on purpose: auto margins centre content
+   that is shorter than the viewport, but when the content is TALLER they
+   collapse to zero instead of overflowing equally in both directions, so the
+   top never gets clipped out of scroll range.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.tf-center-scroll [data-radix-scroll-area-viewport] > div {
+    display: flex !important;
+    min-height: 100%;
+}
+
+.tf-center-scroll [data-radix-scroll-area-viewport] > div > * {
+    margin-block: auto;
+    width: 100%;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Toast close button.
+
+   Sonner renders the close button as a small circular badge that OVERHANGS the
+   toast's top corner (it ships `--toast-close-button-transform: translate(35%,
+   -35%)` plus a border and background). That is a notification-bubble look and
+   it clips against the viewport edge on a top-right toaster.
+
+   These rules pull it inside the card and reduce it to a plain glyph, aligned
+   with the title. The toast itself reserves the space with `pr-10`, so the
+   close button never overlaps the copy.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+[data-sonner-toaster] {
+    --toast-close-button-start: unset;
+    --toast-close-button-end: 10px;
+    --toast-close-button-transform: none;
+}
+
+[data-sonner-toast] [data-close-button] {
+    top: 14px;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    /* Sonner only reveals the button on hover/focus of the toast. A toast the
+       user cannot dismiss until they discover it is hoverable is not
+       dismissible, so it stays visible at all times. */
+    opacity: 1;
+    transition: color .15s ease, background-color .15s ease;
+}
+
+[data-sonner-toast] [data-close-button]:hover {
+    background-color: rgb(0 0 0 / 0.05);
+}
+
+.dark [data-sonner-toast] [data-close-button]:hover {
+    background-color: rgb(255 255 255 / 0.08);
+}
+
+[data-sonner-toast] [data-close-button] svg {
+    width: 14px;
+    height: 14px;
+}

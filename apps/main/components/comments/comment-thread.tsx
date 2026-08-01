@@ -51,7 +51,7 @@ function replaceNode(
 ): OptimisticCommentNode[] {
     return nodes.map((n) =>
         n.id === targetId
-            // Keep the replies already under the optimistic node — the server's
+            // Keep the replies already under the optimistic node - the server's
             // response is a fresh comment and always carries an empty replies array.
             ? { ...replacement, replies: n.replies }
             : { ...n, replies: replaceNode(n.replies, targetId, replacement) },
@@ -81,7 +81,7 @@ function removeNode(nodes: OptimisticCommentNode[], targetId: string): Optimisti
  *
  *   <CommentThread entityType="PROJECT_IDEA" entityId={idea.id} />
  *
- * Reading never requires an account — a logged-out visitor gets the full thread
+ * Reading never requires an account - a logged-out visitor gets the full thread
  * and a sign-in prompt where the composer would be.
  */
 export function CommentThread({
@@ -122,7 +122,7 @@ export function CommentThread({
     // ── Optimistic insert ─────────────────────────────────────────────────────
     // The comment appears immediately under a temporary id, then the server's real
     // row replaces it. On failure the placeholder is removed and the toast explains
-    // why — the text is still in the composer, which does not clear on rejection.
+    // why - the text is still in the composer, which does not clear on rejection.
     const submit = useCallback(async (parentId: string | null, body: string) => {
         const tempId = `pending-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
         const now = new Date()
@@ -186,7 +186,7 @@ export function CommentThread({
     }, [nodes])
 
     const handleDelete = useCallback(async (id: string) => {
-        // Soft delete on the server, so the node stays put and becomes a tombstone —
+        // Soft delete on the server, so the node stays put and becomes a tombstone -
         // its replies must remain visible and readable.
         const result = await deleteComment(id)
         if (!result.success) {

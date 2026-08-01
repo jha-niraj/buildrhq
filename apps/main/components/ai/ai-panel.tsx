@@ -16,7 +16,7 @@ import { useAIPanelStore, type AIChatMessage } from "@/app/store/aiPanelStore";
 const SUGGESTIONS = [
 	"Review my resume for a backend role",
 	"Give me a 4-week DSA plan",
-	"Design a URL shortener — walk me through it",
+	"Design a URL shortener - walk me through it",
 	"What project should I build next?",
 ];
 
@@ -28,7 +28,7 @@ const SUGGESTIONS = [
 function buildPageContext(pathname: string): { route: string; title: string } {
 	let title = "";
 	if (typeof document !== "undefined" && document.title) {
-		title = document.title.replace(/\s*[|\-–—]\s*ShiprHQ.*$/i, "").trim();
+		title = document.title.replace(/\s*[|\---]\s*ShiprHQ.*$/i, "").trim();
 	}
 	if (!title) {
 		const segments = pathname.split("/").filter(Boolean);
@@ -103,7 +103,7 @@ function MessageBubble({ message, isStreaming }: { message: AIChatMessage; isStr
 // ─── Panel ────────────────────────────────────────────────────────────────────
 
 /**
- * The chat surface — header, conversation, composer — and nothing about WHERE it
+ * The chat surface - header, conversation, composer - and nothing about WHERE it
  * sits. It fills whatever box it is given.
  *
  * Placement is the app shell's job (`app/(main)/layout.tsx`): on lg+ it mounts
@@ -202,7 +202,7 @@ export function AIPanel() {
 				appendToLastAssistant(decoder.decode(value, { stream: true }));
 			}
 		} catch (error) {
-			// A user-initiated stop is not an error — keep whatever streamed in.
+			// A user-initiated stop is not an error - keep whatever streamed in.
 			if ((error as Error)?.name !== "AbortError") {
 				replaceLastAssistant("The assistant couldn't be reached. Please try again.");
 			}

@@ -30,8 +30,8 @@ A full-height section with a looping video background, dark gradient overlay, st
 ```
 
 Key points:
-- `pointer-events-none` — video never intercepts clicks
-- `absolute inset-0` — fills entire section
+- `pointer-events-none` - video never intercepts clicks
+- `absolute inset-0` - fills entire section
 - Gradient: dark at top (`from-black/45`), transitions to the page background (`to-neutral-950`) at bottom so the video "fades into" the next section
 
 ---
@@ -78,7 +78,7 @@ const ROTATE_WORDS = ["attendance", "examinations", "fee billing", "timetables",
 </motion.h1>
 ```
 
-Second line uses `text-white/40` — dimmed/ghosted for visual contrast hierarchy.
+Second line uses `text-white/40` - dimmed/ghosted for visual contrast hierarchy.
 
 ### Subheading
 ```tsx
@@ -171,7 +171,7 @@ const item = {
 }
 ```
 
-Supports `useReducedMotion()` — skips animations when system preference is set.
+Supports `useReducedMotion()` - skips animations when system preference is set.
 
 ---
 

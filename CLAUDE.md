@@ -1,4 +1,4 @@
-# ShiprHQ — working agreement
+# ShiprHQ - working agreement
 
 Turborepo. `apps/{main,web,uni,hiring,admin,shiprworker,generationworker}` and
 `packages/{auth,db,email,ui,eslint-config,typescript-config}`.
@@ -10,7 +10,7 @@ Turborepo. `apps/{main,web,uni,hiring,admin,shiprworker,generationworker}` and
 at the end of a feature, and will say so. Running them mid-feature costs minutes
 per pass and re-checks code the current task never touched.
 
-**`tsc --noEmit` is the exception — run it freely.** It catches problems in the
+**`tsc --noEmit` is the exception - run it freely.** It catches problems in the
 code just written, so it is part of building the feature rather than a final
 gate.
 
@@ -18,7 +18,7 @@ Scope every check to the app or package being edited:
 
 ```bash
 cd apps/main && npx tsc --noEmit     # yes
-npx turbo run check-types lint       # no — ~3 min across 8 packages
+npx turbo run check-types lint       # no - ~3 min across 8 packages
 ```
 
 Widen only when a change genuinely crosses package boundaries. Editing
@@ -28,7 +28,7 @@ affected apps in that case.
 ## Database
 
 `db` from `@repo/db` is the **neon-http** driver, which has no transaction
-support — `db.transaction()` throws at runtime, and the surrounding try/catch
+support - `db.transaction()` throws at runtime, and the surrounding try/catch
 usually swallows it into `{ success: false }`. For atomic multi-statement writes
 use `withTransaction(async (tx) => …)`; for a fixed set of independent
 statements use `db.batch([...])`. Never introduce `db.transaction(`.
@@ -40,7 +40,7 @@ Migrations: `pnpm db:generate` then `pnpm db:migrate` from `packages/db`. Never
 
 `app/(main)/layout.tsx` floats three rounded cards on a neutral backdrop: the
 sidebar, the page, and the AI rail. On `lg+` the AI panel is a real docked
-column that narrows the page — **never** a Sheet; below `lg` the same component
+column that narrows the page - **never** a Sheet; below `lg` the same component
 mounts inside a Sheet.
 
 The page card sets `--page-h: calc(100vh - 1rem)`, and a rule in
@@ -51,8 +51,17 @@ The page card sets `--page-h: calc(100vh - 1rem)`, and a rule in
 
 - Navigate with `<Link>`, not `router.push`, wherever a link is possible.
 - Every route gets a `loading.tsx` whose skeleton matches the real layout. A
-  skeleton that does not match is worse than none — the page visibly reflows.
+  skeleton that does not match is worse than none - the page visibly reflows.
 - `catch (error: unknown)`, narrowed before use. Never `catch (error: any)`.
 - Shareable URLs come from `apps/main/lib/urls.ts`, never from
-  `window.location.origin` — that is the author's host, not the recipient's.
+  `window.location.origin` - that is the author's host, not the recipient's.
 - Palette is monochrome black/neutral. No orange, yellow, blue, indigo or purple.
+- **No em dashes or en dashes anywhere.** Use a plain hyphen `-` instead. This
+  applies to everything: UI copy, blog content, code comments, commit messages
+  and docs. `—` and `–` are non-ASCII, they are hard to type on a normal
+  keyboard, they render inconsistently across fonts, and they make text read as
+  machine-written. Search for them before committing:
+
+  ```bash
+  grep -rn $'—\|–' apps packages --include="*.ts" --include="*.tsx" --include="*.md"
+  ```

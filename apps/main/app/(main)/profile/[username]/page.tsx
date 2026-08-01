@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             type: "profile",
             images: user.image ? [{ url: user.image }] : [],
             // Was a hardcoded absolute URL on the wrong host, pointing at `/u/{username}`
-            // — a route that does not exist — so every link preview resolved to a 404.
+            // - a route that does not exist - so every link preview resolved to a 404.
             // Phrased without naming the old host so a future rebrand sweep cannot
             // rewrite this note into describing a mistake that was never made.
             url: publicProfileUrl(user.username!),

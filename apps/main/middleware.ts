@@ -90,7 +90,7 @@ export default async function middleware(req: NextRequest) {
 	}
 
 	// Noindex non-production deployments so staging/preview URLs don't pollute
-	// Google's index. This only sets a header — it must NOT return early, or every
+	// Google's index. This only sets a header - it must NOT return early, or every
 	// auth redirect below (sign-in gate, onboarding gate) would be dead on
 	// localhost and preview deploys, which is exactly where they get tested.
 	const isProduction = req.nextUrl.origin === PRODUCTION_ORIGIN

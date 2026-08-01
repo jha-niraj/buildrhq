@@ -1,4 +1,4 @@
-# Mock Interview Module — Complete Build Plan
+# Mock Interview Module - Complete Build Plan
 > Module path: `apps/main/app/(main)/mock/`
 > Actions path: `apps/main/actions/(main)/mockvoice/`
 > Last updated: April 2026
@@ -11,25 +11,25 @@ The Mock Interview module lets students practice job interviews with an AI voice
 
 ---
 
-## Current State — What Is Already Built
+## Current State - What Is Already Built
 
 ### Pages
-- `/mock` — Hub page showing 5 interview modes. Voice Mock is ACTIVE. Video Mock, Peer-to-Peer, Connect, Expert Mentorship show "Coming Soon". 
-- `/mock/voice` — Landing page for voice mocks. Shows categories in sidebar, admin mock cards in main area, session history.
-- `/mock/voice/interview/[sessionId]` — Active interview session page. Connects to ElevenLabs ConvAI widget.
-- `/mock/voice/results/[sessionId]` — Post-interview results page. Currently shows raw transcript + basic analysis.
+- `/mock` - Hub page showing 5 interview modes. Voice Mock is ACTIVE. Video Mock, Peer-to-Peer, Connect, Expert Mentorship show "Coming Soon". 
+- `/mock/voice` - Landing page for voice mocks. Shows categories in sidebar, admin mock cards in main area, session history.
+- `/mock/voice/interview/[sessionId]` - Active interview session page. Connects to ElevenLabs ConvAI widget.
+- `/mock/voice/results/[sessionId]` - Post-interview results page. Currently shows raw transcript + basic analysis.
 
 ### Server Actions (`actions/(main)/mockvoice/`)
-- **`session.action.ts`** — `createMockVoiceSession()`: Full transaction. Validates user credits → creates `MockVoiceSession` in DB → deducts credits atomically → injects ElevenLabs variables (username, target position, level, knowledge base, resume content) → returns `{ sessionId, agentId, variables }`.
-- **`voice.action.ts`** — `getAdminMocksByCategory()`, `getAllAdminMocksGrouped()`, `getFeaturedAdminMocks()`: Fetches `MockInterviewVoice` records from DB with pagination and category grouping.
-- **`conversation.action.ts`** — `getConversationDetails()`, `processConversationCompletion()`: Fetches conversation from ElevenLabs API, polls until status is `done`, stores `transcript` + `analysis` JSON in `MockVoiceSession`.
-- **`review.action.ts`** — Rating submission and retrieval.
-- **`stats.action.ts`** — Aggregate session stats for a user.
+- **`session.action.ts`** - `createMockVoiceSession()`: Full transaction. Validates user credits → creates `MockVoiceSession` in DB → deducts credits atomically → injects ElevenLabs variables (username, target position, level, knowledge base, resume content) → returns `{ sessionId, agentId, variables }`.
+- **`voice.action.ts`** - `getAdminMocksByCategory()`, `getAllAdminMocksGrouped()`, `getFeaturedAdminMocks()`: Fetches `MockInterviewVoice` records from DB with pagination and category grouping.
+- **`conversation.action.ts`** - `getConversationDetails()`, `processConversationCompletion()`: Fetches conversation from ElevenLabs API, polls until status is `done`, stores `transcript` + `analysis` JSON in `MockVoiceSession`.
+- **`review.action.ts`** - Rating submission and retrieval.
+- **`stats.action.ts`** - Aggregate session stats for a user.
 
 ### Database Models (`packages/prisma/schema/mock.prisma`)
-- `MockInterviewVoice` — Admin-created interview templates. Has `agentId`, `knowledgeBase`, `creditsRequired`, `duration`, `questionsCount`, `byAdmin`, `isFeatured`, `tags`, `category`, `difficulty`.
-- `MockVoiceSession` — User's interview session. Has `conversationId`, `agentId`, `status` (CREATED/ACTIVE/COMPLETED/FAILED), `transcript` (JSON), `analysis` (JSON), `userRating`, `creditsUsed`, `reportedIssues`.
-- `MockVoiceRating` — Per-user rating for a mock template.
+- `MockInterviewVoice` - Admin-created interview templates. Has `agentId`, `knowledgeBase`, `creditsRequired`, `duration`, `questionsCount`, `byAdmin`, `isFeatured`, `tags`, `category`, `difficulty`.
+- `MockVoiceSession` - User's interview session. Has `conversationId`, `agentId`, `status` (CREATED/ACTIVE/COMPLETED/FAILED), `transcript` (JSON), `analysis` (JSON), `userRating`, `creditsUsed`, `reportedIssues`.
+- `MockVoiceRating` - Per-user rating for a mock template.
 
 ### ElevenLabs Integration
 - Agent is created on the ElevenLabs platform (not via API). The `agentId` is stored in `MockInterviewVoice`.
@@ -39,20 +39,20 @@ The Mock Interview module lets students practice job interviews with an AI voice
 - TTS for AI feedback: `generateTTSAudio()` in `voice.action.ts` (returns base64 mp3).
 
 ### Components
-- `voice-main-content.tsx` — Main content area showing mock cards, filters, session history.
-- `voice-sidebar.tsx` — Category/difficulty navigation sidebar.
-- `mock-interview-card.tsx` — Individual mock card with title, category, difficulty, credits, duration.
-- `create-mock-sheet.tsx` — Sheet for creating a custom mock (admin-defined or user-custom).
-- `purchase-mock-sheet.tsx` — Credits confirmation before starting a session.
-- `session-card.tsx` — Past session card in history.
-- `review-sheet.tsx` — Modal for submitting a star rating + written feedback.
-- `mock-categories.ts` — Constants for categories: TECHNICAL, BEHAVIORAL, SYSTEM_DESIGN, HR, FULL_STACK, DATA_SCIENCE, DEVOPS, PRODUCT_MANAGEMENT.
+- `voice-main-content.tsx` - Main content area showing mock cards, filters, session history.
+- `voice-sidebar.tsx` - Category/difficulty navigation sidebar.
+- `mock-interview-card.tsx` - Individual mock card with title, category, difficulty, credits, duration.
+- `create-mock-sheet.tsx` - Sheet for creating a custom mock (admin-defined or user-custom).
+- `purchase-mock-sheet.tsx` - Credits confirmation before starting a session.
+- `session-card.tsx` - Past session card in history.
+- `review-sheet.tsx` - Modal for submitting a star rating + written feedback.
+- `mock-categories.ts` - Constants for categories: TECHNICAL, BEHAVIORAL, SYSTEM_DESIGN, HR, FULL_STACK, DATA_SCIENCE, DEVOPS, PRODUCT_MANAGEMENT.
 
 ---
 
 ## What Needs to Be Built / Fixed
 
-### Priority 1 — Session Analysis Scorecard (Most Critical Gap)
+### Priority 1 - Session Analysis Scorecard (Most Critical Gap)
 
 **Current problem:** The results page shows raw ElevenLabs transcript and unstructured AI analysis JSON. This is not useful to a student.
 
@@ -85,59 +85,59 @@ The Mock Interview module lets students practice job interviews with an AI voice
   - Show each dimension as a horizontal progress bar with score + one-line feedback below it.
   - "Strengths" section with green tags.
   - "Areas to Improve" section with amber tags.
-  - "Key Moments" section — expandable transcript quotes with AI comments.
-  - "Recommended Next Steps" — 3 actionable items with links to relevant practice content.
+  - "Key Moments" section - expandable transcript quotes with AI comments.
+  - "Recommended Next Steps" - 3 actionable items with links to relevant practice content.
   - Show the full transcript in a collapsible section at the bottom.
   - Show `creditsUsed`, `duration`, `category`, `difficulty` in a summary card at top.
 
 - [ ] **Add a loading/polling state** on the results page:
-  - Analysis takes 10–30 seconds after conversation ends.
+  - Analysis takes 10-30 seconds after conversation ends.
   - Show a skeleton with "Analyzing your interview..." and an animated progress bar.
   - Poll `getConversationDetails()` every 3 seconds until `status === 'COMPLETED'`.
   - Once complete, trigger `processConversationCompletion()` + analysis action.
 
-### Priority 2 — ElevenLabs Agent Setup Per Category
+### Priority 2 - ElevenLabs Agent Setup Per Category
 
 **Current problem:** A single generic `agentId` may be used for all categories. Each category needs a specialized agent with the right knowledge base and interview style.
 
 - [ ] **Create 8 specialized ElevenLabs agents** (one per category) on the ElevenLabs platform:
-  - `TECHNICAL` — SWE technical questions (algorithms, system design, code review)
-  - `BEHAVIORAL` — STAR method questions (leadership, conflict, teamwork)
-  - `SYSTEM_DESIGN` — Architecture, scalability, database choices
-  - `HR` — Company fit, salary negotiation, career goals
-  - `FULL_STACK` — Frontend + backend combined technical
-  - `DATA_SCIENCE` — ML concepts, statistics, Python, model evaluation
-  - `DEVOPS` — CI/CD, cloud, containers, monitoring
-  - `PRODUCT_MANAGEMENT` — Product sense, metrics, roadmap prioritization
+  - `TECHNICAL` - SWE technical questions (algorithms, system design, code review)
+  - `BEHAVIORAL` - STAR method questions (leadership, conflict, teamwork)
+  - `SYSTEM_DESIGN` - Architecture, scalability, database choices
+  - `HR` - Company fit, salary negotiation, career goals
+  - `FULL_STACK` - Frontend + backend combined technical
+  - `DATA_SCIENCE` - ML concepts, statistics, Python, model evaluation
+  - `DEVOPS` - CI/CD, cloud, containers, monitoring
+  - `PRODUCT_MANAGEMENT` - Product sense, metrics, roadmap prioritization
 
 - [ ] **Seed `MockInterviewVoice` records** for each agent with:
   - Correct `agentId` from ElevenLabs platform
   - `knowledgeBase` string with role-specific context
   - `creditsRequired` (suggest: 5 credits per session)
   - `duration` (suggest: 20 minutes)
-  - `questionsCount` (suggest: 8–10 questions)
+  - `questionsCount` (suggest: 8-10 questions)
   - `byAdmin: true`, `isFeatured: true` for initial templates
 
 - [ ] **Set environment variables** for each agent ID:
   - `ELEVENLABS_AGENT_TECHNICAL`, `ELEVENLABS_AGENT_BEHAVIORAL`, etc.
-  - Or store them as seeded DB records — currently stored in DB which is the right approach.
+  - Or store them as seeded DB records - currently stored in DB which is the right approach.
 
-### Priority 3 — Interview Session Page UX
+### Priority 3 - Interview Session Page UX
 
 **Current problem:** The active interview page (`/mock/voice/interview/[sessionId]`) uses the raw ElevenLabs ConvAI widget. The UX needs polish.
 
-- [ ] **Session timer** — Show elapsed time vs. total session duration. Warn at 2 minutes remaining.
-- [ ] **Live transcript display** — Show the conversation transcript updating in real-time (use ElevenLabs ConvAI events if available, or poll every 5 seconds).
-- [ ] **Audio level indicator** — Visual waveform showing the user is being heard (microphone activity).
-- [ ] **"End Interview" button** — Prominent button to finish early. Confirm dialog ("Are you sure? Your session will be analyzed based on what you've said so far.").
-- [ ] **Connection status indicator** — Green/red dot showing WebSocket connection to ElevenLabs is active.
-- [ ] **Pre-interview checklist modal** — Before the session starts, show:
+- [ ] **Session timer** - Show elapsed time vs. total session duration. Warn at 2 minutes remaining.
+- [ ] **Live transcript display** - Show the conversation transcript updating in real-time (use ElevenLabs ConvAI events if available, or poll every 5 seconds).
+- [ ] **Audio level indicator** - Visual waveform showing the user is being heard (microphone activity).
+- [ ] **"End Interview" button** - Prominent button to finish early. Confirm dialog ("Are you sure? Your session will be analyzed based on what you've said so far.").
+- [ ] **Connection status indicator** - Green/red dot showing WebSocket connection to ElevenLabs is active.
+- [ ] **Pre-interview checklist modal** - Before the session starts, show:
   - Microphone permission check
   - Quick tips ("Speak clearly", "Take your time", "Think out loud")
   - Confirm credits being deducted
   - "Start Interview" CTA button
 
-### Priority 4 — Custom Mock Creation
+### Priority 4 - Custom Mock Creation
 
 **Current problem:** `create-mock-sheet.tsx` exists but the flow for a user to create a custom mock interview is not fully wired.
 
@@ -151,7 +151,7 @@ The Mock Interview module lets students practice job interviews with an AI voice
 - [ ] **Validate the custom mock creation action** in `voice.action.ts`:
   - `createCustomMock()`: Takes role, topics, difficulty → generates knowledge_base via OpenAI → creates DB record → returns mock ID for immediate session start.
 
-### Priority 5 — Session History & Stats
+### Priority 5 - Session History & Stats
 
 - [ ] **Session history on voice mock landing page**:
   - Show last 5 sessions with: date, mock title, overall score, duration.
@@ -169,17 +169,17 @@ The Mock Interview module lets students practice job interviews with an AI voice
   - `getSessionHistory(userId, limit, cursor)`: Paginated session history.
   - `getCategoryBreakdown(userId)`: Sessions per category with avg scores.
 
-### Priority 6 — Credit System Integration
+### Priority 6 - Credit System Integration
 
 - [ ] Verify `createMockVoiceSession()` deducts credits correctly and handles insufficient credits gracefully (show friendly error, link to purchase).
 - [ ] Verify `MockVoiceSession` with `status: FAILED` triggers a credit refund.
 - [ ] Add a "refund pending" state if ElevenLabs conversation never started.
-- [ ] Show credit cost prominently before starting (currently in `purchase-mock-sheet.tsx` — verify it's working).
+- [ ] Show credit cost prominently before starting (currently in `purchase-mock-sheet.tsx` - verify it's working).
 
-### Priority 7 — Rating & Feedback Loop
+### Priority 7 - Rating & Feedback Loop
 
 - [ ] **Wire `review-sheet.tsx`** to `review.action.ts`:
-  - After viewing results, prompt user: "How was this interview? Rate it 1–5 stars."
+  - After viewing results, prompt user: "How was this interview? Rate it 1-5 stars."
   - Store in `MockVoiceRating`.
   - Use ratings to surface best-rated mocks in the UI (sort by `MockInterviewVoice.popularity`).
 
@@ -188,7 +188,7 @@ The Mock Interview module lets students practice job interviews with an AI voice
   - Stores issue description in `MockVoiceSession.reportedIssues` (JSON array).
   - Admin can view reported issues in the admin panel.
 
-### Priority 8 — Admin Mock Management (Admin App)
+### Priority 8 - Admin Mock Management (Admin App)
 
 - [ ] **Admin panel for creating mock templates** (`apps/admin/app/(main)/main/mocks/`):
   - Form to create a new `MockInterviewVoice` record.
@@ -196,9 +196,9 @@ The Mock Interview module lets students practice job interviews with an AI voice
   - List of all mocks with edit/delete/toggle featured.
   - View sessions for each mock template.
 
-### Priority 9 — Job-Context Mocks (Integration with Hiring Platform)
+### Priority 9 - Job-Context Mocks (Integration with Hiring Platform)
 
-**Future enhancement — not required for launch:**
+**Future enhancement - not required for launch:**
 - When a student applies to a job on the main platform, offer a "Practice for this interview" option.
 - Uses the company's `InterviewProcess` + `InterviewRound` data from `hiring.prisma`.
 - Creates a `JobMockSession` linking the mock to the specific job application.

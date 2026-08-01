@@ -28,7 +28,7 @@ function appUrl(): string {
 export const uniEmailTemplates = {
 
     verifyOTP: (name: string, otp: string) => ({
-        subject: "Verify your email — ShiprHQ University",
+        subject: "Verify your email - ShiprHQ University",
         html: shell({
             title: "Verify your email",
             subtitle: "Use this one-time code to complete your registration",
@@ -52,7 +52,7 @@ export const uniEmailTemplates = {
     }),
 
     resetPasswordOTP: (name: string, otp: string) => ({
-        subject: "Reset your password — ShiprHQ University",
+        subject: "Reset your password - ShiprHQ University",
         html: shell({
             title: "Password reset request",
             subtitle: "Use this code to reset your password",
@@ -69,14 +69,14 @@ export const uniEmailTemplates = {
         </div>
 
         <div style="margin:16px 0;padding:14px;border:1px solid #e5e5e5;border-radius:8px;background:#fafafa;font-size:13px;color:#525252;">
-          If you did not request a password reset, you can ignore this email — your password will not change.
+          If you did not request a password reset, you can ignore this email - your password will not change.
         </div>
       `,
         }),
     }),
 
     universityWelcome: (name: string, universityName: string) => ({
-        subject: `Welcome to ${universityName} — ShiprHQ University`,
+        subject: `Welcome to ${universityName} - ShiprHQ University`,
         html: shell({
             title: "Workspace ready",
             subtitle: `${universityName} is now active`,
@@ -113,10 +113,10 @@ export const uniEmailTemplates = {
         universityName: string,
         roleName: string,
     ) => ({
-        subject: `Your account at ${universityName} — ShiprHQ University`,
+        subject: `Your account at ${universityName} - ShiprHQ University`,
         html: shell({
             title: "Your account is ready",
-            subtitle: `${universityName} — ${roleName}`,
+            subtitle: `${universityName} - ${roleName}`,
             body: `
         <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello ${name},</p>
         <p style="margin:0 0 18px;font-size:14px;color:#525252;">
@@ -159,7 +159,7 @@ export const uniEmailTemplates = {
         inviterName?: string,
         message?: string,
     ) => ({
-        subject: `You've been invited to join ${universityName} — ShiprHQ University`,
+        subject: `You've been invited to join ${universityName} - ShiprHQ University`,
         html: shell({
             title: `Invitation to ${universityName}`,
             subtitle: "You've been invited to join a university workspace",

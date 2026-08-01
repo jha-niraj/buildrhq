@@ -1,4 +1,4 @@
-// Code-executor HTTP server — runs INSIDE the Cloudflare Container (Node built-ins only).
+// Code-executor HTTP server - runs INSIDE the Cloudflare Container (Node built-ins only).
 // POST /api/v1/execute  { code, language, testCases? } -> { success, stdout, stderr, exitCode, executionTimeMs, testResults?, allTestsPassed? }
 // GET  /health
 

@@ -67,7 +67,7 @@ export function StudentsListClient({ students }: { students: Student[] }) {
 ## Common Component Patterns
 
 ### Local `Panel` (for dashboard pages)
-Define inline in the file — not a shared component unless reused in 3+ places:
+Define inline in the file - not a shared component unless reused in 3+ places:
 ```tsx
 function Panel({ className, children }: { className?: string; children: React.ReactNode }) {
     return (

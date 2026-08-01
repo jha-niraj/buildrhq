@@ -32,7 +32,7 @@ export const BRAND = {
     name: "ShiprHQ",
     legalName: "ShiprHQ",
     tagline: "The Engineering Intelligence Suite",
-    logo: `${SITE}/mainlogo.png`,
+    logo: `${SITE}/icon-512.png`,
     email: "niraj@getcreatr.com",
     social: {
         twitter: "https://x.com/shiprhq",

@@ -18,7 +18,7 @@ import { eq, and, gte, desc, asc } from "drizzle-orm";
 // ─── Monthly trend helpers ───────────────────────────────────────────────────
 // The dashboard charts are all "last 6 months, one point per month". Rather than
 // six grouped SQL queries, the rows we already fetch for the page are bucketed in
-// memory — the volumes here are per-user and small (a year of daily activity is
+// memory - the volumes here are per-user and small (a year of daily activity is
 // ≤365 rows), so the round trips cost more than the arithmetic.
 
 const TREND_MONTHS = 6;
@@ -104,7 +104,7 @@ export async function getHomeData() {
                 },
             }),
 
-            // UserStats (streak info) — separate query
+            // UserStats (streak info) - separate query
             db.query.userStats.findFirst({
                 where: eq(userStats.userId, userId),
                 columns: {
@@ -230,7 +230,7 @@ export async function getHomeData() {
             }),
 
             // Backs the "what you've been doing" breakdown. Deliberately a separate,
-            // two-column query rather than reusing the 10-row activity FEED above —
+            // two-column query rather than reusing the 10-row activity FEED above -
             // a mix chart built from the last 10 entries describes this afternoon,
             // not the user's habits.
             db.query.activityEntries.findMany({
@@ -312,7 +312,7 @@ export async function getHomeData() {
         };
         const goalStats = {
             total: goalsAll.length,
-            // Pathfinder's goal enum is ACTIVE/COMPLETED/… — not the IN_PROGRESS
+            // Pathfinder's goal enum is ACTIVE/COMPLETED/… - not the IN_PROGRESS
             // the project-progress enum uses. Different tables, different vocab.
             active: goalsAll.filter((g) => g.status === "ACTIVE").length,
             completed: goalsAll.filter((g) => g.status === "COMPLETED").length,

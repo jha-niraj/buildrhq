@@ -17,7 +17,7 @@ import { SITE_URL as SITE } from '@/lib/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    // Static pages — hardcode their dates (use actual publish date, not today)
+    // Static pages - hardcode their dates (use actual publish date, not today)
     {
       url: SITE,
       lastModified: new Date('2026-04-23'),
@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
 
-    // Dynamic pages — pull dates from content metadata
+    // Dynamic pages - pull dates from content metadata
     ...Object.entries(ESSAYS).map(([slug, meta]) => ({
       url: `${SITE}/${slug}`,
       lastModified: new Date(meta.dateModified),
@@ -72,7 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 | Product/Pricing | 0.9 | High conversion intent |
 | VS Comparison pages | 0.9 | High commercial intent |
 | Case Studies | 0.8 | Social proof, trust |
-| Blog posts / Essays | 0.6–0.7 | Content pages |
+| Blog posts / Essays | 0.6-0.7 | Content pages |
 | Privacy, Terms | 0.3 | Nobody searches for these |
 
 > Note: Google uses priority as a hint, not a command. It primarily affects crawl frequency when Googlebot decides what to revisit.
@@ -97,7 +97,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
 **The bug:**
 ```typescript
-// ❌ WRONG — every page always shows today's date
+// ❌ WRONG - every page always shows today's date
 const now = new Date()
 
 export default function sitemap() {
@@ -112,7 +112,7 @@ export default function sitemap() {
 
 **The fix:**
 ```typescript
-// ✅ CORRECT — each page uses its actual modification date from metadata
+// ✅ CORRECT - each page uses its actual modification date from metadata
 ...Object.entries(ESSAYS).map(([slug, meta]) => ({
   url: `${SITE}/${slug}`,
   lastModified: new Date(meta.dateModified),  // from sections.ts
@@ -156,7 +156,7 @@ Check:
 
 ---
 
-## Robots.txt — Reference the Sitemap
+## Robots.txt - Reference the Sitemap
 
 Create `src/app/robots.ts`:
 
@@ -192,7 +192,7 @@ export default function robots(): MetadataRoute.Robots {
 2. Create the .mdx file
 3. Add OG image to public/og/
 4. npm run deploy (or git push if CI handles deploy)
-5. Visit yourdomain.com/sitemap.xml — verify new URL appears
+5. Visit yourdomain.com/sitemap.xml - verify new URL appears
 6. GSC → URL Inspection → paste URL → Request Indexing
 ```
 
@@ -203,7 +203,7 @@ export default function robots(): MetadataRoute.Robots {
 If your site has multiple content types with different URL patterns:
 
 ```typescript
-// src/app/sitemap.ts — handling multiple URL patterns
+// src/app/sitemap.ts - handling multiple URL patterns
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -223,7 +223,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
 
-    // Landing pages at /[slug] — static, hardcode dates
+    // Landing pages at /[slug] - static, hardcode dates
     { url: `${SITE}/about`, lastModified: new Date('2026-01-01'), changeFrequency: 'yearly', priority: 0.5 },
   ]
 }
@@ -236,7 +236,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 If you have more than 1000 URLs, split into multiple sitemaps:
 
 ```typescript
-// src/app/sitemap.ts — returns the sitemap index
+// src/app/sitemap.ts - returns the sitemap index
 export default function sitemap(): MetadataRoute.Sitemap {
   // This automatically becomes a sitemap index if you return > 50,000 URLs
   // Next.js handles the splitting automatically

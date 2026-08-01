@@ -28,7 +28,7 @@ function appUrl(): string {
 export const hiringEmailTemplates = {
 
     verifyOTP: (name: string, otp: string) => ({
-        subject: "Verify your email — ShiprHQ Hiring",
+        subject: "Verify your email - ShiprHQ Hiring",
         html: shell({
             title: "Verify your email",
             subtitle: "Use this one-time code to complete your registration",
@@ -52,7 +52,7 @@ export const hiringEmailTemplates = {
     }),
 
     resetPasswordOTP: (name: string, otp: string) => ({
-        subject: "Reset your password — ShiprHQ Hiring",
+        subject: "Reset your password - ShiprHQ Hiring",
         html: shell({
             title: "Password reset request",
             subtitle: "Use this code to reset your password",
@@ -69,14 +69,14 @@ export const hiringEmailTemplates = {
         </div>
 
         <div style="margin:16px 0;padding:14px;border:1px solid #e5e5e5;border-radius:8px;background:#fafafa;font-size:13px;color:#525252;">
-          If you did not request a password reset, you can ignore this email — your password will not change.
+          If you did not request a password reset, you can ignore this email - your password will not change.
         </div>
       `,
         }),
     }),
 
     companyWelcome: (name: string, companyName: string) => ({
-        subject: "Your hiring workspace is ready — ShiprHQ",
+        subject: "Your hiring workspace is ready - ShiprHQ",
         html: shell({
             title: "Workspace ready",
             subtitle: `${companyName} is now active on ShiprHQ Hiring`,
@@ -114,7 +114,7 @@ export const hiringEmailTemplates = {
         inviteUrl: string,
         message?: string,
     ) => ({
-        subject: `You've been invited to join ${companyName} — ShiprHQ Hiring`,
+        subject: `You've been invited to join ${companyName} - ShiprHQ Hiring`,
         html: shell({
             title: `Invitation to ${companyName}`,
             subtitle: "You've been invited to join a hiring team",

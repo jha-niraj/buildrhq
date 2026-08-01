@@ -78,7 +78,7 @@ export function EducationTab({ user, isOwnProfile, onRefresh }: EducationTabProp
                                                     </h4>
                                                     <div className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
                                                         <CalendarDays className="w-3 h-3" />
-                                                        {edu.startDate ? formatDate(edu.startDate) : "—"} — {edu.endDate ? formatDate(edu.endDate) : "Present"}
+                                                        {edu.startDate ? formatDate(edu.startDate) : "-"} - {edu.endDate ? formatDate(edu.endDate) : "Present"}
                                                     </div>
                                                 </div>
                                                 {isOwnProfile && (

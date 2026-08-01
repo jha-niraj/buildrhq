@@ -1,6 +1,6 @@
 // Hand-matched to InterviewAssistantDetails (_components/interviewassistantdetails.tsx).
 //
-// Not a split workspace — that shape belongs to the practice routes. This page is
+// Not a split workspace - that shape belongs to the practice routes. This page is
 // a max-w-7xl column: a back button, a rounded-2xl hero card (icon tile, badge,
 // big title, meta row, badge cluster, description panel), then a two-column
 // TabsList (`tabData` has exactly two entries: Technical and Behavioural) above
@@ -52,7 +52,7 @@ export default function Loading() {
                     </div>
                 </div>
 
-                {/* TabsList — grid-cols-2, matching `tabData`. */}
+                {/* TabsList - grid-cols-2, matching `tabData`. */}
                 <div className="mb-8 grid grid-cols-2 gap-1 rounded-2xl border border-neutral-200 bg-white/90 p-1 dark:border-neutral-700/50 dark:bg-neutral-800/90">
                     <Shimmer className="h-14 rounded-xl" />
                     <Shimmer className="h-14 rounded-xl" delay={0.05} />

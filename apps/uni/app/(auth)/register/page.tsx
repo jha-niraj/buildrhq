@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
+import { Logo } from "@repo/ui/components/logo"
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn, signUp } from '@repo/auth/client';
@@ -80,7 +81,7 @@ function SignUpForm() {
             // sign-in, so an email+password account could be registered and
             // verified and then never sign in. That route also silently dropped
             // `universityName`/`headRole` (it only destructured name/email/
-            // password), which is why they are not passed here either — onboarding
+            // password), which is why they are not passed here either - onboarding
             // is where those are actually collected and persisted.
             const { error } = await signUp.email({
                 name,
@@ -178,7 +179,7 @@ function SignUpForm() {
                                 &quot;Our students&apos; placement rates increased by 40% after integrating with Coder&apos;z.&quot;
                             </p>
                             <p className="text-neutral-500 mt-3 text-sm font-mono">
-                                — Dean, Top Engineering College
+                                - Dean, Top Engineering College
                             </p>
                         </div>
                     </motion.div>
@@ -193,7 +194,7 @@ function SignUpForm() {
                 >
                     <div className="lg:hidden flex items-center gap-2 mb-8 justify-center">
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-neutral-800 to-neutral-800 flex items-center justify-center">
-                            <GraduationCap className="h-5 w-5 text-white" />
+                            <Logo className="h-[19px] w-[19px] text-white" />
                         </div>
                         <span className="text-lg font-bold text-neutral-900 dark:text-white">
                             Coder&apos;z <span className="text-neutral-800 font-mono font-normal">UNIVERSITY</span>

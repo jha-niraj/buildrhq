@@ -1,4 +1,4 @@
-// Minimal fetch-based OpenAI chat client (Workers-native — no Node SDK).
+// Minimal fetch-based OpenAI chat client (Workers-native - no Node SDK).
 const OPENAI_API = "https://api.openai.com/v1"
 
 export async function chatJSON(opts: {

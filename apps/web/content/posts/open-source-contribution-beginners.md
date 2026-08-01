@@ -21,20 +21,20 @@ Beyond the resume value: contributing to open source makes you a significantly b
 
 The main reason developers fail to make their first contribution is choosing the wrong project.
 
-They pick the most popular repository they know — React, TensorFlow, Linux — because it feels impressive. These projects have hundreds of maintainers, codebases with millions of lines, and contribution guidelines that take an hour to read. A first-time contributor has no chance of finding a foothold here.
+They pick the most popular repository they know - React, TensorFlow, Linux - because it feels impressive. These projects have hundreds of maintainers, codebases with millions of lines, and contribution guidelines that take an hour to read. A first-time contributor has no chance of finding a foothold here.
 
 The second reason is aiming too high. They want to fix a real bug or add a feature. This is admirable but sets a bar that is hard to clear without deep codebase knowledge. A first contribution should be smaller than you think is worthwhile.
 
-The third reason is giving up after the first rejection. Open source maintainers are volunteers. Response times vary from hours to months. A PR that gets closed without merging is not failure — it is feedback. Most developers who contribute regularly have had PRs rejected. It is part of the process.
+The third reason is giving up after the first rejection. Open source maintainers are volunteers. Response times vary from hours to months. A PR that gets closed without merging is not failure - it is feedback. Most developers who contribute regularly have had PRs rejected. It is part of the process.
 
 ## Finding the Right Project
 
 The right first project has these characteristics:
 
-1. **Active but not massive** — 10–200 contributors is ideal. Active enough to have a responsive maintainer, small enough that you can understand a meaningful portion of the codebase.
-2. **Has a "good first issue" label** — This is the project explicitly signaling: we want new contributors, and these are tasks that do not require deep context.
-3. **Uses technology you know** — Your first contribution is hard enough without also learning a new language or framework at the same time.
-4. **Has a clear CONTRIBUTING.md** — Projects that have documented their contribution process care about onboarding new contributors.
+1. **Active but not massive** - 10-200 contributors is ideal. Active enough to have a responsive maintainer, small enough that you can understand a meaningful portion of the codebase.
+2. **Has a "good first issue" label** - This is the project explicitly signaling: we want new contributors, and these are tasks that do not require deep context.
+3. **Uses technology you know** - Your first contribution is hard enough without also learning a new language or framework at the same time.
+4. **Has a clear CONTRIBUTING.md** - Projects that have documented their contribution process care about onboarding new contributors.
 
 ### Where to Find Projects
 
@@ -44,7 +44,7 @@ The right first project has these characteristics:
 
 **[Up For Grabs](https://up-for-grabs.net/):** Curated list of projects that explicitly want new contributors.
 
-**[Open Source Guides](https://opensource.guide/how-to-contribute/):** GitHub's own written guide to contributing. Worth reading once end to end before your first PR — it covers the social conventions that are not obvious from the outside.
+**[Open Source Guides](https://opensource.guide/how-to-contribute/):** GitHub's own written guide to contributing. Worth reading once end to end before your first PR - it covers the social conventions that are not obvious from the outside.
 
 **ShiprHQ Open Source tracker:** ShiprHQ surfaces beginner-friendly issues matched to your tech stack, tracks your contribution activity, and shows you which projects are actively maintained.
 
@@ -63,7 +63,7 @@ Fix a typo, clarify an explanation, add a missing example to the docs. These are
 Same as documentation but in the source code. Easy to find, easy to fix, always appreciated.
 
 **3. Adding or improving tests**
-Most open source projects have inadequate test coverage. Find a function without a test, write a test that actually covers edge cases, and submit it. This requires reading the codebase carefully — which is exactly what you need to practice.
+Most open source projects have inadequate test coverage. Find a function without a test, write a test that actually covers edge cases, and submit it. This requires reading the codebase carefully - which is exactly what you need to practice.
 
 **4. Fixing a small, well-scoped bug**
 A good first bug is one where the issue describes the expected behavior, the actual behavior, and ideally where in the code to look. You reproduce it, fix it, verify the fix, and submit.
@@ -101,7 +101,7 @@ Not reading this is the fastest way to get your PR closed immediately. Maintaine
 
 ### Step 3: Set Up the Development Environment
 
-Follow the setup instructions exactly. If you run into an error that is not in the docs, take notes — that could be your first documentation contribution.
+Follow the setup instructions exactly. If you run into an error that is not in the docs, take notes - that could be your first documentation contribution.
 
 Run the tests before making any changes to confirm everything passes:
 
@@ -164,22 +164,22 @@ GitHub will show a "Compare & pull request" button. Click it.
 
 **Write a good PR description:**
 - Link the issue it fixes: "Fixes #123"
-- Explain what changed in 2–3 sentences
+- Explain what changed in 2-3 sentences
 - Explain why the change was needed
 - Add a screenshot if it is a visual change
 - Note anything the reviewer should specifically look at
 
 ### Step 9: Respond to Review
 
-Maintainers review PRs and ask for changes. This is not rejection — it is the collaboration process.
+Maintainers review PRs and ask for changes. This is not rejection - it is the collaboration process.
 
-Respond to every comment, even if just to say "Fixed in [commit hash]." Make the requested changes in new commits on the same branch (do not force-push unless the maintainer asks). When all changes are addressed, leave a comment saying "I think all the feedback has been addressed — let me know if there is anything else."
+Respond to every comment, even if just to say "Fixed in [commit hash]." Make the requested changes in new commits on the same branch (do not force-push unless the maintainer asks). When all changes are addressed, leave a comment saying "I think all the feedback has been addressed - let me know if there is anything else."
 
 ## What to Do When Your PR Gets Ignored
 
 This happens. Maintainers are volunteers with their own jobs and lives. If your PR has had no activity for 2 weeks:
 
-1. Leave a polite comment: "Friendly ping — happy to make any changes if needed."
+1. Leave a polite comment: "Friendly ping - happy to make any changes if needed."
 2. If another 2 weeks pass: post in the project's Discord or forum linking the PR.
 3. If still no response after a month: move on. Some projects are unmaintained. That is okay. You still practiced the process.
 
@@ -187,7 +187,7 @@ This happens. Maintainers are volunteers with their own jobs and lives. If your 
 
 When your first PR gets merged, you will feel something disproportionate to the size of the change. A typo fix that gets merged to a project used by thousands of developers genuinely feels meaningful. Sit with that feeling, then immediately look for the next issue.
 
-The goal for month one is three merged PRs, ideally in the same project. Staying in one project after your first contribution is dramatically easier than starting fresh in a new one — you have context, the maintainers know you, and you understand the codebase better.
+The goal for month one is three merged PRs, ideally in the same project. Staying in one project after your first contribution is dramatically easier than starting fresh in a new one - you have context, the maintainers know you, and you understand the codebase better.
 
 The goal for month three is at least one non-trivial contribution: a bug fix, a test addition, or a small feature. By this point, your GitHub profile will show genuine open source activity, and your profile will look completely different to recruiters.
 
@@ -195,7 +195,7 @@ Track your contributions automatically with ShiprHQ's open source module, which 
 
 ## The Long Game
 
-The developers with the strongest open source profiles did not get there by contributing to everything. They found 2–3 projects they genuinely cared about and contributed consistently over months or years.
+The developers with the strongest open source profiles did not get there by contributing to everything. They found 2-3 projects they genuinely cared about and contributed consistently over months or years.
 
 Maintainers notice repeat contributors. Significant contributors get invited to be maintainers themselves. A maintainership at a well-known open source project on your resume is worth more than a second master's degree for most engineering roles.
 

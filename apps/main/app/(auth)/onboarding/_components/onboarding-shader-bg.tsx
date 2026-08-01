@@ -16,7 +16,7 @@ export function OnboardingShaderBg() {
 
 	// The one place a JS theme read is unavoidable: a WebGL palette is an array of colours,
 	// so it can't come from a `dark:` class the way every other surface does. Render NOTHING
-	// until the theme resolves rather than paint a frame of the light `pearl` wash and swap —
+	// until the theme resolves rather than paint a frame of the light `pearl` wash and swap -
 	// that swap is a visible flash behind the form in dark mode. This is decorative
 	// background under a scrim, so one missing frame costs nothing.
 	if (!mounted) return null

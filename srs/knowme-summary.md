@@ -9,7 +9,7 @@
 ## 💡 Core Value Propositions
 
 ### For Developers:
-- **24/7 Availability**: Your AI never sleeps—answer questions anytime
+- **24/7 Availability**: Your AI never sleeps-answer questions anytime
 - **Time Saving**: Stop answering the same questions repeatedly
 - **Professional Edge**: Stand out with an interactive, modern portfolio
 - **Viral Growth**: Easy integration into external portfolios drives traffic back to ShiprHQ
@@ -317,7 +317,7 @@ KnowMe is a **game-changing feature** that positions ShiprHQ as an innovative pl
 
 **This is your moat.** Once users integrate KnowMe into their portfolios, they're locked in. The network effects will make the system smarter over time, creating a competitive advantage that's nearly impossible to replicate.
 
-**Key Insight**: This isn't just a feature—it's a platform. Every question asked, every answer given, every integration made strengthens the ecosystem and creates more value for everyone.
+**Key Insight**: This isn't just a feature-it's a platform. Every question asked, every answer given, every integration made strengthens the ecosystem and creates more value for everyone.
 
 Let's build something amazing! 🚀
 

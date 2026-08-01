@@ -14,7 +14,7 @@ interface StoredJob {
 
 // One Durable Object instance per generation job (addressed by jobId). It owns the
 // job's lifecycle: /start persists the input + schedules an Alarm; alarm() runs the
-// 1–1.5 min pipeline and writes status/progress to Postgres server-side (so the UI
+// 1-1.5 min pipeline and writes status/progress to Postgres server-side (so the UI
 // keeps seeing progress even if the browser closes).
 export class ProjectGenerator extends DurableObject<Env> {
 	async fetch(request: Request): Promise<Response> {

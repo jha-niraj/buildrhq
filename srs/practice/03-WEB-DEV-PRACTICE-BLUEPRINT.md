@@ -1,4 +1,4 @@
-# 🌐 Web Dev Practice Module — Complete Blueprint
+# 🌐 Web Dev Practice Module - Complete Blueprint
 
 > **Routes:**  
 > - Frontend: `/mock/practice/web/frontend/[problemSlug]`  
@@ -11,8 +11,8 @@
 ## Table of Contents
 
 1. [Why Web Dev Needs Its Own Workspace](#1-why-web-dev-needs-its-own-workspace)
-2. [Frontend Track — Layout & Wireframe](#2-frontend-track--layout--wireframe)
-3. [Backend Track — Layout & Wireframe](#3-backend-track--layout--wireframe)
+2. [Frontend Track - Layout & Wireframe](#2-frontend-track--layout--wireframe)
+3. [Backend Track - Layout & Wireframe](#3-backend-track--layout--wireframe)
 4. [Frontend Assessment Flow](#4-frontend-assessment-flow)
 5. [Backend Assessment Flow](#5-backend-assessment-flow)
 6. [AI Prompt Engineering for Web Dev](#6-ai-prompt-engineering-for-web-dev)
@@ -65,7 +65,7 @@ Web development problems differ from DSA and System Design in fundamental ways:
 
 ---
 
-## 2. Frontend Track — Layout & Wireframe
+## 2. Frontend Track - Layout & Wireframe
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -137,7 +137,7 @@ Web development problems differ from DSA and System Design in fundamental ways:
 
 ---
 
-## 3. Backend Track — Layout & Wireframe
+## 3. Backend Track - Layout & Wireframe
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -178,7 +178,7 @@ Web development problems differ from DSA and System Design in fundamental ways:
 │          │                              │  └─────────────────────────────┘  │
 │          │                              │                                   │
 ├──────────┴──────────────────────────────┴───────────────────────────────────┤
-│  Attempt: 1  │  Tests: 0/5 passing  │  Security Score: —                   │
+│  Attempt: 1  │  Tests: 0/5 passing  │  Security Score: -                   │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -274,7 +274,7 @@ Instead of a live preview, backend problems have an **API Tester** that shows te
 ### Frontend AI Response Example
 
 ```markdown
-🤖 **Frontend Code Review — Attempt 1**
+🤖 **Frontend Code Review - Attempt 1**
 
 **Component:** Accessible Dropdown
 **Requirements Met:** 2/5
@@ -285,7 +285,7 @@ Instead of a live preview, backend problems have an **API Tester** that shows te
 
 **Issues Found:**
 
-🔴 **Accessibility — Missing ARIA attributes:**
+🔴 **Accessibility - Missing ARIA attributes:**
 Your `<div>` on **line 8** acts as a button but has no `role="button"` 
 or `aria-expanded` attribute. Screen readers can't identify it.
 
@@ -380,7 +380,7 @@ Should focus move to the first option, or stay on the trigger button?
 ### Backend AI Response Example
 
 ```markdown
-🤖 **Backend Code Review — Attempt 1**
+🤖 **Backend Code Review - Attempt 1**
 
 **Problem:** JWT Authentication Middleware
 **Tests Passing (AI estimated):** 2/5
@@ -391,7 +391,7 @@ Should focus move to the first option, or stay on the trigger button?
 
 **Issues Found:**
 
-🔴 **Security — Bearer Prefix Not Handled:**
+🔴 **Security - Bearer Prefix Not Handled:**
 On **line 5**, you're reading `req.headers.authorization` directly, 
 but standard JWT auth uses the `Bearer ` prefix:
 
@@ -412,7 +412,7 @@ graph LR
 ```
 
 🔴 **No try-catch Around jwt.verify():**
-**Line 10** — `jwt.verify()` throws an error if the token is invalid or 
+**Line 10** - `jwt.verify()` throws an error if the token is invalid or 
 expired. Without a try-catch, your entire server crashes!
 
 ```mermaid
@@ -462,7 +462,7 @@ You are a Senior Frontend Engineer reviewing code on ShiprHQ Practice.
 3. Show correct code snippets but explain WHY, not just WHAT
 4. Use mermaid for component lifecycle, event flow, state diagrams
 5. For Assist mode, provide the implementation approach step by step
-6. Never give the complete component — guide them
+6. Never give the complete component - guide them
 
 ## Output Format:
 1. Requirements checklist with ✅/❌
@@ -717,7 +717,7 @@ You are a Senior Backend Engineer reviewing server-side code on ShiprHQ Practice
 
 ## 10. Example Walkthroughs
 
-### Frontend: Accessible Dropdown — Attempt 1
+### Frontend: Accessible Dropdown - Attempt 1
 
 User submits:
 ```jsx
@@ -747,7 +747,7 @@ function Dropdown({ options }) {
 AI Response:
 
 ```markdown
-🤖 **Frontend Review — Attempt 1**
+🤖 **Frontend Review - Attempt 1**
 
 **Requirements:** 1/5 met
 - ✅ Basic open/close toggle
@@ -759,7 +759,7 @@ AI Response:
 **Your component works visually**, but it's completely inaccessible 
 to keyboard and screen reader users. Let's fix the most critical issues first.
 
-🔴 **The trigger is a `<div>` — not focusable:**
+🔴 **The trigger is a `<div>` - not focusable:**
 
 ```mermaid
 graph TD
@@ -782,7 +782,7 @@ The dropdown needs to tell assistive technology what it IS:
 | Attribute | Where | Value |
 |-----------|-------|-------|
 | `role="combobox"` | trigger button | Identifies it as a dropdown |
-| `aria-expanded` | trigger button | `{open}` — true/false |
+| `aria-expanded` | trigger button | `{open}` - true/false |
 | `aria-haspopup="listbox"` | trigger button | Tells screen readers a list will appear |
 | `role="listbox"` | `<ul>` | Identifies the options list |
 | `role="option"` | `<li>` | Identifies each option |
@@ -791,10 +791,10 @@ The dropdown needs to tell assistive technology what it IS:
 and add `aria-expanded={open}`. Then hit "Run & Assess" again!
 ```
 
-### Backend: JWT Middleware — Final Attempt
+### Backend: JWT Middleware - Final Attempt
 
 ```markdown
-🤖 **Backend Review — Attempt 3** 🎉
+🤖 **Backend Review - Attempt 3** 🎉
 
 **Tests: 5/5 Passing!**
 - ✅ No token → 401 

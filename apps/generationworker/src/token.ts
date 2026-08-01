@@ -1,7 +1,7 @@
 // Verify the HMAC-SHA256 worker token issued by the main app
 // (packages: `issueWorkerToken`). Token = base64url(payloadJson).signature,
 // where signature = base64url(HMAC-SHA256(payloadJson, WORKER_SECRET)).
-// Uses Web Crypto (native in Workers) — no Node crypto dependency.
+// Uses Web Crypto (native in Workers) - no Node crypto dependency.
 
 export interface WorkerTokenPayload {
 	userId: string

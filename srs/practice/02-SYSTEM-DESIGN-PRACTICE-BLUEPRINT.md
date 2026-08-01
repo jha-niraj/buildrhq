@@ -1,4 +1,4 @@
-# 🏗️ System Design Practice Module — Complete Blueprint
+# 🏗️ System Design Practice Module - Complete Blueprint
 
 > **Route:** `/mock/practice/sd/[problemSlug]`  
 > **Workspace Type:** Excalidraw Whiteboard + Component Library + AI Chat  
@@ -11,10 +11,10 @@
 1. [Why System Design Needs a Different Workspace](#1-why-system-design-needs-a-different-workspace)
 2. [Screen Layout & Wireframe](#2-screen-layout--wireframe)
 3. [Requirements Panel (Left)](#3-requirements-panel-left)
-4. [Whiteboard Panel (Center) — Excalidraw](#4-whiteboard-panel-center--excalidraw)
-5. [Component Library — Drag & Drop Architecture Blocks](#5-component-library--drag--drop-architecture-blocks)
+4. [Whiteboard Panel (Center) - Excalidraw](#4-whiteboard-panel-center--excalidraw)
+5. [Component Library - Drag & Drop Architecture Blocks](#5-component-library--drag--drop-architecture-blocks)
 6. [AI Reviewer Panel (Right)](#6-ai-reviewer-panel-right)
-7. [The "Assess" Flow — Canvas to AI Pipeline](#7-the-assess-flow--canvas-to-ai-pipeline)
+7. [The "Assess" Flow - Canvas to AI Pipeline](#7-the-assess-flow--canvas-to-ai-pipeline)
 8. [Assist Mode for System Design](#8-assist-mode-for-system-design)
 9. [AI Prompt Engineering for System Design](#9-ai-prompt-engineering-for-system-design)
 10. [Evaluation Rubric](#10-evaluation-rubric)
@@ -91,7 +91,7 @@ This is why we need **Excalidraw** as the center workspace instead of a code edi
 │ reads    │                                │                                  │
 │          │                                │                                  │
 ├──────────┴────────────────────────────────┴──────────────────────────────────┤
-│  Score: —/10  │  Components: 3  │  Connections: 2  │  Missing: Cache, LB    │
+│  Score: -/10  │  Components: 3  │  Connections: 2  │  Missing: Cache, LB    │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -200,7 +200,7 @@ interface SystemDesignProblem {
 
 ---
 
-## 4. Whiteboard Panel (Center) — Excalidraw
+## 4. Whiteboard Panel (Center) - Excalidraw
 
 ### Excalidraw Integration
 
@@ -256,7 +256,7 @@ The user can click it, and it appears on the canvas. They label it (e.g., "Postg
 
 ---
 
-## 5. Component Library — Drag & Drop Architecture Blocks
+## 5. Component Library - Drag & Drop Architecture Blocks
 
 ### Complete Component Categories
 
@@ -384,7 +384,7 @@ The user can click it, and it appears on the canvas. They label it (e.g., "Postg
 
 ---
 
-## 7. The "Assess" Flow — Canvas to AI Pipeline
+## 7. The "Assess" Flow - Canvas to AI Pipeline
 
 ### The Core Technical Challenge
 
@@ -396,7 +396,7 @@ The AI can't "see" an Excalidraw canvas directly. We need to convert the canvas 
 ┌──────────────────────────────────────────────────────────────────┐
 │           CANVAS → AI ANALYSIS PIPELINE                          │
 │                                                                  │
-│  Strategy A: Structural Analysis (Primary — Fast, Cheap)        │
+│  Strategy A: Structural Analysis (Primary - Fast, Cheap)        │
 │  ────────────────────────────────────────────────────            │
 │                                                                  │
 │  ┌──────────────┐    ┌─────────────────┐    ┌──────────────┐    │
@@ -419,7 +419,7 @@ The AI can't "see" an Excalidraw canvas directly. We need to convert the canvas 
 │                                             │  (text only) │    │
 │                                             └──────────────┘    │
 │                                                                  │
-│  Strategy B: Vision Analysis (Fallback — Better, Expensive)     │
+│  Strategy B: Vision Analysis (Fallback - Better, Expensive)     │
 │  ────────────────────────────────────────────────────            │
 │                                                                  │
 │  ┌──────────────┐    ┌─────────────────┐    ┌──────────────┐    │
@@ -521,7 +521,7 @@ In Assist Mode, the AI proactively helps the user build the architecture:
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│           ASSIST MODE — STEP-BY-STEP GUIDANCE                    │
+│           ASSIST MODE - STEP-BY-STEP GUIDANCE                    │
 │                                                                  │
 │  Step 1: Requirements Clarification                             │
 │  ┌──────────────────────────────────────────────────────────┐   │
@@ -701,7 +701,7 @@ You are a Principal Engineer reviewing a system design on ShiprHQ Practice.
 │  🎤 User: "Should I use SQL or NoSQL for the URL mappings?"    │
 │                                                                  │
 │  🔊 AI:   "Great question! Think about your access pattern.     │
-│            You're doing simple key-value lookups — short URL     │
+│            You're doing simple key-value lookups - short URL     │
 │            to long URL. SQL would work, but NoSQL databases     │
 │            like DynamoDB are optimized for exactly this pattern. │
 │            They also scale horizontally more easily. What do    │
@@ -726,7 +726,7 @@ You are a Principal Engineer reviewing a system design on ShiprHQ Practice.
 │            balancer and before your API servers. This way,      │
 │            you can reject excessive requests before they        │
 │            consume server resources. Look at the Networking     │
-│            section in your component library — you'll find it   │
+│            section in your component library - you'll find it   │
 │            there."                                               │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘
@@ -872,7 +872,7 @@ You are a Principal Engineer reviewing a system design on ShiprHQ Practice.
 User canvas has: `Client → API Server → PostgreSQL`
 
 ```markdown
-🤖 **Assessment 1 — Score: 3/10**
+🤖 **Assessment 1 - Score: 3/10**
 
 **What's good:**
 ✅ You have the basic three-tier architecture (Client → Server → Database)
@@ -914,10 +914,10 @@ simultaneously and your single API server can only handle 2,000 QPS?
 User adds: Load Balancer, Redis Cache, second API server
 
 ```markdown
-🤖 **Assessment 2 — Score: 6/10** ⬆ (+3 from last time!)
+🤖 **Assessment 2 - Score: 6/10** ⬆ (+3 from last time!)
 
 **Improvements:**
-✅ Load Balancer eliminates the API SPOF — great!
+✅ Load Balancer eliminates the API SPOF - great!
 ✅ Redis Cache will handle ~90% of read requests
 ✅ Multiple API servers provide horizontal scaling
 
@@ -945,7 +945,7 @@ graph TD
 
 💭 **Question:** Which URL generation strategy would work best for 
 a system creating 40 new URLs per second? Think about what happens 
-if you have multiple API servers — do they need to coordinate?
+if you have multiple API servers - do they need to coordinate?
 ```
 
 ---

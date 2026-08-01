@@ -264,4 +264,4 @@ Different dashboards render for different roles:
 - `TEACHER` → teaching-focused (periods today, classes, homework, attendance)
 - `STAFF` → minimal (total students, attendance)
 
-All variants share the same Panel/StatCard primitives — just different data and layout.
+All variants share the same Panel/StatCard primitives - just different data and layout.

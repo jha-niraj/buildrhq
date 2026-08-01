@@ -79,7 +79,7 @@ const ACCENT = "#171717"
 const OK = "#10b981"
 
 // Categorical ramp for the activity-mix bars. Ordered by LUMINANCE, not hue, so
-// the categories stay distinguishable in a monochrome brand — and readable for
+// the categories stay distinguishable in a monochrome brand - and readable for
 // anyone who cannot separate hues. The two non-neutrals are the semantic pair
 // (green = positive, red = attention) that still carry meaning elsewhere.
 const MIX_COLORS = ["#171717", "#404040", "#10b981", "#737373", "#a3a3a3", "#ef4444", "#525252", "#d4d4d4"]
@@ -111,7 +111,7 @@ function StatColumn({ stats }: { stats: StatItem[] }) {
 
 interface TrendLine { key: string; name: string; color: string }
 
-/** Reusable trend line chart — solid lines only, readable in light + dark. */
+/** Reusable trend line chart - solid lines only, readable in light + dark. */
 function TrendChart({ data, lines, height = "h-60", fill }: {
 	data: TrendPoint[]
 	lines: TrendLine[]
@@ -238,7 +238,7 @@ export default function HomeDashboard({
 	// entirely when there's nothing worth interrupting for.
 	const alerts: Array<{ label: string; href: string }> = []
 	if (stats.projects.active === 0 && stats.projects.total > 0) {
-		alerts.push({ label: "No project in progress — pick your next build", href: "/projects" })
+		alerts.push({ label: "No project in progress - pick your next build", href: "/projects" })
 	}
 	if (stats.projects.total === 0) {
 		alerts.push({ label: "Start your first project", href: "/projects" })
@@ -247,7 +247,7 @@ export default function HomeDashboard({
 		alerts.push({ label: "Set a career goal in Pathfinder", href: "/pathfinder" })
 	}
 	if ((user?.currentStreak ?? 0) === 0) {
-		alerts.push({ label: "Your streak is at zero — do one thing today", href: "/practice" })
+		alerts.push({ label: "Your streak is at zero - do one thing today", href: "/practice" })
 	}
 
 	const mixChartData = activityMix.slice(0, 8).map((m, i) => ({
@@ -482,7 +482,7 @@ export default function HomeDashboard({
 									<div className="min-w-0 pt-0.5">
 										<p className="text-sm leading-snug text-neutral-700 dark:text-neutral-300">
 											<span className="font-semibold text-neutral-900 dark:text-white">{activity.title}</span>
-											{activity.description ? ` — ${activity.description}` : null}
+											{activity.description ? ` - ${activity.description}` : null}
 										</p>
 										<span className="mt-0.5 block font-mono text-xs text-neutral-400">
 											{formatDate(activity.createdAt)}

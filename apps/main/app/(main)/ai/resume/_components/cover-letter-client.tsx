@@ -246,7 +246,7 @@ export function CoverLetterClient({
                         {(isExtracting || isGeneratingQuestions) && (
                             <LoadingOverlay
                                 message={isExtracting ? "Extracting job details…" : "Generating tailored questions…"}
-                                sub="This takes 10–20 seconds"
+                                sub="This takes 10-20 seconds"
                             />
                         )}
 
@@ -352,7 +352,7 @@ export function CoverLetterClient({
                         {isGeneratingLetter && (
                             <LoadingOverlay
                                 message="Crafting your cover letter…"
-                                sub="Personalising with your answers — takes ~20 seconds"
+                                sub="Personalising with your answers - takes ~20 seconds"
                             />
                         )}
 
@@ -614,7 +614,7 @@ function QuestionRenderer({
                             const lower = text.toLowerCase()
                             const match = question.options?.find((o) => lower.includes(o.toLowerCase()))
                             if (match) onChange(match)
-                            else toast.info(`Heard: "${text}" — please select manually`)
+                            else toast.info(`Heard: "${text}" - please select manually`)
                         }}
                     />
                 </div>
@@ -651,7 +651,7 @@ function QuestionRenderer({
                             if (matched.length) {
                                 onChange([...new Set([...((value as string[]) || []), ...matched])])
                             } else {
-                                toast.info(`Heard: "${text}" — please select manually`)
+                                toast.info(`Heard: "${text}" - please select manually`)
                             }
                         }}
                     />
@@ -674,7 +674,7 @@ function QuestionRenderer({
         )
     }
 
-    // TEXTAREA — free-form answer with voice
+    // TEXTAREA - free-form answer with voice
     return (
         <div className="space-y-2">
             <div className="flex items-start justify-between gap-2">

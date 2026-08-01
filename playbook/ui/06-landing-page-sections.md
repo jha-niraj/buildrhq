@@ -138,7 +138,7 @@ Grid: `grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 md:gap-8`
 </div>
 ```
 
-Popular card: `scale-105` — visually pops above its siblings.
+Popular card: `scale-105` - visually pops above its siblings.
 
 ---
 
@@ -238,12 +238,12 @@ Section header same pattern: `font-display text-4xl md:text-5xl` headline center
 // Wraps sections/items for scroll-triggered entrance animation
 import { ScrollReveal, ScrollRevealItem, ScrollRevealStagger } from "@repo/ui/components/scroll-reveal"
 
-// ScrollReveal — fades in when entering viewport
+// ScrollReveal - fades in when entering viewport
 <ScrollReveal className="...">
     <h2>...</h2>
 </ScrollReveal>
 
-// ScrollRevealStagger — staggers children
+// ScrollRevealStagger - staggers children
 <ScrollRevealStagger stagger={0.1} className="grid ...">
     {items.map(item => (
         <ScrollRevealItem key={item.id}>...</ScrollRevealItem>

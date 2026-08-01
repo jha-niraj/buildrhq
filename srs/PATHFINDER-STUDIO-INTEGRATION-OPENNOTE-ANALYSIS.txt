@@ -1,5 +1,5 @@
 ================================================================================
- PATHFINDER + STUDIO INTEGRATION — OPENNOTE-STYLE UNIFIED LEARNING VIEW
+ PATHFINDER + STUDIO INTEGRATION - OPENNOTE-STYLE UNIFIED LEARNING VIEW
  Detailed Analysis: Tabs Consolidation, User Flow & Recommendations
 ================================================================================
 
@@ -8,8 +8,8 @@ Purpose: Answer whether to keep separate tabs (Resources, Videos, Docs, Quiz,
          Coding, Mock) OR consolidate into a unified Studio tab like Opennote.
          Provide flowcharts and user journey for "Learn React" goal.
 
-Reference: Opennote (https://www.opennote.com) — "The notebook that thinks
-           with you" — unified journal with notes, AI, diagrams, quizzes inline.
+Reference: Opennote (https://www.opennote.com) - "The notebook that thinks
+           with you" - unified journal with notes, AI, diagrams, quizzes inline.
 
 ================================================================================
                         TABLE OF CONTENTS
@@ -17,11 +17,11 @@ Reference: Opennote (https://www.opennote.com) — "The notebook that thinks
 
 1. Your Questions Answered
 2. Current Pathfinder Tab Structure (Codebase Analysis)
-3. Opennote Approach — What They Do Differently
+3. Opennote Approach - What They Do Differently
 4. Two Integration Models Compared
 5. Recommendation: Hybrid Unified Model
 6. User Flow: "Learn React" Goal (Flowcharts)
-7. Sub-Goal Navigation Flowcharts (3–5 Examples)
+7. Sub-Goal Navigation Flowcharts (3-5 Examples)
 8. Implementation Implications
 9. Appendix: Tab-by-Tab Data Flow
 
@@ -31,7 +31,7 @@ Reference: Opennote (https://www.opennote.com) — "The notebook that thinks
 
 Q1: If we add Studio as a tab with notes + AI at bottom (user types "add
     content for how React works" → adds to notes), and Studio can do quizzes,
-    coding, video, docs — why keep Resources, Videos, Docs, Quiz, Coding,
+    coding, video, docs - why keep Resources, Videos, Docs, Quiz, Coding,
     Mock Practice tabs?
 
 SHORT ANSWER:
@@ -58,13 +58,13 @@ Q2: Should we integrate Studio as a component and remove the other tabs?
 
 ANSWER:
 -------
-YES — but with a HYBRID approach:
+YES - but with a HYBRID approach:
 
-1. Add "Notes" tab (Studio block editor) — user's personal notes + AI at bottom
+1. Add "Notes" tab (Studio block editor) - user's personal notes + AI at bottom
 2. MERGE Resources, Videos, Docs, Flashcards INTO the Notes tab as AI-
    generated sections (like Opennote's unified journal)
-3. KEEP Quiz and Coding as separate tabs — cleaner completion tracking
-4. KEEP Mock as separate tab — it's a redirect
+3. KEEP Quiz and Coding as separate tabs - cleaner completion tracking
+4. KEEP Mock as separate tab - it's a redirect
 
 Result: 4 tabs instead of 7
   • Notes (unified: AI content + user notes + AI prompt at bottom)
@@ -90,13 +90,13 @@ behavior.
 FILE: subgoal-content-tabs.tsx
 TABS (in order):
 -----------------
-1. Resources   — content (markdown), codeExamples, dosDonts
-2. Videos      — YouTube embeds from SubGoalResources.videos
-3. Docs        — Links from SubGoalResources.documentations
-4. Flashcards  — SubGoalResources.flashcards, StudioFlashcardBlock
-5. Quiz        — SubGoalQuiz, aiQuizQuestions
-6. Coding      — SubGoalCoding, aiCodingProblem (if hasCoding)
-7. Mock        — Button to createPathfinderPracticeMockAndSession → redirect
+1. Resources   - content (markdown), codeExamples, dosDonts
+2. Videos      - YouTube embeds from SubGoalResources.videos
+3. Docs        - Links from SubGoalResources.documentations
+4. Flashcards  - SubGoalResources.flashcards, StudioFlashcardBlock
+5. Quiz        - SubGoalQuiz, aiQuizQuestions
+6. Coding      - SubGoalCoding, aiCodingProblem (if hasCoding)
+7. Mock        - Button to createPathfinderPracticeMockAndSession → redirect
 
 DATA SOURCE: SubGoalResources (pathfinderStore, aiResources)
 ------------------------------
@@ -118,7 +118,7 @@ COMPLETION TRACKING:
 • Resources/Videos/Docs/Flashcards: No completion stored.
 
 ================================================================================
-                3. OPENNOTE APPROACH — WHAT THEY DO
+                3. OPENNOTE APPROACH - WHAT THEY DO
 ================================================================================
 
 From Opennote (https://www.opennote.com) and the provided screenshot:
@@ -127,22 +127,22 @@ KEY PRINCIPLE: "Everything in one place"
 
 FEATURES:
 ---------
-• Notes — Rich editor, block-based
-• AI Chat — "Ask Feynman" — knows context, explains
-• Recorder — Audio/YouTube → notes, summaries
-• Tutorials — Generate videos, diagrams, visual explanations
-• Practice — Inline flashcards, quizzes (instant creation)
+• Notes - Rich editor, block-based
+• AI Chat - "Ask Feynman" - knows context, explains
+• Recorder - Audio/YouTube → notes, summaries
+• Tutorials - Generate videos, diagrams, visual explanations
+• Practice - Inline flashcards, quizzes (instant creation)
 
 UNIFIED JOURNAL LAYOUT (from image):
 -----------------------------------
 Single scrollable document per journal/topic:
   1. Journal title
-  2. "Add Instruction" — AI prompt box (e.g. "What makes Next.js a full-stack
+  2. "Add Instruction" - AI prompt box (e.g. "What makes Next.js a full-stack
      framework?") → AI generates content into the doc
-  3. Pagination (1 of 3) — multi-step generation
-  4. Diagram — e.g. "Socket IO Communication Flow" (visual)
-  5. Quiz section — "Arrays in DSA practice" with multiple choice, "Check Answer"
-  6. Detailed notes — "While Loops in Python" with syntax, examples, pitfalls
+  3. Pagination (1 of 3) - multi-step generation
+  4. Diagram - e.g. "Socket IO Communication Flow" (visual)
+  5. Quiz section - "Arrays in DSA practice" with multiple choice, "Check Answer"
+  6. Detailed notes - "While Loops in Python" with syntax, examples, pitfalls
 
 No separate tabs for Resources / Videos / Quiz. All in ONE flow.
 
@@ -162,7 +162,7 @@ Pros:
   • Clear separation
 
 Cons:
-  • 8 tabs — overwhelming
+  • 8 tabs - overwhelming
   • Redundancy: Resources has markdown + code examples; Studio could show same
   • User bounces between tabs to get full picture
 
@@ -184,7 +184,7 @@ Notes tab contains:
   • AI prompt at bottom: "Add explanation for X" → inserts block
 
 Pros:
-  • Like Opennote — one place to learn
+  • Like Opennote - one place to learn
   • Fewer tabs
   • Natural flow: read → take notes → practice (quiz/coding)
 
@@ -215,11 +215,11 @@ RECOMMENDED: Model B (Unified Notes + Assessment Tabs)
 
 TABS:
 -----
-1. Notes    — Unified learning view (Resources + Videos + Docs + Flashcards
+1. Notes    - Unified learning view (Resources + Videos + Docs + Flashcards
               + user notes + AI at bottom)
-2. Quiz     — Standalone (keep current SubGoalQuiz)
-3. Coding   — Standalone if hasCoding (keep SubGoalCoding)
-4. Mock     — Standalone (redirect)
+2. Quiz     - Standalone (keep current SubGoalQuiz)
+3. Coding   - Standalone if hasCoding (keep SubGoalCoding)
+4. Mock     - Standalone (redirect)
 
 LAYOUT OF "NOTES" TAB:
 ----------------------
@@ -246,7 +246,7 @@ LAYOUT OF "NOTES" TAB:
 │ ## Flashcards                                               │
 │ [StudioFlashcardBlock inline]                                │
 │                                                             │
-│ ─── YOUR NOTES (Studio blocks — editable) ───               │
+│ ─── YOUR NOTES (Studio blocks - editable) ───               │
 │ [User can add blocks here. Initially empty or seeded.]       │
 │                                                             │
 │ ─── AI PROMPT (at bottom) ───                                │
@@ -342,7 +342,7 @@ SUB-GOAL 1: "React Fundamentals - JSX and Components"
                      │ watch video, review flashcards │
                      │ "Add explanation for props"    │ AI inserts block
   Quiz               │ Answer 5 questions, submit      │ submitSubGoalQuiz, 80%
-  Coding             │ (disabled — no hasCoding)      │ Tab hidden
+  Coding             │ (disabled - no hasCoding)      │ Tab hidden
   Mock               │ (optional) Start mock           │ Redirect to mock
 
   FLOWCHART:
@@ -381,7 +381,7 @@ SUB-GOAL 3: "React State Management - Context API"
                      │ vs Redux"                      │
   Quiz               │ Context API Learns           │ Score recorded
   Coding             │ Build a theme context          │ Pass/fail
-  Mock               │ —                              │ —
+  Mock               │ -                              │ -
 
   FLOWCHART:
   ┌────────┐    ┌────────┐    ┌────────┐
@@ -399,7 +399,7 @@ SUB-GOAL 4: "React Performance - useMemo and useCallback"
   Notes              │ Read, "When to use useMemo?"   │ AI block
   Quiz               │ Performance Learns            │ Score
   Coding             │ Optimize re-renders            │ Pass/fail
-  Mock               │ —                              │ —
+  Mock               │ -                              │ -
 
   Same flow as Sub-Goal 3.
 
@@ -412,9 +412,9 @@ SUB-GOAL 5: "Building a Todo App with React"
   Tab Order          │ User Action                    │ System Response
   -------------------|--------------------------------|---------------------------
   Notes              │ Read requirements, design      │ Reference content
-  Quiz               │ May be lighter                 │ —
+  Quiz               │ May be lighter                 │ -
   Coding             │ Full todo app implementation  │ Main assessment
-  Mock               │ "Build a todo app" — likely    │ Interview practice
+  Mock               │ "Build a todo app" - likely    │ Interview practice
                      │ strong mock use                │
 
   FLOWCHART:
@@ -431,7 +431,7 @@ SUMMARY: TAB USAGE BY SUB-GOAL TYPE
 
 Sub-Goal Type          │ Notes │ Quiz │ Coding │ Mock
 -----------------------|-------|------|--------|------
-Learn-only           │  ✓    │  ✓   │   —    │ opt
+Learn-only           │  ✓    │  ✓   │   -    │ opt
 Learn + coding       │  ✓    │  ✓   │   ✓    │ opt
 Coding-heavy           │  ✓    │ opt  │   ✓    │ opt
 
@@ -448,42 +448,42 @@ PHASE 1: Create "Notes" Tab (Unified View)
 ------------------------------------------
 1. New component: SubGoalNotesTab or PathfinderUnifiedNotes
 2. Structure:
-   - Section 1: AI content (from SubGoalResources) — content, codeExamples,
+   - Section 1: AI content (from SubGoalResources) - content, codeExamples,
      dosDonts, videos, documentations, flashcards
-   - Section 2: User notes (Studio block editor) — linked to PathfinderGoal
+   - Section 2: User notes (Studio block editor) - linked to PathfinderGoal
      studioId or create Studio on first edit
-   - Section 3: AI prompt bar at bottom — "Add to notes" behavior
+   - Section 3: AI prompt bar at bottom - "Add to notes" behavior
 
 3. Remove tabs: Resources, Videos, Docs, Flashcards
 4. Keep tabs: Quiz, Coding, Mock
 
 PHASE 2: AI "Add to Notes" Behavior
 -----------------------------------
-Current Studio AI: sendChatMessage() — conversational.
+Current Studio AI: sendChatMessage() - conversational.
 New: sendChatMessage() with action "insert_block" or similar. Response is
      appended as a block to the user's notes section.
 
 Options:
   a) Extend Studio AI: new endpoint "generateAndInsertBlock(studioId, prompt)"
-  b) Pathfinder-specific: "addNoteBlock(subGoalId, prompt)" — creates/updates
+  b) Pathfinder-specific: "addNoteBlock(subGoalId, prompt)" - creates/updates
      linked Studio, inserts block
 
 PHASE 3: Link Studio to Sub-Goal
 ---------------------------------
 PathfinderGoal has studioId. For sub-goal level, either:
-  • One Studio per goal (all sub-goals share) — user's notes for whole goal
-  • One Studio per sub-goal — more granular, more complex
+  • One Studio per goal (all sub-goals share) - user's notes for whole goal
+  • One Studio per sub-goal - more granular, more complex
 
 Recommendation: One Studio per goal. Notes section in each sub-goal's Notes
 tab shows:
   - AI content (sub-goal specific from SubGoalResources)
-  - User notes from the goal's Studio — shared across all sub-goals
+  - User notes from the goal's Studio - shared across all sub-goals
   - When user prompts "Add explanation for X", AI inserts into Studio;
     block can be tagged with subGoalId for optional filtering later.
 
 Simpler: One Studio per goal. "Your notes" is the same across sub-goals.
 User sees goal-level notes + sub-goal-specific AI content. This matches
-"Learn React" — your notes accumulate for the whole goal, while each
+"Learn React" - your notes accumulate for the whole goal, while each
 sub-goal tab shows its own AI-generated learning material.
 
 --------------------------------------------------------------------------------
@@ -493,13 +493,13 @@ OPENNOTE "ADD INSTRUCTION" PATTERN (Reference)
 From the Opennote interface (https://www.opennote.com):
 
 • Grey box at top: "What makes Next.js a full-stack framework other than
-  just a React framework?" — this is the user's prompt (instruction)
-• Pagination "1 of 3" — AI generates in steps/chunks
+  just a React framework?" - this is the user's prompt (instruction)
+• Pagination "1 of 3" - AI generates in steps/chunks
 • Content appears BELOW the prompt in the same document
-• Diagram, quiz, detailed notes — all flow in one scroll
+• Diagram, quiz, detailed notes - all flow in one scroll
 
 For Pathfinder Notes tab:
-• AI prompt bar at BOTTOM (your suggestion) — user types, clicks "Add"
+• AI prompt bar at BOTTOM (your suggestion) - user types, clicks "Add"
 • AI response inserted as new block in "Your Notes" section
 • Same idea: prompt → content added to document, not side-by-side chat
 

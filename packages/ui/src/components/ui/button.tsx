@@ -13,8 +13,8 @@ const buttonVariants = cva(
 				/**
 				 * The primary CTA for a monochrome brand.
 				 *
-				 * INVERTS with the theme — ink-on-white in light mode, white-on-ink in
-				 * dark — so it is always the highest-contrast element on its surface.
+				 * INVERTS with the theme - ink-on-white in light mode, white-on-ink in
+				 * dark - so it is always the highest-contrast element on its surface.
 				 * A fixed dark button disappears entirely on a dark card, which is
 				 * exactly what happened when the orange accent was retired.
 				 *

@@ -33,7 +33,7 @@ async function nameForEmail(email: string): Promise<string> {
 }
 
 // Last resort matches `apps/main`'s dev port (see its package.json `dev` script).
-// It read :4101 before, which is not a port anything in this repo listens on —
+// It read :4101 before, which is not a port anything in this repo listens on -
 // so with an unpopulated .env, better-auth would mint OAuth redirect URIs and
 // magic-link URLs pointing at a dead origin.
 const APP_URL =
@@ -54,7 +54,7 @@ export const auth = betterAuth({
     }),
 
     // ─── Email + Password ────────────────────────────────────────────────────
-    // `autoSignIn: false` — sign-up hands back an unverified account and the
+    // `autoSignIn: false` - sign-up hands back an unverified account and the
     // register page immediately switches to its inline OTP step. The session is
     // minted by `emailOtp.verifyEmail`, so an unverified address can never hold
     // one.
@@ -126,7 +126,7 @@ export const auth = betterAuth({
 
     // ─── Plugins ──────────────────────────────────────────────────────────────
     plugins: [
-        // Email OTP — powers the inline verification step on /register.
+        // Email OTP - powers the inline verification step on /register.
         // `sendVerificationOnSignUp` mails the code from the sign-up response
         // itself, so the register page can flip straight to its OTP step without
         // a second round trip. (Deliberately NOT paired with
@@ -134,11 +134,11 @@ export const auth = betterAuth({
         // verification sender and, in doing so, disables this on-sign-up hook.)
         emailOTP({
             otpLength: 6,
-            expiresIn: 600,          // 10 minutes — matches the copy in the email
+            expiresIn: 600,          // 10 minutes - matches the copy in the email
             allowedAttempts: 5,
             sendVerificationOnSignUp: true,
             // Hashed at rest: a leak of the `verification` table yields nothing
-            // replayable. (Rules out "reuse" resends — a resend rotates the code.)
+            // replayable. (Rules out "reuse" resends - a resend rotates the code.)
             storeOTP: "hashed",
             async sendVerificationOTP({ email, otp, type }) {
                 await trySend({
@@ -150,7 +150,7 @@ export const auth = betterAuth({
             },
         }),
 
-        // Magic link — the user types an email, we mail them a URL that hits
+        // Magic link - the user types an email, we mail them a URL that hits
         // better-auth's verify endpoint. That endpoint consumes the token, sets
         // the session cookie and 302s to `callbackURL`. Middleware then sends a
         // user who hasn't onboarded to /onboarding and everyone else to /home,
@@ -195,7 +195,7 @@ export const auth = betterAuth({
             },
             update: {
                 // A social sign-in hands us an already-verified address; the OTP
-                // path sets emailVerified itself. Nothing to do here — the hook
+                // path sets emailVerified itself. Nothing to do here - the hook
                 // exists so the shape stays obvious to the next reader.
             },
         },
@@ -221,8 +221,8 @@ export const auth = betterAuth({
     },
 
     // Fallbacks match the `dev` ports in each app's package.json. They were wrong
-    // before — web pointed at :3000 (it runs on :4100) and uni/admin were
-    // swapped — which only stayed invisible because .env sets these explicitly.
+    // before - web pointed at :3000 (it runs on :4100) and uni/admin were
+    // swapped - which only stayed invisible because .env sets these explicitly.
     // A machine without a populated .env would have failed CSRF checks on the
     // wrong origins with no obvious cause.
     trustedOrigins: [

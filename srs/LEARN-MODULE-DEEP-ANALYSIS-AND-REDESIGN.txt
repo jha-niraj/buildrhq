@@ -1,5 +1,5 @@
 ================================================================================
-  LEARN MODULE — DEEP ANALYSIS, ISSUES & REDESIGN PROPOSAL
+  LEARN MODULE - DEEP ANALYSIS, ISSUES & REDESIGN PROPOSAL
   Platform: ShiprHQ (ShiprHQ)
   Created: 2026-03-03
   Status: Analysis & Proposal Document
@@ -8,13 +8,13 @@
 TABLE OF CONTENTS
 ─────────────────
 1.  Current Architecture Recap
-2.  PROBLEM ANALYSIS — What's Wrong Today
-3.  SCHEMA REDESIGN — What Needs to Change
-4.  QUIZ MODULE REDESIGN — Structured Data, Not Markdown
+2.  PROBLEM ANALYSIS - What's Wrong Today
+3.  SCHEMA REDESIGN - What Needs to Change
+4.  QUIZ MODULE REDESIGN - Structured Data, Not Markdown
 5.  NEW: INTERVIEW QUESTIONS / FLASHCARD STEP
-6.  CHALLENGE MODULE IMPROVEMENT — Code Editor + Test Cases
-7.  CONTENT STRUCTURE — Separation of Concerns
-8.  UI/UX FLOW — Redesigned Screen Layouts
+6.  CHALLENGE MODULE IMPROVEMENT - Code Editor + Test Cases
+7.  CONTENT STRUCTURE - Separation of Concerns
+8.  UI/UX FLOW - Redesigned Screen Layouts
 9.  PROGRESS TRACKING IMPROVEMENTS
 10. IMPLEMENTATION ROADMAP (Priority Order)
 11. SCREEN FLOWCHARTS (Mermaid)
@@ -48,7 +48,7 @@ Current Flow:
   User reads step-by-step → Quizzes/Challenges tracked in LearnProgress
 
 ================================================================================
-2. PROBLEM ANALYSIS — What's Wrong Today
+2. PROBLEM ANALYSIS - What's Wrong Today
 ================================================================================
 
 PROBLEM 1: LearnTopic Model Does Nothing
@@ -151,11 +151,11 @@ stepData generation. The AI generates questions without code context.
 PROBLEM 7: Single Challenge Per Step
 ─────────────────────────────────────
 Each CHALLENGE step can only have one challenge (one starterCode,
-one solution). The user mentioned "there is only one challenge" —
+one solution). The user mentioned "there is only one challenge" -
 this is limiting. Should support multiple progressive challenges.
 
 ================================================================================
-3. SCHEMA REDESIGN — What Needs to Change
+3. SCHEMA REDESIGN - What Needs to Change
 ================================================================================
 
 CHANGE 1: Add LearnQuizQuestion Model (extract from JSON)
@@ -354,7 +354,7 @@ model LearnProgress {
 ```
 
 ================================================================================
-4. QUIZ MODULE REDESIGN — Structured Data, Not Markdown
+4. QUIZ MODULE REDESIGN - Structured Data, Not Markdown
 ================================================================================
 
 CURRENT FLOW (BAD):
@@ -408,7 +408,7 @@ QUIZ QUESTION WITH CODE (New Feature):
 When step type is INTERVIEW_QUESTIONS, the UI shows a flashcard deck:
 
 ┌─────────────────────────────────────────────────────┐
-│  🎯 Interview Questions — Pointers & Memory        │
+│  🎯 Interview Questions - Pointers & Memory        │
 │  Card 3 of 12                                       │
 │                                                     │
 │  [Conceptual] [Medium]                              │
@@ -470,7 +470,7 @@ IMPROVEMENTS:
   d) Add "reset to starter code" button
   e) Show test case results visually (✅ Pass / ❌ Fail table)
 
-No schema change needed for this — the stepData JSON can hold
+No schema change needed for this - the stepData JSON can hold
 an array of challenges:
   stepData: {
     challenges: [
@@ -493,7 +493,7 @@ an array of challenges:
   }
 
 ================================================================================
-7. CONTENT STRUCTURE — Separation of Concerns
+7. CONTENT STRUCTURE - Separation of Concerns
 ================================================================================
 
 Current state: step.content (Markdown) + step.stepData (JSON) works
@@ -526,7 +526,7 @@ RECOMMENDED DATA SPLIT:
 └──────────────────────────────────────────────────────┘
 
 ================================================================================
-8. UI/UX FLOW — Redesigned Screen Layouts
+8. UI/UX FLOW - Redesigned Screen Layouts
 ================================================================================
 
 LEARN DETAIL PAGE (Current = Good, Small Improvements):
@@ -590,7 +590,7 @@ QUIZ STEP (Redesigned with Code Support):
 FLASHCARD / INTERVIEW STEP:
 
 ┌──────────────────────────────────────────────────────────────────────┐
-│  🎯 Interview Questions — C++ OOP          Card 5/15               │
+│  🎯 Interview Questions - C++ OOP          Card 5/15               │
 │  [████████████████░░░░] 33%                                        │
 │                                                                     │
 │  Filter: [All] [Conceptual] [Coding] [Tricky]  🔀 Shuffle          │
@@ -840,8 +840,8 @@ UI COMPONENT ADDITIONS/UPDATES:
   ☐ New: flashcard-data-editor.tsx for /create page
 
 THINGS THAT DON'T CHANGE:
-  ✓ Markdown content in step.content (stays as is — good format)
-  ✓ LearnCodeBlock model (stays as is — works well)
+  ✓ Markdown content in step.content (stays as is - good format)
+  ✓ LearnCodeBlock model (stays as is - works well)
   ✓ Challenge data in stepData JSON (adequate for now)
   ✓ Comparison data in stepData JSON (adequate for now)
   ✓ Resource data in stepData JSON (adequate for now)

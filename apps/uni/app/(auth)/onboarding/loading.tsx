@@ -2,7 +2,7 @@
 //
 // This route has a known shape, so it gets a skeleton rather than the branded
 // full-screen loader: the nav bar, the centred max-w-4xl column, the three-step
-// indicator (`steps` in page.tsx has exactly three entries — the connector
+// indicator (`steps` in page.tsx has exactly three entries - the connector
 // stroke is drawn between them, not after the last) and the rounded-3xl form
 // card holding step 0's two-column field grid.
 import { Shimmer, ShimmerStyles } from "@repo/ui/components/skeleton-kit";

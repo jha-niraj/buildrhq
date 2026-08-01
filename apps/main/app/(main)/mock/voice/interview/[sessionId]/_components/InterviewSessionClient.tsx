@@ -200,7 +200,7 @@ export default function MockInterviewPage({ params }: { params: Promise<{ sessio
             setHasStarted(true)
             setAgentState('thinking')
 
-            // Server action reads agentId from env — no client-side secret needed
+            // Server action reads agentId from env - no client-side secret needed
             const tokenResult = await getElevenLabsToken()
             if (!tokenResult.success || !tokenResult.token) {
                 toast.error('Failed to authenticate with voice agent')
@@ -212,7 +212,7 @@ export default function MockInterviewPage({ params }: { params: Promise<{ sessio
             // Update session status
             await updateSessionStatus(resolvedParams.sessionId, 'IN_PROGRESS')
 
-            // Start ElevenLabs conversation — pass ALL variables including knowledge_base
+            // Start ElevenLabs conversation - pass ALL variables including knowledge_base
             const variables = sessionData.variables
 
             const conversationId = await conversation.startSession({
@@ -518,7 +518,7 @@ export default function MockInterviewPage({ params }: { params: Promise<{ sessio
                                 >
                                     <AlertCircle className="w-16 h-16 text-red-400" />
                                     <p className="text-center text-sm text-neutral-600 dark:text-neutral-400">
-                                        Don&apos;t worry — your session data has been saved. You can still view partial results or try again.
+                                        Don&apos;t worry - your session data has been saved. You can still view partial results or try again.
                                     </p>
                                     <div className="flex gap-3 w-full">
                                         <Button

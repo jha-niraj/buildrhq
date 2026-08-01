@@ -85,7 +85,7 @@ const upcomingTools = [
         icon: ArrowUpRight,
         name: "LinkedIn Optimizer",
         description: "Get specific rewrites for headline, about, and experience sections.",
-        pain: "87% of recruiters use LinkedIn — most profiles aren't optimized",
+        pain: "87% of recruiters use LinkedIn - most profiles aren't optimized",
         section: "AI_LINKEDIN_OPTIMIZER" as const,
     },
     {
@@ -109,7 +109,7 @@ const upcomingTools = [
         icon: MessageSquare,
         name: "Resume Gap Explainer",
         description: "Turn employment gaps into compelling professional narratives.",
-        pain: "72% of hiring managers say gaps are a concern — framing matters",
+        pain: "72% of hiring managers say gaps are a concern - framing matters",
         section: "AI_GAP_EXPLAINER" as const,
     },
     {
@@ -117,7 +117,7 @@ const upcomingTools = [
         icon: Search,
         name: "Job Match Finder",
         description: "Get matched to open roles ranked by your skill alignment.",
-        pain: "Developers spend 10+ hours/week job hunting — most is noise",
+        pain: "Developers spend 10+ hours/week job hunting - most is noise",
         section: "AI_JOB_MATCH" as const,
     },
     {
@@ -150,7 +150,7 @@ export function ResumeHubClient({
         }
 
         if (template.isPurchased) {
-            // Already purchased — go to resume creator with template
+            // Already purchased - go to resume creator with template
             router.push(`/ai/resume?template=${template.slug}`)
             return
         }
@@ -197,7 +197,7 @@ export function ResumeHubClient({
                             <span className="text-neutral-400 dark:text-neutral-500">No fluff. Just results.</span>
                         </h1>
                         <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed font-light">
-                            Purpose-built tools that solve real problems developers face during the job hunt — from resume black-holes to salary lowballs.
+                            Purpose-built tools that solve real problems developers face during the job hunt - from resume black-holes to salary lowballs.
                         </p>
                     </motion.div>
                 </div>
@@ -236,7 +236,7 @@ export function ResumeHubClient({
                     <div className="mb-8">
                         <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-1">Available Now</h2>
                         <p className="text-neutral-500 dark:text-neutral-400 font-light text-sm">
-                            Ready to use — start building your application materials today.
+                            Ready to use - start building your application materials today.
                         </p>
                     </div>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -391,7 +391,7 @@ export function ResumeHubClient({
                     <div className="mb-8">
                         <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-1">Coming Soon</h2>
                         <p className="text-neutral-500 dark:text-neutral-400 font-light text-sm">
-                            Built from real developer pain points — not generic feature lists.
+                            Built from real developer pain points - not generic feature lists.
                         </p>
                     </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">

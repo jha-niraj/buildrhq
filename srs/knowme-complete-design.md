@@ -14,11 +14,11 @@
 
 ### 🎯 What Makes KnowMe Special
 
-KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant** that transforms how developers present themselves. Here's why this is brilliant:
+KnowMe isn't just another AI chatbot-it's a **personalized knowledge assistant** that transforms how developers present themselves. Here's why this is brilliant:
 
 **Core Value Propositions:**
 1. **Time-Saving Magic**: Developers spend hours answering the same questions. KnowMe automates this.
-2. **24/7 Availability**: Your AI never sleeps—recruiters can learn about you anytime.
+2. **24/7 Availability**: Your AI never sleeps-recruiters can learn about you anytime.
 3. **Consistency**: Every answer is accurate, based on your actual data.
 4. **Viral Growth Engine**: Portfolio integration creates natural distribution.
 5. **Data Moat**: The more users, the smarter the system becomes.
@@ -42,7 +42,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 1. **Privacy First**: Users must trust you with their data
 2. **Quality Over Speed**: Better to launch perfect than fast
 3. **Onboarding Excellence**: First 5 minutes determine adoption
-4. **Cost Management**: LLM costs can spiral—monitor aggressively
+4. **Cost Management**: LLM costs can spiral-monitor aggressively
 5. **Viral Mechanics**: Make sharing irresistible
 
 ---

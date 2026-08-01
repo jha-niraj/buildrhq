@@ -70,7 +70,7 @@ Rules:
 
 Module context: ${module}
 
-Return ONLY a valid JSON object — no markdown fences, no explanation outside the JSON.`;
+Return ONLY a valid JSON object - no markdown fences, no explanation outside the JSON.`;
 }
 
 interface GeneratedProblemData {

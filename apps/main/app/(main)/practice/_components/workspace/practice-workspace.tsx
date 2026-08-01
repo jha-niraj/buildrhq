@@ -206,7 +206,7 @@ export function PracticeWorkspace({ problem, session, mode }: PracticeWorkspaceP
                                     setExecResult(null);
                                     try {
                                         // DSA/coding problems use code-execution test cases (input/output pairs),
-                                        // not API test cases — pass empty array and let AI evaluate output
+                                        // not API test cases - pass empty array and let AI evaluate output
                                         const testCases: TestCase[] = [];
                                         const result = await executeCode(
                                             store.code,
@@ -530,7 +530,7 @@ function OutputPanel({
                         {result.testResults && result.testResults.length > 0 && (
                             <div>
                                 <div className="text-[10px] text-neutral-500 mb-2">
-                                    TEST CASES — {result.testResults.filter(t => t.passed).length}/{result.testResults.length} passed
+                                    TEST CASES - {result.testResults.filter(t => t.passed).length}/{result.testResults.length} passed
                                 </div>
                                 <div className="space-y-1.5">
                                     {result.testResults.map((tc, i) => (
@@ -631,7 +631,7 @@ function ChatPanel({
                 handleSend(transcript);
             }
         } else {
-            // Start recording — fetch single-use token from server
+            // Start recording - fetch single-use token from server
             const tokenResult = await getScribeToken();
             if (!tokenResult.success) {
                 console.error("Failed to get scribe token:", tokenResult.error);

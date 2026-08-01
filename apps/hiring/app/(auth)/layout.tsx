@@ -29,9 +29,9 @@ export const metadata: Metadata = {
 		description: "The Engineering Intelligence Platform for Computer Science Students",
 		images: [
 			{
-				url: "/mainlogo.jpeg",
-				width: 1024,
-				height: 1024,
+				url: "/og/home.webp",
+				width: 1200,
+				height: 630,
 				alt: "ShiprHQ - The Engineering Intelligence Platform for Computer Science Students",
 			},
 		],
@@ -40,17 +40,8 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "ShiprHQ - The Engineering Intelligence Platform for Computer Science Students",
 		description: "The Engineering Intelligence Platform for Computer Science Students",
-		images: ["/mainlogo.jpeg"],
+		images: ["/og/home.webp"],
 		creator: "@shiprhq",
-	},
-	icons: {
-		icon: [
-			{ url: "/mainlogo.ico", sizes: "any" },
-			{ url: "/mainlogo.jpeg", type: "image/jpeg", sizes: "512x512" },
-		],
-		apple: [
-			{ url: "/mainlogo.jpeg", sizes: "180x180", type: "image/jpeg" },
-		],
 	},
 	robots: {
 		index: true,

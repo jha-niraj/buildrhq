@@ -73,7 +73,7 @@ export async function completeOnboarding(data: {
 
         // Update user with onboarding data. The resume file is uploaded to R2 by
         // `uploadResume` (which persists hasResume/resume/resumeText itself), and the
-        // profile image is uploaded to Cloudinary — here we only persist the image URL
+        // profile image is uploaded to Cloudinary - here we only persist the image URL
         // plus the profile fields, so we never clobber the R2 key with a signed URL.
         await db.update(users).set({
             username: data.username.toLowerCase(),

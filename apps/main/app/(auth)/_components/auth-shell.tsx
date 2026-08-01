@@ -1,8 +1,8 @@
 "use client"
 
 import type { ReactNode } from "react"
+import { Logo } from "@repo/ui/components/logo"
 import Link from "next/link"
-import { Code2 } from "lucide-react"
 import { ThemeToggle } from "@repo/ui/components/themetoggle"
 import { AuthVisual, type AuthVisualVariant } from "@repo/ui/components/auth-visual"
 
@@ -10,7 +10,7 @@ import { AuthVisual, type AuthVisualVariant } from "@repo/ui/components/auth-vis
  * The two-column shell every auth screen sits in.
  *
  * Capped at `max-w-7xl` and centred, so on a wide monitor the form does not sit
- * a third of a metre from the brand panel. Below xl the card goes full-bleed —
+ * a third of a metre from the brand panel. Below xl the card goes full-bleed -
  * rounding and insetting a shell that already fills the viewport just wastes
  * vertical space on the screens with least of it.
  *
@@ -23,7 +23,7 @@ import { AuthVisual, type AuthVisualVariant } from "@repo/ui/components/auth-vis
  *
  * ── Brand column layout ──
  * The artwork used to be absolutely positioned across the whole panel, so its
- * wires ran straight underneath the headline and the two fought each other — a
+ * wires ran straight underneath the headline and the two fought each other - a
  * gradient mask was papering over the overlap rather than removing it. It is now
  * an ordinary flex child BELOW the copy, so the two cannot collide at any
  * viewport size and no mask is needed.
@@ -53,7 +53,7 @@ export function AuthShell({
                 {/* ── Brand column ── */}
                 <aside className="auth-stagger relative hidden h-full w-1/2 flex-col overflow-hidden bg-neutral-950 p-10 lg:flex xl:p-12">
                     {/* A soft glow low in the panel, sitting under the artwork rather
-                        than under the copy — it lifts the shape off the flat black
+                        than under the copy - it lifts the shape off the flat black
                         without washing out the headline above it. */}
                     <div
                         aria-hidden
@@ -66,12 +66,12 @@ export function AuthShell({
 
                     <Link href="/" className="relative z-10 flex w-fit shrink-0 items-center gap-2.5">
                         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">
-                            <Code2 className="h-5 w-5 text-white" />
+                            <Logo className="h-5 w-5 text-white" />
                         </span>
                         <span className="text-lg font-semibold tracking-tight text-white">ShiprHQ</span>
                     </Link>
 
-                    {/* Copy block — high in the panel, left aligned. */}
+                    {/* Copy block - high in the panel, left aligned. */}
                     <div className="relative z-10 mt-10 max-w-sm shrink-0 xl:mt-12 xl:max-w-md">
                         <h2 className="text-3xl font-bold leading-tight tracking-tight text-white xl:text-4xl">
                             {headline}
@@ -84,7 +84,7 @@ export function AuthShell({
                         )}
                     </div>
 
-                    {/* Artwork — takes whatever height is left under the copy. `min-h-0`
+                    {/* Artwork - takes whatever height is left under the copy. `min-h-0`
                         is what lets it shrink inside the flex column on short viewports
                         rather than pushing the footer off the bottom. */}
                     <div className="relative z-0 flex min-h-0 flex-1 items-center justify-center py-6">
@@ -106,11 +106,11 @@ export function AuthShell({
                 <main className="flex h-full w-full flex-col overflow-y-auto lg:w-1/2">
                     <div className="flex min-h-full items-center justify-center px-6 py-10 sm:px-10">
                         <div className="w-full max-w-md">
-                            {/* Mobile brand + theme toggle — the aside is hidden below lg. */}
+                            {/* Mobile brand + theme toggle - the aside is hidden below lg. */}
                             <div className="mb-8 flex items-center justify-between lg:hidden">
                                 <Link href="/" className="flex items-center gap-2">
                                     <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 dark:bg-white">
-                                        <Code2 className="h-4 w-4 text-white dark:text-neutral-900" />
+                                        <Logo className="h-[17px] w-[17px] text-white dark:text-neutral-900" />
                                     </span>
                                     <span className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">
                                         ShiprHQ
@@ -121,7 +121,7 @@ export function AuthShell({
 
                             {/* Entrance for whatever the screen renders. Done in CSS so a
                                 screen does not have to pull framer-motion in just to fade
-                                its form in — see the .auth-enter note in globals.css. */}
+                                its form in - see the .auth-enter note in globals.css. */}
                             <div className="auth-enter">{children}</div>
                         </div>
                     </div>

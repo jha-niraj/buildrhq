@@ -1,12 +1,13 @@
 "use client"
 
 import type React from "react"
+import { Logo } from "@repo/ui/components/logo"
 import { AuthVisual } from "@repo/ui/components/auth-visual";
 import { useState, useRef, useEffect, Suspense } from "react"
 import { Button } from "@repo/ui/components/ui/button"
 import { Input } from "@repo/ui/components/ui/input"
 import {
-    CheckCircle2, RefreshCw, ShieldCheck, Loader2, Building2, ArrowRight
+    CheckCircle2, RefreshCw, ShieldCheck, Loader2, ArrowRight
 } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import toast from '@repo/ui/components/ui/sonner'
@@ -106,7 +107,7 @@ function VerifyContent() {
             // (which compared against `users.verifyOTP`, a column better-auth
             // never writes) and then tried to sign in with the literal string
             // 'verified' as the password. Both halves failed, so every user was
-            // dumped on /signin?verified=true — where their real password also
+            // dumped on /signin?verified=true - where their real password also
             // failed, because registration never created the `account` row that
             // better-auth checks.
             const { error } = await emailOtp.verifyEmail({ email, otp: code.join("") })
@@ -167,7 +168,7 @@ function VerifyContent() {
                 <div className="flex justify-center mb-8">
                     <Link href="/" className="flex items-center gap-2">
                         <div className="w-10 h-10 rounded-xl bg-neutral-900 dark:bg-white flex items-center justify-center">
-                            <Building2 className="w-5 h-5 text-white dark:text-black" />
+                            <Logo className="h-[19px] w-[19px] text-white dark:text-black" />
                         </div>
                         <span className="text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
                             ShiprHQ <span className="text-neutral-500 font-mono font-normal">HIRING</span>

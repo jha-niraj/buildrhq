@@ -281,7 +281,7 @@ ${repoSummary}`
 
 Rules:
 - Use random 8-char alphanumeric IDs for all id fields (e.g. "a1b2c3d4")
-- Dates should be ISO format YYYY-MM-DD or partial like "2022-01" — use null if unknown
+- Dates should be ISO format YYYY-MM-DD or partial like "2022-01" - use null if unknown
 - Group skills by category: Programming Languages, Frameworks & Libraries, Tools & DevOps, Databases, Cloud & Infrastructure, etc.
 - Extract all work experience from LinkedIn if available
 - Extract notable GitHub projects as resume projects (include stars, languages, URLs)

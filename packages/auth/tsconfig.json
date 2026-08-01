@@ -8,7 +8,7 @@
     "strict": true,
     // Declaration emit is off on purpose. Consumers import this package as
     // TypeScript source (`"types": "./src/index.ts"`), so no .d.ts is ever
-    // produced — but with `declaration: true` tsc still runs the declaration
+    // produced - but with `declaration: true` tsc still runs the declaration
     // PORTABILITY check, and better-auth's plugin generics infer types that
     // reference its internal modules and zod's core by path. That trips TS2742
     // on `auth`/`authClient` and the only way to silence it is an explicit

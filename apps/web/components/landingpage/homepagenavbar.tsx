@@ -1,10 +1,11 @@
 "use client";
 
 import { Button } from "@repo/ui/components/ui/button";
+import { Logo } from "@repo/ui/components/logo"
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Sheet, SheetContent, SheetTitle } from "@repo/ui/components/ui/sheet";
-import { ArrowRight, Command, Menu } from "lucide-react";
+import { ArrowRight, Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@repo/ui/components/themetoggle";
 import { APP_LINKS } from "@/lib/site";
@@ -43,7 +44,7 @@ export default function Navbar() {
         // A floating pill rather than a full-bleed bar: the outer <nav> only positions
         // and pads, the inner div is the visible surface, capped at max-w-7xl so it
         // lines up with the page content beneath it. `theme-vt-glass` lets the theme
-        // wipe swap this to a solid background — a translucent + backdrop-blur bar is
+        // wipe swap this to a solid background - a translucent + backdrop-blur bar is
         // exactly what flashes during a View Transition snapshot.
         <nav className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4">
             <div
@@ -58,7 +59,7 @@ export default function Navbar() {
                 <div className="flex items-center justify-between h-16 px-4 sm:px-6">
                 <Link href="/" className="flex items-center gap-2" aria-label="ShiprHQ home">
                     <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900">
-                        <Command className="h-4 w-4" />
+                        <Logo className="h-[17px] w-[17px]" />
                     </span>
                     <span className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">
                         ShiprHQ

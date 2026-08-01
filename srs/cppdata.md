@@ -31,7 +31,7 @@ await createLearn({
             title: 'Why OOP? The Paradigm Shift',
             type: 'EXPLANATION',
             tips: [
-                'OOP models code after real-world entities — a BankAccount object BEHAVES like a real bank account.',
+                'OOP models code after real-world entities - a BankAccount object BEHAVES like a real bank account.',
                 'The four pillars of OOP are: Encapsulation, Abstraction, Inheritance, and Polymorphism.',
                 'Think of a class as a blueprint and an object as a house built from that blueprint.',
             ],
@@ -42,7 +42,7 @@ await createLearn({
 Imagine building a banking system the procedural way:
 
 \`\`\`cpp
-// Procedural — data is separate from the logic that uses it
+// Procedural - data is separate from the logic that uses it
 string accountName = "Alice";
 double balance = 5000.0;
 int accountNumber = 12345;
@@ -54,7 +54,7 @@ void printBalance(string name, double bal) {
 }
 \`\`\`
 
-Now imagine 1000 accounts. You'd need 3000 variables and pass them all around manually. One typo — wrong variable name — and the data gets corrupted.
+Now imagine 1000 accounts. You'd need 3000 variables and pass them all around manually. One typo - wrong variable name - and the data gets corrupted.
 
 ---
 
@@ -70,8 +70,8 @@ public:
     void print() { cout << owner << ": $" << balance; }
 };
 
-BankAccount alice;  // One object — data and behaviour in one package
-BankAccount bob;    // Another object — completely independent
+BankAccount alice;  // One object - data and behaviour in one package
+BankAccount bob;    // Another object - completely independent
 \`\`\`
 
 ---
@@ -112,10 +112,10 @@ Each object is a separate INSTANCE with its own copy of the data.
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 1,
-            title: 'Defining a Class — Syntax & Structure',
+            title: 'Defining a Class - Syntax & Structure',
             type: 'EXPLANATION',
             tips: [
-                'Class definitions end with a semicolon after the closing brace: `};` — this is unique to class/struct definitions.',
+                'Class definitions end with a semicolon after the closing brace: `};` - this is unique to class/struct definitions.',
                 'By default, all members of a `class` are private. All members of a `struct` are public.',
                 'Member functions defined inside the class body are implicitly inline.',
             ],
@@ -127,11 +127,11 @@ Each object is a separate INSTANCE with its own copy of the data.
 class ClassName {
     // access specifier (private by default if omitted)
 private:
-    // Attributes — data the class holds
+    // Attributes - data the class holds
     type attributeName;
 
 public:
-    // Methods — functions the class can perform
+    // Methods - functions the class can perform
     returnType methodName(parameters);
 };  // ← semicolon is REQUIRED here!
 \`\`\`
@@ -150,11 +150,11 @@ private:
 public:
     // Methods: define the behaviour of Rectangle objects
 
-    // Setter methods — set the dimensions
+    // Setter methods - set the dimensions
     void setWidth(double w)  { width = w; }
     void setHeight(double h) { height = h; }
 
-    // Getter methods — read the dimensions
+    // Getter methods - read the dimensions
     double getWidth()  { return width; }
     double getHeight() { return height; }
 
@@ -203,7 +203,7 @@ public:
         },
 
         // ─────────────────────────────────────────────────────────────────────
-        // SECTION C: Access Specifiers — public vs private
+        // SECTION C: Access Specifiers - public vs private
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 2,
@@ -211,8 +211,8 @@ public:
             type: 'EXPLANATION',
             tips: [
                 'The golden rule: make data PRIVATE, make the interface (methods) PUBLIC.',
-                'Private members can be accessed by the class\'s own methods — just not from outside code.',
-                'There is a third specifier `protected` — used with inheritance (covered later).',
+                'Private members can be accessed by the class\'s own methods - just not from outside code.',
+                'There is a third specifier `protected` - used with inheritance (covered later).',
             ],
             content: `# Access Specifiers: public vs private
 
@@ -228,7 +228,7 @@ Access specifiers in C++ enforce this same principle.
 
 | Specifier | Accessible From |
 |-----------|----------------|
-| \`public\` | Anywhere — inside the class AND from outside code |
+| \`public\` | Anywhere - inside the class AND from outside code |
 | \`private\` | Only inside the class's own methods |
 | \`protected\` | Inside the class AND inside derived (child) classes |
 
@@ -239,7 +239,7 @@ Access specifiers in C++ enforce this same principle.
 \`\`\`cpp
 class BankAccount {
 private:
-    double balance;   // HIDDEN — cannot be accessed directly from outside
+    double balance;   // HIDDEN - cannot be accessed directly from outside
 
 public:
     void deposit(double amount) {
@@ -267,7 +267,7 @@ private:
     double radius;    // Hidden implementation detail
 
 public:
-    // Public interface — what users of the class can do
+    // Public interface - what users of the class can do
     void setRadius(double r) {
         if (r > 0) radius = r;  // validation possible here!
         else radius = 0;
@@ -292,21 +292,21 @@ struct Bar {
 };
 \`\`\`
 
-In C++, \`class\` and \`struct\` are nearly identical — the only difference is the **default access specifier**. Conventionally, \`struct\` is used for plain data, \`class\` for objects with behaviour.`,
+In C++, \`class\` and \`struct\` are nearly identical - the only difference is the **default access specifier**. Conventionally, \`struct\` is used for plain data, \`class\` for objects with behaviour.`,
         },
 
         // ─────────────────────────────────────────────────────────────────────
-        // SECTION D: Code — First Full Class
+        // SECTION D: Code - First Full Class
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 3,
             title: 'Code: Your First Complete Class',
             type: 'CODE',
-            content: '## Building a Complete Class from Scratch\n\nLet\'s build a `BankAccount` class with private data, public methods, and validation — then create and use multiple objects.',
+            content: '## Building a Complete Class from Scratch\n\nLet\'s build a `BankAccount` class with private data, public methods, and validation - then create and use multiple objects.',
             codeBlocks: [
                 {
                     order: 0,
-                    title: 'BankAccount Class — Full Implementation',
+                    title: 'BankAccount Class - Full Implementation',
                     language: 'cpp',
                     code: `#include <iostream>
 #include <string>
@@ -318,7 +318,7 @@ using namespace std;
 // ─────────────────────────────────────────────────────────────────────
 class BankAccount {
 private:
-    // Internal state — hidden from the outside world
+    // Internal state - hidden from the outside world
     string ownerName;
     double balance;
     int    transactionCount;
@@ -372,7 +372,7 @@ public:
 };
 
 // ─────────────────────────────────────────────────────────────────────
-// MAIN — Creating and Using Objects
+// MAIN - Creating and Using Objects
 // ─────────────────────────────────────────────────────────────────────
 int main() {
     // Create two completely independent BankAccount objects
@@ -387,26 +387,26 @@ int main() {
     cout << "=== Alice's Transactions ===" << endl;
     alice.deposit(250.00);
     alice.withdraw(75.50);
-    alice.withdraw(2000.00);  // Should fail — insufficient funds
+    alice.withdraw(2000.00);  // Should fail - insufficient funds
     alice.printStatement();
 
     cout << endl;
 
     cout << "=== Bob's Transactions ===" << endl;
     bob.deposit(100.00);
-    bob.deposit(-50.00); // Should fail — invalid amount
+    bob.deposit(-50.00); // Should fail - invalid amount
     bob.withdraw(200.00);
     bob.printStatement();
 
     return 0;
 }`,
-                    explanation: 'Two independent `BankAccount` objects — `alice` and `bob` — each have their own copies of `ownerName`, `balance`, and `transactionCount`. Changes to one do not affect the other. The `private` members are protected with validation in the setter and `withdraw` methods.',
+                    explanation: 'Two independent `BankAccount` objects - `alice` and `bob` - each have their own copies of `ownerName`, `balance`, and `transactionCount`. Changes to one do not affect the other. The `private` members are protected with validation in the setter and `withdraw` methods.',
                     highlightLines: [10, 11, 12, 13, 17, 21, 27, 34, 44, 63, 68],
                     isRunnable: true,
                 },
                 {
                     order: 1,
-                    title: 'Student Class — Multiple Objects',
+                    title: 'Student Class - Multiple Objects',
                     language: 'cpp',
                     code: `#include <iostream>
 #include <string>
@@ -490,14 +490,14 @@ int main() {
             tips: [
                 'Use the dot operator `.` to access members of an object on the stack.',
                 'Use the arrow operator `->` to access members through a pointer to an object.',
-                '`ptr->method()` is exactly equivalent to `(*ptr).method()` — arrow is just shorthand.',
+                '`ptr->method()` is exactly equivalent to `(*ptr).method()` - arrow is just shorthand.',
             ],
             content: `# Creating Objects (Instantiation)
 
-## Stack Objects — The Dot Operator \`.\`
+## Stack Objects - The Dot Operator \`.\`
 
 \`\`\`cpp
-// Declare on the stack — automatically destroyed when out of scope
+// Declare on the stack - automatically destroyed when out of scope
 Rectangle r;           // Object created; attributes are uninitialized
 r.setWidth(10.0);      // Access methods with dot operator
 r.setHeight(5.0);
@@ -506,10 +506,10 @@ cout << r.area();      // dot operator for member access
 
 ---
 
-## Heap Objects — The Arrow Operator \`->\`
+## Heap Objects - The Arrow Operator \`->\`
 
 \`\`\`cpp
-// Allocate on the heap with new — must manually delete!
+// Allocate on the heap with new - must manually delete!
 Rectangle* ptr = new Rectangle();  // ptr is a POINTER to a Rectangle
 ptr->setWidth(10.0);     // arrow operator = (*ptr).setWidth(10.0)
 ptr->setHeight(5.0);
@@ -543,7 +543,7 @@ r3.setWidth(7);   r3.setHeight(7);   // r3: 7×7
 
 cout << r1.area(); // 15
 cout << r2.area(); // 20
-cout << r3.area(); // 49  — each object has its own data!
+cout << r3.area(); // 49  - each object has its own data!
 \`\`\`
 
 ---
@@ -558,13 +558,13 @@ Memory Layout for two Rectangle objects:
 r1: [ width=5.0 | height=3.0 ]   ← 16 bytes (two doubles)
 r2: [ width=10.0| height=2.0 ]   ← 16 bytes (two doubles)
 
-Methods (area, perimeter, etc.) — stored ONCE in the code segment
+Methods (area, perimeter, etc.) - stored ONCE in the code segment
   shared by ALL Rectangle objects
 \`\`\``,
         },
 
         // ─────────────────────────────────────────────────────────────────────
-        // SECTION F: Visual — OOP Mental Model
+        // SECTION F: Visual - OOP Mental Model
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 5,
@@ -575,7 +575,7 @@ Methods (area, perimeter, etc.) — stored ONCE in the code segment
 ## The Class as a Blueprint
 
 \`\`\`
-CLASS Dog  (the BLUEPRINT — exists once in code)
+CLASS Dog  (the BLUEPRINT - exists once in code)
 ┌─────────────────────────────────────────────────┐
 │  PRIVATE attributes:                            │
 │    string name;                                 │
@@ -681,7 +681,7 @@ Stack Memory:                   Stack Memory:   Heap Memory:
                         options: [
                             { id: 'a', text: 'Yes, always', isCorrect: false },
                             { id: 'b', text: 'Yes, but only with a special keyword', isCorrect: false },
-                            { id: 'c', text: 'No — private members are only accessible within the class\'s own methods', isCorrect: true },
+                            { id: 'c', text: 'No - private members are only accessible within the class\'s own methods', isCorrect: true },
                             { id: 'd', text: 'Yes, if the class is in the same file', isCorrect: false },
                         ],
                         explanation: 'Private members are strictly accessible only within the class itself (its own methods). Any attempt to access them from outside code causes a compile error.',
@@ -699,7 +699,7 @@ Stack Memory:                   Stack Memory:   Heap Memory:
                     {
                         question: 'If two `Dog` objects `d1` and `d2` are created from the same class, what is true about their attribute data?',
                         options: [
-                            { id: 'a', text: 'They share the same data — changing d1.name changes d2.name', isCorrect: false },
+                            { id: 'a', text: 'They share the same data - changing d1.name changes d2.name', isCorrect: false },
                             { id: 'b', text: 'Each object has its own independent copy of all attributes', isCorrect: true },
                             { id: 'c', text: 'Attributes are shared, but methods are separate', isCorrect: false },
                             { id: 'd', text: 'Only the first object created has real data', isCorrect: false },
@@ -750,10 +750,10 @@ Design a \`Book\` class for a library catalog system.
 
 **Required public methods:**
 - Setters and getters for each attribute
-- \`checkOut()\` — marks book as checked out (only if currently available)
-- \`returnBook()\` — marks book as returned
-- \`getStatus()\` — returns "Available" or "Checked Out"
-- \`printInfo()\` — formatted display of all book details
+- \`checkOut()\` - marks book as checked out (only if currently available)
+- \`returnBook()\` - marks book as returned
+- \`getStatus()\` - returns "Available" or "Checked Out"
+- \`printInfo()\` - formatted display of all book details
 
 **In main:**
 - Create 3 Book objects with different data
@@ -775,10 +775,10 @@ private:
 public:
     // TODO: setters
     // TODO: getters
-    // TODO: checkOut()     — prints error if already checked out
+    // TODO: checkOut()     - prints error if already checked out
     // TODO: returnBook()
-    // TODO: getStatus()    — returns "Available" or "Checked Out"
-    // TODO: printInfo()    — formatted display
+    // TODO: getStatus()    - returns "Available" or "Checked Out"
+    // TODO: printInfo()    - formatted display
 };
 
 int main() {
@@ -871,7 +871,7 @@ int main() {
     cout << "=== Checking Out Books ===" << endl;
     b1.checkOut();
     b2.checkOut();
-    b2.checkOut(); // Try to check out again — should error
+    b2.checkOut(); // Try to check out again - should error
 
     cout << "\\n=== Library Catalog ===" << endl;
     b1.printInfo();
@@ -886,9 +886,9 @@ int main() {
 }`,
                 hints: [
                     'Declare all attributes as private, then add public getter and setter methods for each.',
-                    'In `checkOut()`, first check if `isCheckedOut` is already true — if so, print an error. Otherwise set it to true.',
+                    'In `checkOut()`, first check if `isCheckedOut` is already true - if so, print an error. Otherwise set it to true.',
                     '`getStatus()` can use a ternary: `return isCheckedOut ? "Checked Out" : "Available";`',
-                    'Initialize `isCheckedOut` to `false` via `setCheckedOut(false)` — or use a constructor (covered next topic!).',
+                    'Initialize `isCheckedOut` to `false` via `setCheckedOut(false)` - or use a constructor (covered next topic!).',
                     'For `printInfo()`, use `setw()` from `<iomanip>` to align output neatly.',
                 ],
                 language: 'cpp',
@@ -934,10 +934,10 @@ public:
     void setX(int v) { x = v; } // public method
 };                     // ← don't forget the semicolon!
 
-MyClass obj;           // stack object — use DOT operator
+MyClass obj;           // stack object - use DOT operator
 obj.setX(5);
 
-MyClass* ptr = new MyClass(); // heap object — use ARROW operator
+MyClass* ptr = new MyClass(); // heap object - use ARROW operator
 ptr->setX(5);
 delete ptr;
 \`\`\`
@@ -957,7 +957,7 @@ delete ptr;
 - **Organisation**: Related data and functions live together
 - **Validation**: Setters can enforce rules before changing private data
 
-> 🎯 **Next up**: Constructors & Destructors — automatic initialization and cleanup of objects!`,
+> 🎯 **Next up**: Constructors & Destructors - automatic initialization and cleanup of objects!`,
         },
     ],
 });
@@ -980,14 +980,14 @@ await createLearn({
     steps: [
 
         // ─────────────────────────────────────────────────────────────────────
-        // SECTION A: The Problem — Uninitialized Objects
+        // SECTION A: The Problem - Uninitialized Objects
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 0,
             title: 'The Initialization Problem',
             type: 'EXPLANATION',
             tips: [
-                'Constructors are called AUTOMATICALLY when an object is created — you never call them manually.',
+                'Constructors are called AUTOMATICALLY when an object is created - you never call them manually.',
                 'A class can have multiple constructors (constructor overloading).',
                 'If you define ANY constructor, the compiler no longer generates a default constructor for you.',
             ],
@@ -1000,7 +1000,7 @@ Remember our \`BankAccount\` class? There's a critical problem:
 \`\`\`cpp
 BankAccount alice;
 alice.deposit(100); // ← What is balance BEFORE this?
-// balance is uninitialized — could be garbage: -9274583.2 or 0 or anything!
+// balance is uninitialized - could be garbage: -9274583.2 or 0 or anything!
 \`\`\`
 
 In the previous topic, we had to manually call setters:
@@ -1023,7 +1023,7 @@ private:
     string owner;
     double balance;
 public:
-    // Constructor — called automatically on object creation
+    // Constructor - called automatically on object creation
     BankAccount() {
         owner   = "Unknown";  // guaranteed initialization
         balance = 0.0;
@@ -1042,7 +1042,7 @@ BankAccount alice; // Constructor runs automatically here!
 | Rule | Detail |
 |------|--------|
 | **Same name as the class** | Constructor is named \`BankAccount\`, not \`init\` |
-| **No return type** | Not even \`void\` — it returns nothing |
+| **No return type** | Not even \`void\` - it returns nothing |
 | **Called automatically** | You never call \`alice.BankAccount()\` |
 | **Can be overloaded** | Multiple constructors with different parameters |
 | **Cannot be const** | They're modifying the object being created |`,
@@ -1056,7 +1056,7 @@ BankAccount alice; // Constructor runs automatically here!
             title: 'Default Constructor',
             type: 'EXPLANATION',
             tips: [
-                'The compiler-generated default constructor does NOT zero-initialize primitive types (int, double) — they contain garbage.',
+                'The compiler-generated default constructor does NOT zero-initialize primitive types (int, double) - they contain garbage.',
                 'Always explicitly write a default constructor that gives every attribute a sensible initial value.',
                 'A default constructor takes NO arguments: `ClassName() { ... }`',
             ],
@@ -1097,7 +1097,7 @@ Fixed f;     // f.x is guaranteed to be 0
 
 ## Member Initializer List (Preferred Syntax)
 
-Instead of assigning inside the body, use an **initializer list** — faster and required for \`const\` members and references:
+Instead of assigning inside the body, use an **initializer list** - faster and required for \`const\` members and references:
 
 \`\`\`cpp
 class Rectangle {
@@ -1112,28 +1112,28 @@ public:
         height = 0.0;
     }
 
-    // Member initializer list (preferred — faster, more idiomatic)
+    // Member initializer list (preferred - faster, more idiomatic)
     Rectangle() : width(0.0), height(0.0) {
         // body can be empty or do additional setup
     }
 };
 \`\`\`
 
-The \`: width(0.0), height(0.0)\` part is the **member initializer list** — it initializes members **before** the constructor body runs.
+The \`: width(0.0), height(0.0)\` part is the **member initializer list** - it initializes members **before** the constructor body runs.
 
 ---
 
 ## Why Initializer Lists?
 
-1. **Efficiency** — direct initialization, no copy assignment
-2. **Required for \`const\` members** — const cannot be assigned in the body
-3. **Required for references** — references must be initialized, not assigned
-4. **Matches member declaration order** — initializers run in the order members are declared, regardless of order in the list`,
+1. **Efficiency** - direct initialization, no copy assignment
+2. **Required for \`const\` members** - const cannot be assigned in the body
+3. **Required for references** - references must be initialized, not assigned
+4. **Matches member declaration order** - initializers run in the order members are declared, regardless of order in the list`,
         },
 
         {
             order: 2,
-            title: 'Default Constructor — Code',
+            title: 'Default Constructor - Code',
             type: 'CODE',
             content: '## Default Constructors in Practice',
             codeBlocks: [
@@ -1153,7 +1153,7 @@ private:
     int    level;
 
 public:
-    // Default constructor — initializer list syntax (preferred)
+    // Default constructor - initializer list syntax (preferred)
     Player() : name("Unknown Player"), health(100), score(0), level(1) {
         // Body can be empty when all init is done in the list
         cout << "  [Player created with defaults]" << endl;
@@ -1203,7 +1203,7 @@ int main() {
 
     return 0;
 }`,
-                    explanation: 'The default constructor runs automatically when `Player p1;` is created. The member initializer list sets all four attributes before the body runs. Each player object is independent — Alice and Bob have separate health/score/level.',
+                    explanation: 'The default constructor runs automatically when `Player p1;` is created. The member initializer list sets all four attributes before the body runs. Each player object is independent - Alice and Bob have separate health/score/level.',
                     highlightLines: [12, 13, 14],
                     isRunnable: true,
                 },
@@ -1254,13 +1254,13 @@ class Point {
 private:
     double x, y;
 public:
-    // Default constructor — origin (0, 0)
+    // Default constructor - origin (0, 0)
     Point() : x(0.0), y(0.0) { }
 
-    // Parameterized — specific coordinates
+    // Parameterized - specific coordinates
     Point(double x, double y) : x(x), y(y) { }
 
-    // Single value — same for both axes
+    // Single value - same for both axes
     Point(double val) : x(val), y(val) { }
 };
 
@@ -1314,13 +1314,13 @@ public:
 
         {
             order: 4,
-            title: 'Parameterized Constructor — Code',
+            title: 'Parameterized Constructor - Code',
             type: 'CODE',
             content: '## Parameterized Constructors in Practice',
             codeBlocks: [
                 {
                     order: 0,
-                    title: 'Multiple Constructors — Constructor Overloading',
+                    title: 'Multiple Constructors - Constructor Overloading',
                     language: 'cpp',
                     code: `#include <iostream>
 #include <string>
@@ -1332,17 +1332,17 @@ private:
     double x, y;
 
 public:
-    // ── Constructor 1: Default — creates origin (0, 0) ───────────────
+    // ── Constructor 1: Default - creates origin (0, 0) ───────────────
     Point() : x(0.0), y(0.0) {
         cout << "  Point() → (0, 0)" << endl;
     }
 
-    // ── Constructor 2: Parameterized — specific coordinates ──────────
+    // ── Constructor 2: Parameterized - specific coordinates ──────────
     Point(double x, double y) : x(x), y(y) {
         cout << "  Point(" << x << ", " << y << ") created" << endl;
     }
 
-    // ── Constructor 3: Single value — point on diagonal ──────────────
+    // ── Constructor 3: Single value - point on diagonal ──────────────
     explicit Point(double val) : x(val), y(val) {
         // 'explicit' prevents: Point p = 5.0; (accidental conversion)
         cout << "  Point(" << val << ", " << val << ") [diagonal]" << endl;
@@ -1378,7 +1378,7 @@ int main() {
     cout << "origin to corner: " << origin.distanceTo(corner) << endl; // should be 5
     cout << "origin to diag:   " << origin.distanceTo(diag)   << endl;
 
-    // Array of Points — all call the default constructor
+    // Array of Points - all call the default constructor
     cout << "\nArray of points (default ctor):" << endl;
     Point grid[3];
     grid[0] = Point(1.0, 2.0);
@@ -1387,7 +1387,7 @@ int main() {
 
     return 0;
 }`,
-                    explanation: 'Three overloaded constructors for the same class. The compiler picks the right one based on arguments. `explicit` prevents accidental implicit conversions — `Point p = 5.0` would cause a compile error with `explicit`, requiring `Point p(5.0)` instead.',
+                    explanation: 'Three overloaded constructors for the same class. The compiler picks the right one based on arguments. `explicit` prevents accidental implicit conversions - `Point p = 5.0` would cause a compile error with `explicit`, requiring `Point p(5.0)` instead.',
                     highlightLines: [11, 17, 22, 47, 48, 49],
                     isRunnable: true,
                 },
@@ -1403,7 +1403,7 @@ int main() {
             type: 'EXPLANATION',
             tips: [
                 'The compiler generates a default copy constructor that does a shallow (member-by-member) copy.',
-                'If your class owns heap memory (raw pointers), you MUST write a custom copy constructor for a deep copy — otherwise two objects point to the same memory.',
+                'If your class owns heap memory (raw pointers), you MUST write a custom copy constructor for a deep copy - otherwise two objects point to the same memory.',
                 'The copy constructor signature is always: `ClassName(const ClassName& other)`.',
             ],
             content: `# The Copy Constructor
@@ -1433,7 +1433,7 @@ public:
 
 Point p1(3.0, 4.0);
 Point p2 = p1;  // Copy constructor called
-// p2.x = 3.0, p2.y = 4.0 — independent copies of primitive types
+// p2.x = 3.0, p2.y = 4.0 - independent copies of primitive types
 \`\`\`
 
 For simple classes with only primitive types, the compiler's copy constructor is fine.
@@ -1476,7 +1476,7 @@ public:
         for (int i = 0; i < n; i++) data[i] = 0;
     }
 
-    // Deep copy constructor — allocates NEW memory
+    // Deep copy constructor - allocates NEW memory
     DynamicArray(const DynamicArray& other) : size(other.size) {
         data = new int[size];                    // NEW allocation
         for (int i = 0; i < size; i++)
@@ -1487,8 +1487,8 @@ public:
 };
 
 DynamicArray a1(5);
-DynamicArray a2 = a1; // Deep copy — a2.data is a NEW array with same values
-// Now a1 and a2 have SEPARATE heap memory — safe!
+DynamicArray a2 = a1; // Deep copy - a2.data is a NEW array with same values
+// Now a1 and a2 have SEPARATE heap memory - safe!
 \`\`\`
 
 ---
@@ -1504,7 +1504,7 @@ This is the **Rule of Three**. Modern C++ adds move constructor and move assignm
 
         {
             order: 6,
-            title: 'Copy Constructor — Code',
+            title: 'Copy Constructor - Code',
             type: 'CODE',
             content: '## Copy Constructors: Shallow vs Deep Copy',
             codeBlocks: [
@@ -1536,7 +1536,7 @@ public:
         cout << "  Constructed: \"" << buffer << "\"" << endl;
     }
 
-    // DEEP COPY CONSTRUCTOR — allocates its own heap memory
+    // DEEP COPY CONSTRUCTOR - allocates its own heap memory
     TextBuffer(const TextBuffer& other) : capacity(other.capacity) {
         buffer = new char[capacity];              // NEW allocation!
         for (int i = 0; i < capacity; i++)
@@ -1544,7 +1544,7 @@ public:
         cout << "  Deep-copied: \"" << buffer << "\"" << endl;
     }
 
-    // Destructor — frees heap memory
+    // Destructor - frees heap memory
     ~TextBuffer() {
         cout << "  Destroyed: \"" << buffer << "\"" << endl;
         delete[] buffer;
@@ -1573,26 +1573,26 @@ public:
 };
 
 int main() {
-    cout << "=== Primitive members — compiler copy is fine ===" << endl;
+    cout << "=== Primitive members - compiler copy is fine ===" << endl;
     Vector2D v1(3.0, 4.0);
     Vector2D v2 = v1;       // shallow copy is fine for primitives
     v2.x = 99.0;            // modifying v2 does NOT affect v1
-    cout << "v1: "; v1.print(); // (3, 4) — unchanged
+    cout << "v1: "; v1.print(); // (3, 4) - unchanged
     cout << "v2: "; v2.print(); // (99, 4)
 
-    cout << "\\n=== Heap memory — deep copy is essential ===" << endl;
+    cout << "\\n=== Heap memory - deep copy is essential ===" << endl;
     {
         TextBuffer t1("Hello", 20);  // create t1
         TextBuffer t2 = t1;          // deep copy constructor called
         t2.setChar(0, 'J');          // modify t2's buffer
         cout << "After modifying t2:" << endl;
-        t1.print();  // Still "Hello" — t1 unaffected!
+        t1.print();  // Still "Hello" - t1 unaffected!
         t2.print();  // "Jello"
-    } // Both destructors called safely — separate heap buffers
+    } // Both destructors called safely - separate heap buffers
 
     return 0;
 }`,
-                    explanation: 'For `Vector2D` with primitive members, the compiler\'s shallow copy works perfectly. For `TextBuffer` which owns heap memory, we write a deep copy constructor that allocates separate memory — so modifying `t2` doesn\'t corrupt `t1`, and both destructors can safely `delete[]` their own buffers.',
+                    explanation: 'For `Vector2D` with primitive members, the compiler\'s shallow copy works perfectly. For `TextBuffer` which owns heap memory, we write a deep copy constructor that allocates separate memory - so modifying `t2` doesn\'t corrupt `t1`, and both destructors can safely `delete[]` their own buffers.',
                     highlightLines: [24, 25, 26, 27, 28, 34, 35, 36],
                     isRunnable: true,
                 },
@@ -1604,10 +1604,10 @@ int main() {
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 7,
-            title: 'Destructors — Automatic Cleanup',
+            title: 'Destructors - Automatic Cleanup',
             type: 'EXPLANATION',
             tips: [
-                'The destructor is called automatically — you never call `obj.~MyClass()` manually.',
+                'The destructor is called automatically - you never call `obj.~MyClass()` manually.',
                 'Stack objects are destroyed in REVERSE order of creation (LIFO).',
                 'A destructor takes NO parameters and has NO return type. There is exactly ONE destructor per class.',
             ],
@@ -1615,13 +1615,13 @@ int main() {
 
 ## What is a Destructor?
 
-A **destructor** is the mirror of a constructor — it is called **automatically** when an object's lifetime ends. It performs **cleanup** work: releasing memory, closing files, freeing resources.
+A **destructor** is the mirror of a constructor - it is called **automatically** when an object's lifetime ends. It performs **cleanup** work: releasing memory, closing files, freeing resources.
 
 \`\`\`cpp
 class MyClass {
 public:
-    MyClass()  { /* constructor — setup   */ }
-    ~MyClass() { /* destructor — teardown */ }
+    MyClass()  { /* constructor - setup   */ }
+    ~MyClass() { /* destructor - teardown */ }
     //  ↑
     // tilde prefix = destructor
 };
@@ -1668,14 +1668,14 @@ public:
         file = fopen(path, "r");  // acquire the resource
     }
     ~FileGuard() {
-        if (file) fclose(file);   // GUARANTEED release — even if exception thrown!
+        if (file) fclose(file);   // GUARANTEED release - even if exception thrown!
     }
 };
 
 {
     FileGuard f("data.txt");  // file opened
     // ... use f ...
-}   // FileGuard destructor runs automatically — file GUARANTEED closed
+}   // FileGuard destructor runs automatically - file GUARANTEED closed
 // No leak possible, even if an exception occurred!
 \`\`\`
 
@@ -1685,14 +1685,14 @@ public:
 
 1. **Same name as class, prefixed with \`~\`**: \`~BankAccount()\`
 2. **No return type, no parameters**
-3. **Called automatically** — never manually
+3. **Called automatically** - never manually
 4. **Only one** destructor per class (unlike constructors)
 5. **Must be public** (unless you have a good reason to make it private/protected)`,
         },
 
         {
             order: 8,
-            title: 'Constructors & Destructors — Visual Lifecycle',
+            title: 'Constructors & Destructors - Visual Lifecycle',
             type: 'VISUAL',
             content: `# Object Lifecycle: Constructor → Methods → Destructor
 
@@ -1771,7 +1771,7 @@ Danger: If you forget delete p → memory leak!
 
 ---
 
-## RAII Pattern — Visualized
+## RAII Pattern - Visualized
 
 \`\`\`
 Resource:  [  File / Memory / Socket / Lock  ]
@@ -1804,17 +1804,17 @@ use(file)                   FileGuard g("file.txt");  ← constructor opens
                             { id: 'c', text: 'Only for heap objects created with new', isCorrect: false },
                             { id: 'd', text: 'When the object is first used in code', isCorrect: false },
                         ],
-                        explanation: 'Constructors are called automatically at the moment of object creation — both for stack objects (`MyClass obj;`) and heap objects (`new MyClass()`).',
+                        explanation: 'Constructors are called automatically at the moment of object creation - both for stack objects (`MyClass obj;`) and heap objects (`new MyClass()`).',
                     },
                     {
                         question: 'What is the return type of a constructor?',
                         options: [
                             { id: 'a', text: 'void', isCorrect: false },
                             { id: 'b', text: 'The class type (e.g., MyClass)', isCorrect: false },
-                            { id: 'c', text: 'No return type at all — not even void', isCorrect: true },
+                            { id: 'c', text: 'No return type at all - not even void', isCorrect: true },
                             { id: 'd', text: 'int (success/failure code)', isCorrect: false },
                         ],
-                        explanation: 'Constructors have no return type — not even `void`. This is one of the key syntactic differences that distinguishes them from regular methods.',
+                        explanation: 'Constructors have no return type - not even `void`. This is one of the key syntactic differences that distinguishes them from regular methods.',
                     },
                     {
                         question: 'What is the member initializer list syntax?',
@@ -1834,17 +1834,17 @@ use(file)                   FileGuard g("file.txt");  ← constructor opens
                             { id: 'c', text: 'Only when you use `memcpy()`', isCorrect: false },
                             { id: 'd', text: 'When assigning one existing object to another existing object', isCorrect: false },
                         ],
-                        explanation: 'The copy constructor is called: (1) `Point p2 = p1;` — initialization from existing object, (2) passing by value to a function, (3) returning by value. Assignment between EXISTING objects calls the copy assignment operator, not the copy constructor.',
+                        explanation: 'The copy constructor is called: (1) `Point p2 = p1;` - initialization from existing object, (2) passing by value to a function, (3) returning by value. Assignment between EXISTING objects calls the copy assignment operator, not the copy constructor.',
                     },
                     {
                         question: 'What is a "shallow copy" problem?',
                         options: [
                             { id: 'a', text: 'The copy is smaller than the original', isCorrect: false },
-                            { id: 'b', text: 'The copy only copies pointer VALUES (addresses), not the data they point to — both objects then share the same heap memory', isCorrect: true },
+                            { id: 'b', text: 'The copy only copies pointer VALUES (addresses), not the data they point to - both objects then share the same heap memory', isCorrect: true },
                             { id: 'c', text: 'The copy is made without calling the constructor', isCorrect: false },
                             { id: 'd', text: 'The copy is slower than a deep copy', isCorrect: false },
                         ],
-                        explanation: 'A shallow copy copies the pointer value (memory address), not the data at that address. Both the original and copy then point to the same heap data — modifying one affects the other, and deleting both causes a double-free crash.',
+                        explanation: 'A shallow copy copies the pointer value (memory address), not the data at that address. Both the original and copy then point to the same heap data - modifying one affects the other, and deleting both causes a double-free crash.',
                     },
                     {
                         question: 'When is a stack object\'s destructor called?',
@@ -1854,13 +1854,13 @@ use(file)                   FileGuard g("file.txt");  ← constructor opens
                             { id: 'c', text: 'When the object goes out of scope (end of its enclosing block)', isCorrect: true },
                             { id: 'd', text: 'When the garbage collector runs', isCorrect: false },
                         ],
-                        explanation: 'Stack objects are destroyed automatically when they go out of scope — when execution leaves the `{}` block where the object was declared. C++ has no garbage collector; destructors perform deterministic cleanup.',
+                        explanation: 'Stack objects are destroyed automatically when they go out of scope - when execution leaves the `{}` block where the object was declared. C++ has no garbage collector; destructors perform deterministic cleanup.',
                     },
                     {
                         question: 'What does RAII stand for and what does it mean?',
                         options: [
-                            { id: 'a', text: 'Rapid Application Interface Integration — a design pattern', isCorrect: false },
-                            { id: 'b', text: 'Resource Acquisition Is Initialization — acquire resources in the constructor, release in the destructor', isCorrect: true },
+                            { id: 'a', text: 'Rapid Application Interface Integration - a design pattern', isCorrect: false },
+                            { id: 'b', text: 'Resource Acquisition Is Initialization - acquire resources in the constructor, release in the destructor', isCorrect: true },
                             { id: 'c', text: 'Runtime Allocation and Immediate Initialization', isCorrect: false },
                             { id: 'd', text: 'Reference Aliasing and Indirect Initialization', isCorrect: false },
                         ],
@@ -1883,21 +1883,21 @@ Build a \`Product\` class that demonstrates all constructor types.
 
 **Requirements:**
 
-1. **Private attributes**: \`name\` (string), \`price\` (double), \`quantity\` (int), \`id\` (static counter — shared across all objects)
+1. **Private attributes**: \`name\` (string), \`price\` (double), \`quantity\` (int), \`id\` (static counter - shared across all objects)
 
 2. **Default constructor**: Sets name="Unnamed", price=0.0, quantity=0, auto-increments id
 
-3. **Parameterized constructor**: Takes name, price, quantity — validates price >= 0 and quantity >= 0
+3. **Parameterized constructor**: Takes name, price, quantity - validates price >= 0 and quantity >= 0
 
 4. **Copy constructor**: Deep copies all data (increments id for the copy so each product has a unique id)
 
 5. **Destructor**: Prints a message when the product is destroyed
 
 6. **Methods**:
-   - \`restock(int qty)\` — adds to quantity
-   - \`sell(int qty)\` — reduces quantity (cannot go below 0)
-   - \`totalValue()\` — returns price × quantity
-   - \`printInfo()\` — formatted display
+   - \`restock(int qty)\` - adds to quantity
+   - \`sell(int qty)\` - reduces quantity (cannot go below 0)
+   - \`totalValue()\` - returns price × quantity
+   - \`printInfo()\` - formatted display
 
 7. **In main**: Create products using all three constructors, sell some, restock, print inventory`,
             stepData: {
@@ -1917,10 +1917,10 @@ public:
     // TODO: Default constructor
     // TODO: Parameterized constructor(string name, double price, int qty)
     // TODO: Copy constructor
-    // TODO: Destructor — prints "Product [name] destroyed"
+    // TODO: Destructor - prints "Product [name] destroyed"
 
     // TODO: restock(int qty)
-    // TODO: sell(int qty) — print error if not enough stock
+    // TODO: sell(int qty) - print error if not enough stock
     // TODO: double totalValue()
     // TODO: printInfo()
 };
@@ -1949,7 +1949,7 @@ using namespace std;
 
 class Product {
 private:
-    static int nextId;   // Class-level counter — shared by ALL instances
+    static int nextId;   // Class-level counter - shared by ALL instances
     int    id;
     string name;
     double price;
@@ -1971,7 +1971,7 @@ public:
         cout << "  [Param]   Created \"" << name << "\" #" << id << endl;
     }
 
-    // ── Copy Constructor — gives the copy a NEW unique id ───────────
+    // ── Copy Constructor - gives the copy a NEW unique id ───────────
     Product(const Product& other)
         : id(nextId++),           // new id for the copy!
           name(other.name + " (copy)"),
@@ -2039,7 +2039,7 @@ int main() {
 
     cout << "\n=== Transactions ===" << endl;
     p2.sell(3);
-    p3.sell(100);    // should fail — not enough stock
+    p3.sell(100);    // should fail - not enough stock
     p3.restock(25);
     p3.sell(10);
     p4.sell(5);      // sells from the COPY, not the original
@@ -2058,16 +2058,16 @@ int main() {
     cout << fixed << setprecision(2);
     cout << "  Grand Total Inventory Value: $" << grandTotal << endl;
 
-    cout << "\n=== End of main — stack objects destroyed ===" << endl;
+    cout << "\n=== End of main - stack objects destroyed ===" << endl;
     // destructors will fire here in REVERSE order: p4, p3, p2, p1
     return 0;
 }`,
                 hints: [
-                    'The static member `nextId` is shared by ALL instances — increment it in every constructor (including copy) to give each product a unique id.',
+                    'The static member `nextId` is shared by ALL instances - increment it in every constructor (including copy) to give each product a unique id.',
                     'In the initializer list for the parameterized constructor, use ternary operators: `price(p >= 0 ? p : 0.0)` for validation.',
                     'The copy constructor should call `nextId++` for the new id, but copy price, quantity etc. from `other`.',
-                    'The destructor is `~Product()` — no return type, no parameters. Print the name and id for tracing.',
-                    'Define the static member outside the class: `int Product::nextId = 1;` — this is required by C++ even if you initialize it inside with `inline static`.',
+                    'The destructor is `~Product()` - no return type, no parameters. Print the name and id for tracing.',
+                    'Define the static member outside the class: `int Product::nextId = 1;` - this is required by C++ even if you initialize it inside with `inline static`.',
                 ],
                 language: 'cpp',
             },
@@ -2083,7 +2083,7 @@ int main() {
 
 | Type | Signature | Called When |
 |------|-----------|------------|
-| **Default** | \`MyClass()\` | \`MyClass obj;\` — no arguments |
+| **Default** | \`MyClass()\` | \`MyClass obj;\` - no arguments |
 | **Parameterized** | \`MyClass(int x, ...)\` | \`MyClass obj(5, ...);\` |
 | **Copy** | \`MyClass(const MyClass& o)\` | \`MyClass obj2 = obj1;\` or passing by value |
 
@@ -2116,9 +2116,9 @@ Deep (custom copy ctor):       allocates NEW memory  → independent → safe
 
 ## RAII
 
-Acquire resources in the **constructor**, release in the **destructor**. This guarantees cleanup even when exceptions occur — the foundation of safe C++ resource management.
+Acquire resources in the **constructor**, release in the **destructor**. This guarantees cleanup even when exceptions occur - the foundation of safe C++ resource management.
 
-> 🎯 **Next up**: Encapsulation & Abstraction — getters, setters, and designing clean class interfaces!`,
+> 🎯 **Next up**: Encapsulation & Abstraction - getters, setters, and designing clean class interfaces!`,
         },
     ],
 });
@@ -2131,7 +2131,7 @@ await createLearn({
     slug: 'cpp-encapsulation',
     title: 'Encapsulation & Abstraction',
     description:
-        'Master the first two pillars of OOP: Encapsulation — bundling data with methods and hiding implementation details with access specifiers — and Abstraction — exposing only what users need through clean interfaces. Includes getters/setters, const correctness, friend functions, and interface design principles.',
+        'Master the first two pillars of OOP: Encapsulation - bundling data with methods and hiding implementation details with access specifiers - and Abstraction - exposing only what users need through clean interfaces. Includes getters/setters, const correctness, friend functions, and interface design principles.',
     difficulty: 'INTERMEDIATE',
     unitNumber: 4,
     unitTitle: 'Unit 4: Object-Oriented Programming',
@@ -2141,15 +2141,15 @@ await createLearn({
     steps: [
 
         // ─────────────────────────────────────────────────────────────────────
-        // SECTION A: Encapsulation — The Concept
+        // SECTION A: Encapsulation - The Concept
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 0,
-            title: 'Encapsulation — The Concept',
+            title: 'Encapsulation - The Concept',
             type: 'EXPLANATION',
             tips: [
                 'Encapsulation = bundling data + behavior together AND protecting data from unauthorized access.',
-                'Think of encapsulation like a capsule pill — the medicine (data) is inside, the outer shell (public interface) controls access.',
+                'Think of encapsulation like a capsule pill - the medicine (data) is inside, the outer shell (public interface) controls access.',
                 'Violating encapsulation (making everything public) is one of the most common OOP mistakes.',
             ],
             content: `# Encapsulation
@@ -2168,7 +2168,7 @@ await createLearn({
 ### Without Encapsulation (Dangerous)
 
 \`\`\`cpp
-// No class — just exposed data
+// No class - just exposed data
 double balance = 1000.0;
 string owner = "Alice";
 
@@ -2183,7 +2183,7 @@ owner = "";              // 💀 Corrupt state
 \`\`\`cpp
 class BankAccount {
 private:
-    double balance;   // HIDDEN — only this class can touch it
+    double balance;   // HIDDEN - only this class can touch it
 
 public:
     void deposit(double amount) {
@@ -2195,7 +2195,7 @@ public:
 };
 
 BankAccount acc;
-acc.balance = -99999; // ❌ COMPILE ERROR — encapsulation enforced by compiler!
+acc.balance = -99999; // ❌ COMPILE ERROR - encapsulation enforced by compiler!
 acc.deposit(-99999);  // ✅ Rejected by validation inside deposit()
 \`\`\`
 
@@ -2214,7 +2214,7 @@ void setAge(int a) {
 ### 2. Controlled Change
 \`\`\`cpp
 // You can change HOW balance is stored without breaking outside code
-// Outside code always calls deposit() — they don't care about internals
+// Outside code always calls deposit() - they don't care about internals
 \`\`\`
 
 ### 3. Invariant Maintenance
@@ -2241,13 +2241,13 @@ void setAge(int a) {
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 1,
-            title: 'Getters and Setters — Controlled Access',
+            title: 'Getters and Setters - Controlled Access',
             type: 'EXPLANATION',
             tips: [
                 'Not every attribute needs a getter AND a setter. Only expose what\'s needed.',
                 'A "read-only" attribute has a getter but no setter.',
                 'A "write-only" attribute (rare) has a setter but no getter.',
-                'Setters can enforce constraints — never allow invalid state.',
+                'Setters can enforce constraints - never allow invalid state.',
             ],
             content: `# Getters and Setters
 
@@ -2261,7 +2261,7 @@ private:
     double celsius;       // internal representation
 
 public:
-    // Setter — enforces valid range
+    // Setter - enforces valid range
     void setCelsius(double c) {
         if (c >= -273.15) { // absolute zero is the minimum
             celsius = c;
@@ -2270,10 +2270,10 @@ public:
         }
     }
 
-    // Getter — returns the stored value
+    // Getter - returns the stored value
     double getCelsius() const { return celsius; }
 
-    // Computed getters — expose data in different forms
+    // Computed getters - expose data in different forms
     double getFahrenheit() const { return celsius * 9.0/5.0 + 32.0; }
     double getKelvin()     const { return celsius + 273.15; }
 };
@@ -2283,7 +2283,7 @@ t.setCelsius(100.0);
 cout << t.getCelsius();     // 100
 cout << t.getFahrenheit();  // 212
 cout << t.getKelvin();      // 373.15
-// t.celsius = -5000; ← COMPILE ERROR — direct access blocked
+// t.celsius = -5000; ← COMPILE ERROR - direct access blocked
 \`\`\`
 
 ---
@@ -2297,8 +2297,8 @@ class Circle {
 private:
     double radius;
 public:
-    void   setRadius(double r) { radius = r; }   // non-const — modifies
-    double getRadius()  const  { return radius; } // const — read only
+    void   setRadius(double r) { radius = r; }   // non-const - modifies
+    double getRadius()  const  { return radius; } // const - read only
     double area()       const  { return 3.14159 * radius * radius; } // const
     double perimeter()  const  { return 2 * 3.14159 * radius; }     // const
     void   print()      const  { cout << "Circle r=" << radius; }   // const
@@ -2308,8 +2308,8 @@ public:
 **Why \`const\` matters:**
 \`\`\`cpp
 const Circle c;      // const object
-c.setRadius(5);      // ❌ ERROR — can't call non-const method on const object
-cout << c.area();    // ✅ OK — area() is marked const
+c.setRadius(5);      // ❌ ERROR - can't call non-const method on const object
+cout << c.area();    // ✅ OK - area() is marked const
 \`\`\`
 
 ---
@@ -2323,17 +2323,17 @@ class BankAccount {
 private:
     string owner;
     double balance;
-    int    transactionCount;  // internal tracking — no getter/setter needed
-    string lastErrorMsg;      // internal state — no getter needed
+    int    transactionCount;  // internal tracking - no getter/setter needed
+    string lastErrorMsg;      // internal state - no getter needed
 
 public:
     // SELECTIVE EXPOSURE:
     string getOwner()   const { return owner; }       // read-only
     double getBalance() const { return balance; }     // read-only (no setter!)
-    // balance is only changed via deposit/withdraw — never directly set!
+    // balance is only changed via deposit/withdraw - never directly set!
     void deposit(double amount)  { /* ... */ }
     void withdraw(double amount) { /* ... */ }
-    // transactionCount — not exposed at all! implementation detail
+    // transactionCount - not exposed at all! implementation detail
 };
 \`\`\`
 
@@ -2346,25 +2346,25 @@ Some data should never change after creation:
 \`\`\`cpp
 class Employee {
 private:
-    const int employeeId;    // const member — set once, never changed
+    const int employeeId;    // const member - set once, never changed
     string    name;
 public:
     Employee(int id, string n) : employeeId(id), name(n) { }
     int getEmployeeId() const { return employeeId; }
-    // No setEmployeeId() — IDs are permanent!
+    // No setEmployeeId() - IDs are permanent!
 };
 \`\`\``,
         },
 
         {
             order: 2,
-            title: 'Getters, Setters & Const Correctness — Code',
+            title: 'Getters, Setters & Const Correctness - Code',
             type: 'CODE',
             content: '## Encapsulation with Validation and Const Correctness',
             codeBlocks: [
                 {
                     order: 0,
-                    title: 'Temperature Class — Full Encapsulation',
+                    title: 'Temperature Class - Full Encapsulation',
                     language: 'cpp',
                     code: `#include <iostream>
 #include <string>
@@ -2374,7 +2374,7 @@ using namespace std;
 class Temperature {
 private:
     double celsius;
-    static const double ABSOLUTE_ZERO; // -273.15°C — class constant
+    static const double ABSOLUTE_ZERO; // -273.15°C - class constant
 
 public:
     // ── Constructors ─────────────────────────────────────────────────
@@ -2398,7 +2398,7 @@ public:
         }
     }
 
-    // ── Getters — all const (they don't modify the object) ──────────
+    // ── Getters - all const (they don't modify the object) ──────────
     double getCelsius()    const { return celsius; }
     double getFahrenheit() const { return celsius * 9.0 / 5.0 + 32.0; }
     double getKelvin()     const { return celsius + 273.15; }
@@ -2421,7 +2421,7 @@ public:
              << getDescription() << endl;
     }
 
-    // ── Comparison (const — doesn't modify either object) ───────────
+    // ── Comparison (const - doesn't modify either object) ───────────
     bool isWarmerThan(const Temperature& other) const {
         return celsius > other.celsius;
     }
@@ -2433,7 +2433,7 @@ const double Temperature::ABSOLUTE_ZERO = -273.15;
 int main() {
     Temperature room(22.0);
     Temperature boiling(100.0);
-    Temperature invalid(-300.0); // Below absolute zero — rejected
+    Temperature invalid(-300.0); // Below absolute zero - rejected
 
     room.print();
     boiling.print();
@@ -2445,10 +2445,10 @@ int main() {
     cout << "\nIs boiling warmer than room? "
          << (boiling.isWarmerThan(room) ? "Yes" : "No") << endl;
 
-    // Using a const Temperature — can only call const methods
+    // Using a const Temperature - can only call const methods
     const Temperature freezing(0.0);
-    freezing.print();           // ✅ const method — OK
-    // freezing.setCelsius(5); // ❌ COMPILE ERROR — non-const method on const obj
+    freezing.print();           // ✅ const method - OK
+    // freezing.setCelsius(5); // ❌ COMPILE ERROR - non-const method on const obj
 
     return 0;
 }`,
@@ -2458,14 +2458,14 @@ int main() {
                 },
                 {
                     order: 1,
-                    title: 'Selective Exposure — Interface Design',
+                    title: 'Selective Exposure - Interface Design',
                     language: 'cpp',
                     code: `#include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
 
-// A shopping cart — careful interface design
+// A shopping cart - careful interface design
 class ShoppingCart {
 private:
     struct Item {
@@ -2476,14 +2476,14 @@ private:
 
     vector<Item> items;
     string       customerName;
-    double       discountPercent; // internal — not directly settable
+    double       discountPercent; // internal - not directly settable
 
 public:
     // ── Constructor ──────────────────────────────────────────────────
     ShoppingCart(string customer)
         : customerName(customer), discountPercent(0.0) { }
 
-    // ── Controlled modification — no direct setter for items ─────────
+    // ── Controlled modification - no direct setter for items ─────────
     void addItem(string name, double price, int qty = 1) {
         if (price < 0 || qty <= 0) {
             cout << "  ⚠️  Invalid item data!" << endl;
@@ -2504,7 +2504,7 @@ public:
         cout << "  Item \"" << name << "\" not found." << endl;
     }
 
-    // ── Discount — validated, not directly settable ──────────────────
+    // ── Discount - validated, not directly settable ──────────────────
     void applyDiscount(double percent) {
         if (percent >= 0 && percent <= 100) {
             discountPercent = percent;
@@ -2514,7 +2514,7 @@ public:
         }
     }
 
-    // ── Read-only getters — const ────────────────────────────────────
+    // ── Read-only getters - const ────────────────────────────────────
     string getCustomer() const { return customerName; }
     int    getItemCount() const { return (int)items.size(); }
 
@@ -2550,10 +2550,10 @@ int main() {
     cart.addItem("C++ Book", 49.99);
     cart.addItem("Mechanical Keyboard", 129.99);
     cart.addItem("USB Hub", 24.99, 2);  // quantity 2
-    cart.addItem("Cable", -5.00);       // invalid — rejected
+    cart.addItem("Cable", -5.00);       // invalid - rejected
 
     cart.applyDiscount(10.0);           // 10% off
-    cart.applyDiscount(150.0);          // invalid — rejected
+    cart.applyDiscount(150.0);          // invalid - rejected
 
     cout << "Items in cart: " << cart.getItemCount() << endl;
     cart.printReceipt();
@@ -2563,7 +2563,7 @@ int main() {
 
     return 0;
 }`,
-                    explanation: 'Demonstrates selective encapsulation: `discountPercent` is not directly settable — only `applyDiscount()` can set it with validation. `items` vector is completely hidden — only `addItem()`/`removeItem()` modify it. All getters are `const`. The `Item` struct is a private inner type.',
+                    explanation: 'Demonstrates selective encapsulation: `discountPercent` is not directly settable - only `applyDiscount()` can set it with validation. `items` vector is completely hidden - only `addItem()`/`removeItem()` modify it. All getters are `const`. The `Item` struct is a private inner type.',
                     highlightLines: [23, 47, 55, 60, 65],
                     isRunnable: true,
                 },
@@ -2575,7 +2575,7 @@ int main() {
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 3,
-            title: 'Abstraction — Hiding Complexity',
+            title: 'Abstraction - Hiding Complexity',
             type: 'EXPLANATION',
             tips: [
                 'Abstraction means the USER of your class shouldn\'t need to understand HOW it works, only WHAT it does.',
@@ -2623,7 +2623,7 @@ public:
 };
 \`\`\`
 
-The user calls \`sender.sendEmail(...)\` — that's it. All the complexity is abstracted away.
+The user calls \`sender.sendEmail(...)\` - that's it. All the complexity is abstracted away.
 
 ---
 
@@ -2641,12 +2641,12 @@ public:
     int  size() const   { return count; }
 };
 
-// Version 2: Switched to vector internally — users don't notice!
+// Version 2: Switched to vector internally - users don't notice!
 class DataStore {
 private:
     vector<int> data; // changed internals completely
 public:
-    // SAME PUBLIC INTERFACE — users' code still compiles and works!
+    // SAME PUBLIC INTERFACE - users' code still compiles and works!
     void add(int x)     { data.push_back(x); }
     int  get(int i) const { return data[i]; }
     int  size() const   { return (int)data.size(); }
@@ -2678,7 +2678,7 @@ Together they form: "hide what you don't need, expose what you do."
             title: 'The friend Keyword (Controlled Exceptions to Encapsulation)',
             type: 'EXPLANATION',
             tips: [
-                'Use `friend` sparingly — it breaks encapsulation as a controlled, intentional exception.',
+                'Use `friend` sparingly - it breaks encapsulation as a controlled, intentional exception.',
                 'Friendship is NOT inherited and NOT transitive: if A is a friend of B, and B is a friend of C, A is NOT a friend of C.',
                 'Common legitimate uses: operator overloading and testing frameworks.',
             ],
@@ -2705,7 +2705,7 @@ public:
     friend double distance(const Point& a, const Point& b);
 };
 
-// Definition is OUTSIDE the class — but has access to private x, y
+// Definition is OUTSIDE the class - but has access to private x, y
 double distance(const Point& a, const Point& b) {
     double dx = a.x - b.x;  // ✅ can access private x, y!
     double dy = a.y - b.y;
@@ -2770,9 +2770,9 @@ cout << p << endl; // Output: (3, 4)
 
 1. **Declared inside** the class body (after \`friend\` keyword)
 2. **Defined outside** the class (not a member function)
-3. **Not inherited** — friend of Base is NOT friend of Derived
-4. **Not transitive** — if B is friend of A, and C is friend of B, C is NOT friend of A
-5. **Use sparingly** — each \`friend\` is an intentional hole in encapsulation`,
+3. **Not inherited** - friend of Base is NOT friend of Derived
+4. **Not transitive** - if B is friend of A, and C is friend of B, C is NOT friend of A
+5. **Use sparingly** - each \`friend\` is an intentional hole in encapsulation`,
         },
 
         // ─────────────────────────────────────────────────────────────────────
@@ -2834,9 +2834,9 @@ const Circle c(5.0);
          │
          │ c is read-only!
          │
-         ├──► c.area()       ✅  area() is const — allowed
-         ├──► c.perimeter()  ✅  perimeter() is const — allowed
-         ├──► c.print()      ✅  print() is const — allowed
+         ├──► c.area()       ✅  area() is const - allowed
+         ├──► c.perimeter()  ✅  perimeter() is const - allowed
+         ├──► c.print()      ✅  print() is const - allowed
          └──► c.setRadius(3) ❌  COMPILE ERROR: setRadius() is not const
 \`\`\`
 
@@ -2856,7 +2856,7 @@ const Circle c(5.0);
   ❌ cannot access  │                              │
   x, y              └──────────────────────────────┘
 
-Use friend sparingly — it's an intentional exception, not the rule.
+Use friend sparingly - it's an intentional exception, not the rule.
 \`\`\``,
         },
 
@@ -2894,7 +2894,7 @@ Use friend sparingly — it's an intentional exception, not the rule.
                         question: 'What is the KEY advantage of using private attributes with public setter methods over just making attributes public?',
                         options: [
                             { id: 'a', text: 'It is faster at runtime', isCorrect: false },
-                            { id: 'b', text: 'Setters allow validation — ensuring data is always in a valid state', isCorrect: true },
+                            { id: 'b', text: 'Setters allow validation - ensuring data is always in a valid state', isCorrect: true },
                             { id: 'c', text: 'It uses less memory', isCorrect: false },
                             { id: 'd', text: 'It makes the class easier to inherit from', isCorrect: false },
                         ],
@@ -2918,13 +2918,13 @@ Use friend sparingly — it's an intentional exception, not the rule.
                             { id: 'c', text: 'Abstraction is for data, Encapsulation is for methods', isCorrect: false },
                             { id: 'd', text: 'Encapsulation is a runtime concept, Abstraction is compile-time', isCorrect: false },
                         ],
-                        explanation: 'Encapsulation is the MECHANISM — using access specifiers to hide implementation. Abstraction is the PRINCIPLE — deciding WHAT to hide and what to expose. Encapsulation enables abstraction.',
+                        explanation: 'Encapsulation is the MECHANISM - using access specifiers to hide implementation. Abstraction is the PRINCIPLE - deciding WHAT to hide and what to expose. Encapsulation enables abstraction.',
                     },
                     {
                         question: 'If you change the internal implementation of a well-encapsulated class (e.g., switch from array to vector), what happens to code that uses that class through its public interface?',
                         options: [
                             { id: 'a', text: 'It must be rewritten to use the new internals', isCorrect: false },
-                            { id: 'b', text: 'It continues to work unchanged — the public interface is stable', isCorrect: true },
+                            { id: 'b', text: 'It continues to work unchanged - the public interface is stable', isCorrect: true },
                             { id: 'c', text: 'It crashes at runtime', isCorrect: false },
                             { id: 'd', text: 'It fails to compile', isCorrect: false },
                         ],
@@ -2946,23 +2946,23 @@ Use friend sparingly — it's an intentional exception, not the rule.
 Design a \`Thermostat\` class that demonstrates full encapsulation and abstraction.
 
 **Private attributes:**
-- \`currentTemp\` (double) — the room's actual temperature (read by sensors)
-- \`targetTemp\` (double) — the desired temperature (set by user)
-- \`minTemp\` (double, const) — minimum allowed target (e.g., 10.0°C)
-- \`maxTemp\` (double, const) — maximum allowed target (e.g., 35.0°C)
-- \`isHeating\` (bool) — is the heater on?
-- \`isCooling\` (bool) — is the AC on?
+- \`currentTemp\` (double) - the room's actual temperature (read by sensors)
+- \`targetTemp\` (double) - the desired temperature (set by user)
+- \`minTemp\` (double, const) - minimum allowed target (e.g., 10.0°C)
+- \`maxTemp\` (double, const) - maximum allowed target (e.g., 35.0°C)
+- \`isHeating\` (bool) - is the heater on?
+- \`isCooling\` (bool) - is the AC on?
 
 **Public interface:**
 - Constructor: takes minTemp, maxTemp, initialTarget
-- \`setTargetTemp(double t)\` — validated setter (must be in [min, max])
-- \`updateCurrentTemp(double t)\` — simulates sensor reading
+- \`setTargetTemp(double t)\` - validated setter (must be in [min, max])
+- \`updateCurrentTemp(double t)\` - simulates sensor reading
 - \`getTargetTemp()\` const, \`getCurrentTemp()\` const
-- \`tick()\` — the core logic: turn heater ON if current < target-1, turn AC ON if current > target+1, turn both OFF if within 1°C of target
-- \`getStatus()\` const — returns "Heating", "Cooling", or "Idle"
-- \`printStatus()\` const — formatted display
+- \`tick()\` - the core logic: turn heater ON if current < target-1, turn AC ON if current > target+1, turn both OFF if within 1°C of target
+- \`getStatus()\` const - returns "Heating", "Cooling", or "Idle"
+- \`printStatus()\` const - formatted display
 
-**Bonus**: Add a \`friend\` function \`printDiagnostics(const Thermostat& t)\` that prints internal state (both booleans) — this simulates a service technician's diagnostic tool.`,
+**Bonus**: Add a \`friend\` function \`printDiagnostics(const Thermostat& t)\` that prints internal state (both booleans) - this simulates a service technician's diagnostic tool.`,
             stepData: {
                 starterCode: `#include <iostream>
 #include <string>
@@ -2982,12 +2982,12 @@ private:
 public:
     // TODO: Constructor(double minT, double maxT, double initialTarget)
 
-    // TODO: setTargetTemp(double t) — validate range
-    // TODO: updateCurrentTemp(double t) — simulate sensor
+    // TODO: setTargetTemp(double t) - validate range
+    // TODO: updateCurrentTemp(double t) - simulate sensor
     // TODO: getTargetTemp() const
     // TODO: getCurrentTemp() const
 
-    // TODO: tick() — core control logic
+    // TODO: tick() - core control logic
     // TODO: getStatus() const
     // TODO: printStatus() const
 };
@@ -3017,7 +3017,7 @@ int main() {
     t.printStatus();
 
     // Test invalid target
-    t.setTargetTemp(50.0);  // above max — should reject
+    t.setTargetTemp(50.0);  // above max - should reject
 
     // Bonus: diagnostics
     // printDiagnostics(t);
@@ -3038,7 +3038,7 @@ private:
     bool isHeating;
     bool isCooling;
 
-    // Friend function declaration — grants diagnostic access
+    // Friend function declaration - grants diagnostic access
     friend void printDiagnostics(const Thermostat& t);
 
 public:
@@ -3109,9 +3109,9 @@ public:
     }
 };
 
-// ── Friend function — has access to private isHeating, isCooling ─────
+// ── Friend function - has access to private isHeating, isCooling ─────
 void printDiagnostics(const Thermostat& t) {
-    cout << "\n[DIAGNOSTICS — Service Mode]" << endl;
+    cout << "\n[DIAGNOSTICS - Service Mode]" << endl;
     cout << "  currentTemp:  " << t.currentTemp  << "°C" << endl;
     cout << "  targetTemp:   " << t.targetTemp   << "°C" << endl;
     cout << "  minTemp:      " << t.minTemp      << "°C" << endl;
@@ -3146,16 +3146,16 @@ int main() {
     t.setTargetTemp(50.0);  // rejected
 
     cout << "\n--- Technician Diagnostics ---" << endl;
-    printDiagnostics(t);   // friend function — accesses private members
+    printDiagnostics(t);   // friend function - accesses private members
 
     return 0;
 }`,
                 hints: [
-                    '`const` members (`minTemp`, `maxTemp`) MUST be initialized in the member initializer list — they cannot be assigned in the body.',
+                    '`const` members (`minTemp`, `maxTemp`) MUST be initialized in the member initializer list - they cannot be assigned in the body.',
                     'In `tick()`, compute `diff = currentTemp - targetTemp`. If diff < -1.0 → heat. If diff > 1.0 → cool. Else → idle.',
                     'Declare `friend void printDiagnostics(const Thermostat& t);` inside the class body. Define it outside the class without the `friend` keyword.',
-                    '`getStatus()` should be a `const` method — it doesn\'t modify anything, just reads `isHeating` and `isCooling`.',
-                    'The friend function is NOT a member of the class — it is defined at global scope. It can access `t.isHeating` and `t.isCooling` because it is declared as a friend.',
+                    '`getStatus()` should be a `const` method - it doesn\'t modify anything, just reads `isHeating` and `isCooling`.',
+                    'The friend function is NOT a member of the class - it is defined at global scope. It can access `t.isHeating` and `t.isCooling` because it is declared as a friend.',
                 ],
                 language: 'cpp',
             },
@@ -3174,16 +3174,16 @@ int main() {
 **How**: \`private\` for data, \`public\` for methods that control access.
 
 **Benefits**:
-- **Validation** — Setters enforce valid state
-- **Invariant protection** — Internal rules can never be violated from outside
-- **Freedom to refactor** — Change internals without breaking user code
-- **Debugging** — Only one place where data changes
+- **Validation** - Setters enforce valid state
+- **Invariant protection** - Internal rules can never be violated from outside
+- **Freedom to refactor** - Change internals without breaking user code
+- **Debugging** - Only one place where data changes
 
 ## Abstraction
 
-**Definition**: Exposing only what is necessary — hiding "how" and showing only "what".
+**Definition**: Exposing only what is necessary - hiding "how" and showing only "what".
 
-**How**: Thoughtful public interface design — expose operations, hide implementation.
+**How**: Thoughtful public interface design - expose operations, hide implementation.
 
 **Benefit**: Users of your class don't need to understand the internals.
 
@@ -3209,7 +3209,7 @@ Not every attribute needs both:
 ## The friend Keyword
 
 - Grants a specific non-member function or class access to private members
-- Used sparingly — breaks encapsulation intentionally
+- Used sparingly - breaks encapsulation intentionally
 - Most common use: operator overloading, especially \`operator<<\` for \`cout\`
 - Friendship is **not inherited** and **not transitive**
 
@@ -3219,7 +3219,7 @@ Not every attribute needs both:
 
 This reduces coupling between classes, makes code easier to change, and prevents bugs from external interference.
 
-> 🎯 **Next up**: Inheritance — building new classes on top of existing ones, reusing code, and extending behavior!`,
+> 🎯 **Next up**: Inheritance - building new classes on top of existing ones, reusing code, and extending behavior!`,
         },
     ],
 });
@@ -3232,7 +3232,7 @@ This reduces coupling between classes, makes code easier to change, and prevents
 
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// UNIT 4: Object-Oriented Programming — Part B (Final 2 Topics)
+// UNIT 4: Object-Oriented Programming - Part B (Final 2 Topics)
 // Topics: cpp-inheritance, cpp-polymorphism
 // ═══════════════════════════════════════════════════════════════════════════════
 //
@@ -3268,7 +3268,7 @@ await createLearn({
             title: 'What is Inheritance? The IS-A Relationship',
             type: 'EXPLANATION',
             tips: [
-                'Use inheritance only when a true IS-A relationship exists: "A Dog IS-A Animal" ✅. NOT for HAS-A: "A Car HAS-A Engine" — that\'s composition.',
+                'Use inheritance only when a true IS-A relationship exists: "A Dog IS-A Animal" ✅. NOT for HAS-A: "A Car HAS-A Engine" - that\'s composition.',
                 'Inheritance models specialization: the derived class IS a more specific version of the base class.',
                 'C++ uses a colon to declare inheritance: `class Dog : public Animal { };`',
             ],
@@ -3302,7 +3302,7 @@ public:
 };
 \`\`\`
 
-This is **code duplication** — a maintenance nightmare. If you find a bug in \`eat()\`, you must fix it in every class separately.
+This is **code duplication** - a maintenance nightmare. If you find a bug in \`eat()\`, you must fix it in every class separately.
 
 ---
 
@@ -3311,7 +3311,7 @@ This is **code duplication** — a maintenance nightmare. If you find a bug in \
 **Inheritance** lets a new class (**derived**) automatically receive all the attributes and methods of an existing class (**base**), then add or change what it needs.
 
 \`\`\`cpp
-// BASE CLASS — shared behaviour lives here ONCE
+// BASE CLASS - shared behaviour lives here ONCE
 class Character {
 protected:            // ← 'protected' instead of 'private'
     string name;
@@ -3322,11 +3322,11 @@ public:
     void sleep() { health += 20; }  // defined ONCE
 };
 
-// DERIVED CLASSES — inherit everything, add their own stuff
+// DERIVED CLASSES - inherit everything, add their own stuff
 class Warrior : public Character {
 public:
     void attack() { cout << name << " swings a sword!" << endl; }
-    // eat() and sleep() are inherited — no need to redefine!
+    // eat() and sleep() are inherited - no need to redefine!
 };
 
 class Mage : public Character {
@@ -3376,7 +3376,7 @@ Inheritance models an **IS-A** relationship:
             title: 'Inheritance Syntax & the protected Specifier',
             type: 'EXPLANATION',
             tips: [
-                '`protected` members are private to the outside world but accessible in derived classes — the perfect middle ground for inheritance.',
+                '`protected` members are private to the outside world but accessible in derived classes - the perfect middle ground for inheritance.',
                 'Use `public` inheritance (`: public Base`) almost always. `private` and `protected` inheritance are advanced and rare.',
                 'A derived class can access public and protected members of the base, but NEVER private members directly.',
             ],
@@ -3424,13 +3424,13 @@ public:
 class Dog : public Animal {
 public:
     void bark() {
-        cout << name;        // ❌ COMPILE ERROR — name is private!
+        cout << name;        // ❌ COMPILE ERROR - name is private!
         cout << getName();   // ✅ use the public method instead
     }
 };
 \`\`\`
 
-\`protected\` is the middle ground — hidden from outside, but accessible in derived classes:
+\`protected\` is the middle ground - hidden from outside, but accessible in derived classes:
 
 \`\`\`cpp
 class Animal {
@@ -3449,7 +3449,7 @@ public:
 
 // From outside code:
 Animal a;
-a.name = "Rex"; // ❌ COMPILE ERROR — protected blocks outside access
+a.name = "Rex"; // ❌ COMPILE ERROR - protected blocks outside access
 \`\`\`
 
 ---
@@ -3470,10 +3470,10 @@ public:
 class Derived : public Base {
 public:
     void bar() {
-        x = 1;  // ❌ private — no access
-        y = 2;  // ✅ protected — accessible
-        z = 3;  // ✅ public — accessible
-        foo();  // ✅ public method — inherited
+        x = 1;  // ❌ private - no access
+        y = 2;  // ✅ protected - accessible
+        z = 3;  // ✅ public - accessible
+        foo();  // ✅ public method - inherited
     }
 };
 \`\`\`
@@ -3482,18 +3482,18 @@ public:
 
 ## What is NOT Inherited
 
-- **Constructors** — each class defines its own (but can chain them)
-- **Destructors** — each class has its own destructor
-- **Friend declarations** — friendship is not inherited
-- **Overloaded operators** — assignment operator is not inherited`,
+- **Constructors** - each class defines its own (but can chain them)
+- **Destructors** - each class has its own destructor
+- **Friend declarations** - friendship is not inherited
+- **Overloaded operators** - assignment operator is not inherited`,
         },
 
         // ─────────────────────────────────────────────────────────────────────
-        // SECTION C: Code — Basic Inheritance
+        // SECTION C: Code - Basic Inheritance
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 2,
-            title: 'Code: Basic Inheritance — Animal Hierarchy',
+            title: 'Code: Basic Inheritance - Animal Hierarchy',
             type: 'CODE',
             content: '## Building a Real Inheritance Hierarchy\n\nLet\'s build a complete animal hierarchy that shows what\'s inherited, what\'s added, and what\'s overridden.',
             codeBlocks: [
@@ -3506,7 +3506,7 @@ public:
 using namespace std;
 
 // ─────────────────────────────────────────────────────────────────────
-// BASE CLASS — shared data and behaviour for ALL animals
+// BASE CLASS - shared data and behaviour for ALL animals
 // ─────────────────────────────────────────────────────────────────────
 class Animal {
 protected:
@@ -3542,7 +3542,7 @@ public:
 };
 
 // ─────────────────────────────────────────────────────────────────────
-// DERIVED CLASS 1 — Dog IS-A Animal
+// DERIVED CLASS 1 - Dog IS-A Animal
 // ─────────────────────────────────────────────────────────────────────
 class Dog : public Animal {
 private:
@@ -3557,7 +3557,7 @@ public:
           isVaccinated(vaccinated)
     { }
 
-    // Dog-specific behaviours (NEW — not in Animal)
+    // Dog-specific behaviours (NEW - not in Animal)
     void bark()  { cout << name << " says: Woof! Woof!" << endl; }
     void fetch() { cout << name << " fetches the ball!" << endl; }
 
@@ -3570,7 +3570,7 @@ public:
 };
 
 // ─────────────────────────────────────────────────────────────────────
-// DERIVED CLASS 2 — Cat IS-A Animal
+// DERIVED CLASS 2 - Cat IS-A Animal
 // ─────────────────────────────────────────────────────────────────────
 class Cat : public Animal {
 private:
@@ -3593,7 +3593,7 @@ public:
 };
 
 // ─────────────────────────────────────────────────────────────────────
-// DERIVED CLASS 3 — Bird IS-A Animal
+// DERIVED CLASS 3 - Bird IS-A Animal
 // ─────────────────────────────────────────────────────────────────────
 class Bird : public Animal {
 private:
@@ -3651,7 +3651,7 @@ int main() {
 
     return 0;
 }`,
-                    explanation: 'The `Animal` base class defines shared attributes (`name`, `age`, `weight`) as `protected` so derived classes can use them directly. Each derived class calls the base constructor via the initializer list. `printInfo()` is overridden in each derived class — it calls `Animal::printInfo()` first, then adds class-specific details. Each derived class also adds its own unique methods (`bark()`, `meow()`, `fly()`) that don\'t exist in the base.',
+                    explanation: 'The `Animal` base class defines shared attributes (`name`, `age`, `weight`) as `protected` so derived classes can use them directly. Each derived class calls the base constructor via the initializer list. `printInfo()` is overridden in each derived class - it calls `Animal::printInfo()` first, then adds class-specific details. Each derived class also adds its own unique methods (`bark()`, `meow()`, `fly()`) that don\'t exist in the base.',
                     highlightLines: [8, 9, 10, 47, 48, 49, 57, 61, 86, 87],
                     isRunnable: true,
                 },
@@ -3746,7 +3746,7 @@ public:
 class Derived : public Base {
 public:
     Derived() {
-        // Base() is called automatically — no need to write it
+        // Base() is called automatically - no need to write it
         cout << "Derived ctor" << endl;
     }
 };
@@ -3814,13 +3814,13 @@ public:
         cout << "  [Shape dtor]   color=" << color << endl;
     }
 
-    // Base implementation — all shapes share this
+    // Base implementation - all shapes share this
     void describe() const {
         cout << "Shape | color=" << color
              << " pos=(" << posX << "," << posY << ")" << endl;
     }
 
-    // All shapes must provide area — base gives a default
+    // All shapes must provide area - base gives a default
     virtual double area() const { return 0.0; }
 
     string getColor() const { return color; }
@@ -3923,12 +3923,12 @@ int main() {
         cout << "Rectangle area: " << r.area() << endl;
         cout << "Triangle area:  " << t.area() << endl;
 
-        cout << "\n=== Scope ends — destructors fire in REVERSE order ===" << endl;
+        cout << "\n=== Scope ends - destructors fire in REVERSE order ===" << endl;
     } // t destroyed, then r, then c (LIFO)
 
     return 0;
 }`,
-                    explanation: 'Watch the constructor output: each derived constructor fires AFTER the base Shape constructor (top-down). When the scope closes, destructors run in LIFO order — Triangle first, then Rectangle, then Circle — and within each object, the derived destructor runs before the base destructor.',
+                    explanation: 'Watch the constructor output: each derived constructor fires AFTER the base Shape constructor (top-down). When the scope closes, destructors run in LIFO order - Triangle first, then Rectangle, then Circle - and within each object, the derived destructor runs before the base destructor.',
                     highlightLines: [38, 39, 40, 47, 50, 51, 57, 58, 68, 72],
                     isRunnable: true,
                 },
@@ -3944,14 +3944,14 @@ int main() {
             type: 'EXPLANATION',
             tips: [
                 'Single inheritance (one base class) is the most common and clearest to reason about.',
-                'Multiple inheritance is powerful but can cause ambiguity — use it only when clearly justified.',
-                'The Diamond Problem occurs in multiple inheritance when two paths lead to the same base class — solved with virtual inheritance.',
+                'Multiple inheritance is powerful but can cause ambiguity - use it only when clearly justified.',
+                'The Diamond Problem occurs in multiple inheritance when two paths lead to the same base class - solved with virtual inheritance.',
             ],
             content: `# Types of Inheritance
 
 ## 1. Single Inheritance
 
-One derived class inherits from one base class — the most common form:
+One derived class inherits from one base class - the most common form:
 
 \`\`\`cpp
 class Animal { };
@@ -4029,7 +4029,7 @@ class Animal { public: string name; };
 class Flyable : public Animal { };
 class Swimmable : public Animal { };
 class Duck : public Flyable, public Swimmable {
-    // Which name? Flyable::name or Swimmable::name? — AMBIGUOUS! ❌
+    // Which name? Flyable::name or Swimmable::name? - AMBIGUOUS! ❌
 };
 \`\`\`
 
@@ -4040,7 +4040,7 @@ class Animal { public: string name; };
 class Flyable   : virtual public Animal { };  // virtual!
 class Swimmable : virtual public Animal { };  // virtual!
 class Duck : public Flyable, public Swimmable {
-    // Only ONE Animal subobject — name is unambiguous ✅
+    // Only ONE Animal subobject - name is unambiguous ✅
 };
 \`\`\`
 
@@ -4065,14 +4065,14 @@ Tip: Always use 'public' unless you have a very specific reason.
             codeBlocks: [
                 {
                     order: 0,
-                    title: 'Multi-Level Inheritance — Employee Hierarchy',
+                    title: 'Multi-Level Inheritance - Employee Hierarchy',
                     language: 'cpp',
                     code: `#include <iostream>
 #include <string>
 #include <iomanip>
 using namespace std;
 
-// ─── LEVEL 1: Person — most general ───────────────────────────────────
+// ─── LEVEL 1: Person - most general ───────────────────────────────────
 class Person {
 protected:
     string name;
@@ -4158,19 +4158,19 @@ int main() {
     bob.introduce();
 
     cout << "\n=== Type checks ===" << endl;
-    // Manager IS-A Employee IS-A Person — all true!
+    // Manager IS-A Employee IS-A Person - all true!
     cout << "Carol's team size: " << carol.getTeamSize() << endl;
     cout << "Carol's name (from Person): " << carol.getName() << endl;
 
     return 0;
 }`,
-                    explanation: '`Manager` inherits from `Employee` which inherits from `Person` — a three-level chain. `carol.introduce()` calls `Employee::introduce()` which calls `Person::introduce()` — each layer adds its own information. `carol.getName()` works because `Manager` transitively inherits the `getName()` method from `Person` through `Employee`.',
+                    explanation: '`Manager` inherits from `Employee` which inherits from `Person` - a three-level chain. `carol.introduce()` calls `Employee::introduce()` which calls `Person::introduce()` - each layer adds its own information. `carol.getName()` works because `Manager` transitively inherits the `getName()` method from `Person` through `Employee`.',
                     highlightLines: [27, 28, 52, 53, 57, 58],
                     isRunnable: true,
                 },
                 {
                     order: 1,
-                    title: 'Multiple Inheritance — Robot Example',
+                    title: 'Multiple Inheritance - Robot Example',
                     language: 'cpp',
                     code: `#include <iostream>
 #include <string>
@@ -4244,7 +4244,7 @@ int main() {
 
     return 0;
 }`,
-                    explanation: '`AmphibiousDrone` inherits from both `Flyable` and `Swimmable`. It can call `takeOff()` and `fly()` from `Flyable`, and `dive()` and `swim()` from `Swimmable`. The drone object can also be treated as either a `Flyable*` or a `Swimmable*` — two different interface views of the same object.',
+                    explanation: '`AmphibiousDrone` inherits from both `Flyable` and `Swimmable`. It can call `takeOff()` and `fly()` from `Flyable`, and `dive()` and `swim()` from `Swimmable`. The drone object can also be treated as either a `Flyable*` or a `Swimmable*` - two different interface views of the same object.',
                     highlightLines: [25, 30, 45, 48, 50, 53, 55],
                     isRunnable: true,
                 },
@@ -4327,7 +4327,7 @@ Base member:    public         protected      private
 In Derived:     Accessible     Accessible     ❌ NOT accessible
 Via object:     Accessible     ❌ Blocked     ❌ Blocked
 
-OUTSIDE CODE can only see PUBLIC members — even of the DERIVED class.
+OUTSIDE CODE can only see PUBLIC members - even of the DERIVED class.
 DERIVED class can see its own members + base public + base protected.
 DERIVED class CANNOT see base private members directly.
 \`\`\`
@@ -4350,7 +4350,7 @@ Manager IS-A Employee     ✅           Team HAS-A vector<Player> ✅
 
 ❌ WRONG:
 Phone IS-A Battery        ❌           Phone HAS-A Battery       ✅
-  Don't inherit — a phone has a battery, it IS NOT a battery
+  Don't inherit - a phone has a battery, it IS NOT a battery
 \`\`\``,
         },
 
@@ -4382,7 +4382,7 @@ Phone IS-A Battery        ❌           Phone HAS-A Battery       ✅
                             { id: 'c', text: 'protected', isCorrect: true },
                             { id: 'd', text: 'internal', isCorrect: false },
                         ],
-                        explanation: '`protected` is the "middle ground" — accessible inside the class AND inside derived classes, but blocked from all outside code. It exists specifically to support inheritance.',
+                        explanation: '`protected` is the "middle ground" - accessible inside the class AND inside derived classes, but blocked from all outside code. It exists specifically to support inheritance.',
                     },
                     {
                         question: 'In what order do constructors and destructors execute for a derived object?',
@@ -4399,10 +4399,10 @@ Phone IS-A Battery        ❌           Phone HAS-A Battery       ✅
                         options: [
                             { id: 'a', text: 'Yes, always', isCorrect: false },
                             { id: 'b', text: 'Yes, but only if the member is also in the derived class', isCorrect: false },
-                            { id: 'c', text: 'No — private members are inaccessible even to derived classes', isCorrect: true },
+                            { id: 'c', text: 'No - private members are inaccessible even to derived classes', isCorrect: true },
                             { id: 'd', text: 'Yes, but only through a pointer', isCorrect: false },
                         ],
-                        explanation: 'Private members are truly private — they can only be accessed within the class that declares them. Not by derived classes, not by friends of the derived class. Use `protected` if derived classes need direct access.',
+                        explanation: 'Private members are truly private - they can only be accessed within the class that declares them. Not by derived classes, not by friends of the derived class. Use `protected` if derived classes need direct access.',
                     },
                     {
                         question: 'What is the "Diamond Problem" in multiple inheritance?',
@@ -4412,7 +4412,7 @@ Phone IS-A Battery        ❌           Phone HAS-A Battery       ✅
                             { id: 'c', text: 'When a diamond-shaped object is stored in a class', isCorrect: false },
                             { id: 'd', text: 'When destructors conflict in multiple inheritance', isCorrect: false },
                         ],
-                        explanation: 'The Diamond Problem occurs when class D inherits from B and C, and both B and C inherit from A. D then has two copies of A\'s members — ambiguous! Solved with `virtual` inheritance.',
+                        explanation: 'The Diamond Problem occurs when class D inherits from B and C, and both B and C inherit from A. D then has two copies of A\'s members - ambiguous! Solved with `virtual` inheritance.',
                     },
                     {
                         question: 'How do you call a base class\'s version of an overridden method from within the derived class?',
@@ -4442,7 +4442,7 @@ Phone IS-A Battery        ❌           Phone HAS-A Battery       ✅
                             { id: 'c', text: 'Employee is derived from Manager', isCorrect: false },
                             { id: 'd', text: 'Manager can access Employee\'s private members', isCorrect: false },
                         ],
-                        explanation: '`class Manager : public Employee` declares Manager as a publicly derived class of Employee. Manager IS-A Employee — it inherits all public and protected members and can add its own.',
+                        explanation: '`class Manager : public Employee` declares Manager as a publicly derived class of Employee. Manager IS-A Employee - it inherits all public and protected members and can add its own.',
                     },
                 ],
             },
@@ -4659,7 +4659,7 @@ public:
     }
     void castOff() {
         isAnchored = false;
-        cout << "  " << model << " cast off — underway! 🚤" << endl;
+        cout << "  " << model << " cast off - underway! 🚤" << endl;
     }
 
     void getInfo() const override {
@@ -4710,8 +4710,8 @@ int main() {
                 hints: [
                     'Each constructor must chain up: `Car(...)` initializes `LandVehicle(...)` which initializes `Vehicle(...)`. Use the initializer list at each level.',
                     '`Vehicle::getInfo()` prints make/model/year/fuel. `LandVehicle::getInfo()` calls `Vehicle::getInfo()` then adds wheels/speed. `Car::getInfo()` calls `LandVehicle::getInfo()` then adds seats/convertible.',
-                    '`max()` and `min()` require `<algorithm>` — or you can use a ternary operator.',
-                    '`fuelLevel` is in Vehicle (protected) — it is directly accessible in `LandVehicle::accelerate()` because LandVehicle is a derived class.',
+                    '`max()` and `min()` require `<algorithm>` - or you can use a ternary operator.',
+                    '`fuelLevel` is in Vehicle (protected) - it is directly accessible in `LandVehicle::accelerate()` because LandVehicle is a derived class.',
                     'Mark `getInfo()` with `override` in each derived class to confirm you are intentionally overriding the base version.',
                 ],
                 language: 'cpp',
@@ -4765,11 +4765,11 @@ Derived(args) : Base(some_args), myMember(val) { }
 
 1. **IS-A test**: Only use inheritance for true IS-A relationships
 2. **HAS-A** → use composition (member variable), not inheritance
-3. **private** base members: never directly accessible in derived classes — use \`protected\`
+3. **private** base members: never directly accessible in derived classes - use \`protected\`
 4. **Base::** prefix to call a base class version of an overridden method
 5. **Diamond problem**: solved with \`virtual\` inheritance
 
-> 🎯 **Next up**: Polymorphism — one interface, many implementations, virtual functions, and abstract classes!`,
+> 🎯 **Next up**: Polymorphism - one interface, many implementations, virtual functions, and abstract classes!`,
         },
     ],
 });
@@ -4802,9 +4802,9 @@ await createLearn({
             title: 'What is Polymorphism?',
             type: 'EXPLANATION',
             tips: [
-                'Polymorphism = "many forms" — one interface operating on many different types.',
+                'Polymorphism = "many forms" - one interface operating on many different types.',
                 'Compile-time polymorphism is resolved at compile time (faster). Runtime polymorphism is resolved at runtime (more flexible).',
-                'Without virtual functions, C++ uses the POINTER type, not the OBJECT type, to decide which method to call — this is the key problem virtual solves.',
+                'Without virtual functions, C++ uses the POINTER type, not the OBJECT type, to decide which method to call - this is the key problem virtual solves.',
             ],
             content: `# Polymorphism
 
@@ -4812,13 +4812,13 @@ await createLearn({
 
 **Polymorphism** (Greek: "many forms") is the ability of one interface to work with many different underlying types.
 
-You already know one kind: **function overloading** — the same function name with different parameter types.
+You already know one kind: **function overloading** - the same function name with different parameter types.
 
 \`\`\`cpp
 void print(int x)    { cout << x; }
 void print(double x) { cout << x; }
 void print(string x) { cout << x; }
-// Same name — different forms — resolved at compile time
+// Same name - different forms - resolved at compile time
 \`\`\`
 
 But there is a far more powerful form: **runtime polymorphism** via virtual functions.
@@ -4860,11 +4860,11 @@ void drawShapes(Shape* shapes[], int n) {
 
 ## The Key Insight
 
-With runtime polymorphism, you write code that works with the **base class interface** — but at runtime, the correct **derived class method** is called automatically based on the actual object type.
+With runtime polymorphism, you write code that works with the **base class interface** - but at runtime, the correct **derived class method** is called automatically based on the actual object type.
 
 \`\`\`
 Shape* ptr = new Circle(...);
-ptr->draw();   // calls Circle::draw() — even though ptr is a Shape*!
+ptr->draw();   // calls Circle::draw() - even though ptr is a Shape*!
                // The runtime type of the OBJECT determines the method.
 \`\`\``,
         },
@@ -4877,9 +4877,9 @@ ptr->draw();   // calls Circle::draw() — even though ptr is a Shape*!
             title: 'Compile-Time Polymorphism',
             type: 'EXPLANATION',
             tips: [
-                'Compile-time polymorphism has zero runtime overhead — the compiler resolves everything before the program runs.',
+                'Compile-time polymorphism has zero runtime overhead - the compiler resolves everything before the program runs.',
                 'Operator overloading lets you define what `+`, `-`, `==`, `<<`, etc. mean for your custom types.',
-                'Templates (generics) are another form of compile-time polymorphism — covered in Unit 5.',
+                'Templates (generics) are another form of compile-time polymorphism - covered in Unit 5.',
             ],
             content: `# Compile-Time Polymorphism
 
@@ -4965,7 +4965,7 @@ Stream:        << >> (typically as friend functions)
 
         {
             order: 2,
-            title: 'Compile-Time Polymorphism — Code',
+            title: 'Compile-Time Polymorphism - Code',
             type: 'CODE',
             content: '## Operator Overloading in Practice',
             codeBlocks: [
@@ -4983,7 +4983,7 @@ private:
     double data[2][2];
 
 public:
-    // Constructor — fill all cells with a value (default 0)
+    // Constructor - fill all cells with a value (default 0)
     Matrix2x2(double val = 0.0) {
         for (int r = 0; r < 2; r++)
             for (int c = 0; c < 2; c++)
@@ -5069,7 +5069,7 @@ int main() {
 
     return 0;
 }`,
-                    explanation: 'A `Matrix2x2` class with overloaded `+`, `*` (both scalar and matrix), `==`, `[]`, and `<<`. The expressions `A + B`, `A * 2.0`, `A * B` look exactly like built-in arithmetic — that\'s operator overloading making user-defined types feel native.',
+                    explanation: 'A `Matrix2x2` class with overloaded `+`, `*` (both scalar and matrix), `==`, `[]`, and `<<`. The expressions `A + B`, `A * 2.0`, `A * B` look exactly like built-in arithmetic - that\'s operator overloading making user-defined types feel native.',
                     highlightLines: [26, 32, 37, 48, 56, 62],
                     isRunnable: true,
                 },
@@ -5077,16 +5077,16 @@ int main() {
         },
 
         // ─────────────────────────────────────────────────────────────────────
-        // SECTION C: Runtime Polymorphism — virtual
+        // SECTION C: Runtime Polymorphism - virtual
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 3,
-            title: 'Runtime Polymorphism — virtual Functions',
+            title: 'Runtime Polymorphism - virtual Functions',
             type: 'EXPLANATION',
             tips: [
-                'Always declare the base class destructor as `virtual` if the class has any virtual methods — otherwise `delete basePtr` won\'t call the derived destructor.',
-                'A function is virtual in ALL derived classes once declared virtual in the base — you don\'t have to repeat `virtual` (but you should use `override`).',
-                'The `override` keyword (C++11) is not required but is strongly recommended — it tells the compiler you intend to override a virtual function and catches typos.',
+                'Always declare the base class destructor as `virtual` if the class has any virtual methods - otherwise `delete basePtr` won\'t call the derived destructor.',
+                'A function is virtual in ALL derived classes once declared virtual in the base - you don\'t have to repeat `virtual` (but you should use `override`).',
+                'The `override` keyword (C++11) is not required but is strongly recommended - it tells the compiler you intend to override a virtual function and catches typos.',
             ],
             content: `# Runtime Polymorphism with \`virtual\` Functions
 
@@ -5105,17 +5105,17 @@ public:
 
 // Through a base class pointer:
 Animal* ptr = new Dog();
-ptr->speak();  // Prints "..." — calls Animal::speak! ❌
+ptr->speak();  // Prints "..." - calls Animal::speak! ❌
                // The POINTER TYPE (Animal*) decides, not the OBJECT TYPE (Dog)
 \`\`\`
 
-This is static dispatch — the compiler looks at the pointer type, not the actual object.
+This is static dispatch - the compiler looks at the pointer type, not the actual object.
 
 ---
 
 ## The \`virtual\` Keyword
 
-Adding \`virtual\` to the base class method enables **dynamic dispatch** — the runtime type of the object decides which method to call:
+Adding \`virtual\` to the base class method enables **dynamic dispatch** - the runtime type of the object decides which method to call:
 
 \`\`\`cpp
 class Animal {
@@ -5134,14 +5134,14 @@ public:
     void speak() override { cout << "Meow!" << endl; }
 };
 
-// Through base class pointer — NOW calls the right version:
+// Through base class pointer - NOW calls the right version:
 Animal* ptr = new Dog();
-ptr->speak();   // "Woof!" ✅  — Dog::speak called even through Animal*!
+ptr->speak();   // "Woof!" ✅  - Dog::speak called even through Animal*!
 
 Animal* ptr2 = new Cat();
 ptr2->speak();  // "Meow!" ✅
 
-delete ptr;   // ~Dog() called, then ~Animal() — because destructor is virtual!
+delete ptr;   // ~Dog() called, then ~Animal() - because destructor is virtual!
 \`\`\`
 
 ---
@@ -5184,21 +5184,21 @@ class Labrador : public Dog {
 
 ---
 
-## Virtual Destructor — ESSENTIAL
+## Virtual Destructor - ESSENTIAL
 
 If a class has any virtual methods, its destructor MUST be virtual:
 
 \`\`\`cpp
 Animal* ptr = new Dog();
 delete ptr;
-// Without virtual ~Animal(): only ~Animal() is called — ~Dog() is SKIPPED! Memory leak!
-// With    virtual ~Animal(): ~Dog() runs first, then ~Animal() — correct cleanup ✅
+// Without virtual ~Animal(): only ~Animal() is called - ~Dog() is SKIPPED! Memory leak!
+// With    virtual ~Animal(): ~Dog() runs first, then ~Animal() - correct cleanup ✅
 \`\`\``,
         },
 
         {
             order: 4,
-            title: 'Runtime Polymorphism — Code',
+            title: 'Runtime Polymorphism - Code',
             type: 'CODE',
             content: '## Virtual Functions & Dynamic Dispatch in Action',
             codeBlocks: [
@@ -5212,14 +5212,14 @@ delete ptr;
 #include <cmath>
 using namespace std;
 
-// ─── BASE CLASS — establishes the virtual interface ───────────────────
+// ─── BASE CLASS - establishes the virtual interface ───────────────────
 class Shape {
 protected:
     string color;
 public:
     Shape(string c) : color(c) { }
 
-    // virtual methods — derived classes CAN override
+    // virtual methods - derived classes CAN override
     virtual double area()      const = 0; // pure virtual (covered next!)
     virtual double perimeter() const = 0; // pure virtual
     virtual void   draw()      const {
@@ -5300,7 +5300,7 @@ public:
 };
 
 // ─── THE POWER OF POLYMORPHISM ────────────────────────────────────────
-// This function works with ANY Shape — present or future
+// This function works with ANY Shape - present or future
 void printShapeInfo(const Shape* s) {
     cout << "Type: " << s->typeName()
          << " | Area: "      << s->area()
@@ -5343,7 +5343,7 @@ int main() {
 
     return 0;
 }`,
-                    explanation: 'The `vector<Shape*>` holds different shape types through a single base class pointer. `drawAll()` and `totalArea()` call `draw()` and `area()` through base pointers — virtual dispatch automatically calls the correct derived class version at runtime. Virtual destructor ensures `~Circle`, `~Rectangle`, `~Triangle` are called before `~Shape` when using `delete` through a base pointer.',
+                    explanation: 'The `vector<Shape*>` holds different shape types through a single base class pointer. `drawAll()` and `totalArea()` call `draw()` and `area()` through base pointers - virtual dispatch automatically calls the correct derived class version at runtime. Virtual destructor ensures `~Circle`, `~Rectangle`, `~Triangle` are called before `~Shape` when using `delete` through a base pointer.',
                     highlightLines: [13, 14, 22, 98, 103, 111, 116, 120, 121],
                     isRunnable: true,
                 },
@@ -5355,13 +5355,13 @@ int main() {
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 5,
-            title: 'How Virtual Dispatch Works — The vtable',
+            title: 'How Virtual Dispatch Works - The vtable',
             type: 'VISUAL',
             content: `# Inside Virtual Dispatch: The vtable
 
 ## The Mechanism: Virtual Function Table
 
-Every class with virtual functions gets a **vtable** (virtual function table) — a hidden array of function pointers. Every object of that class gets a hidden **vptr** (vtable pointer).
+Every class with virtual functions gets a **vtable** (virtual function table) - a hidden array of function pointers. Every object of that class gets a hidden **vptr** (vtable pointer).
 
 \`\`\`
 CLASS DEFINITIONS → COMPILER CREATES vtables:
@@ -5420,8 +5420,8 @@ Speed:                Faster (direct call)  Slight overhead (vtable lookup)
 Polymorphism:         ❌ No                 ✅ Yes
 
 Animal* ptr = new Dog();
-ptr->speak()  non-virtual → Animal::speak called (WRONG — uses pointer type)
-ptr->speak()  virtual     → Dog::speak called    (RIGHT — uses object type)
+ptr->speak()  non-virtual → Animal::speak called (WRONG - uses pointer type)
+ptr->speak()  virtual     → Dog::speak called    (RIGHT - uses object type)
 \`\`\`
 
 ---
@@ -5464,10 +5464,10 @@ Animal::method()                 Dog::method() ← correct!
             title: 'Abstract Classes & Pure Virtual Functions',
             type: 'EXPLANATION',
             tips: [
-                'A class with even ONE pure virtual function is abstract — it cannot be instantiated.',
+                'A class with even ONE pure virtual function is abstract - it cannot be instantiated.',
                 'Pure virtual functions are declared with `= 0`. Derived classes MUST implement them or they are also abstract.',
-                'Abstract classes define a CONTRACT — any concrete class that inherits must fulfill it.',
-                'You CAN have a pointer or reference to an abstract class — this is how polymorphism works!',
+                'Abstract classes define a CONTRACT - any concrete class that inherits must fulfill it.',
+                'You CAN have a pointer or reference to an abstract class - this is how polymorphism works!',
             ],
             content: `# Abstract Classes & Pure Virtual Functions
 
@@ -5494,14 +5494,14 @@ Declare a method as **pure virtual** using \`= 0\`:
 \`\`\`cpp
 class Shape {
 public:
-    virtual double area()      const = 0;  // pure virtual — no body!
+    virtual double area()      const = 0;  // pure virtual - no body!
     virtual double perimeter() const = 0;  // pure virtual
     virtual void   draw()      const = 0;  // pure virtual
     virtual ~Shape() { }                   // virtual destructor (NOT pure)
 };
 \`\`\`
 
-This means: **"Every concrete Shape must provide these methods — there is no base implementation."**
+This means: **"Every concrete Shape must provide these methods - there is no base implementation."**
 
 ---
 
@@ -5514,7 +5514,7 @@ Shape& ref;    // ✅ Reference to abstract is fine
 
 // Only concrete derived classes can be instantiated:
 Circle c;      // ✅ Circle implements area(), perimeter(), draw()
-ptr = &c;      // ✅ Works — polymorphism through abstract pointer
+ptr = &c;      // ✅ Works - polymorphism through abstract pointer
 \`\`\`
 
 ---
@@ -5538,10 +5538,10 @@ public:
 
 ## Abstract Classes as Interfaces
 
-Abstract classes with ONLY pure virtual functions act as **interfaces** — defining a contract that all derived classes must fulfill:
+Abstract classes with ONLY pure virtual functions act as **interfaces** - defining a contract that all derived classes must fulfill:
 
 \`\`\`cpp
-// Pure interface — defines what a printable object must support
+// Pure interface - defines what a printable object must support
 class Printable {
 public:
     virtual void print()    const = 0;
@@ -5549,7 +5549,7 @@ public:
     virtual ~Printable() { }
 };
 
-// Pure interface — defines what a saveable object must support  
+// Pure interface - defines what a saveable object must support  
 class Saveable {
 public:
     virtual bool save(string filename) const = 0;
@@ -5576,7 +5576,7 @@ class Document : public Printable, public Saveable {
 
         {
             order: 7,
-            title: 'Abstract Classes — Code',
+            title: 'Abstract Classes - Code',
             type: 'CODE',
             content: '## Abstract Classes & Pure Virtual Functions in Practice',
             codeBlocks: [
@@ -5600,7 +5600,7 @@ protected:
 public:
     Shape(string c, string l) : color(c), label(l) { }
 
-    // Pure virtual — no base implementation. Every Shape MUST provide these.
+    // Pure virtual - no base implementation. Every Shape MUST provide these.
     virtual double area()      const = 0;
     virtual double perimeter() const = 0;
     virtual string typeName()  const = 0;
@@ -5611,7 +5611,7 @@ public:
         return typeName() + " [" + color + "] \"" + label + "\"";
     }
 
-    // Non-virtual utility — same for all shapes
+    // Non-virtual utility - same for all shapes
     void printSummary() const {
         cout << fixed << setprecision(2);
         cout << describe()
@@ -5619,7 +5619,7 @@ public:
              << " | Perimeter: " << perimeter() << endl;
     }
 
-    virtual ~Shape() { }  // virtual destructor — ESSENTIAL
+    virtual ~Shape() { }  // virtual destructor - ESSENTIAL
 };
 
 // ─── CONCRETE: Circle ─────────────────────────────────────────────────
@@ -5725,7 +5725,7 @@ int main() {
 
     return 0;
 }`,
-                    explanation: '`Shape` is an abstract class — it cannot be instantiated directly (try `Shape s;` for a compile error). It defines the CONTRACT: every concrete shape must provide `area()`, `perimeter()`, `typeName()`, and `draw()`. The polymorphic functions `drawAll()`, `findLargest()`, `totalArea()` work with `Shape*` and automatically call the right derived implementation at runtime — even for future shapes not yet written.',
+                    explanation: '`Shape` is an abstract class - it cannot be instantiated directly (try `Shape s;` for a compile error). It defines the CONTRACT: every concrete shape must provide `area()`, `perimeter()`, `typeName()`, and `draw()`. The polymorphic functions `drawAll()`, `findLargest()`, `totalArea()` work with `Shape*` and automatically call the right derived implementation at runtime - even for future shapes not yet written.',
                     highlightLines: [16, 17, 18, 19, 97, 104, 109],
                     isRunnable: true,
                 },
@@ -5733,11 +5733,11 @@ int main() {
         },
 
         // ─────────────────────────────────────────────────────────────────────
-        // SECTION F: Comparison — Compile-Time vs Runtime
+        // SECTION F: Comparison - Compile-Time vs Runtime
         // ─────────────────────────────────────────────────────────────────────
         {
             order: 8,
-            title: 'Compile-Time vs Runtime Polymorphism — Comparison',
+            title: 'Compile-Time vs Runtime Polymorphism - Comparison',
             type: 'COMPARISON',
             content: '## Comparing the Two Forms of Polymorphism',
             stepData: {
@@ -5746,7 +5746,7 @@ int main() {
                         title: 'Compile-Time Polymorphism',
                         description: 'Resolved by the compiler before the program runs. Includes function overloading, operator overloading, and templates.',
                         pros: [
-                            'Zero runtime overhead — compiler resolves everything',
+                            'Zero runtime overhead - compiler resolves everything',
                             'Type errors caught at compile time',
                             'Functions are inlined by compiler when possible',
                             'Best for: utility functions, operators, math operations',
@@ -5754,7 +5754,7 @@ int main() {
                         cons: [
                             'Cannot add new types at runtime',
                             'Template code is duplicated for each type (code bloat)',
-                            'Less flexible — all types must be known at compile time',
+                            'Less flexible - all types must be known at compile time',
                         ],
                         useCase: 'Math libraries (operator+, operator*), generic containers (templates), print() overloads for different types.',
                     },
@@ -5762,7 +5762,7 @@ int main() {
                         title: 'Runtime Polymorphism',
                         description: 'Resolved during execution via vtable lookup. Requires virtual functions and base class pointers/references.',
                         pros: [
-                            'Highly extensible — add new types without changing existing code (Open/Closed Principle)',
+                            'Highly extensible - add new types without changing existing code (Open/Closed Principle)',
                             'Enables programming to interfaces, not implementations',
                             'Heterogeneous collections (vector<Shape*> with circles, rectangles, triangles)',
                             'Plugin architectures and frameworks',
@@ -5798,13 +5798,13 @@ int main() {
                             { id: 'c', text: 'The method that was defined first', isCorrect: false },
                             { id: 'd', text: 'A random selection among overloads', isCorrect: false },
                         ],
-                        explanation: 'Without `virtual`, C++ uses static dispatch — the type of the POINTER (e.g., `Animal*`) determines which method is called, not the actual object type (e.g., `Dog`). This is why a `Dog` object accessed through `Animal*` would call `Animal::speak()` instead of `Dog::speak()`.',
+                        explanation: 'Without `virtual`, C++ uses static dispatch - the type of the POINTER (e.g., `Animal*`) determines which method is called, not the actual object type (e.g., `Dog`). This is why a `Dog` object accessed through `Animal*` would call `Animal::speak()` instead of `Dog::speak()`.',
                     },
                     {
                         question: 'What does `virtual double area() const = 0;` declare?',
                         options: [
                             { id: 'a', text: 'A virtual function that returns zero', isCorrect: false },
-                            { id: 'b', text: 'A pure virtual function — making the class abstract', isCorrect: true },
+                            { id: 'b', text: 'A pure virtual function - making the class abstract', isCorrect: true },
                             { id: 'c', text: 'A static function', isCorrect: false },
                             { id: 'd', text: 'A function that is deleted and cannot be called', isCorrect: false },
                         ],
@@ -5818,7 +5818,7 @@ int main() {
                             { id: 'c', text: 'To allow the base class to be abstract', isCorrect: false },
                             { id: 'd', text: 'Required by the C++ standard for any class', isCorrect: false },
                         ],
-                        explanation: 'Without a virtual destructor, `delete basePtr` only calls the base class destructor — the derived destructor is SKIPPED. This causes resource leaks for anything the derived class manages (heap memory, file handles, etc.). Always make destructors virtual if the class has virtual methods.',
+                        explanation: 'Without a virtual destructor, `delete basePtr` only calls the base class destructor - the derived destructor is SKIPPED. This causes resource leaks for anything the derived class manages (heap memory, file handles, etc.). Always make destructors virtual if the class has virtual methods.',
                     },
                     {
                         question: 'What does the `override` keyword do in C++11?',
@@ -5835,7 +5835,7 @@ int main() {
                         options: [
                             { id: 'a', text: 'Yes, always', isCorrect: false },
                             { id: 'b', text: 'Yes, but only with `new`', isCorrect: false },
-                            { id: 'c', text: 'No — a class with any pure virtual function cannot be instantiated', isCorrect: true },
+                            { id: 'c', text: 'No - a class with any pure virtual function cannot be instantiated', isCorrect: true },
                             { id: 'd', text: 'Yes, if you use a pointer', isCorrect: false },
                         ],
                         explanation: 'An abstract class (one with at least one pure virtual function) CANNOT be instantiated directly. You can have pointers and references to it (for polymorphism), but `AbstractClass obj;` is a compile error.',
@@ -5853,12 +5853,12 @@ int main() {
                     {
                         question: 'Given `Shape* s = new Circle(5.0);` and `virtual void Shape::draw()`, which `draw()` is called by `s->draw()`?',
                         options: [
-                            { id: 'a', text: 'Shape::draw() — because s is a Shape*', isCorrect: false },
-                            { id: 'b', text: 'Circle::draw() — because the actual object is a Circle', isCorrect: true },
+                            { id: 'a', text: 'Shape::draw() - because s is a Shape*', isCorrect: false },
+                            { id: 'b', text: 'Circle::draw() - because the actual object is a Circle', isCorrect: true },
                             { id: 'c', text: 'Whichever was defined first', isCorrect: false },
-                            { id: 'd', text: 'A compile error — cannot call virtual through pointer', isCorrect: false },
+                            { id: 'd', text: 'A compile error - cannot call virtual through pointer', isCorrect: false },
                         ],
-                        explanation: 'With `virtual`, the OBJECT\'s runtime type determines dispatch. The actual object is a `Circle`, so `Circle::draw()` is called — even though the pointer type is `Shape*`. This is the essence of runtime polymorphism.',
+                        explanation: 'With `virtual`, the OBJECT\'s runtime type determines dispatch. The actual object is a `Circle`, so `Circle::draw()` is called - even though the pointer type is `Shape*`. This is the essence of runtime polymorphism.',
                     },
                     {
                         question: 'Which of these correctly describes the relationship between abstract classes and concrete classes?',
@@ -5866,7 +5866,7 @@ int main() {
                             { id: 'a', text: 'Abstract classes can be instantiated; concrete classes cannot', isCorrect: false },
                             { id: 'b', text: 'Abstract classes define the interface/contract; concrete classes implement it and can be instantiated', isCorrect: true },
                             { id: 'c', text: 'Concrete classes must inherit from abstract classes', isCorrect: false },
-                            { id: 'd', text: 'Abstract and concrete classes are the same — abstract is just a synonym', isCorrect: false },
+                            { id: 'd', text: 'Abstract and concrete classes are the same - abstract is just a synonym', isCorrect: false },
                         ],
                         explanation: 'Abstract classes define the contract (pure virtual functions) but cannot be instantiated. Concrete (non-abstract) derived classes implement all pure virtual functions and CAN be instantiated. You use abstract class pointers for polymorphism.',
                     },
@@ -5941,7 +5941,7 @@ int main() {
     // TODO: create Enemy("Goblin", 50hp, 10 damage, 2.0 speed) x3
     // TODO: create HealthPickup("MedPack", 40 healAmount) x2
 
-    // TODO: 3 game ticks — update + render all entities
+    // TODO: 3 game ticks - update + render all entities
     // TODO: hero attacks enemy[1], casts spell on enemy[2]
     // TODO: hero collects pickup[0]
     // TODO: print status of all
@@ -5966,7 +5966,7 @@ public:
     GameEntity(string n, int hp, double x = 0, double y = 0)
         : name(n), health(hp), x(x), y(y) { }
 
-    // Pure virtual interface — MUST be implemented by each entity type
+    // Pure virtual interface - MUST be implemented by each entity type
     virtual void   update()          = 0;
     virtual void   render()    const = 0;
     virtual void   takeDamage(int d) = 0;
@@ -6102,7 +6102,7 @@ public:
     void collect(GameEntity* collector) {
         if (isConsumed) { cout << "  Already consumed!" << endl; return; }
         isConsumed = true;
-        // We can't call heal() on GameEntity* — cast to Hero* if needed
+        // We can't call heal() on GameEntity* - cast to Hero* if needed
         // For this demo, directly modify health via a hack (normally use heal interface)
         cout << "  💊 " << collector->getName() << " collected " << name
              << " → +" << healAmount << " HP!" << endl;
@@ -6167,7 +6167,7 @@ int main() {
 }`,
                 hints: [
                     'Declare pure virtuals with `= 0`: `virtual void update() = 0;`. Don\'t forget the virtual destructor (non-pure).',
-                    '`printStatus()` is non-virtual — it calls `getType()` which IS virtual, so it still gets the right derived type name.',
+                    '`printStatus()` is non-virtual - it calls `getType()` which IS virtual, so it still gets the right derived type name.',
                     'In `Hero::castSpell()`, check mana >= 20 before casting; subtract 20, compute damage = attackPower * 2, call `target->takeDamage(damage)`.',
                     '`max(0, health - d)` prevents health from going negative. `min(100, mana + 5)` prevents mana overflowing 100.',
                     'The `vector<GameEntity*>` can hold Hero*, Enemy*, and HealthPickup* objects. When you call `e->update()`, virtual dispatch calls the correct implementation for each type.',
@@ -6188,14 +6188,14 @@ int main() {
 ## The Two Types
 
 ### Compile-Time Polymorphism
-- **Function overloading** — same name, different parameters
-- **Operator overloading** — define \`+\`, \`==\`, \`<<\` for custom types
-- Resolved at compile time — zero runtime overhead
+- **Function overloading** - same name, different parameters
+- **Operator overloading** - define \`+\`, \`==\`, \`<<\` for custom types
+- Resolved at compile time - zero runtime overhead
 - Used for utilities, math, type-generic operations
 
 ### Runtime Polymorphism
-- **Virtual functions** — derived class overrides base class method
-- **Abstract classes** — pure virtual functions define contracts
+- **Virtual functions** - derived class overrides base class method
+- **Abstract classes** - pure virtual functions define contracts
 - Resolved at runtime via vtable lookup
 - Used for extensible architectures, heterogeneous collections
 
@@ -6240,20 +6240,20 @@ delete ptr;   → ~Circle() first, then ~Shape()  ← virtual destructor
 
 > A class should be **open for extension** (add new shapes) but **closed for modification** (don't change existing code).
 
-Runtime polymorphism makes this possible: add a new \`Ellipse\` class, and all existing code that uses \`Shape*\` automatically works with it — no changes needed.
+Runtime polymorphism makes this possible: add a new \`Ellipse\` class, and all existing code that uses \`Shape*\` automatically works with it - no changes needed.
 
 ---
 
 ## 🎓 Unit 4 Complete!
 
 You now understand all five core OOP topics:
-1. **Classes & Objects** — blueprints, instances, public/private, dot/arrow
-2. **Constructors & Destructors** — default, parameterized, copy, RAII
-3. **Encapsulation & Abstraction** — getters/setters, const, friend, interface design
-4. **Inheritance** — IS-A, protected, constructor chaining, types of inheritance
-5. **Polymorphism** — compile-time (overloading), runtime (virtual), abstract classes
+1. **Classes & Objects** - blueprints, instances, public/private, dot/arrow
+2. **Constructors & Destructors** - default, parameterized, copy, RAII
+3. **Encapsulation & Abstraction** - getters/setters, const, friend, interface design
+4. **Inheritance** - IS-A, protected, constructor chaining, types of inheritance
+5. **Polymorphism** - compile-time (overloading), runtime (virtual), abstract classes
 
-> 🎯 **Next up**: Unit 5 — Templates, STL & File Handling!`,
+> 🎯 **Next up**: Unit 5 - Templates, STL & File Handling!`,
         },
     ],
 });

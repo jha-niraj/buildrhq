@@ -43,7 +43,7 @@ export default async function HomePage() {
             {/* The analytics dashboard IS the page now: headline counters, then a stack
                 of module rows pairing counters with a 6-month trend line, then the
                 activity mix + feed. The two surfaces below it are kept because they do
-                something the charts can't — resume a specific piece of work, and show
+                something the charts can't - resume a specific piece of work, and show
                 the day-by-day contribution grid. */}
             <HomeDashboard
                 user={user}

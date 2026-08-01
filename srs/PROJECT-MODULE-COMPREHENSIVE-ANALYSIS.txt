@@ -1,9 +1,9 @@
 ================================================================================
-   SHIPRHQ — PROJECT MODULE: COMPREHENSIVE ANALYSIS & IMPROVEMENT BLUEPRINT
+   SHIPRHQ - PROJECT MODULE: COMPREHENSIVE ANALYSIS & IMPROVEMENT BLUEPRINT
 ================================================================================
    Date    : 2026-02-26
    Author  : AI Architecture Review
-   Scope   : End-to-end Project module — Client, Server Actions, Worker, Schema
+   Scope   : End-to-end Project module - Client, Server Actions, Worker, Schema
 ================================================================================
 
 
@@ -14,15 +14,15 @@
 ║  2.  CURRENT ARCHITECTURE OVERVIEW                                        ║
 ║  3.  FILE & DIRECTORY MAP                                                 ║
 ║  4.  SCHEMA ANALYSIS (ProjectV2 & Related Models)                         ║
-║  5.  CURRENT USER FLOW — STEP-BY-STEP WALKTHROUGH                         ║
+║  5.  CURRENT USER FLOW - STEP-BY-STEP WALKTHROUGH                         ║
 ║  6.  FLOW CHART: CURRENT USER JOURNEY (AS-IS)                             ║
 ║  7.  IDENTIFIED PROBLEMS & FRICTION POINTS                                ║
-║  8.  FORK vs COPY vs ENROLL — DECISION & RECOMMENDATION                   ║
-║  9.  SEEDED / PLATFORM PROJECTS — NEW FLOW PROPOSAL                       ║
+║  8.  FORK vs COPY vs ENROLL - DECISION & RECOMMENDATION                   ║
+║  9.  SEEDED / PLATFORM PROJECTS - NEW FLOW PROPOSAL                       ║
 ║ 10.  SCHEMA CHANGES REQUIRED                                              ║
-║ 11.  IDEAS PAGE RESTRUCTURE — PROPOSED UX                                 ║
+║ 11.  IDEAS PAGE RESTRUCTURE - PROPOSED UX                                 ║
 ║ 12.  FLOW CHART: PROPOSED USER JOURNEY (TO-BE)                            ║
-║ 13.  AI STEP-BY-STEP ASSISTANT — DESIGN SPECIFICATION                     ║
+║ 13.  AI STEP-BY-STEP ASSISTANT - DESIGN SPECIFICATION                     ║
 ║ 14.  INDUSTRY-STANDARD PROJECT EXPERIENCE DESIGN                          ║
 ║ 15.  PROJECT IDEA QUALITY: CURATED, JOB-MARKET-READY IDEAS               ║
 ║ 16.  PRIORITIZED IMPLEMENTATION ROADMAP                                   ║
@@ -120,7 +120,7 @@ apps/main/app/(main)/projects/
 │   ├── public-projects-grid.tsx      # Featured public projects
 │   └── recent-submissions-grid.tsx   # Recent submissions
 ├── ideas/
-│   ├── page.tsx                      # Ideas hub (610 lines) — Tech/Problem tabs
+│   ├── page.tsx                      # Ideas hub (610 lines) - Tech/Problem tabs
 │   ├── data/
 │   │   └── categories.ts            # HARDCODED categories (1015 lines, 12 categories)
 │   └── [category]/
@@ -159,10 +159,10 @@ apps/main/app/(main)/projects/
     └── page.tsx                        # Global leaderboard
 
 apps/main/actions/(main)/projects/
-├── project.action.ts                   # 1464 lines — core actions
-├── project-ideas.action.ts             # 691 lines — ideas CRUD
-├── sprint-generation.action.ts         # 456 lines — AI sprint gen
-├── tasks.action.ts                     # 146 lines — task management
+├── project.action.ts                   # 1464 lines - core actions
+├── project-ideas.action.ts             # 691 lines - ideas CRUD
+├── sprint-generation.action.ts         # 456 lines - AI sprint gen
+├── tasks.action.ts                     # 146 lines - task management
 ├── team-collaboration.action.ts        # Team features
 ├── standup.action.ts                   # Standup entries
 ├── standup-voice.action.ts             # Voice standup
@@ -176,7 +176,7 @@ apps/main/actions/(main)/projects/
 └── task-details.action.ts             # Task sub-details
 
 apps/main/components/projects/
-├── project-generate-sheet.tsx          # 984 lines — generation wizard
+├── project-generate-sheet.tsx          # 984 lines - generation wizard
 ├── project-card.tsx                    # Reusable card
 ├── blueprintflowchart.tsx              # Visual task graph
 ├── task-list-progress.tsx              # Task list with progress
@@ -196,7 +196,7 @@ apps/main/components/projects/
 4. SCHEMA ANALYSIS (ProjectV2 & Related Models)
 ================================================================================
 
-4.1 ProjectV2 — The Core Model
+4.1 ProjectV2 - The Core Model
 ─────────────────────────────────
 
   KEY FIELDS:
@@ -229,11 +229,11 @@ apps/main/components/projects/
   • sourceIdea → ProjectIdea (linked idea)
 
   ⚠️ MISSING FIELDS (NEEDED):
-  • isPlatformSeeded (Boolean) — Flag for platform-added projects
+  • isPlatformSeeded (Boolean) - Flag for platform-added projects
   • projectSource (enum: AI_GENERATED, PLATFORM_SEEDED, USER_SUBMITTED)
-  • learningMode (enum: SELF_PACED, AI_GUIDED) — For step-by-step assistant
+  • learningMode (enum: SELF_PACED, AI_GUIDED) - For step-by-step assistant
 
-4.2 ProjectIdea — Ideas Library
+4.2 ProjectIdea - Ideas Library
 ────────────────────────────────
 
   KEY FIELDS:
@@ -253,7 +253,7 @@ apps/main/components/projects/
   ⚠️ ISSUE: The category data in categories.ts is HARDCODED (not in DB)
   ⚠️ ISSUE: No isPlatformCurated flag on ideas
 
-4.3 ProjectV2Sprint — Sprint Organization
+4.3 ProjectV2Sprint - Sprint Organization
 ──────────────────────────────────────────
 
   KEY FIELDS:
@@ -261,7 +261,7 @@ apps/main/components/projects/
   • createdBy, isApproved, isPersonal
   • tasks[] → ProjectV2Task
 
-4.4 ProjectV2Task — Individual Tasks
+4.4 ProjectV2Task - Individual Tasks
 ─────────────────────────────────────
 
   KEY FIELDS:
@@ -274,7 +274,7 @@ apps/main/components/projects/
 
 
 ================================================================================
-5. CURRENT USER FLOW — STEP-BY-STEP WALKTHROUGH
+5. CURRENT USER FLOW - STEP-BY-STEP WALKTHROUGH
 ================================================================================
 
 FLOW A: AI-Generated Project (User Knows What to Build)
@@ -289,7 +289,7 @@ FLOW A: AI-Generated Project (User Knows What to Build)
       Step 5: Generation (calls OpenAI Assistant)
     → On success, redirects to /projects/[slug] (detail page)
 
-FLOW B: Browse Ideas – Technology Based
+FLOW B: Browse Ideas - Technology Based
 ───────────────────────────────────────
   Page 1: /projects (Landing)
     → User clicks "Browse Ideas"
@@ -305,7 +305,7 @@ FLOW B: Browse Ideas – Technology Based
     → AI generates sprints/tasks
     → Redirect to /projects/[slug]
 
-FLOW C: Browse Ideas – Problem First
+FLOW C: Browse Ideas - Problem First
 ─────────────────────────────────────
   Page 2: /projects/ideas
     → User switches to "Problem First" tab
@@ -476,7 +476,7 @@ FLOW E: Fork/Enroll (Viewing Others' Projects)
 
   RECOMMENDATION: Add isPlatformSeeded flag + visual badge.
 
-7.5  FORK AND COPY — REDUNDANT (Confusing)
+7.5  FORK AND COPY - REDUNDANT (Confusing)
 ─────────────────────────────────────────
   Current state:
   • "Enroll" → Costs credits, tracks progress on SAME project
@@ -512,7 +512,7 @@ FLOW E: Fork/Enroll (Viewing Others' Projects)
 
 
 ================================================================================
-8. FORK vs COPY vs ENROLL — DECISION & RECOMMENDATION
+8. FORK vs COPY vs ENROLL - DECISION & RECOMMENDATION
 ================================================================================
 
 8.1  Analysis
@@ -526,7 +526,7 @@ FLOW E: Fork/Enroll (Viewing Others' Projects)
   │              │ SAME project             │ new ProjectV2, new tasks,  │
   │              │                          │ new pages, new sprints     │
   │ Leaderboard  │ Yes (shared)             │ No (separate project)      │
-  │ Updates      │ Gets creator's updates   │ Snapshot — no sync         │
+  │ Updates      │ Gets creator's updates   │ Snapshot - no sync         │
   │ Collaboration│ Can be invited to team   │ Independent                │
   │ Use Case     │ "Join this project"      │ "I want my own copy"       │
   └──────────────┴──────────────────────────┴────────────────────────────┘
@@ -544,7 +544,7 @@ FLOW E: Fork/Enroll (Viewing Others' Projects)
     10,000 users, that's potentially millions of duplicated records.
 
   • Fork is conceptually confusing for learners. They don't need to "own"
-    the project — they need to LEARN from it.
+    the project - they need to LEARN from it.
 
   • The Invite feature (for teams) already covers the collaboration case.
 
@@ -559,7 +559,7 @@ FLOW E: Fork/Enroll (Viewing Others' Projects)
 
 
 ================================================================================
-9. SEEDED / PLATFORM PROJECTS — NEW FLOW PROPOSAL
+9. SEEDED / PLATFORM PROJECTS - NEW FLOW PROPOSAL
 ================================================================================
 
 9.1  Concept: Pre-Generated Project Blueprints
@@ -691,7 +691,7 @@ FLOW E: Fork/Enroll (Viewing Others' Projects)
 
 
 ================================================================================
-11. IDEAS PAGE RESTRUCTURE — PROPOSED UX
+11. IDEAS PAGE RESTRUCTURE - PROPOSED UX
 ================================================================================
 
 11.1  Current Problem
@@ -844,7 +844,7 @@ vs CURRENT: 5+ steps
 
 
 ================================================================================
-13. AI STEP-BY-STEP ASSISTANT — DESIGN SPECIFICATION
+13. AI STEP-BY-STEP ASSISTANT - DESIGN SPECIFICATION
 ================================================================================
 
 13.1  Overview
@@ -866,7 +866,7 @@ vs CURRENT: 5+ steps
 13.3  Conversation Flow Design
 ───────────────────────────────
 
-  STEP 1 — Project Introduction
+  STEP 1 - Project Introduction
   ─────────────────────────────
   AI: "👋 Welcome to {projectTitle}! This is a {difficulty} level
        {generationType} project. You'll be building it using
@@ -884,7 +884,7 @@ vs CURRENT: 5+ steps
 
   User: "Yes, let's go!"
 
-  STEP 2 — Task Introduction (for each task)
+  STEP 2 - Task Introduction (for each task)
   ──────────────────────────────────────────
   AI: "📋 Task {N}: {task.title}
 
@@ -901,7 +901,7 @@ vs CURRENT: 5+ steps
        2. Get a step-by-step walkthrough
        3. See what tools/commands you'll need"
 
-  STEP 3 — If user asks for walkthrough
+  STEP 3 - If user asks for walkthrough
   ─────────────────────────────────────
   AI breaks down each description step into sub-steps:
   - Explains the concept behind each step
@@ -909,7 +909,7 @@ vs CURRENT: 5+ steps
   - Shows code structure (skeleton, not implementation)
   - Waits for user to confirm they've done each sub-step
 
-  STEP 4 — User can ask questions anytime
+  STEP 4 - User can ask questions anytime
   ──────────────────────────────────────
   • "What does X mean?" → Concept explanation
   • "Show me the code for Y" → Code snippet (only when asked)
@@ -917,13 +917,13 @@ vs CURRENT: 5+ steps
   • "Quiz me on this topic" → Quick quiz generation
   • "Give me the terminal command" → Command suggestion
 
-  STEP 5 — Task Completion
+  STEP 5 - Task Completion
   ────────────────────────
   User: "I've completed this task"
   AI: "Great! Let me verify:
-       ✅ {criteria[0]} — Done?
-       ✅ {criteria[1]} — Done?
-       ✅ {criteria[2]} — Done?
+       ✅ {criteria[0]} - Done?
+       ✅ {criteria[1]} - Done?
+       ✅ {criteria[2]} - Done?
 
        All good! Marking task as complete. ✨
        You're now at {progress}% completion.
@@ -935,7 +935,7 @@ vs CURRENT: 5+ steps
 ──────────────────────────────────
 
   ┌────────────────────────────────────────────────────────────────────┐
-  │  Sprint Board Header: Sprint 1 — Foundation & Setup               │
+  │  Sprint Board Header: Sprint 1 - Foundation & Setup               │
   │  [Daily Standup] [Quiz 🔒 50%] [Mock Interview 🔒 75%]            │
   ├──────────┬────────────────────────┬───────────────────────────────┤
   │  Tasks   │   Task Detail          │   AI Assistant Panel          │
@@ -1123,7 +1123,7 @@ The goal is to simulate real industry project workflows:
   Project: "Real-Time Collaborative Editor"
   Recruiter Signal: "Demonstrates proficiency in WebSocket communication,
   operational transformation (OT/CRDT), state synchronization across
-  distributed clients — key skills for companies building collaborative
+  distributed clients - key skills for companies building collaborative
   tools (Figma, Notion, Google Docs)."
 
 
@@ -1251,7 +1251,7 @@ A.3  Seed Script (New)
 
 SUMMARY OF KEY DECISIONS:
 
-  1. ✅ KEEP Enroll (rename to "Join/Start") — REMOVE Fork
+  1. ✅ KEEP Enroll (rename to "Join/Start") - REMOVE Fork
   2. ✅ Add isPlatformSeeded flag to distinguish platform vs user projects
   3. ✅ Platform projects: direct link (no AI generation needed)
   4. ✅ Community-submitted projects: keep generate sheet flow

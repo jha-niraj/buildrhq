@@ -149,7 +149,7 @@ function dateRange(start: Date | string | null, end: Date | string | null, curre
     const fmt = (d: Date | string) =>
         new Date(d).toLocaleDateString("en-US", { month: "short", year: "numeric" });
     if (!start) return current ? "Present" : "";
-    return `${fmt(start)} — ${current ? "Present" : end ? fmt(end) : "Present"}`;
+    return `${fmt(start)} - ${current ? "Present" : end ? fmt(end) : "Present"}`;
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -280,7 +280,7 @@ export default function ProfilePage() {
     };
 
     // XP inside the current level. Levels are 1000 XP wide, so the bar is the
-    // remainder — a lifetime total would sit at ~100% forever and say nothing.
+    // remainder - a lifetime total would sit at ~100% forever and say nothing.
     const xpIntoLevel = s.xp % 1000;
     const xpProgress = Math.min(100, Math.round((xpIntoLevel / 1000) * 100));
 

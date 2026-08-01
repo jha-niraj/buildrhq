@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@repo/ui/components/ui/button";
+import { Logo } from "@repo/ui/components/logo"
 import { AuthVisual } from "@repo/ui/components/auth-visual";
 import { Input } from "@repo/ui/components/ui/input";
 import { Label } from "@repo/ui/components/ui/label";
@@ -8,7 +9,7 @@ import React, { useState } from "react";
 import toast from "@repo/ui/components/ui/sonner";
 import { useRouter } from "next/navigation";
 import {
-    ArrowLeft, KeyRound, Loader2, Mail, Building2, ArrowRight
+    ArrowLeft, KeyRound, Loader2, Mail, ArrowRight
 } from "lucide-react";
 import Link from "next/link";
 import { emailOtp } from "@repo/auth/client";
@@ -73,7 +74,7 @@ export default function ForgotPassword() {
                 <div className="flex justify-center mb-8">
                     <Link href="/" className="flex items-center gap-2">
                         <div className="w-10 h-10 rounded-xl bg-neutral-900 dark:bg-white flex items-center justify-center">
-                            <Building2 className="w-5 h-5 text-white dark:text-black" />
+                            <Logo className="h-[19px] w-[19px] text-white dark:text-black" />
                         </div>
                         <span className="text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
                             CODER&apos;Z <span className="text-neutral-500 font-mono font-normal">HIRING</span>

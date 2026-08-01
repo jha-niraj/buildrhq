@@ -9,7 +9,7 @@ export default function Loading() {
         <div className="w-full">
             <ShimmerStyles />
 
-            {/* Hero — centred badge, headline, sub, CTA row, trust pills. */}
+            {/* Hero - centred badge, headline, sub, CTA row, trust pills. */}
             <section className="relative py-20">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="mx-auto max-w-4xl space-y-4 text-center">
@@ -38,7 +38,7 @@ export default function Loading() {
                 </div>
             </section>
 
-            {/* Stat band — 2-up on mobile, 4-up from md. */}
+            {/* Stat band - 2-up on mobile, 4-up from md. */}
             <section className="bg-white dark:bg-neutral-950">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:gap-8">
@@ -53,7 +53,7 @@ export default function Loading() {
                 </div>
             </section>
 
-            {/* Public projects — header row + a 3-up card grid. */}
+            {/* Public projects - header row + a 3-up card grid. */}
             <section className="bg-neutral-50 py-24 dark:bg-neutral-900/50">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="mb-12 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">

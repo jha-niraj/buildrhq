@@ -3,7 +3,7 @@
 
 /**
  * Entities that can carry a comment thread. Must stay in sync with the
- * `CommentEntityType` pgEnum in packages/db/src/schema/comments.ts — adding a
+ * `CommentEntityType` pgEnum in packages/db/src/schema/comments.ts - adding a
  * value there without adding it here (and to ENTITY_TABLES in the action file)
  * makes the new type unreachable from the app.
  */
@@ -21,7 +21,7 @@ export interface CommentNode {
     entityType: CommentEntityType;
     entityId: string;
     parentId: string | null;
-    /** Empty string when `isDeleted` — the server never returns a deleted body. */
+    /** Empty string when `isDeleted` - the server never returns a deleted body. */
     body: string;
     isDeleted: boolean;
     isEdited: boolean;
@@ -45,7 +45,7 @@ export interface OptimisticCommentNode extends CommentNode {
 export interface GetCommentsResult {
     success: boolean;
     data?: CommentNode[];
-    /** Non-deleted comment count for the entity — matches `projectIdeas.commentCount`. */
+    /** Non-deleted comment count for the entity - matches `projectIdeas.commentCount`. */
     count?: number;
     error?: string;
 }

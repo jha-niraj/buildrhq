@@ -3,7 +3,7 @@
 //
 //   <CommentThread entityType="PROJECT_IDEA" entityId={idea.id} />
 //
-// Nothing here knows about project ideas specifically — projects and blog posts
+// Nothing here knows about project ideas specifically - projects and blog posts
 // mount the identical component with a different entityType.
 export { CommentThread } from "./comment-thread";
 export { CommentItem } from "./comment-item";

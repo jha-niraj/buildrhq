@@ -108,7 +108,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
  *
  * Recharts types its payload loosely, so the shadcn chart wrapper originally used
  * `any` throughout. Naming the shape keeps the callbacks below type-checked and
- * makes it obvious which fields the renderer depends on — everything here is
+ * makes it obvious which fields the renderer depends on - everything here is
  * optional because which keys are populated depends on the chart type.
  */
 export interface ChartPayloadItem {

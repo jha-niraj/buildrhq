@@ -244,7 +244,7 @@ export function UserProjectAnalytics({ userStats, className }: UserStatsComponen
 				<StatCard
 					icon={<Star className="h-5 w-5" />}
 					title="Avg Rating"
-					value={userStats.averageRating > 0 ? userStats.averageRating.toFixed(1) : "—"}
+					value={userStats.averageRating > 0 ? userStats.averageRating.toFixed(1) : "-"}
 					color="purple"
 				/>
 			</div>

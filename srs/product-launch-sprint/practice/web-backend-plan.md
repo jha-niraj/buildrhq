@@ -1,4 +1,4 @@
-# Web Backend Practice Module — Complete Build Plan
+# Web Backend Practice Module - Complete Build Plan
 > Module path: `apps/main/app/(main)/practice/web-backend/`
 > Actions: `apps/main/actions/(main)/practice/` (shared)
 > Last updated: April 2026
@@ -8,36 +8,36 @@
 ## What This Module Does
 
 Web Backend practice covers the concepts and coding skills for backend engineering interviews: Node.js/Express patterns, database design, API design, authentication/authorization, caching, queues, microservices, and backend system design. It includes:
-- **Concept questions** — "Explain the difference between authentication and authorization"
-- **Coding challenges** — "Build a rate limiter middleware", "Implement JWT authentication", "Write a SQL query that..."
-- **Database design problems** — "Design the database schema for a Twitter-like app"
-- **API design problems** — "Design the REST API for an e-commerce product catalog"
-- **AI conversation** — Socratic discussion about backend decisions, tradeoffs, and architecture
+- **Concept questions** - "Explain the difference between authentication and authorization"
+- **Coding challenges** - "Build a rate limiter middleware", "Implement JWT authentication", "Write a SQL query that..."
+- **Database design problems** - "Design the database schema for a Twitter-like app"
+- **API design problems** - "Design the REST API for an e-commerce product catalog"
+- **AI conversation** - Socratic discussion about backend decisions, tradeoffs, and architecture
 
 This module is especially valuable for students preparing for roles that specifically test Node.js, Express, PostgreSQL/MongoDB, REST/GraphQL, and DevOps basics.
 
 ---
 
-## Current State — What Is Already Built
+## Current State - What Is Already Built
 
 ### Pages
-- `/practice/web-backend` — Module landing page.
-- `/practice/web-backend/[slug]` — Problem workspace.
+- `/practice/web-backend` - Module landing page.
+- `/practice/web-backend/[slug]` - Problem workspace.
 
 ### Actions (shared with practice module)
-- `getProblemsForModule('WEB_BACKEND')` — Fetches backend problems.
-- `getOrCreateSession()` — Creates session.
-- `saveSessionProgress()` — Saves code + chat history.
-- `assess.action.ts` — Has `WEB_BACKEND` system prompt.
+- `getProblemsForModule('WEB_BACKEND')` - Fetches backend problems.
+- `getOrCreateSession()` - Creates session.
+- `saveSessionProgress()` - Saves code + chat history.
+- `assess.action.ts` - Has `WEB_BACKEND` system prompt.
 
 ### API Tester Component
-- `api-tester.tsx` — An HTTP request tester panel in the workspace (similar to a mini Postman). Currently exists — verify if it's wired.
+- `api-tester.tsx` - An HTTP request tester panel in the workspace (similar to a mini Postman). Currently exists - verify if it's wired.
 
 ---
 
 ## What Needs to Be Built
 
-### Priority 1 — Problem Library & Content
+### Priority 1 - Problem Library & Content
 
 - [ ] **Seed `PracticeProblem` records for WEB_BACKEND**:
   - Minimum 60 problems:
@@ -90,29 +90,29 @@ This module is especially valuable for students preparing for roles that specifi
   - Implement API response envelope (success/error format)
   - Design a webhook system
 
-### Priority 2 — AI Evaluation for Backend
+### Priority 2 - AI Evaluation for Backend
 
 - [ ] **`evaluateBackendCode()` action**:
   - For CODING problems (Node.js): run via ShiprHQWorker (Node.js runner). Test against test cases. AI evaluates: error handling, security (SQL injection, input validation), performance, code organization.
   - For SQL problems: run via ShiprHQWorker (PostgreSQL runner). Compare query output against expected output. AI evaluates query efficiency, index usage.
-  - For CONCEPTUAL problems: AI evaluates explanation. Socratic follow-up: "You mentioned connection pooling — what's the default pool size in pg (node-postgres) and why is the default often wrong for high-traffic apps?"
+  - For CONCEPTUAL problems: AI evaluates explanation. Socratic follow-up: "You mentioned connection pooling - what's the default pool size in pg (node-postgres) and why is the default often wrong for high-traffic apps?"
   - For API DESIGN problems: user provides API design as text or JSON schema. AI evaluates: RESTful correctness, naming conventions, pagination strategy, error codes, versioning.
   - For DATABASE DESIGN: user provides SQL CREATE statements or text description. AI evaluates: normalization, index strategy, foreign keys, handling of edge cases.
 
 - [ ] **Socratic depth for backend**:
   - Don't accept surface-level answers: "You said use Redis for caching. What cache eviction policy would you use? What happens when Redis is full?"
-  - Push for production-readiness thinking: "Your rate limiter works on a single server — what breaks in a distributed system?"
+  - Push for production-readiness thinking: "Your rate limiter works on a single server - what breaks in a distributed system?"
 
-### Priority 3 — API Tester Panel
+### Priority 3 - API Tester Panel
 
 `api-tester.tsx` already exists. Wire it properly:
 
 - [ ] **For API design problems**: Student writes their Express endpoint code. It gets deployed to a sandboxed ShiprHQWorker container. The API tester sends HTTP requests to it and shows responses.
 - [ ] This allows testing actual API behavior rather than just code review.
 - [ ] Support: GET, POST, PUT, DELETE, PATCH. Request headers and body (JSON). Response status + body + timing.
-- [ ] For SQL problems: replace API tester with a **SQL runner panel** — user types SQL, it runs against a seeded test database in ShiprHQWorker, shows results.
+- [ ] For SQL problems: replace API tester with a **SQL runner panel** - user types SQL, it runs against a seeded test database in ShiprHQWorker, shows results.
 
-### Priority 4 — Topic Organization
+### Priority 4 - Topic Organization
 
 - [ ] **Topic hierarchy for web backend**:
   ```
@@ -128,13 +128,13 @@ This module is especially valuable for students preparing for roles that specifi
   └── File Uploads
   
   Databases
-  ├── SQL (PostgreSQL) — Queries, Schema Design, Optimization
-  ├── NoSQL (MongoDB) — Document Design, Aggregation
+  ├── SQL (PostgreSQL) - Queries, Schema Design, Optimization
+  ├── NoSQL (MongoDB) - Document Design, Aggregation
   └── ORMs (Prisma, Sequelize)
   
   Caching & Queues
-  ├── Redis — Data Structures, Caching Patterns
-  └── Message Queues — BullMQ, Kafka basics
+  ├── Redis - Data Structures, Caching Patterns
+  └── Message Queues - BullMQ, Kafka basics
   
   API Design
   ├── REST Conventions
@@ -147,7 +147,7 @@ This module is especially valuable for students preparing for roles that specifi
   └── Logging & Monitoring
   ```
 
-### Priority 5 — Backend System Design (Sub-category)
+### Priority 5 - Backend System Design (Sub-category)
 
 Backend-specific system design problems that don't need Excalidraw:
 
@@ -158,14 +158,14 @@ Backend-specific system design problems that don't need Excalidraw:
   - "Design a search system for a product catalog"
   - "How would you handle file uploads at scale?"
 
-- [ ] AI evaluates these as structured conversations — no canvas needed. Phase flow: Requirements → Schema Design → API Design → Scalability Considerations.
+- [ ] AI evaluates these as structured conversations - no canvas needed. Phase flow: Requirements → Schema Design → API Design → Scalability Considerations.
 
-### Priority 6 — PostgreSQL Runner in ShiprHQWorker
+### Priority 6 - PostgreSQL Runner in ShiprHQWorker
 
 The current ShiprHQWorker supports JS, TS, Python, Java, C++, C. Backend practice needs SQL execution:
 
 - [ ] **Add PostgreSQL runner to ShiprHQWorker**:
-  - New Docker runner: `postgresql.Dockerfile` — PostgreSQL + seeded test database.
+  - New Docker runner: `postgresql.Dockerfile` - PostgreSQL + seeded test database.
   - Test database seeded with realistic data (users, orders, products, etc.) for SQL query problems.
   - Takes SQL query as input, returns result set as JSON.
   - 5-second timeout for queries.
@@ -173,7 +173,7 @@ The current ShiprHQWorker supports JS, TS, Python, Java, C++, C. Backend practic
 
 - [ ] **Schema reset between sessions**: Each SQL session runs against a clean copy of the test data.
 
-### Priority 7 — Spaced Repetition
+### Priority 7 - Spaced Repetition
 
 Same as DSA and Frontend:
 
@@ -208,7 +208,7 @@ apps/main/
 ## Implementation Order
 
 1. Seed 60 backend problems across all categories
-2. `evaluateBackendCode()` — Node.js execution + AI quality + security evaluation
+2. `evaluateBackendCode()` - Node.js execution + AI quality + security evaluation
 3. SQL conceptual evaluation with Socratic follow-up
 4. Wire `api-tester.tsx` to ShiprHQWorker (sandboxed Express execution)
 5. PostgreSQL Dockerfile + seeded test DB in ShiprHQWorker

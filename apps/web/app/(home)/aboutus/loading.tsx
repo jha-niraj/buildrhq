@@ -32,7 +32,7 @@ export default function Loading() {
                 </div>
             </section>
 
-            {/* Mission — 2-up */}
+            {/* Mission - 2-up */}
             <section className="border-t border-neutral-100 py-24 dark:border-neutral-800">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
@@ -49,7 +49,7 @@ export default function Loading() {
                 </div>
             </section>
 
-            {/* Team — 2-up */}
+            {/* Team - 2-up */}
             <section className="border-t border-neutral-100 py-24 dark:border-neutral-800">
                 <div className="mx-auto max-w-7xl px-6">
                     <Shimmer className="mb-10 h-8 w-56" />
@@ -73,7 +73,7 @@ export default function Loading() {
                 </div>
             </section>
 
-            {/* #contact — copy column beside the form */}
+            {/* #contact - copy column beside the form */}
             <section className="border-t border-neutral-100 py-24 dark:border-neutral-800">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="grid gap-14 lg:grid-cols-[1fr_1.2fr]">

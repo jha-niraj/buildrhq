@@ -37,7 +37,7 @@ function generationWorkerUrl() {
 
 /**
  * Start a project-generation job on the Cloudflare generation worker.
- * The worker's Durable Object schedules an Alarm and runs the 1–1.5 min pipeline,
+ * The worker's Durable Object schedules an Alarm and runs the 1-1.5 min pipeline,
  * writing status/progress to the BackgroundJob table server-side. The client just
  * polls `getGenerationStatus(jobId)`.
  */

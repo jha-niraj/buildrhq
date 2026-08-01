@@ -27,7 +27,7 @@ function JobsSidebarContent() {
     // next-themes cannot know the real theme until it has read localStorage, so
     // `theme` is undefined on the server and resolved on the client. Branching on
     // it directly in the markup below made the server emit one icon and the
-    // client the other — a hydration mismatch React recovers from by discarding
+    // client the other - a hydration mismatch React recovers from by discarding
     // and re-rendering this subtree, on every /jobs load. Same fix as
     // @repo/ui's ThemeToggle.
     const [mounted, setMounted] = useState(false)

@@ -98,7 +98,7 @@ function CandidateCard({
     isPending: boolean
 }) {
     const formatDate = (date: Date | null) => {
-        if (!date) return "—"
+        if (!date) return "-"
         return new Date(date).toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",

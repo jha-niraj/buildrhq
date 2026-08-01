@@ -1,4 +1,4 @@
-# Resume Module — Complete Build Plan
+# Resume Module - Complete Build Plan
 > Module path: `apps/main/app/(main)/ai/resume/`
 > Actions path: `apps/main/actions/(main)/ai/` (resume-ai.action.ts, resume-template.action.ts)
 > Schema: `packages/prisma/schema/aitools.prisma`
@@ -16,48 +16,48 @@ The Resume module is a full resume builder that lets students:
 5. Generate a public resume URL (`/ai/resume/[username]`) shareable with recruiters
 6. Generate a cover letter from within the resume context (separate sub-module)
 
-The key differentiator vs. tools like Teal or Rezi: **this resume knows the student's actual verified data** — completed projects with real scores, DSA practice stats, mock interview performance — not just self-reported info.
+The key differentiator vs. tools like Teal or Rezi: **this resume knows the student's actual verified data** - completed projects with real scores, DSA practice stats, mock interview performance - not just self-reported info.
 
 ---
 
-## Current State — What Is Already Built
+## Current State - What Is Already Built
 
 ### Pages
-- `/ai/resume` — Hub page. Shows the user's current resume with tabs for sections.
-- `/ai/resume/create` — Resume creation page.
-- `/ai/resumecreator` — Alternative resume creator entry point (may be a separate flow).
-- `/ai/resume/draft/[id]` — Draft editing page.
-- `/ai/resume/cover-letter` — Cover letter generation from within resume context.
-- `/ai/resume/[username]` — Public-facing resume view (shareable link).
+- `/ai/resume` - Hub page. Shows the user's current resume with tabs for sections.
+- `/ai/resume/create` - Resume creation page.
+- `/ai/resumecreator` - Alternative resume creator entry point (may be a separate flow).
+- `/ai/resume/draft/[id]` - Draft editing page.
+- `/ai/resume/cover-letter` - Cover letter generation from within resume context.
+- `/ai/resume/[username]` - Public-facing resume view (shareable link).
 
 ### Components
-- `resume-hub.tsx` / `resume-hub-client.tsx` — Main hub showing resume status and actions.
-- `resume-creator-tabs.tsx` — Tabs for Education, Experience, Projects, Skills, Socials.
-- `resume-editor.tsx` — Live editor panel.
-- `education-tab-form.tsx` — Education section form.
-- `experience-tab-form.tsx` — Work experience section form.
-- `projects-tab-form.tsx` — Projects section form.
-- `skills-tab-form.tsx` — Skills section form.
-- `socials-tab-form.tsx` — Social links form.
-- `cover-letter-client.tsx` — Cover letter generation within resume context.
+- `resume-hub.tsx` / `resume-hub-client.tsx` - Main hub showing resume status and actions.
+- `resume-creator-tabs.tsx` - Tabs for Education, Experience, Projects, Skills, Socials.
+- `resume-editor.tsx` - Live editor panel.
+- `education-tab-form.tsx` - Education section form.
+- `experience-tab-form.tsx` - Work experience section form.
+- `projects-tab-form.tsx` - Projects section form.
+- `skills-tab-form.tsx` - Skills section form.
+- `socials-tab-form.tsx` - Social links form.
+- `cover-letter-client.tsx` - Cover letter generation within resume context.
 
 ### Server Actions
 - `resume-ai.action.ts`:
-  - `polishWorkExperienceBullet(text)` — Takes a bullet point, runs through OpenAI to make it STAR-method formatted, quantified, and ATS-friendly.
-  - `polishWithVoice(audioBase64)` — Takes voice recording, transcribes with ElevenLabs STT, then polishes the transcription.
+  - `polishWorkExperienceBullet(text)` - Takes a bullet point, runs through OpenAI to make it STAR-method formatted, quantified, and ATS-friendly.
+  - `polishWithVoice(audioBase64)` - Takes voice recording, transcribes with ElevenLabs STT, then polishes the transcription.
 - `resume-template.action.ts`:
-  - `getAllTemplates()` — Fetch all `ResumeTemplate` records.
-  - `getUserGenerations()` — User's purchased/generated resume versions.
-  - `verifyTemplatePurchase()` — Check if user has paid for a premium template.
+  - `getAllTemplates()` - Fetch all `ResumeTemplate` records.
+  - `getUserGenerations()` - User's purchased/generated resume versions.
+  - `verifyTemplatePurchase()` - Check if user has paid for a premium template.
 
 ### Public Resume API
-- `/app/api/v1/resume/[username]` (check if this exists) — Returns resume JSON for public view.
+- `/app/api/v1/resume/[username]` (check if this exists) - Returns resume JSON for public view.
 
 ---
 
 ## What Needs to Be Built / Fixed
 
-### Priority 1 — Profile Auto-Sync (Most Important Differentiator)
+### Priority 1 - Profile Auto-Sync (Most Important Differentiator)
 
 **Current problem:** The resume creator shows manual input forms. The key differentiator is that this resume should auto-populate from the student's actual platform data.
 
@@ -69,34 +69,34 @@ The key differentiator vs. tools like Teal or Rezi: **this resume knows the stud
   - Pull from `SocialLink` → populate Socials section.
   - Pull from `UserProfile` → populate header (name, title, summary).
   - Pull from `Certifications` → populate optional Certifications section.
-  - **DSA Stats**: Pull from `UserDSAPreferences` + `UserDSATrackingEntry` — show "Solved X DSA problems across Y patterns" as a quantified bullet.
-  - **Mock Interview**: Pull from `MockVoiceSession` with `status: COMPLETED` — show "Completed X mock interviews, avg score Y/100" if user opts in.
+  - **DSA Stats**: Pull from `UserDSAPreferences` + `UserDSATrackingEntry` - show "Solved X DSA problems across Y patterns" as a quantified bullet.
+  - **Mock Interview**: Pull from `MockVoiceSession` with `status: COMPLETED` - show "Completed X mock interviews, avg score Y/100" if user opts in.
 
 - [ ] **"Sync from Profile" button** in the resume hub with a one-click sync that populates all sections.
 - [ ] **Selective sync**: Let user choose which sections to sync and which to keep manual.
 - [ ] **Conflict resolution**: If user has manually edited a field and then resyncs, ask "Replace with profile data?" or "Merge?".
 
-### Priority 2 — AI Bullet Point Polish
+### Priority 2 - AI Bullet Point Polish
 
 This is partially built (`polishWorkExperienceBullet()`). Extend it:
 
 - [ ] **Polish button on every bullet point**: Small sparkle icon next to each experience/project bullet. Clicking it runs the AI polish.
 - [ ] **Polish entire section at once**: "Polish all bullets" button at the top of Experience and Projects sections.
 - [ ] **Before/After diff view**: Show the original vs. polished text side-by-side. User accepts or rejects the suggestion.
-- [ ] **Voice input for bullet creation**: Microphone button — user speaks their accomplishment, ElevenLabs transcribes it, OpenAI converts to a STAR-method bullet point.
+- [ ] **Voice input for bullet creation**: Microphone button - user speaks their accomplishment, ElevenLabs transcribes it, OpenAI converts to a STAR-method bullet point.
   - Action: `polishWithVoice()` already exists in `resume-ai.action.ts`. Wire it to the UI.
 - [ ] **ATS keyword suggestions**: After user enters their target job role/company, suggest keywords from common JDs for that role. Highlight which keywords are missing from their resume.
 - [ ] **Credit cost**: Each AI polish operation costs 1 credit. Bulk polish (entire section) costs 3 credits.
 
-### Priority 3 — Resume Templates & Live Preview
+### Priority 3 - Resume Templates & Live Preview
 
-- [ ] **Template selection**: Show all available templates in a grid. Free templates (2–3) available by default. Premium templates cost credits or are unlocked by completing projects.
+- [ ] **Template selection**: Show all available templates in a grid. Free templates (2-3) available by default. Premium templates cost credits or are unlocked by completing projects.
 - [ ] **Live preview panel**: Right side of the editor should show a real-time preview of the resume as the user types. Use a `ResumePDF` component that renders the resume in the chosen template.
 - [ ] **PDF generation**: "Download PDF" button generates a proper PDF. Use `react-pdf` or `@react-pdf/renderer`.
 - [ ] **Template switching**: User can switch templates and the preview updates instantly without losing content.
 - [ ] **Seed resume templates**: At least 3 templates: Clean/Minimal, Modern/Bold, ATS-Optimized/Plain.
 
-### Priority 4 — ATS Score
+### Priority 4 - ATS Score
 
 This would be the strongest differentiator against all existing resume tools.
 
@@ -111,7 +111,7 @@ This would be the strongest differentiator against all existing resume tools.
 - [ ] Action: `scoreResumeForJD(resumeContent, jobDescription)` in `resume-ai.action.ts`.
 - [ ] Store the JD + score in `AiToolUsage` table for analytics.
 
-### Priority 5 — Public Resume URL
+### Priority 5 - Public Resume URL
 
 - [ ] **Public resume page** (`/ai/resume/[username]`):
   - Renders the user's resume in their chosen template, publicly viewable.
@@ -122,13 +122,13 @@ This would be the strongest differentiator against all existing resume tools.
 - [ ] **View counter**: Show user "Your resume has been viewed X times" in the hub.
 - [ ] **Resume QR code**: Generate a QR code of the public URL for physical resume or events.
 
-### Priority 6 — Resume Versions & History
+### Priority 6 - Resume Versions & History
 
 - [ ] **Resume versioning**: Every "Save" creates a snapshot. User can see version history and restore any previous version.
 - [ ] **Multiple resumes**: User can have up to 3 saved resumes (e.g., "SWE Resume", "Frontend Resume", "Intern Resume").
-- [ ] **Draft status**: A resume starts as DRAFT. User can mark it as ACTIVE (only one active at a time — this is what appears at the public URL).
+- [ ] **Draft status**: A resume starts as DRAFT. User can mark it as ACTIVE (only one active at a time - this is what appears at the public URL).
 
-### Priority 7 — Resume Analytics (Post-Launch)
+### Priority 7 - Resume Analytics (Post-Launch)
 
 Track resume engagement when public URL is visited:
 - [ ] Number of views per day/week
@@ -172,7 +172,7 @@ apps/main/
 
 ## Implementation Order
 
-1. `syncProfileToResume()` action — auto-populate all sections from user's actual data
+1. `syncProfileToResume()` action - auto-populate all sections from user's actual data
 2. "Sync from Profile" button + selective sync UI
 3. AI polish button on every bullet point (with before/after diff)
 4. Voice input for bullet creation (wire existing `polishWithVoice()`)

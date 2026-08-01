@@ -1,6 +1,6 @@
 
 ================================================================================
-  LearnS MODULE — STRUCTURE PLAN FOR PYTHON PROGRAMMING SYLLABUS
+  LearnS MODULE - STRUCTURE PLAN FOR PYTHON PROGRAMMING SYLLABUS
 ================================================================================
 
 Created: 2026-02-16
@@ -44,18 +44,18 @@ CURRENT DATA MODEL:
 
 AVAILABLE STEP TYPES (LearnStepType enum):
 ---------------------------------------------
-  1. EXPLANATION    – Markdown content explaining a Learn
-  2. CODE           – Code examples with syntax highlighting + explanations
-  3. QUIZ           – MCQ questions (single or batch) with auto-grading
-  4. CHALLENGE      – Coding challenge with starter code, solution, AI eval
-  5. COMPARISON     – Side-by-side comparison of approaches
-  6. SUMMARY        – Key takeaways and tips
-  7. RESOURCE       – YouTube videos + documentation links
-  8. VISUAL         – Images, diagrams, flowcharts
-  9. MOCK_INTERVIEW – AI voice-based mock interview
- 10. PROJECT        – Mini or major project with AI generation
- 11. VISUALIZATION  – Data visualizations
- 12. INTERACTIVE    – Interactive elements
+  1. EXPLANATION    - Markdown content explaining a Learn
+  2. CODE           - Code examples with syntax highlighting + explanations
+  3. QUIZ           - MCQ questions (single or batch) with auto-grading
+  4. CHALLENGE      - Coding challenge with starter code, solution, AI eval
+  5. COMPARISON     - Side-by-side comparison of approaches
+  6. SUMMARY        - Key takeaways and tips
+  7. RESOURCE       - YouTube videos + documentation links
+  8. VISUAL         - Images, diagrams, flowcharts
+  9. MOCK_INTERVIEW - AI voice-based mock interview
+ 10. PROJECT        - Mini or major project with AI generation
+ 11. VISUALIZATION  - Data visualizations
+ 12. INTERACTIVE    - Interactive elements
 
 HIERARCHY (category system):
 -------------------------------
@@ -66,7 +66,7 @@ HIERARCHY (category system):
 
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║  SECTION 2: KEY INSIGHT — ONE Learn = ONE TOPIC (NOT ONE UNIT)           ║
+║  SECTION 2: KEY INSIGHT - ONE Learn = ONE TOPIC (NOT ONE UNIT)           ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
 THE CORRECT MAPPING:
@@ -88,17 +88,17 @@ THE CORRECT MAPPING:
        │
        └── LearnSubCategory:  "Python"
               │
-              ├── LearnTopic:  "Unit I — Python Basics"
+              ├── LearnTopic:  "Unit I - Python Basics"
               │       │
               │       ├── Learn: "Setting Up Your Python Environment"
               │       └── Learn: "Variables, Expressions & Statements"
               │
-              ├── LearnTopic:  "Unit II — Control Flow"
+              ├── LearnTopic:  "Unit II - Control Flow"
               │       │
               │       ├── Learn: "Conditional Statements"
               │       └── Learn: "Iterative Statements (Loops)"
               │
-              ├── LearnTopic:  "Unit III — Functions"
+              ├── LearnTopic:  "Unit III - Functions"
               │       │
               │       └── Learn: "Functions and Recursion"
               │
@@ -128,8 +128,8 @@ TOTAL LearnS: 12 (one per topic in syllabus)
   │   3.1  │ Functions and Recursion in Python         │ INTERMED.  │
   ├────────┼──────────────────────────────────────────┼────────────┤
   │ Unit IV│                                          │            │
-  │   4.1  │ Python Strings — The Complete Guide       │ INTERMED.  │
-  │   4.2  │ Python Lists — Mastering List Operations  │ INTERMED.  │
+  │   4.1  │ Python Strings - The Complete Guide       │ INTERMED.  │
+  │   4.2  │ Python Lists - Mastering List Operations  │ INTERMED.  │
   │   4.3  │ Tuples and Dictionaries in Python         │ INTERMED.  │
   ├────────┼──────────────────────────────────────────┼────────────┤
   │ Unit V │                                          │            │
@@ -163,7 +163,7 @@ TOTAL LearnS: 12 (one per topic in syllabus)
           │              │ Windows/Mac/Linux installation guide,
           │              │ checking `python --version`
 
-  Step 4  │ CODE         │ "Your First Program — Hello World"
+  Step 4  │ CODE         │ "Your First Program - Hello World"
           │              │ print("Hello, World!")
           │              │ Running from terminal, running from IDE
 
@@ -395,7 +395,7 @@ TOTAL LearnS: 12 (one per topic in syllabus)
 
   Step 6  │ EXPLANATION  │ "Built-in Math Functions"
           │              │ abs(), round(), min(), max(), pow()
-          │              │ import math — math.sqrt(), math.pi
+          │              │ import math - math.sqrt(), math.pi
 
   Step 7  │ EXPLANATION  │ "Recursion"
           │              │ Base case, recursive case, call stack
@@ -448,7 +448,7 @@ Not all steps are mandatory. Adapt based on the topic's complexity.
   ├─────┼──────────────────┼──────────────────────────────────────────────┤
   │  1  │ EXPLANATION       │ Introduce the topic Learnually             │
   │  2  │ CODE              │ Show basic examples (learn by reading)       │
-  │  3  │ EXPLANATION       │ Go deeper — edge cases, nuances             │
+  │  3  │ EXPLANATION       │ Go deeper - edge cases, nuances             │
   │  4  │ CODE              │ More complex examples (learn by reading)     │
   │  5  │ VISUAL            │ Diagram/flowchart (visual learners)          │
   │  6  │ COMPARISON        │ Compare approaches (optional, if applicable) │
@@ -467,7 +467,7 @@ Not all steps are mandatory. Adapt based on the topic's complexity.
 
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║  SECTION 6: USER FLOW — COMPLETE JOURNEY (START TO FINISH)                 ║
+║  SECTION 6: USER FLOW - COMPLETE JOURNEY (START TO FINISH)                 ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
   ┌──────────────────────────────────────────────────────────────────────────┐
@@ -606,7 +606,7 @@ Not all steps are mandatory. Adapt based on the topic's complexity.
              │
              ▼
   ┌───────┐ ┌───────┐ ┌───────┐
-  │ 4.1   │ │ 4.2   │ │  4.3  │  (parallel — all require 3.1)
+  │ 4.1   │ │ 4.2   │ │  4.3  │  (parallel - all require 3.1)
   │Strings│ │ Lists │ │ T & D │
   └───────┘ └───────┘ └───────┘
        │         │         │
@@ -685,7 +685,7 @@ The existing codebase is already 90% ready. Here's what needs to change:
 
   CHANGE 3: ADD "LEARNING PATH" VIEW (OPTIONAL BUT RECOMMENDED)
   ──────────────────────────────────────────────────────────────
-  File: NEW — apps/main/app/(main)/Learns/_components/learning-path.tsx
+  File: NEW - apps/main/app/(main)/Learns/_components/learning-path.tsx
   
   Currently: No sequential path view exists.
   Needed:    A visual "roadmap" showing all Learns in order
@@ -740,9 +740,9 @@ The existing codebase is already 90% ready. Here's what needs to change:
     { name: "Python", slug: "python", mainCategoryId: above }
   
   LearnTopic:
-    { name: "Unit I — Python Basics", slug: "unit-1-python-basics", ... }
-    { name: "Unit II — Control Flow", slug: "unit-2-control-flow", ... }
-    { name: "Unit III — Functions", slug: "unit-3-functions", ... }
+    { name: "Unit I - Python Basics", slug: "unit-1-python-basics", ... }
+    { name: "Unit II - Control Flow", slug: "unit-2-control-flow", ... }
+    { name: "Unit III - Functions", slug: "unit-3-functions", ... }
     ... etc.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -806,20 +806,20 @@ The existing codebase is already 90% ready. Here's what needs to change:
 ║  SECTION 10: IMPLEMENTATION PRIORITY ORDER                                 ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
-  Priority 1 (Must Have — Core Learning Flow):
+  Priority 1 (Must Have - Core Learning Flow):
   ─────────────────────────────────────────────
   1. Seed the category hierarchy for Python
   2. Create the first 3 Learns (1.1, 1.2, 2.1) with all steps
   3. Set prerequisites between them
   4. Test end-to-end learning flow
   
-  Priority 2 (Should Have — Better UX):
+  Priority 2 (Should Have - Better UX):
   ─────────────────────────────────────────────
   5. Add prerequisite locking on browse page
   6. Add hierarchical category tree in sidebar
   7. Add prerequisite selection in Learn editor
   
-  Priority 3 (Nice to Have — Premium UX):
+  Priority 3 (Nice to Have - Premium UX):
   ─────────────────────────────────────────────
   8. Build learning path / roadmap visualization
   9. Add hierarchy selection in Learn editor

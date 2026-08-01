@@ -12,7 +12,7 @@ import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cac
 // intermittent production 500s in a sibling project on this same stack. Nothing in this
 // app calls revalidateTag today, so a tag cache would be cost without benefit.
 //
-// If tag-based revalidation is introduced later, add doShardedTagCache THEN — and add it
+// If tag-based revalidation is introduced later, add doShardedTagCache THEN - and add it
 // together with the matching durable_objects + migrations blocks in wrangler.jsonc, or
 // the Worker will fail to boot on a missing binding.
 export default defineCloudflareConfig({

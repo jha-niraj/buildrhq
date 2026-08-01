@@ -1,6 +1,6 @@
 // Hand-matched to AIHubClient (_components/AIHubClient.tsx).
 //
-// Four full-bleed sections, no tab strip — the previous version rendered a
+// Four full-bleed sections, no tab strip - the previous version rendered a
 // five-tab strip and a six-card grid that the page has never had. Counts come
 // from the component's own literals: `stats` is 4 (grid-cols-2 md:grid-cols-4)
 // and `tools` is 3 (md:grid-cols-2 lg:grid-cols-3).
@@ -11,7 +11,7 @@ export default function Loading() {
         <div className="w-full">
             <ShimmerStyles />
 
-            {/* Hero — badge, two headline lines, sub, single CTA. */}
+            {/* Hero - badge, two headline lines, sub, single CTA. */}
             <section className="relative border-b border-neutral-100 pt-32 pb-20 lg:pt-48 lg:pb-32 dark:border-neutral-800">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="flex flex-col items-center space-y-8 text-center">
@@ -29,7 +29,7 @@ export default function Loading() {
                 </div>
             </section>
 
-            {/* Stat band — four centred tiles: icon, value, label. */}
+            {/* Stat band - four centred tiles: icon, value, label. */}
             <section className="border-b border-neutral-100 bg-white py-12 dark:border-neutral-800 dark:bg-neutral-950">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
@@ -44,7 +44,7 @@ export default function Loading() {
                 </div>
             </section>
 
-            {/* Developer Studio — section heading, then the three tool cards. */}
+            {/* Developer Studio - section heading, then the three tool cards. */}
             <section className="bg-neutral-50/50 py-24 dark:bg-neutral-950">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="mb-12 max-w-2xl space-y-4">
@@ -76,7 +76,7 @@ export default function Loading() {
                 </div>
             </section>
 
-            {/* Closing CTA — two-line heading, sub, two pill buttons, two ticks. */}
+            {/* Closing CTA - two-line heading, sub, two pill buttons, two ticks. */}
             <section className="border-t border-neutral-100 bg-white py-24 dark:border-neutral-800 dark:bg-neutral-950">
                 <div className="mx-auto max-w-4xl space-y-8 px-6 text-center">
                     <div className="space-y-3">

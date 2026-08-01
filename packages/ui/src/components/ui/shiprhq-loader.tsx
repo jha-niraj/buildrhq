@@ -1,12 +1,12 @@
 "use client"
 
-// ShiprHQ full-page loader — the logo mark, then the "ShiprHQ" wordmark underneath
+// ShiprHQ full-page loader - the logo mark, then the "ShiprHQ" wordmark underneath
 // with a slow sweep travelling across it. Ink/neutral base with the brand orange as the
 // sweep highlight; light + dark aware.
 //
 // This is for FULL-PAGE transitions (auth flows, first paint of a heavy route) where a
 // few hundred extra ms of wait deserves something to look at. It is NOT a replacement
-// for per-section skeletons — a skeleton that shows the shape of the content arriving
+// for per-section skeletons - a skeleton that shows the shape of the content arriving
 // is strictly better inside an already-rendered page, so leave those alone.
 
 const FONT_STACK =
@@ -113,7 +113,7 @@ const STYLES = `
 export function ShiprHQLoader({
     fullScreen = true,
     label,
-    logoSrc = "/mainlogo.png",
+    logoSrc = "/logo.svg",
     className = "",
 }: ShiprHQLoaderProps) {
     const outer: React.CSSProperties = fullScreen

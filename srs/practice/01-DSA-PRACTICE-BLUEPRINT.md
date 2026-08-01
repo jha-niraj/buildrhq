@@ -1,4 +1,4 @@
-# 📊 DSA Practice Module — Complete Blueprint
+# 📊 DSA Practice Module - Complete Blueprint
 
 > **Route:** `/mock/practice/dsa/[problemSlug]`  
 > **Workspace Type:** Monaco Code Editor + AI Chat  
@@ -12,7 +12,7 @@
 2. [Problem Panel (Left)](#2-problem-panel-left)
 3. [Code Editor Panel (Center)](#3-code-editor-panel-center)
 4. [AI Mentor Panel (Right)](#4-ai-mentor-panel-right)
-5. [The "Run & Assess" Flow — Step by Step](#5-the-run--assess-flow--step-by-step)
+5. [The "Run & Assess" Flow - Step by Step](#5-the-run--assess-flow--step-by-step)
 6. [AI Prompt Engineering for DSA](#6-ai-prompt-engineering-for-dsa)
 7. [Mermaid Visualizations by Problem Type](#7-mermaid-visualizations-by-problem-type)
 8. [Progressive Optimization Tracking](#8-progressive-optimization-tracking)
@@ -325,7 +325,7 @@ type ChatMessage = {
 
 ---
 
-## 5. The "Run & Assess" Flow — Step by Step
+## 5. The "Run & Assess" Flow - Step by Step
 
 ### Complete State Machine
 
@@ -424,12 +424,12 @@ You are an expert DSA tutor on the ShiprHQ Practice Platform.
 ## Your Personality:
 - Patient, encouraging, never condescending
 - You celebrate small wins ("Great start!" "You're on the right track!")
-- You use the Socratic method — ask guiding questions instead of giving answers
+- You use the Socratic method - ask guiding questions instead of giving answers
 - You're like a senior engineer doing pair programming
 
 ## Rules:
 1. NEVER give the complete solution code
-2. NEVER just say "use Dynamic Programming" — explain WHY with visuals
+2. NEVER just say "use Dynamic Programming" - explain WHY with visuals
 3. ALWAYS acknowledge what the user did correctly first
 4. ALWAYS reference specific line numbers in the user's code
 5. ALWAYS include a mermaid diagram when explaining:
@@ -507,7 +507,7 @@ interface DSAAssessmentPayload {
 
 ## 7. Mermaid Visualizations by Problem Type
 
-### For Each DSA Category — What to Visualize
+### For Each DSA Category - What to Visualize
 
 ```
 ┌────────────────────────────────────────────────────────────────────┐
@@ -748,14 +748,14 @@ interface DSAAssessmentPayload {
 │                                                                  │
 │  🔊 AI:   "Your recursive calls are creating an exponential    │
 │            number of function calls. Look at the recursion      │
-│            tree in the chat — see how fib(3) is computed        │
+│            tree in the chat - see how fib(3) is computed        │
 │            multiple times? That's why it's slow for large n."   │
 │                                                                  │
 │  Note: Voice READS the conversational parts only.               │
 │  Code blocks and mermaid diagrams are rendered visually.        │
 │  The AI response text is separated into:                        │
 │  • speech_text (read aloud)                                     │
-│  • visual_content (code, mermaid — rendered only)               │
+│  • visual_content (code, mermaid - rendered only)               │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘
 ```
@@ -797,7 +797,7 @@ interface PracticeCategory {
 
 ## 12. User Flow Diagrams
 
-### Complete User Journey — DSA Problem
+### Complete User Journey - DSA Problem
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
@@ -998,7 +998,7 @@ enum PracticeStatus {
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  EXAMPLE: Fibonacci Number — Complete Session                    │
+│  EXAMPLE: Fibonacci Number - Complete Session                    │
 │                                                                  │
 │  ═══════════ ATTEMPT 1 ═══════════                              │
 │                                                                  │
@@ -1015,7 +1015,7 @@ enum PracticeStatus {
 │  │ **Approach Detected:** Brute Force Recursion               │  │
 │  │ **Complexity:** O(2^n) time, O(n) space (call stack)      │  │
 │  │                                                            │  │
-│  │ Your base case on **line 2** is perfect — fib(0) = 0      │  │
+│  │ Your base case on **line 2** is perfect - fib(0) = 0      │  │
 │  │ and fib(1) = 1 are correct! ✅                             │  │
 │  │                                                            │  │
 │  │ The recursive logic on **lines 4** is also correct.        │  │
@@ -1071,7 +1071,7 @@ enum PracticeStatus {
 │  │ **Approach Detected:** Memoization (Top-Down DP) 🎉       │  │
 │  │ **Complexity:** O(n) time, O(n) space                     │  │
 │  │                                                            │  │
-│  │ Excellent! You went from O(2^n) to O(n) — that's a        │  │
+│  │ Excellent! You went from O(2^n) to O(n) - that's a        │  │
 │  │ massive improvement! Your memoization dictionary on        │  │
 │  │ **line 2** ensures each fib(k) is only computed once.     │  │
 │  │                                                            │  │

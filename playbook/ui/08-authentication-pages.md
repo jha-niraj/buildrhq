@@ -1,7 +1,7 @@
 # Authentication Pages
 
 ## Concept
-A two-panel layout: a branded media panel (left, 46% width) with a looping video + editorial copy, and a clean white form panel (right, remaining width). On mobile the left panel is hidden — only the form shows.
+A two-panel layout: a branded media panel (left, 46% width) with a looping video + editorial copy, and a clean white form panel (right, remaining width). On mobile the left panel is hidden - only the form shows.
 
 ---
 
@@ -36,7 +36,7 @@ function AuthPanel({ children }) {
                             Welcome <span className="text-white/70">back to your school.</span>
                         </h2>
                         <p className="mt-5 max-w-xs text-base leading-relaxed text-white/70">
-                            Pick up where you left off — students, exams, billing, and everything in between.
+                            Pick up where you left off - students, exams, billing, and everything in between.
                         </p>
                     </div>
 
@@ -45,7 +45,7 @@ function AuthPanel({ children }) {
                         <p className="max-w-xs text-sm italic leading-relaxed text-white/70">
                             &quot;Education is the passport to the future...&quot;
                         </p>
-                        <p className="mt-2 text-xs text-orange-400/60">— Malcolm X</p>
+                        <p className="mt-2 text-xs text-orange-400/60">- Malcolm X</p>
                     </div>
                 </div>
             </div>
@@ -221,7 +221,7 @@ Password input with show/hide toggle:
     </Button>
 </div>
 
-{/* 6-digit OTP slots — shown only after OTP sent */}
+{/* 6-digit OTP slots - shown only after OTP sent */}
 {otpSent && (
     <InputOTP maxLength={6} value={otp} onChange={setOtp}>
         <InputOTPGroup>

@@ -83,7 +83,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
     }, [mode]);
 
     // `newUserCallbackURL` is what routes a first-time social sign-in to setup and
-    // everyone else straight into the app — better-auth knows which of the two it
+    // everyone else straight into the app - better-auth knows which of the two it
     // just did, and the client doesn't have to guess. Middleware re-checks
     // `onboardingCompleted` as a backstop for anyone who bailed out mid-setup.
     const handleSignInWithGoogle = async () => {
@@ -192,7 +192,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
             setCode(["", "", "", "", "", ""]);
             setCooldown(RESEND_COOLDOWN_SECONDS);
             setMode("verify");
-            toast.success("Your email isn't verified yet — we sent you a code");
+            toast.success("Your email isn't verified yet - we sent you a code");
         } catch {
             toast.error("Could not send a verification code. Please try again.");
         }
@@ -214,7 +214,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                     return;
                 }
                 // verifyEmail mints the session, so we're signed in already.
-                toast.success("Email verified — welcome back!");
+                toast.success("Email verified - welcome back!");
                 router.push(callbackUrl);
             } catch {
                 toast.error("Could not verify the code. Please try again.");

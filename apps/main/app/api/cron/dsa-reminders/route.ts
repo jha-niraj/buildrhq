@@ -6,7 +6,7 @@
 // spaced-repetition state (nextDueAt, status) per user+problem. That model is
 // not yet present in the Drizzle schema. Until it is added, the route falls back
 // to querying `practiceUserSession` for DSA problems that are IN_PROGRESS and
-// have not been updated in the past 24 hours — a reasonable proxy.
+// have not been updated in the past 24 hours - a reasonable proxy.
 //
 // Once the `userDSATrackingEntries` model is added to the schema and migrated,
 // swap the query block labelled "FALLBACK" for the block labelled "PRIMARY".

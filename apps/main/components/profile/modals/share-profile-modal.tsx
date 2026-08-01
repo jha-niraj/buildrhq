@@ -34,12 +34,12 @@ export function ShareProfileModal({
 }: ShareProfileModalProps) {
 	const [copied, setCopied] = useState<string | null>(null);
 
-	// Was `${window.location.origin}/u/${username}` — a route this app does not
+	// Was `${window.location.origin}/u/${username}` - a route this app does not
 	// have, so every copied link 404'd, and the origin read degraded to "" on any
 	// server render. See lib/urls.ts.
 	const profileUrl = publicProfileUrl(username);
 	// NOTE: there is no `/embed` view. This iframes the profile page itself, so
-	// the snippet resolves rather than 404s — but it will render the full page,
+	// the snippet resolves rather than 404s - but it will render the full page,
 	// not a widget, and only once public profiles are readable signed-out.
 	const embedCode = `<iframe src="${profileUrl}" width="400" height="600" frameborder="0"></iframe>`;
 

@@ -6,28 +6,79 @@ import {
 import { useTheme } from "next-themes"
 import { Toaster as Sonner, toast, type ToasterProps } from "sonner"
 
+/**
+ * The app-wide toast surface.
+ *
+ * Every default lives HERE rather than on each app's <Toaster/>, so all five
+ * apps look identical and a change lands everywhere at once. The apps used to
+ * each pass `position="top-center" closeButton richColors`, which meant five
+ * places to keep in sync and one of them would always drift.
+ *
+ * `richColors` is deliberately NOT used. It paints the entire toast a saturated
+ * green/red/amber, which fights the monochrome palette and reads as a browser
+ * alert rather than product UI. Instead the surface stays neutral in both
+ * themes and only the ICON carries the state - the pattern Linear, Vercel and
+ * Raycast use. It also keeps the copy legible, which a coloured fill at low
+ * contrast does not.
+ *
+ * Warning is intentionally neutral rather than amber: the house palette rules
+ * out orange and yellow, and the triangle glyph already carries the meaning.
+ */
 const Toaster = ({ ...props }: ToasterProps) => {
 	const { theme = "system" } = useTheme()
 
 	return (
 		<Sonner
 			theme={theme as ToasterProps["theme"]}
+			position="top-right"
+			closeButton
+			// Long enough to read an error, short enough not to linger.
+			duration={4500}
+			// Clears the sidebar/header chrome on every app.
+			offset={18}
+			gap={10}
+			visibleToasts={4}
 			className="toaster group"
 			icons={{
-				success: <CircleCheckIcon className="size-4" />,
-				info: <InfoIcon className="size-4" />,
-				warning: <TriangleAlertIcon className="size-4" />,
-				error: <OctagonXIcon className="size-4" />,
-				loading: <Loader2Icon className="size-4 animate-spin" />,
+				success: <CircleCheckIcon className="size-[18px]" />,
+				info: <InfoIcon className="size-[18px]" />,
+				warning: <TriangleAlertIcon className="size-[18px]" />,
+				error: <OctagonXIcon className="size-[18px]" />,
+				loading: <Loader2Icon className="size-[18px] animate-spin" />,
 			}}
-			style={
-				{
-					"--normal-bg": "var(--popover)",
-					"--normal-text": "var(--popover-foreground)",
-					"--normal-border": "var(--border)",
-					"--border-radius": "var(--radius)",
-				} as React.CSSProperties
-			}
+			toastOptions={{
+				closeButton: true,
+				classNames: {
+					toast: [
+						"group/toast relative flex w-full items-start gap-3",
+						"rounded-xl border p-4 pr-10",
+						"bg-white border-neutral-200/90",
+						"dark:bg-neutral-950 dark:border-neutral-800",
+						// A wide, low-opacity shadow reads as depth rather than as a
+						// drop shadow, which is what makes it feel considered.
+						"shadow-[0_10px_40px_-12px_rgba(0,0,0,0.18)]",
+						"dark:shadow-[0_10px_40px_-12px_rgba(0,0,0,0.75)]",
+					].join(" "),
+					title: "text-[13.5px] font-medium leading-5 text-neutral-900 dark:text-neutral-50",
+					description:
+						"!text-[13px] leading-5 !text-neutral-500 dark:!text-neutral-400 mt-0.5",
+					icon: "shrink-0 mt-px",
+					content: "flex-1 min-w-0",
+					// Monochrome, matching the primary button used elsewhere.
+					actionButton:
+						"!bg-neutral-900 !text-white hover:!bg-neutral-800 dark:!bg-white dark:!text-neutral-900 dark:hover:!bg-neutral-200 !rounded-lg !px-2.5 !h-7 !text-xs !font-medium",
+					cancelButton:
+						"!bg-transparent !text-neutral-500 hover:!text-neutral-900 dark:hover:!text-white !rounded-lg !px-2.5 !h-7 !text-xs !font-medium",
+					closeButton:
+						"!bg-transparent !border-0 !text-neutral-400 hover:!text-neutral-900 dark:!text-neutral-500 dark:hover:!text-white !transition-colors",
+					// State is carried by the icon alone.
+					success: "[&_[data-icon]]:text-emerald-600 dark:[&_[data-icon]]:text-emerald-400",
+					error: "[&_[data-icon]]:text-rose-600 dark:[&_[data-icon]]:text-rose-400",
+					warning: "[&_[data-icon]]:text-neutral-900 dark:[&_[data-icon]]:text-neutral-100",
+					info: "[&_[data-icon]]:text-neutral-500 dark:[&_[data-icon]]:text-neutral-400",
+					loading: "[&_[data-icon]]:text-neutral-500 dark:[&_[data-icon]]:text-neutral-400",
+				},
+			}}
 			{...props}
 		/>
 	)

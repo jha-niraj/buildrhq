@@ -1,5 +1,5 @@
 ================================================================================
-  LEARN MODULE — C++ MASTERPLAN & ARCHITECTURE DOCUMENT
+  LEARN MODULE - C++ MASTERPLAN & ARCHITECTURE DOCUMENT
   Platform: ShiprHQ (ShiprHQ)
   Created: 2026-02-27
   Author: System Architect
@@ -13,13 +13,13 @@ TABLE OF CONTENTS
 4.  C++ Syllabus → Learn Mapping (6 Units, All Topics)
 5.  Step Flow Per Learn (Topic)
 6.  Detailed Step-by-Step Content Blueprint for Each Topic
-7.  UI/UX Flow — Detail Page Redesign
+7.  UI/UX Flow - Detail Page Redesign
 8.  Text Selection → Ask AI Feature
 9.  Studio Integration (Right Panel)
-10. Progress Tracking — Comprehensive Model
+10. Progress Tracking - Comprehensive Model
 11. Seed Script Strategy
 12. Schema Changes Required
-13. University Tie-Up — Future Flow
+13. University Tie-Up - Future Flow
 14. Implementation Roadmap
 15. Flowcharts (Mermaid)
 
@@ -64,9 +64,9 @@ Server Actions (actions/(main)/learn/):
   interactions.ts, analytics.ts, prerequisites.ts, learn-ai.action.ts
 
 Client Components:
-  learn-detail-client.tsx — 3-panel layout (sidebar, content, AI panel)
-  step-card.tsx — Renders step content based on type (1136 lines)
-  ai-assistant-panel.tsx — Right-side AI chat (currently mock responses)
+  learn-detail-client.tsx - 3-panel layout (sidebar, content, AI panel)
+  step-card.tsx - Renders step content based on type (1136 lines)
+  ai-assistant-panel.tsx - Right-side AI chat (currently mock responses)
 
 ================================================================================
 3. CATEGORY HIERARCHY FOR C++
@@ -141,7 +141,7 @@ Learn 2.2: Loops (for, while, do-while)
   Steps: EXPLANATION → CODE(5 blocks) → VISUALIZATION → QUIZ(5) → CHALLENGE(2) → SUMMARY
   Description: for, while, do-while, range-based for, nested loops, break/continue
 
-Learn 2.3: Functions — Declaration & Definition
+Learn 2.3: Functions - Declaration & Definition
   Difficulty: BEGINNER | EstTime: 30 min | Tags: [functions, parameters, return]
   Steps: EXPLANATION → CODE(4 blocks) → QUIZ(4) → CHALLENGE → SUMMARY
   Description: Declaration, definition, parameters (by value/reference), return types
@@ -175,7 +175,7 @@ Learn 3.2: Strings (C-Strings & std::string)
   Steps: EXPLANATION → CODE(4 blocks) → COMPARISON(C-string vs std::string) → QUIZ(5) → CHALLENGE → SUMMARY
   Description: char arrays, string class, methods, concatenation, comparison
 
-Learn 3.3: Pointers — Basics & Arithmetic
+Learn 3.3: Pointers - Basics & Arithmetic
   Difficulty: INTERMEDIATE | EstTime: 35 min | Tags: [pointers, memory, address]
   Steps: EXPLANATION → VISUALIZATION(memory diagram) → CODE(5 blocks) → QUIZ(5) → CHALLENGE → SUMMARY
   Description: Address-of, dereference, pointer arithmetic, null pointer, void pointer
@@ -233,12 +233,12 @@ Learn 5.1: Function & Class Templates
   Steps: EXPLANATION → CODE(4 blocks) → QUIZ(4) → CHALLENGE → SUMMARY
   Description: Function templates, class templates, template specialization
 
-Learn 5.2: STL — Vectors, Lists, Maps, Sets
+Learn 5.2: STL - Vectors, Lists, Maps, Sets
   Difficulty: INTERMEDIATE | EstTime: 40 min | Tags: [stl, vector, map, set]
   Steps: EXPLANATION → CODE(6 blocks) → COMPARISON(containers table) → QUIZ(5) → CHALLENGE(2) → SUMMARY
   Description: vector, list, deque, map, unordered_map, set, multiset, stack, queue
 
-Learn 5.3: STL — Iterators & Algorithms
+Learn 5.3: STL - Iterators & Algorithms
   Difficulty: ADVANCED | EstTime: 30 min | Tags: [iterators, algorithms, sort, find]
   Steps: EXPLANATION → CODE(5 blocks) → QUIZ(5) → CHALLENGE → SUMMARY
   Description: Iterator types, sort, find, count, transform, for_each, lambda with algorithms
@@ -305,7 +305,7 @@ Learn U6-END: Unit 6 Review & Mock Interview
   Steps: SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(major: Multithreaded File Downloader)
 
 ================================================================================
-5. STEP FLOW PER LEARN (TOPIC) — STANDARD TEMPLATE
+5. STEP FLOW PER LEARN (TOPIC) - STANDARD TEMPLATE
 ================================================================================
 
 Each Learn follows this pedagogical step flow (adapted per topic):
@@ -374,7 +374,7 @@ Each Learn follows this pedagogical step flow (adapted per topic):
 ```
 
 ================================================================================
-6. UI/UX FLOW — DETAIL PAGE REDESIGN
+6. UI/UX FLOW - DETAIL PAGE REDESIGN
 ================================================================================
 
 Current Layout:
@@ -466,7 +466,7 @@ Component: TextSelectionToolbar
 ================================================================================
 
 The right panel replaces the current AI Assistant Panel with a Studio panel
-that combines personal notes and AI chat — all linked to the specific Learn.
+that combines personal notes and AI chat - all linked to the specific Learn.
 
 FIRST VISIT FLOW:
 ```
@@ -520,7 +520,7 @@ Server Action:
   - Link it via learnId on Studio or studioId on LearnProgress
 
 ================================================================================
-9. PROGRESS TRACKING — COMPREHENSIVE MODEL
+9. PROGRESS TRACKING - COMPREHENSIVE MODEL
 ================================================================================
 
 Current tracking (LearnProgress):
@@ -679,7 +679,7 @@ Seed execution: Add to prisma/seed/index.ts → call seedCppLearnContent(adminUs
 11. SCHEMA CHANGES REQUIRED
 ================================================================================
 
-1. LearnProgress — Add Studio link and extended tracking:
+1. LearnProgress - Add Studio link and extended tracking:
    ```prisma
    model LearnProgress {
      // ... existing fields ...
@@ -693,7 +693,7 @@ Seed execution: Add to prisma/seed/index.ts → call seedCppLearnContent(adminUs
    }
    ```
 
-2. Studio — Add Learn link (if not already):
+2. Studio - Add Learn link (if not already):
    ```prisma
    model Studio {
      // ... existing fields ...
@@ -702,7 +702,7 @@ Seed execution: Add to prisma/seed/index.ts → call seedCppLearnContent(adminUs
    }
    ```
 
-3. Learn — Add unit ordering:
+3. Learn - Add unit ordering:
    ```prisma
    model Learn {
      // ... existing fields ...
@@ -712,7 +712,7 @@ Seed execution: Add to prisma/seed/index.ts → call seedCppLearnContent(adminUs
    ```
 
 ================================================================================
-12. UNIVERSITY TIE-UP — FUTURE FLOW
+12. UNIVERSITY TIE-UP - FUTURE FLOW
 ================================================================================
 
 ```

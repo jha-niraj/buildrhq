@@ -1,4 +1,4 @@
-# 🧠 Practice Module — Vision, Strategy & Complete Blueprint
+# 🧠 Practice Module - Vision, Strategy & Complete Blueprint
 
 > **Module Path:** `/mock/practice`  
 > **Tagline:** *"Stop copying to ChatGPT. Start understanding while you code."*  
@@ -14,10 +14,10 @@
 3. [Competitive Landscape Research](#3-competitive-landscape-research)
 4. [Module Architecture Overview](#4-module-architecture-overview)
 5. [URL & Routing Structure](#5-url--routing-structure)
-6. [Core Layout — The Three-Panel Design](#6-core-layout--the-three-panel-design)
+6. [Core Layout - The Three-Panel Design](#6-core-layout--the-three-panel-design)
 7. [AI Interaction Philosophy](#7-ai-interaction-philosophy)
 8. [Voice Integration Strategy (ElevenLabs)](#8-voice-integration-strategy-elevenlabs)
-9. [How "Run" Works — The AI Assessment Trigger](#9-how-run-works--the-ai-assessment-trigger)
+9. [How "Run" Works - The AI Assessment Trigger](#9-how-run-works--the-ai-assessment-trigger)
 10. [Practice Modes: Exam vs Assist](#10-practice-modes-exam-vs-assist)
 11. [Module Breakdown](#11-module-breakdown)
 12. [Progress Tracking & Gamification](#12-progress-tracking--gamification)
@@ -62,7 +62,7 @@
 When a student is stuck on Fibonacci and writes a brute-force recursive solution:
 
 1. ❌ They do NOT need: *"Here's the DP solution with memoization"*
-2. ✅ They DO need: *"Your recursion works! But look at this tree — fib(3) is computed 3 times. What if you could remember it?"*
+2. ✅ They DO need: *"Your recursion works! But look at this tree - fib(3) is computed 3 times. What if you could remember it?"*
 
 The difference is **learning** vs **copying**.
 
@@ -107,7 +107,7 @@ The difference is **learning** vs **copying**.
 | **Progressive Revelation** | Brute Force → Better → Optimal, step by step |
 | **Visual Learning** | Mermaid flowcharts, recursion trees, architecture diagrams |
 | **Zero Context Switching** | Problem + Editor + AI Mentor all on one screen |
-| **Voice-First Optional** | Toggle voice on/off — STT for user, TTS for AI |
+| **Voice-First Optional** | Toggle voice on/off - STT for user, TTS for AI |
 | **No Compilation (Yet)** | We assess understanding, not if the code compiles |
 | **Assist Mode Available** | For learning (not exam), AI actively guides you |
 
@@ -270,7 +270,7 @@ The difference is **learning** vs **copying**.
 
 ---
 
-## 6. Core Layout — The Three-Panel Design
+## 6. Core Layout - The Three-Panel Design
 
 ### Screen Wireframe
 
@@ -299,7 +299,7 @@ The difference is **learning** vs **copying**.
 │ they add │  │    → [0,1]           │  │  ┌────────────────────────┐    │
 │ up to    │  │ ❓ twoSum([3,2,4],6)│  │  │ Attempt: 1/∞          │    │
 │ target.  │  │    → ???             │  │  │ Approach: Not started  │    │
-│          │  └───────────────────────┘  │  │ Best: —               │    │
+│          │  └───────────────────────┘  │  │ Best: -               │    │
 │ Examples │                             │  └────────────────────────┘    │
 │ ───────  │  [▶ Run & Assess]          │                                │
 │ [1,2,3]  │                             │                                │
@@ -314,9 +314,9 @@ The difference is **learning** vs **copying**.
 
 | Panel | Width | Content | Scrollable | Resizable |
 |-------|-------|---------|------------|-----------|
-| **Left — Problem** | ~25% | Problem statement, examples, constraints, test cases | Yes | Yes (drag border) |
-| **Center — Workspace** | ~40% | Code editor (DSA/Web) or Excalidraw (SD) | No (editor handles scroll) | Yes |
-| **Right — AI Mentor** | ~35% | Chat messages (markdown), voice controls, attempt tracker | Yes (auto-scroll to bottom) | Yes |
+| **Left - Problem** | ~25% | Problem statement, examples, constraints, test cases | Yes | Yes (drag border) |
+| **Center - Workspace** | ~40% | Code editor (DSA/Web) or Excalidraw (SD) | No (editor handles scroll) | Yes |
+| **Right - AI Mentor** | ~35% | Chat messages (markdown), voice controls, attempt tracker | Yes (auto-scroll to bottom) | Yes |
 
 ---
 
@@ -350,7 +350,7 @@ The difference is **learning** vs **copying**.
 │  ┌──────────────────────────────────────────────┐            │
 │  │ AI Response Level 2: REFINE & GUIDE           │            │
 │  │                                               │            │
-│  │ "Great! You're using a hash map now — that's  │            │
+│  │ "Great! You're using a hash map now - that's  │            │
 │  │  the right direction! But you're doing two    │            │
 │  │  passes: one to build the map, one to look up.│            │
 │  │                                               │            │
@@ -488,7 +488,7 @@ Based on research and cost analysis:
 | **User Speech → Text** | ElevenLabs | Scribe v2 Realtime | 150ms latency, 90+ languages, word-level timestamps |
 | **AI Response → Speech** | ElevenLabs | Flash v2.5 | 75ms latency, cheapest, natural sounding |
 | **AI Reasoning** | OpenAI | GPT-4o | Best for code analysis, Mermaid generation |
-| **Voice Activity Detection** | Built into Scribe v2 | — | Auto-detects when user stops speaking |
+| **Voice Activity Detection** | Built into Scribe v2 | - | Auto-detects when user stops speaking |
 
 ### Voice Toggle Behavior
 
@@ -514,13 +514,13 @@ Based on research and cost analysis:
 
 ---
 
-## 9. How "Run" Works — The AI Assessment Trigger
+## 9. How "Run" Works - The AI Assessment Trigger
 
 ### This is NOT Compilation
 
 **Critical Design Decision:** We are NOT compiling the user's code. We are sending it to the AI for analysis. Why?
 
-1. Compilation tells you "it works or it doesn't" — that's not learning
+1. Compilation tells you "it works or it doesn't" - that's not learning
 2. The AI can identify *why* the approach is wrong, not just *that* it's wrong
 3. We can assess understanding, approach quality, code style, and edge case awareness
 4. System Design and Frontend problems can't be "compiled" anyway
@@ -615,7 +615,7 @@ Based on research and cost analysis:
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-### Assist Mode — System Design Example
+### Assist Mode - System Design Example
 
 When Assist Mode is ON and the user is solving a System Design problem:
 
@@ -695,16 +695,16 @@ The Practice Module has **four distinct workspace types**, each with its own cen
 │  └──────────┘ └──────────┘ └──────────┘ └──────────┘           │
 │                                                                  │
 │  Recent Activity:                                                │
-│  • Two Sum ✅ Optimal (3 attempts) — 2 hours ago                │
-│  • URL Shortener 🔶 Partial (missed caching) — yesterday       │
-│  • JWT Middleware ✅ First try! — 2 days ago                    │
+│  • Two Sum ✅ Optimal (3 attempts) - 2 hours ago                │
+│  • URL Shortener 🔶 Partial (missed caching) - yesterday       │
+│  • JWT Middleware ✅ First try! - 2 days ago                    │
 │                                                                  │
 │  Daily Challenge: "Merge Two Sorted Lists" → [Start]            │
 │                                                                  │
 │  Weak Areas (AI-Detected):                                       │
-│  🔴 Dynamic Programming — 2/15 solved                           │
-│  🟡 Graph Algorithms — 4/12 solved                               │
-│  🟢 Arrays — 18/20 solved                                       │
+│  🔴 Dynamic Programming - 2/15 solved                           │
+│  🟡 Graph Algorithms - 4/12 solved                               │
+│  🟢 Arrays - 18/20 solved                                       │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘
 ```
@@ -813,7 +813,7 @@ The Practice Module has **four distinct workspace types**, each with its own cen
 │     Like having a patient senior engineer next to you.           │
 │                                                                  │
 │  5. MULTI-DOMAIN                                                 │
-│     DSA, System Design, Frontend, Backend — all in one place    │
+│     DSA, System Design, Frontend, Backend - all in one place    │
 │     with domain-specific workspaces.                             │
 │                                                                  │
 │  6. ASSIST MODE                                                  │
@@ -842,7 +842,7 @@ The Practice Module has **four distinct workspace types**, each with its own cen
 ---
 
 > **Next Steps:** Read the module-specific blueprints:
-> - `01-DSA-PRACTICE-BLUEPRINT.md` — Complete DSA workspace design
-> - `02-SYSTEM-DESIGN-PRACTICE-BLUEPRINT.md` — Excalidraw + AI architecture review
-> - `03-WEB-DEV-PRACTICE-BLUEPRINT.md` — Frontend & Backend coding workspaces
-> - `04-SHARED-COMPONENTS-TECHNICAL-SPEC.md` — AI Chat, Voice, Layout components
+> - `01-DSA-PRACTICE-BLUEPRINT.md` - Complete DSA workspace design
+> - `02-SYSTEM-DESIGN-PRACTICE-BLUEPRINT.md` - Excalidraw + AI architecture review
+> - `03-WEB-DEV-PRACTICE-BLUEPRINT.md` - Frontend & Backend coding workspaces
+> - `04-SHARED-COMPONENTS-TECHNICAL-SPEC.md` - AI Chat, Voice, Layout components

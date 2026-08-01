@@ -1,10 +1,10 @@
-// Hand-matched to the home dashboard — see _components/skeletons.tsx (HomeDashboardSkeleton).
+// Hand-matched to the home dashboard - see _components/skeletons.tsx (HomeDashboardSkeleton).
 import {
     HomeDashboardSkeleton, ContinueLearningSkeleton, ActivityCalendarSkeleton,
 } from "./_components/skeletons";
 
 // Mirrors the real page: the analytics dashboard, then the two surfaces below it.
-// Deliberately a SKELETON rather than the full-page ShiprHQLoader — the sidebar is
+// Deliberately a SKELETON rather than the full-page ShiprHQLoader - the sidebar is
 // already painted around this, so previewing the layout beats a centred spinner.
 export default function HomeLoading() {
     return (

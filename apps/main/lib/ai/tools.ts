@@ -275,7 +275,7 @@ const searchJobs: Handler = async (args) => {
         .orderBy(desc(jobs.featured), desc(jobs.createdAt))
         .limit(limit);
 
-    // Undisclosed salary is a deliberate employer choice — strip the numbers
+    // Undisclosed salary is a deliberate employer choice - strip the numbers
     // rather than let the model read them off the row and quote them.
     const jobsOut = rows.map(({ salaryDisclosed, salaryMin, salaryMax, ...rest }) => ({
         ...rest,

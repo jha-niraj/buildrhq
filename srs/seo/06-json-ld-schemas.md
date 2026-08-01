@@ -117,7 +117,7 @@ Put on every blog post / essay. Helps Google understand the content type, author
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Full Post Title Here",
-  "description": "Meta description — what the post is about.",
+  "description": "Meta description - what the post is about.",
   "datePublished": "2026-05-12",
   "dateModified": "2026-05-12",
   "image": "https://yourdomain.com/og/post-slug.png",
@@ -146,7 +146,7 @@ Put on every blog post / essay. Helps Google understand the content type, author
 }
 ```
 
-**In Next.js — generate dynamically from metadata:**
+**In Next.js - generate dynamically from metadata:**
 
 ```typescript
 function buildArticleSchema(meta: SectionMeta, slug: string, author?: Author) {
@@ -177,7 +177,7 @@ function buildArticleSchema(meta: SectionMeta, slug: string, author?: Author) {
 
 ## Schema 4: FAQPage (FAQ Pages)
 
-Enables FAQ rich snippet — answer dropdowns visible directly in search results. High CTR boost.
+Enables FAQ rich snippet - answer dropdowns visible directly in search results. High CTR boost.
 
 ```json
 {
@@ -216,7 +216,7 @@ Enables FAQ rich snippet — answer dropdowns visible directly in search results
 - Each question must be a real question your users ask
 - Answers must be factually accurate and match the visible page content
 - Google will penalize if schema content doesn't match visible content
-- Maximum 10 Q&As — Google shows up to 3 in snippets
+- Maximum 10 Q&As - Google shows up to 3 in snippets
 
 ---
 
@@ -251,7 +251,7 @@ Enables breadcrumb navigation visible in search results (e.g., `YourSite > Blog 
 }
 ```
 
-**In Next.js — generate dynamically:**
+**In Next.js - generate dynamically:**
 
 ```typescript
 function buildBreadcrumbSchema(breadcrumbs: Array<{ name: string; url: string }>) {
@@ -277,7 +277,7 @@ buildBreadcrumbSchema([
 
 ---
 
-## Schema 6: WebSite (Homepage — Enables Sitelinks Search)
+## Schema 6: WebSite (Homepage - Enables Sitelinks Search)
 
 ```json
 {
@@ -322,14 +322,14 @@ You can put multiple schemas on one page using `@graph`:
 }
 ```
 
-Or just include multiple `<script type="application/ld+json">` tags — both approaches work.
+Or just include multiple `<script type="application/ld+json">` tags - both approaches work.
 
 ---
 
 ## Testing Your Schemas
 
-1. **Google Rich Results Test:** search.google.com/test/rich-results — paste your URL, see which rich results you're eligible for
-2. **Schema.org Validator:** validator.schema.org — paste your JSON, check for errors
+1. **Google Rich Results Test:** search.google.com/test/rich-results - paste your URL, see which rich results you're eligible for
+2. **Schema.org Validator:** validator.schema.org - paste your JSON, check for errors
 3. **GSC Enhancements Report:** after deploying, GSC shows warnings and errors for structured data
 
 ---

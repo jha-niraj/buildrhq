@@ -86,7 +86,7 @@ function extractTopology(canvasJSON: string): string {
     }
 
     if (elements.length === 0) {
-        return "Empty canvas — no components found.";
+        return "Empty canvas - no components found.";
     }
 
     const rectangles = elements.filter(
@@ -245,11 +245,11 @@ Evaluate the solution and respond with ONLY valid JSON (no markdown, no code blo
 }
 
 Scoring Guidelines:
-- 90-100: Excellent — all requirements met, optimal approach, clean code
-- 75-89: Good — most requirements met, reasonable approach, minor issues
-- 60-74: Satisfactory — core requirements met, some issues to address
-- 40-59: Needs Improvement — several requirements missing, significant issues
-- 0-39: Incomplete — fundamental issues, major requirements not met
+- 90-100: Excellent - all requirements met, optimal approach, clean code
+- 75-89: Good - most requirements met, reasonable approach, minor issues
+- 60-74: Satisfactory - core requirements met, some issues to address
+- 40-59: Needs Improvement - several requirements missing, significant issues
+- 0-39: Incomplete - fundamental issues, major requirements not met
 
 For ${payload.mode === "EXAM" ? "EXAM mode, be fair but rigorous since no help was given" : "ASSIST mode, acknowledge the collaborative approach but still evaluate the final result objectively"}.`;
 }
@@ -401,9 +401,9 @@ ${userCode}
 \`\`\`
 
 Attempt context: The student is on attempt #${attemptNumber}.
-${attemptNumber <= 2 ? 'Be gentle — give subtle conceptual nudges only. Do NOT reveal specific implementation details.' : ''}
-${attemptNumber >= 3 && attemptNumber <= 4 ? 'Be more specific — point to the exact part of their approach that needs fixing. You can mention the algorithm pattern needed.' : ''}
-${attemptNumber >= 5 ? 'Be more direct — the student is struggling. Give a clear step-by-step hint. You can outline the algorithm structure without writing the full solution.' : ''}
+${attemptNumber <= 2 ? 'Be gentle - give subtle conceptual nudges only. Do NOT reveal specific implementation details.' : ''}
+${attemptNumber >= 3 && attemptNumber <= 4 ? 'Be more specific - point to the exact part of their approach that needs fixing. You can mention the algorithm pattern needed.' : ''}
+${attemptNumber >= 5 ? 'Be more direct - the student is struggling. Give a clear step-by-step hint. You can outline the algorithm structure without writing the full solution.' : ''}
 
 Rules:
 1. NEVER give the complete solution. Guide with questions and small hints.

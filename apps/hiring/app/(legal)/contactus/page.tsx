@@ -47,7 +47,7 @@ export default function ContactPage() {
                             <span className="text-neutral-400 dark:text-neutral-600">Something Great.</span>
                         </h1>
                         <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-                            Whether you have questions about our platform, need a demo, or want to discuss enterprise solutions — we&apos;re here to help.
+                            Whether you have questions about our platform, need a demo, or want to discuss enterprise solutions - we&apos;re here to help.
                         </p>
                     </motion.div>
                     <motion.div

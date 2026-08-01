@@ -5,7 +5,7 @@ import { headers } from "next/headers"
 
 /**
  * Transcribe audio using OpenAI Whisper.
- * Returns raw transcription text — no polishing or reformatting.
+ * Returns raw transcription text - no polishing or reformatting.
  * Used for cover letter Q&A voice input.
  */
 export async function whisperTranscribe(

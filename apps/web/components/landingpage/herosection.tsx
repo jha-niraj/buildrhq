@@ -21,7 +21,7 @@ interface PlatformStats {
 const ROTATE_WORDS = ["career", "portfolio", "resume", "skillset", "interviews", "journey"]
 
 // Rotating product panel. This used to be an image carousel where all five slides
-// pointed at /mainlogo.png - five identical logos behind dot navigation, which reads as
+// pointed at the same logo - five identical logos behind dot navigation, which reads as
 // broken. Until real product screenshots exist, showing what each surface actually does
 // is both honest and more informative than a repeated logo.
 const SLIDES = [
@@ -207,7 +207,7 @@ export default function HeroSection() {
                             variants={reduced ? undefined : item}
                         >
                             Build real projects, practice DSA & system design, ace AI mock
-                            interviews, and get matched to jobs — with a suite of specialized
+                            interviews, and get matched to jobs - with a suite of specialized
                             AI agents designed for serious developers.
                         </motion.p>
 
@@ -289,7 +289,7 @@ export default function HeroSection() {
                     </motion.div>
                 </div>
 
-                {/* ── Rotating product panel — fills rest, bleeds off bottom ── */}
+                {/* ── Rotating product panel - fills rest, bleeds off bottom ── */}
                 <motion.div
                     className="relative min-h-0 flex-1"
                     initial={reduced ? false : { opacity: 0, y: 32 }}

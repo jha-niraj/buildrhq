@@ -129,7 +129,7 @@ export async function syncProfileToResumeDraft(draftId?: string): Promise<
             })
             projectSubmissions.push(...subs)
         } catch {
-            // projectV2Submissions may not exist — skip silently
+            // projectV2Submissions may not exist - skip silently
         }
 
         // ── 3. Resolve social links ───────────────────────────────────────────

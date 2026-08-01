@@ -5,8 +5,8 @@
 // w-64/lg:w-72 category rail that is hidden below md, and a main pane holding
 // the category header, the technology pill row and the 2-up project grid.
 //
-// The rail count is the component's own loading state — it renders exactly five
-// `h-12 rounded-lg` rows while categories load — and the project grid uses four,
+// The rail count is the component's own loading state - it renders exactly five
+// `h-12 rounded-lg` rows while categories load - and the project grid uses four,
 // which is what the client shows while `getPlatformProjects` (limit 20) is in
 // flight. Matching those means the transition from this file to the real
 // in-component skeleton is invisible.
@@ -35,7 +35,7 @@ export default function Loading() {
             </div>
 
             <div className="flex min-h-[calc(100vh-4rem)]">
-                {/* Category rail — hidden below md, exactly as the real aside is. */}
+                {/* Category rail - hidden below md, exactly as the real aside is. */}
                 <aside className="hidden w-64 flex-shrink-0 border-r border-neutral-200 bg-neutral-50/50 md:block lg:w-72 dark:border-neutral-800 dark:bg-neutral-900/50">
                     <div className="p-4">
                         <Shimmer className="mb-3 ml-2 h-2.5 w-20" />
@@ -74,7 +74,7 @@ export default function Loading() {
                             ))}
                         </div>
 
-                        {/* Project grid — 2-up from lg, four placeholders. */}
+                        {/* Project grid - 2-up from lg, four placeholders. */}
                         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                             {Array.from({ length: 4 }).map((_, i) => (
                                 <div

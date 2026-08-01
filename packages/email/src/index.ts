@@ -1,9 +1,9 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// @repo/email — ShiprHQ shared email design system.
+// @repo/email - ShiprHQ shared email design system.
 //
 // One brand-safe HTML shell + composable helpers, so every app renders the same
 // editorial look (warm-neutral card, ink headings, serif-italic accents, mono
-// eyebrow labels, pill buttons). Brand rule: monochrome ink/neutral only — NO
+// eyebrow labels, pill buttons). Brand rule: monochrome ink/neutral only - NO
 // orange, blue, indigo, purple or brown. Green is used solely for positive states.
 //
 // ── Why this file looks like 2005 HTML ───────────────────────────────────────
@@ -19,7 +19,7 @@
 //     anchor for everything else, so the CTA is a real tappable block everywhere
 //     rather than a bare underlined link.
 //   * The webfont <link> is progressive enhancement only (it works in Apple Mail
-//     and little else) — the fallback stack is what most recipients actually see,
+//     and little else) - the fallback stack is what most recipients actually see,
 //     so it is chosen to look right on its own.
 //
 // Usage stays drop-in compatible with the previous `shell({title, subtitle,
@@ -38,17 +38,17 @@ export const C = {
     ink2: "#3A3A34",
     muted: "#6E6C63",
     faint: "#9A978C",
-    accent: "#171717", // ink (brand accent — the palette is monochrome)
+    accent: "#171717", // ink (brand accent - the palette is monochrome)
     accentSoft: "#F5F5F5",
     accentBorder: "#E5E5E5",
-    ok: "#15803D", // green — positive states only
-    warn: "#57534E", // warm grey — warnings
+    ok: "#15803D", // green - positive states only
+    warn: "#57534E", // warm grey - warnings
     white: "#FFFFFF",
 } as const;
 
 // The first family in each stack is the webfont; everything after it is what the
 // recipient almost certainly gets. Ordered so the fallback carries the same
-// personality — Segoe/Roboto for UI text, Georgia for the serif flourish.
+// personality - Segoe/Roboto for UI text, Georgia for the serif flourish.
 export const F = {
     sans: "'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
     mono: "'Geist Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace",
@@ -67,18 +67,54 @@ function attr(value: string): string {
         .replace(/>/g, "&gt;");
 }
 
-// ── Brand mark (inline SVG + PNG-free) ───────────────────────────────────────
-// Ink rounded square with a white terminal chevron + underscore.
+// ── Brand mark ───────────────────────────────────────────────────────────────
+// The stepped-block mark, built out of nested table cells rather than an image.
 //
-// Outlook cannot render inline SVG, so the mark is wrapped in a table cell with
-// the brand ink as a background colour: clients that drop the SVG still show a
-// solid rounded tile rather than a broken-image icon.
+// The previous version base64-encoded an SVG into an <img src>. Gmail strips
+// SVG outright and Outlook cannot render it at all, so for a large share of
+// recipients the mark was simply missing - and the old artwork was the retired
+// terminal-chevron logo besides.
+//
+// Tables and background colours are the one drawing primitive every mail client
+// supports, so the mark is laid out as a 3x3 grid with six filled cells. Outlook
+// ignores border-radius and renders square blocks, which is a fine degradation:
+// the silhouette still reads.
 export function logoMark(size = 30): string {
+    // Proportions mirror the real mark: the grid fills ~65% of the tile, with
+    // the gap a quarter of a block.
+    const grid = Math.round(size * 0.65);
+    const block = Math.round((grid - 2 * Math.round(grid * 0.115)) / 3);
+    const gap = Math.round(grid * 0.115);
+    const radius = Math.max(1, Math.round(block * 0.16));
+
+    // Row-major, top to bottom. `true` = filled.
+    const cells: boolean[][] = [
+        [false, false, true],
+        [false, true, true],
+        [true, true, true],
+    ];
+
+    const rows = cells
+        .map((row) => {
+            const tds = row
+                .map((on, i) => {
+                    const pad = i < 2 ? `padding-right:${gap}px;` : "";
+                    const fill = on
+                        ? `background:#FFFFFF;border-radius:${radius}px;`
+                        : "";
+                    return `<td width="${block}" height="${block}" style="width:${block}px;height:${block}px;line-height:${block}px;font-size:0;${pad}"><div style="width:${block}px;height:${block}px;${fill}">&nbsp;</div></td>`;
+                })
+                .join("");
+            return `<tr>${tds}</tr>`;
+        })
+        // Vertical gaps: a spacer row between each block row.
+        .join(
+            `<tr><td colspan="3" height="${gap}" style="height:${gap}px;line-height:${gap}px;font-size:0;">&nbsp;</td></tr>`,
+        );
+
     return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="display:inline-block;vertical-align:middle;">
       <tr><td width="${size}" height="${size}" align="center" valign="middle" style="width:${size}px;height:${size}px;background:${C.accent};border-radius:${Math.round(size / 3.6)}px;">
-        <img src="data:image/svg+xml;base64,${Buffer.from(
-            `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 32 32" fill="none"><path d="M9 11.5L13 16L9 20.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.5 21H23" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/></svg>`,
-        ).toString("base64")}" width="${size}" height="${size}" alt="" style="display:block;border:0;" />
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">${rows}</table>
       </td></tr>
     </table>`;
 }
@@ -102,7 +138,7 @@ export function heading(html: string): string {
     return `<h1 class="bhq-h1" style="margin:0 0 16px;font-family:${F.sans};font-size:27px;line-height:1.2;font-weight:600;letter-spacing:-0.02em;color:${C.ink};">${html}</h1>`;
 }
 
-/** Serif-italic ink emphasis — the brand flourish. */
+/** Serif-italic ink emphasis - the brand flourish. */
 export function serif(text: string): string {
     return `<em style="font-family:${F.serif};font-style:italic;font-weight:400;color:${C.accent};">${text}</em>`;
 }
@@ -112,7 +148,7 @@ export function paragraph(html: string): string {
 }
 
 /**
- * The hero OTP panel — mono code on a warm tinted panel with an orange accent bar.
+ * The hero OTP panel - mono code on a warm tinted panel with an orange accent bar.
  *
  * The digits are spaced with a wide letter-spacing and a trailing hair space:
  * without the trailing space the last glyph sits visually off-centre, because
@@ -148,12 +184,12 @@ function button(label: string, href: string, bg: string, fg: string): string {
     </td></tr></table>`;
 }
 
-/** Ink pill button — the primary CTA. */
+/** Ink pill button - the primary CTA. */
 export function primaryButton(label: string, href: string): string {
     return button(label, href, C.ink, C.white);
 }
 
-/** Secondary pill button — same ink family, used for lower-emphasis CTAs. */
+/** Secondary pill button - same ink family, used for lower-emphasis CTAs. */
 export function accentButton(label: string, href: string): string {
     return button(label, href, C.accent, C.white);
 }
@@ -168,7 +204,7 @@ export function callout(html: string): string {
     </table>`;
 }
 
-/** Warning callout — warm grey, brand-safe. */
+/** Warning callout - warm grey, brand-safe. */
 export function warnCallout(html: string): string {
     return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:18px 0;background:#FDF5E9;border-radius:0 10px 10px 0;">
       <tr>
@@ -217,7 +253,7 @@ export interface ShellParams {
     /** Product/app name shown in the footer + header wordmark context. */
     brand?: string;
     /**
-     * Inbox preview text — the grey line next to the subject in Gmail/Apple Mail.
+     * Inbox preview text - the grey line next to the subject in Gmail/Apple Mail.
      * Left unset, clients scrape the first words of the body, which for an OTP mail
      * is the eyebrow label ("EMAIL VERIFICATION · SHIPRHQ") rather than anything
      * useful. Setting it is one of the cheapest open-rate wins available.
@@ -254,7 +290,7 @@ export function shell(params: ShellParams): string {
     <![endif]-->
     ${FONT_LINK}
     <style>
-      /* Stripped by some clients — everything here is an enhancement, never a
+      /* Stripped by some clients - everything here is an enhancement, never a
          requirement. The inline styles already produce a correct layout. */
       @media only screen and (max-width: 620px) {
         .bhq-wrap { padding: 16px 10px 8px !important; }
@@ -333,7 +369,7 @@ export type EmailContent = { subject: string; html: string };
  *
  * Throws rather than falling back to a literal. Every app used to carry its own
  * `DEFAULT_FROM = "... <noreply@shiprhq.com>"`, a domain from a previous product
- * that is not verified in Resend — so the "safe" fallback silently produced sends
+ * that is not verified in Resend - so the "safe" fallback silently produced sends
  * that the API rejects. Failing loudly at send time, exactly like the missing
  * RESEND_API_KEY check does, surfaces a misconfigured environment immediately.
  */

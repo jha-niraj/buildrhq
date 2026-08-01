@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#000000"/>
+  <!-- Block 94, radius 15, gap 24. Spans 91-421 on both axes, so the group is
+       centred at 256,256 and fills ~65% of the canvas. -->
+  <g fill="#ffffff">
+    <rect x="91" y="327" width="94" height="94" rx="15"/>
+    <rect x="209" y="327" width="94" height="94" rx="15"/>
+    <rect x="327" y="327" width="94" height="94" rx="15"/>
+    <rect x="209" y="209" width="94" height="94" rx="15"/>
+    <rect x="327" y="209" width="94" height="94" rx="15"/>
+    <rect x="327" y="91" width="94" height="94" rx="15"/>
+  </g>
+</svg>

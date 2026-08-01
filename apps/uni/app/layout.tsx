@@ -29,7 +29,7 @@ const bricolage = Bricolage_Grotesque({
 	weight: ["200", "300", "400", "500", "600", "700", "800"],
 	display: "swap",
 	// Registered as --font-display, which globals.css maps to the `font-display`
-	// utility — so every h1/h2 and the sidebar pick it up without each app
+	// utility - so every h1/h2 and the sidebar pick it up without each app
 	// restating the stack.
 	variable: "--font-display",
 });
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
 		description: "The complete university management platform. Assign real-world coding projects, track student progress, and connect students directly to job opportunities.",
 		images: [
 			{
-				url: "/mainlogo.jpeg",
-				width: 1024,
-				height: 1024,
+				url: "/og/home.webp",
+				width: 1200,
+				height: 630,
 				alt: "ShiprHQ University - Empower Your Institution",
 			},
 		],
@@ -68,17 +68,8 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "ShiprHQ University - Empower Your Institution",
 		description: "The complete university management platform for technical education.",
-		images: ["/mainlogo.jpeg"],
+		images: ["/og/home.webp"],
 		creator: "@shiprhq",
-	},
-	icons: {
-		icon: [
-			{ url: "/mainlogo.ico", sizes: "any" },
-			{ url: "/mainlogo.jpeg", type: "image/jpeg", sizes: "512x512" },
-		],
-		apple: [
-			{ url: "/mainlogo.jpeg", sizes: "180x180", type: "image/jpeg" },
-		],
 	},
 	robots: {
 		index: true,
@@ -115,10 +106,12 @@ export default function RootLayout({
 						// NOT disableTransitionOnChange: that injects `* { transition: none !important }`
 						// around the class swap, which cancels the colour crossfade that
 						// packages/ui/src/lib/theme-transition.ts installs for the switch. With it
-						// on, the theme snapped between states instead of animating — the flicker.
+						// on, the theme snapped between states instead of animating - the flicker.
 					>
 						{children}
-						<SonnerToaster position="top-center" closeButton richColors />
+						{/* Position, close button and styling are the shared defaults in
+						    @repo/ui - deliberately not set per app, so all five stay in sync. */}
+						<SonnerToaster />
 					</ThemeProvider>
 				</Providers>
 			</body>

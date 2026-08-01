@@ -439,10 +439,10 @@ interface AIMentorPanelProps {
 │  └────────────────────────────────┘  │
 │                                      │
 │  ┌────────────────────────────────┐  │
-│  │ 🤖 Assessment — Attempt 1     │  │ ← Assessment result
+│  │ 🤖 Assessment - Attempt 1     │  │ ← Assessment result
 │  │                                │  │    (special styling)
 │  │ ✅ Correct approach            │  │
-│  │ ⚠️ O(n²) — Can be optimized   │  │
+│  │ ⚠️ O(n²) - Can be optimized   │  │
 │  │                                │  │
 │  │ ```mermaid                     │  │ ← Mermaid rendered inline
 │  │ graph LR                       │  │
@@ -520,7 +520,7 @@ export async function assessPracticeWork(payload: AssessPayload) {
 
 function buildContextMessage(payload: AssessPayload): string {
   return `
-## Assessment Request — Attempt ${payload.attemptNumber}
+## Assessment Request - Attempt ${payload.attemptNumber}
 
 **Problem:** ${payload.problem.title}
 **Difficulty:** ${payload.problem.difficulty}
@@ -552,8 +552,8 @@ Please analyze this work and provide feedback following your instructions.
 │              VOICE ARCHITECTURE DECISION                         │
 │                                                                  │
 │  ❌ REJECTED: ElevenLabs Conversational Agent                   │
-│     • $0.10/minute — too expensive at scale                     │
-│     • Agent tries to "converse" — wrong for code review         │
+│     • $0.10/minute - too expensive at scale                     │
+│     • Agent tries to "converse" - wrong for code review         │
 │     • User interruptions break the flow                         │
 │     • Can't integrate custom OpenAI prompts easily              │
 │                                                                  │
@@ -662,7 +662,7 @@ type VoiceState =
 ### ElevenLabs API Calls
 
 ```typescript
-// STT via Scribe v2 — WebSocket for streaming
+// STT via Scribe v2 - WebSocket for streaming
 const sttSocket = new WebSocket(
   `wss://api.elevenlabs.io/v1/speech-to-text/stream?model_id=scribe_v2`
 );
@@ -690,7 +690,7 @@ sttSocket.onmessage = (event) => {
 };
 
 
-// TTS via Flash v2.5 — REST API with streaming
+// TTS via Flash v2.5 - REST API with streaming
 async function speakText(text: string) {
   const response = await fetch(
     `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}/stream`,
@@ -843,7 +843,7 @@ interface RequirementStatus {
   id: string;
   text: string;
   met: boolean;
-  /** Partially met — show as yellow */
+  /** Partially met - show as yellow */
   partial?: boolean;
 }
 
@@ -1406,7 +1406,7 @@ The existing `markdown-renderer.tsx` uses `react-markdown` with `remark-gfm` and
 │  OPTION A: Extend the existing MarkdownRenderer component      │
 │  OPTION B: Create a PracticeMarkdownRenderer that wraps it      │
 │                                                                  │
-│  RECOMMENDATION: Option A — extend existing. Mermaid support   │
+│  RECOMMENDATION: Option A - extend existing. Mermaid support   │
 │  is useful everywhere, not just practice. Keep it in the        │
 │  shared component.                                               │
 │                                                                  │
@@ -1485,7 +1485,7 @@ function MermaidDiagram({ chart }: { chart: string }) {
 │  ├── @excalidraw/excalidraw           (npm install @excalidraw/excalidraw) │
 │  ├── esbuild-wasm                     (npm install esbuild-wasm)        │
 │  │   └── For in-browser JSX transpilation (Frontend Web live preview)  │
-│  └── (react-resizable-panels — check if shadcn's "resizable" is       │
+│  └── (react-resizable-panels - check if shadcn's "resizable" is       │
 │       already installed, it wraps this)                                  │
 │                                                                          │
 │  Already in codebase:                                                   │
@@ -1670,8 +1670,8 @@ Ordered by dependency (build bottom-up):
 ---
 
 > **This document completes the technical specification.** Read in order:
-> 1. `00-PRACTICE-MODULE-VISION-AND-STRATEGY.md` — Why and What
-> 2. `01-DSA-PRACTICE-BLUEPRINT.md` — DSA module design
-> 3. `02-SYSTEM-DESIGN-PRACTICE-BLUEPRINT.md` — SD module design
-> 4. `03-WEB-DEV-PRACTICE-BLUEPRINT.md` — Web module design
-> 5. `04-SHARED-COMPONENTS-TECHNICAL-SPEC.md` — How it all fits together (this doc)
+> 1. `00-PRACTICE-MODULE-VISION-AND-STRATEGY.md` - Why and What
+> 2. `01-DSA-PRACTICE-BLUEPRINT.md` - DSA module design
+> 3. `02-SYSTEM-DESIGN-PRACTICE-BLUEPRINT.md` - SD module design
+> 4. `03-WEB-DEV-PRACTICE-BLUEPRINT.md` - Web module design
+> 5. `04-SHARED-COMPONENTS-TECHNICAL-SPEC.md` - How it all fits together (this doc)

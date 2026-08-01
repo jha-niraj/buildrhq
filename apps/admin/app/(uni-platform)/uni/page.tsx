@@ -290,8 +290,8 @@ export default function UniversityPlatformPage() {
                     icon={Briefcase}
                     href="/uni/placements"
                     stats={[
-                        { label: "Jobs", value: "—" },
-                        { label: "Placed", value: "—" },
+                        { label: "Jobs", value: "-" },
+                        { label: "Placed", value: "-" },
                     ]}
                     badge={{ text: "Coming Soon", type: "info" }}
                 />

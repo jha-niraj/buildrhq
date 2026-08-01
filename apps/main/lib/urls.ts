@@ -5,8 +5,8 @@
 // that both bit us:
 //
 //  1. `window.location.origin` is not available during a server render, and the
-//     usual guard — `typeof window !== "undefined" ? window.location.origin : ""`
-//     — silently degrades to a RELATIVE url rather than failing. A component
+//     usual guard - `typeof window !== "undefined" ? window.location.origin : ""`
+//     - silently degrades to a RELATIVE url rather than failing. A component
 //     that renders one of these server-side hands the user "/profile/alice" to
 //     paste into Slack. `NEXT_PUBLIC_BASE_URL` is available in both environments,
 //     so the value is right on the first render with no browser global involved.
@@ -26,7 +26,7 @@
 export function appOrigin(): string {
     const configured = process.env.NEXT_PUBLIC_BASE_URL;
     if (configured) return configured.replace(/\/+$/, "");
-    // Only reached when the env var is unset — a misconfiguration rather than a
+    // Only reached when the env var is unset - a misconfiguration rather than a
     // supported mode. Prefer the live origin over the production guess, since a
     // link that works locally beats one that points at the wrong host entirely.
     if (typeof window !== "undefined") return window.location.origin;
@@ -38,22 +38,22 @@ export function absoluteUrl(path: string): string {
     return `${appOrigin()}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
-/** A user's public profile — app/(main)/profile/[username]. */
+/** A user's public profile - app/(main)/profile/[username]. */
 export function publicProfileUrl(username: string): string {
     return absoluteUrl(`/profile/${encodeURIComponent(username)}`);
 }
 
-/** A user's published resume — app/(main)/ai/resume/[username]. */
+/** A user's published resume - app/(main)/ai/resume/[username]. */
 export function publicResumeUrl(username: string): string {
     return absoluteUrl(`/ai/resume/${encodeURIComponent(username)}`);
 }
 
-/** A shared resume draft by its share slug — app/(main)/r/[slug]. */
+/** A shared resume draft by its share slug - app/(main)/r/[slug]. */
 export function resumeShareUrl(shareSlug: string): string {
     return absoluteUrl(`/r/${encodeURIComponent(shareSlug)}`);
 }
 
-/** A project's shareable leaderboard — app/(main)/projects/[slug]/leaderboard. */
+/** A project's shareable leaderboard - app/(main)/projects/[slug]/leaderboard. */
 export function projectLeaderboardUrl(slug: string, username: string): string {
     const params = new URLSearchParams({ username, showProgress: "true" });
     return absoluteUrl(`/projects/${encodeURIComponent(slug)}/leaderboard?${params}`);

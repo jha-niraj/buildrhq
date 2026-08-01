@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion"
 
 export type FullScreenLoaderProps = {
     /**
-     * Logo element, e.g. `<Image src="/mainlogo.png" alt="ShiprHQ" width={56} height={56} />`.
+     * Logo element, e.g. `<Image src="/logo.svg" alt="ShiprHQ" width={56} height={56} />`.
      * Omit it to get the animated <ShiprMark />, which is the default.
      */
     logo?: ReactNode
@@ -23,7 +23,7 @@ export type FullScreenLoaderProps = {
 // One shared <style> block, namespaced `fsl-` so multiple instances can coexist.
 // Everything reads Tailwind's own theme tokens (--background, --foreground,
 // --border, --muted-foreground), so light/dark is inherited automatically and no
-// colour is hardcoded — which is what keeps it correct now the brand is monochrome.
+// colour is hardcoded - which is what keeps it correct now the brand is monochrome.
 const STYLES = `
 .fsl-vignette {
     background: radial-gradient(ellipse 60% 50% at 50% 42%, color-mix(in oklab, var(--foreground) 6%, transparent) 0%, transparent 72%);
@@ -91,12 +91,12 @@ const STYLES = `
  *
  * A dispatch motif, which is what the name means: a chevron launches out of the
  * tile along its diagonal, leaves a short wake behind it, and the tile's ring
- * completes as it goes. One object doing one thing — deliberately not a second
+ * completes as it goes. One object doing one thing - deliberately not a second
  * spinner, since the wordmark shimmer and the progress track already carry
  * motion and a third competing loop would read as jitter.
  *
  * Pure inline SVG on `currentColor`, so it inherits the theme with no per-mode
- * branching and costs nothing to load — the loader is the first thing painted on
+ * branching and costs nothing to load - the loader is the first thing painted on
  * a cold navigation, so it must not wait on an image request.
  */
 export function ShiprMark({ size = 56, className = "" }: { size?: number; className?: string }) {
@@ -109,7 +109,7 @@ export function ShiprMark({ size = 56, className = "" }: { size?: number; classN
     return (
         <div className={className} style={{ width: size, height: size, color: "var(--foreground)" }} aria-hidden>
             <svg viewBox="0 0 64 64" width={size} height={size} fill="none">
-                {/* Tile. Drawn once on mount rather than looping — it is the frame
+                {/* Tile. Drawn once on mount rather than looping - it is the frame
                     the motion happens inside, not part of the motion. */}
                 <motion.rect
                     x={4} y={4} width={56} height={56} rx={16}

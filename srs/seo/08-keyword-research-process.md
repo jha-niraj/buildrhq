@@ -1,4 +1,4 @@
-# Keyword Research Process — Step by Step
+# Keyword Research Process - Step by Step
 
 > Keyword research is not about finding the highest-volume keywords.
 > It's about finding keywords you can actually rank for that send buyers, not browsers.
@@ -44,7 +44,7 @@ Build content at every stage. Most companies only write Stage 3 and 4. Missing S
 
 ### Step 1: Seed Keywords
 
-Start with 5–10 keywords that describe your product's core value:
+Start with 5-10 keywords that describe your product's core value:
 
 ```
 For an AI app builder:
@@ -86,7 +86,7 @@ Go to the bottom of the Google results page:
   - simple crm builder
 ```
 
-Each of these is a real query with real searches. Collect 50–100 of these.
+Each of these is a real query with real searches. Collect 50-100 of these.
 
 ### Step 3: "People Also Ask" Mining
 
@@ -114,7 +114,7 @@ For each keyword you've collected, estimate:
 
 **Difficulty:** Check the domain rating (DR) of sites on page 1:
 - If all page-1 results are DR 70+ (Salesforce, HubSpot, Forbes), you can't rank yet
-- If page-1 results include DR 20–40 sites, you can compete
+- If page-1 results include DR 20-40 sites, you can compete
 
 **Intent:** Does this keyword represent someone who would buy your product?
 - "what is a crm" → informational, mostly students/curious people → low intent
@@ -123,19 +123,19 @@ For each keyword you've collected, estimate:
 
 ---
 
-## Step-by-Step Keyword Research (Paid Method — Ahrefs/Semrush)
+## Step-by-Step Keyword Research (Paid Method - Ahrefs/Semrush)
 
 ### In Ahrefs Keywords Explorer
 
 1. Enter seed keywords
 2. Filter: KD (Keyword Difficulty) under 30 for new sites
 3. Filter: Volume over 200/month
-4. Sort by Traffic Potential (not just volume — TP accounts for clicks from all SERP features)
+4. Sort by Traffic Potential (not just volume - TP accounts for clicks from all SERP features)
 5. Export to spreadsheet
 
 **Key Ahrefs metrics:**
-- **KD:** 0–100, higher = harder. New sites: target under 35. DR 30+: under 55.
-- **Volume:** Monthly searches. Take with 20% skepticism — tools undercount long-tails.
+- **KD:** 0-100, higher = harder. New sites: target under 35. DR 30+: under 55.
+- **Volume:** Monthly searches. Take with 20% skepticism - tools undercount long-tails.
 - **TP (Traffic Potential):** Estimated clicks the page would get if it ranked #1. Better metric than volume.
 - **CPC:** If high CPC, advertisers are bidding on this = buyers are searching.
 - **Parent Topic:** The head keyword this fits under. Write the post targeting the parent topic, not just one variant.
@@ -144,7 +144,7 @@ For each keyword you've collected, estimate:
 
 Check competitors:
 1. Enter a competitor's domain
-2. Go to "Top Pages" — their pages sorted by estimated organic traffic
+2. Go to "Top Pages" - their pages sorted by estimated organic traffic
 3. Filter by pages in your topic area
 4. These are the posts generating the most traffic for them
 5. Write better versions of their top 5 posts
@@ -153,7 +153,7 @@ Check competitors:
 
 1. Enter your domain in Ahrefs
 2. Go to "Content Gap"
-3. Enter 2–3 competitor domains
+3. Enter 2-3 competitor domains
 4. See keywords they rank for that you don't
 5. These are the most relevant gaps to fill
 
@@ -163,11 +163,11 @@ Check competitors:
 
 | Your Domain Rating | Target Keyword KD | Expected Timeline to Rank |
 |---|---|---|
-| DR 0–10 (new site) | KD 0–20 | 2–4 months |
-| DR 10–20 | KD 0–30 | 2–5 months |
-| DR 20–35 | KD 0–40 | 3–6 months |
-| DR 35–50 | KD 0–55 | 4–8 months |
-| DR 50+ | KD 0–70 | 5–12 months |
+| DR 0-10 (new site) | KD 0-20 | 2-4 months |
+| DR 10-20 | KD 0-30 | 2-5 months |
+| DR 20-35 | KD 0-40 | 3-6 months |
+| DR 35-50 | KD 0-55 | 4-8 months |
+| DR 50+ | KD 0-70 | 5-12 months |
 
 **Where to check your DR:** Ahrefs free tools → enter your domain.
 
@@ -181,7 +181,7 @@ Before writing any post, fill this out:
 Post Title: [your title]
 Target URL: /your-slug
 Primary Keyword: [main keyword]
-Secondary Keywords: [2–3 related keywords to include naturally]
+Secondary Keywords: [2-3 related keywords to include naturally]
 Search Intent: Informational / Commercial / Transactional
 Target Audience: [specific description]
 What's Missing From Current Page-1 Results: [your gap]
@@ -204,19 +204,19 @@ These are queries that:
 - Have zero quality content written about them yet
 
 Examples from the Creatr research:
-- "requirements gathering app builder" — KD 15, zero quality content
-- "spec driven app building" — KD 12, zero competition
-- "ai app builder that asks questions first" — zero content anywhere
+- "requirements gathering app builder" - KD 15, zero quality content
+- "spec driven app building" - KD 12, zero competition
+- "ai app builder that asks questions first" - zero content anywhere
 
-Being first on a 200-search/month keyword is worth more than being #15 on a 10,000-search/month keyword. And the first post to define a category often ends up cited as the reference — by AI, by journalists, by other blog posts.
+Being first on a 200-search/month keyword is worth more than being #15 on a 10,000-search/month keyword. And the first post to define a category often ends up cited as the reference - by AI, by journalists, by other blog posts.
 
 ---
 
 ## Keywords to Avoid
 
-**Too broad:** "crm", "software", "app builder" — you'll never rank, wrong intent
-**Too branded:** "[Competitor] pricing" — confusing for your brand, low conversion
-**Too informational with no buyer:** "history of crm software" — nobody buying here
+**Too broad:** "crm", "software", "app builder" - you'll never rank, wrong intent
+**Too branded:** "[Competitor] pricing" - confusing for your brand, low conversion
+**Too informational with no buyer:** "history of crm software" - nobody buying here
 **Too competitive, too soon:** Any KD 60+ keyword before you have DR 35+
 
 ---
@@ -226,10 +226,10 @@ Being first on a 200-search/month keyword is worth more than being #15 on a 10,0
 Once a post is live:
 
 1. Add to a tracking spreadsheet: URL, target keyword, publish date
-2. Wait 8–12 weeks (Google needs time to assess)
+2. Wait 8-12 weeks (Google needs time to assess)
 3. Check GSC → Performance → filter by that URL → see what position it's hitting
-4. If ranking 8–20: improve the post (add depth, update examples, improve intro)
-5. If ranking 21–50: content needs more work or more internal links
+4. If ranking 8-20: improve the post (add depth, update examples, improve intro)
+5. If ranking 21-50: content needs more work or more internal links
 6. If ranking 50+: either keyword is too competitive or content needs a full rewrite
 
-**The key insight:** Most posts take 3–6 months to find their ranking. Patience is the strategy. Keep publishing, keep improving. Don't delete posts that haven't ranked in 4 weeks.
+**The key insight:** Most posts take 3-6 months to find their ranking. Patience is the strategy. Keep publishing, keep improving. Don't delete posts that haven't ranked in 4 weeks.

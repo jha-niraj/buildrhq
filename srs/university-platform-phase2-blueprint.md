@@ -26,7 +26,7 @@
 
 ### What Phase 2 Adds
 
-Phase 1 established the foundation—university onboarding, basic assignments, and student management. Phase 2 elevates the platform into a comprehensive ecosystem that truly differentiates us from traditional LMS solutions.
+Phase 1 established the foundation-university onboarding, basic assignments, and student management. Phase 2 elevates the platform into a comprehensive ecosystem that truly differentiates us from traditional LMS solutions.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐

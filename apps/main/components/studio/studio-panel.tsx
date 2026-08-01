@@ -45,7 +45,7 @@ interface StudioPanelProps {
 }
 
 /**
- * StudioPanel — Single, self-contained Studio component.
+ * StudioPanel - Single, self-contained Studio component.
  * 
  * Combines:
  * - "Create Studio" prompt (when no studio exists)
@@ -160,7 +160,7 @@ export function StudioPanel({
         }
     }, [isOpen, externalPrompt, studioId, isCreatingStudio, isLoggedIn, handleCreateStudio]);
 
-    // Callback when AI content is added – refresh studio data
+    // Callback when AI content is added - refresh studio data
     const handleContentAdded = useCallback(async () => {
         if (!studioId) return;
         try {

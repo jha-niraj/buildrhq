@@ -17,43 +17,43 @@ Each item has:
 ## 1. Indexing & Crawlability
 
 ### Sitemap
-- `[ ]` **Sitemap exists at `/sitemap.xml`** — verify by visiting the URL directly  
+- `[ ]` **Sitemap exists at `/sitemap.xml`** - verify by visiting the URL directly  
   *Severity: HIGH | Who: Engineering*
-- `[ ]` **Sitemap submitted to GSC** — GSC → Sitemaps → Submit  
+- `[ ]` **Sitemap submitted to GSC** - GSC → Sitemaps → Submit  
   *Severity: HIGH | Who: Manual*
-- `[ ]` **Sitemap `lastModified` dates are accurate** — NOT using `new Date()` (always today)  
+- `[ ]` **Sitemap `lastModified` dates are accurate** - NOT using `new Date()` (always today)  
   *Severity: MEDIUM | Who: Engineering*  
   > Common bug: `const now = new Date()` used for all pages means every page always shows today as modified. Fix: pull `dateModified` from your content metadata object per page. See `04-sitemap-setup.md`.
-- `[ ]` **Sitemap only includes indexable pages** — no noindex pages, no 404s, no redirects  
+- `[ ]` **Sitemap only includes indexable pages** - no noindex pages, no 404s, no redirects  
   *Severity: MEDIUM | Who: Engineering*
-- `[ ]` **Sitemap is referenced in robots.txt** — `Sitemap: https://yourdomain.com/sitemap.xml`  
+- `[ ]` **Sitemap is referenced in robots.txt** - `Sitemap: https://yourdomain.com/sitemap.xml`  
   *Severity: LOW | Who: Engineering*
 
 ### Robots.txt
 - `[ ]` **`/robots.txt` exists and is accessible**  
   *Severity: HIGH | Who: Engineering*
-- `[ ]` **Robots.txt allows Googlebot** — `User-agent: *` with correct Allow/Disallow rules  
+- `[ ]` **Robots.txt allows Googlebot** - `User-agent: *` with correct Allow/Disallow rules  
   *Severity: HIGH | Who: Engineering*
-- `[ ]` **API routes disallowed** — `Disallow: /api/` prevents crawling internal endpoints  
+- `[ ]` **API routes disallowed** - `Disallow: /api/` prevents crawling internal endpoints  
   *Severity: MEDIUM | Who: Engineering*
-- `[ ]` **AI crawlers allowed (optional but recommended)** — GPTBot, ClaudeBot, PerplexityBot allowed unless you have a reason to block  
+- `[ ]` **AI crawlers allowed (optional but recommended)** - GPTBot, ClaudeBot, PerplexityBot allowed unless you have a reason to block  
   *Severity: LOW | Who: Engineering*
 
 ### 404 and Redirect Hygiene
-- `[ ]` **No important pages returning 404** — check GSC Coverage report → "Not found (404)"  
+- `[ ]` **No important pages returning 404** - check GSC Coverage report → "Not found (404)"  
   *Severity: HIGH | Who: Engineering*
-- `[ ]` **Old URLs redirect with 301** — not 302, not soft 404  
+- `[ ]` **Old URLs redirect with 301** - not 302, not soft 404  
   *Severity: HIGH | Who: Engineering*
-- `[ ]` **`/index.html` redirects to `/`** — many external links point to this  
+- `[ ]` **`/index.html` redirects to `/`** - many external links point to this  
   *Severity: MEDIUM | Who: Engineering*
-- `[ ]` **Old subdomains cleaned up** — if `docs.yourdomain.com` no longer exists, submit URL removal in GSC  
+- `[ ]` **Old subdomains cleaned up** - if `docs.yourdomain.com` no longer exists, submit URL removal in GSC  
   *Severity: HIGH | Who: Manual*  
-  > Lesson from getcreatr: `doc.getcreatr.com` had 102 crawled-but-not-indexed pages dragging down domain quality. Submit full prefix removal (`https://doc.getcreatr.com/`) in GSC → Removals → New Request. Individual page removals expire after 6 months — prefix removal is permanent.
+  > Lesson from getcreatr: `doc.getcreatr.com` had 102 crawled-but-not-indexed pages dragging down domain quality. Submit full prefix removal (`https://doc.getcreatr.com/`) in GSC → Removals → New Request. Individual page removals expire after 6 months - prefix removal is permanent.
 
 ### Canonical Tags
 - `[ ]` **Every page has a canonical tag pointing to its own URL**  
   *Severity: HIGH | Who: Engineering*
-- `[ ]` **UTM parameter URLs canonicalize to base URL** — `?utm_source=X` → canonical to `/page`  
+- `[ ]` **UTM parameter URLs canonicalize to base URL** - `?utm_source=X` → canonical to `/page`  
   *Severity: MEDIUM | Who: Engineering*
 - `[ ]` **HTTP version redirects to HTTPS** with canonical on HTTPS version  
   *Severity: HIGH | Who: Engineering / Hosting*
@@ -63,37 +63,37 @@ Each item has:
 ## 2. On-Page SEO
 
 ### Title Tags & Meta Descriptions
-- `[ ]` **Every page has a unique `<title>` tag** — 50–60 characters, includes primary keyword  
+- `[ ]` **Every page has a unique `<title>` tag** - 50-60 characters, includes primary keyword  
   *Severity: HIGH | Who: Content + Engineering*
-- `[ ]` **Every page has a unique meta description** — 150–160 characters, includes keyword, has a reason to click  
+- `[ ]` **Every page has a unique meta description** - 150-160 characters, includes keyword, has a reason to click  
   *Severity: MEDIUM | Who: Content*
 - `[ ]` **Homepage title includes brand name + primary value proposition**  
   *Severity: HIGH | Who: Content*
-- `[ ]` **Blog post titles include the target keyword naturally** — not stuffed, reads like a real title  
+- `[ ]` **Blog post titles include the target keyword naturally** - not stuffed, reads like a real title  
   *Severity: HIGH | Who: Content*
 
 ### Heading Structure
-- `[ ]` **One `<h1>` per page** — not zero, not two  
+- `[ ]` **One `<h1>` per page** - not zero, not two  
   *Severity: HIGH | Who: Engineering / Content*
-- `[ ]` **H1 includes the primary keyword** — or a close variation  
+- `[ ]` **H1 includes the primary keyword** - or a close variation  
   *Severity: HIGH | Who: Content*
-- `[ ]` **Headings follow logical hierarchy** — H1 → H2 → H3, never skipping levels  
+- `[ ]` **Headings follow logical hierarchy** - H1 → H2 → H3, never skipping levels  
   *Severity: LOW | Who: Content*
 
 ### URL Structure
-- `[ ]` **URLs are lowercase, hyphenated, descriptive** — `/how-to-build-crm` not `/post?id=123`  
+- `[ ]` **URLs are lowercase, hyphenated, descriptive** - `/how-to-build-crm` not `/post?id=123`  
   *Severity: MEDIUM | Who: Engineering*
-- `[ ]` **URLs include the primary keyword** — `/custom-crm-builder` ranks better than `/product-feature`  
+- `[ ]` **URLs include the primary keyword** - `/custom-crm-builder` ranks better than `/product-feature`  
   *Severity: HIGH | Who: Engineering / Content*
-- `[ ]` **URLs are short** — under 5 words where possible  
+- `[ ]` **URLs are short** - under 5 words where possible  
   *Severity: LOW | Who: Engineering / Content*
 
 ### Internal Linking
-- `[ ]` **Blog posts link to related posts** — minimum 2 internal links per post  
+- `[ ]` **Blog posts link to related posts** - minimum 2 internal links per post  
   *Severity: MEDIUM | Who: Content*
-- `[ ]` **Homepage links to most important content** — case studies, essays, product pages  
+- `[ ]` **Homepage links to most important content** - case studies, essays, product pages  
   *Severity: HIGH | Who: Engineering*
-- `[ ]` **Anchor text is descriptive** — "read our CRM guide" not "click here"  
+- `[ ]` **Anchor text is descriptive** - "read our CRM guide" not "click here"  
   *Severity: MEDIUM | Who: Content*
 
 ---
@@ -102,9 +102,9 @@ Each item has:
 
 - `[ ]` **Organization schema on homepage**  
   *Severity: MEDIUM | Who: Engineering*
-- `[ ]` **Article schema on all blog posts** — includes `datePublished`, `dateModified`, `author`, `image`  
+- `[ ]` **Article schema on all blog posts** - includes `datePublished`, `dateModified`, `author`, `image`  
   *Severity: MEDIUM | Who: Engineering*
-- `[ ]` **FAQ schema on FAQ pages** — enables FAQ rich snippet in Google  
+- `[ ]` **FAQ schema on FAQ pages** - enables FAQ rich snippet in Google  
   *Severity: MEDIUM | Who: Engineering*
 - `[ ]` **BreadcrumbList schema on content pages**  
   *Severity: LOW | Who: Engineering*
@@ -119,11 +119,11 @@ Each item has:
 
 - `[ ]` **Every page has `og:title`, `og:description`, `og:image`, `og:url`**  
   *Severity: MEDIUM | Who: Engineering*
-- `[ ]` **OG image is 1200×630px PNG** — this exact size displays correctly everywhere  
+- `[ ]` **OG image is 1200×630px PNG** - this exact size displays correctly everywhere  
   *Severity: MEDIUM | Who: Design*
-- `[ ]` **OG image actually exists** — missing image file causes broken preview on social  
+- `[ ]` **OG image actually exists** - missing image file causes broken preview on social  
   *Severity: HIGH | Who: Design*
-- `[ ]` **Twitter card tags present** — `twitter:card`, `twitter:title`, `twitter:image`  
+- `[ ]` **Twitter card tags present** - `twitter:card`, `twitter:title`, `twitter:image`  
   *Severity: LOW | Who: Engineering*
 
 ---
@@ -133,7 +133,7 @@ Each item has:
 > Google uses real-world CrUX data for ranking, NOT Lighthouse synthetic scores. A 0.8s Lighthouse score can still fail with a 4.5s CrUX score.
 
 - `[ ]` **LCP (Largest Contentful Paint) under 2.5s on mobile (real-world)**  
-  *Severity: HIGH — active ranking penalty if failing | Who: Engineering*
+  *Severity: HIGH - active ranking penalty if failing | Who: Engineering*
 - `[ ]` **LCP under 2.5s on desktop (real-world)**  
   *Severity: HIGH | Who: Engineering*
 - `[ ]` **CLS (Cumulative Layout Shift) under 0.1**  
@@ -150,24 +150,24 @@ Each item has:
 
 ## 6. Mobile & Performance
 
-- `[ ]` **Site is fully usable on mobile** — no horizontal scroll, no overlapping elements  
+- `[ ]` **Site is fully usable on mobile** - no horizontal scroll, no overlapping elements  
   *Severity: HIGH | Who: Engineering*
-- `[ ]` **Font loads don't cause layout shift** — use `font-display: swap` or preload  
+- `[ ]` **Font loads don't cause layout shift** - use `font-display: swap` or preload  
   *Severity: MEDIUM | Who: Engineering*
-- `[ ]` **Images have explicit `width` and `height`** — prevents layout shift as images load  
+- `[ ]` **Images have explicit `width` and `height`** - prevents layout shift as images load  
   *Severity: MEDIUM | Who: Engineering*
-- `[ ]` **No render-blocking resources** — CSS inlined for critical path, JS deferred  
+- `[ ]` **No render-blocking resources** - CSS inlined for critical path, JS deferred  
   *Severity: MEDIUM | Who: Engineering*
-- `[ ]` **Hero images preloaded** — `fetchPriority="high"` on LCP image element  
+- `[ ]` **Hero images preloaded** - `fetchPriority="high"` on LCP image element  
   *Severity: HIGH | Who: Engineering*
 
 ---
 
 ## 7. Search Engine Verification
 
-- `[ ]` **Google Search Console verified** — DNS method, HTML file, or meta tag  
+- `[ ]` **Google Search Console verified** - DNS method, HTML file, or meta tag  
   *Severity: HIGH | Who: Engineering / Manual*
-- `[ ]` **Bing Webmaster Tools verified** — ~5% US search share, takes 10 minutes  
+- `[ ]` **Bing Webmaster Tools verified** - ~5% US search share, takes 10 minutes  
   *Severity: LOW | Who: Engineering / Manual*
 - `[ ]` **Google Analytics or equivalent installed**  
   *Severity: HIGH | Who: Engineering*
@@ -189,6 +189,6 @@ Each item has:
 8. Check robots.txt is correct
 
 **Sprint (needs engineering focus):**
-9. Fix Core Web Vitals — especially mobile LCP
+9. Fix Core Web Vitals - especially mobile LCP
 10. Audit and fix all canonical tags
 11. Add internal linking between content pages

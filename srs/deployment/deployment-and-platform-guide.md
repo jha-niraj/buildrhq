@@ -1,25 +1,25 @@
-# SalesCRM — Complete Platform & Deployment Guide
+# SalesCRM - Complete Platform & Deployment Guide
 
-> **Purpose of this document:** A full technical reference covering how this platform is built, how every feature works, and exactly how it is deployed to Cloudflare Workers. Written to be self-contained — you should be able to rebuild this platform on a new project by reading this file alone.
+> **Purpose of this document:** A full technical reference covering how this platform is built, how every feature works, and exactly how it is deployed to Cloudflare Workers. Written to be self-contained - you should be able to rebuild this platform on a new project by reading this file alone.
 
 ---
 
 ## Table of Contents
 
 1. [Platform Overview](#1-platform-overview)
-2. [Tech Stack — Every Library Explained](#2-tech-stack--every-library-explained)
+2. [Tech Stack - Every Library Explained](#2-tech-stack--every-library-explained)
 3. [Repository Structure](#3-repository-structure)
-4. [Database Schema — All 13 Tables](#4-database-schema--all-13-tables)
+4. [Database Schema - All 13 Tables](#4-database-schema--all-13-tables)
 5. [Authentication & Roles](#5-authentication--roles)
 6. [Feature-by-Feature Breakdown](#6-feature-by-feature-breakdown)
 7. [API Routes](#7-api-routes)
 8. [Third-Party Integrations](#8-third-party-integrations)
 9. [Environment Variables](#9-environment-variables)
 10. [Local Development Setup](#10-local-development-setup)
-11. [Cloudflare Deployment — Full Walkthrough](#11-cloudflare-deployment--full-walkthrough)
+11. [Cloudflare Deployment - Full Walkthrough](#11-cloudflare-deployment--full-walkthrough)
 12. [Configuration Files Explained](#12-configuration-files-explained)
 13. [Database Migrations](#13-database-migrations)
-14. [Seed Script — Demo Data](#14-seed-script--demo-data)
+14. [Seed Script - Demo Data](#14-seed-script--demo-data)
 15. [Architectural Patterns Used](#15-architectural-patterns-used)
 16. [Replicating This Platform on a New Project](#16-replicating-this-platform-on-a-new-project)
 
@@ -27,7 +27,7 @@
 
 ## 1. Platform Overview
 
-SalesCRM is a purpose-built sales CRM for a jewelry wholesale business. It manages the full lifecycle of a prospect — from first contact at a trade show through to becoming an active paying customer.
+SalesCRM is a purpose-built sales CRM for a jewelry wholesale business. It manages the full lifecycle of a prospect - from first contact at a trade show through to becoming an active paying customer.
 
 ### The 6-Stage Pipeline
 
@@ -38,20 +38,20 @@ New → Demo Scheduled → Demo Completed → First Request Submitted → First 
 ```
 
 Stage transitions are triggered three ways:
-1. **Manually** — a rep clicks "Move to next stage"
-2. **Automatically** — a customer books a demo (advances `new → demo_scheduled`)
-3. **Via webhook** — the external customer portal fires an event when an order is placed
+1. **Manually** - a rep clicks "Move to next stage"
+2. **Automatically** - a customer books a demo (advances `new → demo_scheduled`)
+3. **Via webhook** - the external customer portal fires an event when an order is placed
 
 ### Two User Roles
 
 | Role | What they can do |
 |------|-----------------|
-| **Admin** | Full access — all leads, all reps, dashboard analytics, user management, template management, timing rules |
+| **Admin** | Full access - all leads, all reps, dashboard analytics, user management, template management, timing rules |
 | **Sales Rep (user)** | Their own leads only, their own tasks, their own appointments, email templates (read), scheduling links |
 
 ---
 
-## 2. Tech Stack — Every Library Explained
+## 2. Tech Stack - Every Library Explained
 
 ### Core Framework
 
@@ -85,7 +85,7 @@ Stage transitions are triggered three ways:
 | `tailwindcss` | ^3.4.17 | Utility-first CSS. All styling is done via Tailwind classes. |
 | `@radix-ui/*` | various | Unstyled, accessible UI primitives (dialogs, dropdowns, selects, etc.). Shadcn/ui is built on top of these. |
 | `class-variance-authority` | ^0.7.1 | Creates type-safe variant APIs for components (e.g., `Button` with `size` and `variant` props). |
-| `tailwind-merge` | ^3.3.1 | Merges Tailwind class strings intelligently — prevents conflicts when combining class names. |
+| `tailwind-merge` | ^3.3.1 | Merges Tailwind class strings intelligently - prevents conflicts when combining class names. |
 | `clsx` | ^2.1.1 | Conditionally joins class names. Used together with `tailwind-merge` in the `cn()` utility. |
 | `lucide-react` | ^0.563.0 | Icon library. Used for all icons throughout the UI. |
 | `sonner` | ^2.0.7 | Toast notification library. Appears at bottom of screen for success/error feedback. |
@@ -118,14 +118,14 @@ Stage transitions are triggered three ways:
 |---------|---------|---------------|
 | `@nivo/*` | ^0.99.0 | Comprehensive React chart library (bar, line, pie, funnel, heatmap, etc.). Used for the admin dashboard analytics. |
 | `recharts` | 2.15.4 | Secondary chart library. Used for simpler chart needs. |
-| `echarts` / `echarts-for-react` | ^6.0.0 | ECharts wrapper — used for specific complex visualizations. |
+| `echarts` / `echarts-for-react` | ^6.0.0 | ECharts wrapper - used for specific complex visualizations. |
 
 ### Animations
 
 | Package | Version | Why it's used |
 |---------|---------|---------------|
 | `motion` / `framer-motion` | ^12.23.x | Animation library. Used on login page, page transitions, and UI micro-interactions. |
-| `canvas-confetti` | ^1.9.3 | Confetti animation — fires when a lead reaches "Active Customer" stage. |
+| `canvas-confetti` | ^1.9.3 | Confetti animation - fires when a lead reaches "Active Customer" stage. |
 
 ### Drag & Drop
 
@@ -167,7 +167,7 @@ Stage transitions are triggered three ways:
 ```
 salescrm/
 ├── src/
-│   ├── app/                        # Next.js App Router — all routes live here
+│   ├── app/                        # Next.js App Router - all routes live here
 │   │   ├── (admin)/                # Route group: admin-only pages
 │   │   │   └── admin/
 │   │   │       ├── dashboard/      # Analytics dashboard (admin only)
@@ -257,7 +257,7 @@ salescrm/
 
 ---
 
-## 4. Database Schema — All 13 Tables
+## 4. Database Schema - All 13 Tables
 
 The ORM is **Drizzle ORM** with a PostgreSQL database (hosted on **Neon**). All tables are defined in `src/db/schema/schema.ts`.
 
@@ -324,8 +324,8 @@ Public booking URLs. The `id` IS the URL token (`/book/[id]`).
 id            text PK  ← doubles as the URL slug
 userId        text → user.id (CASCADE)  ← the rep who owns this link
 type          text  ← 'trade_show' | 'virtual_demo'
-durationOptions  integer[]  ← [30, 45, 60] — customer picks one
-tradeShowId   text → trade_shows.id (SET NULL) — only for trade_show type
+durationOptions  integer[]  ← [30, 45, 60] - customer picks one
+tradeShowId   text → trade_shows.id (SET NULL) - only for trade_show type
 timezone      text  ← venue TZ for trade_show; null for virtual_demo
 isActive      boolean (default true)
 availabilityWindows  jsonb  ← [{day_of_week: 1, start_time: "09:00", end_time: "17:00"}]
@@ -454,7 +454,7 @@ fileSizeBytes integer
 mimeType      text
 createdAt     timestamptz
 ```
-**Note:** The URL is never stored — presigned URLs are generated on demand via the R2 client.
+**Note:** The URL is never stored - presigned URLs are generated on demand via the R2 client.
 
 ---
 
@@ -526,12 +526,12 @@ export const auth = betterAuth({
 ```
 
 The auth instance is a singleton. It handles:
-- **Session management** — creates/reads/destroys sessions stored in the `session` table
-- **Email+password** — hashes passwords with argon2, stores in `account.password`
-- **Password reset** — generates a token, emails a reset link via Resend
-- **Admin plugin** — adds role field to user, enables user management via `auth.api.createUser()`
+- **Session management** - creates/reads/destroys sessions stored in the `session` table
+- **Email+password** - hashes passwords with argon2, stores in `account.password`
+- **Password reset** - generates a token, emails a reset link via Resend
+- **Admin plugin** - adds role field to user, enables user management via `auth.api.createUser()`
 
-### RBAC — Resource Permissions
+### RBAC - Resource Permissions
 
 Defined in `src/lib/auth/permissions.ts`:
 
@@ -559,7 +559,7 @@ export const adminRole = ac.newRole({ ...all permissions });
 export const userRole = ac.newRole({ ...same permissions });
 ```
 
-**Important:** RBAC defines what actions are allowed. Data scoping (e.g. "reps can only see their own leads") is enforced in the database query layer — every rep query includes `WHERE assigned_to = userId`.
+**Important:** RBAC defines what actions are allowed. Data scoping (e.g. "reps can only see their own leads") is enforced in the database query layer - every rep query includes `WHERE assigned_to = userId`.
 
 ### Checking Authentication in Server Components
 
@@ -604,10 +604,10 @@ export const adminActionClient = authActionClient.use(async ({ next, ctx }) => {
 - Assign leads to reps
 
 **Key files:**
-- `actions/create-lead.ts` — Server action for creating a lead; also creates the first timeline entry and auto-generates the initial follow-up task
-- `actions/change-lead-stage.ts` — Handles stage transitions; creates a `stage_changed` timeline entry, generates a new follow-up task based on `follow_up_timing_rules`, sends an email notification to the rep
-- `actions/delete-lead.ts` — Cascade-deletes timeline, tasks, notifications, attachments
-- `queries/get-leads.ts` — Role-aware query: admins get all leads, reps get only assigned leads
+- `actions/create-lead.ts` - Server action for creating a lead; also creates the first timeline entry and auto-generates the initial follow-up task
+- `actions/change-lead-stage.ts` - Handles stage transitions; creates a `stage_changed` timeline entry, generates a new follow-up task based on `follow_up_timing_rules`, sends an email notification to the rep
+- `actions/delete-lead.ts` - Cascade-deletes timeline, tasks, notifications, attachments
+- `queries/get-leads.ts` - Role-aware query: admins get all leads, reps get only assigned leads
 
 **Pipeline stage rules:**
 - `portalAutoAdvanceBlocked = true` → inbound portal webhooks will NOT advance the stage
@@ -769,15 +769,15 @@ The external customer portal (where customers submit custom orders) fires webhoo
 **Location:** `src/features/notifications/`
 
 **Two delivery channels:**
-1. **In-app** — stored in `notifications` table, shown in the bell icon dropdown (max 20 most recent)
-2. **Email** — sent via `send-email-notification.ts` for high-priority events only
+1. **In-app** - stored in `notifications` table, shown in the bell icon dropdown (max 20 most recent)
+2. **Email** - sent via `send-email-notification.ts` for high-priority events only
 
 **Events that trigger in-app notifications:**
-- `task_created` — new auto-generated task
-- `task_assigned` — rep assigned a task from another user
-- `appointment_confirmed` — customer booked via scheduling link
-- `unrecognized_booker` — customer booked but email doesn't match any lead
-- `stage_changed_webhook` — portal webhook advanced a lead
+- `task_created` - new auto-generated task
+- `task_assigned` - rep assigned a task from another user
+- `appointment_confirmed` - customer booked via scheduling link
+- `unrecognized_booker` - customer booked but email doesn't match any lead
+- `stage_changed_webhook` - portal webhook advanced a lead
 - `appointment_rescheduled` / `appointment_cancelled`
 
 **Events that also send email:**
@@ -807,8 +807,8 @@ All API routes are in `src/app/api/`:
 
 | Route | Method | Auth | Purpose |
 |-------|--------|------|---------|
-| `/api/auth/[...all]` | `*` | — | better-auth catch-all (login, logout, session, reset password) |
-| `/api/auth/google-calendar/callback` | `GET` | Authenticated | Google Calendar OAuth callback — exchanges code for tokens, stores in `user_google_calendars` |
+| `/api/auth/[...all]` | `*` | - | better-auth catch-all (login, logout, session, reset password) |
+| `/api/auth/google-calendar/callback` | `GET` | Authenticated | Google Calendar OAuth callback - exchanges code for tokens, stores in `user_google_calendars` |
 | `/api/webhooks/portal` | `POST` | Webhook secret | Inbound events from the customer portal |
 | `/api/webhooks/resend` | `POST` | Webhook secret | Resend email delivery events (bounces, opens) |
 | `/api/scheduling/available-dates` | `GET` | Public | Returns available time slots for a scheduling link on a given date |
@@ -821,7 +821,7 @@ All API routes are in `src/app/api/`:
 
 ### 8.1 Neon (PostgreSQL Database)
 
-**What it is:** Serverless PostgreSQL. Connection via HTTP (not TCP) — required for Cloudflare Workers which don't support persistent TCP connections.
+**What it is:** Serverless PostgreSQL. Connection via HTTP (not TCP) - required for Cloudflare Workers which don't support persistent TCP connections.
 
 **How it's configured:**
 ```typescript
@@ -841,7 +841,7 @@ export const db = drizzle({ client: sql, schema });
 
 **What it is:** Transactional email API. Used for all outbound emails (password reset, appointment confirmations, task notifications).
 
-**Wrapper:** `src/guesto/resend/` — a thin wrapper around the Resend REST API.
+**Wrapper:** `src/guesto/resend/` - a thin wrapper around the Resend REST API.
 
 **How it's used:**
 ```typescript
@@ -855,8 +855,8 @@ await resend.sendEmail({
 ```
 
 **Environment variables:**
-- `RESEND_API_KEY` — your Resend API key
-- `RESEND_FROM_EMAIL` — the verified sender address (e.g. `noreply@yourdomain.com`)
+- `RESEND_API_KEY` - your Resend API key
+- `RESEND_FROM_EMAIL` - the verified sender address (e.g. `noreply@yourdomain.com`)
 
 ---
 
@@ -881,7 +881,7 @@ await resend.sendEmail({
 - `GOOGLE_CLIENT_ID`
 - `GOOGLE_CLIENT_SECRET`
 - `GOOGLE_REDIRECT_URI` (e.g. `https://yourapp.com/api/auth/google-calendar/callback`)
-- `ENCRYPTION_KEY` — for encrypting/decrypting OAuth tokens at rest
+- `ENCRYPTION_KEY` - for encrypting/decrypting OAuth tokens at rest
 
 ---
 
@@ -893,7 +893,7 @@ await resend.sendEmail({
 1. Rep uploads a file from the lead detail page
 2. `POST /api/email/upload-attachment` receives the file, streams it to R2
 3. R2 returns an object key (e.g. `leads/abc123/quote.pdf`)
-4. The `file_key` is stored in `file_attachments` (never the URL — URLs expire)
+4. The `file_key` is stored in `file_attachments` (never the URL - URLs expire)
 5. When displaying, the server generates a presigned URL on demand
 
 **Environment variables:**
@@ -952,8 +952,8 @@ wrangler secret put RESEND_API_KEY
 ## 10. Local Development Setup
 
 ### Prerequisites
-- **Bun** (package manager + runtime) — `curl -fsSL https://bun.sh/install | bash`
-- **Wrangler** — installed as a dev dependency, run via `bunx wrangler`
+- **Bun** (package manager + runtime) - `curl -fsSL https://bun.sh/install | bash`
+- **Wrangler** - installed as a dev dependency, run via `bunx wrangler`
 - A **Neon** database (free tier works)
 - A **Resend** account (free tier for testing)
 
@@ -1003,7 +1003,7 @@ bun run dev
 
 ---
 
-## 11. Cloudflare Deployment — Full Walkthrough
+## 11. Cloudflare Deployment - Full Walkthrough
 
 ### The Deployment Stack
 
@@ -1020,16 +1020,16 @@ Wrangler CLI
 Cloudflare Workers for Platforms (dispatch namespace)
 ```
 
-### Why Cloudflare Workers — Not Vercel?
+### Why Cloudflare Workers - Not Vercel?
 
-- **Edge runtime everywhere** — runs in 300+ data centers globally, no cold starts
-- **Workers for Platforms** — a "dispatch namespace" lets you deploy many customer worker instances under one umbrella
-- **R2 integration** — native S3-compatible storage, no egress fees
-- **Cost** — Workers' free tier is very generous (100,000 requests/day free)
+- **Edge runtime everywhere** - runs in 300+ data centers globally, no cold starts
+- **Workers for Platforms** - a "dispatch namespace" lets you deploy many customer worker instances under one umbrella
+- **R2 integration** - native S3-compatible storage, no egress fees
+- **Cost** - Workers' free tier is very generous (100,000 requests/day free)
 
-### Step 1 — Prerequisites
+### Step 1 - Prerequisites
 
-1. **Cloudflare account** — free at cloudflare.com
+1. **Cloudflare account** - free at cloudflare.com
 2. **Wrangler authenticated:**
    ```bash
    bunx wrangler login
@@ -1043,7 +1043,7 @@ Cloudflare Workers for Platforms (dispatch namespace)
    bunx wrangler dispatch-namespace create benro-testing
    ```
 
-### Step 2 — Set Worker Secrets
+### Step 2 - Set Worker Secrets
 
 All environment variables from `.env` must be set as Worker secrets. **Do not put secrets in `wrangler.jsonc`.**
 
@@ -1067,7 +1067,7 @@ bunx wrangler secret put CRON_SECRET
 bunx wrangler secret put PORTAL_WEBHOOK_SECRET
 ```
 
-### Step 3 — Build for Cloudflare
+### Step 3 - Build for Cloudflare
 
 ```bash
 bun run deploy:build
@@ -1075,7 +1075,7 @@ bun run deploy:build
 ```
 
 This runs:
-1. `next build` — standard Next.js build
+1. `next build` - standard Next.js build
 2. OpenNext Cloudflare adapter transforms the output into a Cloudflare Worker
 
 Output is placed in `.open-next/`:
@@ -1087,7 +1087,7 @@ Output is placed in `.open-next/`:
 └── cache/              ← prerendered pages for SSG
 ```
 
-### Step 4 — Deploy
+### Step 4 - Deploy
 
 ```bash
 bun run deploy
@@ -1099,14 +1099,14 @@ To deploy to a direct Worker URL (not dispatch namespace), remove `--dispatch-na
 bunx wrangler deploy
 ```
 
-### Step 5 — Add a Custom Domain
+### Step 5 - Add a Custom Domain
 
 In the Cloudflare dashboard:
 1. Workers & Pages → your worker → Settings → Domains & Routes
 2. Add custom domain → enter your domain
 3. Cloudflare automatically provisions an SSL certificate
 
-### Step 6 — Verify Deployment
+### Step 6 - Verify Deployment
 
 ```bash
 bunx wrangler tail    # Stream live logs from the deployed worker
@@ -1123,7 +1123,7 @@ OpenNext transforms a Next.js app for non-Vercel runtimes. For Cloudflare specif
 **SSR (Server-Side Rendering):**
 - Every `page.tsx` that is not static gets compiled into a Worker handler
 - Requests come in as `Request` objects, responses go out as `Response` objects
-- No Node.js APIs — must use `fetch`, `crypto.subtle`, `URL`, etc.
+- No Node.js APIs - must use `fetch`, `crypto.subtle`, `URL`, etc.
 
 **Static Assets:**
 - CSS, JS chunks, images → served from `assets/` binding (Cloudflare CDN)
@@ -1133,7 +1133,7 @@ OpenNext transforms a Next.js app for non-Vercel runtimes. For Cloudflare specif
 - Pages cached in **R2** (persistent storage)
 - In-memory **regional cache** layer for fast hits (30-minute TTL)
 - On-demand revalidation via `revalidateTag()` / `revalidatePath()` works fine
-- **Time-based ISR (`export const revalidate = 60`)** does NOT work in dispatch namespaces — use on-demand revalidation instead
+- **Time-based ISR (`export const revalidate = 60`)** does NOT work in dispatch namespaces - use on-demand revalidation instead
 
 **Tag Cache (Sharded Durable Objects):**
 - `revalidateTag('leads')` invalidates all cached pages tagged with 'leads'
@@ -1143,7 +1143,7 @@ OpenNext transforms a Next.js app for non-Vercel runtimes. For Cloudflare specif
 
 ## 12. Configuration Files Explained
 
-### 12.1 `wrangler.jsonc` — Cloudflare Workers Config
+### 12.1 `wrangler.jsonc` - Cloudflare Workers Config
 
 ```jsonc
 {
@@ -1152,7 +1152,7 @@ OpenNext transforms a Next.js app for non-Vercel runtimes. For Cloudflare specif
   // The compiled worker entry point (produced by OpenNext)
   "main": ".open-next/worker.js",
 
-  // Worker name — this is what shows in the Cloudflare dashboard
+  // Worker name - this is what shows in the Cloudflare dashboard
   // Change this for each new customer/project
   "name": "salescrm-demo",
 
@@ -1192,7 +1192,7 @@ OpenNext transforms a Next.js app for non-Vercel runtimes. For Cloudflare specif
   },
 
   // Migrations register the Durable Object class in Cloudflare's registry
-  // Only needed once — subsequent deploys reuse the same migration tag
+  // Only needed once - subsequent deploys reuse the same migration tag
   "migrations": [
     {
       "tag": "v1",
@@ -1200,7 +1200,7 @@ OpenNext transforms a Next.js app for non-Vercel runtimes. For Cloudflare specif
     }
   ],
 
-  // Cloudflare Images binding — enables next/image optimization
+  // Cloudflare Images binding - enables next/image optimization
   "images": {
     "binding": "IMAGES"
   }
@@ -1208,12 +1208,12 @@ OpenNext transforms a Next.js app for non-Vercel runtimes. For Cloudflare specif
 ```
 
 **Key rule:** For Workers for Platforms (dispatch namespaces), you CANNOT use:
-- `WORKER_SELF_REFERENCE` — service bindings don't work in dispatch namespaces
-- Time-based ISR — relies on self-reference for background revalidation
+- `WORKER_SELF_REFERENCE` - service bindings don't work in dispatch namespaces
+- Time-based ISR - relies on self-reference for background revalidation
 
 ---
 
-### 12.2 `open-next.config.ts` — OpenNext Cloudflare Adapter
+### 12.2 `open-next.config.ts` - OpenNext Cloudflare Adapter
 
 ```typescript
 import { defineCloudflareConfig } from '@opennextjs/cloudflare';
@@ -1225,9 +1225,9 @@ export default defineCloudflareConfig({
   // How SSG/ISR pages are cached
   // r2IncrementalCache: stores cached pages in R2
   // withRegionalCache: adds an in-memory layer on top (30-min TTL, reduces R2 reads)
-  // mode: 'long-lived' — keeps in-memory cache as long as possible
-  // shouldLazilyUpdateOnCacheHit: true — refresh cache in background, return stale immediately
-  // bypassTagCacheOnCacheHit: false — always check if tags were invalidated
+  // mode: 'long-lived' - keeps in-memory cache as long as possible
+  // shouldLazilyUpdateOnCacheHit: true - refresh cache in background, return stale immediately
+  // bypassTagCacheOnCacheHit: false - always check if tags were invalidated
   incrementalCache: withRegionalCache(r2IncrementalCache, {
     mode: 'long-lived',
     shouldLazilyUpdateOnCacheHit: true,
@@ -1235,7 +1235,7 @@ export default defineCloudflareConfig({
   }),
 
   // On-demand revalidation cache
-  // baseShardSize: 12 — splits the tag cache across 12 Durable Objects for scalability
+  // baseShardSize: 12 - splits the tag cache across 12 Durable Objects for scalability
   tagCache: doShardedTagCache({ baseShardSize: 12 }),
 
   // true = intercept requests to static pages before they hit the Worker
@@ -1247,12 +1247,12 @@ export default defineCloudflareConfig({
 
 ---
 
-### 12.3 `next.config.ts` — Next.js Configuration
+### 12.3 `next.config.ts` - Next.js Configuration
 
 ```typescript
 const nextConfig: NextConfig = {
   experimental: {
-    // Disable HMR cache eviction in dev — prevents phantom reloads on some VMs
+    // Disable HMR cache eviction in dev - prevents phantom reloads on some VMs
     serverComponentsHmrCache: false,
   },
 
@@ -1262,7 +1262,7 @@ const nextConfig: NextConfig = {
     pagesBufferLength: 200,
   },
 
-  // Expose BETTER_AUTH_URL to browser — needed for auth redirects
+  // Expose BETTER_AUTH_URL to browser - needed for auth redirects
   env: {
     BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
   },
@@ -1281,7 +1281,7 @@ const nextConfig: NextConfig = {
 
   productionBrowserSourceMaps: true,  // Enable source maps for debugging
 
-  // pdfkit is a Node.js package — exclude from Workers bundle
+  // pdfkit is a Node.js package - exclude from Workers bundle
   serverExternalPackages: ['pdfkit'],
 
   webpack: (config, { dev, isServer }) => {
@@ -1306,7 +1306,7 @@ const nextConfig: NextConfig = {
 
 ---
 
-### 12.4 `drizzle.config.ts` — Database Migrations
+### 12.4 `drizzle.config.ts` - Database Migrations
 
 ```typescript
 import { config } from 'dotenv';
@@ -1328,13 +1328,13 @@ export default defineConfig({
 ```bash
 bunx drizzle-kit generate   # Generate a new SQL migration from schema changes
 bunx drizzle-kit migrate    # Apply pending migrations to the database
-bunx drizzle-kit push       # Push schema directly (dev only — skips migration files)
+bunx drizzle-kit push       # Push schema directly (dev only - skips migration files)
 bunx drizzle-kit studio     # Open Drizzle Studio (visual DB browser)
 ```
 
 ---
 
-### 12.5 `tsconfig.json` — TypeScript Configuration
+### 12.5 `tsconfig.json` - TypeScript Configuration
 
 ```jsonc
 {
@@ -1366,7 +1366,7 @@ import { authClient } from '@/lib/auth/client';
 
 ---
 
-### 12.6 `package.json` — Complete Reference
+### 12.6 `package.json` - Complete Reference
 
 ```json
 {
@@ -1390,7 +1390,7 @@ import { authClient } from '@/lib/auth/client';
 
   "patchedDependencies": {
     // better-auth has a bug when running in Cloudflare Workers
-    // This patch fixes it — stored in patches/better-auth@1.4.18.patch
+    // This patch fixes it - stored in patches/better-auth@1.4.18.patch
     "better-auth@1.4.18": "patches/better-auth@1.4.18.patch"
   }
 }
@@ -1423,20 +1423,20 @@ bunx drizzle-kit migrate
 
 **Production deployment:**
 - Run `bunx drizzle-kit migrate` against the production DATABASE_URL before deploying the Worker
-- The Worker never runs migrations itself — always run migrations separately first
+- The Worker never runs migrations itself - always run migrations separately first
 
 **Push (dev shortcut):**
 ```bash
 bunx drizzle-kit push
-# Skips migration files — directly syncs schema to dev database
+# Skips migration files - directly syncs schema to dev database
 # NEVER use in production
 ```
 
 ---
 
-## 14. Seed Script — Demo Data
+## 14. Seed Script - Demo Data
 
-### `scripts/seed-admin.ts` — Bootstrap Admin
+### `scripts/seed-admin.ts` - Bootstrap Admin
 
 Creates the first admin user. Run once when setting up a new environment.
 
@@ -1449,7 +1449,7 @@ Creates:
 - Password: `StrongPassword@123`
 - Role: `admin`, `emailVerified: true`
 
-### `scripts/seed.ts` — Full Demo Seed
+### `scripts/seed.ts` - Full Demo Seed
 
 Creates a complete demo dataset for client demonstrations.
 
@@ -1521,7 +1521,7 @@ export const createLead = authActionClient
 **Benefits:**
 - Input is always validated via Zod before the action runs
 - Authentication is checked by the middleware chain (`authActionClient` or `adminActionClient`)
-- Type-safe on both client and server — the return type is inferred
+- Type-safe on both client and server - the return type is inferred
 
 ### 15.3 Drizzle ORM Query Pattern
 
@@ -1554,7 +1554,7 @@ The `/book/[linkId]` route is inside the `(public)` route group. It:
 - Has no authentication middleware
 - Uses `actionClient` (not `authActionClient`) in `book-appointment.ts`
 - Reads from the DB via the scheduling link ID (the link IS the token)
-- Identifies the customer by email lookup — no login required
+- Identifies the customer by email lookup - no login required
 
 ### 15.6 Cloudflare Workers Compatibility Rules
 
@@ -1575,7 +1575,7 @@ Things that DON'T work in Cloudflare Workers (and what to use instead):
 
 To rebuild this platform for a different vertical (not jewelry), here is the minimum checklist:
 
-### Step 1 — Infrastructure Setup
+### Step 1 - Infrastructure Setup
 ```bash
 # 1. Create Neon database
 # 2. Create Resend account + verify sender domain
@@ -1583,7 +1583,7 @@ To rebuild this platform for a different vertical (not jewelry), here is the min
 # 4. Create Google Cloud project + OAuth 2.0 credentials
 ```
 
-### Step 2 — Clone & Configure
+### Step 2 - Clone & Configure
 ```bash
 git clone <repo>
 bun install
@@ -1593,21 +1593,21 @@ bun install
 # In wrangler.jsonc: change "name" (the Worker name)
 ```
 
-### Step 3 — Adapt the Domain Model
+### Step 3 - Adapt the Domain Model
 
 The core changes for a different business:
 
-1. **`src/db/schema/schema.ts`** — Change the `leads` table to match your entities. Change `pipelineStage` values to your workflow stages.
+1. **`src/db/schema/schema.ts`** - Change the `leads` table to match your entities. Change `pipelineStage` values to your workflow stages.
 
-2. **`src/lib/auth/permissions.ts`** — Update resource names to match your domain.
+2. **`src/lib/auth/permissions.ts`** - Update resource names to match your domain.
 
-3. **`src/lib/auth/server.ts`** — Update `trustedOrigins` to your domains.
+3. **`src/lib/auth/server.ts`** - Update `trustedOrigins` to your domains.
 
-4. **Follow-up timing rules** — Seed them to match your stage names.
+4. **Follow-up timing rules** - Seed them to match your stage names.
 
-5. **Email templates** — Create templates for your workflow stages.
+5. **Email templates** - Create templates for your workflow stages.
 
-### Step 4 — Deploy
+### Step 4 - Deploy
 ```bash
 # Set secrets
 bunx wrangler secret put DATABASE_URL
@@ -1623,7 +1623,7 @@ bun run scripts/seed-admin.ts
 bun run deploy
 ```
 
-### Step 5 — Point Your Domain
+### Step 5 - Point Your Domain
 In Cloudflare Dashboard → Workers & Pages → your worker → Custom Domains → Add Domain.
 
 ---

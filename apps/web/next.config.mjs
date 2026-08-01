@@ -104,7 +104,7 @@ const nextConfig = {
             // content-hashed; a new build produces new URLs.
             //
             // PRODUCTION ONLY. `headers()` runs in dev too, and Turbopack's dev chunk
-            // names are not content-hashed the way production filenames are — so in dev
+            // names are not content-hashed the way production filenames are - so in dev
             // this told the browser to pin a dev chunk for a year and never revalidate
             // it. A browser that does that keeps serving chunks from an older
             // dependency tree after you reinstall, which surfaces as Turbopack's

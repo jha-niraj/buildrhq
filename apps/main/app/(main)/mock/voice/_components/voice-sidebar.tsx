@@ -80,7 +80,7 @@ export function VoiceSidebar() {
 
                     <Separator orientation="vertical" className="h-5 mx-1 flex-shrink-0" />
 
-                    {/* Categories dropdown — never overflows */}
+                    {/* Categories dropdown - never overflows */}
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <button

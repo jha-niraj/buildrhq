@@ -15,7 +15,7 @@ When you upload a PDF or Word document, the ATS does not read it like a human. I
 After parsing, the ATS compares your resume content against the job description using keyword matching. It looks for exact matches, synonyms, and related terms. A senior software engineer role requiring "Kubernetes experience" might match "k8s" or "container orchestration" depending on the system's sophistication.
 
 **3. Ranks and surfaces candidates to recruiters**
-This is the step most commonly misunderstood. The popular story is that the ATS auto-rejects you below some score. In reality, the major platforms — [Greenhouse](https://www.greenhouse.io/), [Lever](https://www.lever.co/), [Workday](https://www.workday.com/) and [iCIMS](https://www.icims.com/) between them cover most of the market — mainly parse, store and make your application *searchable*. The recruiter then filters and searches it.
+This is the step most commonly misunderstood. The popular story is that the ATS auto-rejects you below some score. In reality, the major platforms - [Greenhouse](https://www.greenhouse.io/), [Lever](https://www.lever.co/), [Workday](https://www.workday.com/) and [iCIMS](https://www.icims.com/) between them cover most of the market - mainly parse, store and make your application *searchable*. The recruiter then filters and searches it.
 
 That distinction matters because it changes the failure mode. You are rarely rejected by a robot. You are far more often never surfaced: parsed badly so your experience is missing, or missing the exact terms the recruiter typed into the search box. Recruiters start at the top of the resulting list and stop when they have enough candidates, so being invisible to that search is functionally equivalent to never applying.
 
@@ -33,7 +33,7 @@ The most technically skilled engineers often have the worst-performing resumes. 
 
 **They describe responsibilities instead of outcomes.** "Responsible for backend development" does not match the keywords in a job description that says "designed and implemented REST APIs." Specificity matters for both human readers and keyword matching.
 
-![A resume before and after ATS optimization — left version with formatting issues, right version clean and parseable](/og/blog/resume-inline-1.webp)
+![A resume before and after ATS optimization - left version with formatting issues, right version clean and parseable](/og/blog/resume-inline-1.webp)
 
 ## The ATS-Optimized Resume Format
 
@@ -45,11 +45,11 @@ Use a single-column layout. Always. No exceptions for ATS submissions.
 
 Use standard fonts: Arial, Calibri, Georgia, Times New Roman, or Helvetica. Fancy fonts (Montserrat, Playfair Display) may not render correctly in all parsers.
 
-Font size: 10–12pt for body text, 14–16pt for your name at the top.
+Font size: 10-12pt for body text, 14-16pt for your name at the top.
 
 File format: Submit as `.docx` unless the job explicitly asks for PDF. Most ATS systems parse Word documents more reliably than PDFs. If the application says "PDF preferred," use PDF.
 
-Margins: 0.5–1 inch on all sides.
+Margins: 0.5-1 inch on all sides.
 
 ### Header
 
@@ -67,14 +67,14 @@ A 2-3 sentence professional summary at the top is an opportunity to front-load t
 
 "Full-stack software engineer with 3 years of experience building distributed systems in Python and TypeScript. Specialized in building high-traffic APIs and data pipelines at scale. Seeking a backend engineering role at a product-focused company."
 
-This immediately hits: software engineer, Python, TypeScript, distributed systems, APIs, backend — all common JD keywords.
+This immediately hits: software engineer, Python, TypeScript, distributed systems, APIs, backend - all common JD keywords.
 
 ### Work Experience
 
 This is the most important section. Format each entry as:
 
 ```
-Company Name                                    Month Year – Month Year
+Company Name                                    Month Year - Month Year
 Job Title
 City, State (or "Remote")
 
@@ -89,7 +89,7 @@ The bullet format matters enormously. Start with a strong action verb. Include a
 
 **Good bullet:** "Reduced API response time by 65% by migrating from synchronous database queries to Redis-cached async processing, reducing P99 latency from 800ms to 280ms."
 
-The good version is a keyword goldmine: Redis, async processing, API, performance, latency — and the metric makes it credible and memorable to human reviewers.
+The good version is a keyword goldmine: Redis, async processing, API, performance, latency - and the metric makes it credible and memorable to human reviewers.
 
 ## Keyword Strategy: Getting Past the Filter
 
@@ -121,7 +121,7 @@ Listing skills this way ensures every technology you know appears as an exact ke
 
 ## The Metrics Problem
 
-Most developers dramatically underutilize metrics in their resumes. You do not need to know precise numbers — you need credible estimates.
+Most developers dramatically underutilize metrics in their resumes. You do not need to know precise numbers - you need credible estimates.
 
 "Reduced database query time" is noise.
 "Reduced database query time by ~40% by adding composite indexes" is a keyword-rich, memorable claim.
@@ -142,7 +142,7 @@ Assuming your resume passes the ATS filter, it lands in front of a human for tho
 
 **Company names:** Not fairly, but honestly: recognizable company names get longer reads. If you have worked at or interned at a well-known company, make sure that is visible above the fold.
 
-**Tenure:** Multiple jobs with less than a year tenure is a flag. One short stint is fine — it happens. Three in a row raises questions.
+**Tenure:** Multiple jobs with less than a year tenure is a flag. One short stint is fine - it happens. Three in a row raises questions.
 
 **Education:** For new grad roles, degree and university name matter. For experienced hires, education is much less important.
 
@@ -170,7 +170,7 @@ Tailoring does not mean rewriting from scratch. It means:
 3. Reordering bullets within jobs to lead with the most relevant experience for that specific role
 4. Checking that every technology mentioned in the JD that you have experience with appears somewhere in your resume
 
-This takes 15–20 minutes per application. ShiprHQ's AI resume builder does this automatically — you paste the job description and it tailors your resume bullets in place, flags missing keywords, and gives you an ATS score before you apply.
+This takes 15-20 minutes per application. ShiprHQ's AI resume builder does this automatically - you paste the job description and it tailors your resume bullets in place, flags missing keywords, and gives you an ATS score before you apply.
 
 ## One Last Thing: The Human Element
 

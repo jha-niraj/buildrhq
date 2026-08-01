@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Linkedin, Github, Command } from "lucide-react";
+import { Logo } from "@repo/ui/components/logo"
+import { Linkedin, Github } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { NewsletterSubscription } from "../homepage/newslettersubscription";
 import { APP_LINKS, APP_URL, BRAND } from "@/lib/site";
@@ -58,7 +59,7 @@ export default function Footer() {
                         <div>
                             <Link href="/" className="mb-6 flex items-center gap-2">
                                 <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 font-bold text-white dark:bg-white dark:text-neutral-900">
-                                    <Command className="h-4 w-4" />
+                                    <Logo className="h-[17px] w-[17px]" />
                                 </span>
                                 <span className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white">
                                     {BRAND.name}

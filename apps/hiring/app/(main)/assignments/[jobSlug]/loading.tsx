@@ -1,4 +1,4 @@
-// Hand-matched to assignment-detail-content.tsx — same wrapper, same grids, same card chrome, so
+// Hand-matched to assignment-detail-content.tsx - same wrapper, same grids, same card chrome, so
 // nothing reflows when the real content mounts.
 import { Shimmer, ShimmerStyles } from "@repo/ui/components/skeleton-kit";
 

@@ -3,7 +3,7 @@ import TermsClient from './TermsClient'
 
 export const metadata: Metadata = {
     title: 'Terms of Service',
-    description: 'ShiprHQ Terms of Service — the rules and conditions for using the engineering intelligence platform.',
+    description: 'ShiprHQ Terms of Service - the rules and conditions for using the engineering intelligence platform.',
     robots: { index: true, follow: false },
     alternates: { canonical: '/termsofservice' },
 }

@@ -97,7 +97,7 @@ export function ImportClient() {
                     <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">AI Profile Import</h1>
                 </div>
                 <p className="text-neutral-500 dark:text-neutral-400 ml-13">
-                    Paste your LinkedIn and GitHub links — AI builds your full resume automatically.
+                    Paste your LinkedIn and GitHub links - AI builds your full resume automatically.
                     No manual entry required.
                 </p>
                 <div className="flex gap-2 mt-3">
@@ -123,7 +123,7 @@ export function ImportClient() {
                         <p className="text-base font-semibold text-neutral-800 dark:text-neutral-200">
                             {STAGES[stageIdx]}
                         </p>
-                        <p className="text-sm text-neutral-500 mt-1">This takes 20–40 seconds. Please wait…</p>
+                        <p className="text-sm text-neutral-500 mt-1">This takes 20-40 seconds. Please wait…</p>
                     </div>
                     {/* Progress bar */}
                     <div className="w-full bg-neutral-100 dark:bg-neutral-800 rounded-full h-1.5 overflow-hidden">

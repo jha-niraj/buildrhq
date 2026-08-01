@@ -62,7 +62,7 @@ export default function ForgotPassword() {
             variant="otp-mail"
             headline={<>Locked out? <span className="text-white/50">Happens.</span></>}
             sub="Enter the address you signed up with and we'll send a six-digit code."
-            quote="Resetting a password is not a setback — it is a two-minute detour."
+            quote="Resetting a password is not a setback - it is a two-minute detour."
         >
             <div className="mb-8">
                 <span className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-white">

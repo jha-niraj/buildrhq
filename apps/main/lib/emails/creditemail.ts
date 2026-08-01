@@ -28,7 +28,7 @@ function appUrl(): string {
 export const creditEmailTemplates = {
 
     creditApproved: (name: string, creditsAwarded: number, newBalance: number, adminNotes?: string) => ({
-        subject: "Your credit request has been approved — ShiprHQ",
+        subject: "Your credit request has been approved - ShiprHQ",
         html: shell({
             title: "Credit request approved",
             subtitle: "Your credits are ready to use",
@@ -78,7 +78,7 @@ export const creditEmailTemplates = {
     }),
 
     creditRejected: (name: string, requestedCredits: number, adminNotes?: string) => ({
-        subject: "Update on your credit request — ShiprHQ",
+        subject: "Update on your credit request - ShiprHQ",
         html: shell({
             title: "Credit request update",
             subtitle: "A little more is needed to approve your request",
@@ -127,7 +127,7 @@ export const creditEmailTemplates = {
         verificationUrl: string,
         originalEmail?: string,
     ) => ({
-        subject: "Verify your TrueFolio credit transfer — ShiprHQ",
+        subject: "Verify your TrueFolio credit transfer - ShiprHQ",
         html: shell({
             title: "Credit transfer verification",
             subtitle: "Confirm this request to complete the transfer",
@@ -182,7 +182,7 @@ export const creditEmailTemplates = {
     }),
 
     transferCompleted: (name: string, creditsTransferred: number, newBalance: number) => ({
-        subject: "Credit transfer completed — TrueFolio",
+        subject: "Credit transfer completed - TrueFolio",
         html: shell({
             title: "Transfer completed",
             subtitle: "Your credits are ready to use in TrueFolio",

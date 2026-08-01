@@ -3,7 +3,7 @@
 // Counts and chrome come from the component itself: eight stat tiles in a
 // lg:grid-cols-8 band (value above label, matching the real order), a toolbar of
 // search + two 200/180px selects + the list/kanban segmented control, the
-// "Select all" row, then the list rows — `viewMode` defaults to "list", so the
+// "Select all" row, then the list rows - `viewMode` defaults to "list", so the
 // six-column kanban is not what first paint shows. The header carries no action
 // button; drawing one here would pop it away on hydration.
 import { Shimmer, ShimmerStyles } from "@repo/ui/components/skeleton-kit";

@@ -2,7 +2,7 @@
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Shared ShiprHQ app sidebar. One design across every app (main, uni, hiring,
-// admin) — a floating rounded card that collapses to an icon rail, with a
+// admin) - a floating rounded card that collapses to an icon rail, with a
 // command-palette search (⌘K), collapsible nav sections, a theme toggle,
 // notifications, and a profile/sign-out footer. Each app renders a thin wrapper
 // that feeds this its own nav config, session, and notifications.
@@ -106,7 +106,7 @@ export interface AppSidebarProps {
     footerExtra?: React.ReactNode
 
     /**
-     * The collapsed-rail form of `footerExtra` — icon buttons in a vertical
+     * The collapsed-rail form of `footerExtra` - icon buttons in a vertical
      * stack. Supplied separately rather than derived, because a row of labelled
      * pills does not shrink into a 84px rail; it has to be re-laid-out. Without
      * this the tools simply vanish when the sidebar collapses, which is exactly
@@ -513,7 +513,7 @@ export function AppSidebar(props: AppSidebarProps) {
                 </button>
             )}
 
-            {/* Desktop sidebar — floating rounded card */}
+            {/* Desktop sidebar - floating rounded card */}
             <aside data-sidebar className={cn(
                 "fixed top-2 left-2 z-40 flex h-[calc(100vh-1rem)] flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 dark:border-neutral-800 dark:bg-neutral-950",
                 "hidden lg:flex",
@@ -655,7 +655,7 @@ export function AppSidebar(props: AppSidebarProps) {
     )
 }
 
-// Animated "nothing here" state — a bell resting inside expanding sonar rings
+// Animated "nothing here" state - a bell resting inside expanding sonar rings
 // with a few sparks drifting up. Warm/neutral palette, motion via framer-motion.
 function NotificationEmptyState({ tab, filtered }: { tab: "unread" | "read"; filtered: boolean }) {
     const copy = filtered
@@ -701,7 +701,7 @@ function NotificationEmptyState({ tab, filtered }: { tab: "unread" | "read"; fil
                     />
                 ))}
 
-                {/* Bell tile — gentle pendulum swing */}
+                {/* Bell tile - gentle pendulum swing */}
                 <motion.div
                     className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900"
                     style={{ transformOrigin: "top center" }}

@@ -170,11 +170,11 @@ function FooterLink({ href, children }) {
 </h1>
 ```
 
-- `text-[16vw]` — viewport-relative, fills the full width
-- `leading-[0.75]` — tight line height, text hugs the bottom edge
-- `text-transparent bg-clip-text` — gradient applied to text fill
+- `text-[16vw]` - viewport-relative, fills the full width
+- `leading-[0.75]` - tight line height, text hugs the bottom edge
+- `text-transparent bg-clip-text` - gradient applied to text fill
 - Gradient: partially visible at top, fades to transparent at bottom
-- `pointer-events-none select-none` — purely decorative
+- `pointer-events-none select-none` - purely decorative
 
 ---
 

@@ -1,4 +1,4 @@
-# Operating Systems — Learn Module Masterplan
+# Operating Systems - Learn Module Masterplan
 **Platform: ShiprHQ**
 **SubCategory: Operating Systems**
 **Total Learns: 44 | Units: 6**
@@ -15,22 +15,22 @@ LearnMainCategory: "Computer Science"
         ├── color: "#8B5CF6"
         │
         └── LearnTopics:
-              ├── Unit 1 — OS Fundamentals (6 Learns)
-              ├── Unit 2 — Process Management (7 Learns)
-              ├── Unit 3 — Memory Management (7 Learns)
-              ├── Unit 4 — Storage, File Systems & I/O (6 Learns)
-              ├── Unit 5 — Concurrency & Synchronization (7 Learns)
-              └── Unit 6 — Advanced OS & Interview Mastery (5 Learns)
+              ├── Unit 1 - OS Fundamentals (6 Learns)
+              ├── Unit 2 - Process Management (7 Learns)
+              ├── Unit 3 - Memory Management (7 Learns)
+              ├── Unit 4 - Storage, File Systems & I/O (6 Learns)
+              ├── Unit 5 - Concurrency & Synchronization (7 Learns)
+              └── Unit 6 - Advanced OS & Interview Mastery (5 Learns)
 ```
 
 ---
 
-## UNIT 1 — OS Fundamentals
+## UNIT 1 - OS Fundamentals
 **Unit Goal:** Understand what an OS is, its core responsibilities, how it boots, and the foundational abstractions it provides. These are the definitions and theory questions that open every OS interview.
 
 ---
 
-### Learn 1.1 — What is an Operating System?
+### Learn 1.1 - What is an Operating System?
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[os, kernel, system-calls, abstraction]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(OS layer diagram) → QUIZ(4) → SUMMARY`
@@ -43,11 +43,11 @@ LearnMainCategory: "Computer Science"
 - System calls: the bridge between user programs and kernel
 - Examples: Linux, Windows, macOS, Android internals
 
-**Interview relevance:** "What does an OS do?" / "What is a kernel?" — always asked as openers.
+**Interview relevance:** "What does an OS do?" / "What is a kernel?" - always asked as openers.
 
 ---
 
-### Learn 1.2 — OS Architecture: Monolithic, Microkernel & Layered
+### Learn 1.2 - OS Architecture: Monolithic, Microkernel & Layered
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[monolithic, microkernel, layered, hybrid, architecture]`
 
 **Steps:** `EXPLANATION → COMPARISON(architecture types) → VISUALIZATION → QUIZ(4) → SUMMARY`
@@ -61,11 +61,11 @@ LearnMainCategory: "Computer Science"
 - Trade-offs: performance vs modularity vs security
 - Why Linux is monolithic but with loadable modules
 
-**Interview relevance:** "Difference between monolithic and microkernel?" — common in systems and OS interviews.
+**Interview relevance:** "Difference between monolithic and microkernel?" - common in systems and OS interviews.
 
 ---
 
-### Learn 1.3 — System Calls, Interrupts & Mode Switching
+### Learn 1.3 - System Calls, Interrupts & Mode Switching
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[system-calls, interrupts, user-mode, kernel-mode, trap]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(mode switch diagram) → CODE(2 blocks: syscall examples) → QUIZ(5) → SUMMARY`
@@ -79,11 +79,11 @@ LearnMainCategory: "Computer Science"
 - Context of a system call: expensive due to mode switch
 - Examples: `read()`, `write()`, `fork()`, `exec()`, `exit()`
 
-**Interview relevance:** "What happens when you call read()?" — deep system understanding question.
+**Interview relevance:** "What happens when you call read()?" - deep system understanding question.
 
 ---
 
-### Learn 1.4 — OS Boot Process
+### Learn 1.4 - OS Boot Process
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[boot, bios, uefi, bootloader, grub, kernel-init]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(boot sequence flowchart) → QUIZ(3) → SUMMARY`
@@ -100,7 +100,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 1.5 — Virtualization & Hypervisors
+### Learn 1.5 - Virtualization & Hypervisors
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[virtualization, hypervisor, vm, containers, docker]`
 
 **Steps:** `EXPLANATION → COMPARISON(Type 1 vs Type 2 vs Containers) → VISUALIZATION → QUIZ(4) → SUMMARY`
@@ -114,11 +114,11 @@ LearnMainCategory: "Computer Science"
 - Docker internals: namespaces + cgroups + union filesystem
 - Why VMs are slower than containers (and when VMs are better)
 
-**Interview relevance:** "Difference between VM and container?" — extremely common in backend/DevOps interviews.
+**Interview relevance:** "Difference between VM and container?" - extremely common in backend/DevOps interviews.
 
 ---
 
-### Learn 1.6 — OS Services & System Programs
+### Learn 1.6 - OS Services & System Programs
 **Difficulty:** BEGINNER | **Est. Time:** 15 min | **Tags:** `[os-services, shell, cli, system-programs]`
 
 **Steps:** `EXPLANATION → QUIZ(3) → SUMMARY`
@@ -135,18 +135,18 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Unit 1 Review — OS Fundamentals
+### Unit 1 Review - OS Fundamentals
 **Steps:** `SUMMARY(unit recap) → QUIZ(10) → MOCK_INTERVIEW → PROJECT(mini: Trace a system call with strace)`
 
 ---
 ---
 
-## UNIT 2 — Process Management
-**Unit Goal:** Deeply understand processes and threads — the most heavily tested OS topic in interviews. Cover scheduling, context switching, and IPC thoroughly.
+## UNIT 2 - Process Management
+**Unit Goal:** Deeply understand processes and threads - the most heavily tested OS topic in interviews. Cover scheduling, context switching, and IPC thoroughly.
 
 ---
 
-### Learn 2.1 — Processes: Creation, States & PCB
+### Learn 2.1 - Processes: Creation, States & PCB
 **Difficulty:** BEGINNER | **Est. Time:** 25 min | **Tags:** `[process, pcb, process-states, fork, exec]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(process state diagram) → CODE(2 blocks: fork/exec) → QUIZ(5) → SUMMARY`
@@ -155,16 +155,16 @@ LearnMainCategory: "Computer Science"
 - What a process is: program in execution
 - Process Control Block (PCB): PID, state, program counter, registers, memory maps, open files
 - Process states: New → Ready → Running → Waiting → Terminated
-- Process creation: `fork()` — creates a copy; `exec()` — replaces image
+- Process creation: `fork()` - creates a copy; `exec()` - replaces image
 - `fork()` + `exec()` pattern (how shells work)
 - Process termination: `exit()`, zombie processes, orphan processes
 - Parent/child process relationship and `wait()`
 
-**Interview relevance:** "What is a process?" / "What does fork() do?" / "What is a zombie process?" — all classics.
+**Interview relevance:** "What is a process?" / "What does fork() do?" / "What is a zombie process?" - all classics.
 
 ---
 
-### Learn 2.2 — Threads: User-Level vs Kernel-Level & Multithreading Models
+### Learn 2.2 - Threads: User-Level vs Kernel-Level & Multithreading Models
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[threads, user-thread, kernel-thread, multithreading, pthreads]`
 
 **Steps:** `EXPLANATION → COMPARISON(process vs thread) → VISUALIZATION(threading models) → CODE(2 blocks) → QUIZ(5) → SUMMARY`
@@ -179,11 +179,11 @@ LearnMainCategory: "Computer Science"
 - Thread benefits: responsiveness, resource sharing, economy, scalability
 - Thread challenges: synchronization, race conditions, debugging difficulty
 
-**Interview relevance:** "Difference between process and thread?" — top 3 OS interview question everywhere.
+**Interview relevance:** "Difference between process and thread?" - top 3 OS interview question everywhere.
 
 ---
 
-### Learn 2.3 — CPU Scheduling Algorithms
+### Learn 2.3 - CPU Scheduling Algorithms
 **Difficulty:** INTERMEDIATE | **Est. Time:** 35 min | **Tags:** `[scheduling, fcfs, sjf, round-robin, priority, multilevel]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(Gantt charts for each algorithm) → CODE(2 blocks: scheduling simulation) → COMPARISON(algorithms table) → QUIZ(6) → CHALLENGE → SUMMARY`
@@ -204,7 +204,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 2.4 — Context Switching & Dispatcher
+### Learn 2.4 - Context Switching & Dispatcher
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[context-switch, dispatcher, scheduling-overhead]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(context switch sequence) → QUIZ(4) → SUMMARY`
@@ -218,11 +218,11 @@ LearnMainCategory: "Computer Science"
 - Voluntary vs involuntary context switch
 - How to minimize context switch overhead
 
-**Interview relevance:** "What happens during a context switch?" — deep systems question.
+**Interview relevance:** "What happens during a context switch?" - deep systems question.
 
 ---
 
-### Learn 2.5 — Inter-Process Communication (IPC)
+### Learn 2.5 - Inter-Process Communication (IPC)
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[ipc, pipes, shared-memory, message-queue, signals, sockets]`
 
 **Steps:** `EXPLANATION → COMPARISON(IPC mechanisms) → CODE(3 blocks) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -237,11 +237,11 @@ LearnMainCategory: "Computer Science"
 - **Semaphores**: synchronization primitive (covered more in Unit 5)
 - Trade-offs: speed, ease of use, across-machine support
 
-**Interview relevance:** "How do processes communicate?" — IPC mechanisms are frequently tested.
+**Interview relevance:** "How do processes communicate?" - IPC mechanisms are frequently tested.
 
 ---
 
-### Learn 2.6 — Process Synchronization: Race Conditions & Critical Section
+### Learn 2.6 - Process Synchronization: Race Conditions & Critical Section
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[race-condition, critical-section, mutex, synchronization]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(race condition example) → CODE(2 blocks) → QUIZ(5) → SUMMARY`
@@ -255,11 +255,11 @@ LearnMainCategory: "Computer Science"
 - Mutex lock: the basic solution
 - Why disabling interrupts is a bad solution in multiprocessor systems
 
-**Interview relevance:** "What is a race condition?" / "What is a critical section?" — foundational concurrency questions.
+**Interview relevance:** "What is a race condition?" / "What is a critical section?" - foundational concurrency questions.
 
 ---
 
-### Learn 2.7 — Deadlocks: Conditions, Detection & Recovery
+### Learn 2.7 - Deadlocks: Conditions, Detection & Recovery
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[deadlock, coffman-conditions, prevention, avoidance, bankers-algorithm]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(resource allocation graph) → CODE(2 blocks) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -269,27 +269,27 @@ LearnMainCategory: "Computer Science"
 - **Coffman's 4 conditions**: mutual exclusion, hold and wait, no preemption, circular wait
 - Resource Allocation Graph (RAG): detect deadlock visually
 - **Deadlock Prevention**: negate one Coffman condition
-- **Deadlock Avoidance**: Banker's Algorithm — safe state concept
+- **Deadlock Avoidance**: Banker's Algorithm - safe state concept
 - **Deadlock Detection**: allow deadlocks, detect and recover
 - Recovery: process termination, resource preemption
 - Deadlock vs livelock vs starvation
 
-**Interview relevance:** "What are the necessary conditions for deadlock?" — one of the most asked OS questions ever.
+**Interview relevance:** "What are the necessary conditions for deadlock?" - one of the most asked OS questions ever.
 
 ---
 
-### Unit 2 Review — Process Management
+### Unit 2 Review - Process Management
 **Steps:** `SUMMARY → QUIZ(12) → MOCK_INTERVIEW → PROJECT(mini: Simulate round-robin scheduling)`
 
 ---
 ---
 
-## UNIT 3 — Memory Management
-**Unit Goal:** Understand how the OS manages RAM — from simple partitioning to virtual memory, paging, and segmentation. These are core interview topics for systems roles.
+## UNIT 3 - Memory Management
+**Unit Goal:** Understand how the OS manages RAM - from simple partitioning to virtual memory, paging, and segmentation. These are core interview topics for systems roles.
 
 ---
 
-### Learn 3.1 — Memory Hierarchy & Address Spaces
+### Learn 3.1 - Memory Hierarchy & Address Spaces
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[memory-hierarchy, registers, cache, ram, virtual-address, physical-address]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(memory hierarchy pyramid) → QUIZ(4) → SUMMARY`
@@ -307,7 +307,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 3.2 — Contiguous Memory Allocation & Fragmentation
+### Learn 3.2 - Contiguous Memory Allocation & Fragmentation
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[memory-allocation, fragmentation, first-fit, best-fit, worst-fit]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(memory hole diagrams) → COMPARISON(allocation strategies) → QUIZ(4) → SUMMARY`
@@ -316,16 +316,16 @@ LearnMainCategory: "Computer Science"
 - Fixed partitioning vs variable partitioning
 - External fragmentation: free space exists but is non-contiguous
 - Internal fragmentation: allocated space larger than requested
-- Allocation strategies: First Fit, Best Fit, Worst Fit — trade-offs
+- Allocation strategies: First Fit, Best Fit, Worst Fit - trade-offs
 - Compaction: moving processes to consolidate free space (expensive)
 - The 50% rule for external fragmentation
 - Why contiguous allocation is largely replaced by paging
 
-**Interview relevance:** "What is fragmentation?" / "Difference between internal and external fragmentation?" — classic.
+**Interview relevance:** "What is fragmentation?" / "Difference between internal and external fragmentation?" - classic.
 
 ---
 
-### Learn 3.3 — Paging: The Core Concept
+### Learn 3.3 - Paging: The Core Concept
 **Difficulty:** INTERMEDIATE | **Est. Time:** 35 min | **Tags:** `[paging, page-table, frame, tlb, page-size]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(address translation diagram) → CODE(2 blocks: address calculation) → QUIZ(6) → CHALLENGE → SUMMARY`
@@ -341,11 +341,11 @@ LearnMainCategory: "Computer Science"
 - Protection bits in page table entries: read/write/execute
 - Shared pages: multiple processes map to same frame (code sharing)
 
-**Interview relevance:** "How does paging work?" / "What is a TLB?" — core memory management questions.
+**Interview relevance:** "How does paging work?" / "What is a TLB?" - core memory management questions.
 
 ---
 
-### Learn 3.4 — Multi-Level Paging, Inverted Page Tables & Segmentation
+### Learn 3.4 - Multi-Level Paging, Inverted Page Tables & Segmentation
 **Difficulty:** ADVANCED | **Est. Time:** 30 min | **Tags:** `[multi-level-paging, inverted-page-table, segmentation, segment-table]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(multi-level page table tree) → COMPARISON(paging vs segmentation) → QUIZ(5) → SUMMARY`
@@ -365,7 +365,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 3.5 — Virtual Memory & Demand Paging
+### Learn 3.5 - Virtual Memory & Demand Paging
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[virtual-memory, demand-paging, page-fault, swap-space]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(page fault handling flow) → CODE(2 blocks) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -380,20 +380,20 @@ LearnMainCategory: "Computer Science"
 - Effective access time with page faults
 - Pure demand paging vs pre-paging
 
-**Interview relevance:** "What is virtual memory?" / "Explain page fault handling" — extremely common.
+**Interview relevance:** "What is virtual memory?" / "Explain page fault handling" - extremely common.
 
 ---
 
-### Learn 3.6 — Page Replacement Algorithms
+### Learn 3.6 - Page Replacement Algorithms
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[page-replacement, fifo, lru, optimal, clock-algorithm, belady-anomaly]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(page replacement traces) → COMPARISON(algorithms) → QUIZ(6) → CHALLENGE(numerical) → SUMMARY`
 
 **What you'll learn:**
 - Why page replacement is needed: all frames full, new page needed
-- **FIFO**: replace oldest page — simple but poor, Belady's anomaly
-- **Optimal (OPT)**: replace page used furthest in future — theoretical best
-- **LRU** (Least Recently Used): replace least recently used — good approximation of OPT
+- **FIFO**: replace oldest page - simple but poor, Belady's anomaly
+- **Optimal (OPT)**: replace page used furthest in future - theoretical best
+- **LRU** (Least Recently Used): replace least recently used - good approximation of OPT
 - LRU approximations: counter, stack, reference bit, second-chance (Clock) algorithm
 - **Enhanced Second-Chance**: uses (reference bit, modify bit) pair
 - **LFU** (Least Frequently Used) and **MFU** (Most Frequently Used)
@@ -404,7 +404,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 3.7 — Thrashing, Working Set & Memory Allocation Policies
+### Learn 3.7 - Thrashing, Working Set & Memory Allocation Policies
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[thrashing, working-set, locality, frame-allocation, global-vs-local]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(thrashing curve) → QUIZ(4) → SUMMARY`
@@ -414,45 +414,45 @@ LearnMainCategory: "Computer Science"
 - Cause: too many processes, too few frames per process
 - Locality of reference: temporal and spatial locality
 - Working Set Model: set of pages used in last Δ references
-- Working set size vs allocated frames — balance is key
+- Working set size vs allocated frames - balance is key
 - Page fault frequency (PFF) strategy
 - Global vs local page replacement
 - Frame allocation policies: equal allocation, proportional allocation
 - Memory-mapped files: treating file I/O as memory accesses
 
-**Interview relevance:** "What is thrashing and how do you prevent it?" — deeper OS question.
+**Interview relevance:** "What is thrashing and how do you prevent it?" - deeper OS question.
 
 ---
 
-### Unit 3 Review — Memory Management
+### Unit 3 Review - Memory Management
 **Steps:** `SUMMARY → QUIZ(12) → MOCK_INTERVIEW → PROJECT(mini: Simulate LRU page replacement)`
 
 ---
 ---
 
-## UNIT 4 — Storage, File Systems & I/O
-**Unit Goal:** Understand how data persists — from disk hardware to file systems, directory structures, and I/O management.
+## UNIT 4 - Storage, File Systems & I/O
+**Unit Goal:** Understand how data persists - from disk hardware to file systems, directory structures, and I/O management.
 
 ---
 
-### Learn 4.1 — Storage Devices: HDD, SSD & Disk Structure
+### Learn 4.1 - Storage Devices: HDD, SSD & Disk Structure
 **Difficulty:** BEGINNER | **Est. Time:** 20 min | **Tags:** `[hdd, ssd, disk, sector, cylinder, rpm, nand-flash]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(HDD anatomy diagram) → COMPARISON(HDD vs SSD) → QUIZ(4) → SUMMARY`
 
 **What you'll learn:**
 - HDD structure: platters, tracks, sectors, cylinders, read/write heads
-- Seek time, rotational latency, transfer time — disk access time calculation
+- Seek time, rotational latency, transfer time - disk access time calculation
 - SSD: NAND flash, no moving parts, wear leveling, write amplification
 - NVMe vs SATA SSD: interface differences
-- RAID: RAID 0, 1, 5, 6, 10 — purpose and trade-offs
+- RAID: RAID 0, 1, 5, 6, 10 - purpose and trade-offs
 - Storage access patterns: sequential vs random (why matters for HDD vs SSD)
 
 **Interview relevance:** System design interviews ask about storage choices and why SSDs are preferred.
 
 ---
 
-### Learn 4.2 — Disk Scheduling Algorithms
+### Learn 4.2 - Disk Scheduling Algorithms
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[disk-scheduling, fcfs, sstf, scan, c-scan, look]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(seek movement diagrams) → COMPARISON(algorithms) → QUIZ(5) → CHALLENGE(numerical) → SUMMARY`
@@ -471,7 +471,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 4.3 — File Systems: Concepts, Structure & Allocation Methods
+### Learn 4.3 - File Systems: Concepts, Structure & Allocation Methods
 **Difficulty:** INTERMEDIATE | **Est. Time:** 30 min | **Tags:** `[file-system, inode, fat, ext4, ntfs, file-allocation]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(inode structure) → COMPARISON(allocation methods) → CODE(2 blocks) → QUIZ(5) → SUMMARY`
@@ -487,11 +487,11 @@ LearnMainCategory: "Computer Science"
 - Directory structure: linear list, hash table
 - Modern file systems: ext4 (Linux), NTFS (Windows), APFS (macOS)
 
-**Interview relevance:** "What is an inode?" — very common in Linux/backend interviews.
+**Interview relevance:** "What is an inode?" - very common in Linux/backend interviews.
 
 ---
 
-### Learn 4.4 — Directory Structure, Mounting & File System Implementation
+### Learn 4.4 - Directory Structure, Mounting & File System Implementation
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[directory, path, mounting, vfs, open-file-table]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(directory tree + VFS layers) → CODE(2 blocks) → QUIZ(4) → SUMMARY`
@@ -506,11 +506,11 @@ LearnMainCategory: "Computer Science"
 - Hard links vs soft (symbolic) links
 - File system journaling: crash recovery in ext4, NTFS
 
-**Interview relevance:** "What is a file descriptor?" / "What is the difference between hard link and symbolic link?" — Linux interview classics.
+**Interview relevance:** "What is a file descriptor?" / "What is the difference between hard link and symbolic link?" - Linux interview classics.
 
 ---
 
-### Learn 4.5 — I/O Systems, Device Management & Drivers
+### Learn 4.5 - I/O Systems, Device Management & Drivers
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[io, device-driver, dma, polling, interrupt-driven, buffering]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(I/O subsystem layers) → COMPARISON(I/O techniques) → QUIZ(4) → SUMMARY`
@@ -526,11 +526,11 @@ LearnMainCategory: "Computer Science"
 - Spooling: for devices that can't interleave (printers)
 - Blocking vs non-blocking I/O
 
-**Interview relevance:** "What is DMA?" / "Difference between blocking and non-blocking I/O?" — systems knowledge test.
+**Interview relevance:** "What is DMA?" / "Difference between blocking and non-blocking I/O?" - systems knowledge test.
 
 ---
 
-### Learn 4.6 — Free Space Management & File System Performance
+### Learn 4.6 - Free Space Management & File System Performance
 **Difficulty:** INTERMEDIATE | **Est. Time:** 20 min | **Tags:** `[free-space, bitmap, linked-list, grouping, fs-performance]`
 
 **Steps:** `EXPLANATION → COMPARISON(free space methods) → QUIZ(3) → SUMMARY`
@@ -549,18 +549,18 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Unit 4 Review — Storage & File Systems
+### Unit 4 Review - Storage & File Systems
 **Steps:** `SUMMARY → QUIZ(10) → MOCK_INTERVIEW → PROJECT(mini: Simulate inode-based file lookup)`
 
 ---
 ---
 
-## UNIT 5 — Concurrency & Synchronization
-**Unit Goal:** Master the hardest and most interview-critical OS topic — synchronization primitives, classic problems, and concurrent programming challenges.
+## UNIT 5 - Concurrency & Synchronization
+**Unit Goal:** Master the hardest and most interview-critical OS topic - synchronization primitives, classic problems, and concurrent programming challenges.
 
 ---
 
-### Learn 5.1 — Semaphores: Binary & Counting
+### Learn 5.1 - Semaphores: Binary & Counting
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[semaphore, binary-semaphore, counting-semaphore, wait, signal]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(semaphore operations) → CODE(3 blocks) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -575,11 +575,11 @@ LearnMainCategory: "Computer Science"
 - Semaphore for ordering: process A before process B
 - Problems with semaphores: incorrect use causes deadlock or broken mutual exclusion
 
-**Interview relevance:** Semaphores are a core OS primitive — understanding them is required.
+**Interview relevance:** Semaphores are a core OS primitive - understanding them is required.
 
 ---
 
-### Learn 5.2 — Mutex, Monitors & Condition Variables
+### Learn 5.2 - Mutex, Monitors & Condition Variables
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[mutex, monitor, condition-variable, lock, high-level-sync]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks: mutex + monitor examples) → COMPARISON(semaphore vs mutex vs monitor) → QUIZ(5) → CHALLENGE → SUMMARY`
@@ -594,11 +594,11 @@ LearnMainCategory: "Computer Science"
 - `pthread_mutex_t`, `pthread_cond_t` in C
 - Java `synchronized` and `wait()/notify()/notifyAll()`
 
-**Interview relevance:** "What is a mutex?" / "Difference between mutex and semaphore?" — very frequently asked.
+**Interview relevance:** "What is a mutex?" / "Difference between mutex and semaphore?" - very frequently asked.
 
 ---
 
-### Learn 5.3 — Classic Synchronization Problems
+### Learn 5.3 - Classic Synchronization Problems
 **Difficulty:** INTERMEDIATE | **Est. Time:** 35 min | **Tags:** `[producer-consumer, readers-writers, dining-philosophers, sleeping-barber]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks: solutions to each) → QUIZ(5) → CHALLENGE(2) → SUMMARY`
@@ -612,17 +612,17 @@ LearnMainCategory: "Computer Science"
 - Deadlock possibility in naive solutions and how to avoid
 - Semaphore-based vs monitor-based solutions
 
-**Interview relevance:** "Explain the Producer-Consumer problem" / "Solve Dining Philosophers" — classic interview questions.
+**Interview relevance:** "Explain the Producer-Consumer problem" / "Solve Dining Philosophers" - classic interview questions.
 
 ---
 
-### Learn 5.4 — Spinlocks, Read-Write Locks & Lock-Free Programming
+### Learn 5.4 - Spinlocks, Read-Write Locks & Lock-Free Programming
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[spinlock, rw-lock, atomic, compare-and-swap, lock-free]`
 
 **Steps:** `EXPLANATION → CODE(3 blocks) → COMPARISON(lock types) → QUIZ(4) → SUMMARY`
 
 **What you'll learn:**
-- Spinlock: busy-waits instead of blocking — when it's better
+- Spinlock: busy-waits instead of blocking - when it's better
 - Read-Write Lock: multiple readers OR one writer
 - `pthread_rwlock_t` usage
 - Atomic operations: test-and-set, compare-and-swap (CAS), fetch-and-add
@@ -635,7 +635,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 5.5 — Deadlock in Concurrent Programs (Deep Dive)
+### Learn 5.5 - Deadlock in Concurrent Programs (Deep Dive)
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[deadlock, livelock, starvation, priority-inversion]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(deadlock scenarios) → CODE(2 blocks: deadlock + fix) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -650,11 +650,11 @@ LearnMainCategory: "Computer Science"
 - Timeout-based deadlock resolution
 - Real-world deadlock examples: database transactions, OS resource allocation
 
-**Interview relevance:** "What is priority inversion?" — senior systems interview question.
+**Interview relevance:** "What is priority inversion?" - senior systems interview question.
 
 ---
 
-### Learn 5.6 — CPU Caches, Cache Coherence & Memory Models
+### Learn 5.6 - CPU Caches, Cache Coherence & Memory Models
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[cache-coherence, mesi, false-sharing, memory-model, volatile]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(MESI state diagram) → CODE(2 blocks) → QUIZ(4) → SUMMARY`
@@ -673,7 +673,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 5.7 — Concurrency in Modern Systems: Async, Event Loops & Coroutines
+### Learn 5.7 - Concurrency in Modern Systems: Async, Event Loops & Coroutines
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[async, event-loop, coroutines, non-blocking, nodejs, epoll]`
 
 **Steps:** `EXPLANATION → COMPARISON(threads vs async vs event loop) → CODE(2 blocks) → QUIZ(3) → SUMMARY`
@@ -688,22 +688,22 @@ LearnMainCategory: "Computer Science"
 - Thread pool + event loop hybrid (Go runtime)
 - When to use threads vs async vs event loop
 
-**Interview relevance:** "How does Node.js handle concurrency?" / "What is epoll?" — backend engineering interviews.
+**Interview relevance:** "How does Node.js handle concurrency?" / "What is epoll?" - backend engineering interviews.
 
 ---
 
-### Unit 5 Review — Concurrency & Synchronization
+### Unit 5 Review - Concurrency & Synchronization
 **Steps:** `SUMMARY → QUIZ(12) → MOCK_INTERVIEW → PROJECT(major: Implement thread-safe bounded buffer with semaphores)`
 
 ---
 ---
 
-## UNIT 6 — Advanced OS & Interview Mastery
+## UNIT 6 - Advanced OS & Interview Mastery
 **Unit Goal:** Cover real-time OS, Linux internals, OS security, and build interview problem-solving confidence across all OS topics.
 
 ---
 
-### Learn 6.1 — Linux Internals: Kernel, Processes & System Calls
+### Learn 6.1 - Linux Internals: Kernel, Processes & System Calls
 **Difficulty:** ADVANCED | **Est. Time:** 30 min | **Tags:** `[linux, kernel, proc-filesystem, signals, linux-internals]`
 
 **Steps:** `EXPLANATION → CODE(4 blocks: Linux commands + system calls) → QUIZ(4) → CHALLENGE → SUMMARY`
@@ -723,7 +723,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 6.2 — Real-Time Operating Systems (RTOS)
+### Learn 6.2 - Real-Time Operating Systems (RTOS)
 **Difficulty:** ADVANCED | **Est. Time:** 20 min | **Tags:** `[rtos, hard-real-time, soft-real-time, scheduling, embedded]`
 
 **Steps:** `EXPLANATION → COMPARISON(RTOS vs GPOS) → QUIZ(3) → SUMMARY`
@@ -742,7 +742,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 6.3 — OS Security: Protection, Access Control & Exploits
+### Learn 6.3 - OS Security: Protection, Access Control & Exploits
 **Difficulty:** INTERMEDIATE | **Est. Time:** 25 min | **Tags:** `[security, access-control, acl, capability, buffer-overflow, aslr]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(protection ring diagram) → CODE(2 blocks) → QUIZ(4) → SUMMARY`
@@ -762,7 +762,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 6.4 — Distributed OS Concepts: Clocks, Consistency & Distributed Memory
+### Learn 6.4 - Distributed OS Concepts: Clocks, Consistency & Distributed Memory
 **Difficulty:** ADVANCED | **Est. Time:** 25 min | **Tags:** `[distributed, logical-clocks, lamport, consistency, distributed-memory]`
 
 **Steps:** `EXPLANATION → VISUALIZATION(Lamport clock example) → QUIZ(4) → SUMMARY`
@@ -781,7 +781,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Learn 6.5 — OS Interview Masterclass: Patterns & Problem-Solving
+### Learn 6.5 - OS Interview Masterclass: Patterns & Problem-Solving
 **Difficulty:** ALL LEVELS | **Est. Time:** 35 min | **Tags:** `[interview-prep, os-patterns, problem-solving, cheatsheet]`
 
 **Steps:** `EXPLANATION → CODE(5 blocks: walk-through problems) → QUIZ(8) → MOCK_INTERVIEW → CHALLENGE(3) → SUMMARY`
@@ -800,7 +800,7 @@ LearnMainCategory: "Computer Science"
 
 ---
 
-### Unit 6 Review — Full OS Mock Interview & Capstone
+### Unit 6 Review - Full OS Mock Interview & Capstone
 **Steps:** `SUMMARY → QUIZ(15 mixed difficulty) → MOCK_INTERVIEW → PROJECT(major: Design a simple task scheduler simulation)`
 
 ---
@@ -834,4 +834,4 @@ SUMMARY(recap) → QUIZ(10-15) → MOCK_INTERVIEW → PROJECT
 
 ---
 
-*Document created for ShiprHQ — Operating Systems Learn Module*
+*Document created for ShiprHQ - Operating Systems Learn Module*

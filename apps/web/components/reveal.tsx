@@ -9,7 +9,7 @@ import type { ReactNode } from "react"
 // the legal pages are all statically generated on purpose (SEO, `dynamicParams =
 // false`), and converting them to `"use client"` just to get a fade would throw that
 // away. Wrapping their sections in <Reveal> puts the client boundary on this tiny
-// component instead — `children` is passed as a prop, so the content inside stays
+// component instead - `children` is passed as a prop, so the content inside stays
 // server-rendered.
 //
 // Everything animates the same way (rise + fade, once, triggered slightly before the
@@ -26,7 +26,7 @@ export interface RevealProps {
     y?: number
     /**
      * Fade only, never translate. Use when the subtree contains a
-     * `position: sticky` element — Framer leaves a `transform` on the element after
+     * `position: sticky` element - Framer leaves a `transform` on the element after
      * the animation settles, and a transformed ancestor creates a containing block
      * that stops sticky positioning from resolving against the page scroller.
      */
@@ -45,7 +45,7 @@ export function Reveal({ children, delay = 0, y = 16, fadeOnly = false, classNam
             initial={still ? { opacity: 0 } : { opacity: 0, y }}
             whileInView={still ? { opacity: 1 } : { opacity: 1, y: 0 }}
             // `once` so scrolling back up doesn't replay everything, and a negative
-            // margin so the animation starts just before the element is visible —
+            // margin so the animation starts just before the element is visible -
             // otherwise it finishes off-screen on a fast scroll and looks like nothing
             // happened.
             viewport={{ once: true, margin: "-80px" }}

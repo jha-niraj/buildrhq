@@ -1,4 +1,4 @@
-If you are a CS student or a self-taught developer and you have been applying to software engineering jobs for months without hearing back, there is a very good chance your portfolio is the problem — not your skills.
+If you are a CS student or a self-taught developer and you have been applying to software engineering jobs for months without hearing back, there is a very good chance your portfolio is the problem - not your skills.
 
 Most developers build portfolios wrong. They put up three tutorial projects, write "Passionate developer who loves to code" in the bio, and wonder why recruiters never respond. This guide will show you exactly what a hiring-level portfolio looks like in 2025 and how to build one from scratch.
 
@@ -78,12 +78,12 @@ Same project. Completely different framing. The second version tells a recruiter
 
 Every project README should have these sections in this order:
 
-1. **What it does** — one sentence, no jargon
-2. **Live demo link** — if it is not live, it does not count
-3. **Tech stack** — bullet list, keep it scannable
-4. **Architecture decisions** — 2-3 sentences on why you made the choices you made
-5. **How to run locally** — copy-paste commands that actually work
-6. **What I learned** — optional but signals intellectual honesty
+1. **What it does** - one sentence, no jargon
+2. **Live demo link** - if it is not live, it does not count
+3. **Tech stack** - bullet list, keep it scannable
+4. **Architecture decisions** - 2-3 sentences on why you made the choices you made
+5. **How to run locally** - copy-paste commands that actually work
+6. **What I learned** - optional but signals intellectual honesty
 
 The architecture decisions section is what separates a junior portfolio from a mid-level one. "I chose Postgres over MongoDB because the data has clear relational structure and I wanted to practice writing raw SQL joins" tells a recruiter far more than listing your tech stack alone.
 
@@ -93,7 +93,7 @@ The architecture decisions section is what separates a junior portfolio from a m
 
 Your GitHub profile is searched by recruiters. Not as much as LinkedIn, but it happens. And when a technical recruiter clicks your GitHub, you have about 10 seconds before they move on.
 
-**Profile README:** GitHub lets you create a special `username/username` repository that renders as your profile README — the [official documentation](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme) covers the setup. Use it. Write a 3-sentence intro, list your main skills, link to your portfolio and LinkedIn. Do not write a wall of text with badges that take 15 seconds to load.
+**Profile README:** GitHub lets you create a special `username/username` repository that renders as your profile README - the [official documentation](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme) covers the setup. Use it. Write a 3-sentence intro, list your main skills, link to your portfolio and LinkedIn. Do not write a wall of text with badges that take 15 seconds to load.
 
 **Pinned repositories:** Pin your 6 best projects. If you only have 3 good ones, pin 3. Do not pin repositories named "my-first-react-app" or "test-project".
 
@@ -110,16 +110,16 @@ A portfolio website should be simple. The goal is to communicate clearly, not to
 **What to include:**
 - Name and one-line pitch ("Full-stack engineer building developer tools")
 - Links to your best 3 projects (name, one-sentence description, live link, GitHub link)
-- Skills section (keep it honest — do not list every technology you have heard of)
+- Skills section (keep it honest - do not list every technology you have heard of)
 - Contact / LinkedIn / GitHub
 
 **What to skip:**
 - "Skills" bars showing you are "85% proficient" in React (nobody knows what this means)
 - Animations that delay seeing your actual content
-- Dark patterns (no need to be clever — just be clear)
+- Dark patterns (no need to be clever - just be clear)
 - Visitor counters, GitHub stats cards, and other noise
 
-The best portfolio websites load fast, have good contrast, work on mobile, and get out of the way of your actual work. Run yours through [PageSpeed Insights](https://pagespeed.web.dev/) once — a portfolio site that scores badly on Core Web Vitals is an unforced error when the whole point is to demonstrate competence. If accessibility is unfamiliar territory, [the WAI quick reference](https://www.w3.org/WAI/standards-guidelines/wcag/) is the place to start.
+The best portfolio websites load fast, have good contrast, work on mobile, and get out of the way of your actual work. Run yours through [PageSpeed Insights](https://pagespeed.web.dev/) once - a portfolio site that scores badly on Core Web Vitals is an unforced error when the whole point is to demonstrate competence. If accessibility is unfamiliar territory, [the WAI quick reference](https://www.w3.org/WAI/standards-guidelines/wcag/) is the place to start.
 
 **Hosting:** [Vercel](https://vercel.com/), [Netlify](https://www.netlify.com/) and [GitHub Pages](https://pages.github.com/) all have free tiers that are more than enough. There is no reason to pay for portfolio hosting.
 
@@ -137,7 +137,7 @@ The difference is specificity and claims with evidence. "Passionate" is noise. "
 
 **Using frameworks you cannot explain.** If a recruiter asks "why did you use Redux here instead of just React context?" and you say "I saw it in a tutorial," that is worse than not using Redux.
 
-**No live demo.** "Here is my GitHub link" is not a portfolio. Get your projects deployed. Vercel, Render, Railway, Netlify — most have free tiers. A project that cannot be seen running is not a portfolio, it is homework.
+**No live demo.** "Here is my GitHub link" is not a portfolio. Get your projects deployed. Vercel, Render, Railway, Netlify - most have free tiers. A project that cannot be seen running is not a portfolio, it is homework.
 
 **Everything is a tutorial.** If every project you built was someone else's idea, your portfolio says "I can follow instructions." You want it to say "I can solve problems." Build at least one thing that you came up with yourself.
 
@@ -151,7 +151,7 @@ Here is a realistic 30-day plan for a CS student with existing coding skills:
 
 **Week 1:** Pick your 3 projects. If the anchor project does not exist yet, start building it. If it does, write the README and deploy it.
 
-**Week 2:** Complete the anchor project to demo-ready state. It does not have to be perfect — it has to work and be live.
+**Week 2:** Complete the anchor project to demo-ready state. It does not have to be perfect - it has to work and be live.
 
 **Week 3:** Find one open source issue to contribute to. Submit your PR. Polish the README for your technical showcase project.
 
@@ -163,13 +163,13 @@ That is enough to get interviews at most companies. The rest is execution.
 
 ## Using ShiprHQ to Accelerate Your Portfolio
 
-ShiprHQ's project builder helps CS students build portfolio-worthy projects with AI guidance — from architecture planning to code review to verified proof of completion. Instead of spending hours figuring out what to build and how to structure it, you get a structured path from idea to shipped project.
+ShiprHQ's project builder helps CS students build portfolio-worthy projects with AI guidance - from architecture planning to code review to verified proof of completion. Instead of spending hours figuring out what to build and how to structure it, you get a structured path from idea to shipped project.
 
-The platform also auto-tracks your GitHub activity and open source contributions in one dashboard, so your portfolio data is always current. When you are ready to apply, the AI resume builder turns your project history into recruiter-ready resume bullets tailored to each job description — and [the ATS resume guide](/blogs/ats-resume-software-engineer) explains what those bullets need to survive.
+The platform also auto-tracks your GitHub activity and open source contributions in one dashboard, so your portfolio data is always current. When you are ready to apply, the AI resume builder turns your project history into recruiter-ready resume bullets tailored to each job description - and [the ATS resume guide](/blogs/ats-resume-software-engineer) explains what those bullets need to survive.
 
 ## The Honest Truth About Portfolios in 2025
 
-Building a great portfolio takes 2–3 months of consistent work. There is no shortcut. Recruiters have seen thousands of portfolios and can tell in seconds whether a project was built thoughtfully or copied from a tutorial.
+Building a great portfolio takes 2-3 months of consistent work. There is no shortcut. Recruiters have seen thousands of portfolios and can tell in seconds whether a project was built thoughtfully or copied from a tutorial.
 
 The good news: most developers do not put in this work. The bar is lower than it looks. Three excellent projects, a clean GitHub, and a portfolio that loads fast and communicates clearly will put you ahead of 80% of candidates you are competing against.
 

@@ -320,14 +320,14 @@ export async function toggleProjectUpvote(projectId: string) {
         // neon-http driver, whose `.transaction()` throws "No transactions support
         // in neon-http driver" at runtime. That threw on every single upvote, was
         // swallowed by the catch below, and the action just returned
-        // { success: false } — so upvoting has been silently broken in production.
+        // { success: false } - so upvoting has been silently broken in production.
         // `.batch()` dispatches through Neon's HTTP transaction endpoint, so the
         // vote row and the denormalised counter still commit or roll back together.
         if (existingUpvote) {
             await db.batch([
                 db.delete(projectIdeaUpvotes).where(eq(projectIdeaUpvotes.id, existingUpvote.id)),
                 db.update(projectIdeas)
-                    // GREATEST floors at 0 — a counter that has drifted low must not
+                    // GREATEST floors at 0 - a counter that has drifted low must not
                     // render as "-1 upvotes".
                     .set({ upvotes: sql`GREATEST(${projectIdeas.upvotes} - 1, 0)` })
                     .where(eq(projectIdeas.id, projectId)),

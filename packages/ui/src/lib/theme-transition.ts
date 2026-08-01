@@ -10,7 +10,7 @@ import { flushSync } from "react-dom"
 //
 // `disableTransitionOnChange` is deliberately NOT set on any ThemeProvider. It
 // injects `* { transition: none !important }` around the class swap, which kills
-// the colour crossfade this transition depends on — the theme then snapped
+// the colour crossfade this transition depends on - the theme then snapped
 // between states instead of animating, which is what read as flicker.
 //
 // flushSync applies the <html> class synchronously inside the callback so the

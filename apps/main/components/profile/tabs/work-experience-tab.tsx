@@ -217,7 +217,7 @@ export function WorkExperienceTab({ user, isOwnProfile, onUploadResume, onRefres
                                                 <p className="text-sm text-muted-foreground">{exp.companyName}</p>
                                                 <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
                                                     <CalendarDays className="w-3 h-3" />
-                                                    {formatDate(exp.startDate)} — {exp.isCurrentlyWorking ? 'Present' : exp.endDate ? formatDate(exp.endDate) : '—'}
+                                                    {formatDate(exp.startDate)} - {exp.isCurrentlyWorking ? 'Present' : exp.endDate ? formatDate(exp.endDate) : '-'}
                                                 </div>
                                                 {exp.bulletPoints && exp.bulletPoints.length > 0 && (
                                                     <ul className="mt-2 space-y-1">

@@ -1,15 +1,15 @@
-# CodeSage — AI-Powered Codebase Intelligence Platform
+# CodeSage - AI-Powered Codebase Intelligence Platform
 
 > **"Bring your code. Leave smarter."**
 
-CodeSage is the module where developers drop a GitHub repo (or upload a zipped codebase) and immediately unlock a suite of AI tools built around *that specific project* — not generic advice, but deep intelligence derived from their actual code.
+CodeSage is the module where developers drop a GitHub repo (or upload a zipped codebase) and immediately unlock a suite of AI tools built around *that specific project* - not generic advice, but deep intelligence derived from their actual code.
 
 ---
 
 ## Why "CodeSage"
 
-- **Code** — the subject matter  
-- **Sage** — wisdom, depth, expertise  
+- **Code** - the subject matter  
+- **Sage** - wisdom, depth, expertise  
 - It's memorable, it signals serious insight, and it doesn't overlap with any major competitor  
 - Domain idea: `shipr.ai/codesage` or platform route `/codesage`
 
@@ -27,7 +27,7 @@ CodeSage is the module where developers drop a GitHub repo (or upload a zipped c
 | **SonarQube** | Code smells + bugs | Enterprise setup, heavy, no conversational interface |
 | **Continue.dev** | Open-source AI code assistant | Self-hosted, IDE plugin, no learning/interview mode |
 
-**The gap:** Nobody has built a **web-based, all-in-one codebase intelligence platform** that combines Q&A + optimization audit + mock interview + docs generation + architecture visualization — all in one project workspace, without needing an IDE.
+**The gap:** Nobody has built a **web-based, all-in-one codebase intelligence platform** that combines Q&A + optimization audit + mock interview + docs generation + architecture visualization - all in one project workspace, without needing an IDE.
 
 ---
 
@@ -53,7 +53,7 @@ All AI tools live under `/ai/`. The route becomes `/ai/codesage/c/[slug]/[module
 
 ---
 
-## Entry Flow — How a User Onboards a Project
+## Entry Flow - How a User Onboards a Project
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -142,7 +142,7 @@ This is the command center for a specific project. Think of it like a GitHub rep
 
 ---
 
-## Module 1 — Ask (`/c/[slug]/ask`)
+## Module 1 - Ask (`/c/[slug]/ask`)
 
 > **"Chat with your codebase like it's a senior engineer"**
 
@@ -175,10 +175,10 @@ The foundational module. A chat interface where the AI has full context of the c
 │  │                                         │  │  • auth config  │ │
 │  │  Key files:                             │  │  • API routes   │ │
 │  │  • `app/api/auth/[...nextauth]/         │  │  • DB schema    │ │
-│  │    route.ts:1-45` — main config         │  │                 │ │
-│  │  • `lib/auth.ts:23` — session           │  │  💡 Suggested   │ │
+│  │    route.ts:1-45` - main config         │  │                 │ │
+│  │  • `lib/auth.ts:23` - session           │  │  💡 Suggested   │ │
 │  │    handling                             │  │  Questions:     │ │
-│  │  • `middleware.ts:8` — route            │  │  • "How are     │ │
+│  │  • `middleware.ts:8` - route            │  │  • "How are     │ │
 │  │    protection                           │  │    API routes   │ │
 │  │                                         │  │    protected?"  │ │
 │  │  [Code block shown inline]              │  │  • "What DB     │ │
@@ -190,17 +190,17 @@ The foundational module. A chat interface where the AI has full context of the c
 ```
 
 ### Differentiators vs Competitors
-- Greptile does this via API only — no clean consumer UI
-- Cursor does it inside an IDE — requires install
+- Greptile does this via API only - no clean consumer UI
+- Cursor does it inside an IDE - requires install
 - **CodeSage does it on the web, zero setup, with a file tree sidebar**
 
 ---
 
-## Module 2 — Optimize (`/c/[slug]/optimize`)
+## Module 2 - Optimize (`/c/[slug]/optimize`)
 
 > **"Your codebase's honest performance review"**
 
-This is the killer differentiator. The AI scans the entire codebase and produces a prioritized, actionable todo list of real improvements — not vague "improve code quality" advice. Actual specifics.
+This is the killer differentiator. The AI scans the entire codebase and produces a prioritized, actionable todo list of real improvements - not vague "improve code quality" advice. Actual specifics.
 
 ### What It Does
 - Scans all files on first load, then incrementally re-checks on demand
@@ -245,7 +245,7 @@ This is the killer differentiator. The AI scans the entire codebase and produces
 │  └──────────────────────────────────────────────────────────────┘  │
 │                                                                     │
 │  ┌─── ✅ RESOLVED (12) ────────────────────────────────────────┐   │
-│  │  [Collapsed — click to expand]                              │   │
+│  │  [Collapsed - click to expand]                              │   │
 │  └──────────────────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────────────┘
 
@@ -275,17 +275,17 @@ This is the killer differentiator. The AI scans the entire codebase and produces
 ```
 
 ### Optimization Categories
-1. **Performance** — N+1 queries, missing memoization, heavy re-renders, bundle size bloat
-2. **Architecture** — wrong data-fetching patterns, tight coupling, missing abstraction
-3. **Code Quality** — dead code, overly complex functions, missing types
-4. **Security** — exposed env vars, unvalidated inputs, weak auth patterns
-5. **DX** — missing error boundaries, no loading states, poor TypeScript usage
-6. **Accessibility** — missing aria labels, poor color contrast, keyboard navigation
-7. **Bundle Size** — large dependencies, missing dynamic imports, unoptimized assets
+1. **Performance** - N+1 queries, missing memoization, heavy re-renders, bundle size bloat
+2. **Architecture** - wrong data-fetching patterns, tight coupling, missing abstraction
+3. **Code Quality** - dead code, overly complex functions, missing types
+4. **Security** - exposed env vars, unvalidated inputs, weak auth patterns
+5. **DX** - missing error boundaries, no loading states, poor TypeScript usage
+6. **Accessibility** - missing aria labels, poor color contrast, keyboard navigation
+7. **Bundle Size** - large dependencies, missing dynamic imports, unoptimized assets
 
 ---
 
-## Module 3 — Interview (`/c/[slug]/interview`)
+## Module 3 - Interview (`/c/[slug]/interview`)
 
 > **"Get grilled on YOUR code, not textbook examples"**
 
@@ -317,10 +317,10 @@ This is unique to everything out there. Nobody is doing mock technical interview
 │  ┌────── Step 1: Configure Interview ────────────────────────────┐ │
 │  │                                                               │ │
 │  │  Interview Type                                               │ │
-│  │  ◉ Explain Mode     — "Walk me through your code"            │ │
-│  │  ○ Defend Mode      — "Justify your architectural choices"   │ │
-│  │  ○ Improve Mode     — "How would you make this better?"      │ │
-│  │  ○ Full Stack       — Mix of all three                       │ │
+│  │  ◉ Explain Mode     - "Walk me through your code"            │ │
+│  │  ○ Defend Mode      - "Justify your architectural choices"   │ │
+│  │  ○ Improve Mode     - "How would you make this better?"      │ │
+│  │  ○ Full Stack       - Mix of all three                       │ │
 │  │                                                               │ │
 │  │  Difficulty:  [Junior ○  ●Mid  ○ Senior]                    │ │
 │  │  Duration:    [15 min ▼]                                     │ │
@@ -392,7 +392,7 @@ This is unique to everything out there. Nobody is doing mock technical interview
 
 ---
 
-## Module 4 — Explain (`/c/[slug]/explain`)
+## Module 4 - Explain (`/c/[slug]/explain`)
 
 > **"Understand any codebase in 10 minutes"**
 
@@ -452,18 +452,18 @@ Perfect for onboarding to a new project, or understanding your own legacy code. 
 
 ---
 
-## Module 5 — Docs (`/c/[slug]/docs`)
+## Module 5 - Docs (`/c/[slug]/docs`)
 
 > **"Auto-generate documentation that doesn't suck"**
 
-One of the most-hated tasks in engineering. CodeSage scans the codebase and produces structured, readable documentation — not just JSDoc comments, but actual human-readable docs.
+One of the most-hated tasks in engineering. CodeSage scans the codebase and produces structured, readable documentation - not just JSDoc comments, but actual human-readable docs.
 
 ### What It Does
 - Generates: README, API reference, component docs, architecture docs
 - Inline code examples pulled directly from the actual codebase
 - Export as Markdown, HTML, or push directly to GitHub as a `docs/` folder
-- Update mode — re-runs only on changed files
-- "Quick README" — single-click README generator with badges, setup instructions, usage
+- Update mode - re-runs only on changed files
+- "Quick README" - single-click README generator with badges, setup instructions, usage
 
 ### Doc Types Generated
 ```
@@ -505,7 +505,7 @@ One of the most-hated tasks in engineering. CodeSage scans the codebase and prod
 
 ---
 
-## Module 6 — Security (`/c/[slug]/security`)
+## Module 6 - Security (`/c/[slug]/security`)
 
 > **"Find the holes before attackers do"**
 
@@ -533,7 +533,7 @@ Security-focused scan specifically tuned for common web vulnerabilities in the d
 │                                                                     │
 │  ┌─── 🔴 CRITICAL (1) ──────────────────────────────────────────┐  │
 │  │  🔑 Hardcoded secret found                                   │  │
-│  │  lib/payment.ts:34 — API key appears to be hardcoded        │  │
+│  │  lib/payment.ts:34 - API key appears to be hardcoded        │  │
 │  │  Confidence: High                                            │  │
 │  │  [▶ Details] [✅ False Positive]                             │  │
 │  └──────────────────────────────────────────────────────────────┘  │
@@ -545,7 +545,7 @@ Security-focused scan specifically tuned for common web vulnerabilities in the d
 │  └──────────────────────────────────────────────────────────────┘  │
 │                                                                     │
 │  ┌─── 🟡 MEDIUM (7) ────────────────────────────────────────────┐  │
-│  │  [Collapsed — 7 issues]                                      │  │
+│  │  [Collapsed - 7 issues]                                      │  │
 │  └──────────────────────────────────────────────────────────────┘  │
 │                                                                     │
 │  ┌─── 📦 Dependencies ──────────────────────────────────────────┐  │
@@ -556,11 +556,11 @@ Security-focused scan specifically tuned for common web vulnerabilities in the d
 
 ---
 
-## Module 7 — Refactor (`/c/[slug]/refactor`)
+## Module 7 - Refactor (`/c/[slug]/refactor`)
 
 > **"Your senior engineer's code review, on demand"**
 
-Proactive refactoring suggestions that improve the code without changing behavior. Different from Optimize (which is about performance/architecture) — this is purely about code quality and maintainability.
+Proactive refactoring suggestions that improve the code without changing behavior. Different from Optimize (which is about performance/architecture) - this is purely about code quality and maintainability.
 
 ### What It Suggests
 - Functions over 50 lines that can be decomposed
@@ -597,7 +597,7 @@ Proactive refactoring suggestions that improve the code without changing behavio
 
 ---
 
-## Module 8 — Learn (`/c/[slug]/learn`)
+## Module 8 - Learn (`/c/[slug]/learn`)
 
 > **"Turn any codebase into a structured learning curriculum"**
 
@@ -607,7 +607,7 @@ Especially valuable for juniors onboarding to a project, or for developers who w
 - Generates a guided "course" through the codebase from beginner to deep understanding
 - Organized into chapters: Setup → Core Concepts → Key Modules → Advanced Patterns
 - Each chapter has: reading material, code walkthroughs, mini-quizzes
-- Progress tracking — mark chapters as done
+- Progress tracking - mark chapters as done
 - "Explain this to me" mode where you paste any code snippet and get a breakdown
 
 ### UI Flowchart
@@ -648,13 +648,13 @@ Especially valuable for juniors onboarding to a project, or for developers who w
 
 ---
 
-## Bonus Module — Compare (`/c/[slug]/compare`)
+## Bonus Module - Compare (`/c/[slug]/compare`)
 
 > **"How does my code stack up?"**
 
 An advanced module that compares your codebase against best practices for the detected stack (e.g., Next.js 15 App Router conventions) and shows you where you're aligned vs. deviating and whether those deviations are intentional trade-offs or gaps.
 
-Not a linting tool — more like a **senior engineer comparing your approach to how top-tier companies handle similar problems**.
+Not a linting tool - more like a **senior engineer comparing your approach to how top-tier companies handle similar problems**.
 
 ---
 
@@ -681,7 +681,7 @@ Chunking & Indexing
          │
          ▼
 Per-Module Analyzers
-• Ask: RAG pipeline — embed query → retrieve relevant chunks → LLM answer with citations
+• Ask: RAG pipeline - embed query → retrieve relevant chunks → LLM answer with citations
 • Optimize: Full-scan analysis prompt with structured JSON output per issue
 • Interview: Codebase-aware question generator → answer evaluator
 • Security: Pattern matching + LLM analysis on high-risk file patterns
@@ -795,24 +795,24 @@ apps/main/components/codesage/
 
 ## Phased Launch Plan
 
-### Phase 1 — MVP (Build First)
+### Phase 1 - MVP (Build First)
 - [ ] Project ingestion (GitHub URL + basic ZIP)
 - [ ] Ask module (RAG Q&A with file citations)
 - [ ] Optimize module (top 20 checks for Next.js/React)
 - [ ] Interview module (3 question types, text only)
 
-### Phase 2 — Depth
+### Phase 2 - Depth
 - [ ] Explain module (architecture diagram)
 - [ ] Security module
 - [ ] Docs module (README + API docs)
 - [ ] Voice mode for interview
 
-### Phase 3 — Social & Monetization
+### Phase 3 - Social & Monetization
 - [ ] Shareable interview summary cards
 - [ ] Public project pages (`/codesage/public/[slug]`)
 - [ ] Team mode (multiple users on same project)
-- [ ] Credits system — X free scans/month, paid for more
-- [ ] Integrations — GitHub webhook to auto-rescan on push
+- [ ] Credits system - X free scans/month, paid for more
+- [ ] Integrations - GitHub webhook to auto-rescan on push
 
 ---
 
@@ -831,7 +831,7 @@ apps/main/components/codesage/
 | Turborepo / monorepo aware | ✅ | Partial | ✅ | Partial | ❌ |
 | Consumer-friendly pricing | ✅ | $$$ API | $20/mo | $$$ | $$$ |
 
-**The unique angle:** CodeSage is the only tool targeting **individual developers** who want to learn from, improve, and interview on their own codebase — without installing an IDE extension or paying enterprise prices. It's a web app. You paste a GitHub link. You get instant intelligence.
+**The unique angle:** CodeSage is the only tool targeting **individual developers** who want to learn from, improve, and interview on their own codebase - without installing an IDE extension or paying enterprise prices. It's a web app. You paste a GitHub link. You get instant intelligence.
 
 ---
 

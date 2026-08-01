@@ -32,7 +32,7 @@ A **revolutionary hiring ecosystem** that connects:
 
 **Interview Process Transparency + AI-Powered Mock Interviews**
 
-When companies register on ShiprHQ Hiring, they configure their complete interview process—round by round. This information flows to the Main Platform where students can:
+When companies register on ShiprHQ Hiring, they configure their complete interview process-round by round. This information flows to the Main Platform where students can:
 
 1. See exactly what each interview round entails
 2. Practice AI-powered mock interviews that mirror the company's actual process

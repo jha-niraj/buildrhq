@@ -67,7 +67,7 @@ export function ProfileHeader({
 	const [copied, setCopied] = useState(false);
 
 	const copyProfileLink = () => {
-		// `username` is nullable, and the old template interpolated it straight in —
+		// `username` is nullable, and the old template interpolated it straight in -
 		// a user who had not picked one copied a link ending in `/null`. Say so
 		// instead of handing over a broken link. (The path was wrong too: `/u/...`
 		// is not a route in this app.)

@@ -239,7 +239,7 @@ export async function importAndCreateDraft(input: {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// AI PROFILE IMPORT — uses GitHub REST API + Exa for LinkedIn/portfolio
+// AI PROFILE IMPORT - uses GitHub REST API + Exa for LinkedIn/portfolio
 // Supports: LinkedIn (required), GitHub username (required),
 //           Twitter handle (optional), Portfolio URL (optional)
 // ─────────────────────────────────────────────────────────────────────────────

@@ -1,10 +1,10 @@
 # Design Tokens & Theming
 
 ## Stack
-- **Tailwind CSS v4** — utility-first, no custom config file needed (config is in CSS)
-- **shadcn/ui** — component library living in `packages/ui`
-- **`cn()` utility** — `clsx` + `tailwind-merge`, imported from `@repo/ui/lib/utils`
-- **Dark mode** — class-based (`dark:` prefix). Provider wraps the entire app.
+- **Tailwind CSS v4** - utility-first, no custom config file needed (config is in CSS)
+- **shadcn/ui** - component library living in `packages/ui`
+- **`cn()` utility** - `clsx` + `tailwind-merge`, imported from `@repo/ui/lib/utils`
+- **Dark mode** - class-based (`dark:` prefix). Provider wraps the entire app.
 
 ---
 
@@ -13,15 +13,15 @@
 ### Neutrals (primary surface & text)
 | Token | Light | Dark | Usage |
 |---|---|---|---|
-| `bg-white` | #fff | — | Main content panels |
-| `bg-neutral-50` | #fafafa | — | Subtle backgrounds, form inputs |
-| `bg-neutral-100` | #f5f5f5 | — | App shell background |
-| `bg-neutral-200` | #e5e5e5 | — | Borders in light mode |
-| `bg-neutral-900` | #171717 | — | Primary CTA buttons, sidebar active |
-| `bg-neutral-950` | #0a0a0a | — | Dark app shell bg |
-| `dark:bg-neutral-900` | — | #171717 | Dark panels |
-| `dark:bg-neutral-950` | — | #0a0a0a | Dark content area |
-| `dark:border-neutral-800` | — | border | Dark borders |
+| `bg-white` | #fff | - | Main content panels |
+| `bg-neutral-50` | #fafafa | - | Subtle backgrounds, form inputs |
+| `bg-neutral-100` | #f5f5f5 | - | App shell background |
+| `bg-neutral-200` | #e5e5e5 | - | Borders in light mode |
+| `bg-neutral-900` | #171717 | - | Primary CTA buttons, sidebar active |
+| `bg-neutral-950` | #0a0a0a | - | Dark app shell bg |
+| `dark:bg-neutral-900` | - | #171717 | Dark panels |
+| `dark:bg-neutral-950` | - | #0a0a0a | Dark content area |
+| `dark:border-neutral-800` | - | border | Dark borders |
 
 ### Brand Orange (accent / CTA)
 | Token | Usage |
@@ -48,9 +48,9 @@
 ## Typography
 
 ### Font choices
-- **Display / headings**: `font-display` — system serif or custom (configured in root CSS)
+- **Display / headings**: `font-display` - system serif or custom (configured in root CSS)
 - **Body**: system sans-serif (Tailwind default)
-- **Mono accents**: `font-mono` — used for role labels, section dividers, tracking-widest text
+- **Mono accents**: `font-mono` - used for role labels, section dividers, tracking-widest text
 
 ### Scale patterns
 ```

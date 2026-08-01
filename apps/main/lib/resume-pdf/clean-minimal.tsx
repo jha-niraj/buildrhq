@@ -72,8 +72,8 @@ export function CleanMinimalTemplate({ content }: { content: ResumeDraftContent 
                         {experience.map(e => (
                             <View key={e.id} style={{ marginBottom: 7 }}>
                                 <View style={styles.row}>
-                                    <Text style={styles.bold}>{e.role} — {e.company}</Text>
-                                    <Text style={styles.muted}>{formatDate(e.startDate)} – {e.current ? 'Present' : formatDate(e.endDate)}</Text>
+                                    <Text style={styles.bold}>{e.role} - {e.company}</Text>
+                                    <Text style={styles.muted}>{formatDate(e.startDate)} - {e.current ? 'Present' : formatDate(e.endDate)}</Text>
                                 </View>
                                 {e.bullets.map((b, i) => <Bullet key={i} text={b} />)}
                             </View>
@@ -120,7 +120,7 @@ export function CleanMinimalTemplate({ content }: { content: ResumeDraftContent 
                             <View key={e.id} style={{ marginBottom: 5 }}>
                                 <View style={styles.row}>
                                     <Text style={styles.bold}>{e.degree ? `${e.degree}, ${e.institution}` : e.institution}</Text>
-                                    <Text style={styles.muted}>{formatDate(e.startDate)} – {formatDate(e.endDate)}</Text>
+                                    <Text style={styles.muted}>{formatDate(e.startDate)} - {formatDate(e.endDate)}</Text>
                                 </View>
                             </View>
                         ))}
@@ -133,7 +133,7 @@ export function CleanMinimalTemplate({ content }: { content: ResumeDraftContent 
                         {certifications.map(c => (
                             <View key={c.id} style={{ flexDirection: 'row', marginBottom: 2 }}>
                                 <Text style={styles.bold}>{c.name}</Text>
-                                {c.issuer && <Text style={styles.muted}> — {c.issuer}{c.date ? `, ${formatDate(c.date)}` : ''}</Text>}
+                                {c.issuer && <Text style={styles.muted}> - {c.issuer}{c.date ? `, ${formatDate(c.date)}` : ''}</Text>}
                             </View>
                         ))}
                     </Section>

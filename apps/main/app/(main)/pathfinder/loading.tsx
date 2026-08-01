@@ -3,7 +3,7 @@
 // The real page is NOT a page-header + stat band + card grid. It is a full-height
 // two-panel workspace: a sticky header, a mobile-only tab pill row, a fixed-width
 // goals rail (400px at lg, 440px at xl) and a flexible overview panel. The counts
-// below are the ones the component actually renders — six stat tiles in a
+// below are the ones the component actually renders - six stat tiles in a
 // grid-cols-3 (StatsSection), the two chart cards, and the goal card shape from
 // GoalCard.
 import { Shimmer, ShimmerStyles } from "@repo/ui/components/skeleton-kit";
@@ -13,7 +13,7 @@ export default function Loading() {
         <div className="flex h-screen flex-col bg-neutral-50/50 dark:bg-neutral-950">
             <ShimmerStyles />
 
-            {/* Header — icon tile, title + sub, QuickActions on the right. */}
+            {/* Header - icon tile, title + sub, QuickActions on the right. */}
             <div className="shrink-0 border-b border-neutral-200/60 bg-white px-4 py-3 dark:border-neutral-800/60 dark:bg-neutral-900/80">
                 <div className="mx-auto flex w-full items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -30,7 +30,7 @@ export default function Loading() {
                 </div>
             </div>
 
-            {/* Mobile tab pills — hidden from lg, exactly as the real row is. */}
+            {/* Mobile tab pills - hidden from lg, exactly as the real row is. */}
             <div className="shrink-0 border-b border-neutral-200/60 bg-white px-4 py-2 lg:hidden dark:border-neutral-800/60 dark:bg-neutral-900/80">
                 <div className="flex gap-1 rounded-lg bg-neutral-100 p-0.5 dark:bg-neutral-800/50">
                     <Shimmer className="h-7 flex-1 rounded-md" />
@@ -70,7 +70,7 @@ export default function Loading() {
                         </div>
                     </div>
 
-                    {/* Overview panel — hidden below lg, same as the real one. */}
+                    {/* Overview panel - hidden below lg, same as the real one. */}
                     <div className="hidden flex-1 flex-col lg:flex">
                         <div className="space-y-6 p-6">
                             <Shimmer className="h-3.5 w-20" />
@@ -88,7 +88,7 @@ export default function Loading() {
                                 ))}
                             </div>
 
-                            {/* ActivityChart — label, bordered card, three legend chips. */}
+                            {/* ActivityChart - label, bordered card, three legend chips. */}
                             <div>
                                 <Shimmer className="mb-3 h-3 w-28" />
                                 <div className="rounded-xl border border-neutral-200/60 bg-white p-3 dark:border-neutral-800/60 dark:bg-neutral-900/50">

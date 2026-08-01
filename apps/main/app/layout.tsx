@@ -29,7 +29,7 @@ const bricolage = Bricolage_Grotesque({
 	weight: ["200", "300", "400", "500", "600", "700", "800"],
 	display: "swap",
 	// Registered as --font-display, which globals.css maps to the `font-display`
-	// utility — so every h1/h2 and the sidebar pick it up without each app
+	// utility - so every h1/h2 and the sidebar pick it up without each app
 	// restating the stack.
 	variable: "--font-display",
 });
@@ -38,7 +38,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.shiprhq.com'
 
 export const metadata: Metadata = {
 	title: {
-		default: "ShiprHQ — The Engineering Intelligence Suite",
+		default: "ShiprHQ - The Engineering Intelligence Suite",
 		template: "%s | ShiprHQ"
 	},
 	description: "AI-powered platform for CS students and software engineers. Build your portfolio, ace technical interviews, practice DSA, and land your dream engineering job.",
@@ -60,33 +60,24 @@ export const metadata: Metadata = {
 		locale: "en_US",
 		url: BASE_URL,
 		siteName: "ShiprHQ",
-		title: "ShiprHQ — The Engineering Intelligence Suite",
+		title: "ShiprHQ - The Engineering Intelligence Suite",
 		description: "AI-powered platform for CS students and software engineers. Build your portfolio, ace interviews, practice DSA, and land your dream engineering job.",
 		images: [
 			{
 				url: "/og/home.webp",
 				width: 1200,
 				height: 630,
-				alt: "ShiprHQ — The Engineering Intelligence Suite for Developers",
+				alt: "ShiprHQ - The Engineering Intelligence Suite for Developers",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "ShiprHQ — The Engineering Intelligence Suite",
+		title: "ShiprHQ - The Engineering Intelligence Suite",
 		description: "AI-powered platform for CS students and software engineers. Build your portfolio, ace interviews, practice DSA, and land your dream engineering job.",
 		images: ["/og/home.webp"],
 		creator: "@shiprhq",
 		site: "@shiprhq",
-	},
-	icons: {
-		icon: [
-			{ url: "/mainlogo.ico", sizes: "any" },
-			{ url: "/mainlogo.png", type: "image/png", sizes: "512x512" },
-		],
-		apple: [
-			{ url: "/mainlogo.png", sizes: "180x180", type: "image/png" },
-		],
 	},
 	robots: {
 		index: true,
@@ -113,7 +104,7 @@ const organizationSchema = {
 	"@type": "Organization",
 	"name": "ShiprHQ",
 	"url": BASE_URL,
-	"logo": `${BASE_URL}/mainlogo.png`,
+	"logo": `${BASE_URL}/icon-512.png`,
 	"description": "AI-powered engineering intelligence platform for CS students and software engineers.",
 	"sameAs": [
 		"https://twitter.com/shiprhq",
@@ -147,7 +138,7 @@ const softwareAppSchema = {
 	"url": BASE_URL,
 	"applicationCategory": "DeveloperApplication",
 	"operatingSystem": "Web",
-	"description": "AI-powered engineering intelligence suite: resume builder, mock interviews, DSA practice, system design prep, and open source tracking — all in one platform.",
+	"description": "AI-powered engineering intelligence suite: resume builder, mock interviews, DSA practice, system design prep, and open source tracking - all in one platform.",
 	"offers": {
 		"@type": "Offer",
 		"price": "0",
@@ -184,7 +175,7 @@ export default function RootLayout({
 				/>
 			</head>
 			{/* `spaceGrotesk.variable` (not just its className) so components in
-			    @repo/ui — the loader wordmark, notably — can reference the display
+			    @repo/ui - the loader wordmark, notably - can reference the display
 			    face as `var(--font-space-grotesk)` instead of hardcoding a stack. */}
 			<body className={`
 				${spaceGrotesk.className} ${bricolage.variable} ${spaceGrotesk.variable} ${geistSans.variable} ${geistMono.variable} antialiased
@@ -198,12 +189,14 @@ export default function RootLayout({
 						// NOT disableTransitionOnChange: that injects `* { transition: none !important }`
 						// around the class swap, which cancels the colour crossfade that
 						// packages/ui/src/lib/theme-transition.ts installs for the switch. With it
-						// on, the theme snapped between states instead of animating — the flicker.
+						// on, the theme snapped between states instead of animating - the flicker.
 					>
 						<AppProvider>
 							{children}
 						</AppProvider>
-						<SonnerToaster position="top-center" closeButton richColors />
+						{/* Position, close button and styling are the shared defaults in
+						    @repo/ui - deliberately not set per app, so all five stay in sync. */}
+						<SonnerToaster />
 					</ThemeProvider>
 				</Providers>
 			</body>

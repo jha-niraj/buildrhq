@@ -147,9 +147,9 @@ export default function PrivacyPolicy() {
                                     <div className="pl-8 space-y-3 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
                                         <p>We do not sell your personal data. Ever. We share data only with:</p>
                                         <ul className="list-disc pl-5 space-y-2">
-                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Infrastructure providers</strong> — cloud hosting and database services under strict data processing agreements.</li>
-                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Payment processors</strong> — we use third-party processors and never store your card details ourselves.</li>
-                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Legal authorities</strong> — only when required by law or valid legal process.</li>
+                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Infrastructure providers</strong> - cloud hosting and database services under strict data processing agreements.</li>
+                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Payment processors</strong> - we use third-party processors and never store your card details ourselves.</li>
+                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Legal authorities</strong> - only when required by law or valid legal process.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@ export default function PrivacyPolicy() {
                                             <li>Correct any inaccurate personal data.</li>
                                             <li>Request deletion of your account and associated data.</li>
                                             <li>Object to or restrict certain processing activities.</li>
-                                            <li>Data portability — export everything in a machine-readable format.</li>
+                                            <li>Data portability - export everything in a machine-readable format.</li>
                                         </ul>
                                         <p>To exercise any of these rights, email us at <a href="mailto:privacy@shiprhq.com" className="text-neutral-900 dark:text-white underline">privacy@shiprhq.com</a>.</p>
                                     </div>
@@ -182,9 +182,9 @@ export default function PrivacyPolicy() {
                                     <div className="pl-8 space-y-3 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
                                         <p>We use a minimal set of cookies to operate the platform:</p>
                                         <ul className="list-disc pl-5 space-y-2">
-                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Session cookies</strong> — to keep you logged in during your visit.</li>
-                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Preference cookies</strong> — to remember settings like dark mode.</li>
-                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Analytics</strong> — privacy-preserving, aggregated usage metrics only. No cross-site tracking.</li>
+                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Session cookies</strong> - to keep you logged in during your visit.</li>
+                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Preference cookies</strong> - to remember settings like dark mode.</li>
+                                            <li><strong className="text-neutral-700 dark:text-neutral-300">Analytics</strong> - privacy-preserving, aggregated usage metrics only. No cross-site tracking.</li>
                                         </ul>
                                     </div>
                                 </div>

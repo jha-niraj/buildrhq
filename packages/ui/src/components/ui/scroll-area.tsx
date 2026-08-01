@@ -8,7 +8,7 @@ import { cn } from "../../lib/utils"
 const ScrollArea = React.forwardRef<
 	React.ElementRef<typeof ScrollAreaPrimitive.Root>,
 	React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> & {
-		/** Classes for the inner viewport — the element that actually scrolls.
+		/** Classes for the inner viewport - the element that actually scrolls.
 		 *  Needed for max-height caps (`max-h-56` on a dropdown list), which have
 		 *  no effect on the Root. Optional: omit it and nothing changes. */
 		viewportClassName?: string

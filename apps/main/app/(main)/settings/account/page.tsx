@@ -49,7 +49,7 @@ export default async function AccountSettingsPage() {
                     emailVerified: user.emailVerified ?? false,
                     // Derived from the linked providers, not `users.hashedPassword`.
                     // better-auth keeps credential passwords on the `account` row,
-                    // so that column is null for every account it created — this
+                    // so that column is null for every account it created - this
                     // read always returned false and permanently hid the
                     // change-password form behind the "you have no password" branch.
                     hasPassword: linkedProviders.includes('credential'),

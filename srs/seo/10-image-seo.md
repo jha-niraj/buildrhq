@@ -1,4 +1,4 @@
-# Image SEO — OG Images, WebP, Alt Text, and Performance
+# Image SEO - OG Images, WebP, Alt Text, and Performance
 
 > Images are the most common cause of slow LCP and broken social previews.
 > This file documents every image-related SEO decision and the right approach for each.
@@ -18,7 +18,7 @@ Every page that can be shared needs an OG image. This is what appears when someo
 
 **Spec:**
 - Size: exactly **1200×630px**
-- Format: **PNG** (not JPG — PNG handles text rendering better)
+- Format: **PNG** (not JPG - PNG handles text rendering better)
 - File location: `public/og/[page-slug].png`
 - File size: under 300KB if possible (large OG images slow social crawlers)
 
@@ -26,8 +26,8 @@ Every page that can be shared needs an OG image. This is what appears when someo
 1. Post title in large, readable text
 2. Company/site name in smaller text
 3. Brand color background or relevant visual
-4. High contrast — must be readable as a small thumbnail
-5. No important content in the edges — some platforms crop differently
+4. High contrast - must be readable as a small thumbnail
+5. No important content in the edges - some platforms crop differently
 
 **How to reference in Next.js metadata:**
 ```typescript
@@ -61,7 +61,7 @@ openGraph: {
 
 **Two-layer system:**
 
-**Layer 1 — Global fallback** (`apps/main/app/layout.tsx`)
+**Layer 1 - Global fallback** (`apps/main/app/layout.tsx`)
 ```typescript
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.shiprhq.com'
 
@@ -75,7 +75,7 @@ twitter: {
 ```
 File location: `apps/main/public/og/home.webp`
 
-**Layer 2 — Per-blog override** (`apps/main/app/(home)/blogs/[slug]/page.tsx`)
+**Layer 2 - Per-blog override** (`apps/main/app/(home)/blogs/[slug]/page.tsx`)
 ```typescript
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug)
@@ -105,15 +105,15 @@ File location: `apps/main/public/og/blog/[post-slug]-hero.webp`
 
 ### WebP for OG images
 
-ShiprHQ uses **WebP** for all OG images (not PNG). Modern crawlers on WhatsApp, LinkedIn, Twitter/X, iMessage, and Slack all support WebP. The savings are significant: WebP files are 25–50% smaller than equivalent PNGs, which means social crawlers fetch and cache them faster.
+ShiprHQ uses **WebP** for all OG images (not PNG). Modern crawlers on WhatsApp, LinkedIn, Twitter/X, iMessage, and Slack all support WebP. The savings are significant: WebP files are 25-50% smaller than equivalent PNGs, which means social crawlers fetch and cache them faster.
 
 Scripts to convert: `scripts/to-webp.sh` (single file) and `scripts/convert-og-to-webp.sh` (batch all PNGs in `apps/main/public/og/`).
 
-### Missing OG images — action required
+### Missing OG images - action required
 
 | App | Status | File needed | Priority |
 |---|---|---|---|
-| `apps/main` | ✅ Done | `public/og/home.webp` + blog images | — |
+| `apps/main` | ✅ Done | `public/og/home.webp` + blog images | - |
 | `apps/hiring` | ❌ Missing | `public/hiring-og.png` (referenced in layout.tsx but not in public/) | High |
 | `apps/uni` | ❌ Wrong format | Uses `mainlogo.jpeg` (1024×1024 logo, not 1200×630 OG image) | High |
 
@@ -128,8 +128,8 @@ To fix hiring and uni:
 ## WebP Conversion
 
 **Why WebP:**
-- 25–35% smaller than equivalent JPEG
-- 25–50% smaller than equivalent PNG
+- 25-35% smaller than equivalent JPEG
+- 25-50% smaller than equivalent PNG
 - Same visual quality at lower file size
 - Supported by all modern browsers (>96% coverage)
 
@@ -148,7 +148,7 @@ brew install webp  # macOS
 # Basic conversion
 cwebp input.jpg -o output.webp
 
-# With quality and resize (for hero images — 1920px wide)
+# With quality and resize (for hero images - 1920px wide)
 cwebp -q 85 -m 6 -resize 1920 0 hero.jpg -o hero.webp
 
 # For blog post images (resize to 2× container, e.g. 672px container = 1344px image)
@@ -167,7 +167,7 @@ for f in *.jpg; do cwebp -q 85 "$f" -o "${f%.jpg}.webp"; done
 **After converting:**
 - Commit `.webp` files to the repo
 - Delete original `.jpg`/`.png` from `public/` to keep repo size manageable
-- Update references in MDX files — or use the auto-conversion pattern below
+- Update references in MDX files - or use the auto-conversion pattern below
 
 **Auto-conversion pattern (getcreatr approach):**
 ```typescript
@@ -194,7 +194,7 @@ Alt text serves two purposes: accessibility (screen readers) and SEO (Google use
 1. Every `<img>` tag must have an `alt` attribute
 2. Describe what's in the image, specifically
 3. Include the target keyword naturally if the image is relevant to it
-4. Don't start with "Image of" or "Photo of" — just describe the content
+4. Don't start with "Image of" or "Photo of" - just describe the content
 5. Empty alt (`alt=""`) is correct for purely decorative images
 
 **Good alt text examples:**
@@ -233,14 +233,14 @@ This is typically the LCP element on blog posts. Performance matters most.
 ```
 
 Key rules:
-- `loading="eager"` — load immediately, don't defer
-- `fetchPriority="high"` — tell the browser this is the most important image
-- Explicit `width` and `height` — prevents layout shift
-- Use pre-generated WebP — don't rely on `/_next/image` on Cloudflare Workers
+- `loading="eager"` - load immediately, don't defer
+- `fetchPriority="high"` - tell the browser this is the most important image
+- Explicit `width` and `height` - prevents layout shift
+- Use pre-generated WebP - don't rely on `/_next/image` on Cloudflare Workers
 
 ### Inline Images (Body of Post)
 
-These are lower priority — load them lazily.
+These are lower priority - load them lazily.
 
 ```typescript
 <img
@@ -263,10 +263,10 @@ These are lower priority — load them lazily.
 Pre-generate WebP files and serve them as static assets via `unoptimized`:
 
 ```typescript
-// ❌ Goes through /_next/image — not cached
+// ❌ Goes through /_next/image - not cached
 <Image src="/hero.jpg" width={1920} height={1080} />
 
-// ✅ Served from ASSETS binding — immutable edge-cached headers, ~50ms
+// ✅ Served from ASSETS binding - immutable edge-cached headers, ~50ms
 <Image src="/hero.webp" width={1920} height={1080} unoptimized />
 ```
 
@@ -297,7 +297,7 @@ This means the first visitor at any Cloudflare edge location pays ~375ms. Every 
 | Inline blog image | 1344px | 16:9 or container-fit |
 | Carousel/product screenshot | 1920px | 16:9 |
 | Author avatar | 200px | 1:1 |
-| Logo | Original SVG preferred | — |
+| Logo | Original SVG preferred | - |
 
 **Why 1344px for blog images?**
 Most blog content columns are 672px wide. Retina displays (2x DPR) need 1344px to look sharp. Higher than 1344px for a 672px column wastes bandwidth.

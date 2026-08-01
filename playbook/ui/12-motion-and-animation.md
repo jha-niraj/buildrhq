@@ -1,15 +1,15 @@
 # Motion & Animation
 
 ## Library
-`framer-motion` — used throughout for page transitions, reveal animations, accordion toggles, and interactive feedback.
+`framer-motion` - used throughout for page transitions, reveal animations, accordion toggles, and interactive feedback.
 
 ---
 
 ## Core Principles
-1. **Purposeful motion** — animations communicate hierarchy and state change, not decoration
-2. **Subtle defaults** — y-offset: 24px, duration: ~0.6s, ease-out curve
-3. **Reduced motion support** — always check `useReducedMotion()` on hero sections
-4. **No layout shift** — use `AnimatePresence` for mounting/unmounting
+1. **Purposeful motion** - animations communicate hierarchy and state change, not decoration
+2. **Subtle defaults** - y-offset: 24px, duration: ~0.6s, ease-out curve
+3. **Reduced motion support** - always check `useReducedMotion()` on hero sections
+4. **No layout shift** - use `AnimatePresence` for mounting/unmounting
 
 ---
 
@@ -123,7 +123,7 @@ const imgOp    = useTransform(scrollY, [0, 300], [0.8, 1])  // fades in
 ## Testimonial Card Carousel
 
 ```tsx
-// Cards are `absolute inset-0`, stacked — only the active one is visible
+// Cards are `absolute inset-0`, stacked - only the active one is visible
 <motion.div
     animate={{
         opacity: activeIndex === index ? 1 : 0,

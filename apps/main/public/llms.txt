@@ -1,4 +1,4 @@
-# ShiprHQ — The Engineering Intelligence Suite
+# ShiprHQ - The Engineering Intelligence Suite
 
 ## What is ShiprHQ?
 

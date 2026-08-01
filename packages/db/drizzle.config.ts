@@ -17,14 +17,14 @@ export default defineConfig({
   // have those tables. They do not cover every orphan currently in the database
   // (Community*, Conversation, ChatMessage, Badge, UserBadge, UserFollow,
   // AchievementNotification, FeatureNotifyInterest, SocialShare,
-  // UserAchievementStats) — those are pending deletion rather than exclusion.
+  // UserAchievementStats) - those are pending deletion rather than exclusion.
   //
   // This only affects `push`/`introspect`. `generate` diffs snapshot-to-snapshot
   // and never reads the database, so orphans cannot leak into a migration.
   tablesFilter: [
     "!Launchpad*",  // old launchpad product feature
     "!Space*",      // old spaces feature (SpaceMember, SpaceStep, etc.)
-    "!Learn*",      // old learn feature (LearnStep, LearnProgress, etc. — NOT osLearn*)
+    "!Learn*",      // old learn feature (LearnStep, LearnProgress, etc. - NOT osLearn*)
     "!Codebase*",   // old codebase feature
     "!ProductIdea", // old standalone table
     "!accounts",    // old lowercase better-auth table (the current one is "account")

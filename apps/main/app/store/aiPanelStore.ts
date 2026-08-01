@@ -60,7 +60,7 @@ function makeId(): string {
 	return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
-/** First line of the opening question, trimmed — good enough as a history label. */
+/** First line of the opening question, trimmed - good enough as a history label. */
 function titleFrom(content: string): string {
 	const firstLine = content.trim().split("\n")[0] ?? "";
 	return firstLine.length > 48 ? `${firstLine.slice(0, 48)}…` : firstLine || "New chat";

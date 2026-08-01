@@ -123,7 +123,7 @@ export default function StudioSection() {
                                 </div>
                                 <h3 className="text-3xl font-bold mb-4">Focus on learning,<br />not saving.</h3>
                                 <p className="opacity-70 leading-relaxed text-sm">
-                                    Our state-engine captures every keystroke. Close the tab, lose internet, or crash your browser—your work is already preserved in the cloud.
+                                    Our state-engine captures every keystroke. Close the tab, lose internet, or crash your browser-your work is already preserved in the cloud.
                                 </p>
                             </div>
                             <div className="relative z-10 pt-8 border-t border-white/10 dark:border-neutral-900/10 flex items-center gap-4">

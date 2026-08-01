@@ -36,7 +36,7 @@ A **revolutionary university management platform** that connects:
 
 **Unified Academic + Career Platform**
 
-Universities onboard their institution, faculty creates assignments using our existing learning engines (Studio, Assessments, Mock Interviews, Spaces), and students access everything from one platform—whether assigned by their university or explored personally.
+Universities onboard their institution, faculty creates assignments using our existing learning engines (Studio, Assessments, Mock Interviews, Spaces), and students access everything from one platform-whether assigned by their university or explored personally.
 
 **Bridge the gap between classroom learning and industry readiness.**
 

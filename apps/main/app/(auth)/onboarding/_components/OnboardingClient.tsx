@@ -75,14 +75,14 @@ export default function OnboardingClient() {
 			type: "welcome",
 			question: "Welcome to ShiprHQ",
 			description:
-				"Let's set up your developer profile. It takes about a minute — and everything here can be changed later in Settings.",
+				"Let's set up your developer profile. It takes about a minute - and everything here can be changed later in Settings.",
 		},
 		{
 			id: "username",
 			type: "short_text",
 			question: "Pick your username",
 			navLabel: "Username",
-			description: "This is your handle across ShiprHQ — on your profile, projects and leaderboard.",
+			description: "This is your handle across ShiprHQ - on your profile, projects and leaderboard.",
 			placeholder: "e.g. nirajbuilds",
 			required: true,
 			validate: validateUsername,
@@ -98,7 +98,7 @@ export default function OnboardingClient() {
 			type: "file",
 			question: "Add a profile photo",
 			navLabel: "Profile photo",
-			description: "Optional — you can always add or change it later.",
+			description: "Optional - you can always add or change it later.",
 			accept: "image/jpeg,image/jpg,image/png,image/webp",
 			maxSizeMb: 5,
 			slots: [{ id: "avatar", label: "Profile photo" }],
@@ -124,7 +124,7 @@ export default function OnboardingClient() {
 			type: "multiple_choice",
 			question: "What do you want to get better at?",
 			navLabel: "Learning goals",
-			description: "Pick as many as you like — this shapes what ShiprHQ recommends you.",
+			description: "Pick as many as you like - this shapes what ShiprHQ recommends you.",
 			options: LEARNING_GOALS.map((g) => g.label),
 			columns: 2,
 			required: true,
@@ -162,7 +162,7 @@ export default function OnboardingClient() {
 				const result = await uploadImageToCloudinary(fd)
 				if (result.success && result.url) imageUrl = result.url
 			} catch {
-				toast.warning("Profile photo upload failed — you can add one later from your profile.")
+				toast.warning("Profile photo upload failed - you can add one later from your profile.")
 			}
 		}
 
@@ -173,7 +173,7 @@ export default function OnboardingClient() {
 			try {
 				await uploadResume(resumeFile)
 			} catch {
-				toast.warning("Resume upload failed — you can upload it later from your profile.")
+				toast.warning("Resume upload failed - you can upload it later from your profile.")
 			}
 		}
 
@@ -193,7 +193,7 @@ export default function OnboardingClient() {
 
 		// 4) Signup side effects (referral credit, activity, welcome mail). Idempotent,
 		//    and the only place they run for users who arrived via Google or a magic
-		//    link — those paths never touch the register page.
+		//    link - those paths never touch the register page.
 		await finalizeSignup(null)
 
 		// Refresh the cached session so middleware sees onboardingCompleted:true and

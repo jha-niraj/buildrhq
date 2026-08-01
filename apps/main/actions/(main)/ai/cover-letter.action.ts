@@ -53,7 +53,7 @@ export async function extractJobDescription(url: string) {
     }
 }
 
-// NOTE: OpenAI structured outputs do not support .optional() — use .nullable() instead.
+// NOTE: OpenAI structured outputs do not support .optional() - use .nullable() instead.
 const QuestionsSchema = z.object({
     questions: z.array(z.object({
         id: z.string(),
@@ -238,7 +238,7 @@ export async function generateAndSaveCoverLetter(data: CoverLetterGenerationData
 
         const generatedContent = completion?.choices?.[0]?.message?.content || "";
 
-        // Save to DB — update draft if draftId provided, otherwise create new
+        // Save to DB - update draft if draftId provided, otherwise create new
         let letter;
         if (data.draftId) {
             const [updated] = await db.update(coverLetters)

@@ -98,7 +98,7 @@ export const CardBody = ({
 // Extends HTMLAttributes rather than declaring a `[key: string]` catch-all. The
 // catch-all actively broke typing here: `keyof` on an index-signature type is
 // `string | number`, so forwardRef's internal `Omit<P, 'ref'>` collapsed every
-// explicit prop back into the index type — `className` came out as `unknown` and
+// explicit prop back into the index type - `className` came out as `unknown` and
 // could not even be passed to cn(). HTMLAttributes gives className, children and
 // the standard DOM props with none of that.
 interface CardItemProps extends React.HTMLAttributes<HTMLElement> {

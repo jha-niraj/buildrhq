@@ -284,8 +284,8 @@ export default function AdminDashboard() {
                         stats={[
                             { label: "Total Users", value: main?.totalUsers?.toLocaleString() ?? "0" },
                             { label: "New This Month", value: main?.newUsersThisMonth?.toLocaleString() ?? "0" },
-                            { label: "Projects", value: overview?.totalProjects?.toLocaleString() ?? "—" },
-                            { label: "Communities", value: overview?.activeCommunities?.toLocaleString() ?? "—" },
+                            { label: "Projects", value: overview?.totalProjects?.toLocaleString() ?? "-" },
+                            { label: "Communities", value: overview?.activeCommunities?.toLocaleString() ?? "-" },
                         ]}
                         pendingActions={undefined}
                     />
@@ -334,7 +334,7 @@ export default function AdminDashboard() {
                         {pendingActions.length === 0 ? (
                             <div className="flex items-center gap-3 p-4 rounded-lg bg-neutral-50 dark:bg-neutral-800/10 text-neutral-800 dark:text-neutral-100">
                                 <CheckCircle className="w-5 h-5" />
-                                <span className="font-medium">All caught up — no pending actions</span>
+                                <span className="font-medium">All caught up - no pending actions</span>
                             </div>
                         ) : (
                             pendingActions.map((action, index) => (

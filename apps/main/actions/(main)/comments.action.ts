@@ -138,7 +138,7 @@ function toNode(row: FlatCommentRow, viewerId: string | null): CommentNode {
  * Root comments newest first, replies oldest first (a reply chain reads top-down
  * like a conversation; a root list reads best with the freshest at the top).
  *
- * Works for a logged-out visitor — reading never requires an account, and every
+ * Works for a logged-out visitor - reading never requires an account, and every
  * node comes back with `isMine: false` in that case.
  */
 export async function getComments(
@@ -241,7 +241,7 @@ export async function addComment(input: AddCommentInput): Promise<MutateCommentR
             return { success: false, error: "That item no longer exists" };
         }
 
-        // Rate limit per ACCOUNT. Never per IP or user agent — those are shared by
+        // Rate limit per ACCOUNT. Never per IP or user agent - those are shared by
         // real people (campus NAT, office egress) and trivially spoofed, so they
         // punish innocent users while stopping nobody.
         const [recent] = await db
@@ -285,14 +285,14 @@ export async function addComment(input: AddCommentInput): Promise<MutateCommentR
             })
             .returning();
 
-        // The denormalised counter moves atomically with the insert — the intent
+        // The denormalised counter moves atomically with the insert - the intent
         // behind `toggleProjectUpvote`'s db.transaction. It is `db.batch` and not
         // `db.transaction` because the shared client is drizzle's neon-http driver,
         // whose `.transaction()` throws "No transactions support in neon-http
         // driver" at runtime. `.batch()` dispatches through Neon's HTTP transaction
         // endpoint, so these two statements still commit or roll back together.
         // `entityId` is known before the write here, so both statements can be
-        // built upfront — the delete path can't do that (see deleteComment).
+        // built upfront - the delete path can't do that (see deleteComment).
         const result = entityType === "PROJECT_IDEA"
             ? (await db.batch([
                 insertRow,
@@ -354,7 +354,7 @@ export async function updateComment(id: string, body: string): Promise<MutateCom
         }
 
         // Ownership is a WHERE clause, not a JavaScript comparison. Fetching the row,
-        // checking ids in JS, then writing leaves a window where the two disagree —
+        // checking ids in JS, then writing leaves a window where the two disagree -
         // and it is one forgotten `if` away from letting anyone edit anything.
         const [updated] = await db
             .update(comments)
@@ -367,7 +367,7 @@ export async function updateComment(id: string, body: string): Promise<MutateCom
             .returning();
 
         if (!updated) {
-            // Same message whether the row is missing, deleted, or someone else's —
+            // Same message whether the row is missing, deleted, or someone else's -
             // this endpoint should not confirm that a given comment id exists.
             return { success: false, error: "Comment not found or not yours to edit" };
         }
@@ -411,7 +411,7 @@ export async function deleteComment(id: string): Promise<DeleteCommentResult> {
         }
 
         // One statement, so the soft delete and the counter decrement are inherently
-        // atomic — no transaction needed, which matters because the shared neon-http
+        // atomic - no transaction needed, which matters because the shared neon-http
         // client has none (see the note in addComment).
         //
         // A CTE rather than a two-statement batch because the decrement has to be
@@ -420,7 +420,7 @@ export async function deleteComment(id: string): Promise<DeleteCommentResult> {
         // matches nothing (its WHERE requires isDeleted = false) while a standalone
         // decrement would still see a deleted row and fire again, drifting the
         // counter down on every retry. Chaining off `deleted` makes the decrement
-        // run exactly as many times as the UPDATE succeeded — zero or one.
+        // run exactly as many times as the UPDATE succeeded - zero or one.
         //
         // Ownership stays in the WHERE clause, not in JavaScript.
         const result = await db.execute<{ entityType: CommentEntityType; entityId: string }>(sql`

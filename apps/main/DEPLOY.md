@@ -6,10 +6,10 @@ Cloudflare's asset CDN. `apps/web` deploys the same way, to a separate Worker.
 
 | File | Role |
 | --- | --- |
-| `open-next.config.ts` | OpenNext adapter config — currently just the R2 incremental cache. |
+| `open-next.config.ts` | OpenNext adapter config - currently just the R2 incremental cache. |
 | `wrangler.jsonc` | Worker name, compatibility flags, asset + R2 bindings, observability. |
 | `.env` | **Local** values. Untouched by deploys. |
-| `.env.production` | **Production** values. Gitignored — holds live secrets. |
+| `.env.production` | **Production** values. Gitignored - holds live secrets. |
 | `.env.production.example` | Committed template for the above. |
 | `.open-next/` | Build output. Generated, gitignored. Never edit or commit. |
 
@@ -22,7 +22,7 @@ secrets live in one file:
    `.env.production` automatically (it takes precedence over `.env`). Every
    `NEXT_PUBLIC_*` value is *inlined into the client bundle at this point*. If the
    production domains are not in that file, the deployed bundle ships `localhost`
-   URLs — there is no runtime fix for that, it has to be right before the build.
+   URLs - there is no runtime fix for that, it has to be right before the build.
 2. **Runtime.** `pnpm deploy` passes the same file to
    `wrangler deploy --secrets-file .env.production`, uploading each key as a
    Cloudflare Worker secret for the server side (`DATABASE_URL`,
@@ -31,13 +31,13 @@ secrets live in one file:
 `--secrets-file` is **additive**: a key you leave out keeps whatever value it
 already has in production. But a key that is *present with an empty value* is
 uploaded as an empty string and **overwrites the live secret**. So the rule is
-delete the line, never blank it — which is why the generated `.env.production`
+delete the line, never blank it - which is why the generated `.env.production`
 ships with every secret commented out rather than set to `""`.
 
 ## One-time setup
 
 ```bash
-# 1. Authenticate (interactive — run this yourself)
+# 1. Authenticate (interactive - run this yourself)
 npx wrangler login
 
 # 2. Create the shared incremental-cache bucket. apps/web and apps/main both use it;
@@ -48,7 +48,7 @@ npx wrangler r2 bucket create shiprhq-next-cache
 
 ## Secrets
 
-`wrangler.jsonc` `vars` are **public** — they end up in the bundle, so only
+`wrangler.jsonc` `vars` are **public** - they end up in the bundle, so only
 non-sensitive things belong there. Everything sensitive goes in `.env.production`
 and is pushed by `pnpm deploy`.
 
@@ -89,7 +89,7 @@ five scripts and the same `.env.production` convention.
 - **`global_fetch_strictly_public` is required.** `middleware.ts` resolves the session by
   fetching its own `/api/auth/get-session`. Without that compatibility flag the subrequest
   does not resolve to the public route on Workers and every request is treated as
-  logged-out. Note this is one extra round trip per request — if it ever shows up in
+  logged-out. Note this is one extra round trip per request - if it ever shows up in
   latency, read the session from the better-auth cookie cache in middleware instead.
 - **`public/_headers` does nothing here.** That is a Cloudflare *Pages* feature and is
   silently ignored by a Workers deploy. Response headers belong in `next.config.mjs`
@@ -97,7 +97,7 @@ five scripts and the same `.env.production` convention.
 - **Don't add the Durable Object tag cache pre-emptively.** `doShardedTagCache` plus
   `enableCacheInterception` caused intermittent production 500s on this stack in a sibling
   project. Nothing in this app calls `revalidateTag`. If that changes, add the DO override
-  and the matching `durable_objects` + `migrations` blocks in `wrangler.jsonc` together —
+  and the matching `durable_objects` + `migrations` blocks in `wrangler.jsonc` together -
   the Worker fails to boot if the binding is missing.
 - **`serverExternalPackages` is load-bearing.** `@react-pdf/renderer`, `mammoth` and
   `sass` are not Workers-compatible when bundled; `sass` alone added ~4 MB via

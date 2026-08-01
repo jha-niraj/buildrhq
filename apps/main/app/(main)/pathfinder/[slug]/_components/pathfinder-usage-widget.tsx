@@ -64,7 +64,7 @@ export function PathfinderUsageWidget({ goalId, className }: PathfinderUsageWidg
                 isBlocked && (
                     <div className="flex items-center gap-1.5 text-neutral-700 dark:text-neutral-100">
                         <AlertTriangle className="w-4 h-4" />
-                        <span className="text-xs font-medium">AI paused – add credits</span>
+                        <span className="text-xs font-medium">AI paused - add credits</span>
                     </div>
                 )
             }

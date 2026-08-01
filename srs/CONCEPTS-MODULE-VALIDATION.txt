@@ -1,5 +1,5 @@
 ═══════════════════════════════════════════════════════════════════
-                LearnS MODULE — FULL VALIDATION REPORT
+                LearnS MODULE - FULL VALIDATION REPORT
 ═══════════════════════════════════════════════════════════════════
 Document Version: 1.0
 Date: January 2026
@@ -11,7 +11,7 @@ TABLE OF CONTENTS
 ═══════════════════════════════════════════════════════════════════
 
 1. EXECUTIVE SUMMARY
-2. MODULE OVERVIEW — WHAT EXISTS TODAY
+2. MODULE OVERVIEW - WHAT EXISTS TODAY
 3. ARCHITECTURE & DATA MODEL AUDIT
 4. FEATURE-BY-FEATURE ASSESSMENT
 5. INTEGRATION POINTS WITH OTHER MODULES
@@ -28,7 +28,7 @@ TABLE OF CONTENTS
 The Learns module is a **well-architected, feature-rich learning
 system** with a solid data model and comprehensive UI. It provides
 interactive, step-based learning with quizzes, coding challenges,
-comparisons, and AI assistance — closely aligning with the user's
+comparisons, and AI assistance - closely aligning with the user's
 vision of "a learning chunk for a specific topic."
 
 VERDICT: ✅ KEEP & ENHANCE (Do NOT remove)
@@ -47,13 +47,13 @@ KEY FINDINGS:
 • Create form does NOT actually save to database (no submit action)
 • Challenge code validation is trivially mocked (length > 10)
 • AI Assistant panel uses mock responses (no real AI call)
-• NOT linked in main navigation — essentially hidden from users
+• NOT linked in main navigation - essentially hidden from users
 • Well-integrated with Spaces (Learn is a SpaceContentType)
 • Referenced in Projects schema (Learn tags, Learnual scores)
 • Bookmarks, Progress, Requests systems all fully built
 
 ═══════════════════════════════════════════════════════════════════
-2. MODULE OVERVIEW — WHAT EXISTS TODAY
+2. MODULE OVERVIEW - WHAT EXISTS TODAY
 ═══════════════════════════════════════════════════════════════════
 
 2.1 ROUTES & PAGES
@@ -78,7 +78,7 @@ Progress:    progress-header, progress-stats, learning-journey,
              progress-skeleton
 Bookmarks:   bookmarks-grid, bookmarks-header, bookmarks-skeleton
 
-2.3 SERVER ACTIONS (Learn.action.ts — 1449 lines)
+2.3 SERVER ACTIONS (Learn.action.ts - 1449 lines)
 ────────────────────────────────────────────────────
 CRUD:        getLearns, getLearnBySlug, createLearn,
              updateLearn, publishLearn, unpublishLearn,
@@ -97,7 +97,7 @@ Requests:    submitLearnRequest, getLearnRequests,
              updateLearnRequestStatus
 Analytics:   getLearnStats, getTrendingLearns, getCategories
 
-2.4 AI ACTIONS (Learn-ai.action.ts — 480 lines)
+2.4 AI ACTIONS (Learn-ai.action.ts - 480 lines)
 ──────────────────────────────────────────────────
 generateQuizQuestion      → Uses OpenAI (real implementation)
 generateChallenge         → Uses OpenAI (real implementation)
@@ -114,7 +114,7 @@ data) instead of these actual AI actions. This is a disconnect.
 3. ARCHITECTURE & DATA MODEL AUDIT
 ═══════════════════════════════════════════════════════════════════
 
-3.1 PRISMA MODELS (Learns.prisma — 312 lines)
+3.1 PRISMA MODELS (Learns.prisma - 312 lines)
 ────────────────────────────────────────────────
 ┌─────────────────────┬────────────────────────────────────────┐
 │ Model               │ Purpose                                │
@@ -161,7 +161,7 @@ The schema is well-designed with:
 • Space relation (spaceId) for cross-module integration
 
 ISSUE: LearnStep has both `tips` as String[] and embedded quiz/
-challenge fields. This is a pragmatic "fat model" approach — works
+challenge fields. This is a pragmatic "fat model" approach - works
 but could become unwieldy if more step types are added.
 
 ═══════════════════════════════════════════════════════════════════
@@ -201,10 +201,10 @@ Status: ✅ MOSTLY FUNCTIONAL
 Issues:
   ⚠️ AI Assistant uses mock response generator (not real AI)
   ⚠️ Challenge validation: `passed = challengeCode.trim().length > 10`
-     This is trivially mocked — any 11+ char string "passes"
+     This is trivially mocked - any 11+ char string "passes"
   ⚠️ Code blocks: No syntax highlighting (just <pre><code>)
   ⚠️ Content rendered via dangerouslySetInnerHTML (XSS risk if
-     content is user-generated — mitigated if admin-only creation)
+     content is user-generated - mitigated if admin-only creation)
   ⚠️ INTERACTIVE step type exists in enum but has no renderer
 
 4.4 CREATE FORM (/Learns/create)
@@ -219,7 +219,7 @@ Issues:
   🔴 AI generation is MOCKED (setTimeout with hardcoded data)
      Real AI actions exist in Learn-ai.action.ts but are
      NOT wired up to this form
-  🔴 NO SUBMIT/SAVE FUNCTIONALITY — "Save Draft" and "Publish System"
+  🔴 NO SUBMIT/SAVE FUNCTIONALITY - "Save Draft" and "Publish System"
      buttons are disabled stubs. The form cannot actually create
      a Learn in the database.
   🔴 Admin check is commented out (lines 22-29 in create/page.tsx)
@@ -309,7 +309,7 @@ SEVERITY: 🔴 CRITICAL  ⚠️ IMPORTANT  💡 NICE-TO-HAVE
    that is never called from the UI.
 
 🔴 G3: CHALLENGE CODE EXECUTION IS TRIVIALLY MOCKED
-   `const passed = challengeCode.trim().length > 10;` — this means
+   `const passed = challengeCode.trim().length > 10;` - this means
    typing "aaaaaaaaaa" passes any challenge. No actual code
    execution or test case validation exists.
 
@@ -389,7 +389,7 @@ Compared against: Brilliant, Scrimba, NeetCode, Codecademy
   ⚠️* = Feature exists but is mocked/incomplete
 
 COMPETITIVE ADVANTAGE: Our Learns module has unique features
-that competitors lack — Comparisons, Community Requests, Space
+that competitors lack - Comparisons, Community Requests, Space
 embedding, and AI content generation (once completed). The
 combination of these makes for a differentiated learning product.
 
@@ -404,27 +404,27 @@ combination of these makes for a differentiated learning product.
 
 RATIONALE:
 
-1. ARCHITECTURE IS SOUND — The data model is comprehensive and
+1. ARCHITECTURE IS SOUND - The data model is comprehensive and
    well-indexed. The 8-table schema covers all learning needs.
 
-2. UI IS POLISHED — 30 components, professional design with
+2. UI IS POLISHED - 30 components, professional design with
    animations, dark mode, responsive layouts, keyboard navigation.
 
-3. VISION ALIGNMENT — This is exactly what the user described:
+3. VISION ALIGNMENT - This is exactly what the user described:
    "A learning chunk for specific topics with explanations,
    coding tests, and quizzes." The module delivers this vision.
 
-4. INTEGRATION VALUE — Already connected to Spaces, Projects,
+4. INTEGRATION VALUE - Already connected to Spaces, Projects,
    Learnings, Bookmarks, Jobs, and Achievements. Removing it
    would break these integrations.
 
-5. COMPETITIVE EDGE — Features like AI-powered generation,
+5. COMPETITIVE EDGE - Features like AI-powered generation,
    Comparisons, and Community Requests are differentiators.
 
-6. EFFORT ASSESSMENT — Completing the module requires fixing
+6. EFFORT ASSESSMENT - Completing the module requires fixing
    ~5 specific gaps, NOT a rewrite. The code is 70% done.
 
-7. SERVER ACTIONS ARE COMPLETE — All 30+ server actions are
+7. SERVER ACTIONS ARE COMPLETE - All 30+ server actions are
    fully implemented and working. Only the frontend connections
    are incomplete.
 
@@ -432,7 +432,7 @@ RATIONALE:
 9. PHASED IMPROVEMENT ROADMAP
 ═══════════════════════════════════════════════════════════════════
 
-PHASE 1: CRITICAL FIXES (1-2 days) — Make it Functional
+PHASE 1: CRITICAL FIXES (1-2 days) - Make it Functional
 ────────────────────────────────────────────────────────
 Priority: 🔴 MUST DO
 

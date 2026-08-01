@@ -26,7 +26,7 @@ const tools = [
     {
         icon: PenLine,
         title: "Cover Letter",
-        description: "Generate a tailored, role-specific cover letter in seconds — grounded in your profile and the job you're applying to.",
+        description: "Generate a tailored, role-specific cover letter in seconds - grounded in your profile and the job you're applying to.",
         status: "Live",
         href: `${APP_URL}/ai/resume/cover-letter`
     }

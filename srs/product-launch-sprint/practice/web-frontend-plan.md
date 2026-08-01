@@ -1,4 +1,4 @@
-# Web Frontend Practice Module — Complete Build Plan
+# Web Frontend Practice Module - Complete Build Plan
 > Module path: `apps/main/app/(main)/practice/web-frontend/`
 > Actions: `apps/main/actions/(main)/practice/` (shared)
 > Last updated: April 2026
@@ -8,38 +8,38 @@
 ## What This Module Does
 
 Web Frontend practice covers the concepts and coding skills required for frontend engineering interviews: HTML/CSS, JavaScript fundamentals, React, browser APIs, performance optimization, accessibility, and frontend system design. Unlike DSA which has a clear pass/fail based on test cases, frontend practice combines:
-- **Concept questions** (MCQ + written) — "What is the event loop? How does closure work?"
-- **Coding challenges** — "Build a debounce function", "Implement infinite scroll", "Fix this React re-render issue"
-- **UI implementation** — "Build this component from a screenshot/spec" (evaluated by AI)
-- **AI conversation** — Socratic discussion about browser internals, React patterns, performance
+- **Concept questions** (MCQ + written) - "What is the event loop? How does closure work?"
+- **Coding challenges** - "Build a debounce function", "Implement infinite scroll", "Fix this React re-render issue"
+- **UI implementation** - "Build this component from a screenshot/spec" (evaluated by AI)
+- **AI conversation** - Socratic discussion about browser internals, React patterns, performance
 
 ---
 
-## Current State — What Is Already Built
+## Current State - What Is Already Built
 
 ### Pages
-- `/practice/web-frontend` — Module landing page.
-- `/practice/web-frontend/[slug]` — Problem workspace (shared workspace component).
+- `/practice/web-frontend` - Module landing page.
+- `/practice/web-frontend/[slug]` - Problem workspace (shared workspace component).
 
 ### Actions
-- `getProblemsForModule('WEB_FRONTEND')` — Fetches problems filtered by module type.
-- `getOrCreateSession()` — Creates session.
-- `saveSessionProgress()` — Saves code + chat history.
-- `assess.action.ts` — Has `WEB_FRONTEND` system prompt.
+- `getProblemsForModule('WEB_FRONTEND')` - Fetches problems filtered by module type.
+- `getOrCreateSession()` - Creates session.
+- `saveSessionProgress()` - Saves code + chat history.
+- `assess.action.ts` - Has `WEB_FRONTEND` system prompt.
 
 ### Problem Types (from `PracticeProblem` schema)
 Problems can be typed as:
-- `CODING` — Write JavaScript/TypeScript code (evaluated by ShiprHQWorker + AI)
-- `CONCEPTUAL` — Explain a concept (evaluated by AI only)
-- `UI_IMPLEMENTATION` — Build a UI component (evaluated by AI looking at rendered output)
-- `DEBUG` — Fix broken code (evaluated by ShiprHQWorker + AI)
-- `OPTIMIZATION` — Improve performance of given code (AI evaluates approach + code)
+- `CODING` - Write JavaScript/TypeScript code (evaluated by ShiprHQWorker + AI)
+- `CONCEPTUAL` - Explain a concept (evaluated by AI only)
+- `UI_IMPLEMENTATION` - Build a UI component (evaluated by AI looking at rendered output)
+- `DEBUG` - Fix broken code (evaluated by ShiprHQWorker + AI)
+- `OPTIMIZATION` - Improve performance of given code (AI evaluates approach + code)
 
 ---
 
 ## What Needs to Be Built
 
-### Priority 1 — Problem Categories & Content
+### Priority 1 - Problem Categories & Content
 
 The most pressing need is having enough problems across the right categories.
 
@@ -68,7 +68,7 @@ The most pressing need is having enough problems across the right categories.
   - Implement drag-and-drop without a library
   - Build a Modal component with portal and focus trap
   - Implement optimistic UI updates
-  - Context vs Redux — explain with example
+  - Context vs Redux - explain with example
 
   **CSS & Layout (10 problems):**
   - Center a div (5 different methods)
@@ -90,39 +90,39 @@ The most pressing need is having enough problems across the right categories.
   - Design a YouTube-like video player component
   - Design a data table with virtual scrolling + sorting + filtering
 
-### Priority 2 — AI Evaluation for Frontend
+### Priority 2 - AI Evaluation for Frontend
 
 Frontend problems are harder to evaluate than DSA because there's no single correct answer.
 
 - [ ] **`evaluateFrontendCode()` action**:
   - For CODING problems: run code through ShiprHQWorker (Node.js runner for JS/TS). Check against test cases. Also pass code to AI for quality evaluation (readability, edge cases, browser compatibility, performance).
-  - For CONCEPTUAL problems: pass user's written answer to AI for evaluation. AI gives 0–10 score with specific feedback on what was correct/missing.
-  - For UI_IMPLEMENTATION: this is complex — for now, evaluate the code itself (not rendered output). AI checks if the implementation is correct in theory.
+  - For CONCEPTUAL problems: pass user's written answer to AI for evaluation. AI gives 0-10 score with specific feedback on what was correct/missing.
+  - For UI_IMPLEMENTATION: this is complex - for now, evaluate the code itself (not rendered output). AI checks if the implementation is correct in theory.
   - For DEBUG problems: run the fixed code through ShiprHQWorker. Check if it passes the test cases that were failing.
   - For OPTIMIZATION problems: run both original and optimized code, compare execution time + memory. AI evaluates if the approach is correct.
 
 - [ ] **Socratic AI for conceptual questions**:
   - When user answers a conceptual question: AI doesn't just say correct/incorrect.
-  - AI asks follow-up: "You mentioned closures capture by reference — can you give me an example where that causes a bug?"
-  - Same Socratic approach as DSA — push for depth.
+  - AI asks follow-up: "You mentioned closures capture by reference - can you give me an example where that causes a bug?"
+  - Same Socratic approach as DSA - push for depth.
 
-### Priority 3 — Workspace UI for Frontend
+### Priority 3 - Workspace UI for Frontend
 
 The generic `practice-workspace.tsx` needs frontend-specific enhancements:
 
 - [ ] **Browser preview panel** (for UI problems):
   - An iframe that renders the student's HTML/CSS/JS code in real-time.
   - Shows the rendered UI side-by-side with the code editor.
-  - Update preview on Ctrl+Enter (not on every keystroke — too expensive).
+  - Update preview on Ctrl+Enter (not on every keystroke - too expensive).
   - Uses a sandboxed iframe with no network access.
 
 - [ ] **Multi-file support** (for React problems):
   - Some problems need multiple files (component.jsx + styles.css + test.js).
-  - Minimal file tabs in the editor (not a full VSCode — just 2–3 files).
+  - Minimal file tabs in the editor (not a full VSCode - just 2-3 files).
 
 - [ ] **Console output panel**: For JS problems, show console.log output without needing a full browser. Use ShiprHQWorker to execute and capture stdout.
 
-### Priority 4 — Topic Organization
+### Priority 4 - Topic Organization
 
 - [ ] **Topic/category hierarchy** for web frontend:
   ```
@@ -154,11 +154,11 @@ The generic `practice-workspace.tsx` needs frontend-specific enhancements:
   └── (large problems, evaluated differently)
   ```
 
-### Priority 5 — Spaced Repetition (Same as DSA)
+### Priority 5 - Spaced Repetition (Same as DSA)
 
 - [ ] Revision scheduling: day 3, day 7, day 10 for each solved problem.
-- [ ] Conceptual problems are quicker to revise — just the explanation, no coding.
-- [ ] "Flash card mode" for conceptual questions — quick 5-minute revision sessions.
+- [ ] Conceptual problems are quicker to revise - just the explanation, no coding.
+- [ ] "Flash card mode" for conceptual questions - quick 5-minute revision sessions.
 
 ---
 
@@ -184,7 +184,7 @@ apps/main/
 ## Implementation Order
 
 1. Seed 60 frontend problems across all categories
-2. `evaluateFrontendCode()` — code execution + AI quality evaluation
+2. `evaluateFrontendCode()` - code execution + AI quality evaluation
 3. Conceptual question AI evaluation with Socratic follow-up
 4. Browser preview iframe panel for UI problems
 5. Console output panel for JS execution

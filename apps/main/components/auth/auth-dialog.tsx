@@ -233,7 +233,7 @@ export function AuthDialog() {
 											variant="outline"
 											className="w-full h-12 bg-transparent hover:bg-white/50 dark:hover:bg-gray-800/50 border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 font-medium rounded-xl transition-all duration-200 backdrop-blur-sm"
 											onClick={() => {
-												// Was `/signup`, which is not a route — this app registers at
+												// Was `/signup`, which is not a route - this app registers at
 												// /register, so the button 404'd. Relative too: an in-app
 												// navigation never needed an absolute URL, and building one
 												// from window.location.origin only added a browser dependency.

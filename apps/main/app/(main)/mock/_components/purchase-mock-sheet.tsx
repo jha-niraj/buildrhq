@@ -146,7 +146,7 @@ export function PurchaseMockSheet({ isOpen, onClose, mock, userCredits }: Purcha
                         </div>
                         <div className="flex flex-col items-center gap-1 p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
                             <Brain className="w-4 h-4 text-neutral-900" />
-                            <span className="text-lg font-bold">{mock.questionsCount ?? '—'}</span>
+                            <span className="text-lg font-bold">{mock.questionsCount ?? '-'}</span>
                             <span className="text-[10px] text-neutral-500 uppercase tracking-wide">questions</span>
                         </div>
                         <div className="flex flex-col items-center gap-1 p-3 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
@@ -193,7 +193,7 @@ export function PurchaseMockSheet({ isOpen, onClose, mock, userCredits }: Purcha
                             {sessionInfo.isCreator && sessionInfo.freeSessionsRemaining > 0 && (
                                 <div className="flex items-center gap-2 px-3 py-2.5 bg-neutral-50 dark:bg-neutral-800/10 border border-neutral-200 dark:border-neutral-800/30 rounded-lg text-xs text-neutral-700 dark:text-neutral-100">
                                     <CheckCircle className="w-3.5 h-3.5 flex-shrink-0" />
-                                    {sessionInfo.freeSessionsRemaining} free session{sessionInfo.freeSessionsRemaining > 1 ? 's' : ''} remaining — you created this mock
+                                    {sessionInfo.freeSessionsRemaining} free session{sessionInfo.freeSessionsRemaining > 1 ? 's' : ''} remaining - you created this mock
                                 </div>
                             )}
                             {sessionInfo.isCreator && sessionInfo.needsPayment && (

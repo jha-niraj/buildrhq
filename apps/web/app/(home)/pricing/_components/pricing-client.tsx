@@ -44,7 +44,7 @@ export default function PricingClient() {
 							<span className="text-neutral-900">run.</span>
 						</h1>
 						<p className="mx-auto mt-5 max-w-xl text-[16px] leading-relaxed text-neutral-600 dark:text-white/50">
-							ShiprHQ is credit-based — no subscriptions, no idle-time charges.
+							ShiprHQ is credit-based - no subscriptions, no idle-time charges.
 							Buy a pack once, and spend credits only when you build, practice,
 							or interview. Credits never expire.
 						</p>

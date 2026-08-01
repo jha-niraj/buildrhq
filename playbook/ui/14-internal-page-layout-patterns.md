@@ -62,13 +62,13 @@ With action button on right:
 
 ```tsx
 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-    {/* Main form — takes 2/3 */}
+    {/* Main form - takes 2/3 */}
     <div className="lg:col-span-2 space-y-6">
         <Card>...</Card>
         <Card>...</Card>
     </div>
 
-    {/* Sidebar info — takes 1/3 */}
+    {/* Sidebar info - takes 1/3 */}
     <div className="space-y-4">
         <Card>
             <CardHeader><CardTitle>Summary</CardTitle></CardHeader>
@@ -165,7 +165,7 @@ With action button on right:
 
 ---
 
-## Split Panel (list + detail — command center pattern)
+## Split Panel (list + detail - command center pattern)
 
 ```tsx
 <div className="flex h-full gap-4">

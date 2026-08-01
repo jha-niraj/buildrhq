@@ -47,10 +47,10 @@ export async function POST(req: NextRequest) {
 
     const attemptContext =
         attemptNumber <= 2
-            ? "Be gentle — give subtle conceptual nudges only. Do NOT reveal specific implementation details."
+            ? "Be gentle - give subtle conceptual nudges only. Do NOT reveal specific implementation details."
             : attemptNumber <= 4
-                ? "Be more specific — point to the exact part of their approach that needs fixing. You can mention the algorithm pattern needed."
-                : "Be more direct — the student is struggling. Give a clear step-by-step hint. You can outline the algorithm structure without writing the full solution.";
+                ? "Be more specific - point to the exact part of their approach that needs fixing. You can mention the algorithm pattern needed."
+                : "Be more direct - the student is struggling. Give a clear step-by-step hint. You can outline the algorithm structure without writing the full solution.";
 
     const systemMessage = `You are a patient, Socratic coding mentor helping a student solve a practice problem.
 

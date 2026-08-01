@@ -62,8 +62,8 @@ export interface FlowStep {
 	validate?: (value: unknown) => string | null
 	/** Server-checked validation, run on advance AFTER `validate` passes (so a
 	 *  malformed value never costs a round trip). Return an error string to block
-	 *  the step, or null to allow it. Use for uniqueness checks — a username, a
-	 *  slug — where the answer only exists on the server. The OK button shows a
+	 *  the step, or null to allow it. Use for uniqueness checks - a username, a
+	 *  slug - where the answer only exists on the server. The OK button shows a
 	 *  checking state while it runs. */
 	validateAsync?: (value: unknown) => Promise<string | null>
 	// ── "file" step config ──
@@ -258,7 +258,7 @@ export function TypeformFlow({
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	// Kept separate from isSubmitting so a server-side field check ("is this
 	// username free?") reads as "Checking…" rather than claiming the whole form
-	// is being submitted — the two happen at different points in the flow.
+	// is being submitted - the two happen at different points in the flow.
 	const [isChecking, setIsChecking] = useState(false)
 	const [isDone, setIsDone] = useState(false)
 	// When persisting, gate the content until the draft has been read so we resume at the
@@ -705,8 +705,12 @@ export function TypeformFlow({
 					</div>
 
 					{/* Content */}
-					<ScrollArea className="relative z-10 flex-1 min-h-0 w-full">
-						<div className="flex min-h-full items-center justify-center">
+					{/* tf-center-scroll: Radix wraps viewport children in a
+					    `display: table` box, which kills percentage heights - so the
+					    old `flex min-h-full items-center` wrapper never actually
+					    centred and the step sat at the top of the panel. See the rule
+					    in styles/globals.css. */}
+					<ScrollArea className="tf-center-scroll relative z-10 flex-1 min-h-0 w-full">
 						<div className="max-w-xl w-full mx-auto px-6 py-8">
 							<AnimatePresence mode="wait" custom={direction}>
 								{!ready ? null : isDone ? (
@@ -741,7 +745,6 @@ export function TypeformFlow({
 									</motion.div>
 								) : null}
 							</AnimatePresence>
-						</div>
 						</div>
 					</ScrollArea>
 

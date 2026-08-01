@@ -236,7 +236,7 @@ export default function UniUniversitiesPage() {
                                         </td>
                                         <td className="px-4 py-4 text-neutral-900 dark:text-white text-sm">{uni.universityType}</td>
                                         <td className="px-4 py-4 text-neutral-500 text-sm">
-                                            {[uni.city, uni.state].filter(Boolean).join(", ") || "—"}
+                                            {[uni.city, uni.state].filter(Boolean).join(", ") || "-"}
                                         </td>
                                         <td className="px-4 py-4">
                                             <span className={cn("px-2 py-1 rounded-full text-xs font-medium", statusColors[uni.verificationStatus])}>
@@ -278,7 +278,7 @@ export default function UniUniversitiesPage() {
                 {pagination.totalPages > 1 && (
                     <div className="px-4 py-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
                         <p className="text-sm text-neutral-500">
-                            Showing {((currentPage - 1) * pagination.limit) + 1}–{Math.min(currentPage * pagination.limit, pagination.total)} of {pagination.total}
+                            Showing {((currentPage - 1) * pagination.limit) + 1}-{Math.min(currentPage * pagination.limit, pagination.total)} of {pagination.total}
                         </p>
                         <div className="flex items-center gap-2">
                             <Button variant="outline" size="sm" disabled={currentPage <= 1} onClick={() => setCurrentPage(p => p - 1)}>

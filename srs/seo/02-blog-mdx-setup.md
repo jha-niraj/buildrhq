@@ -1,4 +1,4 @@
-# Blog System Setup — MDX in Next.js App Router
+# Blog System Setup - MDX in Next.js App Router
 
 > This documents the exact pattern used on getcreatr.com.
 > Copy this pattern to set up a production-quality blog in any Next.js project.
@@ -8,10 +8,10 @@
 ## Overview
 
 The getcreatr blog system has four principles:
-1. **Metadata lives in TypeScript, not MDX frontmatter** — centralized, type-safe, tree-shakeable
-2. **MDX files are pure content** — components imported at top, no YAML, no special syntax
-3. **Routing is automatic** — add a key to the metadata object, the URL exists
-4. **SEO is automatic** — title, description, og:image, JSON-LD all generated from metadata
+1. **Metadata lives in TypeScript, not MDX frontmatter** - centralized, type-safe, tree-shakeable
+2. **MDX files are pure content** - components imported at top, no YAML, no special syntax
+3. **Routing is automatic** - add a key to the metadata object, the URL exists
+4. **SEO is automatic** - title, description, og:image, JSON-LD all generated from metadata
 
 ---
 
@@ -53,7 +53,7 @@ export type SectionMeta = {
   pageTitle: string       // Full SEO title (browser tab, OG)
   description: string     // Meta description (~155 chars)
   ogImage: string         // Path to OG image e.g. '/og/post-slug.png'
-  author?: AuthorKey      // Optional — maps to authors.ts
+  author?: AuthorKey      // Optional - maps to authors.ts
   datePublished: string   // ISO date: '2026-05-12'
   dateModified: string    // ISO date: '2026-05-12'
   keywords?: readonly string[]  // SEO keywords array
@@ -65,7 +65,7 @@ export type SectionMeta = {
 export const ESSAYS: Record<string, SectionMeta> = {
   'your-post-slug': {
     title: 'Short display title',
-    pageTitle: 'Full SEO Title Including Keyword — Brand Name',
+    pageTitle: 'Full SEO Title Including Keyword - Brand Name',
     description: 'Meta description, ~155 characters, includes keyword, has a reason to click.',
     ogImage: '/og/your-post-slug.png',
     author: 'your-author-key',
@@ -459,7 +459,7 @@ Practical takeaway. What should the reader do now?
 
 See `04-sitemap-setup.md` for the full sitemap code.
 
-The sitemap reads from `sections.ts` automatically — every key you add appears in the sitemap on next deploy. No manual updates ever.
+The sitemap reads from `sections.ts` automatically - every key you add appears in the sitemap on next deploy. No manual updates ever.
 
 ---
 
@@ -478,7 +478,7 @@ Every post needs an OG image at `public/og/your-post-slug.png`.
 [ ] MDX file created at src/content/your-slug.mdx
 [ ] Metadata entry added to ESSAYS in sections.ts
 [ ] OG image created at public/og/your-slug.png (1200×630px)
-[ ] npm run build — no errors
+[ ] npm run build - no errors
 [ ] npm run deploy
 [ ] GSC → URL Inspection → Request Indexing
 ```
@@ -489,12 +489,12 @@ Every post needs an OG image at `public/og/your-post-slug.png`.
 
 The getcreatr essays follow a specific voice. Key rules:
 
-1. **No AI openers** — never "In today's world", "In this article we'll explore", "Here's why this matters"
-2. **Start concrete** — open with a scenario, a stat, a specific example, or a contradiction
-3. **Short paragraphs** — 2–4 sentences. One idea per paragraph.
-4. **Second person** — "you" throughout, not "founders" or "users"
-5. **Real specificity** — "$2,000+", "session 20", "8% open rate" not "some cost" or "most users"
-6. **Blockquote = the one thing** — one blockquote per section maximum, for the most important insight
-7. **`---` for major breaks** — not every section needs an H2 header; some transitions just need a `---`
+1. **No AI openers** - never "In today's world", "In this article we'll explore", "Here's why this matters"
+2. **Start concrete** - open with a scenario, a stat, a specific example, or a contradiction
+3. **Short paragraphs** - 2-4 sentences. One idea per paragraph.
+4. **Second person** - "you" throughout, not "founders" or "users"
+5. **Real specificity** - "$2,000+", "session 20", "8% open rate" not "some cost" or "most users"
+6. **Blockquote = the one thing** - one blockquote per section maximum, for the most important insight
+7. **`---` for major breaks** - not every section needs an H2 header; some transitions just need a `---`
 
 See `09-blog-writing-guide.md` for the full writing system.

@@ -1,8 +1,8 @@
 "use client"
 
 import { useCallback, useEffect, useState } from "react"
+import { Logo } from "@repo/ui/components/logo"
 import { useRouter } from "next/navigation"
-import { Layers } from "lucide-react"
 import { useSession, signOut } from "@repo/auth/client"
 import { toast } from "@repo/ui/components/ui/sonner"
 import {
@@ -65,7 +65,7 @@ export function HiringSidebar() {
                 homeHref: "/home",
                 logo: (
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900">
-                        <Layers className="h-[18px] w-[18px]" />
+                        <Logo className="h-[19px] w-[19px]" />
                     </div>
                 ),
             }}

@@ -1,6 +1,7 @@
 "use client"
 
 import { useCallback, useEffect, useState } from "react"
+import { Logo } from "@repo/ui/components/logo"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Zap, Sparkles, User, Settings } from "lucide-react"
@@ -76,7 +77,7 @@ export default function Sidebar() {
                 subtitle: "Developer Suite",
                 homeHref: "/home",
                 logo: (
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-bold">B</div>
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900"><Logo className="h-[19px] w-[19px]" /></div>
                 ),
             }}
             primary={mainNavigation.primary}

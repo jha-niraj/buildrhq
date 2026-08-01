@@ -40,12 +40,12 @@ function Agent() {
 
 Key features:
 - connectionType: "webrtc" (recommended, lower latency) or "websocket"
-- conversation.sendUserMessage(text) — send text messages to the agent
-- conversation.sendContextualUpdate(text) — send context without triggering a response
-- conversation.sendFeedback(true/false) — provide conversation feedback
-- conversation.sendUserActivity() — signal user activity to prevent interruptions
-- conversation.setVolume({ volume: 0.5 }) — adjust output volume
-- conversation.getInputVolume() / getOutputVolume() — get current audio levels
+- conversation.sendUserMessage(text) - send text messages to the agent
+- conversation.sendContextualUpdate(text) - send context without triggering a response
+- conversation.sendFeedback(true/false) - provide conversation feedback
+- conversation.sendUserActivity() - signal user activity to prevent interruptions
+- conversation.setVolume({ volume: 0.5 }) - adjust output volume
+- conversation.getInputVolume() / getOutputVolume() - get current audio levels
 - Client tools: define clientTools in options to let the agent invoke client-side functions
 - Overrides: customize prompt, firstMessage, language, voiceId via overrides option
 
@@ -108,7 +108,7 @@ Or use the CDN directly in HTML:
 
 pip install "elevenlabs[pyaudio]"
 
-Note: pyaudio may require system dependencies — on macOS: brew install portaudio, on Debian/Ubuntu: sudo apt-get install libportaudio2 portaudio19-dev
+Note: pyaudio may require system dependencies - on macOS: brew install portaudio, on Debian/Ubuntu: sudo apt-get install libportaudio2 portaudio19-dev
 
 import os
 import signal

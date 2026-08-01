@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Navbar from "@/components/landingpage/homepagenavbar";
 import Footer from "@/components/landingpage/footer";
 
-// The legal pages used to render bare — no navbar, no footer — so landing on
+// The legal pages used to render bare - no navbar, no footer - so landing on
 // /privacypolicy from a search result dropped you into a dead end with no way back
 // into the site. Giving the (legal) group a layout puts the same chrome around them
 // as every other public page, with no change to the page components themselves.

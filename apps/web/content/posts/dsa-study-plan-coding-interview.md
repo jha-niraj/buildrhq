@@ -6,7 +6,7 @@ This guide gives you the specific 3-month plan used by developers who have succe
 
 Before diving into the plan, you need the right mental model for what you are actually building.
 
-Data structures and algorithms are not facts to memorize. They are tools to recognize. The difference between a candidate who fails a medium LeetCode problem they have seen before and a candidate who solves a hard problem they have never seen is not memorization — it is pattern recognition.
+Data structures and algorithms are not facts to memorize. They are tools to recognize. The difference between a candidate who fails a medium LeetCode problem they have seen before and a candidate who solves a hard problem they have never seen is not memorization - it is pattern recognition.
 
 When you see an array problem with a target sum, your brain should immediately think: "Two Pointers or Hash Map." When you see a problem about finding the shortest path, your brain should think: "BFS." When you see overlapping subproblems in a recursive solution, your brain should think: "Dynamic Programming."
 
@@ -19,13 +19,13 @@ This plan assumes you can:
 - Implement basic loops, conditionals, and functions without looking anything up
 - Understand basic complexity analysis (what O(n) means)
 
-If you cannot do these things yet, spend 2–3 weeks on these fundamentals first. The DSA study plan will not work without them.
+If you cannot do these things yet, spend 2-3 weeks on these fundamentals first. The DSA study plan will not work without them.
 
-For your interview language: Python is the most popular for interviews because of its concise syntax. If you already know Java or C++ well, stick with it. Do not switch languages for interviews unless you have months to spare — the overhead of adapting to a new syntax under pressure is not worth it.
+For your interview language: Python is the most popular for interviews because of its concise syntax. If you already know Java or C++ well, stick with it. Do not switch languages for interviews unless you have months to spare - the overhead of adapting to a new syntax under pressure is not worth it.
 
 **Where to solve the problems.** [LeetCode](https://leetcode.com/) is the default and its free tier covers most of the classic set. [NeetCode](https://neetcode.io/practice) organises that same set by pattern with video walkthroughs, which maps almost exactly onto the structure below. The [Tech Interview Handbook](https://www.techinterviewhandbook.org/) is the best free companion guide to the whole process. If you want systematic topic coverage instead of an interview-shaped list, the [CSES Problem Set](https://cses.fi/problemset/) is excellent and free.
 
-## Month 1: Foundations (Weeks 1–4)
+## Month 1: Foundations (Weeks 1-4)
 
 The goal of month 1 is to get comfortable with the four foundational data structures and the searching and sorting algorithms that apply to them.
 
@@ -61,7 +61,7 @@ For each problem: attempt it for 20 minutes, review the optimal solution if stuc
 Hash maps are the single most powerful tool in your interview arsenal. When you see a problem that seems like it requires nested loops, there is usually a hash map approach that reduces it to O(n).
 
 **Concepts to master:**
-- Hash map creation, lookup, insertion, deletion — all O(1) average
+- Hash map creation, lookup, insertion, deletion - all O(1) average
 - When to use a hash map (frequency counting, membership testing, mapping relationships)
 - When to use a set (deduplication, O(1) membership testing)
 - Collision and how hash maps handle it (conceptual understanding, not implementation)
@@ -84,7 +84,7 @@ Hash maps are the single most powerful tool in your interview arsenal. When you 
 Linked lists appear in interviews less frequently than arrays but require a specific mental model that takes practice to develop.
 
 **Linked list concepts:**
-- Singly vs doubly linked — understand the pointer structure
+- Singly vs doubly linked - understand the pointer structure
 - Traversal, insertion at head/tail, deletion
 - Two-pointer technique on linked lists: fast/slow pointers for cycle detection and finding the middle
 - Reversing a linked list: this is foundational and appears in many problems
@@ -108,7 +108,7 @@ Linked lists appear in interviews less frequently than arrays but require a spec
 Trees are where many developers struggle because they require a mental model switch: thinking recursively instead of iteratively.
 
 **Tree concepts:**
-- Binary tree structure, tree traversal (inorder, preorder, postorder — know all three)
+- Binary tree structure, tree traversal (inorder, preorder, postorder - know all three)
 - Height, depth, and diameter of a tree
 - DFS vs BFS on trees (DFS with recursion, BFS with a queue)
 - Binary Search Tree properties: left subtree < root < right subtree
@@ -130,18 +130,18 @@ Trees are where many developers struggle because they require a mental model swi
 
 **The recursion mindset:** When you see a tree problem, ask "what information do I need from the left subtree and the right subtree to solve the problem at the current node?" Then write a function that assumes that information comes from recursive calls.
 
-## Month 2: Intermediate Patterns (Weeks 5–8)
+## Month 2: Intermediate Patterns (Weeks 5-8)
 
-With foundations solid, month 2 covers the intermediate patterns that appear in 60–70% of medium-difficulty interview problems.
+With foundations solid, month 2 covers the intermediate patterns that appear in 60-70% of medium-difficulty interview problems.
 
 ### Week 5: Binary Search
 
 Binary search is far more powerful than most developers realize. It applies not just to sorted arrays but to any problem where you have a monotonic function and a target value.
 
-**Core algorithm:** Know the standard implementation cold — with the off-by-one errors handled correctly (when to use `left <= right` vs `left < right`, when to update `left = mid + 1` vs `left = mid`).
+**Core algorithm:** Know the standard implementation cold - with the off-by-one errors handled correctly (when to use `left <= right` vs `left < right`, when to update `left = mid + 1` vs `left = mid`).
 
 **Extended applications:**
-- Binary search on the answer: "What is the minimum capacity such that X is achievable?" — binary search over possible answers
+- Binary search on the answer: "What is the minimum capacity such that X is achievable?" - binary search over possible answers
 - Finding boundaries: first true/last false in a boolean array
 - Rotated sorted arrays
 
@@ -216,13 +216,13 @@ Dynamic programming is where most developers spend too long and learn too little
 
 ![Dynamic programming table visualization: grid showing subproblem solutions building toward the final answer](/og/blog/dsa-inline-2.webp)
 
-## Month 3: Advanced and Interview Simulation (Weeks 9–12)
+## Month 3: Advanced and Interview Simulation (Weeks 9-12)
 
 Month 3 is not about learning new material. It is about strengthening weaknesses, expanding problem exposure, and transitioning from studying to performing.
 
-### Weeks 9–10: Advanced Topics and Weak Areas
+### Weeks 9-10: Advanced Topics and Weak Areas
 
-Audit your performance from months 1 and 2. Which pattern types did you struggle with most? Spend weeks 9–10 drilling those specifically.
+Audit your performance from months 1 and 2. Which pattern types did you struggle with most? Spend weeks 9-10 drilling those specifically.
 
 Also cover these advanced topics that appear at harder companies:
 
@@ -236,7 +236,7 @@ Also cover these advanced topics that appear at harder companies:
 
 You do not need mastery of all of these. You need to recognize them and have a starting approach.
 
-### Weeks 11–12: Mock Interviews and Simulation
+### Weeks 11-12: Mock Interviews and Simulation
 
 This is the most important part of the plan. Stop solving problems cold and start simulating the interview environment:
 
@@ -250,7 +250,7 @@ Use ShiprHQ's practice module for structured problem sets with AI hints, and its
 
 ## The Daily Commitment
 
-This plan requires 1–1.5 hours per day, 6 days per week. That is 90–120 total hours over 12 weeks.
+This plan requires 1-1.5 hours per day, 6 days per week. That is 90-120 total hours over 12 weeks.
 
 Break it down:
 - 20 minutes: Review yesterday's problem (write optimal solution from memory)
@@ -263,9 +263,9 @@ Consistency over intensity. Studying 7 days in a row then taking a week off is w
 
 ## What to Do the Week Before Your Interviews
 
-Do not learn new material. Review your personal notes from the past 3 months — specifically your notes on problems you struggled with and the insights that helped you.
+Do not learn new material. Review your personal notes from the past 3 months - specifically your notes on problems you struggled with and the insights that helped you.
 
-Do 1–2 mock interviews per day for practice and calibration.
+Do 1-2 mock interviews per day for practice and calibration.
 
 Solve 1 easy problem the morning of the interview to get your brain warmed up.
 

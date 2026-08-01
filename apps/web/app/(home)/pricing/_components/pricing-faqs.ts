@@ -12,7 +12,7 @@ export const pricingFaqs: PricingFaq[] = [
 	},
 	{
 		q: "Do credits expire?",
-		a: "No. Your credits never expire — your balance is yours to use whenever you want, at whatever pace suits you.",
+		a: "No. Your credits never expire - your balance is yours to use whenever you want, at whatever pace suits you.",
 	},
 	{
 		q: "What can I spend credits on?",
@@ -28,14 +28,14 @@ export const pricingFaqs: PricingFaq[] = [
 	},
 	{
 		q: "Can I get a refund on unused credits?",
-		a: "Because credits never expire and are provisioned instantly, purchases are generally non-refundable — but if something went wrong, reach out to support and we'll make it right.",
+		a: "Because credits never expire and are provisioned instantly, purchases are generally non-refundable - but if something went wrong, reach out to support and we'll make it right.",
 	},
 	{
 		q: "Do you offer plans for teams, universities, or high volume?",
-		a: "Yes. For classrooms, cohorts, or high-volume compute, we offer custom volume pricing — contact our team and we'll tailor a plan for you.",
+		a: "Yes. For classrooms, cohorts, or high-volume compute, we offer custom volume pricing - contact our team and we'll tailor a plan for you.",
 	},
 	{
 		q: "Will my credits work across the whole platform?",
-		a: "Yes. A single credit balance works across every AI tool in your ShiprHQ account — build, practice, and interview prep all draw from the same balance.",
+		a: "Yes. A single credit balance works across every AI tool in your ShiprHQ account - build, practice, and interview prep all draw from the same balance.",
 	},
 ]

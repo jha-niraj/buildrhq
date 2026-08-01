@@ -35,10 +35,10 @@ The app shell is a two-panel layout: a fixed left sidebar + a scrollable right c
 ```
 
 ### Key visual details
-- **Background behind sidebar**: `bg-neutral-100 dark:bg-black` — this peeks through as the "gap" between sidebar and content, giving depth
-- **Content panel**: `bg-white dark:bg-neutral-950` with `lg:rounded-l-4xl` — the content card appears to float above the dark background
-- **Left border**: `lg:border-l border-neutral-200 dark:border-neutral-800` — subtle edge line
-- **Shadow**: `shadow-xl` — the panel has elevation
+- **Background behind sidebar**: `bg-neutral-100 dark:bg-black` - this peeks through as the "gap" between sidebar and content, giving depth
+- **Content panel**: `bg-white dark:bg-neutral-950` with `lg:rounded-l-4xl` - the content card appears to float above the dark background
+- **Left border**: `lg:border-l border-neutral-200 dark:border-neutral-800` - subtle edge line
+- **Shadow**: `shadow-xl` - the panel has elevation
 
 ### Content max-width
 Always wrap page content in:
@@ -79,7 +79,7 @@ interface SidebarContextType {
 ## Mobile Behavior
 
 On mobile (`< lg`):
-1. Sidebar is `hidden lg:flex` — not rendered in DOM on mobile
+1. Sidebar is `hidden lg:flex` - not rendered in DOM on mobile
 2. A hamburger button appears: `fixed top-6 left-6 z-50 lg:hidden`
 3. Clicking opens a `<Sheet side="left">` with identical sidebar content
 4. Sheet is `w-64 border-neutral-200 bg-white p-0 dark:border-neutral-800 dark:bg-neutral-950`
@@ -134,4 +134,4 @@ app/
     (academic)/   → Shared academic pages
 ```
 
-Route groups use `()` parentheses — no URL segment. Used to scope layouts and metadata.
+Route groups use `()` parentheses - no URL segment. Used to scope layouts and metadata.

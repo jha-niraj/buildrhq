@@ -1,5 +1,5 @@
 // Hand-matched to the uni pricing page. It had inherited the LEGAL group's prose
-// skeleton (paragraph runs), which is wrong — this page is a centred header over a
+// skeleton (paragraph runs), which is wrong - this page is a centred header over a
 // 3-up tier grid, so the prose version reflowed hard the moment tiers mounted.
 import { Shimmer, ShimmerStyles } from "@repo/ui/components/skeleton-kit";
 

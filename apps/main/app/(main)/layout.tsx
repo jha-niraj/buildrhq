@@ -29,7 +29,7 @@ interface LayoutProps {
 //
 // Three surfaces float as separate rounded cards on a neutral backdrop: the
 // sidebar, the page, and the AI rail. That separation is the point of the
-// rounding — you can see where one surface ends and the next begins, instead of
+// rounding - you can see where one surface ends and the next begins, instead of
 // three regions sharing one flat white plane.
 //
 // When the AI rail is open the page rounds only on its LEFT (`rounded-l-2xl`)
@@ -46,7 +46,7 @@ const MainContent = ({ children }: { children: React.ReactNode }) => {
     const [isMobile, setIsMobile] = useState(false);
 
     // Below lg the rail would leave no page worth assisting with, so it becomes a
-    // Sheet instead. On lg+ it is a real docked column — never a Sheet.
+    // Sheet instead. On lg+ it is a real docked column - never a Sheet.
     useEffect(() => {
         const mq = window.matchMedia('(max-width: 1023px)');
         const update = () => setIsMobile(mq.matches);
@@ -57,7 +57,7 @@ const MainContent = ({ children }: { children: React.ReactNode }) => {
 
     // Opening the rail collapses the sidebar: three full-width columns do not fit
     // on a laptop, and the nav is the one the user is least likely to be reading
-    // while they type a question. Only on the OPEN transition — otherwise the
+    // while they type a question. Only on the OPEN transition - otherwise the
     // user could never expand the sidebar again while the rail stayed open.
     const wasAIOpen = useRef(aiOpen);
     useEffect(() => {
@@ -116,7 +116,7 @@ const MainContent = ({ children }: { children: React.ReactNode }) => {
                     constrained with border-box sizing, so a 1px border would eat 2px of
                     inner height that a full-height page below does not account for,
                     leaving it 2px too tall and scrolling the shell. A ring is a
-                    box-shadow — same look, zero layout cost. */}
+                    box-shadow - same look, zero layout cost. */}
                 <main className="m-2 flex h-[calc(100vh-1rem)] overflow-hidden lg:ml-0">
                     {/* Page surface */}
                     <div
@@ -141,7 +141,7 @@ const MainContent = ({ children }: { children: React.ReactNode }) => {
                         </div>
                     </div>
 
-                    {/* AI rail — a real column, not an overlay. The page narrows to make
+                    {/* AI rail - a real column, not an overlay. The page narrows to make
                         room for it, so nothing the user was reading gets covered. */}
                     <AnimatePresence initial={false}>
                         {isDocked && (
@@ -153,7 +153,7 @@ const MainContent = ({ children }: { children: React.ReactNode }) => {
                                 transition={{ type: 'spring', stiffness: 320, damping: 34 }}
                                 className="relative h-full shrink-0 overflow-hidden rounded-r-2xl border-l border-neutral-200 ring-1 ring-inset ring-neutral-200 dark:border-neutral-800 dark:ring-neutral-800"
                             >
-                                {/* Resize handle. Keyboard-operable too — a drag handle
+                                {/* Resize handle. Keyboard-operable too - a drag handle
                                     that only works with a mouse is not a control everyone
                                     can reach. Pointless while maximized. */}
                                 {!aiMaximized && (
@@ -181,7 +181,7 @@ const MainContent = ({ children }: { children: React.ReactNode }) => {
                                 )}
                                 {/* The animated width runs to 0 on exit, so the chat is
                                     pinned to its full width here and clipped by the
-                                    parent — otherwise the composer and messages would
+                                    parent - otherwise the composer and messages would
                                     reflow through every intermediate width on the way out. */}
                                 <div className="h-full" style={{ width: railWidth }}>
                                     <AIPanel />

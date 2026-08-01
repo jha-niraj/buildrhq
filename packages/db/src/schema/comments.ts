@@ -1,15 +1,15 @@
 // ===========================
-// Comments — one polymorphic, threaded comment table for the whole app.
+// Comments - one polymorphic, threaded comment table for the whole app.
 //
 // TRADEOFF, stated up front: `entityType` + `entityId` replaces a per-feature
 // foreign key, so the DATABASE CANNOT ENFORCE that `entityId` points at a real
 // row. There is no FK to violate and no cascade when the target is deleted.
-// That is accepted deliberately — the alternative is a new table (and a new
+// That is accepted deliberately - the alternative is a new table (and a new
 // action, and a new UI) per commentable thing, and project ideas, projects and
 // blog posts all need the same thread. The cost is paid in the application
 // layer instead: EVERY write action must verify the target entity exists before
 // inserting (see `assertEntityExists` in
-// apps/main/actions/(main)/comments.action.ts). Reads are naturally safe — an
+// apps/main/actions/(main)/comments.action.ts). Reads are naturally safe - an
 // orphaned thread simply never gets fetched, because nothing links to it.
 //
 // SOFT DELETE, not hard delete. Removing a row would orphan every reply beneath
@@ -43,7 +43,7 @@ export const comments = pgTable(
     {
         id: text("id").primaryKey().$defaultFn(() => createId()),
         entityType: commentEntityTypeEnum("entity_type").notNull(),
-        // Intentionally no .references() — see the polymorphic note above.
+        // Intentionally no .references() - see the polymorphic note above.
         entityId: text("entity_id").notNull(),
         userId: text("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
         // Self-reference needs the explicit AnyPgColumn return type; without it

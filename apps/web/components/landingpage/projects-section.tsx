@@ -11,7 +11,7 @@ import { Skeleton } from "@repo/ui/components/ui/skeleton"
 import { getProjectsPageStats } from "@/actions/stats.action"
 import { APP_URL } from "@/lib/site"
 
-// Marketing showcase — a static, curated preview of the kind of projects the
+// Marketing showcase - a static, curated preview of the kind of projects the
 // community ships. The live, data-backed registry lives in the app (main).
 const SHOWCASE = [
     { title: "Realtime Collab Editor", stack: "Next.js · WebSockets · Postgres", tag: "Full-stack" },

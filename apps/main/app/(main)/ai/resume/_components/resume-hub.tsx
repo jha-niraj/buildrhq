@@ -102,7 +102,7 @@ function NewResumeSheet({ templates, open, onClose }: {
                 }
                 result = await importAndCreateDraft({ name, templateSlug: selectedTemplate, linkedinUrl, githubUrl, pastedText })
             } else {
-                // profile or blank — both start from profile data
+                // profile or blank - both start from profile data
                 result = await createDraftFromProfile(name, selectedTemplate)
             }
             if (!result.success) return toast.error(result.error)
@@ -110,7 +110,7 @@ function NewResumeSheet({ templates, open, onClose }: {
             // Show toasts for missing profile data
             if (result.missingFields?.length) {
                 result.missingFields.forEach(field => {
-                    toast.warning(`${field} not found on your profile — fill it in the editor`)
+                    toast.warning(`${field} not found on your profile - fill it in the editor`)
                 })
             }
 
@@ -426,7 +426,7 @@ export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
                         <div>
                             <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">Resume Builder</h1>
                             <p className="text-sm text-neutral-500 mt-1">
-                                Create, import, tailor — land the job you deserve.
+                                Create, import, tailor - land the job you deserve.
                             </p>
                         </div>
                         <div className="flex items-center gap-2 flex-wrap justify-end">

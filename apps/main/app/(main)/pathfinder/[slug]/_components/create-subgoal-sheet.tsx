@@ -157,7 +157,7 @@ export function CreateSubGoalSheet({
                                     Fetching videos & docs (Exa) + creating content (OpenAI)
                                 </p>
                                 <p className="text-xs text-neutral-400">
-                                    This usually takes 5–10 seconds
+                                    This usually takes 5-10 seconds
                                 </p>
                             </div>
                         )

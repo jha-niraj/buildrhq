@@ -3,7 +3,7 @@
 import { DotmSquare11 } from "@repo/ui/components/ui/dotm-square-11";
 import { Shimmer, ShimmerStyles } from "@repo/ui/components/skeleton-kit";
 
-// Shared loader tile — matches the bento card style
+// Shared loader tile - matches the bento card style
 function LoaderTile({ className = "" }: { className?: string }) {
     return (
         <div className={`rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 flex items-center justify-center ${className}`}>
@@ -103,7 +103,7 @@ export function HomeDashboardSkeleton() {
             </div>
 
             {/* The nudge strip is conditional on the real page, so it is deliberately
-                absent here — promising a band that may never arrive is worse than the
+                absent here - promising a band that may never arrive is worse than the
                 small downward shift of it appearing. */}
 
             {/* Four module rows: stats column (1/3) beside a trend chart (2/3), the

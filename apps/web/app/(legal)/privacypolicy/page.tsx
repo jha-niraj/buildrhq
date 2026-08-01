@@ -3,7 +3,7 @@ import PrivacyPolicyClient from './PrivacyPolicyClient'
 
 export const metadata: Metadata = {
     title: 'Privacy Policy',
-    description: 'ShiprHQ Privacy Policy — how we collect, use, and protect your personal data on the engineering intelligence platform.',
+    description: 'ShiprHQ Privacy Policy - how we collect, use, and protect your personal data on the engineering intelligence platform.',
     robots: { index: true, follow: false },
     alternates: { canonical: '/privacypolicy' },
 }

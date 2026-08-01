@@ -1,4 +1,4 @@
-// Hand-matched to SparkContent. This route is NOT a list — it is a Tinder-style
+// Hand-matched to SparkContent. This route is NOT a list - it is a Tinder-style
 // swipe deck: one large centred card with action buttons beneath it. A card grid
 // here (which is what the generic skeleton drew) sets completely the wrong
 // expectation and reflows hard the moment the deck mounts.

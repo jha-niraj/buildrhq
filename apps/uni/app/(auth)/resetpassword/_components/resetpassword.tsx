@@ -1,6 +1,7 @@
 'use client';
 
 import { AuthVisual } from "@repo/ui/components/auth-visual";
+import { Logo } from "@repo/ui/components/logo"
 import {
     FormEvent, useState, useRef, useEffect, JSX
 } from 'react';
@@ -9,7 +10,7 @@ import { Input } from "@repo/ui/components/ui/input";
 import { Label } from "@repo/ui/components/ui/label";
 import { Button } from "@repo/ui/components/ui/button";
 import {
-    RefreshCw, CheckCircle2, Lock, Loader2, Building2, ArrowRight
+    RefreshCw, CheckCircle2, Lock, Loader2, ArrowRight
 } from "lucide-react";
 import toast from '@repo/ui/components/ui/sonner';
 import { motion } from 'framer-motion';
@@ -176,7 +177,7 @@ const ResetPassword = (): JSX.Element | null => {
                 <div className="flex justify-center mb-8">
                     <Link href="/" className="flex items-center gap-2">
                         <div className="w-10 h-10 rounded-xl bg-neutral-900 dark:bg-white flex items-center justify-center">
-                            <Building2 className="w-5 h-5 text-white dark:text-black" />
+                            <Logo className="h-[19px] w-[19px] text-white dark:text-black" />
                         </div>
                         <span className="text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
                             ShiprHQ <span className="text-neutral-500 font-mono font-normal">HIRING</span>

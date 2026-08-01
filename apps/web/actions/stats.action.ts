@@ -177,7 +177,7 @@ export async function getProjectsPageStats() {
             db.select({ value: count() }).from(projectsV2).where(eq(projectsV2.generationType, 'AI_AGENT')),
             db.select({ value: count() }).from(projectV2Tasks),
             db.select({ value: count() }).from(projectV2Submissions).where(eq(projectV2Submissions.status, 'APPROVED')),
-            // Active users — distinct userId count from userProjectV2Progress
+            // Active users - distinct userId count from userProjectV2Progress
             db.selectDistinct({ userId: userProjectV2Progress.userId }).from(userProjectV2Progress).catch(() => []),
         ])
 

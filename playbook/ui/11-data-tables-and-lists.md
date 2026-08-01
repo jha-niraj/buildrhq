@@ -130,7 +130,7 @@ import { Pagination, PaginationContent, PaginationItem, PaginationLink,
 
 <div className="flex items-center justify-between mt-4">
     <p className="text-sm text-neutral-500">
-        Showing {(page - 1) * pageSize + 1}–{Math.min(page * pageSize, total)} of {total}
+        Showing {(page - 1) * pageSize + 1}-{Math.min(page * pageSize, total)} of {total}
     </p>
     <Pagination>
         <PaginationContent>

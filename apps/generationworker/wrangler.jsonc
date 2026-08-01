@@ -8,7 +8,7 @@
 		"enabled": true
 	},
 	// The Durable Object that owns each generation job: it schedules an Alarm and
-	// runs the 1–1.5 min pipeline inside alarm(), writing status server-side.
+	// runs the 1-1.5 min pipeline inside alarm(), writing status server-side.
 	"durable_objects": {
 		"bindings": [
 			{

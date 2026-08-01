@@ -91,7 +91,7 @@ export const openai = {
     },
 }
 
-// Local zodResponseFormat — replaces import from "openai/helpers/zod"
+// Local zodResponseFormat - replaces import from "openai/helpers/zod"
 // Uses json_object mode; caller parses response.choices[0].message.content with JSON.parse + Zod
 export function zodResponseFormat(_schema: unknown, _name: string) {
     return { type: "json_object" as const }

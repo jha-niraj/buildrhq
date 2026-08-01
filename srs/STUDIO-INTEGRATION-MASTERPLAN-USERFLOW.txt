@@ -1,6 +1,6 @@
 ================================================================================
-  STUDIO INTEGRATION MASTERPLAN — SCREEN DIAGRAMS, USER FLOWS & FLOWCHARTS
-  The ShiprHQ Platform — Definitive Guide for Implementation
+  STUDIO INTEGRATION MASTERPLAN - SCREEN DIAGRAMS, USER FLOWS & FLOWCHARTS
+  The ShiprHQ Platform - Definitive Guide for Implementation
 ================================================================================
 
 Document Created: February 15, 2026
@@ -22,19 +22,19 @@ Previous Documents Referenced:
   4. COMPLETE SCREEN MAP (All Screens)
   5. USER FLOW FLOWCHARTS
      5A. New User Onboarding Flow
-     5B. "I Want to Learn React" — Full Journey
+     5B. "I Want to Learn React" - Full Journey
      5C. Pathfinder Goal → Notes Integration Flow
      5D. Space Creator → Adding Studio Content
      5E. Space Learner → Using Studio Notes
      5F. Accessing "My Studios" (Legacy/Archive)
   6. SCREEN-BY-SCREEN WIREFRAMES (ASCII)
-     6A. Pathfinder Daily Practice View (NEW — with Notes tab)
+     6A. Pathfinder Daily Practice View (NEW - with Notes tab)
      6B. Space Detail View (UNCHANGED)
      6C. My Studios Page (MODIFIED)
-     6D. Studio Editor (UNCHANGED — accessed from context)
+     6D. Studio Editor (UNCHANGED - accessed from context)
   7. DATA FLOW DIAGRAMS
   8. WHAT TO BUILD (Phased Implementation)
-  9. FAQ — Clearing Every Confusion
+  9. FAQ - Clearing Every Confusion
 
 ================================================================================
                     1. THE FINAL DECISION
@@ -72,10 +72,10 @@ DECISION: Studio becomes a COMPONENT, not a DESTINATION.
 
 WHY THIS DOESN'T CONFUSE USERS:
   1. Only TWO choices for learning (Pathfinder vs Space)
-  2. Studio is never mentioned as a "product" — it's called "Notes"
+  2. Studio is never mentioned as a "product" - it's called "Notes"
   3. Notes appear naturally inside Pathfinder goals
-  4. Studios in Spaces are "course materials" — feels natural
-  5. No feature is removed — just reorganized
+  4. Studios in Spaces are "course materials" - feels natural
+  5. No feature is removed - just reorganized
 
 ================================================================================
                     2. WHAT CHANGES AND WHAT STAYS
@@ -83,25 +83,25 @@ WHY THIS DOESN'T CONFUSE USERS:
 
 STAYS THE SAME (no code changes):
 ──────────────────────────────────
-  ✓ Studio Editor component (studio-editor.tsx) — untouched
-  ✓ Studio Block Editor (studio-block-editor.tsx) — untouched
-  ✓ Studio AI Panel (studio-ai-panel.tsx) — untouched
-  ✓ All Studio database models — untouched
-  ✓ Space [slug] page — untouched
-  ✓ Space timeline — untouched
-  ✓ Space sidebar — untouched
-  ✓ Space add-content-sheet (already has "Add Studio") — untouched
-  ✓ Pathfinder goal creation — untouched
-  ✓ Pathfinder verification — untouched
-  ✓ All Prisma schemas — untouched (studioId on PathfinderGoal already exists)
+  ✓ Studio Editor component (studio-editor.tsx) - untouched
+  ✓ Studio Block Editor (studio-block-editor.tsx) - untouched
+  ✓ Studio AI Panel (studio-ai-panel.tsx) - untouched
+  ✓ All Studio database models - untouched
+  ✓ Space [slug] page - untouched
+  ✓ Space timeline - untouched
+  ✓ Space sidebar - untouched
+  ✓ Space add-content-sheet (already has "Add Studio") - untouched
+  ✓ Pathfinder goal creation - untouched
+  ✓ Pathfinder verification - untouched
+  ✓ All Prisma schemas - untouched (studioId on PathfinderGoal already exists)
 
 CHANGES NEEDED:
 ───────────────
-  1. PATHFINDER — daily-practice-view.tsx
+  1. PATHFINDER - daily-practice-view.tsx
      ADD: "📝 Notes" button in the header area
      BEHAVIOR: Opens linked Studio or creates one
 
-  2. PATHFINDER — subgoal-content-tabs.tsx
+  2. PATHFINDER - subgoal-content-tabs.tsx
      OPTION A (Simple): Add "Notes" as a new tab (Tab 1, default)
        → Merges Resources + Videos + Docs + Flashcards into one scrollable view
        → User notes section below (Studio block editor inline)
@@ -113,12 +113,12 @@ CHANGES NEEDED:
      RECOMMENDED: OPTION A (Unified Notes tab)
        → Current 7 tabs → 4 tabs: Notes | Quiz | Coding | Mock
 
-  3. NAVIGATION — navigation.ts
+  3. NAVIGATION - navigation.ts
      CHANGE: Move "Studio" from primary nav to secondary/tools
      OR: Rename to "My Notes" and reduce children
      OR: Remove entirely (studios accessible via Pathfinder/Space)
 
-  4. STUDIO DASHBOARD — studio/page.tsx
+  4. STUDIO DASHBOARD - studio/page.tsx
      CHANGE: Show studios with context badges
        → "📌 Linked to: Learn React (Pathfinder Goal)"
        → "📌 From Space: Master System Design"
@@ -193,7 +193,7 @@ PAGE MAP:
       │
       ├── Right Panel: SubGoalContentTabs [MODIFIED]
       │   │
-      │   ├── Tab 1: 📝 Notes [NEW — unified view]
+      │   ├── Tab 1: 📝 Notes [NEW - unified view]
       │   │   ├── AI-generated content (from SubGoalResources)
       │   │   │   ├── Summary (markdown)
       │   │   │   ├── Code Examples (read-only)
@@ -222,8 +222,8 @@ PAGE MAP:
 
 /space/[slug]
   └── page.tsx [UNCHANGED]
-      ├── SpaceTimeline — steps include STUDIO type [UNCHANGED]
-      └── SpaceSidebar — AI Chat | Quiz | Cards [UNCHANGED]
+      ├── SpaceTimeline - steps include STUDIO type [UNCHANGED]
+      └── SpaceSidebar - AI Chat | Quiz | Cards [UNCHANGED]
 
 /studio
   └── page.tsx [MODIFIED]
@@ -232,10 +232,10 @@ PAGE MAP:
           └── Add info: "Notes are created from goals or spaces"
 
 /studio/[slug]
-  └── page.tsx [UNCHANGED] — Full studio editor
+  └── page.tsx [UNCHANGED] - Full studio editor
       └── Accessed from: Pathfinder "Open Full Notes" or Space step click
 
-/studio/mystudios    [MODIFIED — add context badges]
+/studio/mystudios    [MODIFIED - add context badges]
 /studio/allstudios   [REMOVED or kept as "Templates"]
 /studio/category     [REMOVED or kept as "Templates"]
 
@@ -287,7 +287,7 @@ PAGE MAP:
   └─────────────────────────────────────┘
 
 ═══════════════════════════════════════════════════════════════════════════
-5B. "I WANT TO LEARN REACT" — FULL JOURNEY (PATHFINDER)
+5B. "I WANT TO LEARN REACT" - FULL JOURNEY (PATHFINDER)
 ═══════════════════════════════════════════════════════════════════════════
 
   ┌──────────────────────────┐
@@ -481,7 +481,7 @@ PAGE MAP:
 5D. SPACE CREATOR → ADDING STUDIO CONTENT
 ═══════════════════════════════════════════════════════════════════════════
 
-  (This flow ALREADY exists — no changes needed)
+  (This flow ALREADY exists - no changes needed)
 
   ┌───────────────────────────────────────┐
   │ Creator is on /space/[slug]           │
@@ -594,7 +594,7 @@ PAGE MAP:
 ================================================================================
 
 ═══════════════════════════════════════════════════════════════════════════
-6A. PATHFINDER DAILY PRACTICE VIEW — WITH NOTES TAB (NEW)
+6A. PATHFINDER DAILY PRACTICE VIEW - WITH NOTES TAB (NEW)
 ═══════════════════════════════════════════════════════════════════════════
 
   ┌─────────────────────────────────────────────────────────────────────────┐
@@ -685,7 +685,7 @@ PAGE MAP:
                 7. DATA FLOW DIAGRAMS
 ================================================================================
 
-PATHFINDER NOTES TAB — DATA SOURCES:
+PATHFINDER NOTES TAB - DATA SOURCES:
 ─────────────────────────────────────
 
   ┌─────────────────────┐
@@ -736,7 +736,7 @@ PATHFINDER NOTES TAB — DATA SOURCES:
   │ → UI updates inline   │
   └──────────────────────┘
 
-STUDIO CONTEXT BADGES — DATA QUERY:
+STUDIO CONTEXT BADGES - DATA QUERY:
 ────────────────────────────────────
 
   /studio page (My Notes) needs to show context:
@@ -762,7 +762,7 @@ STUDIO CONTEXT BADGES — DATA QUERY:
                 8. WHAT TO BUILD (PHASED IMPLEMENTATION)
 ================================================================================
 
-PHASE 1: PATHFINDER NOTES (3-4 days) — HIGHEST PRIORITY
+PHASE 1: PATHFINDER NOTES (3-4 days) - HIGHEST PRIORITY
 ────────────────────────────────────────────────────────
 
   Files to modify:
@@ -809,7 +809,7 @@ PHASE 2: NAVIGATION & STUDIO PAGE (1-2 days)
      - Add info text about where studios are created
 
   3. studio.action.ts
-     - Add: getMyStudiosWithContext() — returns studios with linked
+     - Add: getMyStudiosWithContext() - returns studios with linked
        PathfinderGoal title and Space title
 
 PHASE 3: ONBOARDING & HOME (1 day)
@@ -827,13 +827,13 @@ PHASE 4: CLEANUP (optional, later)
   3. Clean up create-studio-sheet.tsx (maybe limit creation contexts)
 
 ================================================================================
-                9. FAQ — CLEARING EVERY CONFUSION
+                9. FAQ - CLEARING EVERY CONFUSION
 ================================================================================
 
 Q: "Does Studio disappear?"
 A: NO. Studio as a PRODUCT disappears from the sidebar.
    Studio as a COMPONENT stays exactly the same.
-   StudioEditor, StudioBlockEditor, StudioAIPanel — all unchanged.
+   StudioEditor, StudioBlockEditor, StudioAIPanel - all unchanged.
    Users just access it differently (from goals/spaces, not standalone).
 
 Q: "What about existing studios that aren't linked to goals/spaces?"
@@ -897,11 +897,11 @@ A: No schema changes needed.
   │                                                                     │
   │  "Studio is your NOTEBOOK. Pathfinder is where you LEARN.          │
   │   Spaces are where you learn WITH OTHERS.                          │
-  │   Your notebook lives INSIDE your learning — not beside it."       │
+  │   Your notebook lives INSIDE your learning - not beside it."       │
   │                                                                     │
   └─────────────────────────────────────────────────────────────────────┘
 
-  NEXT STEP: Start Phase 1 — modify subgoal-content-tabs.tsx to create
+  NEXT STEP: Start Phase 1 - modify subgoal-content-tabs.tsx to create
   the unified Notes tab.
 
 ================================================================================

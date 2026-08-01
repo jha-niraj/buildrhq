@@ -8,7 +8,7 @@ export interface Author {
     role: string
     email: string
     bio: string
-    /** Path relative to /public, e.g. '/mainlogo.png' */
+    /** Path relative to /public, e.g. '/icon-512.png' */
     image: string
     sameAs: readonly string[]
     /**
@@ -25,7 +25,7 @@ export const AUTHORS: Record<AuthorKey, Author> = {
         name: 'Niraj Kumar Jha',
         role: `Founder & Lead Engineer, ${BRAND.name}`,
         email: BRAND.email,
-        image: '/mainlogo.png',
+        image: '/icon-512.png',
         bio: 'Building ShiprHQ - the engineering intelligence suite for CS students and working software engineers. Full-stack engineer across database architecture, AI systems, and frontend delivery, who has sat on both sides of the technical interview table. These guides come from what actually moves the needle for candidates, not from recycled interview advice.',
         sameAs: [
             'https://www.linkedin.com/in/nirajjha31/',

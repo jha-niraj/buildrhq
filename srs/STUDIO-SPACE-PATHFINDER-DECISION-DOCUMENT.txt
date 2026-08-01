@@ -1,6 +1,6 @@
 ================================================================================
- STUDIO vs SPACE vs PATHFINDER — COMPREHENSIVE DECISION DOCUMENT
- The ShiprHQ Platform — Deep Dive Analysis, Overlap & Recommendations
+ STUDIO vs SPACE vs PATHFINDER - COMPREHENSIVE DECISION DOCUMENT
+ The ShiprHQ Platform - Deep Dive Analysis, Overlap & Recommendations
 ================================================================================
 
 Document Created: February 15, 2026
@@ -15,9 +15,9 @@ Author: Generated from full codebase analysis.
 ================================================================================
 
 1. Executive Summary
-2. Feature #1: Studio — Deep Dive
-3. Feature #2: Space — Deep Dive
-4. Feature #3: Pathfinder — Deep Dive
+2. Feature #1: Studio - Deep Dive
+3. Feature #2: Space - Deep Dive
+4. Feature #3: Pathfinder - Deep Dive
 5. Overlap Matrix & Confusion Analysis
 6. User Journey Comparison
 7. Technical Integration Map
@@ -33,9 +33,9 @@ PROBLEM:
 --------
 All three features (Studio, Space, Pathfinder) serve learning/tracking use cases
 with overlapping capabilities. Users will struggle to answer:
-  • "I want to learn React — where do I start?"
-  • "I need to track my progress — which one?"
-  • "I want to create content — Studio or Space?"
+  • "I want to learn React - where do I start?"
+  • "I need to track my progress - which one?"
+  • "I want to create content - Studio or Space?"
 
 CORE FINDINGS:
 --------------
@@ -62,9 +62,9 @@ MERGE: Studio → into Pathfinder & Spaces as an embedded component, not standal
 
 RATIONALE:
 ----------
-1. Pathfinder = "I want to learn X" — clear, goal-driven, gamified.
-2. Spaces = "Follow this course" or "Create a course" — collaborative, social.
-3. Studio = "Take notes while learning" — should be a TOOL inside both, not a destination.
+1. Pathfinder = "I want to learn X" - clear, goal-driven, gamified.
+2. Spaces = "Follow this course" or "Create a course" - collaborative, social.
+3. Studio = "Take notes while learning" - should be a TOOL inside both, not a destination.
 
 ================================================================================
                     2. FEATURE #1: STUDIO
@@ -74,11 +74,11 @@ LOCATION: apps/main/app/(main)/studio
 
 ROUTES:
 -------
-• /studio              — Dashboard: "Your Recent Studios"
-• /studio/mystudios    — My Studios
-• /studio/allstudios   — All Studios
-• /studio/[slug]       — Studio Editor (notebook + AI panel)
-• /studio/category/[slug] — Category browse
+• /studio              - Dashboard: "Your Recent Studios"
+• /studio/mystudios    - My Studios
+• /studio/allstudios   - All Studios
+• /studio/[slug]       - Studio Editor (notebook + AI panel)
+• /studio/category/[slug] - Category browse
 
 DESCRIPTION:
 -----------
@@ -88,11 +88,11 @@ flashcards, and code blocks.
 
 KEY FILES:
 ----------
-• studio/[slug]/page.tsx          — Loads StudioEditor
-• components/studio/studio-editor.tsx — Main editor: blocks + AI panel
-• components/studio/studio-block-editor.tsx — Block-based content
-• components/studio/studio-ai-panel.tsx — Right-side AI chat
-• _components/create-studio-sheet.tsx — Creation flow
+• studio/[slug]/page.tsx          - Loads StudioEditor
+• components/studio/studio-editor.tsx - Main editor: blocks + AI panel
+• components/studio/studio-block-editor.tsx - Block-based content
+• components/studio/studio-ai-panel.tsx - Right-side AI chat
+• _components/create-studio-sheet.tsx - Creation flow
 
 CONTENT TYPES (Block Editor):
 -----------------------------
@@ -108,7 +108,7 @@ CONTENT TYPES (Block Editor):
 FEATURES:
 ---------
 ✓ Block-based rich editor
-✓ AI chat panel (StudioAIPanel) — context-aware, persists chat history
+✓ AI chat panel (StudioAIPanel) - context-aware, persists chat history
 ✓ Quizzes, flashcards, code blocks inline
 ✓ Categories (PROGRAMMING, WEB_DEVELOPMENT, DSA, etc.)
 ✓ Visibility: PRIVATE, PUBLIC, COMMUNITY
@@ -128,7 +128,7 @@ WHAT STUDIO LACKS:
 ✗ No verification/assessment
 ✗ No collaboration
 ✗ No structured learning path
-✗ Isolated — user must manually create everything
+✗ Isolated - user must manually create everything
 
 HOME PAGE PRESENCE:
 ------------------
@@ -147,13 +147,13 @@ LOCATION: apps/main/app/(main)/space
 
 ROUTES:
 -------
-• /space              — Dashboard: My Spaces + Joined Spaces
-• /space/myspaces     — My Spaces
-• /space/allspaces    — All Spaces
-• /space/[slug]       — Space detail: Timeline + Sidebar
-• /space/[slug]/settings — Settings
-• /space/[slug]/analytics — Analytics
-• /space/category/[slug] — Category browse
+• /space              - Dashboard: My Spaces + Joined Spaces
+• /space/myspaces     - My Spaces
+• /space/allspaces    - All Spaces
+• /space/[slug]       - Space detail: Timeline + Sidebar
+• /space/[slug]/settings - Settings
+• /space/[slug]/analytics - Analytics
+• /space/category/[slug] - Category browse
 
 DESCRIPTION:
 -----------
@@ -163,11 +163,11 @@ with real-time visibility of member progress.
 
 KEY FILES:
 ----------
-• space/[slug]/page.tsx — Two-column: SpaceTimeline + SpaceSidebar
-• _components/space-timeline.tsx — Steps list/flow, AddContentSheet
-• _components/space-sidebar.tsx — AI Chat, Quiz, Flashcards tabs
-• _components/space-step-card.tsx — Step with complete/review
-• _components/add-content-sheet.tsx — Add Project, Studio, Quiz, Flashcard, Link, Video
+• space/[slug]/page.tsx - Two-column: SpaceTimeline + SpaceSidebar
+• _components/space-timeline.tsx - Steps list/flow, AddContentSheet
+• _components/space-sidebar.tsx - AI Chat, Quiz, Flashcards tabs
+• _components/space-step-card.tsx - Step with complete/review
+• _components/add-content-sheet.tsx - Add Project, Studio, Quiz, Flashcard, Link, Video
 
 CONTENT TYPES (Space Steps):
 ----------------------------
@@ -185,7 +185,7 @@ FEATURES:
 ---------
 ✓ Timeline/roadmap of sequential steps
 ✓ Flow view (canvas) + List view (traditional)
-✓ Member system — join/leave, track progress
+✓ Member system - join/leave, track progress
 ✓ Progress tracking per user
 ✓ AI Sidebar: Chat, Quiz, Flashcards (inline with timeline)
 ✓ Add content: Projects, Studios, Quizzes, Flashcards, Links, Videos
@@ -198,14 +198,14 @@ FEATURES:
 SPACE SIDEBAR:
 --------------
 Three tabs: AI Chat | Quiz | Cards (Flashcards)
-• AI Chat — context about space, generic chatWithAI
-• Quiz — Click step from timeline → take quiz inline
-• Cards — Click step from timeline → study flashcards inline
+• AI Chat - context about space, generic chatWithAI
+• Quiz - Click step from timeline → take quiz inline
+• Cards - Click step from timeline → study flashcards inline
 
 STEP COMPLETION:
 ----------------
 • completeStep() marks step done
-• Steps can link to Projects, Studio, Learns — user is redirected there
+• Steps can link to Projects, Studio, Learns - user is redirected there
 • Return URL: ?returnTo=space&spaceId=...&stepId=...
 
 WHAT SPACE LACKS:
@@ -231,11 +231,11 @@ LOCATION: apps/main/app/(main)/(launchpads)/pathfinder
 
 ROUTES:
 -------
-• /pathfinder              — Dashboard: Goals, Groups, Stats
-• /pathfinder/[slug]      — Goal detail: Daily Practice View
-• /pathfinder/[slug]/verify — Verification (quiz, coding, project, mock)
-• /pathfinder/explore     — Browse public goals, copy to workspace
-• /pathfinder/explore/[slug] — Goal preview
+• /pathfinder              - Dashboard: Goals, Groups, Stats
+• /pathfinder/[slug]      - Goal detail: Daily Practice View
+• /pathfinder/[slug]/verify - Verification (quiz, coding, project, mock)
+• /pathfinder/explore     - Browse public goals, copy to workspace
+• /pathfinder/explore/[slug] - Goal preview
 
 DESCRIPTION:
 -----------
@@ -245,14 +245,14 @@ coding. Tracks progress, streaks, and offers verification.
 
 KEY FILES:
 ----------
-• pathfinder/page.tsx — PathfinderDashboard
-• _components/pathfinder-dashboard.tsx — Goals list, groups, stats
-• _components/create-goal-sheet.tsx — Goal creation (category, level, focus)
-• [slug]/_components/daily-practice-view.tsx — Sub-goals list + Quiz/Coding
-• [slug]/_components/subgoal-content-tabs.tsx — Resources, Quiz, Coding tabs
-• [slug]/_components/subgoal-quiz.tsx — Quiz component
-• [slug]/_components/subgoal-coding.tsx — Coding component
-• [slug]/verify/_components/verification-page-client.tsx — Verification flow
+• pathfinder/page.tsx - PathfinderDashboard
+• _components/pathfinder-dashboard.tsx - Goals list, groups, stats
+• _components/create-goal-sheet.tsx - Goal creation (category, level, focus)
+• [slug]/_components/daily-practice-view.tsx - Sub-goals list + Quiz/Coding
+• [slug]/_components/subgoal-content-tabs.tsx - Resources, Quiz, Coding tabs
+• [slug]/_components/subgoal-quiz.tsx - Quiz component
+• [slug]/_components/subgoal-coding.tsx - Coding component
+• [slug]/verify/_components/verification-page-client.tsx - Verification flow
 
 GOAL CREATION:
 --------------
@@ -266,7 +266,7 @@ GOAL CREATION:
 
 DAILY PRACTICE:
 ---------------
-• Sub-goals (tasks) — user adds via CreateSubGoalSheet
+• Sub-goals (tasks) - user adds via CreateSubGoalSheet
 • AI generates: Quiz questions, Coding problem, Resources (links, videos)
 • Each sub-goal: Quiz tab + Coding tab (if hasCoding) + Resources
 • Progress: completedSubGoals, quizScore, codingPassed
@@ -278,24 +278,24 @@ VERIFICATION:
 • Coding verification
 • Project verification
 • Mock interview verification
-• generateVerificationContent() — AI creates verification plan
+• generateVerificationContent() - AI creates verification plan
 • PathfinderVerification model stores status
 
 ORGANIZATION:
 -------------
-• Groups (CreateGroupSheet) — color, emoji
+• Groups (CreateGroupSheet) - color, emoji
 • Assign goals to groups
 • Ungrouped goals section
 
 CREATOR ECONOMY:
 ----------------
 • Public goals → others can copy (Explore page)
-• CreatorEarningsSheet — earnings for popular goals
-• PathfinderUsageWidget — usage stats
+• CreatorEarningsSheet - earnings for popular goals
+• PathfinderUsageWidget - usage stats
 
 EXISTING LINK TO STUDIO:
 ------------------------
-PathfinderGoal has studioId (nullable) — goals CAN link to a Studio.
+PathfinderGoal has studioId (nullable) - goals CAN link to a Studio.
 Currently underused in UI.
 
 WHAT PATHFINDER LACKS:
@@ -307,7 +307,7 @@ WHAT PATHFINDER LACKS:
 
 HOME PAGE PRESENCE:
 ------------------
-• PathfinderGoalsCard — active goals, progress
+• PathfinderGoalsCard - active goals, progress
 
 NAVIGATION:
 -----------
@@ -382,7 +382,7 @@ STUDIO JOURNEY:
 4. Opens editor, adds blocks (text, quiz, flashcards, code)
 5. Uses AI panel for help
 6. Can share publicly or keep private
-7. No completion tracking — user decides when "done"
+7. No completion tracking - user decides when "done"
 
 SPACE JOURNEY (Learner):
 ------------------------
@@ -420,25 +420,25 @@ PATHFINDER JOURNEY:
 STUDIO ↔ SPACE:
 ---------------
 • Space can add Studio as a step (SpaceStepContentType.STUDIO)
-• addStudioToSpace() — adds studio to space timeline
+• addStudioToSpace() - adds studio to space timeline
 • Clicking step redirects to /studio/[contentId]?returnTo=space&spaceId=...&stepId=...
 
 STUDIO ↔ PATHFINDER:
 --------------------
-• PathfinderGoal.studioId exists in schema — underused
+• PathfinderGoal.studioId exists in schema - underused
 • No UI to "Open notes" or create studio from goal
 
 SPACE ↔ PATHFINDER:
 -------------------
 • No direct integration
-• Both can have quizzes, coding — different sources (Space: creator, Pathfinder: AI)
+• Both can have quizzes, coding - different sources (Space: creator, Pathfinder: AI)
 
 SHARED COMPONENTS:
 ------------------
-• Quiz component (Quiz) — used in Space sidebar, Pathfinder SubGoalQuiz
-• Flashcard — StudioFlashcardBlock used in Space sidebar, Pathfinder SubGoalContentTabs
-• Code editor — used in Pathfinder SubGoalCoding
-• chatWithAI — used in Space sidebar, Studio has StudioAIPanel (different impl)
+• Quiz component (Quiz) - used in Space sidebar, Pathfinder SubGoalQuiz
+• Flashcard - StudioFlashcardBlock used in Space sidebar, Pathfinder SubGoalContentTabs
+• Code editor - used in Pathfinder SubGoalCoding
+• chatWithAI - used in Space sidebar, Studio has StudioAIPanel (different impl)
 
 ================================================================================
                     8. RECOMMENDATIONS
@@ -447,7 +447,7 @@ SHARED COMPONENTS:
 OPTION A: KEEP ALL THREE (NOT RECOMMENDED)
 ------------------------------------------
 Requires strong differentiation:
-• Studio = "Personal notes only" — strip quizzes/coding, make it pure notebook
+• Studio = "Personal notes only" - strip quizzes/coding, make it pure notebook
 • Pathfinder = "Goals + practice"
 • Spaces = "Courses"
 
@@ -467,13 +467,13 @@ HOW:
    • User takes notes while doing quizzes/coding
    • Context: notes are FOR this goal
 
-2. Space step type STUDIO — already exists
+2. Space step type STUDIO - already exists
    • Creator adds Studio as step
    • Learner clicks → opens Studio
    • Keep as-is
 
 3. Remove standalone Studio from primary navigation
-   • /studio becomes "My Studios" — list of studios linked to goals/spaces
+   • /studio becomes "My Studios" - list of studios linked to goals/spaces
    • Remove "Create Studio" from main nav
    • Create studio ONLY from: Pathfinder goal, Space add-content
 
@@ -481,14 +481,14 @@ BENEFITS:
 ---------
 • Clear user decision: Pathfinder (personal) vs Spaces (collaborative)
 • Notes become contextual, not a separate product
-• No feature loss — all Studio functionality preserved
+• No feature loss - all Studio functionality preserved
 • Simpler mental model
 
 --------------------------------------------------------------------------------
 
 OPTION C: MERGE PATHFINDER INTO SPACES (ALTERNATIVE)
 -----------------------------------------------------
-Make Pathfinder = "Personal Space" — a space you create for yourself.
+Make Pathfinder = "Personal Space" - a space you create for yourself.
 • Spaces: Personal | Collaborative
 • AI generates content for personal spaces
 
@@ -515,7 +515,7 @@ NOT RECOMMENDED.
 
 IF IMPLEMENTING OPTION B (Merge Studio into Pathfinder & Spaces):
 
-PHASE 1: Pathfinder + Studio (2–3 days)
+PHASE 1: Pathfinder + Studio (2-3 days)
 ---------------------------------------
 1. In Pathfinder goal detail (DailyPracticeView), add "Notes" or "Open Notes" button
 2. On click:
@@ -530,7 +530,7 @@ PHASE 2: Spaces + Studio (already done)
 • addStudioToSpace works
 • No change needed
 
-PHASE 3: Studio Access & Nav (1–2 days)
+PHASE 3: Studio Access & Nav (1-2 days)
 ---------------------------------------
 1. /studio page:
    • Rename to "My Studios" or "Studios"
@@ -546,8 +546,8 @@ PHASE 3: Studio Access & Nav (1–2 days)
 PHASE 4: Onboarding & Messaging (1 day)
 ---------------------------------------
 1. Update onboarding:
-   • "Set goals with Pathfinder — track progress, take notes"
-   • "Join or create Spaces — learn with others"
+   • "Set goals with Pathfinder - track progress, take notes"
+   • "Join or create Spaces - learn with others"
 2. Remove Studio as primary feature in marketing
 
 PHASE 5: Continue Learning (optional)
@@ -616,7 +616,7 @@ ACTIONS:
 --------
 apps/main/actions/(main)/studios/studio.action.ts
 apps/main/actions/(main)/space/space.action.ts, step.action.ts, content.action.ts
-apps/main/actions/(main)/pathfinder/ — index, subgoals, verification, etc.
+apps/main/actions/(main)/pathfinder/ - index, subgoals, verification, etc.
 
 ================================================================================
                         END OF DOCUMENT

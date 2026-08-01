@@ -62,7 +62,7 @@ export type TxClient = Parameters<Parameters<NeonDatabase<typeof schema>["transa
 /**
  * Run `fn` inside a real database transaction.
  *
- * Drop-in for the old `db.transaction(async (tx) => { … })` — the `tx` handed to
+ * Drop-in for the old `db.transaction(async (tx) => { … })` - the `tx` handed to
  * the callback exposes the same drizzle query builder against the same schema, so
  * existing bodies work unchanged.
  *

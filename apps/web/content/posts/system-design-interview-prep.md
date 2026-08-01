@@ -1,12 +1,12 @@
 System design interviews are the final boss of the software engineering hiring process. They are open-ended, ambiguous, and impossible to pass without deliberate preparation. Unlike coding interviews where a correct solution exists, system design interviews are evaluated on your thinking process, your knowledge of trade-offs, and your ability to communicate technical decisions under pressure.
 
-This guide gives you the complete roadmap — from the fundamentals you need to understand to the exact week-by-week study plan used by engineers who have cracked systems design at FAANG and top-tier companies.
+This guide gives you the complete roadmap - from the fundamentals you need to understand to the exact week-by-week study plan used by engineers who have cracked systems design at FAANG and top-tier companies.
 
 ## Why Most System Design Prep Fails
 
 The most common mistake developers make is reading about system design without practicing it. They finish an entire book, feel confident, walk into an interview, and freeze when asked "Design Twitter."
 
-Knowing theory is not the same as being able to apply it under time pressure while explaining your reasoning out loud to a skeptical interviewer. The gap between "I understand how distributed systems work" and "I can design a scalable notification system in 45 minutes" is enormous — and it only closes through repeated practice.
+Knowing theory is not the same as being able to apply it under time pressure while explaining your reasoning out loud to a skeptical interviewer. The gap between "I understand how distributed systems work" and "I can design a scalable notification system in 45 minutes" is enormous - and it only closes through repeated practice.
 
 The second most common mistake is starting too advanced. Developers jump straight to "Design YouTube at Google scale" when they cannot yet explain why you would use a message queue instead of a direct API call. Build the fundamentals first.
 
@@ -14,16 +14,16 @@ The second most common mistake is starting too advanced. Developers jump straigh
 
 Most system design interviews at FAANG-level companies follow this structure:
 
-1. **Requirements gathering** (5 minutes) — You ask clarifying questions to scope the problem
-2. **High-level design** (15 minutes) — You sketch the major components and data flow
-3. **Deep dives** (20 minutes) — The interviewer probes specific components in detail
-4. **Wrap-up** (5 minutes) — Trade-offs, failure modes, and what you would do differently
+1. **Requirements gathering** (5 minutes) - You ask clarifying questions to scope the problem
+2. **High-level design** (15 minutes) - You sketch the major components and data flow
+3. **Deep dives** (20 minutes) - The interviewer probes specific components in detail
+4. **Wrap-up** (5 minutes) - Trade-offs, failure modes, and what you would do differently
 
 Interviewers are looking for four things: **breadth** (do you know what components exist), **depth** (can you explain how they work), **trade-offs** (can you reason about choices), and **communication** (can you explain your thinking clearly).
 
 The goal of this roadmap is to build all four.
 
-## Phase 1: Foundational Concepts (Weeks 1–2)
+## Phase 1: Foundational Concepts (Weeks 1-2)
 
 Before you can design systems, you need to understand the building blocks. These are the concepts you must be able to explain from memory:
 
@@ -38,7 +38,7 @@ A load balancer distributes traffic across multiple servers. Know the difference
 **Caching**
 Caching is the most impactful optimization in most system designs. Know where caches sit (client, CDN, application, database). Know cache invalidation strategies (TTL, write-through, write-behind, cache-aside). Know what cache eviction policies are (LRU, LFU). Know Redis vs Memcached trade-offs.
 
-![System design components: load balancer, cache, database — architecture diagram](/og/blog/system-design-inline-1.webp)
+![System design components: load balancer, cache, database - architecture diagram](/og/blog/system-design-inline-1.webp)
 
 **Database Fundamentals**
 Know when to use SQL vs NoSQL. The short answer: SQL for structured relational data with ACID requirements, NoSQL for scale, flexibility, or specific access patterns. Know what database sharding, replication, and read replicas mean. Understand eventual consistency vs strong consistency and when each is acceptable.
@@ -51,7 +51,7 @@ You need to understand HTTP/HTTPS, TCP vs UDP (hint: TCP for reliability, UDP fo
 
 Understand the difference between blob storage (S3, Cloudflare R2) and databases. Know what a message queue does and why you use Kafka or RabbitMQ instead of direct service-to-service calls. Know what a search index is (Elasticsearch) and why you do not just use `LIKE` queries in your database.
 
-## Phase 2: Core System Design Patterns (Weeks 3–4)
+## Phase 2: Core System Design Patterns (Weeks 3-4)
 
 With fundamentals solid, move to the patterns that appear in 90% of system design interviews.
 
@@ -82,7 +82,7 @@ Notification systems cover message queues, push notification services (APNs, FCM
 
 This problem teaches you one of the most important distributed systems lessons: at-least-once delivery is the default, and your system must handle duplicate messages gracefully.
 
-## Phase 3: Deep Dives (Weeks 5–6)
+## Phase 3: Deep Dives (Weeks 5-6)
 
 Once you know the common patterns, you need depth in these six areas:
 
@@ -91,12 +91,12 @@ Once you know the common patterns, you need depth in these six areas:
 Beyond SQL vs NoSQL: understand B-tree indexes and why they make reads fast but writes slower. Understand write-ahead logging (WAL) and how it enables crash recovery. Understand MVCC (Multi-Version Concurrency Control) and how databases handle concurrent reads and writes without locking.
 
 Know specific databases by use case:
-- **Postgres/MySQL** — relational, ACID, general purpose
-- **MongoDB** — document store, flexible schema, horizontal scaling
-- **DynamoDB** — key-value + document, massive scale, AWS-native
-- **Cassandra** — wide-column, write-optimized, tunable consistency
-- **Redis** — in-memory, caching, session storage, pub/sub
-- **Elasticsearch** — full-text search, log aggregation
+- **Postgres/MySQL** - relational, ACID, general purpose
+- **MongoDB** - document store, flexible schema, horizontal scaling
+- **DynamoDB** - key-value + document, massive scale, AWS-native
+- **Cassandra** - wide-column, write-optimized, tunable consistency
+- **Redis** - in-memory, caching, session storage, pub/sub
+- **Elasticsearch** - full-text search, log aggregation
 
 ### Caching Deep Dive
 
@@ -108,7 +108,7 @@ Understand Content Delivery Networks deeply. A CDN is just a geographically dist
 
 Understand why you use a message queue instead of direct service calls. The short answer: decoupling and resilience. If Service B is down when Service A tries to call it, the request fails. If Service A publishes to a queue, Service B processes it when it comes back up.
 
-Know Kafka vs RabbitMQ at a conceptual level. Kafka is a distributed log — messages are retained and can be replayed. RabbitMQ is a traditional message broker — messages are consumed and deleted. Kafka is better for event streaming and audit logs. RabbitMQ is better for task queues and work distribution.
+Know Kafka vs RabbitMQ at a conceptual level. Kafka is a distributed log - messages are retained and can be replayed. RabbitMQ is a traditional message broker - messages are consumed and deleted. Kafka is better for event streaming and audit logs. RabbitMQ is better for task queues and work distribution.
 
 ![Kafka message queue architecture: producers, topics, partitions, consumers](/og/blog/system-design-inline-2.webp)
 
@@ -116,9 +116,9 @@ Know Kafka vs RabbitMQ at a conceptual level. Kafka is a distributed log — mes
 
 This is the heart of distributed systems theory. The CAP theorem states that a distributed system can guarantee only two of three: Consistency, Availability, and Partition Tolerance. Since partition tolerance is not optional in real networks, you are always choosing between consistency and availability.
 
-Know what eventual consistency means in practice. If you post a tweet and your follower in another region does not see it for 2 seconds, that is eventual consistency — acceptable. If you transfer money and your balance does not update immediately, that is also eventual consistency — not acceptable.
+Know what eventual consistency means in practice. If you post a tweet and your follower in another region does not see it for 2 seconds, that is eventual consistency - acceptable. If you transfer money and your balance does not update immediately, that is also eventual consistency - not acceptable.
 
-## Phase 4: Practice Problems and Mock Interviews (Weeks 7–12)
+## Phase 4: Practice Problems and Mock Interviews (Weeks 7-12)
 
 The final phase is the most important: repetition and feedback.
 
@@ -160,11 +160,11 @@ The protocol that works:
 4. Interviewer asks follow-up questions to probe for depth
 5. Spend 10 minutes debrief after: what did the candidate do well, what did they miss
 
-ShiprHQ's mock interview platform includes structured system design practice sessions with AI feedback on your architecture decisions, communication clarity, and coverage of edge cases. Practice with AI before practicing with humans — the feedback loop is much faster.
+ShiprHQ's mock interview platform includes structured system design practice sessions with AI feedback on your architecture decisions, communication clarity, and coverage of edge cases. Practice with AI before practicing with humans - the feedback loop is much faster.
 
 ### Building the Mental Framework
 
-Experienced system designers do not memorize solutions — they apply a framework. When you walk into a system design interview, this is the mental checklist:
+Experienced system designers do not memorize solutions - they apply a framework. When you walk into a system design interview, this is the mental checklist:
 
 **Step 1: Clarify requirements**
 - Functional: what does the system do?
@@ -188,25 +188,25 @@ What happens if your database goes down? What happens if your cache fails? What 
 Not all system design resources are equal. Here is what actually moves the needle:
 
 **Free:**
-- [The System Design Primer](https://github.com/donnemartin/system-design-primer) — the most comprehensive free resource, and the de facto standard reference
-- [ByteByteGo's newsletter](https://blog.bytebytego.com/) (free tier) — excellent visual explanations
-- [High Scalability](https://highscalability.com/) — real-world architecture case studies
-- Company engineering blogs — [Netflix](https://netflixtechblog.com/), [Uber](https://www.uber.com/en-US/blog/engineering/) and [Discord](https://discord.com/category/engineering) all publish detailed write-ups of the exact systems you get asked to design
-- [Designing Data-Intensive Applications](https://dataintensive.net/) — the book, if you want the theory properly rather than the interview version
+- [The System Design Primer](https://github.com/donnemartin/system-design-primer) - the most comprehensive free resource, and the de facto standard reference
+- [ByteByteGo's newsletter](https://blog.bytebytego.com/) (free tier) - excellent visual explanations
+- [High Scalability](https://highscalability.com/) - real-world architecture case studies
+- Company engineering blogs - [Netflix](https://netflixtechblog.com/), [Uber](https://www.uber.com/en-US/blog/engineering/) and [Discord](https://discord.com/category/engineering) all publish detailed write-ups of the exact systems you get asked to design
+- [Designing Data-Intensive Applications](https://dataintensive.net/) - the book, if you want the theory properly rather than the interview version
 
 **Paid (worth it if you can afford it):**
-- ByteByteGo course — visual, well-structured, regularly updated
-- Grokking the System Design Interview (Educative) — best for beginners, lots of practice problems
+- ByteByteGo course - visual, well-structured, regularly updated
+- Grokking the System Design Interview (Educative) - best for beginners, lots of practice problems
 
 **Avoid:** anything that has you memorize "the answer" to common problems without explaining the reasoning. The interviewer can always ask a follow-up that breaks a memorized answer.
 
 ## Timeline Reality Check
 
-If you have zero system design knowledge: this roadmap takes 3 months of consistent 1–2 hours per day.
+If you have zero system design knowledge: this roadmap takes 3 months of consistent 1-2 hours per day.
 
-If you have some backend experience: 6–8 weeks of focused preparation.
+If you have some backend experience: 6-8 weeks of focused preparation.
 
-If you are already working as a backend engineer: 2–4 weeks to fill gaps and practice the interview format specifically.
+If you are already working as a backend engineer: 2-4 weeks to fill gaps and practice the interview format specifically.
 
 System design cannot be crammed. The concepts need time to settle. Start now, even if your interviews are months away. Use ShiprHQ's AI mock interviews to get a structured learning path with checkpoints that keep you on track.
 

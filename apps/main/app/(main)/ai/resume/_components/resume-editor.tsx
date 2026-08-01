@@ -143,7 +143,7 @@ function ProjectsSection({ items, onChange }: { items: ResumeProjectEntry[]; onC
                         className="text-xs h-20 resize-none"
                         value={p.bullets.join('\n')}
                         onChange={e => update(p.id, { bullets: e.target.value.split('\n') })}
-                        placeholder="• Built with React, Node.js — 500+ daily active users"
+                        placeholder="• Built with React, Node.js - 500+ daily active users"
                     />
                 </div>
             ))}
@@ -365,8 +365,8 @@ function LivePreview({ content, templateSlug }: { content: ResumeDraftContent; t
                     {experience.map(e => (
                         <div key={e.id} style={{ marginBottom: 8 }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span style={{ fontWeight: 600, color: '#111827' }}>{e.role} — {e.company}</span>
-                                <span style={{ color: '#94a3b8' }}>{e.startDate?.split('T')[0]} – {e.current ? 'Present' : e.endDate?.split('T')[0]}</span>
+                                <span style={{ fontWeight: 600, color: '#111827' }}>{e.role} - {e.company}</span>
+                                <span style={{ color: '#94a3b8' }}>{e.startDate?.split('T')[0]} - {e.current ? 'Present' : e.endDate?.split('T')[0]}</span>
                             </div>
                             {e.bullets.filter(Boolean).map((b, i) => <p key={i} style={{ paddingLeft: 12, color: '#374151', marginTop: 1 }}>• {b}</p>)}
                         </div>
@@ -405,7 +405,7 @@ function LivePreview({ content, templateSlug }: { content: ResumeDraftContent; t
                     {education.map(e => (
                         <div key={e.id} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
                             <span style={{ fontWeight: 600, color: '#111827' }}>{e.degree ? `${e.degree}, ${e.institution}` : e.institution}</span>
-                            <span style={{ color: '#94a3b8' }}>{e.startDate?.split('T')[0]} – {e.endDate?.split('T')[0]}</span>
+                            <span style={{ color: '#94a3b8' }}>{e.startDate?.split('T')[0]} - {e.endDate?.split('T')[0]}</span>
                         </div>
                     ))}
                 </div>

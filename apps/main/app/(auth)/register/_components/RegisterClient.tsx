@@ -93,7 +93,7 @@ function SignUpForm() {
 
     // ── Step 1: create the account ────────────────────────────────────────────
     // better-auth creates the (unverified) user and the emailOTP plugin mails the
-    // code from the same request, so we can switch to the OTP step right away —
+    // code from the same request, so we can switch to the OTP step right away -
     // no /verify page, no password parked in sessionStorage.
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -158,7 +158,7 @@ function SignUpForm() {
                 // Credit the referrer / log the signup now that a session exists.
                 await finalizeSignup(referralCode);
 
-                toast.success("Email verified — let's set up your profile");
+                toast.success("Email verified - let's set up your profile");
                 const ssoCallback = sessionStorage.getItem("sso_callback");
                 sessionStorage.removeItem("sso_callback");
                 router.push(ssoCallback || "/onboarding");
@@ -223,7 +223,7 @@ function SignUpForm() {
 
     // ── Sign up with a magic link (no password) ───────────────────────────────
     // A clicked link proves the address, so better-auth creates the account already
-    // verified — no OTP step needed. `newUserCallbackURL` routes a brand-new account
+    // verified - no OTP step needed. `newUserCallbackURL` routes a brand-new account
     // to onboarding while an existing one goes straight into the app.
     const handleMagicSignUp = async (e?: React.FormEvent<HTMLFormElement>) => {
         e?.preventDefault();
@@ -258,7 +258,7 @@ function SignUpForm() {
     // ── Social ─────────────────────────────────────────────────────────────────
     // better-auth knows whether the OAuth callback just created the account or
     // matched an existing one, so `newUserCallbackURL` routes first-timers to
-    // setup and returning users straight into the app — no guessing client-side.
+    // setup and returning users straight into the app - no guessing client-side.
     // Middleware re-checks `onboardingCompleted` for anyone who bailed mid-setup.
     const handleGoogleSignUp = async () => {
         try {
@@ -515,7 +515,7 @@ function SignUpForm() {
                                         </div>
                                     </div>
 
-                                    {/* Passwordless sign-up. Not inside the <form> submit path — it
+                                    {/* Passwordless sign-up. Not inside the <form> submit path - it
                                         only needs the email field, so it must not be blocked by the
                                         password rules or the terms checkbox validation above. */}
                                     <Button
@@ -543,7 +543,7 @@ function SignUpForm() {
                                sign-in magic panel exactly: the email box IS the form,
                                so there is nothing to fill in "above" first. The old
                                version was a button under the full form that refused
-                               to work and told you to go back and type your email —
+                               to work and told you to go back and type your email -
                                an error for a step the UI had not asked for yet. */
                             <motion.div
                                 key="magic"

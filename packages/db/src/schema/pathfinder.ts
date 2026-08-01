@@ -206,7 +206,7 @@ export const pathfinderSubGoals = pgTable(
         isContentLoaded: boolean("is_content_loaded").notNull().default(false),
         aiCodingProblem: jsonb("ai_coding_problem"),
         hasCoding: boolean("has_coding").notNull().default(false),
-        // studioId is a soft FK to Studio (defined in studio.ts) — no .references() to avoid circular imports
+        // studioId is a soft FK to Studio (defined in studio.ts) - no .references() to avoid circular imports
         studioId: text("studio_id").unique(),
         quizCompleted: boolean("quiz_completed").notNull().default(false),
         quizScore: integer("quiz_score"),

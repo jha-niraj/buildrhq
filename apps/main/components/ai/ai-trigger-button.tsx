@@ -5,7 +5,7 @@ import { cn } from "@repo/ui/lib/utils";
 import { useAIPanelStore } from "@/app/store/aiPanelStore";
 
 /**
- * Floating launcher for the AI panel. Hides itself while the panel is open —
+ * Floating launcher for the AI panel. Hides itself while the panel is open -
  * the panel has its own close button, so a second control in the same corner
  * would just be a target the panel is already covering.
  */

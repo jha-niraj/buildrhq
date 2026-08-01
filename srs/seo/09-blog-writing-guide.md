@@ -1,7 +1,7 @@
-# Blog Writing Guide — How to Write Posts That Rank and Convert
+# Blog Writing Guide - How to Write Posts That Rank and Convert
 
 > This is not a generic "write quality content" guide. It documents the specific voice,
-> structure, and techniques used on getcreatr.com — ready to apply to any project.
+> structure, and techniques used on getcreatr.com - ready to apply to any project.
 
 ---
 
@@ -28,7 +28,7 @@ The getcreatr essays follow a specific voice that has been deliberately develope
 - ✅ "You open an AI builder. Thirty seconds later, something appears."
 
 **Short paragraphs, one idea each**
-- Maximum 3–4 sentences per paragraph
+- Maximum 3-4 sentences per paragraph
 - If you can break a paragraph in two, break it
 - Short sentences mixed with occasional longer ones for rhythm
 
@@ -36,7 +36,7 @@ The getcreatr essays follow a specific voice that has been deliberately develope
 - ❌ "many users" / "some founders" / "a significant percentage"
 - ✅ "36 out of every 100 prompts" / "One developer burned $1,000+ on tokens" / "8% email open rate vs 70% WhatsApp"
 
-**No AI tells** — these phrases must be deleted on sight:
+**No AI tells** - these phrases must be deleted on sight:
 - "In today's rapidly evolving landscape"
 - "It's worth noting that"
 - "In this article, we'll explore"
@@ -51,36 +51,36 @@ The getcreatr essays follow a specific voice that has been deliberately develope
 ## Structure: The getcreatr Post Template
 
 ```
-1. OPENER (no heading) — Start with a specific moment, quote, contradiction, or hard fact
+1. OPENER (no heading) - Start with a specific moment, quote, contradiction, or hard fact
    - NOT a definition of the topic
    - NOT "In this post we'll cover..."
    - NOT a question designed to make you feel understood
    
-2. SECTION 1 — The thing everyone experiences (with a name)
+2. SECTION 1 - The thing everyone experiences (with a name)
    - Opens with a specific scenario, not a general statement
    - Uses a blockquote for the single most important data point
    
-3. SECTION 2 — Why this is happening (the real diagnosis)
+3. SECTION 2 - Why this is happening (the real diagnosis)
    - Goes deeper than the surface explanation
    - Includes the structural/technical reason, explained in plain English
    - Cites at least one external stat or source
 
-4. SECTION 3 — Real proof (case study or example)
+4. SECTION 3 - Real proof (case study or example)
    - A specific client, a specific build, specific details
    - What was discovered, what it changed, what the outcome was
-   - No bullet lists — narrative prose
+   - No bullet lists - narrative prose
 
-5. SECTION 4 — The broader context (why every alternative has this problem too)
-   - Fair to competitors — explains their product decision honestly
+5. SECTION 4 - The broader context (why every alternative has this problem too)
+   - Fair to competitors - explains their product decision honestly
    - Not "they're bad" but "they made a tradeoff, here's what it costs you"
 
-6. SECTION 5 — What doing it right looks like
+6. SECTION 5 - What doing it right looks like
    - Concrete and specific
    - Not "requirements are important" but "for a CRM, you answer these specific questions"
 
-7. CLOSER — Practical and honest
+7. CLOSER - Practical and honest
    - What the reader should do now
-   - One CTA to your product — natural, not forced
+   - One CTA to your product - natural, not forced
    - No "I hope this was helpful" / No summary of what you just said
 ```
 
@@ -116,19 +116,19 @@ So you [obvious action]. [Short result].
 
 ## Using Evidence and Stats
 
-Every post should include at least 2–3 external data points. Rules for using them:
+Every post should include at least 2-3 external data points. Rules for using them:
 
-1. **Only cite real sources** — never make up numbers, never round dramatically
-2. **Contextualize the number** — don't just drop a stat, explain what it means
-3. **Prefer specific over general** — "36 out of 100 prompts" reads better than "36% of prompts"
-4. **Link the source** — inline link to the original research
-5. **Weave into narrative** — don't list stats at the end, embed them where they support the argument
+1. **Only cite real sources** - never make up numbers, never round dramatically
+2. **Contextualize the number** - don't just drop a stat, explain what it means
+3. **Prefer specific over general** - "36 out of 100 prompts" reads better than "36% of prompts"
+4. **Link the source** - inline link to the original research
+5. **Weave into narrative** - don't list stats at the end, embed them where they support the argument
 
 **Good stat usage:**
 ```
 One in three prompts is recovery, not progress. A separate study found that over 80% of 
 rework in software projects traces back to requirements that weren't defined before 
-building started. That number isn't new — it comes from decades of traditional software 
+building started. That number isn't new - it comes from decades of traditional software 
 development research. What's new is that nobody's applied it to AI builders yet.
 ```
 
@@ -148,7 +148,7 @@ This is the section that separates your content from everything else that ranks.
 
 1. Name the client (or describe them specifically enough to be real)
 2. State the problem they came in with
-3. Describe what the requirements process revealed — specific, concrete details
+3. Describe what the requirements process revealed - specific, concrete details
 4. State the outcome with specific numbers or timeframes
 
 **Example of doing it right:**
@@ -156,7 +156,7 @@ This is the section that separates your content from everything else that ranks.
 When a jewelry trade client came to Creatr, they came in knowing they needed a CRM. 
 Everything else was a conversation. Here's what came out that wouldn't have come from 
 a prompt box: pipeline stage and contact source were completely different concerns. 
-One describes where a deal is sitting. The other describes how it got there — trade show, 
+One describes where a deal is sitting. The other describes how it got there - trade show, 
 referral, cold outreach. Their sales director had been trying to answer one question for 
 two years: which shows generate leads that close? With those two fields merged, that 
 question was unanswerable. With them separated, it's a five-second filter.
@@ -172,7 +172,7 @@ question was unanswerable. With them separated, it's a five-second filter.
 
 ## Writing for AI Overviews and GEO (Generative Engine Optimization)
 
-ChatGPT, Perplexity, and Google AI Overviews now answer questions directly. Getting cited by AI is valuable — it builds brand presence without requiring a click.
+ChatGPT, Perplexity, and Google AI Overviews now answer questions directly. Getting cited by AI is valuable - it builds brand presence without requiring a click.
 
 **What AI systems pull from your content:**
 - Clear, structured answers to specific questions
@@ -187,8 +187,8 @@ ChatGPT, Perplexity, and Google AI Overviews now answer questions directly. Gett
 
 Before writing a single prompt, answer these five questions:
 
-1. **Who uses this?** List every user type and what they can do. Not "users" — specifically who.
-2. **What are the core actions?** The 3–5 things the system absolutely must handle.
+1. **Who uses this?** List every user type and what they can do. Not "users" - specifically who.
+2. **What are the core actions?** The 3-5 things the system absolutely must handle.
 3. **Where does data live?** Shared across the whole business, or isolated per customer?
 4. **What triggers automation?** A date, a status change, a manual click, an inbound message?
 5. **What does "working" look like?** At the end of week one, what specifically is happening?
@@ -201,8 +201,8 @@ AI systems will extract and cite these kinds of structured answers for "question
 ## Internal Linking Strategy
 
 Every post should have:
-- **2 links to related posts** — linked with descriptive anchor text
-- **1 link to a relevant product page** — naturally placed, not forced
+- **2 links to related posts** - linked with descriptive anchor text
+- **1 link to a relevant product page** - naturally placed, not forced
 
 **How to choose anchor text:**
 - ❌ "click here" / "read more" / "learn more"
@@ -236,7 +236,7 @@ Technical:
 
 After Publishing:
 [ ] Request indexing in GSC
-[ ] Share on 1–2 channels where your buyers hang out
+[ ] Share on 1-2 channels where your buyers hang out
 [ ] Add internal links from 2 existing posts to this one
 ```
 
@@ -263,11 +263,11 @@ After Publishing:
 
 ## Updating Old Posts
 
-After 6 months, go back to posts that are ranking 8–20 and improve them:
+After 6 months, go back to posts that are ranking 8-20 and improve them:
 
 1. Add one new real example or case study
 2. Update any stats that have newer versions
-3. Add 2–3 new subsections if competitors have published more depth
+3. Add 2-3 new subsections if competitors have published more depth
 4. Update the `dateModified` in sections.ts
 5. Request re-indexing in GSC
 

@@ -1,8 +1,8 @@
 /**
  * The artwork on the brand panel of an auth screen.
  *
- * Each motif depicts something the product actually does — a contribution grid,
- * a commit graph, a one-time code being entered, a candidate funnel — and each
+ * Each motif depicts something the product actually does - a contribution grid,
+ * a commit graph, a one-time code being entered, a candidate funnel - and each
  * is matched to the screen it sits on, so the panel explains rather than
  * decorates. The previous set (orbits, constellations) was abstract pattern: it
  * looked like a screensaver and told a developer nothing.
@@ -16,14 +16,14 @@
  *  2. Animated with CSS keyframes (the `av-*` rules in styles/globals.css), NOT
  *     framer-motion. A motion `initial -> animate` one-shot restarts on every
  *     React re-render, and the theme toggle re-renders synchronously (flushSync,
- *     inside startViewTransition) — which is why the artwork used to replay its
+ *     inside startViewTransition) - which is why the artwork used to replay its
  *     draw-in whenever the theme was switched.
  *
  *  3. Everything lives inside the 360×300 viewBox with a comfortable margin.
  *     The old orbit motif ran its rings past the edge and got clipped by the
  *     panel, which read as broken rather than as a crop.
  *
- * Not a client component: no state, no effects, no handlers — it renders on the
+ * Not a client component: no state, no effects, no handlers - it renders on the
  * server and ships no JS.
  */
 
@@ -50,7 +50,7 @@ function Contributions() {
     const x0 = 26
     const y0 = 74
     // A fixed pseudo-random density so the grid looks like real activity rather
-    // than a uniform block — deterministic, so server and client agree.
+    // than a uniform block - deterministic, so server and client agree.
     const level = (c: number, r: number) => ((c * 7 + r * 13 + ((c * r) % 5)) % 10) / 10
 
     return (
@@ -77,7 +77,7 @@ function Contributions() {
                     )
                 }),
             )}
-            {/* Day labels, as on the real thing — they anchor the grid as a calendar. */}
+            {/* Day labels, as on the real thing - they anchor the grid as a calendar. */}
             {["M", "W", "F"].map((t, i) => (
                 <text key={t} x={14} y={y0 + 10 + i * 2 * (cell + gap)} fill="currentColor" fillOpacity={0.3}
                     fontSize={9} fontFamily="ui-monospace, monospace">{t}</text>

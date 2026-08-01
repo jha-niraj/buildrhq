@@ -8,7 +8,7 @@ export default function VoiceLayout({
 }) {
     return (
         <div className="flex flex-col min-h-screen bg-white dark:bg-neutral-950">
-            {/* Top nav — same on all screen sizes */}
+            {/* Top nav - same on all screen sizes */}
             <Suspense fallback={<div className="h-14 border-b border-neutral-200 dark:border-neutral-800" />}>
                 <VoiceSidebar />
             </Suspense>

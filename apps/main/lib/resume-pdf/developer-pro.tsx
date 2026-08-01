@@ -87,7 +87,7 @@ export function DeveloperProTemplate({ content }: { content: ResumeDraftContent 
                                 <View key={e.id} style={{ marginBottom: 6 }}>
                                     <Text style={{ ...styles.sText, fontFamily: 'Helvetica-Bold' }}>{e.institution}</Text>
                                     {e.degree && <Text style={styles.sContact}>{e.degree}</Text>}
-                                    <Text style={styles.sContact}>{fmt(e.startDate)} – {fmt(e.endDate)}</Text>
+                                    <Text style={styles.sContact}>{fmt(e.startDate)} - {fmt(e.endDate)}</Text>
                                 </View>
                             ))}
                         </>
@@ -111,7 +111,7 @@ export function DeveloperProTemplate({ content }: { content: ResumeDraftContent 
                                 <View key={e.id} style={{ marginBottom: 8 }}>
                                     <View style={styles.row}>
                                         <Text style={styles.bold}>{e.role}</Text>
-                                        <Text style={styles.muted}>{fmt(e.startDate)} – {e.current ? 'Present' : fmt(e.endDate)}</Text>
+                                        <Text style={styles.muted}>{fmt(e.startDate)} - {e.current ? 'Present' : fmt(e.endDate)}</Text>
                                     </View>
                                     <Text style={{ color: ACCENT, marginBottom: 2 }}>{e.company}</Text>
                                     {e.bullets.map((b, i) => <MBullet key={i} text={b} />)}

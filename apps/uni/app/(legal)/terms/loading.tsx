@@ -1,5 +1,5 @@
 // Legal/long-form prose: a card grid would be wrong here, so this mirrors the
-// actual shape — a title block followed by paragraph runs.
+// actual shape - a title block followed by paragraph runs.
 import { SkeletonPage, Shimmer } from "@repo/ui/components/skeleton-kit";
 
 export default function Loading() {

@@ -29,7 +29,7 @@ const bricolage = Bricolage_Grotesque({
 	weight: ["200", "300", "400", "500", "600", "700", "800"],
 	display: "swap",
 	// Registered as --font-display, which globals.css maps to the `font-display`
-	// utility — so every h1/h2 and the sidebar pick it up without each app
+	// utility - so every h1/h2 and the sidebar pick it up without each app
 	// restating the stack.
 	variable: "--font-display",
 });
@@ -82,15 +82,6 @@ export const metadata: Metadata = {
 		images: ["/hiring-og.png"],
 		creator: "@shiprhq",
 	},
-	icons: {
-		icon: [
-			{ url: "/favicon.ico", sizes: "any" },
-			{ url: "/hiring-logo.png", type: "image/png", sizes: "512x512" },
-		],
-		apple: [
-			{ url: "/hiring-logo.png", sizes: "180x180", type: "image/png" },
-		],
-	},
 	robots: {
 		index: true,
 		follow: true,
@@ -122,10 +113,12 @@ export default function RootLayout({
 						// NOT disableTransitionOnChange: that injects `* { transition: none !important }`
 						// around the class swap, which cancels the colour crossfade that
 						// packages/ui/src/lib/theme-transition.ts installs for the switch. With it
-						// on, the theme snapped between states instead of animating — the flicker.
+						// on, the theme snapped between states instead of animating - the flicker.
 					>
 						{children}
-						<SonnerToaster position="top-center" closeButton richColors />
+						{/* Position, close button and styling are the shared defaults in
+						    @repo/ui - deliberately not set per app, so all five stay in sync. */}
+						<SonnerToaster />
 					</ThemeProvider>
 				</Providers>
 			</body>

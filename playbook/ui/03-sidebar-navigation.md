@@ -45,7 +45,7 @@
             </div>
         )}
     </Link>
-    {/* Collapse toggle — pill button pinned to right edge */}
+    {/* Collapse toggle - pill button pinned to right edge */}
     <button className="absolute top-1/2 -right-3 z-50 hidden -translate-y-1/2
                        rounded-full border border-neutral-200 bg-white p-1 shadow-lg
                        transition-colors hover:bg-neutral-100
@@ -63,7 +63,7 @@
 ### Active item (current page)
 ```
 bg-black text-white           (light)
-bg-black text-white           (dark — same, works on dark bg)
+bg-black text-white           (dark - same, works on dark bg)
 ```
 
 ### Inactive item (default)
@@ -128,7 +128,7 @@ Rendered above a group of nav items. Hidden when sidebar is collapsed.
     )}
 </button>
 
-// Children — animated reveal
+// Children - animated reveal
 <AnimatePresence>
     {isExpanded && !isCollapsed && (
         <motion.div
@@ -170,7 +170,7 @@ Child items use `text-xs` and `h-4 w-4` icon (smaller than parent's `text-sm` / 
         )}
     </button>
 
-    {/* Flyout dropdown — appears to the right of sidebar */}
+    {/* Flyout dropdown - appears to the right of sidebar */}
     {profileDropdownOpen && (
         <div className="absolute left-full ml-1 bottom-0 z-50 w-64
                         overflow-hidden rounded-lg border border-neutral-200 bg-white
@@ -183,7 +183,7 @@ Child items use `text-xs` and `h-4 w-4` icon (smaller than parent's `text-sm` / 
 </div>
 ```
 
-Dropdown appears via `left-full ml-1` — positioned to the right of the sidebar, not below.
+Dropdown appears via `left-full ml-1` - positioned to the right of the sidebar, not below.
 
 ---
 

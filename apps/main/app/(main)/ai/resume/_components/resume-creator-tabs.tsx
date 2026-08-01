@@ -108,7 +108,7 @@ export function ResumeCreatorTabs({ defaultTab = "experience", onSaved: _onSaved
         )
     }
 
-    // Was `${window.location.origin}/resume/${username}` — no such route; the
+    // Was `${window.location.origin}/resume/${username}` - no such route; the
     // published resume lives at /ai/resume/[username]. See lib/urls.ts.
     const shareUrl = profile.username ? publicResumeUrl(profile.username) : null
 

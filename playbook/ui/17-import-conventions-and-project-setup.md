@@ -109,7 +109,7 @@ import {
 ## Fonts
 
 ```tsx
-// For nav links (Barlow — bolder, geometric)
+// For nav links (Barlow - bolder, geometric)
 import { Barlow } from "next/font/google"
 const barlow = Barlow({ subsets: ["latin"], weight: ["500", "600", "700"] })
 ```
@@ -147,12 +147,12 @@ cn("bg-white", "dark:bg-neutral-950", someCondition ? "p-4" : "p-2")
 All shadcn components accept a `className` prop for overrides. Always extend, never override the entire component:
 
 ```tsx
-// Good — add custom classes on top of defaults
+// Good - add custom classes on top of defaults
 <Button className="h-11 rounded-xl bg-orange-500 hover:bg-orange-600">
     Submit
 </Button>
 
-// Good — extend Input with custom height and border
+// Good - extend Input with custom height and border
 <Input className="h-11 rounded-xl border-neutral-200 dark:border-neutral-800" />
 ```
 

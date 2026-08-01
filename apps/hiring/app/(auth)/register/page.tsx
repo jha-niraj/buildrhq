@@ -94,7 +94,7 @@ function SignUpForm() {
             // sign-in, so an email+password account could be registered and
             // verified and then never sign in. That route also silently dropped
             // `companyName`/`founderRole` (it only destructured name/email/
-            // password), which is why they are not passed here either — onboarding
+            // password), which is why they are not passed here either - onboarding
             // is where those are actually collected and persisted.
             const normalisedEmail = email.trim().toLowerCase();
             const { error } = await signUp.email({
@@ -195,7 +195,7 @@ function SignUpForm() {
                                 &quot;Reduced our hiring cycle from 6 weeks to 2 weeks. The candidate vetting is exceptional.&quot;
                             </p>
                             <p className="text-neutral-500 mt-3 text-sm font-mono">
-                                — Engineering Lead, Series B Startup
+                                - Engineering Lead, Series B Startup
                             </p>
                         </div>
                     </motion.div>

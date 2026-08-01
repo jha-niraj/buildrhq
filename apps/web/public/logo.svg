@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <!-- Transparent, currentColor: inherits the surrounding text colour so one
+       file works black-on-light and white-on-dark. -->
+  <g fill="currentColor">
+    <rect x="91" y="327" width="94" height="94" rx="15"/>
+    <rect x="209" y="327" width="94" height="94" rx="15"/>
+    <rect x="327" y="327" width="94" height="94" rx="15"/>
+    <rect x="209" y="209" width="94" height="94" rx="15"/>
+    <rect x="327" y="209" width="94" height="94" rx="15"/>
+    <rect x="327" y="91" width="94" height="94" rx="15"/>
+  </g>
+</svg>

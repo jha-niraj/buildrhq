@@ -12,7 +12,7 @@ interface CommentComposerProps {
     onCancel?: () => void
     placeholder?: string
     submitLabel?: string
-    /** Pre-fills the box — used by the edit flow. */
+    /** Pre-fills the box - used by the edit flow. */
     initialValue?: string
     autoFocus?: boolean
     compact?: boolean
@@ -54,7 +54,7 @@ export function CommentComposer({
         setSubmitting(true)
         try {
             await onSubmit(trimmed)
-            // Only clear on success — a rejected comment keeps the user's text so
+            // Only clear on success - a rejected comment keeps the user's text so
             // they can fix it rather than retype it.
             setValue("")
         } finally {
@@ -73,7 +73,7 @@ export function CommentComposer({
         }
     }
 
-    // Only warn near the ceiling — a counter on an empty box is noise.
+    // Only warn near the ceiling - a counter on an empty box is noise.
     const showCounter = trimmed.length > COMMENT_MAX_LENGTH - 200
 
     return (
