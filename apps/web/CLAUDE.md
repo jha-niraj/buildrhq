@@ -2,7 +2,7 @@
 
 The public marketing + content site (`shiprhq.com`). Next.js 16 + React 19 + Tailwind 4,
 sharing the `@repo/ui` design system with the app. Deployed to **Cloudflare Workers** via
-`@opennextjs/cloudflare`. Port **4100**.
+`@opennextjs/cloudflare`. Port **6005**.
 
 The authenticated product (auth, dashboard, AI tools, practice, projects, checkout) lives in
 `apps/main` at `app.shiprhq.com`. This app and that app are deliberately separate deploys.

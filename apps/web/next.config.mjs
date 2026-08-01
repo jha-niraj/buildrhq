@@ -10,7 +10,7 @@
 // open-next.config.ts). That is why the security/cache headers live HERE and not in
 // public/_headers - `_headers` is a Cloudflare *Pages* feature and is silently ignored by
 // a Workers deploy, so headers declared there would never actually be sent.
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:4101";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:6001";
 
 // Paths owned by the app, not the marketing site.
 const APP_PATHS = [

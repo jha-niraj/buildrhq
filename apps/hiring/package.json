@@ -4,9 +4,9 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --port 3002",
+		"dev": "next dev --port 6004",
 		"build": "next build",
-		"start": "next start --port 3002",
+		"start": "next start --port 6004",
 		"lint": "eslint --max-warnings 0",
 		"check-types": "next typegen && tsc --noEmit",
 		"deploy:build": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build",

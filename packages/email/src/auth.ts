@@ -43,7 +43,7 @@ function appUrl(): string {
 		process.env.NEXTAUTH_URL ||
 		// Matches apps/main's dev port; :4101 (the old value) is not served by
 		// anything in this repo, so links in local emails pointed nowhere.
-		"http://localhost:3004"
+		"http://localhost:6001"
 	);
 }
 

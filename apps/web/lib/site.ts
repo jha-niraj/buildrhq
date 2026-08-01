@@ -17,7 +17,7 @@ export const SITE = (
  * a logged-in user lives behind this origin.
  */
 export const APP_URL = (
-    process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:4101"
+    process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:6001"
 ).replace(/\/$/, "");
 
 /** Canonical CTA destinations on the app. Keep every "Get started"/"Sign in" here. */

@@ -51,7 +51,7 @@ const apiRoutes = [
     '/api/user/verify-status',
 ]
 
-export default async function proxy(req: NextRequest) {
+export default async function middleware(req: NextRequest) {
     const { nextUrl } = req
 
     // Allow API routes to pass through

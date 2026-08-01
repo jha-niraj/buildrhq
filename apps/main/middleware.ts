@@ -76,7 +76,7 @@ const apiRoutes = [
 
 const PRODUCTION_ORIGIN = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.shiprhq.com'
 
-export default async function proxy(req: NextRequest) {
+export default async function middleware(req: NextRequest) {
 	const { nextUrl } = req
 	const pathname = nextUrl.pathname
 

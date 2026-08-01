@@ -16,7 +16,7 @@ function appUrl(): string {
     return (
         process.env.NEXT_PUBLIC_HIRING_URL ||
         process.env.NEXTAUTH_URL ||
-        "http://localhost:3002"
+        "http://localhost:6004"
     );
 }
 

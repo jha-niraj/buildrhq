@@ -102,7 +102,7 @@ export async function inviteTeamMember(payload: InviteTeamMemberPayload) {
             expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
         })
 
-        const inviteUrl = `${process.env.NEXT_PUBLIC_HIRING_URL || "http://localhost:3002"}/invite?code=${inviteCode}`
+        const inviteUrl = `${process.env.NEXT_PUBLIC_HIRING_URL || "http://localhost:6004"}/invite?code=${inviteCode}`
         try {
             await sendHiringEmail({
                 email: payload.email,
@@ -336,7 +336,7 @@ export async function resendInvitation(invitationId: string) {
             .set({ expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) })
             .where(eq(memberInvitations.id, invitationId))
 
-        const inviteUrl = `${process.env.NEXT_PUBLIC_HIRING_URL || "http://localhost:3002"}/invite?code=${invitation.inviteCode}`
+        const inviteUrl = `${process.env.NEXT_PUBLIC_HIRING_URL || "http://localhost:6004"}/invite?code=${invitation.inviteCode}`
         try {
             await sendHiringEmail({
                 email: invitation.email,

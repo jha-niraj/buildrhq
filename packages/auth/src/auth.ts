@@ -40,7 +40,7 @@ const APP_URL =
     process.env.NEXT_PUBLIC_APP_URL ||
     process.env.NEXT_PUBLIC_BASE_URL ||
     process.env.BETTER_AUTH_URL ||
-    "http://localhost:3004";
+    "http://localhost:6001";
 
 export const auth = betterAuth({
     database: drizzleAdapter(db as unknown as Parameters<typeof drizzleAdapter>[0], {
@@ -226,11 +226,11 @@ export const auth = betterAuth({
     // A machine without a populated .env would have failed CSRF checks on the
     // wrong origins with no obvious cause.
     trustedOrigins: [
-        process.env.NEXT_PUBLIC_WEB_URL || "http://localhost:4100",
-        process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3004",
-        process.env.NEXT_PUBLIC_UNI_URL || "http://localhost:3003",
-        process.env.NEXT_PUBLIC_HIRING_URL || "http://localhost:3002",
-        process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:3005",
+        process.env.NEXT_PUBLIC_WEB_URL || "http://localhost:6005",
+        process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:6001",
+        process.env.NEXT_PUBLIC_UNI_URL || "http://localhost:6003",
+        process.env.NEXT_PUBLIC_HIRING_URL || "http://localhost:6004",
+        process.env.NEXT_PUBLIC_ADMIN_URL || "http://localhost:6002",
     ].filter(Boolean) as string[],
 });
 
