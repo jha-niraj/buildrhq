@@ -4,12 +4,12 @@ import { Metadata } from "next";
 
 // Canonical origin for this deploy. Overridable per environment so preview
 // builds emit their own absolute URLs instead of the production ones.
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://hiring.buildrhq.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://hiring.shiprhq.com'
 
 export const metadata: Metadata = {
 	title: {
-		default: "BuildrHQ",
-		template: "%s | BuildrHQ"
+		default: "ShiprHQ",
+		template: "%s | ShiprHQ"
 	},
 	description: "The Engineering Intelligence Platform for Computer Science Students",
 	keywords: ["Learn", "Build Projects", "Computer Science", "Programming", "Coding", "Developer", "Tech Community", "Coding Resources", "Tech Articles", "Coding Tutorials"],
@@ -24,24 +24,24 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en_US",
 		url: BASE_URL,
-		siteName: "BuildrHQ",
-		title: "BuildrHQ - The Engineering Intelligence Platform for Computer Science Students",
+		siteName: "ShiprHQ",
+		title: "ShiprHQ - The Engineering Intelligence Platform for Computer Science Students",
 		description: "The Engineering Intelligence Platform for Computer Science Students",
 		images: [
 			{
 				url: "/mainlogo.jpeg",
 				width: 1024,
 				height: 1024,
-				alt: "BuildrHQ - The Engineering Intelligence Platform for Computer Science Students",
+				alt: "ShiprHQ - The Engineering Intelligence Platform for Computer Science Students",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "BuildrHQ - The Engineering Intelligence Platform for Computer Science Students",
+		title: "ShiprHQ - The Engineering Intelligence Platform for Computer Science Students",
 		description: "The Engineering Intelligence Platform for Computer Science Students",
 		images: ["/mainlogo.jpeg"],
-		creator: "@buildrhq",
+		creator: "@shiprhq",
 	},
 	icons: {
 		icon: [

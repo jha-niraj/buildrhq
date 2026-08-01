@@ -1,4 +1,4 @@
-// ProjectV2 Types for BuildrHQ Platform
+// ProjectV2 Types for ShiprHQ Platform
 // This file contains all type definitions for the ProjectV2 system
 
 import {

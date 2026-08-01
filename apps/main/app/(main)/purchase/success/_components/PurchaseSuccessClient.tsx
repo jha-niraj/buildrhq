@@ -47,7 +47,7 @@ export default function PaymentSuccessPage() {
 	const handleDownloadReceipt = () => {
 		// Create a simple text receipt
 		const receiptText = `
-BuildrHQ - Payment Receipt
+ShiprHQ - Payment Receipt
 
 Payment ID: ${paymentData.paymentId}
 Credits Purchased: ${paymentData.credits}
@@ -223,7 +223,7 @@ Thank you for your purchase!
 					className="mt-8 text-center"
 				>
 					<p className="text-sm text-neutral-600 dark:text-neutral-400">
-						Need help? <Link href="mailto:support@buildrhq.com" className="text-neutral-800 dark:text-neutral-100 hover:underline">Contact Support</Link>
+						Need help? <Link href="mailto:support@shiprhq.com" className="text-neutral-800 dark:text-neutral-100 hover:underline">Contact Support</Link>
 					</p>
 				</motion.div>
 			</div>

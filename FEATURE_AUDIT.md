@@ -1,4 +1,4 @@
-# BuildrHQ — Feature Audit: Keep, Cut, Decide
+# ShiprHQ — Feature Audit: Keep, Cut, Decide
 
 > Goal: cut the clutter so the product is one sharp thing — **Learn → Build → Get
 > Hired for developers** — and you can focus. Every feature below is judged on one

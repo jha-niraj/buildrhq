@@ -30,7 +30,7 @@ export function appOrigin(): string {
     // supported mode. Prefer the live origin over the production guess, since a
     // link that works locally beats one that points at the wrong host entirely.
     if (typeof window !== "undefined") return window.location.origin;
-    return "https://app.buildrhq.com";
+    return "https://app.shiprhq.com";
 }
 
 /** Absolute url for an app-relative path. */

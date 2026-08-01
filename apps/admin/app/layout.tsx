@@ -7,7 +7,7 @@ import { Providers } from "./providers";
 
 // Canonical origin for this deploy. Overridable per environment so preview
 // builds emit their own absolute URLs instead of the production ones.
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://admin.buildrhq.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://admin.shiprhq.com'
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -36,8 +36,8 @@ const bricolage = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
 	title: {
-		default: "BuildrHQ Admin",
-		template: "%s | BuildrHQ Admin"
+		default: "ShiprHQ Admin",
+		template: "%s | ShiprHQ Admin"
 	},
 	description: "The Engineering Intelligence Platform for Computer Science Students",
 	keywords: ["Learn", "Build Projects", "Computer Science", "Programming", "Coding", "Developer", "Tech Community", "Coding Resources", "Tech Articles", "Coding Tutorials"],
@@ -52,24 +52,24 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en_US",
 		url: BASE_URL,
-		siteName: "BuildrHQ Admin",
-		title: "BuildrHQ - The Engineering Intelligence Platform for Computer Science Students",
+		siteName: "ShiprHQ Admin",
+		title: "ShiprHQ - The Engineering Intelligence Platform for Computer Science Students",
 		description: "The Engineering Intelligence Platform for Computer Science Students",
 		images: [
 			{
 				url: "/mainlogo.jpeg",
 				width: 1024,
 				height: 1024,
-				alt: "BuildrHQ Admin - The Engineering Intelligence Platform for Computer Science Students",
+				alt: "ShiprHQ Admin - The Engineering Intelligence Platform for Computer Science Students",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "BuildrHQ Admin - The Engineering Intelligence Platform for Computer Science Students",
+		title: "ShiprHQ Admin - The Engineering Intelligence Platform for Computer Science Students",
 		description: "The Engineering Intelligence Platform for Computer Science Students",
 		images: ["/mainlogo.jpeg"],
-		creator: "@buildrhq",
+		creator: "@shiprhq",
 	},
 	icons: {
 		icon: [
@@ -104,7 +104,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<body className={`
 				${spaceGrotesk.className} ${bricolage.variable} ${geistSans.variable} ${geistMono.variable} antialiased 
 			`}>

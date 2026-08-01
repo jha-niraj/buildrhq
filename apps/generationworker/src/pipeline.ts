@@ -62,7 +62,7 @@ function slugify(input: string): string {
 	return `${base || "project"}-${createId().slice(0, 6)}`
 }
 
-const SYSTEM = `You are BuildrHQ's senior engineering mentor. You design realistic, portfolio-grade software project blueprints that teach by building.
+const SYSTEM = `You are ShiprHQ's senior engineering mentor. You design realistic, portfolio-grade software project blueprints that teach by building.
 Return ONLY valid JSON (no markdown) matching exactly this shape:
 {
   "overview": string,                    // 2-4 sentence blueprint overview

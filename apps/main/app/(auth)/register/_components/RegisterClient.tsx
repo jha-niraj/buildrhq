@@ -20,7 +20,7 @@ import { AuthShell } from "../../_components/auth-shell";
 
 const RESEND_COOLDOWN_SECONDS = 30;
 
-type Phase = "details" | "otp";
+type Phase = "details" | "magic" | "otp";
 
 function SignUpForm() {
     const [phase, setPhase] = useState<Phase>("details");
@@ -69,6 +69,10 @@ function SignUpForm() {
         setHasSpecial(/[!@#$%^&*(),.?":{}|<>]/.test(password));
         setHasMinLength(password.length >= 8);
     }, [password]);
+
+    // Same predicate sign-in uses, so the two magic panels accept exactly the
+    // same set of addresses.
+    const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 
     // Resend cooldown ticker
     useEffect(() => {
@@ -221,10 +225,11 @@ function SignUpForm() {
     // A clicked link proves the address, so better-auth creates the account already
     // verified — no OTP step needed. `newUserCallbackURL` routes a brand-new account
     // to onboarding while an existing one goes straight into the app.
-    const handleMagicSignUp = async () => {
+    const handleMagicSignUp = async (e?: React.FormEvent<HTMLFormElement>) => {
+        e?.preventDefault();
         const trimmed = email.trim().toLowerCase();
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
-            setError("Enter your email address above first, then tap this.");
+        if (!emailIsValid) {
+            setError("Enter a valid email address.");
             return;
         }
         setIsMagicLoading(true);
@@ -308,10 +313,10 @@ function SignUpForm() {
                                 </div>
 
                                 {referralCode && (
-                                    <div className="mb-6 p-4 bg-gradient-to-r from-neutral-900/10 to-neutral-900/10 border border-neutral-900/20 rounded-xl">
+                                    <div className="mb-6 p-4 bg-gradient-to-r from-neutral-900/10 to-neutral-900/10 border border-neutral-900/20 dark:border-white/20 rounded-xl">
                                         <div className="flex items-center gap-3">
                                             <div className="p-2 bg-neutral-900/20 rounded-lg">
-                                                <Gift className="h-5 w-5 text-neutral-900" />
+                                                <Gift className="h-5 w-5 text-neutral-900 dark:text-white" />
                                             </div>
                                             <div>
                                                 <p className="text-sm font-medium dark:text-white">
@@ -465,11 +470,11 @@ function SignUpForm() {
                                             className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed cursor-pointer"
                                         >
                                             I agree to the{" "}
-                                            <Link href="/termsofservice" className="text-neutral-900 hover:underline">
+                                            <Link href="/termsofservice" className="text-neutral-900 dark:text-white hover:underline">
                                                 Terms of Service
                                             </Link>{" "}
                                             and{" "}
-                                            <Link href="/privacypolicy" className="text-neutral-900 hover:underline">
+                                            <Link href="/privacypolicy" className="text-neutral-900 dark:text-white hover:underline">
                                                 Privacy Policy
                                             </Link>
                                         </Label>
@@ -504,19 +509,99 @@ function SignUpForm() {
                                     <Button
                                         type="button"
                                         variant="outline"
-                                        onClick={handleMagicSignUp}
-                                        disabled={isMagicLoading || magicSent}
-                                        className="w-full h-12 gap-2 border-neutral-900/30 font-medium text-neutral-800 transition-colors hover:border-neutral-900/60 hover:bg-neutral-900/5 hover:text-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-200/10"
+                                        onClick={() => { setError(""); setMagicSent(false); setPhase("magic"); }}
+                                        className="w-full h-12 gap-2 border-neutral-900/30 dark:border-white/25 font-medium text-neutral-800 transition-colors hover:border-neutral-900/60 dark:hover:border-white/50 hover:bg-neutral-900/5 dark:hover:bg-white/5 hover:text-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-200/10"
                                     >
-                                        {isMagicLoading ? (
-                                            <><Loader2 className="h-4 w-4 animate-spin" />Sending link…</>
-                                        ) : magicSent ? (
-                                            <><MailCheck className="h-4 w-4" />Link sent — check your inbox</>
-                                        ) : (
-                                            <><Wand2 className="h-4 w-4" />Sign up without a password</>
-                                        )}
+                                        <Wand2 className="h-4 w-4" />
+                                        Sign up without a password
                                     </Button>
                                 </form>
+                                <p className="mt-8 text-center text-zinc-500 dark:text-zinc-400">
+                                    Already have an account?{" "}
+                                    <Link
+                                        href="/signin"
+                                        className="font-semibold text-neutral-900 underline-offset-4 hover:underline dark:text-white"
+                                    >
+                                        Sign in
+                                    </Link>
+                                </p>
+                            </motion.div>
+                        ) : phase === "magic" ? (
+                            /* Passwordless sign-up gets its own panel, mirroring the
+                               sign-in magic panel exactly: the email box IS the form,
+                               so there is nothing to fill in "above" first. The old
+                               version was a button under the full form that refused
+                               to work and told you to go back and type your email —
+                               an error for a step the UI had not asked for yet. */
+                            <motion.div
+                                key="magic"
+                                initial={{ opacity: 0, x: -16 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -16 }}
+                                transition={{ duration: 0.25 }}
+                            >
+                                <div className="text-center mb-8">
+                                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-neutral-900/20 bg-neutral-900/10 dark:border-white/20 dark:bg-white/10">
+                                        <Wand2 className="h-7 w-7 text-neutral-900 dark:text-white" />
+                                    </div>
+                                    <h2 className="text-2xl font-bold dark:text-white">Sign up without a password</h2>
+                                    <p className="mt-2 text-zinc-500 dark:text-zinc-400">
+                                        We&apos;ll email you a link that creates your account and signs you in.
+                                    </p>
+                                </div>
+
+                                {error && (
+                                    <div className="mb-6 rounded-xl border border-red-500/20 bg-red-500/10 p-4">
+                                        <p className="text-center text-sm text-red-500">{error}</p>
+                                    </div>
+                                )}
+
+                                <form onSubmit={handleMagicSignUp} className="space-y-4" noValidate>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="magic-email" className="text-sm font-medium dark:text-zinc-300">
+                                            Email
+                                        </Label>
+                                        <Input
+                                            id="magic-email"
+                                            type="email"
+                                            autoFocus
+                                            autoComplete="email"
+                                            placeholder="you@example.com"
+                                            value={email}
+                                            onChange={(e) => { setEmail(e.target.value); setMagicSent(false); }}
+                                            required
+                                            className="h-12 dark:bg-zinc-800 dark:border-zinc-700 dark:focus:border-neutral-200"
+                                        />
+                                    </div>
+
+                                    {magicSent && (
+                                        <div className="rounded-lg border border-neutral-900/20 bg-neutral-900/5 p-3 text-sm text-neutral-700 dark:border-white/20 dark:bg-white/5 dark:text-neutral-300">
+                                            Link sent. Open it on this device and your account will be created and
+                                            signed in automatically. It expires in 10 minutes.
+                                        </div>
+                                    )}
+
+                                    <Button
+                                        type="submit"
+                                        disabled={isMagicLoading || !emailIsValid}
+                                        className="mt-2 h-12 w-full bg-neutral-900 font-medium text-white transition-colors hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
+                                    >
+                                        {isMagicLoading
+                                            ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Sending link…</>
+                                            : magicSent ? "Send another link" : "Email me a sign-up link"}
+                                    </Button>
+
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        onClick={() => { setPhase("details"); setMagicSent(false); setError(""); }}
+                                        className="h-12 w-full gap-2 rounded-lg font-medium text-neutral-600 dark:text-neutral-300"
+                                    >
+                                        <ArrowLeft className="h-4 w-4" />
+                                        Back to sign up
+                                    </Button>
+                                </form>
+
                                 <p className="mt-8 text-center text-zinc-500 dark:text-zinc-400">
                                     Already have an account?{" "}
                                     <Link
@@ -536,8 +621,8 @@ function SignUpForm() {
                                 transition={{ duration: 0.25 }}
                             >
                                 <div className="text-center mb-8">
-                                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-neutral-900/10 border border-neutral-900/20">
-                                        <MailCheck className="h-7 w-7 text-neutral-900" />
+                                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-neutral-900/10 dark:bg-white/10 border border-neutral-900/20 dark:border-white/20">
+                                        <MailCheck className="h-7 w-7 text-neutral-900 dark:text-white" />
                                     </div>
                                     <h2 className="text-2xl font-bold dark:text-white">Check your email</h2>
                                     <p className="text-zinc-500 dark:text-zinc-400 mt-2">
@@ -593,7 +678,7 @@ function SignUpForm() {
                                         type="button"
                                         onClick={handleResend}
                                         disabled={cooldown > 0 || isResending}
-                                        className="font-medium text-neutral-900 hover:underline disabled:cursor-not-allowed disabled:text-zinc-400 disabled:no-underline dark:disabled:text-zinc-600"
+                                        className="font-medium text-neutral-900 dark:text-white hover:underline disabled:cursor-not-allowed disabled:text-zinc-400 disabled:no-underline dark:disabled:text-zinc-600"
                                     >
                                         {isResending
                                             ? "Sending…"
@@ -622,11 +707,11 @@ function Requirement({ met, label }: { met: boolean; label: string }) {
     return (
         <div className="flex items-center gap-2">
             {met ? (
-                <Check className="h-3.5 w-3.5 text-neutral-900" />
+                <Check className="h-3.5 w-3.5 text-neutral-900 dark:text-white" />
             ) : (
                 <X className="h-3.5 w-3.5 text-zinc-400" />
             )}
-            <span className={`text-xs ${met ? "text-neutral-900" : "text-zinc-500 dark:text-zinc-400"}`}>
+            <span className={`text-xs ${met ? "text-neutral-900 dark:text-white" : "text-zinc-500 dark:text-zinc-400"}`}>
                 {label}
             </span>
         </div>

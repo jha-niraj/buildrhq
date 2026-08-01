@@ -1,6 +1,6 @@
-# BuildrHQ — working agreement
+# ShiprHQ — working agreement
 
-Turborepo. `apps/{main,web,uni,hiring,admin,coderzworker,generationworker}` and
+Turborepo. `apps/{main,web,uni,hiring,admin,shiprworker,generationworker}` and
 `packages/{auth,db,email,ui,eslint-config,typescript-config}`.
 
 ## Verification: what to run, and when

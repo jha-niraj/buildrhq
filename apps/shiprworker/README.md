@@ -1,6 +1,6 @@
-# CoderzWorker — Cloudflare Container code executor
+# ShiprWorker — Cloudflare Container code executor
 
-Runs user code (JS, TS, Python, Java, C, C++) for BuildrHQ practice. A Cloudflare
+Runs user code (JS, TS, Python, Java, C, C++) for ShiprHQ practice. A Cloudflare
 Worker + Durable Object owns a Cloudflare Container (Linux sandbox with the runtimes);
 the code runs inside the container (Workers can't run Docker/child_process).
 
@@ -12,4 +12,4 @@ the code runs inside the container (Workers can't run Docker/child_process).
 
 API: `POST /api/v1/execute` `{ code, language, testCases? }` -> `{ success, stdout, stderr, exitCode, executionTimeMs, testResults?, allTestsPassed? }`.
 
-Deploy (paid Workers plan + Containers): `wrangler secret put WORKER_SECRET` (match the main app), then `pnpm --filter coderzworker deploy`. Point `NEXT_PUBLIC_WORKER_URL` at the deployed URL.
+Deploy (paid Workers plan + Containers): `wrangler secret put WORKER_SECRET` (match the main app), then `pnpm --filter shiprworker deploy`. Point `NEXT_PUBLIC_WORKER_URL` at the deployed URL.

@@ -46,7 +46,7 @@ The right first project has these characteristics:
 
 **[Open Source Guides](https://opensource.guide/how-to-contribute/):** GitHub's own written guide to contributing. Worth reading once end to end before your first PR — it covers the social conventions that are not obvious from the outside.
 
-**BuildrHQ Open Source tracker:** BuildrHQ surfaces beginner-friendly issues matched to your tech stack, tracks your contribution activity, and shows you which projects are actively maintained.
+**ShiprHQ Open Source tracker:** ShiprHQ surfaces beginner-friendly issues matched to your tech stack, tracks your contribution activity, and shows you which projects are actively maintained.
 
 **Your own dependencies:** Look at the packages you use in your own projects. If you ever hit a limitation or found a bug, there is a contribution waiting for you.
 
@@ -191,7 +191,7 @@ The goal for month one is three merged PRs, ideally in the same project. Staying
 
 The goal for month three is at least one non-trivial contribution: a bug fix, a test addition, or a small feature. By this point, your GitHub profile will show genuine open source activity, and your profile will look completely different to recruiters.
 
-Track your contributions automatically with BuildrHQ's open source module, which connects to your GitHub and surfaces your activity, shows contribution streaks, and helps you find your next issue based on your skill level and the tech stack you work with.
+Track your contributions automatically with ShiprHQ's open source module, which connects to your GitHub and surfaces your activity, shows contribution streaks, and helps you find your next issue based on your skill level and the tech stack you work with.
 
 ## The Long Game
 

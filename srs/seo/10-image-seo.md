@@ -55,15 +55,15 @@ openGraph: {
 
 ---
 
-## BuildrHQ OG Image Implementation (as of June 2026)
+## ShiprHQ OG Image Implementation (as of June 2026)
 
-### How it works in BuildrHQ (apps/main)
+### How it works in ShiprHQ (apps/main)
 
 **Two-layer system:**
 
 **Layer 1 — Global fallback** (`apps/main/app/layout.tsx`)
 ```typescript
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.buildrhq.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.shiprhq.com'
 
 openGraph: {
   images: [{ url: "/og/home.webp", width: 1200, height: 630, alt: "..." }],
@@ -105,7 +105,7 @@ File location: `apps/main/public/og/blog/[post-slug]-hero.webp`
 
 ### WebP for OG images
 
-BuildrHQ uses **WebP** for all OG images (not PNG). Modern crawlers on WhatsApp, LinkedIn, Twitter/X, iMessage, and Slack all support WebP. The savings are significant: WebP files are 25–50% smaller than equivalent PNGs, which means social crawlers fetch and cache them faster.
+ShiprHQ uses **WebP** for all OG images (not PNG). Modern crawlers on WhatsApp, LinkedIn, Twitter/X, iMessage, and Slack all support WebP. The savings are significant: WebP files are 25–50% smaller than equivalent PNGs, which means social crawlers fetch and cache them faster.
 
 Scripts to convert: `scripts/to-webp.sh` (single file) and `scripts/convert-og-to-webp.sh` (batch all PNGs in `apps/main/public/og/`).
 

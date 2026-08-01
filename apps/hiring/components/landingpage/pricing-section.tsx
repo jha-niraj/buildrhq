@@ -71,7 +71,7 @@ export default function PricingSection() {
 
     const handlePlanClick = (planId: string) => {
         if (planId === "ENTERPRISE") {
-            window.open("mailto:sales@buildrhq.com?subject=Enterprise%20Plan%20Inquiry", "_blank")
+            window.open("mailto:sales@shiprhq.com?subject=Enterprise%20Plan%20Inquiry", "_blank")
             return
         }
 

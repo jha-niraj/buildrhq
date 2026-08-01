@@ -138,4 +138,4 @@ One final note. Everything above assumes you have real experience to draw on. If
 
 ---
 
-*BuildrHQ's AI mock interviews cover behavioural rounds with follow-up questions and feedback on structure and specificity - the two things you cannot self-assess. [Start free](/pricing).*
+*ShiprHQ's AI mock interviews cover behavioural rounds with follow-up questions and feedback on structure and specificity - the two things you cannot self-assess. [Start free](/pricing).*

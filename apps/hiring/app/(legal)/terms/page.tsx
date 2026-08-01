@@ -17,7 +17,7 @@ export default function TermsPage() {
                     <aside className="hidden lg:block w-[260px] shrink-0">
                         <div className="sticky top-24">
                             <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-2">
-                                BuildrHQ Hiring
+                                ShiprHQ Hiring
                             </p>
                             <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-6">
                                 Legal documents
@@ -33,7 +33,7 @@ export default function TermsPage() {
                                     Privacy Policy
                                 </Link>
                                 <a
-                                    href="mailto:legal@buildrhq.com"
+                                    href="mailto:legal@shiprhq.com"
                                     className="block px-3 py-2 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white dark:text-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-900 dark:bg-white rounded-lg transition-colors"
                                 >
                                     Contact
@@ -44,10 +44,10 @@ export default function TermsPage() {
                                     Questions?
                                 </p>
                                 <a
-                                    href="mailto:legal@buildrhq.com"
+                                    href="mailto:legal@shiprhq.com"
                                     className="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors break-all"
                                 >
-                                    legal@buildrhq.com
+                                    legal@shiprhq.com
                                 </a>
                             </div>
                         </div>
@@ -61,7 +61,7 @@ export default function TermsPage() {
                                 Terms of <em>service.</em>
                             </h1>
                             <p className="text-base text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed">
-                                These terms govern your use of BuildrHQ Hiring. By using our platform, you agree to be bound by them.
+                                These terms govern your use of ShiprHQ Hiring. By using our platform, you agree to be bound by them.
                             </p>
                         </div>
 
@@ -73,7 +73,7 @@ export default function TermsPage() {
                                     Acceptance of Terms
                                 </h2>
                                 <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
-                                    By accessing or using BuildrHQ Hiring, you agree to be bound by these Terms of Service.
+                                    By accessing or using ShiprHQ Hiring, you agree to be bound by these Terms of Service.
                                     If you disagree with any part of the terms, you may not access the service.
                                 </p>
                             </div>
@@ -86,7 +86,7 @@ export default function TermsPage() {
                                 </h2>
                                 <div className="pl-8 space-y-3 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
                                     <p>
-                                        BuildrHQ Hiring provides a technical hiring platform that connects companies
+                                        ShiprHQ Hiring provides a technical hiring platform that connects companies
                                         with pre-vetted engineering candidates. Our services include:
                                     </p>
                                     <ul className="list-disc pl-5 space-y-2">
@@ -163,7 +163,7 @@ export default function TermsPage() {
                                 </h2>
                                 <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
                                     The platform, including its original content, features, and functionality,
-                                    is owned by BuildrHQ and protected by international copyright, trademark,
+                                    is owned by ShiprHQ and protected by international copyright, trademark,
                                     and other intellectual property laws.
                                 </p>
                             </div>
@@ -175,7 +175,7 @@ export default function TermsPage() {
                                     Limitation of Liability
                                 </h2>
                                 <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
-                                    BuildrHQ Hiring shall not be liable for any indirect, incidental, special,
+                                    ShiprHQ Hiring shall not be liable for any indirect, incidental, special,
                                     consequential, or punitive damages resulting from your use of the service.
                                 </p>
                             </div>
@@ -195,8 +195,8 @@ export default function TermsPage() {
                             <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                 <p className="text-sm text-neutral-500 dark:text-neutral-400">
                                     Questions about these Terms? Contact us at{" "}
-                                    <a href="mailto:legal@buildrhq.com" className="text-neutral-900 dark:text-white underline">
-                                        legal@buildrhq.com
+                                    <a href="mailto:legal@shiprhq.com" className="text-neutral-900 dark:text-white underline">
+                                        legal@shiprhq.com
                                     </a>
                                 </p>
                             </div>

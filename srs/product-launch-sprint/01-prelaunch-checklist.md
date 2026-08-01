@@ -1,4 +1,4 @@
-# BuildrHQ — Pre-Launch Checklist
+# ShiprHQ — Pre-Launch Checklist
 > Last updated: April 2026
 > Purpose: Master list of everything that must be done across the entire codebase before public launch.
 
@@ -11,7 +11,7 @@ The platform is launching with five core modules:
 2. **Projects (ProjectV2)** — Sprint-based project learning with kanban, quiz, mock, leaderboard
 3. **AI Tools** — Resume Creator, Cover Letter Generator, Job Interview Assistant
 4. **Practice** — DSA (Socratic AI + spaced repetition), System Design, Web Frontend, Web Backend
-5. **CoderzWorker** — Production deployment for code execution
+5. **ShiprHQWorker** — Production deployment for code execution
 
 Each module has a dedicated plan file. This document tracks the **cross-cutting concerns** and **per-module launch gates**.
 
@@ -30,7 +30,7 @@ Each module has a dedicated plan file. This document tracks the **cross-cutting 
 | System Design | ~40% | No | Excalidraw + AI mentor flow |
 | Web Frontend Practice | ~50% | No | AI evaluation flow |
 | Web Backend Practice | ~50% | No | AI evaluation flow |
-| CoderzWorker | ~70% | No | Production deployment |
+| ShiprHQWorker | ~70% | No | Production deployment |
 
 ---
 
@@ -53,9 +53,9 @@ Each module has a dedicated plan file. This document tracks the **cross-cutting 
 - [ ] Test `ShareCredits` flow between users
 - [ ] Ensure `CreditTransaction` records are created for every deduction/addition
 
-### 3. CoderzWorker (Code Execution)
+### 3. ShiprHQWorker (Code Execution)
 
-- [ ] Deploy CoderzWorker to production server (VPS or container)
+- [ ] Deploy ShiprHQWorker to production server (VPS or container)
 - [ ] Set `NEXT_PUBLIC_WORKER_URL` env var in main app to point to production worker
 - [ ] Test all 6 language Dockerfiles (JS, TS, Python, Java, C++, C) in production
 - [ ] Verify queue (BullMQ + Redis) is stable under load
@@ -153,13 +153,13 @@ Each module has a dedicated plan file. This document tracks the **cross-cutting 
 ### DSA Practice ✅ Gate
 - [ ] User can browse problems by pattern/sub-pattern
 - [ ] Problem workspace loads with starter code
-- [ ] Code runs via CoderzWorker and output appears in workspace
+- [ ] Code runs via ShiprHQWorker and output appears in workspace
 - [ ] AI gives Socratic response based on code output
 - [ ] Phase tracking works (day 1 → complete → scheduled day 3 reminder)
 - [ ] Spaced repetition notifications work (in-app + email)
 - [ ] Leaderboard updates after problem completion
 
-### CoderzWorker ✅ Gate
+### ShiprHQWorker ✅ Gate
 - [ ] Deployed and accessible at production URL
 - [ ] JWT auth works for requests from main app
 - [ ] Code execution returns within 10 seconds for normal problems
@@ -170,7 +170,7 @@ Each module has a dedicated plan file. This document tracks the **cross-cutting 
 
 ## Launch Order Recommendation
 
-**Week 1:** Fix CoderzWorker production deployment + Mock Interview analysis scorecard  
+**Week 1:** Fix ShiprHQWorker production deployment + Mock Interview analysis scorecard  
 **Week 2:** DSA workspace AI conversation loop + end-to-end flow test  
 **Week 3:** ProjectV2 end-to-end test + Resume profile auto-sync  
 **Week 4:** System Design Excalidraw + AI mentor + final QA pass  

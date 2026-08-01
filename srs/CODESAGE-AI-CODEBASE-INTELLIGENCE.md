@@ -11,7 +11,7 @@ CodeSage is the module where developers drop a GitHub repo (or upload a zipped c
 - **Code** — the subject matter  
 - **Sage** — wisdom, depth, expertise  
 - It's memorable, it signals serious insight, and it doesn't overlap with any major competitor  
-- Domain idea: `coderz.ai/codesage` or platform route `/codesage`
+- Domain idea: `shipr.ai/codesage` or platform route `/codesage`
 
 ---
 

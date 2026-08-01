@@ -375,7 +375,7 @@ function DataSourcesStep({
             <div className="space-y-3">
                 <DataSourceOption
                     icon={<User className="w-5 h-5" />}
-                    title="Coderz Profile Data"
+                    title="ShiprHQ Profile Data"
                     description="Bio, skills, and basic information"
                     enabled={includePersonalData}
                     onToggle={() => setIncludePersonalData(!includePersonalData)}
@@ -384,7 +384,7 @@ function DataSourcesStep({
                 <DataSourceOption
                     icon={<Code2 className="w-5 h-5" />}
                     title="Projects"
-                    description="All your Coderz projects and details"
+                    description="All your ShiprHQ projects and details"
                     enabled={includeProjects}
                     onToggle={() => setIncludeProjects(!includeProjects)}
                     recommended
@@ -445,10 +445,10 @@ function PlatformsStep({
                     </div>
                     <div>
                         <h4 className="font-medium text-neutral-900 dark:text-neutral-800 mb-1">
-                            First, let&apos;s train with Coderz data
+                            First, let&apos;s train with ShiprHQ data
                         </h4>
                         <p className="text-sm text-neutral-700 dark:text-neutral-100">
-                            Your AI will be trained on your Coderz profile, projects, and assessments first. 
+                            Your AI will be trained on your ShiprHQ profile, projects, and assessments first. 
                             Once your AI is ready, you can connect external platforms from the Settings page.
                         </p>
                     </div>

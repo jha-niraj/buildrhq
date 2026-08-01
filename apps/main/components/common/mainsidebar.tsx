@@ -72,7 +72,7 @@ export default function Sidebar() {
     return (
         <AppSidebar
             brand={{
-                name: "BuildrHQ",
+                name: "ShiprHQ",
                 subtitle: "Developer Suite",
                 homeHref: "/home",
                 logo: (

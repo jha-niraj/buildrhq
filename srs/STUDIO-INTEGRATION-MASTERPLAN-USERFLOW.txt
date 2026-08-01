@@ -1,6 +1,6 @@
 ================================================================================
   STUDIO INTEGRATION MASTERPLAN — SCREEN DIAGRAMS, USER FLOWS & FLOWCHARTS
-  The Coderz Platform — Definitive Guide for Implementation
+  The ShiprHQ Platform — Definitive Guide for Implementation
 ================================================================================
 
 Document Created: February 15, 2026

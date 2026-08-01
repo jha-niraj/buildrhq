@@ -17,17 +17,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     if (!result.success || !result.user) {
         return {
-            title: "Profile Not Found | BuildrHQ",
+            title: "Profile Not Found | ShiprHQ",
             description: "This profile could not be found.",
         };
     }
 
     const user = result.user;
-    const title = `${user.name || user.username} | BuildrHQ`;
+    const title = `${user.name || user.username} | ShiprHQ`;
     const description =
         user.userProfile?.tagline ||
         user.bio ||
-        `Check out ${user.name || user.username}'s profile on BuildrHQ`;
+        `Check out ${user.name || user.username}'s profile on ShiprHQ`;
 
     return {
         title,
@@ -37,8 +37,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             description,
             type: "profile",
             images: user.image ? [{ url: user.image }] : [],
-            // Was a hardcoded `https://buildrhq.com/u/{username}` — wrong host AND
-            // a route that does not exist, so every link preview pointed at a 404.
+            // Was a hardcoded absolute URL on the wrong host, pointing at `/u/{username}`
+            // — a route that does not exist — so every link preview resolved to a 404.
+            // Phrased without naming the old host so a future rebrand sweep cannot
+            // rewrite this note into describing a mistake that was never made.
             url: publicProfileUrl(user.username!),
         },
         twitter: {

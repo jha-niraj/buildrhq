@@ -246,7 +246,7 @@ This is the most important part of the plan. Stop solving problems cold and star
 - Use a coding environment similar to the interview (not your full IDE)
 - Do at least 10 full interview simulations over these two weeks
 
-Use BuildrHQ's practice module for structured problem sets with AI hints, and its mock interview platform for full simulated sessions with performance feedback. If you want to vary where you practise, [the LeetCode alternatives guide](/blogs/leetcode-alternatives) covers what each platform is actually good at.
+Use ShiprHQ's practice module for structured problem sets with AI hints, and its mock interview platform for full simulated sessions with performance feedback. If you want to vary where you practise, [the LeetCode alternatives guide](/blogs/leetcode-alternatives) covers what each platform is actually good at.
 
 ## The Daily Commitment
 

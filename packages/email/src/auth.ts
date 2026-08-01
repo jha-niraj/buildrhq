@@ -50,29 +50,29 @@ function appUrl(): string {
 export const authEmailTemplates = {
 
 	verifyOTP: (name: string, otp: string): EmailContent => ({
-		subject: "Verify your email — BuildrHQ",
+		subject: "Verify your email — ShiprHQ",
 		html: shell({
 			title: "Verify your email",
-			preheader: `${otp} is your BuildrHQ verification code. It expires in 10 minutes.`,
-			eyebrow: "Email verification · BuildrHQ",
+			preheader: `${otp} is your ShiprHQ verification code. It expires in 10 minutes.`,
+			eyebrow: "Email verification · ShiprHQ",
 			body: `
 				${heading(`Your verification ${serif("code")}.`)}
 				${paragraph(`Hi ${name}, use the code below to verify your email address and finish setting up your account.`)}
 				${otpPanel(otp, "One-time code", "Valid for 10 minutes")}
-				${callout("Didn't create a BuildrHQ account? You can safely ignore this email.")}
+				${callout("Didn't create a ShiprHQ account? You can safely ignore this email.")}
 			`,
 		}),
 	}),
 
 	welcome: (name: string): EmailContent => ({
-		subject: "Welcome to BuildrHQ",
+		subject: "Welcome to ShiprHQ",
 		html: shell({
-			title: "Welcome to BuildrHQ",
+			title: "Welcome to ShiprHQ",
 			preheader: "Your account is ready — here's what to build first.",
-			eyebrow: "Account ready · BuildrHQ",
+			eyebrow: "Account ready · ShiprHQ",
 			body: `
 				${heading(`Welcome aboard, ${serif(name)}.`)}
-				${paragraph("Your email is verified and your account is ready. BuildrHQ is your engineering intelligence suite — here's what you can dive into next.")}
+				${paragraph("Your email is verified and your account is ready. ShiprHQ is your engineering intelligence suite — here's what you can dive into next.")}
 				${featureList("What's waiting for you", [
 					"Build and showcase your developer portfolio",
 					"Practice DSA, system design & take assessments",
@@ -87,15 +87,15 @@ export const authEmailTemplates = {
 	/** Passwordless sign-in link. The URL points straight at the verify endpoint,
 	 *  which consumes the token, sets the session cookie and redirects. */
 	magicLink: (name: string, link: string): EmailContent => ({
-		subject: "Your sign-in link — BuildrHQ",
+		subject: "Your sign-in link — ShiprHQ",
 		html: shell({
-			title: "Sign in to BuildrHQ",
+			title: "Sign in to ShiprHQ",
 			preheader: "Your one-time sign-in link — works once, expires in 10 minutes.",
-			eyebrow: "Passwordless sign-in · BuildrHQ",
+			eyebrow: "Passwordless sign-in · ShiprHQ",
 			body: `
 				${heading(`Your ${serif("sign-in")} link.`)}
 				${paragraph(`Hi ${name}, click the button below and you'll be signed in — no password needed. This link works once and expires in <strong>10 minutes</strong>.`)}
-				${primaryButton("Sign in to BuildrHQ", link)}
+				${primaryButton("Sign in to ShiprHQ", link)}
 				${callout("Didn't ask for this? You can safely ignore this email — nobody can sign in without the link.")}
 				${urlFallback(link)}
 			`,
@@ -103,10 +103,10 @@ export const authEmailTemplates = {
 	}),
 
 	resetPasswordOTP: (name: string, otp: string): EmailContent => ({
-		subject: "Reset your password — BuildrHQ",
+		subject: "Reset your password — ShiprHQ",
 		html: shell({
 			title: "Password reset request",
-			preheader: `${otp} is your BuildrHQ password reset code. It expires in 10 minutes.`,
+			preheader: `${otp} is your ShiprHQ password reset code. It expires in 10 minutes.`,
 			eyebrow: "Security · One-time code",
 			body: `
 				${heading(`Reset your ${serif("password")}.`)}
@@ -118,10 +118,10 @@ export const authEmailTemplates = {
 	}),
 
 	passwordResetConfirmation: (name: string): EmailContent => ({
-		subject: "Your password has been reset — BuildrHQ",
+		subject: "Your password has been reset — ShiprHQ",
 		html: shell({
 			title: "Password updated",
-			preheader: "Your BuildrHQ password was changed successfully.",
+			preheader: "Your ShiprHQ password was changed successfully.",
 			eyebrow: "Security · Confirmation",
 			body: `
 				${heading(`Your password was ${serif("updated")}.`)}
@@ -133,11 +133,11 @@ export const authEmailTemplates = {
 	}),
 
 	verifyEmail: (name: string, verifyLink: string): EmailContent => ({
-		subject: "Verify your email — BuildrHQ",
+		subject: "Verify your email — ShiprHQ",
 		html: shell({
 			title: "Verify your email",
-			preheader: "One click to activate your BuildrHQ account.",
-			eyebrow: "Email verification · BuildrHQ",
+			preheader: "One click to activate your ShiprHQ account.",
+			eyebrow: "Email verification · ShiprHQ",
 			body: `
 				${heading(`One click to ${serif("activate")}.`)}
 				${paragraph(`Hi ${name}, click the button below to verify your email address and activate your account. This link expires in <strong>72 hours</strong>.`)}
@@ -148,10 +148,10 @@ export const authEmailTemplates = {
 	}),
 
 	resetPasswordLink: (name: string, resetLink: string): EmailContent => ({
-		subject: "Reset your password — BuildrHQ",
+		subject: "Reset your password — ShiprHQ",
 		html: shell({
 			title: "Password reset request",
-			preheader: "Reset your BuildrHQ password — this link expires in 1 hour.",
+			preheader: "Reset your ShiprHQ password — this link expires in 1 hour.",
 			eyebrow: "Security · Password reset",
 			body: `
 				${heading(`Reset your ${serif("password")}.`)}

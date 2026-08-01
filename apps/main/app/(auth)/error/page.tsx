@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ErrorClient from './_components/ErrorClient'
 
 export const metadata: Metadata = {
-  title: 'Authentication Error | BuildrHQ',
+  title: 'Authentication Error | ShiprHQ',
   description: 'An error occurred during authentication.',
 }
 

@@ -125,4 +125,4 @@ If you are still in the earlier rounds and want the other half of this conversat
 
 ---
 
-*BuildrHQ helps engineers prepare for every stage of the loop - technical, system design and behavioural - with AI mock interviews and structured feedback. [Try it free](/pricing).*
+*ShiprHQ helps engineers prepare for every stage of the loop - technical, system design and behavioural - with AI mock interviews and structured feedback. [Try it free](/pricing).*

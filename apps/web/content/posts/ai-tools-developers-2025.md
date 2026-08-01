@@ -66,9 +66,9 @@ Deep reasoning tasks where you need an extended back-and-forth conversation. For
 
 **Best practice:** Start research with Perplexity to understand the current state of a technology, then switch to Claude or ChatGPT for implementation details and code generation.
 
-## 5. BuildrHQ AI Resume Builder (Interview Preparation)
+## 5. ShiprHQ AI Resume Builder (Interview Preparation)
 
-For developers actively job searching, an AI resume builder is the most directly career-impactful AI tool in this list — BuildrHQ's is built for exactly this, and [the ATS resume guide](/blogs/ats-resume-software-engineer) explains what it is optimising for. Paste a job description and it rewrites your resume bullets to match the specific language and keywords the ATS and recruiter will be scanning for.
+For developers actively job searching, an AI resume builder is the most directly career-impactful AI tool in this list — ShiprHQ's is built for exactly this, and [the ATS resume guide](/blogs/ats-resume-software-engineer) explains what it is optimising for. Paste a job description and it rewrites your resume bullets to match the specific language and keywords the ATS and recruiter will be scanning for.
 
 **What it is genuinely good at:**
 ATS score analysis, bullet rewriting for specific roles, keyword gap analysis, and cover letter generation from your profile data. It understands the specific conventions of software engineering resumes (metrics, action verbs, stack specificity) in a way that generic AI tools do not.
@@ -136,7 +136,7 @@ Speed — reasoning models are significantly slower than standard GPT-4. They al
 
 **Best practice:** Use GPT-4o for everyday coding help, Perplexity for research, and o1/o3 when you have a genuinely hard problem where you need confident accuracy over speed.
 
-![Developer workflow showing multiple AI tools: Cursor for code, Perplexity for research, BuildrHQ for career prep](/og/blog/ai-tools-inline-2.webp)
+![Developer workflow showing multiple AI tools: Cursor for code, Perplexity for research, ShiprHQ for career prep](/og/blog/ai-tools-inline-2.webp)
 
 ## The AI Developer Stack in Practice
 
@@ -153,8 +153,8 @@ Here is how the tools fit together in a realistic developer workflow:
 - Perplexity for current bug reports and known issues in libraries
 
 **Preparing for interviews:**
-- BuildrHQ Resume Builder for application prep
-- BuildrHQ Mock Interview for practice sessions
+- ShiprHQ Resume Builder for application prep
+- ShiprHQ Mock Interview for practice sessions
 - Claude for explaining algorithm concepts you are confused about
 - ChatGPT o1 for solving hard LeetCode problems and explaining the reasoning
 

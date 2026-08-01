@@ -11,7 +11,7 @@ import { SITE, APP_URL, BRAND } from "@/lib/site";
 // needs no package and no <script> in the tree. (`@vercel/analytics` used to be mounted
 // here; on a non-Vercel host its beacon 404s on every page load, which shows up as a
 // console error and a Lighthouse Best-Practices deduction.) Enable it under
-// Cloudflare dashboard -> Web Analytics for the buildrhq.com hostname.
+// Cloudflare dashboard -> Web Analytics for the shiprhq.com hostname.
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 		"software engineering portfolio", "mock technical interview", "system design prep",
 		"DSA practice", "open source contribution tracker", "AI resume builder",
 		"cover letter generator", "coding interview prep", "cs student platform",
-		"developer career tools", "BuildrHQ", "engineering intelligence suite",
+		"developer career tools", "ShiprHQ", "engineering intelligence suite",
 	],
 	authors: [{ name: "Niraj Kumar Jha", url: `${SITE}/aboutus` }],
 	creator: BRAND.name,
@@ -92,8 +92,8 @@ export const metadata: Metadata = {
 		title: DEFAULT_TITLE,
 		description: DEFAULT_DESCRIPTION,
 		images: ["/og/home.webp"],
-		creator: "@buildrhq",
-		site: "@buildrhq",
+		creator: "@shiprhq",
+		site: "@shiprhq",
 	},
 	icons: {
 		icon: [

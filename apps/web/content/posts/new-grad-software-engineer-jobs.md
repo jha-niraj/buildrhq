@@ -109,4 +109,4 @@ Apply in August, not February. Ask twenty people for referrals and accept that m
 
 ---
 
-*BuildrHQ gives new grads the two things the search actually rewards: deployable project work and realistic interview practice, technical and behavioural. [Start free](/pricing).*
+*ShiprHQ gives new grads the two things the search actually rewards: deployable project work and realistic interview practice, technical and behavioural. [Start free](/pricing).*

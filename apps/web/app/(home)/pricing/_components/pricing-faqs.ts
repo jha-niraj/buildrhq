@@ -7,8 +7,8 @@ export interface PricingFaq {
 
 export const pricingFaqs: PricingFaq[] = [
 	{
-		q: "How does BuildrHQ pricing work?",
-		a: "BuildrHQ is credit-based, not subscription-based. You buy a pack of credits once and spend them only when you run our AI agents, generate projects, or take assessments. There's no monthly fee and no charge for idle time.",
+		q: "How does ShiprHQ pricing work?",
+		a: "ShiprHQ is credit-based, not subscription-based. You buy a pack of credits once and spend them only when you run our AI agents, generate projects, or take assessments. There's no monthly fee and no charge for idle time.",
 	},
 	{
 		q: "Do credits expire?",
@@ -20,7 +20,7 @@ export const pricingFaqs: PricingFaq[] = [
 	},
 	{
 		q: "Is there a free way to get started?",
-		a: "Yes. New accounts start with free credits so you can try the core tools, and you can earn more free credits by sharing BuildrHQ on LinkedIn or X.",
+		a: "Yes. New accounts start with free credits so you can try the core tools, and you can earn more free credits by sharing ShiprHQ on LinkedIn or X.",
 	},
 	{
 		q: "Which currencies and payment methods are supported?",
@@ -36,6 +36,6 @@ export const pricingFaqs: PricingFaq[] = [
 	},
 	{
 		q: "Will my credits work across the whole platform?",
-		a: "Yes. A single credit balance works across every AI tool in your BuildrHQ account — build, practice, and interview prep all draw from the same balance.",
+		a: "Yes. A single credit balance works across every AI tool in your ShiprHQ account — build, practice, and interview prep all draw from the same balance.",
 	},
 ]

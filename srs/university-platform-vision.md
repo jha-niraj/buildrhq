@@ -51,7 +51,7 @@
 │                                                                              │
 │   STUDENT WORKFLOW                                                           │
 │   ────────────────                                                           │
-│   1. Student signs up on MAIN platform (coderz.app)                          │
+│   1. Student signs up on MAIN platform (shipr.app)                          │
 │   2. Verifies university email                                               │
 │   3. Receives credits from university allocation                             │
 │   4. Sees assignments in their /uni dashboard                                │
@@ -141,7 +141,7 @@ University
 
 ## Key Differences from Traditional LMS
 
-| Traditional LMS | Coder'z University |
+| Traditional LMS | ShiprHQ University |
 |-----------------|-------------------|
 | Manages attendance | No attendance |
 | Lecture scheduling | No lectures |
@@ -266,7 +266,7 @@ GET /api/projects/{id}/details
 
 ## Summary
 
-BuildrHQ University platform is **NOT** about managing a traditional university. It's about:
+ShiprHQ University platform is **NOT** about managing a traditional university. It's about:
 
 1. **Teachers creating practical assignments** that students complete on the main platform
 2. **Students using credits** to access premium learning features

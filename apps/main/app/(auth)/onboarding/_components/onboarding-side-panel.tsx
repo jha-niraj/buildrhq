@@ -30,7 +30,7 @@ const MARKER_CURRENT = "border-neutral-900 text-neutral-900"
 const TOGGLE = "text-neutral-700 hover:bg-neutral-900 dark:bg-white/5 dark:text-white dark:text-neutral-900 dark:hover:bg-white/10"
 
 const STEP_CAPTIONS: Record<string, string> = {
-	username: "Your handle across BuildrHQ",
+	username: "Your handle across ShiprHQ",
 	avatar: "A face for your profile",
 	university: "Where you study or studied",
 	semester: "Where you are right now",
@@ -56,10 +56,10 @@ export function OnboardingSidePanel({ nav }: { nav: FlowNav }) {
 			>
 				{/* Brand */}
 				<motion.div variants={item} className="flex items-center gap-2.5">
-					<span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-900/10 border border-neutral-900/20">
+					<span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-900/10 dark:bg-white/10 border border-neutral-900/20 dark:border-white/20">
 						<Code2 className="h-5 w-5 text-neutral-900" />
 					</span>
-					<span className={`text-lg font-semibold tracking-tight ${INK}`}>BuildrHQ</span>
+					<span className={`text-lg font-semibold tracking-tight ${INK}`}>ShiprHQ</span>
 				</motion.div>
 
 				{/* Heading */}

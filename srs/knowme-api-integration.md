@@ -6,7 +6,7 @@ Add a personal AI assistant to your portfolio in minutes!
 
 ```html
 <!-- Add to your website -->
-<script src="https://cdn.coderz.com/knowme/widget.js"></script>
+<script src="https://cdn.shiprhq.com/knowme/widget.js"></script>
 <script>
   KnowMe.init({
     apiKey: 'your-api-key-here',
@@ -55,7 +55,7 @@ Add a personal AI assistant to your portfolio in minutes!
 
 ### Base URL
 ```
-https://coderz.com/api/v1/knowme
+https://shiprhq.com/api/v1/knowme
 ```
 
 ### Chat Endpoint
@@ -106,8 +106,8 @@ Content-Type: application/json
     "total": 100,
     "resetAt": "2024-01-10T00:00:00Z"
   },
-  "poweredBy": "Coderz KnowMe",
-  "profileUrl": "https://coderz.com/knowme/johndoe"
+  "poweredBy": "ShiprHQ KnowMe",
+  "profileUrl": "https://shiprhq.com/knowme/johndoe"
 }
 ```
 
@@ -143,7 +143,7 @@ The easiest way to add KnowMe to your website.
 
 ```html
 <!-- Add before </body> -->
-<script src="https://cdn.coderz.com/knowme/widget.js"></script>
+<script src="https://cdn.shiprhq.com/knowme/widget.js"></script>
 <script>
   KnowMe.init({
     apiKey: 'km_live_abc123...',  // Your API key
@@ -230,7 +230,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch('https://coderz.com/api/v1/knowme/chat', {
+    const response = await fetch('https://shiprhq.com/api/v1/knowme/chat', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.KNOWME_API_KEY}`,
@@ -597,7 +597,7 @@ export function KnowMeChat({
         </form>
         
         <p className="text-center text-xs text-slate-400 mt-3">
-          Powered by <a href="https://coderz.com/knowme" target="_blank" className="underline">Coderz KnowMe</a>
+          Powered by <a href="https://shiprhq.com/knowme" target="_blank" className="underline">ShiprHQ KnowMe</a>
         </p>
       </div>
     </div>
@@ -785,7 +785,7 @@ export default async function handler(req, res) {
 
   // Forward to KnowMe API
   try {
-    const response = await fetch('https://coderz.com/api/v1/knowme/chat', {
+    const response = await fetch('https://shiprhq.com/api/v1/knowme/chat', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.KNOWME_API_KEY}`,
@@ -810,10 +810,10 @@ export default async function handler(req, res) {
 
 ## Need Help?
 
-- 📖 [Full Documentation](https://docs.coderz.com/knowme)
-- 💬 [Community Discord](https://discord.gg/coderz)
-- 📧 [Support Email](mailto:support@coderz.com)
-- 🐛 [Report Issues](https://github.com/coderz/knowme/issues)
+- 📖 [Full Documentation](https://docs.shiprhq.com/knowme)
+- 💬 [Community Discord](https://discord.gg/shipr)
+- 📧 [Support Email](mailto:support@shiprhq.com)
+- 🐛 [Report Issues](https://github.com/shipr/knowme/issues)
 
 ---
 

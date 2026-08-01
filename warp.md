@@ -1,4 +1,4 @@
-# CoderzOfficial - Project Reference
+# ShiprHQOfficial - Project Reference
 
 ## Project Overview
 Full-stack learning platform with monorepo structure (Turborepo + pnpm workspace)
@@ -10,7 +10,7 @@ Full-stack learning platform with monorepo structure (Turborepo + pnpm workspace
 ## Directory Structure
 
 ```
-/home/niraj/Documents/coderzhq/coderzofficial/
+/home/niraj/Documents/shiprhq/shiprofficial/
 ├── apps/
 │   ├── main/                    # Main platform (student-facing)
 │   │   ├── app/
@@ -396,7 +396,7 @@ const users = await prisma.user.findMany()
 
 ### Super Admin Credentials
 ```
-Email: admin@thecoderz.com
+Email: admin@theshiprhq.com
 Password: Admin@123
 ```
 ⚠️ Change password after first login!

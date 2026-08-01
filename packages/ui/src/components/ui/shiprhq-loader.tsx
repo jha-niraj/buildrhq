@@ -1,6 +1,6 @@
 "use client"
 
-// BuildrHQ full-page loader — the logo mark, then the "BuildrHQ" wordmark underneath
+// ShiprHQ full-page loader — the logo mark, then the "ShiprHQ" wordmark underneath
 // with a slow sweep travelling across it. Ink/neutral base with the brand orange as the
 // sweep highlight; light + dark aware.
 //
@@ -12,7 +12,7 @@
 const FONT_STACK =
     "var(--font-space-grotesk, 'Space Grotesk'), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
 
-export type BuildrHQLoaderProps = {
+export type ShiprHQLoaderProps = {
     /** Cover the viewport (default). Set false to render inline within a parent. */
     fullScreen?: boolean
     /** Optional caption under the wordmark, e.g. "Preparing your workspace". */
@@ -110,12 +110,12 @@ const STYLES = `
 }
 `
 
-export function BuildrHQLoader({
+export function ShiprHQLoader({
     fullScreen = true,
     label,
     logoSrc = "/mainlogo.png",
     className = "",
-}: BuildrHQLoaderProps) {
+}: ShiprHQLoaderProps) {
     const outer: React.CSSProperties = fullScreen
         ? { position: "fixed", inset: 0, zIndex: 50 }
         : { position: "relative", width: "100%" }
@@ -131,7 +131,7 @@ export function BuildrHQLoader({
                 justifyContent: "center",
             }}
             role="status"
-            aria-label="Loading BuildrHQ"
+            aria-label="Loading ShiprHQ"
         >
             <div className="bhq-logo-wrap">
                 <span className="bhq-glow" aria-hidden />
@@ -139,7 +139,7 @@ export function BuildrHQLoader({
                     package that must not depend on Next. */}
                 <img src={logoSrc} alt="" aria-hidden className="bhq-logo" />
             </div>
-            <div className="bhq-word" style={{ marginTop: "1.15rem" }}>BuildrHQ</div>
+            <div className="bhq-word" style={{ marginTop: "1.15rem" }}>ShiprHQ</div>
             <div className="bhq-track">
                 <div className="bhq-track-fill" />
             </div>
@@ -149,4 +149,4 @@ export function BuildrHQLoader({
     )
 }
 
-export default BuildrHQLoader
+export default ShiprHQLoader

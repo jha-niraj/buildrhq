@@ -16,10 +16,10 @@ import SmoothScroll from "@/components/smoothscroll";
 import HeroSection from "@/components/landingpage/herosection";
 
 export const metadata: Metadata = {
-  title: 'BuildrHQ — Learn, Build & Get Hired as a Developer',
+  title: 'ShiprHQ — Learn, Build & Get Hired as a Developer',
   description: 'The all-in-one platform for developers to build projects, practice DSA & system design, ace mock interviews, and land their dream tech job.',
   openGraph: {
-    title: 'BuildrHQ — Learn, Build & Get Hired as a Developer',
+    title: 'ShiprHQ — Learn, Build & Get Hired as a Developer',
     description: 'Practice interviews, build projects, and track your career progress with AI-powered tools.',
     type: 'website',
   },

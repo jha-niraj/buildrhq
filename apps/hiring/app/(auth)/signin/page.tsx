@@ -97,7 +97,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
         : "/register";
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-white dark:bg-neutral-950 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-white dark:bg-neutral-950 p-4 mx-auto w-full max-w-7xl">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -110,7 +110,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                             <Building2 className="w-5 h-5 text-white dark:text-black" />
                         </div>
                         <span className="text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
-                            BuildrHQ <span className="text-neutral-500 font-mono font-normal">HIRING</span>
+                            ShiprHQ <span className="text-neutral-500 font-mono font-normal">HIRING</span>
                         </span>
                     </Link>
                 </div>

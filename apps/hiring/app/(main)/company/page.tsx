@@ -10,7 +10,7 @@ import { CompanyProfileContent } from "./company-content"
 export const dynamic = "force-dynamic"
 
 export const metadata = {
-    title: "Company Profile | FlowSync",
+    title: "Company Profile | ShiprHQ Hiring",
     description: "Manage your company information and branding"
 }
 

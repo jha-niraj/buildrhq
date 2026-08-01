@@ -1,4 +1,4 @@
-Complete Job Integration & Hiring Platform Architecture for Coderz
+Complete Job Integration & Hiring Platform Architecture for ShiprHQ
 I'll provide you with a comprehensive design document covering both platforms, user flows, page structures, and implementation details using flowcharts and detailed specifications.
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -8,7 +8,7 @@ I'll provide you with a comprehensive design document covering both platforms, u
                     │                               │
                     ▼                               ▼
     ┌───────────────────────────┐     ┌───────────────────────────┐
-    │     coderzai.xyz          │     │   hiring.coderzai.xyz     │
+    │     shiprhq.com          │     │   hiring.shiprhq.com     │
     │   (Main Platform)         │     │   (Hiring Platform)       │
     │                           │     │                           │
     │  • Students/Candidates    │     │  • HR/Recruiters          │
@@ -239,12 +239,12 @@ CREATE TABLE company_invitations (
 );
 
 
-🎯 Platform 1: Main Platform (coderzai.xyz) - User Flow
+🎯 Platform 1: Main Platform (shiprhq.com) - User Flow
 Complete User Journey Flowchart
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                        MAIN PLATFORM USER FLOW                              │
-│                           coderzai.xyz                                       │
+│                           shiprhq.com                                       │
 └─────────────────────────────────────────────────────────────────────────────┘
 
                               ┌──────────────┐
@@ -596,12 +596,12 @@ Page-by-Page Breakdown for Main Platform
 └─────────────────────────────────────────────────────────────────────────────┘
 
 
-🏢 Platform 2: Hiring Platform (hiring.coderzai.xyz) - HR Flow
+🏢 Platform 2: Hiring Platform (hiring.shiprhq.com) - HR Flow
 Complete HR/Recruiter Journey Flowchart
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                        HIRING PLATFORM HR FLOW                              │
-│                        hiring.coderzai.xyz                                  │
+│                        hiring.shiprhq.com                                  │
 └─────────────────────────────────────────────────────────────────────────────┘
 
                               ┌──────────────┐
@@ -673,7 +673,7 @@ Complete HR/Recruiter Journey Flowchart
 
 
 Page-by-Page Breakdown for Hiring Platform
-1. Landing Page (hiring.coderzai.xyz)
+1. Landing Page (hiring.shiprhq.com)
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │  HIRING PLATFORM LANDING                                                    │
@@ -693,7 +693,7 @@ Page-by-Page Breakdown for Hiring Platform
 │  └─────────────────────────────────────────────────────────────────────┘   │
 │                                                                             │
 │  ┌─────────────────────────────────────────────────────────────────────┐   │
-│  │ WHY CODERZ FOR HIRING?                                               │   │
+│  │ WHY SHIPRHQ FOR HIRING?                                               │   │
 │  │                                                                       │   │
 │  │ ┌──────────────┐  ┌──────────────┐  ┌──────────────┐                │   │
 │  │ │ 💻 Real Code │  │ 🎯 Pre-vetted│  │ 🚀 Fast Hire │                │   │

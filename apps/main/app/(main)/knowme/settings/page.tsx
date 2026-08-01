@@ -10,7 +10,7 @@ import KnowMeSettings from './_components/knowme-settings';
 import SettingsSkeleton from './_components/settings-skeleton';
 
 export const metadata: Metadata = {
-    title: 'KnowMe Settings | BuildrHQ',
+    title: 'KnowMe Settings | ShiprHQ',
     description: 'Configure your AI-powered portfolio assistant settings.',
 };
 

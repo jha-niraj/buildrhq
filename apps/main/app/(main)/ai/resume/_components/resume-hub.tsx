@@ -158,7 +158,7 @@ function NewResumeSheet({ templates, open, onClose }: {
                                 <Label className="text-sm font-medium">Populate from</Label>
                                 <div className="grid grid-cols-3 gap-2">
                                     {[
-                                        { id: 'profile' as const, icon: <FileText className="w-4 h-4" />, label: 'My Profile', desc: 'Use your Coderz data' },
+                                        { id: 'profile' as const, icon: <FileText className="w-4 h-4" />, label: 'My Profile', desc: 'Use your ShiprHQ data' },
                                         { id: 'import' as const, icon: <Upload className="w-4 h-4" />, label: 'Import', desc: 'LinkedIn, GitHub, resume' },
                                         { id: 'blank' as const, icon: <Plus className="w-4 h-4" />, label: 'Blank', desc: 'Start from scratch' },
                                     ].map(s => (
@@ -529,7 +529,7 @@ export function ResumeHub({ drafts: initialDrafts, templates }: Props) {
                             {/* Platform templates */}
                             <div>
                                 <div className="flex items-center gap-2 mb-4">
-                                    <h2 className="text-base font-semibold">BuildrHQ Templates</h2>
+                                    <h2 className="text-base font-semibold">ShiprHQ Templates</h2>
                                     <Badge className="bg-neutral-100 text-neutral-700 dark:bg-neutral-800/30 dark:text-neutral-100 text-xs">Official</Badge>
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

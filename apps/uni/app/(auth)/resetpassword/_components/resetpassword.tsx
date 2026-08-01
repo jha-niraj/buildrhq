@@ -161,7 +161,7 @@ const ResetPassword = (): JSX.Element | null => {
                             <Building2 className="w-5 h-5 text-white dark:text-black" />
                         </div>
                         <span className="text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
-                            BuildrHQ <span className="text-neutral-500 font-mono font-normal">HIRING</span>
+                            ShiprHQ <span className="text-neutral-500 font-mono font-normal">HIRING</span>
                         </span>
                     </Link>
                 </div>

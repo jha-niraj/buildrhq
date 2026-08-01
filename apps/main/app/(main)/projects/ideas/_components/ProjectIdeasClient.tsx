@@ -395,7 +395,7 @@ export default function ProjectIdeasPage() {
                                         <div className="mb-8">
                                             <div className="flex items-center gap-2 mb-4">
                                                 <Crown className="w-4 h-4 text-neutral-900" />
-                                                <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">BuildrHQ Curated Projects</h3>
+                                                <h3 className="text-sm font-semibold text-neutral-900 dark:text-white">ShiprHQ Curated Projects</h3>
                                                 <Badge className="bg-gradient-to-r from-neutral-100 to-neutral-100 dark:from-neutral-800/30 dark:to-neutral-800/30 text-neutral-800 dark:text-neutral-100 text-[10px] border-0">
                                                     Ready to Start
                                                 </Badge>
@@ -424,11 +424,11 @@ export default function ProjectIdeasPage() {
                                                         >
                                                             <Link href={`/projects/${project.slug}`}>
                                                                 <div className="group relative bg-white dark:bg-neutral-900 rounded-xl p-5 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-600 hover:shadow-lg transition-all duration-300 cursor-pointer">
-                                                                    {/* BuildrHQ Badge */}
+                                                                    {/* ShiprHQ Badge */}
                                                                     <div className="absolute top-3 right-3">
                                                                         <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-gradient-to-r from-neutral-50 to-neutral-50 dark:from-neutral-900/40 dark:to-neutral-900/40 border border-neutral-200 dark:border-neutral-800">
                                                                             <Crown className="w-3 h-3 text-neutral-900" />
-                                                                            <span className="text-[10px] font-semibold text-neutral-700 dark:text-neutral-100">BuildrHQ</span>
+                                                                            <span className="text-[10px] font-semibold text-neutral-700 dark:text-neutral-100">ShiprHQ</span>
                                                                         </div>
                                                                     </div>
 

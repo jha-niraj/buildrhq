@@ -49,7 +49,7 @@ export async function processReferral(
             userId: newUserId,
             dailyActivityId: `signup-${newUserId}-${todayDate.getTime()}`,
             activityType: "SIGNUP",
-            title: "Joined BuildrHQ",
+            title: "Joined ShiprHQ",
             description: "Joined through a referral and earned 250 XP",
             xpEarned: 250,
         },
@@ -58,7 +58,7 @@ export async function processReferral(
 
 export async function generateReferralCode(name: string): Promise<string> {
     const normalized = name.replace(/\s+/g, "").toLowerCase().slice(0, 12);
-    const suffixes = ["coderz", "pro123", "devhub", "bytez", "zone", "stacker", "wizkid"];
+    const suffixes = ["shipr", "pro123", "devhub", "bytez", "zone", "stacker", "wizkid"];
 
     for (let attempt = 0; attempt < 10; attempt++) {
         const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
@@ -90,7 +90,7 @@ export async function createSignupActivity(userId: string) {
         userId,
         dailyActivityId: `signup-${userId}-${todayDate.getTime()}`,
         activityType: "SIGNUP",
-        title: "Joined BuildrHQ",
+        title: "Joined ShiprHQ",
         description: "Joined and earned 250 XP",
         xpEarned: 250,
     });

@@ -25,7 +25,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 
 ### 🚀 Strategic Positioning
 
-**For Coderz Platform:**
+**For ShiprHQ Platform:**
 - **Differentiation**: No competitor has this level of AI-powered personal branding
 - **Stickiness**: Once integrated into portfolios, users won't leave
 - **Network Effects**: More users = better training data = better AI
@@ -104,7 +104,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │  │  📊 What should your AI know about you?                 │  │
 │  │                                                          │  │
 │  │  ┌──────────────────────────────────────────────────┐  │  │
-│  │  │ ✓ Coderz Profile Data                            │  │  │
+│  │  │ ✓ ShiprHQ Profile Data                            │  │  │
 │  │  │   • 12 Projects                                  │  │  │
 │  │  │   • 8 Assessments                                │  │  │
 │  │  │   • Bio & Skills                                 │  │  │
@@ -168,7 +168,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │  │  └──────────────────────────────────────────────────┘  │  │
 │  │                                                          │  │
 │  │  ┌──────────────────────────────────────────────────┐  │  │
-│  │  │ ○ Only logged-in Coderz users                     │  │  │
+│  │  │ ○ Only logged-in ShiprHQ users                     │  │  │
 │  │  │   Best for: Community engagement                 │  │  │
 │  │  └──────────────────────────────────────────────────┘  │  │
 │  │                                                          │  │
@@ -219,7 +219,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │  │  └──────────────────────────────────────────────────┘  │  │
 │  │                                                          │  │
 │  │  Share your AI:                                         │  │
-│  │  🔗 coderz.com/knowme/yourusername                     │  │
+│  │  🔗 shiprhq.com/knowme/yourusername                     │  │
 │  │  [Copy Link] [Share on LinkedIn]                       │  │
 │  │                                                          │  │
 │  │  Or integrate into your portfolio:                      │  │
@@ -316,7 +316,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │  │    React hooks, Context API, Firebase                   │  │
 │  │    🔗 [View Project]                                     │  │
 │  │                                                          │  │
-│  │  I scored 95% on the React assessment on Coderz.        │  │
+│  │  I scored 95% on the React assessment on ShiprHQ.        │  │
 │  │                                                          │  │
 │  │  💼 Interested? [Schedule Interview] [View Profile]     │  │
 │  └──────────────────────────────────────────────────────────┘  │
@@ -432,7 +432,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │     │   └─► StackOverflow: Scrape answers                       │
 │     │                                                           │
 │     ├─► Normalize & store data                                  │
-│     │   ├─► Detect duplicates with Coderz projects              │
+│     │   ├─► Detect duplicates with ShiprHQ projects              │
 │     │   ├─► Merge or flag for user review                      │
 │     │   └─► Store in knowme_external_data table                │
 │     │                                                           │
@@ -454,7 +454,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │  │                                                          │  │
 │  │  • GitHub: 45 repositories added                          │  │
 │  │  • LeetCode: 250 problems synced                         │  │
-│  │  • 3 duplicates detected with your Coderz projects         │  │
+│  │  • 3 duplicates detected with your ShiprHQ projects         │  │
 │  │    [Review Merges]                                        │  │
 │  │                                                          │  │
 │  │  Your AI now knows about:                                 │  │
@@ -483,7 +483,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │  │                                                          │  │
 │  │  Your API Key:                                           │  │
 │  │  ┌──────────────────────────────────────────────────┐  │  │
-│  │  │ coderz_km_live_abc123xyz789...                    │  │  │
+│  │  │ shipr_km_live_abc123xyz789...                    │  │  │
 │  │  │ [Copy] [Regenerate] [Show]                        │  │  │
 │  │  └──────────────────────────────────────────────────┘  │  │
 │  │                                                          │  │
@@ -508,7 +508,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │  │  (Easiest)       │  │  (Any site)      │  │  (Custom UI) │ │
 │  │                  │  │                  │  │              │ │
 │  │  npm install     │  │  <script src=...> │  │  useKnowMe() │ │
-│  │  @coderz/knowme  │  │                  │  │              │ │
+│  │  @shipr/knowme  │  │                  │  │              │ │
 │  │                  │  │                  │  │              │ │
 │  │  [View Docs]     │  │  [View Docs]     │  │  [View Docs] │ │
 │  └──────────────────┘  └──────────────────┘  └──────────────┘ │
@@ -522,14 +522,14 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │  ┌──────────────────────────────────────────────────────────┐  │
 │  │  // portfolio/src/components/KnowMeChat.tsx              │  │
 │  │                                                          │  │
-│  │  import { KnowMeChat } from '@coderz/knowme-widget';     │  │
+│  │  import { KnowMeChat } from '@shipr/knowme-widget';     │  │
 │  │                                                          │  │
 │  │  function Portfolio() {                                  │  │
 │  │    return (                                              │  │
 │  │      <div>                                               │  │
 │  │        <h1>My Portfolio</h1>                            │  │
 │  │        <KnowMeChat                                       │  │
-│  │          apiKey="coderz_km_live_abc123..."              │  │
+│  │          apiKey="shipr_km_live_abc123..."              │  │
 │  │          username="rohit"                                │  │
 │  │          theme="dark"                                    │  │
 │  │          position="bottom-right"                         │  │
@@ -553,7 +553,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │  │                    └──────────────┘                      │  │
 │  │                                                          │  │
 │  │  Visitor clicks widget → Opens chat interface            │  │
-│  │  → Questions sent to Coderz API                          │  │
+│  │  → Questions sent to ShiprHQ API                          │  │
 │  │  → Responses returned to portfolio                       │  │
 │  └──────────────────────────────────────────────────────────┘  │
 └────────────────────────────┬────────────────────────────────────┘
@@ -584,7 +584,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │         ├─► Answer                                             │
 │         ├─► Sources (project links, etc.)                      │
 │         ├─► Rate limit remaining                                │
-│         └─► "Powered by Coderz" branding                       │
+│         └─► "Powered by ShiprHQ" branding                       │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -635,7 +635,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 │  │  │                                 │ │ │ │                     │ ││
 │  │  │                                 │ │ │ │ ─────────────────── │ ││
 │  │  │                                 │ │ │ │ 🔗 Share           │ ││
-│  │  │                                 │ │ │ │ coderz.com/knowme/ │ ││
+│  │  │                                 │ │ │ │ shiprhq.com/knowme/ │ ││
 │  │  │                                 │ │ │ │ username           │ ││
 │  │  │                                 │ │ │ │ [Copy] [Share]     │ ││
 │  │  │                                 │ │ │ │                     │ ││
@@ -880,10 +880,10 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 - Send reminder emails if abandoned
 
 #### 2. **Intelligent Data Deduplication**
-**Problem**: Same project on Coderz AND GitHub creates confusion
+**Problem**: Same project on ShiprHQ AND GitHub creates confusion
 **Solution**:
 - Auto-detect duplicates using similarity scoring
-- Smart merging: Keep Coderz data as source of truth, enrich with GitHub metrics
+- Smart merging: Keep ShiprHQ data as source of truth, enrich with GitHub metrics
 - User review step for medium-confidence matches
 - Visual diff view showing what will be merged
 
@@ -1083,7 +1083,7 @@ KnowMe isn't just another AI chatbot—it's a **personalized knowledge assistant
 User activates KnowMe
     │
     ├─► Collect all data sources
-    │   ├─► Coderz profile data
+    │   ├─► ShiprHQ profile data
     │   ├─► Projects
     │   ├─► Assessments
     │   └─► Resume (if uploaded)
@@ -1278,7 +1278,7 @@ Scheduled sync triggered
 - **Goal**: 100 active users
 - **Focus**: Perfect the core experience
 - **Tactics**:
-  - Internal beta with Coderz users
+  - Internal beta with ShiprHQ users
   - Gather feedback aggressively
   - Fix bugs quickly
   - Optimize onboarding
@@ -1350,7 +1350,7 @@ Scheduled sync triggered
 
 1. **Core Features**:
    - ✅ Basic chat interface
-   - ✅ Coderz data integration
+   - ✅ ShiprHQ data integration
    - ✅ Resume upload
    - ✅ GitHub connection
    - ✅ Basic analytics
@@ -1431,7 +1431,7 @@ Scheduled sync triggered
 
 ## Conclusion
 
-KnowMe is a **game-changing feature** that positions Coderz as an innovative platform. The combination of AI, portfolio integration, and hiring platform creates a unique value proposition that's hard to replicate.
+KnowMe is a **game-changing feature** that positions ShiprHQ as an innovative platform. The combination of AI, portfolio integration, and hiring platform creates a unique value proposition that's hard to replicate.
 
 **Key Success Factors:**
 1. **Start Simple**: Launch with core features, iterate based on feedback

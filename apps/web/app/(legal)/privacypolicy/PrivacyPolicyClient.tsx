@@ -46,7 +46,7 @@ export default function PrivacyPolicy() {
                                         Privacy Policy
                                     </span>
                                     <a
-                                        href="mailto:privacy@buildrhq.com"
+                                        href="mailto:privacy@shiprhq.com"
                                         className="block px-3 py-2 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white dark:text-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-900 dark:bg-white rounded-lg transition-colors"
                                     >
                                         Contact
@@ -57,10 +57,10 @@ export default function PrivacyPolicy() {
                                         Questions?
                                     </p>
                                     <a
-                                        href="mailto:privacy@buildrhq.com"
+                                        href="mailto:privacy@shiprhq.com"
                                         className="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors break-all"
                                     >
-                                        privacy@buildrhq.com
+                                        privacy@shiprhq.com
                                     </a>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@ export default function PrivacyPolicy() {
                                     Privacy <em>policy.</em>
                                 </h1>
                                 <p className="text-base text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed">
-                                    We built BuildrHQ with privacy in mind from day one. Here&apos;s exactly what we collect, why we collect it, and what you can do about it.
+                                    We built ShiprHQ with privacy in mind from day one. Here&apos;s exactly what we collect, why we collect it, and what you can do about it.
                                 </p>
                             </div>
 
@@ -169,7 +169,7 @@ export default function PrivacyPolicy() {
                                             <li>Object to or restrict certain processing activities.</li>
                                             <li>Data portability — export everything in a machine-readable format.</li>
                                         </ul>
-                                        <p>To exercise any of these rights, email us at <a href="mailto:privacy@buildrhq.com" className="text-neutral-900 dark:text-white underline">privacy@buildrhq.com</a>.</p>
+                                        <p>To exercise any of these rights, email us at <a href="mailto:privacy@shiprhq.com" className="text-neutral-900 dark:text-white underline">privacy@shiprhq.com</a>.</p>
                                     </div>
                                 </div>
 
@@ -197,8 +197,8 @@ export default function PrivacyPolicy() {
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
                                         For privacy-related inquiries or to exercise your rights, contact our Data Protection team at{" "}
-                                        <a href="mailto:privacy@buildrhq.com" className="text-neutral-900 dark:text-white underline">
-                                            privacy@buildrhq.com
+                                        <a href="mailto:privacy@shiprhq.com" className="text-neutral-900 dark:text-white underline">
+                                            privacy@shiprhq.com
                                         </a>
                                         . We aim to respond within 5 business days.
                                     </p>
@@ -207,8 +207,8 @@ export default function PrivacyPolicy() {
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400">
                                         Questions about our privacy practices? Email{" "}
-                                        <a href="mailto:privacy@buildrhq.com" className="text-neutral-900 dark:text-white underline">
-                                            privacy@buildrhq.com
+                                        <a href="mailto:privacy@shiprhq.com" className="text-neutral-900 dark:text-white underline">
+                                            privacy@shiprhq.com
                                         </a>
                                     </p>
                                 </div>

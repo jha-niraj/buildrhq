@@ -29,10 +29,10 @@ Web Frontend practice covers the concepts and coding skills required for fronten
 
 ### Problem Types (from `PracticeProblem` schema)
 Problems can be typed as:
-- `CODING` — Write JavaScript/TypeScript code (evaluated by CoderzWorker + AI)
+- `CODING` — Write JavaScript/TypeScript code (evaluated by ShiprHQWorker + AI)
 - `CONCEPTUAL` — Explain a concept (evaluated by AI only)
 - `UI_IMPLEMENTATION` — Build a UI component (evaluated by AI looking at rendered output)
-- `DEBUG` — Fix broken code (evaluated by CoderzWorker + AI)
+- `DEBUG` — Fix broken code (evaluated by ShiprHQWorker + AI)
 - `OPTIMIZATION` — Improve performance of given code (AI evaluates approach + code)
 
 ---
@@ -95,10 +95,10 @@ The most pressing need is having enough problems across the right categories.
 Frontend problems are harder to evaluate than DSA because there's no single correct answer.
 
 - [ ] **`evaluateFrontendCode()` action**:
-  - For CODING problems: run code through CoderzWorker (Node.js runner for JS/TS). Check against test cases. Also pass code to AI for quality evaluation (readability, edge cases, browser compatibility, performance).
+  - For CODING problems: run code through ShiprHQWorker (Node.js runner for JS/TS). Check against test cases. Also pass code to AI for quality evaluation (readability, edge cases, browser compatibility, performance).
   - For CONCEPTUAL problems: pass user's written answer to AI for evaluation. AI gives 0–10 score with specific feedback on what was correct/missing.
   - For UI_IMPLEMENTATION: this is complex — for now, evaluate the code itself (not rendered output). AI checks if the implementation is correct in theory.
-  - For DEBUG problems: run the fixed code through CoderzWorker. Check if it passes the test cases that were failing.
+  - For DEBUG problems: run the fixed code through ShiprHQWorker. Check if it passes the test cases that were failing.
   - For OPTIMIZATION problems: run both original and optimized code, compare execution time + memory. AI evaluates if the approach is correct.
 
 - [ ] **Socratic AI for conceptual questions**:
@@ -120,7 +120,7 @@ The generic `practice-workspace.tsx` needs frontend-specific enhancements:
   - Some problems need multiple files (component.jsx + styles.css + test.js).
   - Minimal file tabs in the editor (not a full VSCode — just 2–3 files).
 
-- [ ] **Console output panel**: For JS problems, show console.log output without needing a full browser. Use CoderzWorker to execute and capture stdout.
+- [ ] **Console output panel**: For JS problems, show console.log output without needing a full browser. Use ShiprHQWorker to execute and capture stdout.
 
 ### Priority 4 — Topic Organization
 

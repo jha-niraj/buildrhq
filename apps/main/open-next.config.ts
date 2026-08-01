@@ -1,10 +1,10 @@
 import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
 
-// Cloudflare Workers deploy config for the BuildrHQ app (app.buildrhq.com).
+// Cloudflare Workers deploy config for the ShiprHQ app (app.shiprhq.com).
 //
 // Incremental cache backed by R2 (binding NEXT_INC_CACHE_R2_BUCKET -> bucket
-// "buildrhq-next-cache", declared in wrangler.jsonc, namespaced by
+// "shiprhq-next-cache", declared in wrangler.jsonc, namespaced by
 // NEXT_INC_CACHE_R2_PREFIX so it can share that bucket with apps/web).
 //
 // Deliberately MINIMAL, matching apps/web. No `enableCacheInterception`, no

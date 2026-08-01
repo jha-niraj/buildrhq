@@ -1,6 +1,6 @@
 ================================================================================
   LEARN MODULE — C++ MASTERPLAN & ARCHITECTURE DOCUMENT
-  Platform: TheCoderz (BuildRHQ)
+  Platform: ShiprHQ (ShiprHQ)
   Created: 2026-02-27
   Author: System Architect
 ================================================================================

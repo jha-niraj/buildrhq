@@ -2,7 +2,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 
 	// Worker name - this is what shows in the Cloudflare dashboard.
-	"name": "buildrhq-web",
+	"name": "shiprhq-web",
 
 	// Entry point produced by `opennextjs-cloudflare build`. Do not point this at .next/ -
 	// OpenNext compiles the Next server into a Worker bundle at this path.
@@ -23,7 +23,7 @@
 
 	// ── Incremental cache (R2) ────────────────────────────────────────────────
 	// ONE-TIME SETUP before the first deploy:
-	//     wrangler r2 bucket create buildrhq-next-cache
+	//     wrangler r2 bucket create shiprhq-next-cache
 	//
 	// The binding name is REQUIRED to be exactly NEXT_INC_CACHE_R2_BUCKET - that is what
 	// r2IncrementalCache in open-next.config.ts looks up.
@@ -35,7 +35,7 @@
 	// cold start). With it, the prerendered HTML/RSC is read directly from R2.
 	"r2_buckets": [
 		{
-			"bucket_name": "buildrhq-next-cache",
+			"bucket_name": "shiprhq-next-cache",
 			"binding": "NEXT_INC_CACHE_R2_BUCKET"
 		}
 	],
@@ -43,7 +43,7 @@
 	"vars": {
 		// Namespaces this app's cache entries inside the bucket, so apps/main can share the
 		// same bucket later without the two colliding in the keyspace.
-		"NEXT_INC_CACHE_R2_PREFIX": "buildrhq-web-cache"
+		"NEXT_INC_CACHE_R2_PREFIX": "shiprhq-web-cache"
 	},
 
 	"observability": {

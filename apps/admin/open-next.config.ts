@@ -1,7 +1,7 @@
 import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
 
-// Cloudflare Workers deploy config for the BuildrHQ admin console.
+// Cloudflare Workers deploy config for the ShiprHQ admin console.
 //
 // Same minimal shape as apps/main and apps/web: R2 incremental cache only. No
 // Durable Object tag cache and no cache interception — that combination caused

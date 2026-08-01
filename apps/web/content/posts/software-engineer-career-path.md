@@ -122,4 +122,4 @@ If you are early on this path, [the route into the first job](/blogs/how-to-beco
 
 ---
 
-*BuildrHQ helps engineers at every stage - practice, portfolio work and mock interviews for the next move. [Start free](/pricing).*
+*ShiprHQ helps engineers at every stage - practice, portfolio work and mock interviews for the next move. [Start free](/pricing).*

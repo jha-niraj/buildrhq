@@ -130,7 +130,7 @@ export default function HeroSection() {
         {
             eyebrow: "Active Developers",
             value: loading ? null : formatNumber(stats?.totalUsers ?? 0),
-            desc: "Building on BuildrHQ",
+            desc: "Building on ShiprHQ",
             accent: "bg-neutral-900",
         },
         {

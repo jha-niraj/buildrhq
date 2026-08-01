@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "buildrhq-generation",
+	"name": "shiprhq-generation",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-05-07",
 	"compatibility_flags": ["nodejs_compat"],

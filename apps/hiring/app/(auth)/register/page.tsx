@@ -131,7 +131,7 @@ function SignUpForm() {
     };
 
     return (
-        <div className="min-h-screen flex bg-white dark:bg-neutral-950">
+        <div className="min-h-screen flex bg-white dark:bg-neutral-950 mx-auto w-full max-w-7xl">
             <div className="hidden lg:flex lg:w-1/2 relative flex-col justify-center items-center bg-neutral-950 overflow-hidden">
                 <div className="relative z-10 px-12 max-w-lg">
                     <motion.div

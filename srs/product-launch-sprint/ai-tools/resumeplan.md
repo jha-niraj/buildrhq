@@ -115,7 +115,7 @@ This would be the strongest differentiator against all existing resume tools.
 
 - [ ] **Public resume page** (`/ai/resume/[username]`):
   - Renders the user's resume in their chosen template, publicly viewable.
-  - Shows "View full profile on BuildrHQ" link.
+  - Shows "View full profile on ShiprHQ" link.
   - Meta tags: proper OG image of the resume for LinkedIn sharing.
   - Privacy toggle: user can set their resume to public or private.
 - [ ] **Share button**: One-click copy of the public URL.

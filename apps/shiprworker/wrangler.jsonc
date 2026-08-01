@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "buildrhq-coderzworker",
+	"name": "shiprhq-shiprworker",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-05-07",
 	"compatibility_flags": ["nodejs_compat"],
@@ -16,7 +16,7 @@
 			"class_name": "CodeExecutor",
 			"image": "./Dockerfile",
 			"max_instances": 5,
-			"name": "buildrhq-code-executor"
+			"name": "shiprhq-code-executor"
 		}
 	],
 	"durable_objects": {

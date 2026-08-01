@@ -28,7 +28,7 @@ This isn't just another "contribute to open source" platform. It's a **comprehen
 
 ### 🚀 Strategic Positioning
 
-**For Coderz Platform:**
+**For ShiprHQ Platform:**
 - **Differentiation**: No competitor combines learning + validation + real projects
 - **Trust Building**: Zero tolerance for fake contributions builds developer community trust
 - **Talent Pipeline**: Identifies and nurtures top contributors for paid/exclusive projects
@@ -268,7 +268,7 @@ This isn't just another "contribute to open source" platform. It's a **comprehen
 │  │  Status: PASSED                                           │  │
 │  │                                                          │  │
 │  │  You are now certified to contribute to open source     │  │
-│  │  projects on Coderz!                                     │  │
+│  │  projects on ShiprHQ!                                     │  │
 │  │                                                          │  │
 │  │  ✅ Badge Unlocked: Open Source Contributor             │  │
 │  │  ✅ Access Granted: Free Projects                        │  │
@@ -339,7 +339,7 @@ This isn't just another "contribute to open source" platform. It's a **comprehen
 │  │  • 45 Contributors                                      │  │
 │  │  • 89 PRs Merged                                        │  │
 │  │                                                          │  │
-│  │  🔗 GitHub: github.com/coderz/taskflow                   │  │
+│  │  🔗 GitHub: github.com/shipr/taskflow                   │  │
 │  │                                                          │  │
 │  │  [View Issues] [View Contributors] [Setup Guide]     │  │
 │  └──────────────────────────────────────────────────────────┘  │
@@ -435,7 +435,7 @@ This isn't just another "contribute to open source" platform. It's a **comprehen
 │  │     ┌────────────────────────────────────────────────┐  │  │
 │  │     │ Terminal                                       │  │  │
 │  │     │ [Click to fork on GitHub]                     │  │  │
-│  │     │ Or run: gh repo fork coderz/taskflow          │  │  │
+│  │     │ Or run: gh repo fork shipr/taskflow          │  │  │
 │  │     └────────────────────────────────────────────────┘  │  │
 │  │                                                          │  │
 │  │  2. Clone Your Fork                                    │  │  │

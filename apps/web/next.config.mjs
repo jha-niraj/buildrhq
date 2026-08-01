@@ -1,7 +1,7 @@
 /* global process */
 
-// apps/web is the PUBLIC MARKETING SITE (buildrhq.com). It has no auth, no session and
-// no product UI. The authenticated product lives on a separate deploy (app.buildrhq.com,
+// apps/web is the PUBLIC MARKETING SITE (shiprhq.com). It has no auth, no session and
+// no product UI. The authenticated product lives on a separate deploy (app.shiprhq.com,
 // apps/main). Any app/auth path that still lands on the marketing host is 307'd across to
 // the app, preserving the query string so deep links (?callbackUrl=…, ?plan=…) survive
 // the hop and old inbound links never 404.

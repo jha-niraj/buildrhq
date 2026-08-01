@@ -1,5 +1,5 @@
 # 🎓 UNIVERSITY PLATFORM PHASE 1 BLUEPRINT
-## Coder'z University: Complete Academic Infrastructure
+## ShiprHQ University: Complete Academic Infrastructure
 ### Version 1.0 | February 2026
 
 ---
@@ -9,7 +9,7 @@
 1. [Executive Summary](#executive-summary)
 2. [The Core Problem & Solution](#the-core-problem--solution)
 3. [Platform Architecture Overview](#platform-architecture-overview)
-4. [University Admin Portal (uni.coderz.me)](#university-admin-portal)
+4. [University Admin Portal (uni.shipr.me)](#university-admin-portal)
 5. [Student University Module (Main Platform /uni)](#student-university-module)
 6. [Role-Based Access System](#role-based-access-system)
 7. [Assignment & Evaluation Engine](#assignment--evaluation-engine)
@@ -131,13 +131,13 @@ Universities onboard their institution, faculty creates assignments using our ex
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         CODER'Z ECOSYSTEM                                │
+│                         SHIPRHQ ECOSYSTEM                                │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │   ┌───────────────────────┐                                             │
 │   │     MAIN PLATFORM     │                                             │
 │   │     (Students)        │                                             │
-│   │     coderz.me         │                                             │
+│   │     shipr.me         │                                             │
 │   │                       │                                             │
 │   │   /studio             │                                             │
 │   │   /assessments        │                                             │
@@ -150,7 +150,7 @@ Universities onboard their institution, faculty creates assignments using our ex
 │   ┌───────────┴───────────┐         ┌───────────────────────┐           │
 │   │                       │         │                       │           │
 │   │   UNIVERSITY PORTAL   │◄───────►│     HIRING PORTAL     │           │
-│   │   uni.coderz.me       │         │     hire.coderz.me    │           │
+│   │   uni.shipr.me       │         │     hire.shipr.me    │           │
 │   │                       │         │     (Companies)       │           │
 │   │   /home               │         │                       │           │
 │   │   /students           │         │   Job postings flow   │           │
@@ -257,7 +257,7 @@ Universities onboard their institution, faculty creates assignments using our ex
 │                                                                          │
 │                    ┌────────────────────┐                               │
 │                    │   LANDING PAGE     │                               │
-│                    │   uni.coderz.me    │                               │
+│                    │   uni.shipr.me    │                               │
 │                    └──────────┬─────────┘                               │
 │                               │                                          │
 │              ┌────────────────┼────────────────┐                        │
@@ -1145,7 +1145,7 @@ Universities onboard their institution, faculty creates assignments using our ex
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │                    ┌─────────────────────┐                              │
-│                    │   CODER'Z PLATFORM  │                              │
+│                    │   SHIPRHQ PLATFORM  │                              │
 │                    │   Credit Store      │                              │
 │                    └──────────┬──────────┘                              │
 │                               │                                          │

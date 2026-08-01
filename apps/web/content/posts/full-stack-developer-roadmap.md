@@ -144,4 +144,4 @@ The people who finish are not the fastest learners. They are the ones who picked
 
 ---
 
-*BuildrHQ turns this roadmap into guided projects with real tasks and reviewable output, so you finish with something deployed rather than a folder of tutorials. [Start free](/pricing).*
+*ShiprHQ turns this roadmap into guided projects with real tasks and reviewable output, so you finish with something deployed rather than a folder of tutorials. [Start free](/pricing).*

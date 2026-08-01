@@ -276,7 +276,7 @@ export default function AdminDashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <PlatformCard
                         title="Main Platform"
-                        description="Coder'z learning platform"
+                        description="ShiprHQ learning platform"
                         icon={Code}
                         color="text-neutral-800 dark:text-neutral-100"
                         bgColor="bg-neutral-900"
@@ -291,7 +291,7 @@ export default function AdminDashboard() {
                     />
                     <PlatformCard
                         title="Hiring Platform"
-                        description="Coder'z Hiring platform"
+                        description="ShiprHQ Hiring platform"
                         icon={Building2}
                         color="text-neutral-800 dark:text-neutral-100"
                         bgColor="bg-neutral-900"
@@ -306,7 +306,7 @@ export default function AdminDashboard() {
                     />
                     <PlatformCard
                         title="University Platform"
-                        description="Coder'z University platform"
+                        description="ShiprHQ University platform"
                         icon={GraduationCap}
                         color="text-neutral-800 dark:text-neutral-100"
                         bgColor="bg-neutral-900"

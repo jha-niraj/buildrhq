@@ -63,7 +63,7 @@ export default function ContactPage() {
                                 </div>
                                 <h3 className="text-xl font-bold mb-2">Schedule a Demo</h3>
                                 <p className="text-neutral-400 dark:text-neutral-600 text-sm mb-4">
-                                    See FlowSync in action with a personalized walkthrough.
+                                    See ShiprHQ Hiring in action with a personalized walkthrough.
                                 </p>
                                 <div className="flex items-center gap-2 font-medium text-sm">
                                     Book Meeting <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -78,8 +78,8 @@ export default function ContactPage() {
                             <p className="text-neutral-500 text-sm mb-4">
                                 Custom solutions for large organizations with complex needs.
                             </p>
-                            <a href="mailto:sales@buildrhq.com" className="flex items-center gap-2 font-medium text-sm text-neutral-900 dark:text-white hover:underline">
-                                sales@buildrhq.com <ArrowRight className="w-4 h-4" />
+                            <a href="mailto:sales@shiprhq.com" className="flex items-center gap-2 font-medium text-sm text-neutral-900 dark:text-white hover:underline">
+                                sales@shiprhq.com <ArrowRight className="w-4 h-4" />
                             </a>
                         </div>
                         <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
@@ -90,8 +90,8 @@ export default function ContactPage() {
                             <p className="text-neutral-500 text-sm mb-4">
                                 Get help with platform issues and technical questions.
                             </p>
-                            <a href="mailto:support@buildrhq.com" className="flex items-center gap-2 font-medium text-sm text-neutral-900 dark:text-white hover:underline">
-                                support@buildrhq.com <ArrowRight className="w-4 h-4" />
+                            <a href="mailto:support@shiprhq.com" className="flex items-center gap-2 font-medium text-sm text-neutral-900 dark:text-white hover:underline">
+                                support@shiprhq.com <ArrowRight className="w-4 h-4" />
                             </a>
                         </div>
                     </motion.div>
@@ -224,8 +224,8 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-neutral-900 dark:text-white mb-1">Email</p>
-                                        <a href="mailto:hello@buildrhq.com" className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors">
-                                            hello@buildrhq.com
+                                        <a href="mailto:hello@shiprhq.com" className="text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                            hello@shiprhq.com
                                         </a>
                                     </div>
                                 </div>

@@ -1,5 +1,5 @@
 # 🎓 UNIVERSITY PLATFORM PHASE 2 BLUEPRINT
-## Coder'z University: Advanced Features & Scale
+## ShiprHQ University: Advanced Features & Scale
 ### Version 1.0 | February 2026
 
 ---
@@ -552,7 +552,7 @@ Phase 1 established the foundation—university onboarding, basic assignments, a
 │                    COMPANY PORTAL ARCHITECTURE                           │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
-│  URL: hire.coderz.me/campus                                             │
+│  URL: hire.shipr.me/campus                                             │
 │                                                                          │
 │  ┌─────────────────────────────────────────────────────────────────────┐│
 │  │                                                                       ││
@@ -669,7 +669,7 @@ Phase 1 established the foundation—university onboarding, basic assignments, a
 │  ────────────────────                                                   │
 │                                                                          │
 │  ┌─────────────────────────────┐  ┌─────────────────────────────────┐  │
-│  │  📱 CODER'Z LEARN           │  │  📱 CODER'Z CAMPUS              │  │
+│  │  📱 SHIPRHQ LEARN           │  │  📱 SHIPRHQ CAMPUS              │  │
 │  │  (For Students)             │  │  (For Faculty & Admin)          │  │
 │  │                             │  │                                 │  │
 │  │  • Assignments              │  │  • Grading on-the-go            │  │
@@ -771,7 +771,7 @@ Phase 1 established the foundation—university onboarding, basic assignments, a
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │                        ┌─────────────────────┐                          │
-│                        │   CODER'Z PLATFORM  │                          │
+│                        │   SHIPRHQ PLATFORM  │                          │
 │                        │   (Core System)     │                          │
 │                        └──────────┬──────────┘                          │
 │                                   │                                      │
@@ -808,7 +808,7 @@ Phase 1 established the foundation—university onboarding, basic assignments, a
 │  STUDENT FLOW:                                                          │
 │  ─────────────                                                          │
 │                                                                          │
-│  1. Student visits uni.coderz.me/tech-university                        │
+│  1. Student visits uni.shipr.me/tech-university                        │
 │  2. Clicks "Sign in with University Account"                            │
 │  3. Redirected to university IdP (e.g., Azure AD, Okta)                 │
 │  4. Authenticates with university credentials                           │
@@ -856,13 +856,13 @@ Phase 1 established the foundation—university onboarding, basic assignments, a
 │                                                                          │
 │  DATA SYNCED:                                                           │
 │  ────────────                                                           │
-│  FROM ERP → CODERZ:                                                     │
+│  FROM ERP → SHIPRHQ:                                                     │
 │  • Student list with demographics                                       │
 │  • Class/course enrollments                                             │
 │  • Faculty assignments                                                  │
 │  • Academic calendar                                                    │
 │                                                                          │
-│  FROM CODERZ → ERP:                                                     │
+│  FROM SHIPRHQ → ERP:                                                     │
 │  • Assignment grades                                                    │
 │  • Attendance records                                                   │
 │  • Skill assessment results                                             │
@@ -1201,7 +1201,7 @@ Phase 1 established the foundation—university onboarding, basic assignments, a
 │  │  ❌ Custom domain│  │  ✅ Custom domain│  │  ✅ Custom domain│      │
 │  │  ❌ Custom emails│  │  ✅ Custom emails│  │  ✅ Custom emails│      │
 │  │  ❌ Remove "by   │  │  ❌ Remove "by   │  │  ✅ Remove "by   │      │
-│  │     Coder'z"     │  │     Coder'z"     │  │     Coder'z"     │      │
+│  │     ShiprHQ"     │  │     ShiprHQ"     │  │     ShiprHQ"     │      │
 │  │                  │  │                  │  │  ✅ API access   │      │
 │  │  ₹5L/year       │  │  ₹15L/year      │  │  ₹40L/year      │      │
 │  └──────────────────┘  └──────────────────┘  └──────────────────┘      │
@@ -1647,4 +1647,4 @@ enum StreakType {
 
 *Document Created: February 7, 2026*
 *Version: 1.0*
-*Author: Coder'z Product Team*
+*Author: ShiprHQ Product Team*

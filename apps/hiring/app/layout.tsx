@@ -7,7 +7,7 @@ import { Providers } from "./providers/providers";
 
 // Canonical origin for this deploy. Overridable per environment so preview
 // builds emit their own absolute URLs instead of the production ones.
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://hiring.buildrhq.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://hiring.shiprhq.com'
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -36,8 +36,8 @@ const bricolage = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
 	title: {
-		default: "BuildrHQ Hiring | AI-Powered Recruitment Platform",
-		template: "%s | BuildrHQ Hiring"
+		default: "ShiprHQ Hiring | AI-Powered Recruitment Platform",
+		template: "%s | ShiprHQ Hiring"
 	},
 	description: "The intelligent hiring platform for tech companies. Find pre-vetted engineers with verified skills through real projects, AI-powered assessments, and smart candidate matching.",
 	keywords: [
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
 		"HR Tech",
 		"Applicant Tracking System"
 	],
-	authors: [{ name: "BuildrHQ Team" }],
-	creator: "BuildrHQ",
-	publisher: "BuildrHQ",
+	authors: [{ name: "ShiprHQ Team" }],
+	creator: "ShiprHQ",
+	publisher: "ShiprHQ",
 	metadataBase: new URL(BASE_URL),
 	alternates: {
 		canonical: "/",
@@ -63,24 +63,24 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en_US",
 		url: BASE_URL,
-		siteName: "BuildrHQ Hiring",
-		title: "BuildrHQ Hiring - AI-Powered Recruitment Platform",
+		siteName: "ShiprHQ Hiring",
+		title: "ShiprHQ Hiring - AI-Powered Recruitment Platform",
 		description: "The intelligent hiring platform for tech companies. Find pre-vetted engineers with verified skills through real projects and AI-powered assessments.",
 		images: [
 			{
 				url: "/hiring-og.png",
 				width: 1200,
 				height: 630,
-				alt: "BuildrHQ Hiring - AI-Powered Recruitment Platform",
+				alt: "ShiprHQ Hiring - AI-Powered Recruitment Platform",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "BuildrHQ Hiring - AI-Powered Recruitment Platform",
+		title: "ShiprHQ Hiring - AI-Powered Recruitment Platform",
 		description: "The intelligent hiring platform for tech companies. Find pre-vetted engineers with verified skills.",
 		images: ["/hiring-og.png"],
-		creator: "@buildrhq",
+		creator: "@shiprhq",
 	},
 	icons: {
 		icon: [
@@ -110,7 +110,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<body className={`
 				${spaceGrotesk.className} ${bricolage.variable} ${geistSans.variable} ${geistMono.variable} antialiased 
 			`}>

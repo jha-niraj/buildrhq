@@ -1,6 +1,6 @@
 ================================================================================
  STUDIO vs SPACE vs PATHFINDER — COMPREHENSIVE DECISION DOCUMENT
- The Coderz Platform — Deep Dive Analysis, Overlap & Recommendations
+ The ShiprHQ Platform — Deep Dive Analysis, Overlap & Recommendations
 ================================================================================
 
 Document Created: February 15, 2026

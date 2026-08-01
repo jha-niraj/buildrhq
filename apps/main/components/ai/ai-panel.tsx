@@ -28,7 +28,7 @@ const SUGGESTIONS = [
 function buildPageContext(pathname: string): { route: string; title: string } {
 	let title = "";
 	if (typeof document !== "undefined" && document.title) {
-		title = document.title.replace(/\s*[|\-–—]\s*BuildrHQ.*$/i, "").trim();
+		title = document.title.replace(/\s*[|\-–—]\s*ShiprHQ.*$/i, "").trim();
 	}
 	if (!title) {
 		const segments = pathname.split("/").filter(Boolean);
@@ -75,7 +75,7 @@ function MessageBubble({ message, isStreaming }: { message: AIChatMessage; isStr
 				<span className="flex h-5 w-5 items-center justify-center rounded-md bg-neutral-900/10">
 					<Sparkles className="h-3 w-3 text-neutral-900" />
 				</span>
-				<span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400">BuildrHQ AI</span>
+				<span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400">ShiprHQ AI</span>
 			</div>
 			<div className="min-w-0 text-sm leading-relaxed text-neutral-800 dark:text-neutral-200">
 				{message.content ? (
@@ -233,7 +233,7 @@ export function AIPanel() {
 						<Sparkles className="h-4 w-4 text-neutral-900" />
 					</span>
 					<span className="truncate text-sm font-semibold text-neutral-900 dark:text-white">
-						{activeSession?.messages.length ? activeSession.title : "BuildrHQ AI"}
+						{activeSession?.messages.length ? activeSession.title : "ShiprHQ AI"}
 					</span>
 				</div>
 				<div className="flex shrink-0 items-center gap-0.5">

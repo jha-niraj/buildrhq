@@ -1,9 +1,9 @@
 ================================================================================
                     INTERVIEW ACCEPTANCE FLOW DOCUMENTATION
-                           Coderz Hiring Platform
+                           ShiprHQ Hiring Platform
 ================================================================================
 
-This document outlines the complete interview acceptance flow for the Coderz 
+This document outlines the complete interview acceptance flow for the ShiprHQ 
 hiring platform, covering both the HIRING app (for HR/recruiters) and the 
 MAIN app (for candidates).
 

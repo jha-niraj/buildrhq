@@ -10,7 +10,7 @@ import { CandidatesContent } from "./candidates-content"
 export const dynamic = "force-dynamic"
 
 export const metadata = {
-    title: "Candidates | FlowSync",
+    title: "Candidates | ShiprHQ Hiring",
     description: "View and manage candidate applications"
 }
 

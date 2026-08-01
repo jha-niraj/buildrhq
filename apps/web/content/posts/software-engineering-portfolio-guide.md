@@ -60,7 +60,7 @@ You do not need it to be production-ready. You need it to be impressive and well
 
 This is your proof that you can work in someone else's codebase, follow conventions, write good commit messages, and get a PR merged by strangers. Even one meaningful contribution to a real open source project tells recruiters more about your professional readiness than three solo projects.
 
-If you have not made an open source contribution yet, [the first pull request guide](/blogs/open-source-contribution-beginners) walks through the whole process, and BuildrHQ's open source tracker helps you find beginner-friendly issues matched to your stack.
+If you have not made an open source contribution yet, [the first pull request guide](/blogs/open-source-contribution-beginners) walks through the whole process, and ShiprHQ's open source tracker helps you find beginner-friendly issues matched to your stack.
 
 ## Building Projects That Get Noticed
 
@@ -161,9 +161,9 @@ By day 30 you should have: a live anchor project, a deployed technical showcase,
 
 That is enough to get interviews at most companies. The rest is execution.
 
-## Using BuildrHQ to Accelerate Your Portfolio
+## Using ShiprHQ to Accelerate Your Portfolio
 
-BuildrHQ's project builder helps CS students build portfolio-worthy projects with AI guidance — from architecture planning to code review to verified proof of completion. Instead of spending hours figuring out what to build and how to structure it, you get a structured path from idea to shipped project.
+ShiprHQ's project builder helps CS students build portfolio-worthy projects with AI guidance — from architecture planning to code review to verified proof of completion. Instead of spending hours figuring out what to build and how to structure it, you get a structured path from idea to shipped project.
 
 The platform also auto-tracks your GitHub activity and open source contributions in one dashboard, so your portfolio data is always current. When you are ready to apply, the AI resume builder turns your project history into recruiter-ready resume bullets tailored to each job description — and [the ATS resume guide](/blogs/ats-resume-software-engineer) explains what those bullets need to survive.
 

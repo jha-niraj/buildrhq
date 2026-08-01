@@ -119,7 +119,7 @@ export function ProjectVerification({
                             <div className="p-2 rounded-lg bg-neutral-900/10">
                                 <Rocket className="w-6 h-6 text-neutral-900" />
                             </div>
-                            <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">Build with Coderz</h3>
+                            <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">Build with ShiprHQ</h3>
                         </div>
                         <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
                             Use our guided project builder with AI assistance, task management, and built-in collaboration tools.

@@ -4,8 +4,13 @@ import type { ReactNode } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 
 export type FullScreenLoaderProps = {
-    /** Logo element, e.g. `<Image src="/mainlogo.png" alt="BuildrHQ" width={56} height={56} />`. */
+    /**
+     * Logo element, e.g. `<Image src="/mainlogo.png" alt="ShiprHQ" width={56} height={56} />`.
+     * Omit it to get the animated <ShiprMark />, which is the default.
+     */
     logo?: ReactNode
+    /** Set false to render no mark at all (wordmark + progress only). */
+    mark?: boolean
     /** The animated wordmark text. */
     wordmark?: string
     /** Optional caption under the wordmark, e.g. "Setting up your workspace". */
@@ -81,14 +86,82 @@ const STYLES = `
 }
 `
 
+/**
+ * The ShiprHQ mark, animated.
+ *
+ * A dispatch motif, which is what the name means: a chevron launches out of the
+ * tile along its diagonal, leaves a short wake behind it, and the tile's ring
+ * completes as it goes. One object doing one thing — deliberately not a second
+ * spinner, since the wordmark shimmer and the progress track already carry
+ * motion and a third competing loop would read as jitter.
+ *
+ * Pure inline SVG on `currentColor`, so it inherits the theme with no per-mode
+ * branching and costs nothing to load — the loader is the first thing painted on
+ * a cold navigation, so it must not wait on an image request.
+ */
+export function ShiprMark({ size = 56, className = "" }: { size?: number; className?: string }) {
+    const reduceMotion = useReducedMotion()
+
+    // The chevron travels up-and-right along the tile's diagonal.
+    const launch = { x: [0, 3, 26], y: [0, -3, -26], opacity: [0, 1, 0] }
+    const cycle = { duration: 1.9, repeat: Infinity, ease: "easeIn" as const, times: [0, 0.28, 1] }
+
+    return (
+        <div className={className} style={{ width: size, height: size, color: "var(--foreground)" }} aria-hidden>
+            <svg viewBox="0 0 64 64" width={size} height={size} fill="none">
+                {/* Tile. Drawn once on mount rather than looping — it is the frame
+                    the motion happens inside, not part of the motion. */}
+                <motion.rect
+                    x={4} y={4} width={56} height={56} rx={16}
+                    stroke="currentColor" strokeOpacity={0.28} strokeWidth={2}
+                    initial={reduceMotion ? undefined : { pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <rect x={4} y={4} width={56} height={56} rx={16} fill="currentColor" fillOpacity={0.05} />
+
+                {/* Wake: two short strokes that hang back as the chevron leaves. */}
+                {!reduceMotion && [0, 1].map((i) => (
+                    <motion.line
+                        key={i}
+                        x1={20 - i * 6} y1={44 + i * 6} x2={27 - i * 6} y2={37 + i * 6}
+                        stroke="currentColor" strokeWidth={2} strokeLinecap="round"
+                        initial={{ opacity: 0, pathLength: 0 }}
+                        animate={{ opacity: [0, 0.45, 0], pathLength: [0, 1, 1] }}
+                        transition={{ ...cycle, delay: 0.1 + i * 0.08 }}
+                    />
+                ))}
+
+                {/* The chevron itself. */}
+                <motion.path
+                    d="M 22 42 L 32 22 L 42 42 L 32 36 Z"
+                    fill="currentColor"
+                    initial={reduceMotion ? { opacity: 1 } : { opacity: 0 }}
+                    animate={reduceMotion ? undefined : launch}
+                    transition={cycle}
+                    style={{ transformOrigin: "32px 32px" }}
+                />
+                {/* A resting outline so the tile is never empty between launches. */}
+                <path
+                    d="M 22 42 L 32 22 L 42 42 L 32 36 Z"
+                    stroke="currentColor" strokeOpacity={reduceMotion ? 0 : 0.22}
+                    strokeWidth={1.5} strokeLinejoin="round"
+                />
+            </svg>
+        </div>
+    )
+}
+
 export function FullScreenLoader({
     logo,
-    wordmark = "BuildrHQ",
+    mark = true,
+    wordmark = "ShiprHQ",
     label,
     fullScreen = true,
     className = "",
 }: FullScreenLoaderProps) {
     const reduceMotion = useReducedMotion()
+    const glyph = logo ?? (mark ? <ShiprMark /> : null)
 
     return (
         <div
@@ -121,17 +194,17 @@ export function FullScreenLoader({
                     textAlign: "center",
                 }}
             >
-                {logo ? (
+                {glyph ? (
                     <motion.div
                         style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}
                         initial={reduceMotion ? undefined : { opacity: 0, y: 10, scale: 0.94 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{ duration: 0.55, ease: "easeOut" }}
                     >
-                        {/* No pulsing rings behind the logo: the shimmering wordmark and the
+                        {/* No pulsing rings behind the mark: the shimmering wordmark and the
                             progress track already carry the motion, and expanding circles read
                             as a second, competing spinner. */}
-                        {logo}
+                        {glyph}
                     </motion.div>
                 ) : null}
 

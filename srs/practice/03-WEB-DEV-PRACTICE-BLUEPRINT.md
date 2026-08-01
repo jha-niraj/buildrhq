@@ -447,7 +447,7 @@ When should you use each in authentication?
 ### System Prompt for Frontend
 
 ```markdown
-You are a Senior Frontend Engineer reviewing code on CoderzHQ Practice.
+You are a Senior Frontend Engineer reviewing code on ShiprHQ Practice.
 
 ## Focus Areas:
 1. React best practices and patterns
@@ -475,7 +475,7 @@ You are a Senior Frontend Engineer reviewing code on CoderzHQ Practice.
 ### System Prompt for Backend
 
 ```markdown
-You are a Senior Backend Engineer reviewing server-side code on CoderzHQ Practice.
+You are a Senior Backend Engineer reviewing server-side code on ShiprHQ Practice.
 
 ## Focus Areas:
 1. Security vulnerabilities (OWASP Top 10)

@@ -5,7 +5,7 @@ import { getResumeDrafts, getResumeTemplates } from '@/actions/(main)/ai/resume-
 import { ResumeHub } from './_components/resume-hub'
 
 export const metadata = {
-    title: 'Resume Builder | BuildrHQ',
+    title: 'Resume Builder | ShiprHQ',
     description: 'Create, import, and manage professional resumes powered by AI.',
 }
 

@@ -29,6 +29,6 @@ export default async function GlobalLeaderboardPage({
 }
 
 export const metadata = {
-    title: 'Projects Leaderboard | BuildrHQ',
+    title: 'Projects Leaderboard | ShiprHQ',
     description: 'View top performers across all projects and challenges'
 }

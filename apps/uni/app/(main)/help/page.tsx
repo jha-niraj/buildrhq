@@ -22,7 +22,7 @@ const helpCategories = [
         icon: <Mail className="w-6 h-6" />,
         title: "Email Support",
         description: "We reply within 24 hours",
-        href: "mailto:support@buildrhq.com",
+        href: "mailto:support@shiprhq.com",
     },
     {
         icon: <FileText className="w-6 h-6" />,
@@ -60,7 +60,7 @@ export default function HelpPage() {
                     Help & Support
                 </h1>
                 <p className="text-neutral-500 mt-1">
-                    Get help with using FlowSync
+                    Get help with using ShiprHQ Hiring
                 </p>
             </div>
 

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// @repo/email — BuildrHQ shared email design system.
+// @repo/email — ShiprHQ shared email design system.
 //
 // One brand-safe HTML shell + composable helpers, so every app renders the same
 // editorial look (warm-neutral card, ink headings, serif-italic accents, mono
@@ -219,7 +219,7 @@ export interface ShellParams {
     /**
      * Inbox preview text — the grey line next to the subject in Gmail/Apple Mail.
      * Left unset, clients scrape the first words of the body, which for an OTP mail
-     * is the eyebrow label ("EMAIL VERIFICATION · BUILDRHQ") rather than anything
+     * is the eyebrow label ("EMAIL VERIFICATION · SHIPRHQ") rather than anything
      * useful. Setting it is one of the cheapest open-rate wins available.
      */
     preheader?: string;
@@ -227,7 +227,7 @@ export interface ShellParams {
 
 export function shell(params: ShellParams): string {
     const year = new Date().getFullYear();
-    const brand = params.brand ?? "BuildrHQ";
+    const brand = params.brand ?? "ShiprHQ";
     const headerBlock = `${params.eyebrow ? eyebrow(params.eyebrow) : ""}${
         params.subtitle
             ? `<p style="margin:0;font-family:${F.sans};font-size:13px;color:${C.muted};">${params.subtitle}</p>`
@@ -303,9 +303,9 @@ export function shell(params: ShellParams): string {
                   <td valign="middle" style="padding-left:8px;font-family:${F.sans};font-size:13px;font-weight:600;color:${C.ink};">${brand}</td>
                 </tr></table>
                 <p style="margin:0;font-family:${F.sans};font-size:12px;line-height:1.6;color:${C.muted};">
-                  ${params.footerNote ?? "This is an automated message from BuildrHQ. Please do not reply directly to this email."}
+                  ${params.footerNote ?? "This is an automated message from ShiprHQ. Please do not reply directly to this email."}
                 </p>
-                <p style="margin:10px 0 0;font-family:${F.mono};font-size:10.5px;letter-spacing:0.02em;color:${C.faint};">&copy; ${year} BuildrHQ &middot; Learn, build &amp; get hired.</p>
+                <p style="margin:10px 0 0;font-family:${F.mono};font-size:10.5px;letter-spacing:0.02em;color:${C.faint};">&copy; ${year} ShiprHQ &middot; Learn, build &amp; get hired.</p>
               </td></tr>
             </table>
           </td></tr>
@@ -325,14 +325,14 @@ export type EmailContent = { subject: string; html: string };
  * The verified Resend sender for every transactional email in the monorepo.
  *
  * Set per app, because the display name differs by surface:
- *   RESEND_FROM_MAIL="BuildrHQ <noreply@buildrhq.com>"
- *   RESEND_FROM_MAIL="BuildrHQ University <noreply@buildrhq.com>"
+ *   RESEND_FROM_MAIL="ShiprHQ <noreply@shiprhq.com>"
+ *   RESEND_FROM_MAIL="ShiprHQ University <noreply@shiprhq.com>"
  *
  * `RESEND_FROM_EMAIL` is the previous name, still read so an already-deployed
  * environment keeps working through the rename. Prefer RESEND_FROM_MAIL.
  *
  * Throws rather than falling back to a literal. Every app used to carry its own
- * `DEFAULT_FROM = "... <noreply@coderzai.xyz>"`, a domain from a previous product
+ * `DEFAULT_FROM = "... <noreply@shiprhq.com>"`, a domain from a previous product
  * that is not verified in Resend — so the "safe" fallback silently produced sends
  * that the API rejects. Failing loudly at send time, exactly like the missing
  * RESEND_API_KEY check does, surfaces a misconfigured environment immediately.
@@ -342,7 +342,7 @@ export function resolveFromAddress(): string {
     if (!from) {
         throw new Error(
             'RESEND_FROM_MAIL environment variable is not set. ' +
-            'Expected a verified Resend sender, e.g. "BuildrHQ <noreply@buildrhq.com>".',
+            'Expected a verified Resend sender, e.g. "ShiprHQ <noreply@shiprhq.com>".',
         );
     }
     return from;

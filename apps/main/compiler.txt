@@ -1,5 +1,5 @@
 ================================================================================
-                    CODER'Z CODE COMPILER/EXECUTOR BACKEND
+                    SHIPRHQ CODE COMPILER/EXECUTOR BACKEND
                     Complete Architecture & Implementation Guide
 ================================================================================
 
@@ -22,7 +22,7 @@ TABLE OF CONTENTS
                             1. OVERVIEW & ARCHITECTURE
 ================================================================================
 
-The Coder'z Compiler is a standalone Node.js + Express + TypeScript backend 
+The ShiprHQ Compiler is a standalone Node.js + Express + TypeScript backend 
 service that executes user-submitted code in a secure, sandboxed environment.
 It supports multiple programming languages and implements safeguards against
 malicious code, infinite loops, and resource exhaustion.
@@ -296,7 +296,7 @@ export const LANGUAGE_CONFIGS: Record<Language, LanguageConfig> = {
   c: {
     name: 'C',
     extension: '.c',
-    dockerImage: 'coderz-runner-c:latest',
+    dockerImage: 'shipr-runner-c:latest',
     compileCommand: 'gcc -o /tmp/program /tmp/code.c -lm',
     runCommand: '/tmp/program',
     timeout: 10,
@@ -305,7 +305,7 @@ export const LANGUAGE_CONFIGS: Record<Language, LanguageConfig> = {
   cpp: {
     name: 'C++',
     extension: '.cpp',
-    dockerImage: 'coderz-runner-cpp:latest',
+    dockerImage: 'shipr-runner-cpp:latest',
     compileCommand: 'g++ -o /tmp/program /tmp/code.cpp -std=c++17',
     runCommand: '/tmp/program',
     timeout: 10,
@@ -314,7 +314,7 @@ export const LANGUAGE_CONFIGS: Record<Language, LanguageConfig> = {
   javascript: {
     name: 'JavaScript',
     extension: '.js',
-    dockerImage: 'coderz-runner-js:latest',
+    dockerImage: 'shipr-runner-js:latest',
     runCommand: 'node /tmp/code.js',
     timeout: 10,
     memoryLimit: 256,
@@ -322,7 +322,7 @@ export const LANGUAGE_CONFIGS: Record<Language, LanguageConfig> = {
   typescript: {
     name: 'TypeScript',
     extension: '.ts',
-    dockerImage: 'coderz-runner-ts:latest',
+    dockerImage: 'shipr-runner-ts:latest',
     compileCommand: 'npx tsc /tmp/code.ts --outDir /tmp',
     runCommand: 'node /tmp/code.js',
     timeout: 15,
@@ -331,7 +331,7 @@ export const LANGUAGE_CONFIGS: Record<Language, LanguageConfig> = {
   python: {
     name: 'Python',
     extension: '.py',
-    dockerImage: 'coderz-runner-python:latest',
+    dockerImage: 'shipr-runner-python:latest',
     runCommand: 'python3 /tmp/code.py',
     timeout: 10,
     memoryLimit: 256,
@@ -339,7 +339,7 @@ export const LANGUAGE_CONFIGS: Record<Language, LanguageConfig> = {
   java: {
     name: 'Java',
     extension: '.java',
-    dockerImage: 'coderz-runner-java:latest',
+    dockerImage: 'shipr-runner-java:latest',
     compileCommand: 'javac -d /tmp /tmp/Main.java',
     runCommand: 'java -cp /tmp Main',
     timeout: 15,
@@ -596,7 +596,7 @@ export async function executeCode(options: ExecuteOptions): Promise<Partial<Subm
   const { code, language, testCases, stdin } = options;
   const config = LANGUAGE_CONFIGS[language];
   const executionId = uuidv4();
-  const workDir = `/tmp/coderz/${executionId}`;
+  const workDir = `/tmp/shipr/${executionId}`;
   
   try {
     // Create temp directory
@@ -1026,7 +1026,7 @@ INFRASTRUCTURE DIAGRAM:
                             11. API DOCUMENTATION
 ================================================================================
 
-BASE URL: https://compiler.coderz.com/api
+BASE URL: https://compiler.shiprhq.com/api
 
 ENDPOINTS:
 ----------
@@ -1091,12 +1091,12 @@ docker run -d -p 6379:6379 redis:alpine
 
 # 3. Build runner images
 cd docker/runners
-docker build -t coderz-runner-c -f c.Dockerfile .
-docker build -t coderz-runner-cpp -f cpp.Dockerfile .
-docker build -t coderz-runner-js -f javascript.Dockerfile .
-docker build -t coderz-runner-ts -f typescript.Dockerfile .
-docker build -t coderz-runner-python -f python.Dockerfile .
-docker build -t coderz-runner-java -f java.Dockerfile .
+docker build -t shipr-runner-c -f c.Dockerfile .
+docker build -t shipr-runner-cpp -f cpp.Dockerfile .
+docker build -t shipr-runner-js -f javascript.Dockerfile .
+docker build -t shipr-runner-ts -f typescript.Dockerfile .
+docker build -t shipr-runner-python -f python.Dockerfile .
+docker build -t shipr-runner-java -f java.Dockerfile .
 
 # 4. Start compiler service
 npm run dev

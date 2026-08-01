@@ -4,7 +4,7 @@ import InterviewAssistantDetails from '../_components/interviewassistantdetails'
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
     return {
-        title: `Interview Prep: ${slug.replace(/-/g, ' ')} | BuildrHQ`,
+        title: `Interview Prep: ${slug.replace(/-/g, ' ')} | ShiprHQ`,
         description: 'AI-generated interview questions and preparation guide for your target role.',
     };
 }

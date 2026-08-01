@@ -151,7 +151,7 @@ export function ProjectCard({ project, showProgress = false }: ProjectCardProps)
                     {project.isPlatformSeeded && (
                         <div className="flex items-center gap-1">
                             <Crown className="w-3.5 h-3.5" />
-                            <span>BuildrHQ</span>
+                            <span>ShiprHQ</span>
                         </div>
                     )}
                     {project.guidedModeEnabled && (

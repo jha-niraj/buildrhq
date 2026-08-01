@@ -73,7 +73,7 @@ export default function OnboardingClient() {
 		{
 			id: "welcome",
 			type: "welcome",
-			question: "Welcome to BuildrHQ",
+			question: "Welcome to ShiprHQ",
 			description:
 				"Let's set up your developer profile. It takes about a minute — and everything here can be changed later in Settings.",
 		},
@@ -82,7 +82,7 @@ export default function OnboardingClient() {
 			type: "short_text",
 			question: "Pick your username",
 			navLabel: "Username",
-			description: "This is your handle across BuildrHQ — on your profile, projects and leaderboard.",
+			description: "This is your handle across ShiprHQ — on your profile, projects and leaderboard.",
 			placeholder: "e.g. nirajbuilds",
 			required: true,
 			validate: validateUsername,
@@ -124,7 +124,7 @@ export default function OnboardingClient() {
 			type: "multiple_choice",
 			question: "What do you want to get better at?",
 			navLabel: "Learning goals",
-			description: "Pick as many as you like — this shapes what BuildrHQ recommends you.",
+			description: "Pick as many as you like — this shapes what ShiprHQ recommends you.",
 			options: LEARNING_GOALS.map((g) => g.label),
 			columns: 2,
 			required: true,
@@ -229,7 +229,7 @@ export default function OnboardingClient() {
 			onSubmit={handleSubmit}
 			themed
 			renderSidePanel={(nav) => <OnboardingSidePanel nav={nav} />}
-			persistKey="buildrhq-onboarding-draft"
+			persistKey="shiprhq-onboarding-draft"
 			background={<OnboardingShaderBg />}
 			headerRight={
 				<button
@@ -246,7 +246,7 @@ export default function OnboardingClient() {
 			autoCloseMs={3500}
 			submitLabel="Finish setup"
 			thankYouTitle="You're all set!"
-			thankYouDesc="Welcome to BuildrHQ. Let's get you building."
+			thankYouDesc="Welcome to ShiprHQ. Let's get you building."
 		/>
 	)
 }

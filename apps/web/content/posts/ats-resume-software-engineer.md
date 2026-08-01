@@ -170,7 +170,7 @@ Tailoring does not mean rewriting from scratch. It means:
 3. Reordering bullets within jobs to lead with the most relevant experience for that specific role
 4. Checking that every technology mentioned in the JD that you have experience with appears somewhere in your resume
 
-This takes 15–20 minutes per application. BuildrHQ's AI resume builder does this automatically — you paste the job description and it tailors your resume bullets in place, flags missing keywords, and gives you an ATS score before you apply.
+This takes 15–20 minutes per application. ShiprHQ's AI resume builder does this automatically — you paste the job description and it tailors your resume bullets in place, flags missing keywords, and gives you an ATS score before you apply.
 
 ## One Last Thing: The Human Element
 

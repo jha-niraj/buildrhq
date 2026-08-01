@@ -64,7 +64,7 @@ const roleOptions = [
 // Loading fallback component
 function OnboardingLoading() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-neutral-50 dark:bg-neutral-950">
+        <div className="min-h-screen flex items-center justify-center bg-neutral-50 dark:bg-neutral-950 mx-auto w-full max-w-7xl">
             <div className="flex flex-col items-center gap-4">
                 <Loader2 className="w-8 h-8 animate-spin text-neutral-400" />
                 <p className="text-neutral-500">Loading...</p>
@@ -228,7 +228,7 @@ function OnboardingContent() {
                         <div className="w-8 h-8 rounded-lg bg-neutral-900 dark:bg-white flex items-center justify-center">
                             <Briefcase className="w-4 h-4 text-white dark:text-black" />
                         </div>
-                        <span className="font-bold text-neutral-900 dark:text-white">CoderZ Hiring</span>
+                        <span className="font-bold text-neutral-900 dark:text-white">ShiprHQ Hiring</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-neutral-500">
                         Step {currentStep} of {totalSteps}
@@ -324,7 +324,7 @@ function OnboardingContent() {
                                                     </div>
                                                 </div>
                                                 <p className="mt-1.5 text-xs text-neutral-500">
-                                                    Your company page: hire.coderz.me/<span className="font-medium">{slug || "your-company"}</span>
+                                                    Your company page: hire.shipr.me/<span className="font-medium">{slug || "your-company"}</span>
                                                 </p>
                                                 {
                                                 slugStatus === "taken" && slugSuggestions.length > 0 && (

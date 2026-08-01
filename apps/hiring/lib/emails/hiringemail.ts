@@ -28,7 +28,7 @@ function appUrl(): string {
 export const hiringEmailTemplates = {
 
     verifyOTP: (name: string, otp: string) => ({
-        subject: "Verify your email — BuildrHQ Hiring",
+        subject: "Verify your email — ShiprHQ Hiring",
         html: shell({
             title: "Verify your email",
             subtitle: "Use this one-time code to complete your registration",
@@ -52,7 +52,7 @@ export const hiringEmailTemplates = {
     }),
 
     resetPasswordOTP: (name: string, otp: string) => ({
-        subject: "Reset your password — BuildrHQ Hiring",
+        subject: "Reset your password — ShiprHQ Hiring",
         html: shell({
             title: "Password reset request",
             subtitle: "Use this code to reset your password",
@@ -76,10 +76,10 @@ export const hiringEmailTemplates = {
     }),
 
     companyWelcome: (name: string, companyName: string) => ({
-        subject: "Your hiring workspace is ready — BuildrHQ",
+        subject: "Your hiring workspace is ready — ShiprHQ",
         html: shell({
             title: "Workspace ready",
-            subtitle: `${companyName} is now active on BuildrHQ Hiring`,
+            subtitle: `${companyName} is now active on ShiprHQ Hiring`,
             body: `
         <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello ${name},</p>
         <p style="margin:0 0 18px;font-size:14px;color:#525252;">
@@ -114,14 +114,14 @@ export const hiringEmailTemplates = {
         inviteUrl: string,
         message?: string,
     ) => ({
-        subject: `You've been invited to join ${companyName} — BuildrHQ Hiring`,
+        subject: `You've been invited to join ${companyName} — ShiprHQ Hiring`,
         html: shell({
             title: `Invitation to ${companyName}`,
             subtitle: "You've been invited to join a hiring team",
             body: `
         <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello,</p>
         <p style="margin:0 0 18px;font-size:14px;color:#525252;">
-          <strong>${inviterName}</strong> has invited you to join <strong>${companyName}</strong> as a <strong>${role}</strong> on BuildrHQ Hiring.
+          <strong>${inviterName}</strong> has invited you to join <strong>${companyName}</strong> as a <strong>${role}</strong> on ShiprHQ Hiring.
         </p>
 
         ${message ? `

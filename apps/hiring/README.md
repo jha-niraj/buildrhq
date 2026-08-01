@@ -1,10 +1,10 @@
-# Coder'z Hiring Platform
+# ShiprHQ Hiring Platform
 
 The intelligent hiring platform for tech companies to find pre-vetted engineers with verified skills.
 
 ## Overview
 
-Coder'z Hiring is a comprehensive recruitment platform designed specifically for tech companies. It leverages AI-powered assessments, real project verification, and smart candidate matching to streamline the hiring process.
+ShiprHQ Hiring is a comprehensive recruitment platform designed specifically for tech companies. It leverages AI-powered assessments, real project verification, and smart candidate matching to streamline the hiring process.
 
 ## Features
 
@@ -47,7 +47,7 @@ Coder'z Hiring is a comprehensive recruitment platform designed specifically for
 
 1. Clone the repository and navigate to the project root:
 ```bash
-cd coderzofficial
+cd shiprofficial
 ```
 
 2. Install dependencies:
@@ -146,6 +146,6 @@ Proprietary - All rights reserved.
 
 ## Support
 
-- Documentation: [docs.buildrhq.com](https://docs.buildrhq.com)
-- Email: support@buildrhq.com
+- Documentation: [docs.shiprhq.com](https://docs.shiprhq.com)
+- Email: support@shiprhq.com
 - Discord: [Join our community](https://discord.gg/coderzai)

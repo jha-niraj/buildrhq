@@ -1,7 +1,7 @@
 {
-	"name": "coderzworker",
+	"name": "shiprworker",
 	"version": "2.0.0",
-	"description": "BuildrHQ code-execution service (Cloudflare Worker + Durable Object + Container)",
+	"description": "ShiprHQ code-execution service (Cloudflare Worker + Durable Object + Container)",
 	"private": true,
 	"type": "module",
 	"main": "src/index.ts",

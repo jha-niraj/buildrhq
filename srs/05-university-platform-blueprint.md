@@ -1,5 +1,5 @@
 # University Platform Blueprint 🎓
-## Coder'z Ecosystem - Complete Platform Architecture
+## ShiprHQ Ecosystem - Complete Platform Architecture
 
 ---
 
@@ -7,7 +7,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                         CODER'Z ECOSYSTEM                                    │
+│                         SHIPRHQ ECOSYSTEM                                    │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                  │
@@ -138,7 +138,7 @@
 │                                                                          │
 │  ┌────────────────────┐                                                 │
 │  │ HEAD visits        │                                                 │
-│  │ university.coderz  │                                                 │
+│  │ university.shipr  │                                                 │
 │  └─────────┬──────────┘                                                 │
 │            ▼                                                            │
 │  ┌────────────────────┐                                                 │
@@ -151,7 +151,7 @@
 │            ▼                                                            │
 │  ┌────────────────────┐                                                 │
 │  │ Verification by    │                                                 │
-│  │ Coder'z Team       │                                                 │
+│  │ ShiprHQ Team       │                                                 │
 │  │ (Manual Review)    │                                                 │
 │  └─────────┬──────────┘                                                 │
 │            ▼                                                            │

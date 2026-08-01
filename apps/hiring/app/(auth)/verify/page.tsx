@@ -145,7 +145,7 @@ function VerifyContent() {
 
     if (isVerified) {
         return (
-            <div className="min-h-screen w-full bg-white dark:bg-neutral-950 flex flex-col items-center justify-center">
+            <div className="min-h-screen w-full bg-white dark:bg-neutral-950 flex flex-col items-center justify-center mx-auto w-full max-w-7xl">
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -174,7 +174,7 @@ function VerifyContent() {
                             <Building2 className="w-5 h-5 text-white dark:text-black" />
                         </div>
                         <span className="text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
-                            BuildrHQ <span className="text-neutral-500 font-mono font-normal">HIRING</span>
+                            ShiprHQ <span className="text-neutral-500 font-mono font-normal">HIRING</span>
                         </span>
                     </Link>
                 </div>

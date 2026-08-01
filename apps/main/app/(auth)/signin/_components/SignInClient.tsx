@@ -292,8 +292,8 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                 className="flex flex-col"
                             >
                                 <div className="mb-8">
-                                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-neutral-900/10 border border-neutral-900/20">
-                                        <MailCheck className="h-6 w-6 text-neutral-900" />
+                                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-neutral-900/10 dark:bg-white/10 border border-neutral-900/20 dark:border-white/20">
+                                        <MailCheck className="h-6 w-6 text-neutral-900 dark:text-white" />
                                     </div>
                                     <h2 className="text-3xl font-medium mb-2 tracking-tight text-neutral-900 dark:text-white">
                                         Verify your email
@@ -340,7 +340,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                         type="button"
                                         onClick={() => void sendVerificationCode()}
                                         disabled={cooldown > 0}
-                                        className="font-medium text-neutral-900 hover:underline disabled:text-neutral-400 disabled:no-underline dark:disabled:text-neutral-600"
+                                        className="font-medium text-neutral-900 dark:text-white hover:underline disabled:text-neutral-400 disabled:no-underline dark:disabled:text-neutral-600"
                                     >
                                         {cooldown > 0 ? `Resend in ${cooldown}s` : "Resend code"}
                                     </button>
@@ -364,7 +364,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                 className="flex flex-col"
                             >
                                 <div className="flex flex-col items-start mb-8">
-                                    <div className="text-neutral-900 mb-4">
+                                    <div className="text-neutral-900 dark:text-white mb-4">
                                         <Code2 className="h-10 w-10" />
                                     </div>
                                     <h2 className="text-3xl font-medium mb-2 tracking-tight text-neutral-900 dark:text-white">
@@ -382,7 +382,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                         {emailField}
 
                                         {magicSent && (
-                                            <div className="rounded-lg border border-neutral-900/20 bg-neutral-900/5 p-3 text-sm text-neutral-700 dark:text-neutral-300">
+                                            <div className="rounded-lg border border-neutral-900/20 dark:border-white/20 bg-neutral-900/5 dark:bg-white/5 p-3 text-sm text-neutral-700 dark:text-neutral-300">
                                                 Link sent. Open it on this device and you&apos;ll be signed in
                                                 automatically. It expires in 10 minutes.
                                             </div>
@@ -419,7 +419,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                                 <Label htmlFor="password" className="block text-sm text-neutral-700 dark:text-neutral-300">
                                                     Password
                                                 </Label>
-                                                <Link href="/forgotpassword" className="text-sm text-neutral-900 hover:text-neutral-800 transition-colors">
+                                                <Link href="/forgotpassword" className="text-sm text-neutral-900 dark:text-white hover:text-neutral-800 transition-colors">
                                                     Forgot password?
                                                 </Link>
                                             </div>
@@ -475,7 +475,7 @@ function SignInForm({ searchParams }: SignInFormProps) {
                                             type="button"
                                             variant="outline"
                                             onClick={() => setMode("magic")}
-                                            className="w-full gap-2 rounded-lg border-neutral-900/30 py-2.5 font-medium text-neutral-800 transition-colors hover:border-neutral-900/60 hover:bg-neutral-900/5 hover:text-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-200/10"
+                                            className="w-full gap-2 rounded-lg border-neutral-900/30 dark:border-white/25 py-2.5 font-medium text-neutral-800 transition-colors hover:border-neutral-900/60 dark:hover:border-white/50 hover:bg-neutral-900/5 dark:hover:bg-white/5 hover:text-neutral-800 dark:text-neutral-100 dark:hover:bg-neutral-200/10"
                                         >
                                             <Wand2 className="h-4 w-4" />
                                             Email me a sign-in link
@@ -547,7 +547,7 @@ export default function SignInPage() {
     return (
         <Suspense fallback={
             <div className="flex min-h-screen items-center justify-center bg-neutral-100 dark:bg-neutral-950">
-                <Loader2 className="h-8 w-8 animate-spin text-neutral-900" />
+                <Loader2 className="h-8 w-8 animate-spin text-neutral-900 dark:text-white" />
             </div>
         }>
             <SearchParamsLoader />

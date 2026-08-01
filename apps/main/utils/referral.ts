@@ -44,7 +44,7 @@ export async function processReferral(referralCode: string | null, newUserId: st
 
 export async function generateReferralCode(name: string): Promise<string> {
     const normalized = name.replace(/\s+/g, '').toLowerCase();
-    const suffixes = ['coderz', 'pro123', 'devhub', 'bytez', 'zone', 'stacker', 'wizkid'];
+    const suffixes = ['shipr', 'pro123', 'devhub', 'bytez', 'zone', 'stacker', 'wizkid'];
 
     for (let attempt = 0; attempt < 10; attempt++) {
         const randomSuffix = suffixes[Math.floor(Math.random() * suffixes.length)];

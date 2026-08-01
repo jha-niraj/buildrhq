@@ -1,6 +1,6 @@
 ================================================================================
                     AI-VERIFIED LEARNING GOALS SYSTEM
-                    CoderzLab Platform - Feature Specification
+                    ShiprHQ Platform - Feature Specification
                     Version 1.0 | February 2026
 ================================================================================
 
@@ -672,7 +672,7 @@ tailored to the topic:
 │  │  ✅ Sliding window algorithms                                         │   │
 │  │  ✅ String manipulation patterns                                      │   │
 │  │                                                                       │   │
-│  │  Verified through AI assessment with 85% score on @CoderzLab!         │   │
+│  │  Verified through AI assessment with 85% score on @ShiprHQ!         │   │
 │  │                                                                       │   │
 │  │  #DSA #DataStructures #CodingJourney #100DaysOfCode                   │   │
 │  │  #LearningInPublic #TechTwitter                                       │   │

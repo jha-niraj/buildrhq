@@ -42,7 +42,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
     const [isUpdating, setIsUpdating] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    const profileUrl = `${process.env.NEXT_PUBLIC_APP_URL || "https://coderz.com"}/knowme/${profile.user.username}`;
+    const profileUrl = `${process.env.NEXT_PUBLIC_APP_URL || "https://shiprhq.com"}/knowme/${profile.user.username}`;
 
     // Initialize chat session
     useEffect(() => {
@@ -383,7 +383,7 @@ export default function KnowMeDashboard({ profile }: KnowMeDashboardProps) {
                                         {profile.user.name?.charAt(0) || "U"}
                                     </AvatarFallback>
                                 </Avatar>}
-                                label="Coderz Profile"
+                                label="ShiprHQ Profile"
                                 enabled={profile.includePersonalData}
                             />
                             <DataSourceItem

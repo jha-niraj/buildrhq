@@ -1,11 +1,11 @@
-~/Documents/nirajjha/buildrhqofficial/packages/db on main !1
+~/Documents/nirajjha/shiprhqofficial/packages/db on main !1
 % pnpm db:push
 
-> @repo/db@1.0.0 db:push /Users/nirajjha/Documents/nirajjha/buildrhqofficial/packages/db
+> @repo/db@1.0.0 db:push /Users/nirajjha/Documents/nirajjha/shiprhqofficial/packages/db
 > dotenv -e ../../apps/main/.env -- drizzle-kit push
 
 No config path provided, using default 'drizzle.config.ts'
-Reading config file '/Users/nirajjha/Documents/nirajjha/buildrhqofficial/packages/db/drizzle.config.ts'
+Reading config file '/Users/nirajjha/Documents/nirajjha/shiprhqofficial/packages/db/drizzle.config.ts'
 Using 'postgres' driver for database querying
 [✓] Pulling schema from database...
 

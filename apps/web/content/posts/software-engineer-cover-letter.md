@@ -142,4 +142,4 @@ But when you are the non-obvious candidate - the career changer, the person with
 
 ---
 
-*BuildrHQ's AI cover letter tool works from your actual experience and the specific job description rather than a template, so the output still sounds like you. [Try it free](/pricing).*
+*ShiprHQ's AI cover letter tool works from your actual experience and the specific job description rather than a template, so the output still sounds like you. [Try it free](/pricing).*

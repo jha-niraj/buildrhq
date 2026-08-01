@@ -1,5 +1,5 @@
 # Computer Networks — Learn Module Masterplan
-**Platform: BuildrHQ**
+**Platform: ShiprHQ**
 **SubCategory: Computer Networks**
 **Total Learns: 44 | Units: 6**
 
@@ -884,4 +884,4 @@ SUMMARY(recap) → QUIZ(10-15) → MOCK_INTERVIEW → PROJECT
 
 ---
 
-*Document created for BuildrHQ — Computer Networks Learn Module*
+*Document created for ShiprHQ — Computer Networks Learn Module*

@@ -12,9 +12,9 @@
 - **24/7 Availability**: Your AI never sleeps—answer questions anytime
 - **Time Saving**: Stop answering the same questions repeatedly
 - **Professional Edge**: Stand out with an interactive, modern portfolio
-- **Viral Growth**: Easy integration into external portfolios drives traffic back to Coderz
+- **Viral Growth**: Easy integration into external portfolios drives traffic back to ShiprHQ
 
-### For Coderz Platform:
+### For ShiprHQ Platform:
 - **Differentiation**: Unique feature that competitors don't have
 - **Stickiness**: Once integrated, users won't leave
 - **Network Effects**: More users = better AI = more value
@@ -25,7 +25,7 @@
 ## 🚀 Key Features
 
 ### 1. **Personal Data Integration**
-- Coderz profile data (projects, assessments, bio)
+- ShiprHQ profile data (projects, assessments, bio)
 - Resume upload (PDF, DOCX, TXT)
 - Custom bio and skills
 
@@ -194,7 +194,7 @@ Generate Embeddings → Upsert to Pinecone → Update Metadata
 
 ### Core Features:
 - [ ] Basic chat interface
-- [ ] Coderz data integration
+- [ ] ShiprHQ data integration
 - [ ] Resume upload
 - [ ] GitHub connection
 - [ ] Basic analytics
@@ -292,7 +292,7 @@ Generate Embeddings → Upsert to Pinecone → Update Metadata
 - Simple chat interface
 
 ### Week 3-4: Core Features
-- Coderz data integration
+- ShiprHQ data integration
 - Resume upload
 - GitHub connection
 - Basic analytics
@@ -313,7 +313,7 @@ Generate Embeddings → Upsert to Pinecone → Update Metadata
 
 ## 💬 Final Thoughts
 
-KnowMe is a **game-changing feature** that positions Coderz as an innovative platform. The combination of AI, portfolio integration, and hiring platform creates a unique value proposition that's hard to replicate.
+KnowMe is a **game-changing feature** that positions ShiprHQ as an innovative platform. The combination of AI, portfolio integration, and hiring platform creates a unique value proposition that's hard to replicate.
 
 **This is your moat.** Once users integrate KnowMe into their portfolios, they're locked in. The network effects will make the system smarter over time, creating a competitive advantage that's nearly impossible to replicate.
 

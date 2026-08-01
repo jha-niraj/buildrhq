@@ -55,7 +55,7 @@ export function ShareProfileModal({
 	};
 
 	const shareToSocial = (platform: string) => {
-		const text = `Check out ${name || username}'s profile on BuildrHQ!`;
+		const text = `Check out ${name || username}'s profile on ShiprHQ!`;
 		const encodedUrl = encodeURIComponent(profileUrl);
 		const encodedText = encodeURIComponent(text);
 

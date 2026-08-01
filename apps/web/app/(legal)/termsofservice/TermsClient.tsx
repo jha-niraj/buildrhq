@@ -27,7 +27,7 @@ export default function TermsOfService() {
                                         Privacy Policy
                                     </Link>
                                     <a
-                                        href="mailto:legal@buildrhq.com"
+                                        href="mailto:legal@shiprhq.com"
                                         className="block px-3 py-2 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white dark:text-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-900 dark:bg-white rounded-lg transition-colors"
                                     >
                                         Contact
@@ -38,10 +38,10 @@ export default function TermsOfService() {
                                         Questions?
                                     </p>
                                     <a
-                                        href="mailto:legal@buildrhq.com"
+                                        href="mailto:legal@shiprhq.com"
                                         className="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors break-all"
                                     >
-                                        legal@buildrhq.com
+                                        legal@shiprhq.com
                                     </a>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@ export default function TermsOfService() {
                                     Terms of <em>service.</em>
                                 </h1>
                                 <p className="text-base text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed">
-                                    These terms govern your use of BuildrHQ. By using our platform, you agree to be bound by them. Please read carefully.
+                                    These terms govern your use of ShiprHQ. By using our platform, you agree to be bound by them. Please read carefully.
                                 </p>
                             </div>
 
@@ -87,7 +87,7 @@ export default function TermsOfService() {
                                     </h2>
                                     <div className="pl-8 space-y-3 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
                                         <p>
-                                            BuildrHQ uses a credit-based system for AI features and premium tools. Credits are purchased as one-time transactions and do not expire unless your account is terminated for a violation of these terms.
+                                            ShiprHQ uses a credit-based system for AI features and premium tools. Credits are purchased as one-time transactions and do not expire unless your account is terminated for a violation of these terms.
                                         </p>
                                         <ul className="list-disc pl-5 space-y-2">
                                             <li><strong className="text-neutral-700 dark:text-neutral-300">No Expiration:</strong> Purchased credits persist indefinitely under a standing account.</li>
@@ -104,7 +104,7 @@ export default function TermsOfService() {
                                         Your Content &amp; Projects
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
-                                        You retain full ownership of all code, projects, and content you create or submit on BuildrHQ. We do not claim intellectual property rights over your work. By sharing content to public showcases, you grant BuildrHQ a limited, non-exclusive license to display that content for promotional and educational purposes only.
+                                        You retain full ownership of all code, projects, and content you create or submit on ShiprHQ. We do not claim intellectual property rights over your work. By sharing content to public showcases, you grant ShiprHQ a limited, non-exclusive license to display that content for promotional and educational purposes only.
                                     </p>
                                 </div>
 
@@ -155,7 +155,7 @@ export default function TermsOfService() {
                                         Disclaimers &amp; Liability
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
-                                        The Service is provided &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; without warranties of any kind. BuildrHQ makes no warranties regarding the accuracy of AI-generated outputs or the likelihood of any specific outcome. Our total liability to you for any claim arising from use of the Service is capped at the amount you paid us in the 12 months preceding the claim.
+                                        The Service is provided &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; without warranties of any kind. ShiprHQ makes no warranties regarding the accuracy of AI-generated outputs or the likelihood of any specific outcome. Our total liability to you for any claim arising from use of the Service is capped at the amount you paid us in the 12 months preceding the claim.
                                     </p>
                                 </div>
 
@@ -177,15 +177,15 @@ export default function TermsOfService() {
                                         Changes
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
-                                        We may update these Terms at any time. We will notify you of material changes via email or a prominent notice on the platform. Continued use of BuildrHQ after changes constitutes your acceptance of the updated Terms.
+                                        We may update these Terms at any time. We will notify you of material changes via email or a prominent notice on the platform. Continued use of ShiprHQ after changes constitutes your acceptance of the updated Terms.
                                     </p>
                                 </div>
 
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400">
                                         Questions about these terms? Email us at{" "}
-                                        <a href="mailto:legal@buildrhq.com" className="text-neutral-900 dark:text-white underline">
-                                            legal@buildrhq.com
+                                        <a href="mailto:legal@shiprhq.com" className="text-neutral-900 dark:text-white underline">
+                                            legal@shiprhq.com
                                         </a>
                                     </p>
                                 </div>

@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import { SettingsLayoutClient } from './_components/settings-layout-client'
 
 export const metadata = {
-    title: 'Settings | Coderz',
+    title: 'Settings | ShiprHQ',
     description: 'Manage your account, integrations, and preferences',
 }
 

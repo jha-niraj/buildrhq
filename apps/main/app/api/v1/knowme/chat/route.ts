@@ -20,7 +20,7 @@
  *   - sources: array of sources
  *   - sessionId: string
  *   - rateLimit: { remaining, resetAt }
- *   - poweredBy: "Coderz KnowMe"
+ *   - poweredBy: "ShiprHQ KnowMe"
  *   - profileUrl: string
  */
 
@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
                 {
                     success: false,
                     error: "Missing or invalid Authorization header",
-                    poweredBy: "Coderz KnowMe",
+                    poweredBy: "ShiprHQ KnowMe",
                 },
                 { status: 401, headers: corsHeaders }
             );
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
                     rateLimit: validation.rateLimitRemaining !== undefined
                         ? { remaining: validation.rateLimitRemaining }
                         : undefined,
-                    poweredBy: "Coderz KnowMe",
+                    poweredBy: "ShiprHQ KnowMe",
                 },
                 {
                     status: validation.error === "Rate limit exceeded" ? 429 : 401,
@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
                 {
                     success: false,
                     error: "Question is required",
-                    poweredBy: "Coderz KnowMe",
+                    poweredBy: "ShiprHQ KnowMe",
                 },
                 { status: 400, headers: corsHeaders }
             );
@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
                 {
                     success: false,
                     error: "Question too long (max 1000 characters)",
-                    poweredBy: "Coderz KnowMe",
+                    poweredBy: "ShiprHQ KnowMe",
                 },
                 { status: 400, headers: corsHeaders }
             );
@@ -148,7 +148,7 @@ export async function POST(request: NextRequest) {
                 {
                     success: false,
                     error: "Profile not found",
-                    poweredBy: "Coderz KnowMe",
+                    poweredBy: "ShiprHQ KnowMe",
                 },
                 { status: 404, headers: corsHeaders }
             );
@@ -177,7 +177,7 @@ export async function POST(request: NextRequest) {
 
         if (!session) {
             return NextResponse.json(
-                { success: false, error: "Failed to create session", poweredBy: "Coderz KnowMe" },
+                { success: false, error: "Failed to create session", poweredBy: "ShiprHQ KnowMe" },
                 { status: 500, headers: corsHeaders }
             );
         }
@@ -193,7 +193,7 @@ export async function POST(request: NextRequest) {
                         remaining: 0,
                         resetAt: session.rateLimitResetAt.toISOString(),
                     },
-                    poweredBy: "Coderz KnowMe",
+                    poweredBy: "ShiprHQ KnowMe",
                 },
                 { status: 429, headers: corsHeaders }
             );
@@ -319,7 +319,7 @@ export async function POST(request: NextRequest) {
                     remaining: Math.max(0, session.rateLimitRemaining - 1),
                     resetAt: session.rateLimitResetAt.toISOString(),
                 },
-                poweredBy: "Coderz KnowMe",
+                poweredBy: "ShiprHQ KnowMe",
                 profileUrl: `${process.env.NEXT_PUBLIC_APP_URL}/knowme/${username}`,
             },
             { status: 200, headers: corsHeaders }
@@ -344,7 +344,7 @@ export async function POST(request: NextRequest) {
             {
                 success: false,
                 error: "Internal server error",
-                poweredBy: "Coderz KnowMe",
+                poweredBy: "ShiprHQ KnowMe",
             },
             { status: 500, headers: corsHeaders }
         );

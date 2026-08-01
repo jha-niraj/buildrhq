@@ -411,7 +411,7 @@ export default function BillingPage() {
 
     const handleSelectPlan = (plan: HiringSubscriptionPlanType) => {
         if (plan === "ENTERPRISE") {
-            window.open("mailto:sales@buildrhq.com?subject=Enterprise%20Plan%20Inquiry", "_blank")
+            window.open("mailto:sales@shiprhq.com?subject=Enterprise%20Plan%20Inquiry", "_blank")
             return
         }
         if (plan === "FREE" && subscription?.plan !== "FREE") {

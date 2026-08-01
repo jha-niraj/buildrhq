@@ -2,7 +2,7 @@
 > Module path: `apps/main/app/(main)/practice/dsa/`
 > Actions: `apps/main/actions/(main)/practice/`
 > Schema: `packages/prisma/schema/practice.prisma`
-> Worker: `apps/coderzworker/` (Docker-based code execution)
+> Worker: `apps/shiprworker/` (Docker-based code execution)
 > Last updated: April 2026
 
 ---
@@ -13,7 +13,7 @@ The DSA module lets students practice data structures & algorithms using a **Soc
 1. Picks a problem from a pattern-based library (Arrays, Sliding Window, Trees, DP, etc.)
 2. Opens a workspace where the AI first asks them to explain their approach
 3. The student explains (via voice or text), the AI challenges their thinking ("What if n = 10^6?")
-4. Student writes code → CoderzWorker executes it → AI evaluates output + code together
+4. Student writes code → ShiprHQWorker executes it → AI evaluates output + code together
 5. AI gives Socratic feedback ("You passed 4/5 cases — what's the edge case you're missing?")
 6. If brute force: AI pushes for optimal ("Good, but can you get to O(n log n)?")
 7. After completion: problem is tracked with revision schedule (day 3, day 7, day 10)
@@ -75,7 +75,7 @@ The workspace (`/practice/dsa/[slug]`) has the code editor. What's missing is th
   WAITING_FOR_EXPLANATION  → AI asks: "Describe your approach before coding."
   EXPLANATION_RECEIVED     → AI evaluates explanation, asks follow-up if incomplete
   BRUTE_FORCE_DETECTED     → AI accepts brute force, asks user to code it
-  CODE_SUBMITTED           → AI waits for CoderzWorker result
+  CODE_SUBMITTED           → AI waits for ShiprHQWorker result
   EVALUATING_OUTPUT        → AI receives output, gives Socratic feedback
   OPTIMAL_PUSH             → AI asks for better solution if brute force passed
   COMPLETED                → Problem solved, session scored
@@ -95,7 +95,7 @@ The workspace (`/practice/dsa/[slug]`) has the code editor. What's missing is th
 - [ ] **Create `assess.action.ts`** `evaluateDSAApproach(sessionId, userMessage, phase, codeOutput?)`:
   - Takes the full conversation history + current phase + user's message.
   - If phase is `WAITING_FOR_EXPLANATION`: evaluate if the explanation is sufficient. If not, ask a follow-up. If brute force, accept and ask them to code it. If O(n²) for a problem that can be O(n), push gently.
-  - If phase is `CODE_SUBMITTED`: run code through CoderzWorker (see A4). Pass output to AI.
+  - If phase is `CODE_SUBMITTED`: run code through ShiprHQWorker (see A4). Pass output to AI.
   - If phase is `EVALUATING_OUTPUT`: take code + output + test results → give Socratic feedback. Which cases failed? What did they miss?
   - Returns `{ message: string, phase: ConversationPhase, isComplete: boolean, score?: number }`.
 
@@ -116,9 +116,9 @@ The workspace (`/practice/dsa/[slug]`) has the code editor. What's missing is th
   Do NOT tell them the answer — guide them through questions."
   ```
 
-#### A4 — Code Execution via CoderzWorker
+#### A4 — Code Execution via ShiprHQWorker
 
-- [ ] **"Run Code" button** in the workspace → sends code + language to CoderzWorker.
+- [ ] **"Run Code" button** in the workspace → sends code + language to ShiprHQWorker.
   - POST `$NEXT_PUBLIC_WORKER_URL/api/v1/run` with `{ code, language, stdin: testInputs }`.
   - Show loading state: "Running your code..."
   - On success: show output panel below the code editor with stdout, stderr, execution time, memory.
@@ -247,7 +247,7 @@ apps/main/
 
 1. `dsa-ai-panel.tsx` component — conversation panel with phase state machine
 2. `evaluateDSAApproach()` in `assess.action.ts` — OpenAI Socratic evaluation per phase
-3. Code execution integration — wire "Run Code" button to CoderzWorker + show test results
+3. Code execution integration — wire "Run Code" button to ShiprHQWorker + show test results
 4. "Submit to AI" button — send code + output to AI conversation
 5. Voice input for explanation phase — wire `getScribeToken()` to microphone button
 6. Phase indicator in workspace header

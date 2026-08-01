@@ -7,7 +7,7 @@ import { Providers } from "./providers/providers";
 
 // Canonical origin for this deploy. Overridable per environment so preview
 // builds emit their own absolute URLs instead of the production ones.
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://uni.buildrhq.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://uni.shiprhq.com'
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -36,14 +36,14 @@ const bricolage = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
 	title: {
-		default: "BuildrHQ University | Empower Your Institution",
-		template: "%s | BuildrHQ University"
+		default: "ShiprHQ University | Empower Your Institution",
+		template: "%s | ShiprHQ University"
 	},
 	description: "The complete university management platform. Assign real-world coding projects, track student progress, and connect students directly to job opportunities.",
 	keywords: ["University", "College", "Education", "Student Management", "Coding Assignments", "Placement", "Technical Education", "Academic Platform"],
 	authors: [{ name: "Niraj Jha" }],
-	creator: "BuildrHQ",
-	publisher: "BuildrHQ",
+	creator: "ShiprHQ",
+	publisher: "ShiprHQ",
 	metadataBase: new URL(BASE_URL),
 	alternates: {
 		canonical: "/",
@@ -52,24 +52,24 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en_US",
 		url: BASE_URL,
-		siteName: "BuildrHQ University",
-		title: "BuildrHQ University - Empower Your Institution with Industry-Ready Learning",
+		siteName: "ShiprHQ University",
+		title: "ShiprHQ University - Empower Your Institution with Industry-Ready Learning",
 		description: "The complete university management platform. Assign real-world coding projects, track student progress, and connect students directly to job opportunities.",
 		images: [
 			{
 				url: "/mainlogo.jpeg",
 				width: 1024,
 				height: 1024,
-				alt: "BuildrHQ University - Empower Your Institution",
+				alt: "ShiprHQ University - Empower Your Institution",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "BuildrHQ University - Empower Your Institution",
+		title: "ShiprHQ University - Empower Your Institution",
 		description: "The complete university management platform for technical education.",
 		images: ["/mainlogo.jpeg"],
-		creator: "@buildrhq",
+		creator: "@shiprhq",
 	},
 	icons: {
 		icon: [
@@ -103,7 +103,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<body className={`
 				${spaceGrotesk.className} ${bricolage.variable} ${geistSans.variable} ${geistMono.variable} antialiased 
 			`}>

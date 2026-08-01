@@ -71,7 +71,7 @@ export default function FaqSection() {
                             <p className="text-lg text-neutral-500 dark:text-neutral-400 mb-8 leading-relaxed">
                                 Technical details regarding integration, security, and academic policies.
                             </p>
-                            <Link href="mailto:university@buildrhq.com">
+                            <Link href="mailto:university@shiprhq.com">
                                 <Button className="cursor-pointer h-12 px-6 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 font-bold transition-all">
                                     <MessageCircle className="w-4 h-4 mr-2" />
                                     Contact Support

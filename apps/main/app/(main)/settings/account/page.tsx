@@ -6,7 +6,7 @@ import { db, users, accounts } from '@repo/db'
 import { eq } from 'drizzle-orm'
 
 export const metadata = {
-    title: 'Account Settings | Coderz',
+    title: 'Account Settings | ShiprHQ',
     description: 'Manage your account information and security',
 }
 

@@ -7,13 +7,13 @@ through `@opennextjs/cloudflare`; the two background workers are plain Workers.
 
 | App | Type | Worker name | Port (dev) |
 |---|---|---|---|
-| `apps/web` | Next (marketing, `buildrhq.com`) | `buildrhq-web` | 4100 |
-| `apps/main` | Next (product, `app.buildrhq.com`) | `buildrhq-main` | 4101 |
-| `apps/admin` | Next | `buildrhq-admin` | 3001 |
-| `apps/hiring` | Next | `buildrhq-hiring` | 3002 |
-| `apps/uni` | Next | `buildrhq-uni` | 3003 |
-| `apps/coderzworker` | Cloudflare Worker | `buildrhq-coderzworker` | - |
-| `apps/generationworker` | Cloudflare Worker | `buildrhq-generation` | - |
+| `apps/web` | Next (marketing, `shiprhq.com`) | `shiprhq-web` | 4100 |
+| `apps/main` | Next (product, `app.shiprhq.com`) | `shiprhq-main` | 4101 |
+| `apps/admin` | Next | `shiprhq-admin` | 3001 |
+| `apps/hiring` | Next | `shiprhq-hiring` | 3002 |
+| `apps/uni` | Next | `shiprhq-uni` | 3003 |
+| `apps/shiprworker` | Cloudflare Worker | `shiprhq-shiprworker` | - |
+| `apps/generationworker` | Cloudflare Worker | `shiprhq-generation` | - |
 
 Each Next app owns two config files:
 
@@ -26,7 +26,7 @@ The R2 bucket backing the Next incremental cache is **shared by all the Next app
 only has to be created once for the whole monorepo:
 
 ```bash
-wrangler r2 bucket create buildrhq-next-cache
+wrangler r2 bucket create shiprhq-next-cache
 ```
 
 Each app namespaces its own entries inside that bucket via `NEXT_INC_CACHE_R2_PREFIX` in its

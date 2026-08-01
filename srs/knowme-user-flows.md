@@ -49,7 +49,7 @@
 │  │  ┌───────────────────────────────────────────────────────────┐ │ │
 │  │  │  📊 What should your AI know?                            │ │ │
 │  │  │                                                            │ │ │
-│  │  │  ✓ Coderz Profile Data [Selected]                        │ │ │
+│  │  │  ✓ ShiprHQ Profile Data [Selected]                        │ │ │
 │  │  │    • 12 Projects                                         │ │ │
 │  │  │    • 8 Assessments                                         │ │ │
 │  │  │    • Bio & Skills                                         │ │ │
@@ -82,7 +82,7 @@
 │  │  │  🔒 Who can chat with your AI?                           │ │ │
 │  │  │                                                            │ │ │
 │  │  │  ● Anyone with the link (Recommended)                     │ │ │
-│  │  │  ○ Only logged-in Coderz users                           │ │ │
+│  │  │  ○ Only logged-in ShiprHQ users                           │ │ │
 │  │  │  ○ Only verified recruiters                               │ │ │
 │  │  │  ○ Private (just for me)                                 │ │ │
 │  │  │                                                            │ │ │
@@ -311,7 +311,7 @@
                                  ▼
                     ┌─────────────────────────┐
                     │   Detect Duplicates      │
-                    │   - Compare with Coderz  │
+                    │   - Compare with ShiprHQ  │
                     │   - Similarity scoring   │
                     │   - Auto-merge or flag    │
                     └───────────┬─────────────┘
@@ -361,7 +361,7 @@
                                  ▼
                     ┌─────────────────────────┐
                     │   API Key Generated     │
-                    │   Format: coderz_km_... │
+                    │   Format: shipr_km_... │
                     │   - Stored hashed        │
                     │   - Rate limits set       │
                     └───────────┬─────────────┘
