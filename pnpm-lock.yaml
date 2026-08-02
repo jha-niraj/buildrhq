@@ -477,7 +477,7 @@ importers:
         specifier: ^4.116.0
         version: 4.116.0(@cloudflare/workers-types@4.20260702.1)
 
-  apps/shiprworker:
+  apps/shipitworker:
     dependencies:
       '@cloudflare/containers':
         specifier: ^0.0.25

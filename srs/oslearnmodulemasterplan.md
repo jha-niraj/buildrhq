@@ -1,5 +1,5 @@
 # Operating Systems - Learn Module Masterplan
-**Platform: ShiprHQ**
+**Platform: ShipItHQ**
 **SubCategory: Operating Systems**
 **Total Learns: 44 | Units: 6**
 
@@ -834,4 +834,4 @@ SUMMARY(recap) → QUIZ(10-15) → MOCK_INTERVIEW → PROJECT
 
 ---
 
-*Document created for ShiprHQ - Operating Systems Learn Module*
+*Document created for ShipItHQ - Operating Systems Learn Module*

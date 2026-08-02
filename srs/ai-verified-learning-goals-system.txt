@@ -1,6 +1,6 @@
 ================================================================================
                     AI-VERIFIED LEARNING GOALS SYSTEM
-                    ShiprHQ Platform - Feature Specification
+                    ShipItHQ Platform - Feature Specification
                     Version 1.0 | February 2026
 ================================================================================
 
@@ -672,7 +672,7 @@ tailored to the topic:
 │  │  ✅ Sliding window algorithms                                         │   │
 │  │  ✅ String manipulation patterns                                      │   │
 │  │                                                                       │   │
-│  │  Verified through AI assessment with 85% score on @ShiprHQ!         │   │
+│  │  Verified through AI assessment with 85% score on @ShipItHQ!         │   │
 │  │                                                                       │   │
 │  │  #DSA #DataStructures #CodingJourney #100DaysOfCode                   │   │
 │  │  #LearningInPublic #TechTwitter                                       │   │

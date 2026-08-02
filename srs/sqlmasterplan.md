@@ -1,5 +1,5 @@
 # SQL Learn Module - Complete Syllabus & Learn Mapping
-**Platform: ShiprHQ**
+**Platform: ShipItHQ**
 **SubCategory: SQL**
 **Total Learns: 38 | Units: 6**
 
@@ -810,4 +810,4 @@ SUMMARY(recap) → QUIZ(10-15) → MOCK_INTERVIEW → PROJECT
 
 ---
 
-*Document created for ShiprHQ - SQL Learn Module*
+*Document created for ShipItHQ - SQL Learn Module*

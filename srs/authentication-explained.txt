@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document explains how the authentication system works in the ShiprHQ platform, specifically focusing on OAuth providers (Google and GitHub) and how they handle both sign-in and automatic account creation.
+This document explains how the authentication system works in the ShipItHQ platform, specifically focusing on OAuth providers (Google and GitHub) and how they handle both sign-in and automatic account creation.
 
 ---
 
@@ -262,8 +262,8 @@ GOOGLE_CLIENT_ID=xxx
 GOOGLE_SECRET_ID=xxx
 GITHUB_CLIENT_ID=xxx
 GITHUB_SECRET_ID=xxx
-NEXTAUTH_SECRET=xxx
-NEXTAUTH_URL=http://localhost:3000
+BETTER_AUTH_SECRET=xxx
+BETTER_AUTH_URL=http://localhost:3000
 ```
 
 ### OAuth Scopes:

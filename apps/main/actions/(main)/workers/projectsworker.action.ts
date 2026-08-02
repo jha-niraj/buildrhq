@@ -7,6 +7,7 @@ import { eq } from 'drizzle-orm'
 import { z } from "zod"
 import { ProjectEchoSchema } from "../schemas/projects.schema"
 import crypto from 'crypto'
+import { callGenerationWorker } from '@/lib/workers/generation-worker'
 
 
 async function getCurrentUser() {
@@ -18,7 +19,7 @@ async function getCurrentUser() {
 }
 
 // Signed HMAC token the generation worker verifies (Web Crypto on the worker side).
-export async function issueWorkerToken(action: 'generate_project' | 'check_job' | 'run_code' | 'check_execution', jobId?: string) {
+export async function issueWorkerToken(action: 'generate_project' | 'generate_verification' | 'check_job' | 'run_code' | 'check_execution', jobId?: string) {
     const user = await getCurrentUser()
     const secret = process.env.WORKER_SECRET
     if (!secret) throw new Error("Worker secret not configured")
@@ -29,10 +30,6 @@ export async function issueWorkerToken(action: 'generate_project' | 'check_job' 
     const signature = crypto.createHmac('sha256', secret).update(data).digest('base64url')
     const encodedPayload = Buffer.from(data).toString('base64url')
     return `${encodedPayload}.${signature}`
-}
-
-function generationWorkerUrl() {
-    return process.env.GENERATION_WORKER_URL || process.env.WORKER_API_URL || "http://localhost:8787"
 }
 
 /**
@@ -69,10 +66,10 @@ export async function startProjectGeneration(
         const signature = crypto.createHmac('sha256', process.env.WORKER_SECRET!).update(tokenPayload).digest('base64url')
         const token = `${Buffer.from(tokenPayload).toString('base64url')}.${signature}`
 
-        const res = await fetch(`${generationWorkerUrl()}/api/v1/generateproject`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-            body: JSON.stringify({ jobId, input: validated }),
+        // Service binding on Workers, HTTP locally — see lib/workers/generation-worker.ts.
+        const res = await callGenerationWorker('/api/v1/generateproject', {
+            token,
+            body: { jobId, input: validated },
         })
 
         if (!res.ok) {

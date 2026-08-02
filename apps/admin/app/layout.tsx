@@ -7,7 +7,7 @@ import { Providers } from "./providers";
 
 // Canonical origin for this deploy. Overridable per environment so preview
 // builds emit their own absolute URLs instead of the production ones.
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://admin.shiprhq.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://admin.shipithq.com'
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -36,8 +36,8 @@ const bricolage = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
 	title: {
-		default: "ShiprHQ Admin",
-		template: "%s | ShiprHQ Admin"
+		default: "ShipItHQ Admin",
+		template: "%s | ShipItHQ Admin"
 	},
 	description: "The Engineering Intelligence Platform for Computer Science Students",
 	keywords: ["Learn", "Build Projects", "Computer Science", "Programming", "Coding", "Developer", "Tech Community", "Coding Resources", "Tech Articles", "Coding Tutorials"],
@@ -52,24 +52,24 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en_US",
 		url: BASE_URL,
-		siteName: "ShiprHQ Admin",
-		title: "ShiprHQ - The Engineering Intelligence Platform for Computer Science Students",
+		siteName: "ShipItHQ Admin",
+		title: "ShipItHQ - The Engineering Intelligence Platform for Computer Science Students",
 		description: "The Engineering Intelligence Platform for Computer Science Students",
 		images: [
 			{
 				url: "/og/home.webp",
 				width: 1200,
 				height: 630,
-				alt: "ShiprHQ Admin - The Engineering Intelligence Platform for Computer Science Students",
+				alt: "ShipItHQ Admin - The Engineering Intelligence Platform for Computer Science Students",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "ShiprHQ Admin - The Engineering Intelligence Platform for Computer Science Students",
+		title: "ShipItHQ Admin - The Engineering Intelligence Platform for Computer Science Students",
 		description: "The Engineering Intelligence Platform for Computer Science Students",
 		images: ["/og/home.webp"],
-		creator: "@shiprhq",
+		creator: "@shipithq",
 	},
 	robots: {
 		index: true,

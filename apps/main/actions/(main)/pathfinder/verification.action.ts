@@ -8,14 +8,14 @@ import {
     pathfinderVerifications,
     pathfinderQuizAttempts,
     pathfinderCodingSubmissions,
-    mockInterviewVoice,
     users,
     creditTransactions,
 } from '@repo/db'
 import { eq, and, sql } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
 import type { VerificationAIPlan } from '@/types/pathfinder'
-import { PATHFINDER_CREDITS } from '@/lib/constants/pricing'
+import { PATHFINDER_CREDITS, PATHFINDER_XP } from '@/lib/constants/pricing'
+import { addXpToUser } from '@/actions/(main)/user/level.action'
 
 // ================================================================================
 // TYPES
@@ -126,194 +126,20 @@ export async function getVerificationStatus(slugOrId: string) {
 }
 
 // ================================================================================
-// GENERATE VERIFICATION CONTENT (on-demand with user learning context)
+// GENERATE VERIFICATION CONTENT — moved to the generation worker
 // ================================================================================
-
-export async function generateVerificationContent(goalId: string) {
-    try {
-        const session = await getSession(headers())
-        if (!session?.user?.id) {
-            return { success: false, error: 'Unauthorized', plan: null }
-        }
-
-        const goal = await db.query.pathfinderGoals.findFirst({
-            where: and(eq(pathfinderGoals.id, goalId), eq(pathfinderGoals.userId, session.user.id)),
-            with: {
-                dailySessions: {
-                    orderBy: (ds: any, { desc }: any) => [desc(ds.date)],
-                    limit: 14,
-                    with: {
-                        subGoals: {
-                            columns: { title: true, quizCompleted: true, codingCompleted: true },
-                            orderBy: (sg: any, { asc }: any) => [asc(sg.order)],
-                        },
-                    },
-                },
-            },
-        })
-
-        if (!goal) {
-            return { success: false, error: 'Goal not found', plan: null }
-        }
-
-        const fee = PATHFINDER_CREDITS.verificationFee
-        const [user] = await db.select({ credits: users.credits }).from(users).where(eq(users.id, session.user.id))
-        if (!user || user.credits < fee) {
-            return {
-                success: false,
-                error: `Insufficient credits. Verification requires ${fee} credits.`,
-                plan: null,
-                code: 'INSUFFICIENT_CREDITS',
-                required: fee,
-                available: user?.credits ?? 0,
-            }
-        }
-
-        await db.update(users)
-            .set({ credits: sql`${users.credits} - ${fee}` })
-            .where(eq(users.id, session.user.id))
-        await db.insert(creditTransactions).values({
-            userId: session.user.id,
-            amount: -fee,
-            type: 'SPEND',
-            description: `Pathfinder Verification: ${goal.title}`,
-            currency: 'INR',
-        })
-        await db.update(pathfinderVerifications)
-            .set({ verificationCreditsCharged: fee })
-            .where(eq(pathfinderVerifications.goalId, goalId))
-
-        const assistantId = process.env.PATHFINDER_ASSISTANT_ID
-        if (!assistantId) {
-            return { success: false, error: 'Verification generation not configured', plan: null }
-        }
-
-        // Build condensed user learning context
-        const dailySessions = (goal as any).dailySessions ?? []
-        const subGoalTitles = dailySessions.flatMap((s: any) => s.subGoals.map((sg: any) => sg.title))
-        const uniqueTopics = [...new Set(subGoalTitles)].slice(0, 15) as string[]
-        const completedCount = dailySessions.reduce((sum: number, s: any) => sum + s.completedSubGoals, 0)
-        const _quizTotal = dailySessions.reduce((sum: number, s: any) => sum + s.correctQuizAnswers, 0)
-        const _codingTotal = dailySessions.reduce((sum: number, s: any) => sum + s.solvedCodingProblems, 0)
-
-        const userContext = {
-            goal: {
-                title: goal.title,
-                category: goal.category,
-                level: goal.level,
-                focusAreas: goal.focusAreas,
-                overview: goal.overview ?? undefined,
-            },
-            userLearningProgress: {
-                topicsLearned: uniqueTopics,
-                tasksCompleted: completedCount,
-                totalSubGoals: goal.totalSubGoals,
-                quizAnswered: goal.totalQuizAnswered,
-                codingSolved: goal.totalCodingSolved,
-            },
-            instruction: 'Generate verification quiz and coding questions tailored to what this user has actually learned. Focus on the topics they practiced. Return the full pathfinder_learning_plan schema with quizQuestions (20-25), codingQuestions (3-8), mockInterview, minorProject, majorProject.',
-        }
-
-        const oaiKey = process.env.OPENAI_API_KEY!
-        const oaiHeaders = {
-            'Authorization': `Bearer ${oaiKey}`,
-            'Content-Type': 'application/json',
-            'OpenAI-Beta': 'assistants=v2',
-        }
-
-        const threadRes = await fetch('https://api.openai.com/v1/threads', {
-            method: 'POST',
-            headers: oaiHeaders,
-            body: JSON.stringify({ messages: [{ role: 'user', content: JSON.stringify(userContext) }] }),
-        })
-        const thread = await threadRes.json() as { id: string }
-
-        const runRes = await fetch(`https://api.openai.com/v1/threads/${thread.id}/runs`, {
-            method: 'POST',
-            headers: oaiHeaders,
-            body: JSON.stringify({ assistant_id: assistantId }),
-        })
-        const run = await runRes.json() as { id: string; status: string }
-
-        let runStatus = run
-        let attempts = 0
-        const maxAttempts = 90
-
-        while (runStatus.status !== 'completed' && attempts < maxAttempts) {
-            await new Promise((r) => setTimeout(r, 1000))
-            const pollRes = await fetch(`https://api.openai.com/v1/threads/${thread.id}/runs/${run.id}`, {
-                headers: oaiHeaders,
-            })
-            runStatus = await pollRes.json() as { id: string; status: string }
-            attempts++
-            if (runStatus.status === 'failed' || runStatus.status === 'cancelled') {
-                return { success: false, error: 'Generation failed', plan: null }
-            }
-        }
-
-        if (runStatus.status !== 'completed') {
-            return { success: false, error: 'Generation timed out', plan: null }
-        }
-
-        const messagesRes = await fetch(`https://api.openai.com/v1/threads/${thread.id}/messages`, {
-            headers: oaiHeaders,
-        })
-        const messagesData = await messagesRes.json() as { data: Array<{ role: string; content: Array<{ type: string; text?: { value: string } }> }> }
-        const assistantMessage = messagesData.data.find((m) => m.role === 'assistant')
-        const content = assistantMessage?.content?.[0]
-        if (!content || content.type !== 'text') {
-            return { success: false, error: 'No response from assistant', plan: null }
-        }
-
-        const aiPlan = JSON.parse(content.text!.value) as VerificationAIPlan
-
-        // Create mock interview for verification
-        const mockConfig = aiPlan.mockInterview
-        let mockId: string | null = null
-        if (mockConfig) {
-            const [mock] = await db.insert(mockInterviewVoice).values({
-                title: mockConfig.title || `Verification: ${goal.title}`,
-                description: mockConfig.description || `Mock interview for ${goal.title} verification`,
-                category: 'TECHNICAL',
-                level: (goal.level as 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED') ?? 'INTERMEDIATE',
-                duration: mockConfig.duration || 15,
-                questionsCount: mockConfig.questionsCount || 5,
-                knowledgeBase: mockConfig.knowledgeBase || `Verification interview for: ${goal.title}. Category: ${goal.category}. Level: ${goal.level}.`,
-                isPublic: false,
-                isPredefined: false,
-                createdById: session.user.id,
-                includesResume: false,
-                baseCredits: 0,
-                creditsRequired: 0,
-                tags: ['pathfinder', 'verification'],
-            }).returning()
-            if (mock) mockId = mock.id
-        }
-
-        await db.update(pathfinderGoals)
-            .set({
-                overview: aiPlan.overview ?? goal.overview,
-                learningObjectives: aiPlan.learningObjectives ?? goal.learningObjectives,
-                prerequisites: aiPlan.prerequisites ?? goal.prerequisites,
-            })
-            .where(eq(pathfinderGoals.id, goalId))
-
-        await db.update(pathfinderVerifications)
-            .set({
-                generatedPlan: aiPlan as object,
-                mockInterviewId: mockId,
-                codingStatus: 'PENDING',
-                mockStatus: 'PENDING',
-            })
-            .where(eq(pathfinderVerifications.goalId, goalId))
-
-        revalidatePath(`/pathfinder/${goal.slug}/verify`)
-        return { success: true, plan: aiPlan }
-    } catch (error) {
-        console.error('generateVerificationContent error:', error)
-        return { success: false, error: 'Failed to generate verification content', plan: null }
-    }
-}
+//
+// This ran the OpenAI Assistants API inline and polled it up to 90 times at one
+// second apart — up to 90 seconds of blocking sleep in a server action, which
+// Cloudflare kills long before it finishes, after the user has been charged.
+//
+// It now runs on a Durable Object with an Alarm:
+//   dispatch/poll  actions/(main)/workers/verificationworker.action.ts
+//   worker         apps/generationworker/src/verification-generator.ts
+//
+// Verified 2026-08-02 against the deployed worker: the client disconnected 45s
+// in and never polled again; the run still completed and wrote a 22-question
+// plan to the verification row. That is the behaviour this file could not have.
 
 // ================================================================================
 // SUBMIT VERIFICATION QUIZ
@@ -596,6 +422,12 @@ async function checkVerificationCompletion(verificationId: string) {
 
     if (!verification) return
 
+    // Already completed. This helper runs after every section submission, so
+    // once the fourth section lands it will be re-entered by any later submit
+    // or retry — and everything below it pays the user (credits, and now XP).
+    // Bail before any of that can happen twice.
+    if (verification.passed) return
+
     const aiPlan = verification.generatedPlan as {
         minorProject?: unknown
         majorProject?: unknown
@@ -652,6 +484,28 @@ async function checkVerificationCompletion(verificationId: string) {
             })
         }
 
-        // TODO: Award XP, achievements, etc.
+        // Verification is the module's payoff — a multi-week goal, four sections
+        // passed. Until now it granted nothing; the reward half of the feature was
+        // this comment.
+        //
+        // Scaled by the same `weightedScore` the performance refund uses rather
+        // than inventing a second notion of "how well did they do", so the credits
+        // returned and the XP granted can never tell different stories.
+        const goalForXp = verification.goal
+        if (goalForXp) {
+            const xpAward = Math.max(
+                PATHFINDER_XP.verificationMinimum,
+                Math.round(PATHFINDER_XP.verificationBase * (weightedScore / 100)),
+            )
+            // addXpToUser owns the level recalculation and runs in its own
+            // transaction; it logs and swallows its own failures, so a reward
+            // problem cannot roll back a verification the user genuinely passed.
+            await addXpToUser(
+                goalForXp.userId,
+                xpAward,
+                `Pathfinder goal verified: ${goalForXp.title} (${weightedScore}%)`,
+                'REWARD',
+            )
+        }
     }
 }

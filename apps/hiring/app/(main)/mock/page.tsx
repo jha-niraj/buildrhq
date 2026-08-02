@@ -10,7 +10,7 @@ import { MockInterviewsContent } from "./mock-content"
 export const dynamic = "force-dynamic"
 
 export const metadata = {
-    title: "Mock Interviews | ShiprHQ Hiring",
+    title: "Mock Interviews | ShipItHQ Hiring",
     description: "Manage AI-powered mock interviews for your company"
 }
 

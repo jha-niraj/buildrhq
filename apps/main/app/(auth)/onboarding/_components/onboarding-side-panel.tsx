@@ -30,7 +30,7 @@ const MARKER_DONE = "border-neutral-900 bg-neutral-900 dark:bg-white text-white 
 const MARKER_CURRENT = "border-neutral-900 text-neutral-900"
 
 const STEP_CAPTIONS: Record<string, string> = {
-	username: "Your handle across ShiprHQ",
+	username: "Your handle across ShipItHQ",
 	avatar: "A face for your profile",
 	university: "Where you study or studied",
 	semester: "Where you are right now",
@@ -58,7 +58,7 @@ export function OnboardingSidePanel({ nav }: { nav: FlowNav }) {
 					<span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-900/10 dark:bg-white/10 border border-neutral-900/20 dark:border-white/20">
 						<Logo className={`h-5 w-5 ${INK}`} />
 					</span>
-					<span className={`text-lg font-semibold tracking-tight ${INK}`}>ShiprHQ</span>
+					<span className={`text-lg font-semibold tracking-tight ${INK}`}>ShipItHQ</span>
 				</motion.div>
 
 				{/* Heading */}

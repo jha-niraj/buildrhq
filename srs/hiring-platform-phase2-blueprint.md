@@ -1,6 +1,6 @@
 # 🚀 HIRING PLATFORM PHASE 2 BLUEPRINT
 ## Advanced Features & Scaling
-### CodeDot.AI + ShiprHQ Hiring: The Complete Ecosystem
+### CodeDot.AI + ShipItHQ Hiring: The Complete Ecosystem
 ### Version 1.0 | February 2026
 
 ---
@@ -1019,7 +1019,7 @@ Data-driven salary information.
 │                                    • Salary insights                     │
 │                                    • Interview coaching content         │
 │                                                                          │
-│  ━━━ FOR COMPANIES (ShiprHQ Hiring) ━━━                                      │
+│  ━━━ FOR COMPANIES (ShipItHQ Hiring) ━━━                                      │
 │                                                                          │
 │  STARTER           GROWTH              ENTERPRISE                       │
 │  $299/mo           $999/mo             Custom                           │

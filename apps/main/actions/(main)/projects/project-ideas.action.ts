@@ -12,6 +12,7 @@ import {
 } from "@repo/db";
 import { eq, and, or, desc, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache"
+import { toErrorMessage } from "@/lib/errors"
 
 // ===============================================
 // FETCH PROJECT IDEAS
@@ -28,9 +29,9 @@ export async function getProjectIdeasByTechnology(technology: string) {
         });
 
         return { success: true, data: projects }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to fetch project ideas:', error)
-        return { success: false, error: error.message || 'Failed to fetch project ideas' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to fetch project ideas' }
     }
 }
 
@@ -59,9 +60,9 @@ export async function getProjectIdeaById(id: string) {
             .where(eq(projectIdeas.id, id));
 
         return { success: true, data: project }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to fetch project idea:', error)
-        return { success: false, error: error.message || 'Failed to fetch project idea' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to fetch project idea' }
     }
 }
 
@@ -101,9 +102,9 @@ export async function searchProjectIdeas(query: string, filters?: {
         });
 
         return { success: true, data: projects }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to search project ideas:', error)
-        return { success: false, error: error.message || 'Failed to search project ideas' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to search project ideas' }
     }
 }
 
@@ -162,9 +163,9 @@ export async function submitProjectIdea(data: {
             data: projectIdea,
             message: 'Project idea submitted successfully! It will be reviewed by our team.',
         }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to submit project idea:', error)
-        return { success: false, error: error.message || 'Failed to submit project idea' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to submit project idea' }
     }
 }
 
@@ -187,9 +188,9 @@ export async function getUserSubmittedProjectIdeas() {
         });
 
         return { success: true, data: projects }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to fetch user project ideas:', error)
-        return { success: false, error: error.message || 'Failed to fetch project ideas' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to fetch project ideas' }
     }
 }
 
@@ -247,9 +248,9 @@ export async function approveProjectIdea(id: string) {
         revalidatePath('/projects/ideas')
 
         return { success: true, message: 'Project idea approved successfully' }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to approve project idea:', error)
-        return { success: false, error: error.message || 'Failed to approve project idea' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to approve project idea' }
     }
 }
 
@@ -273,9 +274,9 @@ export async function rejectProjectIdea(id: string, _reason?: string) {
         revalidatePath('/projects/ideas')
 
         return { success: true, message: 'Project idea rejected' }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to reject project idea:', error)
-        return { success: false, error: error.message || 'Failed to reject project idea' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to reject project idea' }
     }
 }
 
@@ -290,9 +291,9 @@ export async function incrementProjectView(projectId: string) {
             .where(eq(projectIdeas.id, projectId));
 
         return { success: true }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to increment view:', error)
-        return { success: false, error: error.message || 'Failed to increment view' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to increment view' }
     }
 }
 
@@ -347,9 +348,9 @@ export async function toggleProjectUpvote(projectId: string) {
 
             return { success: true, upvoted: true, message: 'Upvoted successfully' }
         }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to toggle upvote:', error)
-        return { success: false, error: error.message || 'Failed to toggle upvote' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to toggle upvote' }
     }
 }
 
@@ -374,7 +375,7 @@ export async function checkUserUpvote(projectId: string) {
         });
 
         return { success: true, upvoted: !!upvote }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to check upvote:', error)
         return { success: true, upvoted: false }
     }
@@ -392,9 +393,9 @@ export async function getTopUpvotedProjects(technology: string, limit: number = 
         });
 
         return { success: true, data: projects }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to fetch top projects:', error)
-        return { success: false, error: error.message || 'Failed to fetch top projects' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to fetch top projects' }
     }
 }
 
@@ -446,9 +447,9 @@ export async function getProblemStatements(options?: {
         });
 
         return { success: true, data: ideas }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to fetch problem statements:', error)
-        return { success: false, error: error.message || 'Failed to fetch problem statements' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to fetch problem statements' }
     }
 }
 
@@ -494,8 +495,8 @@ export async function submitProblemStatement(data: {
             data: idea,
             message: 'Problem statement submitted successfully! It will be reviewed by our team.',
         }
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Failed to submit problem statement:', error)
-        return { success: false, error: error.message || 'Failed to submit problem statement' }
+        return { success: false, error: toErrorMessage(error) || 'Failed to submit problem statement' }
     }
 }

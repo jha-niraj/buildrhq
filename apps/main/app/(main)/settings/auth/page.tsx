@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@repo
 import { Shield } from 'lucide-react'
 
 export const metadata = {
-    title: 'Auth & Security | Settings | ShiprHQ',
+    title: 'Auth & Security | Settings | ShipItHQ',
     description: 'Manage authentication and security settings',
 }
 

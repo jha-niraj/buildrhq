@@ -42,7 +42,7 @@ export default function BlogsClient({ posts }: Props) {
                         transition={{ duration: 0.45 }}
                     >
                         <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-400">
-                            The ShiprHQ Blog
+                            The ShipItHQ Blog
                         </p>
                         <h1 className="mb-6 text-5xl font-bold leading-[0.95] tracking-tight text-neutral-900 dark:text-white md:text-7xl">
                             Engineering<br />

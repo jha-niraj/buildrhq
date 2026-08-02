@@ -15,7 +15,7 @@ function fromEmail(): string {
 function appUrl(): string {
     return (
         process.env.NEXT_PUBLIC_BASE_URL ||
-        process.env.NEXTAUTH_URL ||
+        process.env.BETTER_AUTH_URL ||
         "http://localhost:3000"
     );
 }
@@ -28,7 +28,7 @@ function appUrl(): string {
 export const creditEmailTemplates = {
 
     creditApproved: (name: string, creditsAwarded: number, newBalance: number, adminNotes?: string) => ({
-        subject: "Your credit request has been approved - ShiprHQ",
+        subject: "Your credit request has been approved - ShipItHQ",
         html: shell({
             title: "Credit request approved",
             subtitle: "Your credits are ready to use",
@@ -78,7 +78,7 @@ export const creditEmailTemplates = {
     }),
 
     creditRejected: (name: string, requestedCredits: number, adminNotes?: string) => ({
-        subject: "Update on your credit request - ShiprHQ",
+        subject: "Update on your credit request - ShipItHQ",
         html: shell({
             title: "Credit request update",
             subtitle: "A little more is needed to approve your request",
@@ -92,7 +92,7 @@ export const creditEmailTemplates = {
         <div style="margin:20px 0;padding:16px;border:1px solid #e5e5e5;border-radius:10px;background:#fafafa;">
           <p style="margin:0 0 10px;font-size:13px;font-weight:600;color:#111111;">What we need from you</p>
           <p style="margin:0;font-size:13px;color:#525252;line-height:1.7;">
-            ${adminNotes || "Please ensure your LinkedIn post is public, mentions @ShiprHQ, and includes our template content."}
+            ${adminNotes || "Please ensure your LinkedIn post is public, mentions @ShipItHQ, and includes our template content."}
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export const creditEmailTemplates = {
           <p style="margin:0 0 8px;font-weight:600;color:#111111;">Requirements checklist</p>
           <ul style="margin:0;padding-left:18px;line-height:1.8;">
             <li>Post must be public and accessible</li>
-            <li>Include a mention of ShiprHQ</li>
+            <li>Include a mention of ShipItHQ</li>
             <li>Use our provided template or share your genuine experience</li>
             <li>Submit the correct post URL with your request</li>
           </ul>
@@ -127,14 +127,14 @@ export const creditEmailTemplates = {
         verificationUrl: string,
         originalEmail?: string,
     ) => ({
-        subject: "Verify your TrueFolio credit transfer - ShiprHQ",
+        subject: "Verify your TrueFolio credit transfer - ShipItHQ",
         html: shell({
             title: "Credit transfer verification",
             subtitle: "Confirm this request to complete the transfer",
             body: `
         <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello ${name},</p>
         <p style="margin:0 0 20px;font-size:14px;color:#525252;">
-          You've requested to transfer credits from your ShiprHQ account to TrueFolio.
+          You've requested to transfer credits from your ShipItHQ account to TrueFolio.
           Please verify this request by clicking the button below. This link expires in <strong>15 minutes</strong>.
         </p>
 
@@ -146,7 +146,7 @@ export const creditEmailTemplates = {
             </tr>
             <tr style="border-bottom:1px solid #f3f4f6;">
               <td style="padding:12px 16px;font-size:12px;color:#737373;text-transform:uppercase;letter-spacing:0.08em;">From</td>
-              <td style="padding:12px 16px;font-size:14px;color:#111111;text-align:right;">ShiprHQ</td>
+              <td style="padding:12px 16px;font-size:14px;color:#111111;text-align:right;">ShipItHQ</td>
             </tr>
             <tr style="border-bottom:1px solid #f3f4f6;">
               <td style="padding:12px 16px;font-size:12px;color:#737373;text-transform:uppercase;letter-spacing:0.08em;">To</td>

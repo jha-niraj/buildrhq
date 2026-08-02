@@ -56,7 +56,7 @@ export function PostCover({ title, category, heroImage, priority = false }: Prop
             />
             <div className="relative w-full p-8 sm:p-12">
                 <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-neutral-800 sm:text-[11px]">
-                    ShiprHQ · {BLOG_CATEGORIES[category]}
+                    ShipItHQ · {BLOG_CATEGORIES[category]}
                 </p>
                 <p className="max-w-[85%] text-xl font-bold leading-[1.15] tracking-tight text-white sm:text-3xl">
                     {title}

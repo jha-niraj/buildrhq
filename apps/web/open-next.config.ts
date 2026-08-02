@@ -2,7 +2,7 @@ import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
 
 // Incremental cache backed by R2 (binding NEXT_INC_CACHE_R2_BUCKET -> bucket
-// "shiprhq-next-cache", declared in wrangler.jsonc).
+// "shipithq-next-cache", declared in wrangler.jsonc).
 //
 // Deliberately MINIMAL. No `enableCacheInterception`, no `withRegionalCache`, no Durable
 // Object sharded tag cache: that combination caused intermittent production 500s in a

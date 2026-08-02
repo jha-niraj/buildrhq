@@ -10,7 +10,7 @@ import KnowMeDashboardSkeleton from './_components/knowme-dashboard-skeleton';
 import KnowMeLandingPage from './_components/knowme-landing';
 
 export const metadata: Metadata = {
-    title: 'KnowMe - AI Portfolio Assistant | ShiprHQ',
+    title: 'KnowMe - AI Portfolio Assistant | ShipItHQ',
     description: 'Create an AI-powered assistant that knows everything about your professional profile. Let visitors ask questions about your work 24/7.',
 };
 

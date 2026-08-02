@@ -128,4 +128,4 @@ Paid tiers mostly buy you curation and video explanations - real value if your p
 
 ---
 
-*ShiprHQ combines DSA practice with AI mock interviews and system design challenges, so you are not stitching six tools together. [Start free](/pricing).*
+*ShipItHQ combines DSA practice with AI mock interviews and system design challenges, so you are not stitching six tools together. [Start free](/pricing).*

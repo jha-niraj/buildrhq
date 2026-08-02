@@ -1,4 +1,4 @@
-# Cloudflare Container image for the ShiprHQ code executor.
+# Cloudflare Container image for the ShipItHQ code executor.
 # A real Linux sandbox with the language runtimes; the executor server runs code
 # here via child_process (safe — the container itself is the isolation boundary).
 FROM node:20-bookworm-slim

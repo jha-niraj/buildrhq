@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import { SettingsLayoutClient } from './_components/settings-layout-client'
 
 export const metadata = {
-    title: 'Settings | ShiprHQ',
+    title: 'Settings | ShipItHQ',
     description: 'Manage your account, integrations, and preferences',
 }
 

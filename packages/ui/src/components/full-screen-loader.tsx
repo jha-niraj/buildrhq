@@ -5,8 +5,8 @@ import { motion, useReducedMotion } from "framer-motion"
 
 export type FullScreenLoaderProps = {
     /**
-     * Logo element, e.g. `<Image src="/logo.svg" alt="ShiprHQ" width={56} height={56} />`.
-     * Omit it to get the animated <ShiprMark />, which is the default.
+     * Logo element, e.g. `<Image src="/logo.svg" alt="ShipItHQ" width={56} height={56} />`.
+     * Omit it to get the animated <ShipItMark />, which is the default.
      */
     logo?: ReactNode
     /** Set false to render no mark at all (wordmark + progress only). */
@@ -87,7 +87,7 @@ const STYLES = `
 `
 
 /**
- * The ShiprHQ mark, animated.
+ * The ShipItHQ mark, animated.
  *
  * A dispatch motif, which is what the name means: a chevron launches out of the
  * tile along its diagonal, leaves a short wake behind it, and the tile's ring
@@ -99,7 +99,7 @@ const STYLES = `
  * branching and costs nothing to load - the loader is the first thing painted on
  * a cold navigation, so it must not wait on an image request.
  */
-export function ShiprMark({ size = 56, className = "" }: { size?: number; className?: string }) {
+export function ShipItMark({ size = 56, className = "" }: { size?: number; className?: string }) {
     const reduceMotion = useReducedMotion()
 
     // The chevron travels up-and-right along the tile's diagonal.
@@ -155,13 +155,13 @@ export function ShiprMark({ size = 56, className = "" }: { size?: number; classN
 export function FullScreenLoader({
     logo,
     mark = true,
-    wordmark = "ShiprHQ",
+    wordmark = "ShipItHQ",
     label,
     fullScreen = true,
     className = "",
 }: FullScreenLoaderProps) {
     const reduceMotion = useReducedMotion()
-    const glyph = logo ?? (mark ? <ShiprMark /> : null)
+    const glyph = logo ?? (mark ? <ShipItMark /> : null)
 
     return (
         <div

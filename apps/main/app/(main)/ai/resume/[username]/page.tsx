@@ -3,7 +3,7 @@ import { getPublicResumeByUsername } from "@/actions/(main)/user/profile.action"
 import { ResumePublicView } from "@/components/resume/resume-public-view"
 
 export const metadata = {
-    title: "Resume | ShiprHQ",
+    title: "Resume | ShipItHQ",
     description: "View resume",
 }
 

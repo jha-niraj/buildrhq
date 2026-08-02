@@ -130,13 +130,13 @@ export async function generateMetadata({ params }: { params: Promise<{ username:
 
     if (!user) {
         return {
-            title: 'User Not Found | ShiprHQ',
+            title: 'User Not Found | ShipItHQ',
             description: 'The requested user profile could not be found'
         }
     }
 
     return {
-        title: `${user.name || user.username} - Progress | ShiprHQ`,
+        title: `${user.name || user.username} - Progress | ShipItHQ`,
         description: `View ${user.name || user.username}'s coding journey and project achievements`
     }
 }

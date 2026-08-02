@@ -10,7 +10,7 @@ import {
 export const dynamic = "force-dynamic"
 
 export const metadata = {
-    title: "Interview Process Configuration | ShiprHQ Hiring",
+    title: "Interview Process Configuration | ShipItHQ Hiring",
     description: "Configure your interview process for transparency and enable AI mock interviews"
 }
 

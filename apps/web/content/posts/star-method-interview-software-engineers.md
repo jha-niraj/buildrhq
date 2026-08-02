@@ -156,4 +156,4 @@ Once the stories are solid, the next lever is the other half of the conversation
 
 ---
 
-*ShiprHQ runs AI mock interviews that cover behavioural rounds as well as technical ones, with feedback on structure, specificity and whether you actually landed the result. [Try it free](/pricing).*
+*ShipItHQ runs AI mock interviews that cover behavioural rounds as well as technical ones, with feedback on structure, specificity and whether you actually landed the result. [Try it free](/pricing).*

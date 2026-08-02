@@ -1,6 +1,7 @@
 import type { Env } from "./env"
 import { verifyWorkerToken } from "./token"
 export { ProjectGenerator } from "./project-generator"
+export { VerificationGenerator } from "./verification-generator"
 
 function bearer(request: Request): string | null {
 	const h = request.headers.get("Authorization") ?? ""
@@ -38,6 +39,31 @@ export default {
 			await stub.fetch("https://do/start", {
 				method: "POST",
 				body: JSON.stringify({ jobId: body.jobId, userId: payload.userId, input: body.input }),
+			})
+
+			return Response.json({ success: true, jobId: body.jobId }, { headers: cors })
+		}
+
+		// Start a Pathfinder verification-generation job.
+		if (request.method === "POST" && url.pathname === "/api/v1/generateverification") {
+			const token = bearer(request)
+			const payload = token ? await verifyWorkerToken(token, env.WORKER_SECRET) : null
+			if (!payload || payload.action !== "generate_verification") {
+				return Response.json({ success: false, error: "Unauthorized" }, { status: 401, headers: cors })
+			}
+
+			const body = (await request.json()) as { jobId: string; goalId: string }
+			if (!body?.jobId || !body?.goalId) {
+				return Response.json({ success: false, error: "Missing jobId or goalId" }, { status: 400, headers: cors })
+			}
+
+			const id = env.VERIFICATION_GENERATOR.idFromName(body.jobId)
+			const stub = env.VERIFICATION_GENERATOR.get(id)
+			await stub.fetch("https://do/start", {
+				method: "POST",
+				// userId comes from the signed token, never the request body — the
+				// caller must not be able to run a generation as somebody else.
+				body: JSON.stringify({ jobId: body.jobId, userId: payload.userId, goalId: body.goalId }),
 			})
 
 			return Response.json({ success: true, jobId: body.jobId }, { headers: cors })

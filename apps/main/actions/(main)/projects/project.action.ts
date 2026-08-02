@@ -19,6 +19,7 @@ import {
 } from "@repo/db";
 import { eq, and, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { toErrorMessage } from "@/lib/errors"
 
 interface ActionResponse {
     success: boolean;
@@ -135,9 +136,9 @@ export async function getProjectBySlug(slug: string): Promise<ActionResponse> {
         }
 
         return { success: true, data: project };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.log(error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -461,8 +462,8 @@ export async function updateTaskNotes(taskId: string, notes: string): Promise<Ac
             .where(eq(userTaskV2Statuses.id, taskStatus.id));
 
         return { success: true };
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -516,8 +517,8 @@ export async function startQuiz(projectId: string): Promise<ActionResponse> {
         }).returning();
 
         return { success: true, data: { attemptId: attempt!.id, questions: quiz.questions } };
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -570,8 +571,8 @@ export async function submitQuizAnswer(
         }
 
         return { success: true, data: { isCorrect, explanation: question.explanation } };
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -604,8 +605,8 @@ export async function completeQuiz(attemptId: string): Promise<ActionResponse> {
             .where(eq(projectV2QuizAttempts.id, attemptId));
 
         return { success: true, data: { score, correctAnswers, totalQuestions } };
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -655,8 +656,8 @@ export async function submitProject(
             .where(eq(projectsV2.id, projectId));
 
         return { success: true, data: submission };
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -711,8 +712,8 @@ export async function getUserProjects(page: number = 1, limit: number = 20): Pro
                 },
             },
         };
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -737,8 +738,8 @@ export async function deleteProject(projectId: string): Promise<ActionResponse> 
         revalidatePath('/projects/myprojects');
 
         return { success: true };
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -773,8 +774,8 @@ export async function getPublicProjects(limit: number = 9): Promise<ActionRespon
         });
 
         return { success: true, data: projects };
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -871,8 +872,8 @@ export async function getAllPublicProjects(options?: {
                 },
             },
         };
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -906,8 +907,8 @@ export async function getRecentSubmissions(limit: number = 9): Promise<ActionRes
         const publicSubmissions = submissions.filter((s: any) => s.project?.visibility === 'PUBLIC');
 
         return { success: true, data: publicSubmissions };
-    } catch (error: any) {
-        return { success: false, error: error.message };
+    } catch (error: unknown) {
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -1129,11 +1130,11 @@ export async function enrollInProject(projectId: string): Promise<ActionResponse
             }
         };
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[ENROLL PROJECT ERROR]:", error);
         return {
             success: false,
-            error: error.message || "Failed to enroll in project"
+            error: toErrorMessage(error) || "Failed to enroll in project"
         };
     }
 }

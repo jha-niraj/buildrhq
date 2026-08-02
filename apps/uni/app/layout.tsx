@@ -7,7 +7,7 @@ import { Providers } from "./providers/providers";
 
 // Canonical origin for this deploy. Overridable per environment so preview
 // builds emit their own absolute URLs instead of the production ones.
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://uni.shiprhq.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://uni.shipithq.com'
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -36,14 +36,14 @@ const bricolage = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
 	title: {
-		default: "ShiprHQ University | Empower Your Institution",
-		template: "%s | ShiprHQ University"
+		default: "ShipItHQ University | Empower Your Institution",
+		template: "%s | ShipItHQ University"
 	},
 	description: "The complete university management platform. Assign real-world coding projects, track student progress, and connect students directly to job opportunities.",
 	keywords: ["University", "College", "Education", "Student Management", "Coding Assignments", "Placement", "Technical Education", "Academic Platform"],
 	authors: [{ name: "Niraj Jha" }],
-	creator: "ShiprHQ",
-	publisher: "ShiprHQ",
+	creator: "ShipItHQ",
+	publisher: "ShipItHQ",
 	metadataBase: new URL(BASE_URL),
 	alternates: {
 		canonical: "/",
@@ -52,24 +52,24 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en_US",
 		url: BASE_URL,
-		siteName: "ShiprHQ University",
-		title: "ShiprHQ University - Empower Your Institution with Industry-Ready Learning",
+		siteName: "ShipItHQ University",
+		title: "ShipItHQ University - Empower Your Institution with Industry-Ready Learning",
 		description: "The complete university management platform. Assign real-world coding projects, track student progress, and connect students directly to job opportunities.",
 		images: [
 			{
 				url: "/og/home.webp",
 				width: 1200,
 				height: 630,
-				alt: "ShiprHQ University - Empower Your Institution",
+				alt: "ShipItHQ University - Empower Your Institution",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "ShiprHQ University - Empower Your Institution",
+		title: "ShipItHQ University - Empower Your Institution",
 		description: "The complete university management platform for technical education.",
 		images: ["/og/home.webp"],
-		creator: "@shiprhq",
+		creator: "@shipithq",
 	},
 	robots: {
 		index: true,

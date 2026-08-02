@@ -198,7 +198,7 @@ const MainContent = ({ children }: { children: React.ReactNode }) => {
                     side="bottom"
                     className="h-[100dvh] w-full max-w-full rounded-t-2xl border-0 p-0 [&>button]:hidden"
                 >
-                    <SheetTitle className="sr-only">ShiprHQ AI</SheetTitle>
+                    <SheetTitle className="sr-only">ShipItHQ AI</SheetTitle>
                     <AIPanel />
                 </SheetContent>
             </Sheet>

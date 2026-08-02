@@ -60,7 +60,7 @@ export function HiringSidebar() {
     return (
         <AppSidebar
             brand={{
-                name: "ShiprHQ",
+                name: "ShipItHQ",
                 subtitle: "Hiring Portal",
                 homeHref: "/home",
                 logo: (

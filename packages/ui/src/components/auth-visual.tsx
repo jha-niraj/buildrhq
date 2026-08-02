@@ -360,7 +360,7 @@ function Terminal() {
             <rect x={44} y={232} width={9} height={15} fill="currentColor" fillOpacity={0.7}
                 className="av-caret" />
             <text x={310} y={244} textAnchor="end" fill="currentColor" fillOpacity={0.4} fontSize={10}
-                fontFamily="ui-monospace, monospace">shiprhq</text>
+                fontFamily="ui-monospace, monospace">shipithq</text>
         </>
     )
 }

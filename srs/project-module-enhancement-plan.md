@@ -1,7 +1,7 @@
 # Project Module Enhancement Plan: "Learn by Building"
 
 ## 1. Executive Summary
-The logical next step for the ShiprHQProject module is to shift from a "Task Tracker" to an "Interactive Learning Environment". Currently, tasks are presented as static To-Do items with basic descriptions. The goal is to transform each task into a mini-lesson that verifies the user's understanding through quizzes, code validation, and simulated interviews, rather than just asking them to "mark as complete".
+The logical next step for the ShipItHQProject module is to shift from a "Task Tracker" to an "Interactive Learning Environment". Currently, tasks are presented as static To-Do items with basic descriptions. The goal is to transform each task into a mini-lesson that verifies the user's understanding through quizzes, code validation, and simulated interviews, rather than just asking them to "mark as complete".
 
 ## 2. Core Philosophy
 *   **Teach, Don't Tell**: Instead of providing code snippets, provide *Learns* and *references*.

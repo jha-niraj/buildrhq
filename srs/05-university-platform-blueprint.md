@@ -1,5 +1,5 @@
 # University Platform Blueprint 🎓
-## ShiprHQ Ecosystem - Complete Platform Architecture
+## ShipItHQ Ecosystem - Complete Platform Architecture
 
 ---
 
@@ -7,7 +7,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                         SHIPRHQ ECOSYSTEM                                    │
+│                         SHIPITHQ ECOSYSTEM                                    │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                  │
@@ -138,7 +138,7 @@
 │                                                                          │
 │  ┌────────────────────┐                                                 │
 │  │ HEAD visits        │                                                 │
-│  │ university.shipr  │                                                 │
+│  │ university.shipit  │                                                 │
 │  └─────────┬──────────┘                                                 │
 │            ▼                                                            │
 │  ┌────────────────────┐                                                 │
@@ -151,7 +151,7 @@
 │            ▼                                                            │
 │  ┌────────────────────┐                                                 │
 │  │ Verification by    │                                                 │
-│  │ ShiprHQ Team       │                                                 │
+│  │ ShipItHQ Team       │                                                 │
 │  │ (Manual Review)    │                                                 │
 │  └─────────┬──────────┘                                                 │
 │            ▼                                                            │

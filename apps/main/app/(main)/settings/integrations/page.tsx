@@ -5,7 +5,7 @@ import { getSocialConnections } from '@/actions/(main)/social/social-connections
 import { IntegrationsContent } from './_components/integrations-content'
 
 export const metadata = {
-    title: 'Integrations | Settings | ShiprHQ',
+    title: 'Integrations | Settings | ShipItHQ',
     description: 'Connect GitHub and social accounts',
 }
 

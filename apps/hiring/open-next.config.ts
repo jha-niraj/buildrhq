@@ -2,7 +2,7 @@ import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
 
 // Incremental cache backed by R2 (binding NEXT_INC_CACHE_R2_BUCKET -> bucket
-// "shiprhq-next-cache", declared in wrangler.jsonc). The bucket is shared across the
+// "shipithq-next-cache", declared in wrangler.jsonc). The bucket is shared across the
 // monorepo; NEXT_INC_CACHE_R2_PREFIX in wrangler.jsonc namespaces this app's entries.
 //
 // Deliberately MINIMAL. No `enableCacheInterception`, no `withRegionalCache`, no Durable

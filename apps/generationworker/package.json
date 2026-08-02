@@ -1,15 +1,18 @@
 {
 	"name": "generationworker",
 	"version": "1.0.0",
-	"description": "ShiprHQ project-generation worker (Cloudflare Worker + Durable Object + Alarms)",
+	"description": "ShipItHQ project-generation worker (Cloudflare Worker + Durable Object + Alarms)",
 	"private": true,
 	"type": "module",
 	"main": "src/index.ts",
 	"scripts": {
 		"dev": "wrangler dev",
-		"deploy": "wrangler deploy",
+		"deploy": "wrangler deploy --secrets-file .env.production",
 		"check-types": "tsc --noEmit",
-		"cf-typegen": "wrangler types"
+		"cf-typegen": "wrangler types",
+		"deploy:no-secrets": "wrangler deploy",
+		"release": "wrangler deploy --secrets-file .env.production",
+		"release:no-secrets": "wrangler deploy"
 	},
 	"dependencies": {
 		"@neondatabase/serverless": "^1.1.0",

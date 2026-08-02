@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "shiprhq-generation",
+	"name": "shipithq-generation",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-05-07",
 	"compatibility_flags": ["nodejs_compat"],
@@ -14,6 +14,10 @@
 			{
 				"name": "PROJECT_GENERATOR",
 				"class_name": "ProjectGenerator"
+			},
+			{
+				"name": "VERIFICATION_GENERATOR",
+				"class_name": "VerificationGenerator"
 			}
 		]
 	},
@@ -21,6 +25,10 @@
 		{
 			"tag": "v1",
 			"new_sqlite_classes": ["ProjectGenerator"]
+		},
+		{
+			"tag": "v2",
+			"new_sqlite_classes": ["VerificationGenerator"]
 		}
 	],
 	// Non-secret vars can live here; secrets (DATABASE_URL, OPENAI_API_KEY,

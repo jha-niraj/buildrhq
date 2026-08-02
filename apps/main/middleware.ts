@@ -74,7 +74,7 @@ const apiRoutes = [
 	'/api/webhooks',
 ]
 
-const PRODUCTION_ORIGIN = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.shiprhq.com'
+const PRODUCTION_ORIGIN = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.shipithq.com'
 
 export default async function middleware(req: NextRequest) {
 	const { nextUrl } = req

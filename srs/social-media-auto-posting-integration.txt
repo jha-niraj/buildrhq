@@ -1,6 +1,6 @@
 ================================================================================
                 AUTOMATIC SOCIAL MEDIA POSTING INTEGRATION
-                ShiprHQ Platform - Technical Specification
+                ShipItHQ Platform - Technical Specification
                 Version 1.0 | February 2026
 ================================================================================
 
@@ -24,7 +24,7 @@ TABLE OF CONTENTS
 1. EXECUTIVE SUMMARY
 ================================================================================
 
-The Automatic Social Media Posting Integration enables ShiprHQ users to 
+The Automatic Social Media Posting Integration enables ShipItHQ users to 
 share their verified learning achievements across multiple social platforms 
 with a single click. The system uses AI to generate personalized, 
 platform-optimized content that maintains the user's authentic voice.
@@ -126,7 +126,7 @@ KEY FEATURES:
 │                    TWITTER OAUTH 2.0 PKCE FLOW                               │
 └─────────────────────────────────────────────────────────────────────────────┘
 
-    USER                    SHIPRHQ                    TWITTER
+    USER                    SHIPITHQ                    TWITTER
       │                        │                         │
       │  1. Click "Connect     │                         │
       │     Twitter"           │                         │
@@ -148,7 +148,7 @@ KEY FEATURES:
       │◀─────────────────────────────────────────────────│
       │                        │                         │
       │  6. Send code to       │                         │
-      │     ShiprHQ          │                         │
+      │     ShipItHQ          │                         │
       │───────────────────────▶│                         │
       │                        │                         │
       │                        │  7. Exchange code for   │
@@ -178,7 +178,7 @@ TWITTER SCOPES REQUIRED:
 │                    LINKEDIN OAUTH 2.0 FLOW                                   │
 └─────────────────────────────────────────────────────────────────────────────┘
 
-    USER                    SHIPRHQ                    LINKEDIN
+    USER                    SHIPITHQ                    LINKEDIN
       │                        │                         │
       │  1. Click "Connect     │                         │
       │     LinkedIn"          │                         │
@@ -197,7 +197,7 @@ TWITTER SCOPES REQUIRED:
       │  5. Redirect with code │                         │
       │◀─────────────────────────────────────────────────│
       │                        │                         │
-      │  6. Code to ShiprHQ  │                         │
+      │  6. Code to ShipItHQ  │                         │
       │───────────────────────▶│                         │
       │                        │                         │
       │                        │  7. Exchange for tokens │
@@ -563,7 +563,7 @@ LINKEDIN POSTING:
 │  ──────────────────                                                         │
 │  ✓ Text tweets (up to 280 characters)                                      │
 │  ✓ Hashtags (auto-generated, platform-optimized)                           │
-│  ✓ Mentions (@ShiprHQ auto-included)                                     │
+│  ✓ Mentions (@ShipItHQ auto-included)                                     │
 │  ✓ Links (achievement page URL)                                            │
 │  ◯ Media attachments (Future: achievement cards)                           │
 │  ◯ Threads (Future: detailed breakdowns)                                   │
@@ -674,7 +674,7 @@ LINKEDIN POSTING:
 │  │  │ ○ Enthusiastic & Energetic                                    │   │   │
 │  │  └──────────────────────────────────────────────────────────────┘   │   │
 │  │                                                                       │   │
-│  │  Include @ShiprHQ mention: ☑ Yes                                   │   │
+│  │  Include @ShipItHQ mention: ☑ Yes                                   │   │
 │  │  Include achievement link: ☑ Yes                                     │   │
 │  │                                                                       │   │
 │  └───────────────────────────────────────────────────────────────────────┘   │
@@ -699,11 +699,11 @@ LINKEDIN POSTING:
 │  │  │ ✅ Two-pointer techniques                                       │ │   │
 │  │  │ ✅ Sliding window algorithms                                    │ │   │
 │  │  │                                                                 │ │   │
-│  │  │ Scored 85% on AI verification @ShiprHQ!                      │ │   │
+│  │  │ Scored 85% on AI verification @ShipItHQ!                      │ │   │
 │  │  │                                                                 │ │   │
 │  │  │ #DSA #CodingJourney #100DaysOfCode                             │ │   │
 │  │  │                                                                 │ │   │
-│  │  │ 📝 shipr.ai/achievement/abc123                                │ │   │
+│  │  │ 📝 shipit.ai/achievement/abc123                                │ │   │
 │  │  └─────────────────────────────────────────────────────────────────┘ │   │
 │  │                                                                       │   │
 │  │  Characters: 247/280  ✓                                              │   │
@@ -718,7 +718,7 @@ LINKEDIN POSTING:
 │  │  │                                                                 │ │   │
 │  │  │ After 3 weeks of dedicated practice, I've verified my          │ │   │
 │  │  │ proficiency in Data Structures - specifically Arrays &         │ │   │
-│  │  │ Strings - through AI-powered assessment on ShiprHQ.          │ │   │
+│  │  │ Strings - through AI-powered assessment on ShipItHQ.          │ │   │
 │  │  │                                                                 │ │   │
 │  │  │ Key accomplishments:                                           │ │   │
 │  │  │ • Mastered two-pointer techniques                              │ │   │

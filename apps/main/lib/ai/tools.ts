@@ -5,7 +5,7 @@ import {
 } from "@repo/db";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Agent tools for the ShiprHQ assistant.
+// Agent tools for the ShipItHQ assistant.
 //
 // Design rules, all of which exist because the model decides when these run:
 //
@@ -300,7 +300,7 @@ const TOOLS: Tool[] = [
             function: {
                 name: "get_my_profile",
                 description:
-                    "Read the signed-in user's ShiprHQ profile: name, headline, university, experience, stated interests and career goals, credit balance, level, XP and streak. Call this before giving personalised advice instead of asking the user to repeat things they have already told the platform.",
+                    "Read the signed-in user's ShipItHQ profile: name, headline, university, experience, stated interests and career goals, credit balance, level, XP and streak. Call this before giving personalised advice instead of asking the user to repeat things they have already told the platform.",
                 parameters: { type: "object", properties: {}, additionalProperties: false },
             },
         },
@@ -312,7 +312,7 @@ const TOOLS: Tool[] = [
             function: {
                 name: "list_my_projects",
                 description:
-                    "List the projects the signed-in user has started on ShiprHQ, with progress, task counts and score. Use when the user asks what they are working on, what to finish next, or how far along something is.",
+                    "List the projects the signed-in user has started on ShipItHQ, with progress, task counts and score. Use when the user asks what they are working on, what to finish next, or how far along something is.",
                 parameters: {
                     type: "object",
                     properties: {
@@ -369,7 +369,7 @@ const TOOLS: Tool[] = [
             function: {
                 name: "search_project_ideas",
                 description:
-                    "Search ShiprHQ's approved project ideas by free text, technology and difficulty, ranked by upvotes. Use when the user asks what to build next. Prefer this over inventing project ideas, so the suggestion is something they can actually start on the platform.",
+                    "Search ShipItHQ's approved project ideas by free text, technology and difficulty, ranked by upvotes. Use when the user asks what to build next. Prefer this over inventing project ideas, so the suggestion is something they can actually start on the platform.",
                 parameters: {
                     type: "object",
                     properties: {
@@ -394,7 +394,7 @@ const TOOLS: Tool[] = [
             function: {
                 name: "search_jobs",
                 description:
-                    "Search published, publicly visible job postings on ShiprHQ by free text and location type. Use when the user asks about roles they could apply to.",
+                    "Search published, publicly visible job postings on ShipItHQ by free text and location type. Use when the user asks about roles they could apply to.",
                 parameters: {
                     type: "object",
                     properties: {

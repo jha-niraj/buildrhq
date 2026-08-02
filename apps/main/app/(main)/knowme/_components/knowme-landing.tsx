@@ -368,7 +368,7 @@ export default function KnowMeLandingPage({ isLoggedIn, profile }: KnowMeLanding
                                         <div className="flex-1 mx-4">
                                             <div className="bg-white dark:bg-neutral-800 rounded-lg px-4 py-1.5 text-sm text-neutral-500 dark:text-neutral-400 flex items-center gap-2 max-w-md mx-auto">
                                                 <Shield className="w-3 h-3 text-neutral-400" />
-                                                shiprhq.com/knowme/yourname
+                                                shipithq.com/knowme/yourname
                                             </div>
                                         </div>
                                     </div>
@@ -809,7 +809,7 @@ function DataSourcesStep({
             <div className="space-y-2">
                 <DataSourceOption
                     icon={<User className="w-4 h-4" />}
-                    title="ShiprHQ Profile Data"
+                    title="ShipItHQ Profile Data"
                     description="Bio, skills, and basic information"
                     enabled={includePersonalData}
                     onToggle={() => setIncludePersonalData(!includePersonalData)}
@@ -817,7 +817,7 @@ function DataSourcesStep({
                 <DataSourceOption
                     icon={<Code2 className="w-4 h-4" />}
                     title="Projects"
-                    description="All your ShiprHQ projects and details"
+                    description="All your ShipItHQ projects and details"
                     enabled={includeProjects}
                     onToggle={() => setIncludeProjects(!includeProjects)}
                 />

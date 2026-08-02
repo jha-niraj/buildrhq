@@ -22,7 +22,7 @@ export default function BotTerminal() {
                                 <div className="w-3 h-3 rounded-full bg-neutral-900/20 border border-neutral-900/50" />
                                 <div className="w-3 h-3 rounded-full bg-neutral-900/20 border border-neutral-900/50" />
                             </div>
-                            <div className="ml-4 text-[10px] font-mono text-neutral-500">shipr-bot - analysis - bash</div>
+                            <div className="ml-4 text-[10px] font-mono text-neutral-500">shipit-bot - analysis - bash</div>
                         </div>
                         <div className="p-6 font-mono text-sm space-y-2">
                             <div className="flex">
@@ -59,7 +59,7 @@ export default function BotTerminal() {
                                 transition={{ delay: 2 }}
                                 className="text-neutral-500 pt-4"
                             >
-                                {">"} ShiprHQBot: <span className="text-white">Candidate demonstrates strong understanding of SOLID principles. Design patterns applied correctly.</span>
+                                {">"} ShipItHQBot: <span className="text-white">Candidate demonstrates strong understanding of SOLID principles. Design patterns applied correctly.</span>
                             </motion.div>
                         </div>
                     </div>

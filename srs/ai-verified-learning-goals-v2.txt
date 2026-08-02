@@ -1,6 +1,6 @@
 ================================================================================
                     AI-VERIFIED LEARNING GOALS SYSTEM V2
-                    ShiprHQ Platform - Revised Feature Specification
+                    ShipItHQ Platform - Revised Feature Specification
                     Version 2.0 | February 2026
 ================================================================================
 
@@ -386,7 +386,7 @@ Model: gpt-4o or gpt-4-turbo-preview
 
 System Instructions:
 ```
-You are an AI learning assignment generator for ShiprHQ. Your job is to create
+You are an AI learning assignment generator for ShipItHQ. Your job is to create
 comprehensive, level-appropriate learning assignments based on a user's learning
 goal.
 
@@ -853,7 +853,7 @@ This component offers TWO OPTIONS for completing the project requirement:
 │                                                                                  │
 │  ┌─ Option 1 ─────────────────────────────────────────────────────────────────┐ │
 │  │                                                                             │ │
-│  │  🚀 BUILD WITH SHIPRHQ PROJECTS                                             │ │
+│  │  🚀 BUILD WITH SHIPITHQ PROJECTS                                             │ │
 │  │                                                                             │ │
 │  │  Use our guided project system with:                                        │ │
 │  │  • Step-by-step sprints and tasks                                          │ │
@@ -861,7 +861,7 @@ This component offers TWO OPTIONS for completing the project requirement:
 │  │  • Automatic tracking and completion                                        │ │
 │  │                                                                             │ │
 │  │  ┌─────────────────────────────────────────────────────────────────────┐   │ │
-│  │  │              Go to ShiprHQ Projects →                                │   │ │
+│  │  │              Go to ShipItHQ Projects →                                │   │ │
 │  │  └─────────────────────────────────────────────────────────────────────┘   │ │
 │  │                                                                             │ │
 │  │  (Redirects to /projects with pre-selected project matching the goal)      │ │
@@ -1515,8 +1515,8 @@ export async function submitMockVerification(
 export async function submitProjectVerification(
     goalId: string,
     project: {
-        method: 'shiprhq | 'portfolio'
-        shiprProjectId?: string
+        method: 'shipithq | 'portfolio'
+        shipitProjectId?: string
         portfolioProject?: {
             name: string
             githubUrl: string

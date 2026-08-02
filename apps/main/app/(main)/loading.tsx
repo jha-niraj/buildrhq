@@ -1,4 +1,4 @@
-import { ShiprHQLoader } from "@repo/ui/components/ui/shiprhq-loader";
+import { ShipItHQLoader } from "@repo/ui/components/ui/shipithq-loader";
 
 // Group-level fallback for any /(main) route that doesn't ship its own loading.tsx.
 // Routes that DO have one (e.g. /home's skeletons) keep it - a nested loading.tsx
@@ -7,7 +7,7 @@ import { ShiprHQLoader } from "@repo/ui/components/ui/shiprhq-loader";
 export default function MainLoading() {
 	return (
 		<div className="h-full w-full">
-			<ShiprHQLoader fullScreen={false} className="h-full min-h-[70vh] bg-transparent dark:bg-transparent" />
+			<ShipItHQLoader fullScreen={false} className="h-full min-h-[70vh] bg-transparent dark:bg-transparent" />
 		</div>
 	);
 }

@@ -34,19 +34,19 @@ const bricolage = Bricolage_Grotesque({
 	variable: "--font-display",
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.shiprhq.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.shipithq.com'
 
 export const metadata: Metadata = {
 	title: {
-		default: "ShiprHQ - The Engineering Intelligence Suite",
-		template: "%s | ShiprHQ"
+		default: "ShipItHQ - The Engineering Intelligence Suite",
+		template: "%s | ShipItHQ"
 	},
 	description: "AI-powered platform for CS students and software engineers. Build your portfolio, ace technical interviews, practice DSA, and land your dream engineering job.",
 	keywords: [
 		"software engineering portfolio", "mock technical interview", "system design prep",
 		"DSA practice", "open source contribution tracker", "AI resume builder",
 		"cover letter generator", "coding interview prep", "cs student platform",
-		"developer career tools", "ShiprHQ", "engineering intelligence suite"
+		"developer career tools", "ShipItHQ", "engineering intelligence suite"
 	],
 	authors: [{ name: "Niraj Jha", url: BASE_URL }],
 	creator: "Shunya Tech",
@@ -59,25 +59,25 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en_US",
 		url: BASE_URL,
-		siteName: "ShiprHQ",
-		title: "ShiprHQ - The Engineering Intelligence Suite",
+		siteName: "ShipItHQ",
+		title: "ShipItHQ - The Engineering Intelligence Suite",
 		description: "AI-powered platform for CS students and software engineers. Build your portfolio, ace interviews, practice DSA, and land your dream engineering job.",
 		images: [
 			{
 				url: "/og/home.webp",
 				width: 1200,
 				height: 630,
-				alt: "ShiprHQ - The Engineering Intelligence Suite for Developers",
+				alt: "ShipItHQ - The Engineering Intelligence Suite for Developers",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "ShiprHQ - The Engineering Intelligence Suite",
+		title: "ShipItHQ - The Engineering Intelligence Suite",
 		description: "AI-powered platform for CS students and software engineers. Build your portfolio, ace interviews, practice DSA, and land your dream engineering job.",
 		images: ["/og/home.webp"],
-		creator: "@shiprhq",
-		site: "@shiprhq",
+		creator: "@shipithq",
+		site: "@shipithq",
 	},
 	robots: {
 		index: true,
@@ -102,14 +102,14 @@ export const metadata: Metadata = {
 const organizationSchema = {
 	"@context": "https://schema.org",
 	"@type": "Organization",
-	"name": "ShiprHQ",
+	"name": "ShipItHQ",
 	"url": BASE_URL,
 	"logo": `${BASE_URL}/icon-512.png`,
 	"description": "AI-powered engineering intelligence platform for CS students and software engineers.",
 	"sameAs": [
-		"https://twitter.com/shiprhq",
-		"https://github.com/shiprhq",
-		"https://linkedin.com/company/shiprhq"
+		"https://twitter.com/shipithq",
+		"https://github.com/shipithq",
+		"https://linkedin.com/company/shipithq"
 	],
 	"foundingDate": "2024",
 	"founders": [{ "@type": "Person", "name": "Niraj Jha" }],
@@ -118,7 +118,7 @@ const organizationSchema = {
 const websiteSchema = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
-	"name": "ShiprHQ",
+	"name": "ShipItHQ",
 	"url": BASE_URL,
 	"description": "AI-powered platform for CS students and software engineers.",
 	"potentialAction": {
@@ -134,7 +134,7 @@ const websiteSchema = {
 const softwareAppSchema = {
 	"@context": "https://schema.org",
 	"@type": "SoftwareApplication",
-	"name": "ShiprHQ",
+	"name": "ShipItHQ",
 	"url": BASE_URL,
 	"applicationCategory": "DeveloperApplication",
 	"operatingSystem": "Web",

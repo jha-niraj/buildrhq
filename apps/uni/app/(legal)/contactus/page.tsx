@@ -86,8 +86,8 @@ export default function ContactPage() {
                             <p className="text-neutral-500 text-sm mb-4">
                                 Custom solutions for universities and educational institutions.
                             </p>
-                            <a href="mailto:sales@shiprhq.com" className="flex items-center gap-2 font-medium text-sm text-neutral-800 dark:text-neutral-100 hover:underline">
-                                sales@shiprhq.com <ArrowRight className="w-4 h-4" />
+                            <a href="mailto:sales@shipithq.com" className="flex items-center gap-2 font-medium text-sm text-neutral-800 dark:text-neutral-100 hover:underline">
+                                sales@shipithq.com <ArrowRight className="w-4 h-4" />
                             </a>
                         </div>
                         <div className="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
@@ -98,8 +98,8 @@ export default function ContactPage() {
                             <p className="text-neutral-500 text-sm mb-4">
                                 Get help with platform issues and technical questions.
                             </p>
-                            <a href="mailto:support@shiprhq.com" className="flex items-center gap-2 font-medium text-sm text-neutral-800 dark:text-neutral-100 hover:underline">
-                                support@shiprhq.com <ArrowRight className="w-4 h-4" />
+                            <a href="mailto:support@shipithq.com" className="flex items-center gap-2 font-medium text-sm text-neutral-800 dark:text-neutral-100 hover:underline">
+                                support@shipithq.com <ArrowRight className="w-4 h-4" />
                             </a>
                         </div>
                     </motion.div>
@@ -233,8 +233,8 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <p className="font-bold text-neutral-900 dark:text-white mb-1">Email</p>
-                                        <a href="mailto:university@shiprhq.com" className="text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors">
-                                            university@shiprhq.com
+                                        <a href="mailto:university@shipithq.com" className="text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors">
+                                            university@shipithq.com
                                         </a>
                                     </div>
                                 </div>

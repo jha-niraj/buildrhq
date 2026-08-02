@@ -1,5 +1,5 @@
 # 🚀 HIRING PLATFORM PHASE 1 BLUEPRINT
-## CodeDot.AI + ShiprHQ Hiring: Complete Integration Architecture
+## CodeDot.AI + ShipItHQ Hiring: Complete Integration Architecture
 ### Version 1.0 | February 2026
 
 ---
@@ -10,7 +10,7 @@
 2. [The Core Problem & Solution](#the-core-problem--solution)
 3. [Platform Architecture Overview](#platform-architecture-overview)
 4. [Main Platform (Student) - Jobs & Interview Module](#main-platform-student---jobs--interview-module)
-5. [Hiring Platform (ShiprHQ Hiring) - Company Module](#hiring-platform-shiprhq-hiring---company-module)
+5. [Hiring Platform (ShipItHQ Hiring) - Company Module](#hiring-platform-shipithq-hiring---company-module)
 6. [Mock Interview System Architecture](#mock-interview-system-architecture)
 7. [Database Schema](#database-schema)
 8. [User Flows & Screen Specifications](#user-flows--screen-specifications)
@@ -26,13 +26,13 @@
 
 A **revolutionary hiring ecosystem** that connects:
 - **Students** who learn, build projects, and get verified skills on CodeDot.AI
-- **Companies** who need to hire talented developers efficiently via ShiprHQ Hiring
+- **Companies** who need to hire talented developers efficiently via ShipItHQ Hiring
 
 ### The Game-Changing Innovation
 
 **Interview Process Transparency + AI-Powered Mock Interviews**
 
-When companies register on ShiprHQ Hiring, they configure their complete interview process-round by round. This information flows to the Main Platform where students can:
+When companies register on ShipItHQ Hiring, they configure their complete interview process-round by round. This information flows to the Main Platform where students can:
 
 1. See exactly what each interview round entails
 2. Practice AI-powered mock interviews that mirror the company's actual process
@@ -124,11 +124,11 @@ When companies register on ShiprHQ Hiring, they configure their complete intervi
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         SHIPRHQ HIRING ECOSYSTEM                         │
+│                         SHIPITHQ HIRING ECOSYSTEM                         │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │   ┌───────────────────────┐         ┌───────────────────────┐           │
-│   │     MAIN PLATFORM     │         │     SHIPRHQ HIRING          │           │
+│   │     MAIN PLATFORM     │         │     SHIPITHQ HIRING          │           │
 │   │     (Students)        │◄───────►│     (Companies)       │           │
 │   │                       │         │                       │           │
 │   │   /jobs               │         │   /jobs (post)        │           │
@@ -166,7 +166,7 @@ When companies register on ShiprHQ Hiring, they configure their complete intervi
 │                    COMPANY → STUDENT FLOW                                │
 │                    ──────────────────────                                │
 │                                                                          │
-│   ShiprHQ Hiring                           Main Platform                       │
+│   ShipItHQ Hiring                           Main Platform                       │
 │   ────────                           ─────────────                       │
 │                                                                          │
 │   [Post Job] ─────────────────────► [Job appears in /jobs]              │
@@ -184,7 +184,7 @@ When companies register on ShiprHQ Hiring, they configure their complete intervi
 │                    STUDENT → COMPANY FLOW                                │
 │                    ──────────────────────                                │
 │                                                                          │
-│   Main Platform                      ShiprHQ Hiring                            │
+│   Main Platform                      ShipItHQ Hiring                            │
 │   ─────────────                      ────────                            │
 │                                                                          │
 │   [Complete Projects] ───────────► [Verified portfolio visible          │
@@ -621,7 +621,7 @@ When companies register on ShiprHQ Hiring, they configure their complete intervi
 
 ---
 
-## 🏢 HIRING PLATFORM (SHIPRHQ HIRING) - COMPANY MODULE
+## 🏢 HIRING PLATFORM (SHIPITHQ HIRING) - COMPANY MODULE
 
 ### Current Routes (Existing in `/apps/hiring`)
 
@@ -711,7 +711,7 @@ When companies register on ShiprHQ Hiring, they configure their complete intervi
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  🚀 Welcome to ShiprHQ Hiring - Let's Set Up Your Hiring                      │
+│  🚀 Welcome to ShipItHQ Hiring - Let's Set Up Your Hiring                      │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │  Progress: ━━━━━━━━━━━━━━━━░░░░░░░░░░ Step 2 of 4                       │
@@ -1675,7 +1675,7 @@ Body: {
 │  ⏳ Coding mock interviews (basic)                                      │
 │  ⏳ System design (coming in Phase 2)                                   │
 │                                                                          │
-│  SHIPRHQ HIRING (Companies)                                                   │
+│  SHIPITHQ HIRING (Companies)                                                   │
 │  ━━━━━━━━━━━━━━━━━━━━                                                   │
 │  ✅ Company onboarding                                                  │
 │  ✅ Interview process configuration (MANDATORY)                         │

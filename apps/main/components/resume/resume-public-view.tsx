@@ -313,7 +313,7 @@ export function ResumePublicView({ user, embedded = false }: ResumePublicViewPro
                                 href="/"
                                 className="text-sm text-neutral-500 hover:text-neutral-400"
                             >
-                                Built with ShiprHQ
+                                Built with ShipItHQ
                             </Link>
                         </div>
                     )

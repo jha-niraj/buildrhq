@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import CodingQuestionsClient from './_components/CodingQuestionsClient'
 
 export const metadata: Metadata = {
-  title: 'Coding Questions | ShiprHQ',
+  title: 'Coding Questions | ShipItHQ',
   description: 'Practice coding questions generated for your specific interview.',
 }
 

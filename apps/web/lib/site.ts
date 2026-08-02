@@ -6,13 +6,13 @@
 // produced canonical URLs, sitemap URLs and JSON-LD `@id`s that disagreed with each
 // other, which is the single fastest way to lose an index. Everything reads SITE now.
 
-/** This marketing site's canonical, no-trailing-slash origin (shiprhq.com). */
+/** This marketing site's canonical, no-trailing-slash origin (shipithq.com). */
 export const SITE = (
-    process.env.NEXT_PUBLIC_WEB_URL ?? "https://www.shiprhq.com"
+    process.env.NEXT_PUBLIC_WEB_URL ?? "https://www.shipithq.com"
 ).replace(/\/$/, "");
 
 /**
- * The authenticated product deploy (app.shiprhq.com). The marketing site never
+ * The authenticated product deploy (app.shipithq.com). The marketing site never
  * renders auth UI or reads a session - it only deep-links here. Anything that needs
  * a logged-in user lives behind this origin.
  */
@@ -29,15 +29,15 @@ export const APP_LINKS = {
 
 /** Public brand identity reused by metadata, JSON-LD and the footer. */
 export const BRAND = {
-    name: "ShiprHQ",
-    legalName: "ShiprHQ",
+    name: "ShipItHQ",
+    legalName: "ShipItHQ",
     tagline: "The Engineering Intelligence Suite",
     logo: `${SITE}/icon-512.png`,
     email: "niraj@getcreatr.com",
     social: {
-        twitter: "https://x.com/shiprhq",
+        twitter: "https://x.com/shipithq",
         github: "https://github.com/jha-niraj",
-        linkedin: "https://www.linkedin.com/company/shiprhq",
+        linkedin: "https://www.linkedin.com/company/shipithq",
     },
 } as const;
 

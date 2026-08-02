@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { VerificationContent } from './verification-content'
-import { generateVerificationContent } from '@/actions/(main)/pathfinder'
+import { startVerificationGeneration, getVerificationJobStatus } from '@/actions/(main)/workers/verificationworker.action'
 import { usePathfinderStore } from '@/app/store/pathfinderStore'
 import { PATHFINDER_CREDITS } from '@/lib/constants/pricing'
 import {
@@ -20,6 +20,7 @@ import {
 } from '@repo/db'
 import type { VerificationAIPlan } from '@/types/pathfinder'
 import toast from '@repo/ui/components/ui/sonner'
+import { useRouter } from 'next/navigation'
 
 interface Goal {
     id: string
@@ -56,28 +57,64 @@ interface VerificationPageClientProps {
 export function VerificationPageClient({ goal: initialGoal, verification }: VerificationPageClientProps) {
     const setVerificationAIPlan = usePathfinderStore((s) => s.setVerificationAIPlan)
     const storedPlan = usePathfinderStore((s) => s.verificationAIPlan[initialGoal.id])
+    const router = useRouter()
     const [generateSheetOpen, setGenerateSheetOpen] = useState(false)
     const [isGenerating, setIsGenerating] = useState(false)
+    // Surfaced so the user can see which stage is running during a job that
+    // legitimately takes over a minute, rather than an unmoving spinner.
+    const [progress, setProgress] = useState(0)
+    const [phaseLabel, setPhaseLabel] = useState<string | undefined>()
 
     const aiPlan = (storedPlan ?? verification?.generatedPlan) as VerificationAIPlan | null
     const hasQuestions = Boolean(aiPlan?.quizQuestions?.length ?? 0)
 
     const handleOpenSheet = () => setGenerateSheetOpen(true)
 
+    // The generation runs on a Durable Object, so this only starts the job and
+    // then watches it. Closing the tab no longer loses the run — the worker
+    // finishes regardless and the plan is on the verification row when the user
+    // comes back.
     const handleGenerate = async () => {
         setIsGenerating(true)
+        setProgress(0)
+        setPhaseLabel(undefined)
         try {
-            const result = await generateVerificationContent(initialGoal.id)
-            if (result.success && result.plan) {
-                setVerificationAIPlan(initialGoal.id, result.plan)
-                toast.success('Verification questions ready!')
-                setGenerateSheetOpen(false)
-            } else {
-                if ((result as { code?: string }).code === 'INSUFFICIENT_CREDITS') {
+            const started = await startVerificationGeneration(initialGoal.id)
+            if (!started.success || !started.jobId) {
+                if (started.code === 'INSUFFICIENT_CREDITS') {
                     toast.error(`Insufficient credits. Need ${PATHFINDER_CREDITS.verificationFee} credits.`)
                 } else {
-                    toast.error(result.error ?? 'Failed to generate questions')
+                    toast.error(started.error ?? 'Failed to start generation')
                 }
+                setIsGenerating(false)
+                return
+            }
+
+            const jobId = started.jobId
+            // Poll until terminal. The action settles or releases the credit hold
+            // the first time it sees a terminal status, so a refund does not depend
+            // on this loop reaching a particular branch.
+            for (;;) {
+                await new Promise((r) => setTimeout(r, 2000))
+                const s = await getVerificationJobStatus(jobId)
+                if (!s.success) {
+                    toast.error(s.error ?? 'Lost track of the generation')
+                    break
+                }
+                setProgress(s.progress ?? 0)
+                setPhaseLabel(s.phaseLabel)
+                if (!s.done) continue
+
+                if (s.status === 'completed') {
+                    toast.success('Verification questions ready!')
+                    setGenerateSheetOpen(false)
+                    // The worker wrote the plan to the verification row; refetch
+                    // rather than trusting a client copy of it.
+                    router.refresh()
+                } else {
+                    toast.error(s.error ?? 'Generation failed')
+                }
+                break
             }
         } catch {
             toast.error('Failed to generate questions')
@@ -185,8 +222,27 @@ export function VerificationPageClient({ goal: initialGoal, verification }: Veri
                                     className="w-16 h-16 rounded-full border-2 border-neutral-200 dark:border-neutral-700 border-t-neutral-600 mb-4"
                                 />
                                 <p className="text-sm text-neutral-600 dark:text-neutral-400 text-center max-w-sm">
-                                    Creating personalized quiz and coding questions based on your learning progress.
-                                    This usually takes 30-60 seconds.
+                                    {phaseLabel ?? 'Creating personalized quiz and coding questions based on your learning progress.'}
+                                </p>
+
+                                {/* Real progress from the worker, not a fake timer. */}
+                                <div className="mt-5 w-full max-w-sm">
+                                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800">
+                                        <div
+                                            className="h-full rounded-full bg-neutral-900 transition-all duration-500 dark:bg-white"
+                                            style={{ width: `${Math.max(5, progress)}%` }}
+                                        />
+                                    </div>
+                                    <p className="mt-2 text-center text-xs tabular-nums text-neutral-400">
+                                        {progress}%
+                                    </p>
+                                </div>
+
+                                {/* The main benefit of moving this to a worker, said plainly:
+                                    the run no longer depends on this tab staying open. */}
+                                <p className="mt-5 max-w-sm text-center text-xs text-neutral-400 dark:text-neutral-500">
+                                    This runs on our servers — you can close this tab and come back.
+                                    It usually takes 30&ndash;60 seconds.
                                 </p>
                             </div>
                         </>

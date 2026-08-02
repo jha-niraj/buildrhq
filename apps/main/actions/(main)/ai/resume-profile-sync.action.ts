@@ -54,7 +54,7 @@ function buildSkillGroups(
 // ─────────────────────────────────────────────────────────────────────────────
 // syncProfileToResumeDraft
 //
-// Reads the user's ShiprHQ profile data and maps it into ResumeDraftContent.
+// Reads the user's ShipItHQ profile data and maps it into ResumeDraftContent.
 // Optionally persists to an existing draft when `draftId` is supplied.
 // ─────────────────────────────────────────────────────────────────────────────
 export async function syncProfileToResumeDraft(draftId?: string): Promise<
@@ -213,15 +213,15 @@ export async function syncProfileToResumeDraft(draftId?: string): Promise<
             }
         })
 
-        // ── 7. Map ShiprHQ platform project submissions ──────────────────────
+        // ── 7. Map ShipItHQ platform project submissions ──────────────────────
         const platformProjectsMapped: ResumeProjectEntry[] = projectSubmissions.map((sub: any) => ({
             id: shortId(),
             name: sub.project.title,
-            description: sub.project.shortDescription ?? 'Built on ShiprHQ',
+            description: sub.project.shortDescription ?? 'Built on ShipItHQ',
             technologies: sub.project.technologies ?? [],
             github: sub.githubUrl ?? undefined,
             liveUrl: sub.liveUrl ?? undefined,
-            bullets: ['Built on ShiprHQ'],
+            bullets: ['Built on ShipItHQ'],
         }))
 
         const projects: ResumeProjectEntry[] = [

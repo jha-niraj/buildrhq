@@ -142,7 +142,7 @@ Before anything else, run the complete user journey manually:
 
 `sprint-generation-sheet.tsx` exists for generating sprints with AI.
 
-- [ ] **Verify AI sprint generation**: `generateSprints()` action in `shiprworker` generates sprint + task structure via OpenAI. Verify the format is correct and saves to DB.
+- [ ] **Verify AI sprint generation**: `generateSprints()` action in `shipitworker` generates sprint + task structure via OpenAI. Verify the format is correct and saves to DB.
 - [ ] **Task quality check**: Generated tasks must have meaningful descriptions, requirements, hints, and starter code for all supported languages.
 - [ ] **Project idea to full project**: From `/projects/ideas`, an upvoted idea can be "Published as a Project" by admin. This triggers the AI generation flow.
 

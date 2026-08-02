@@ -1,11 +1,11 @@
-# ShiprHQ Web (Marketing Site)
+# ShipItHQ Web (Marketing Site)
 
-The public marketing + content site (`shiprhq.com`). Next.js 16 + React 19 + Tailwind 4,
+The public marketing + content site (`shipithq.com`). Next.js 16 + React 19 + Tailwind 4,
 sharing the `@repo/ui` design system with the app. Deployed to **Cloudflare Workers** via
 `@opennextjs/cloudflare`. Port **6005**.
 
 The authenticated product (auth, dashboard, AI tools, practice, projects, checkout) lives in
-`apps/main` at `app.shiprhq.com`. This app and that app are deliberately separate deploys.
+`apps/main` at `app.shipithq.com`. This app and that app are deliberately separate deploys.
 
 ## The separation rule (STRICT)
 
@@ -95,7 +95,7 @@ Use `deploy:no-secrets` when shipping code without touching secrets (e.g. a roll
 every app in the monorepo, so this only has to run once ever:
 
 ```bash
-wrangler r2 bucket create shiprhq-next-cache
+wrangler r2 bucket create shipithq-next-cache
 ```
 
 Config lives in `wrangler.jsonc` (worker name, bindings, compatibility flags) and
@@ -128,7 +128,7 @@ Two things are correct in a Node build but are worth confirming once on the Work
 ### Analytics
 
 No analytics package is installed. Cloudflare Web Analytics is injected by the platform for
-Workers-hosted sites - enable it in the Cloudflare dashboard for the `shiprhq.com` hostname.
+Workers-hosted sites - enable it in the Cloudflare dashboard for the `shipithq.com` hostname.
 `static.cloudflareinsights.com` is already allowlisted in the CSP in `next.config.mjs`.
 
 Do not add `@vercel/analytics` back: off Vercel its beacon 404s on every page load, which

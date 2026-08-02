@@ -93,8 +93,8 @@ This module is especially valuable for students preparing for roles that specifi
 ### Priority 2 - AI Evaluation for Backend
 
 - [ ] **`evaluateBackendCode()` action**:
-  - For CODING problems (Node.js): run via ShiprHQWorker (Node.js runner). Test against test cases. AI evaluates: error handling, security (SQL injection, input validation), performance, code organization.
-  - For SQL problems: run via ShiprHQWorker (PostgreSQL runner). Compare query output against expected output. AI evaluates query efficiency, index usage.
+  - For CODING problems (Node.js): run via ShipItHQWorker (Node.js runner). Test against test cases. AI evaluates: error handling, security (SQL injection, input validation), performance, code organization.
+  - For SQL problems: run via ShipItHQWorker (PostgreSQL runner). Compare query output against expected output. AI evaluates query efficiency, index usage.
   - For CONCEPTUAL problems: AI evaluates explanation. Socratic follow-up: "You mentioned connection pooling - what's the default pool size in pg (node-postgres) and why is the default often wrong for high-traffic apps?"
   - For API DESIGN problems: user provides API design as text or JSON schema. AI evaluates: RESTful correctness, naming conventions, pagination strategy, error codes, versioning.
   - For DATABASE DESIGN: user provides SQL CREATE statements or text description. AI evaluates: normalization, index strategy, foreign keys, handling of edge cases.
@@ -107,10 +107,10 @@ This module is especially valuable for students preparing for roles that specifi
 
 `api-tester.tsx` already exists. Wire it properly:
 
-- [ ] **For API design problems**: Student writes their Express endpoint code. It gets deployed to a sandboxed ShiprHQWorker container. The API tester sends HTTP requests to it and shows responses.
+- [ ] **For API design problems**: Student writes their Express endpoint code. It gets deployed to a sandboxed ShipItHQWorker container. The API tester sends HTTP requests to it and shows responses.
 - [ ] This allows testing actual API behavior rather than just code review.
 - [ ] Support: GET, POST, PUT, DELETE, PATCH. Request headers and body (JSON). Response status + body + timing.
-- [ ] For SQL problems: replace API tester with a **SQL runner panel** - user types SQL, it runs against a seeded test database in ShiprHQWorker, shows results.
+- [ ] For SQL problems: replace API tester with a **SQL runner panel** - user types SQL, it runs against a seeded test database in ShipItHQWorker, shows results.
 
 ### Priority 4 - Topic Organization
 
@@ -160,11 +160,11 @@ Backend-specific system design problems that don't need Excalidraw:
 
 - [ ] AI evaluates these as structured conversations - no canvas needed. Phase flow: Requirements → Schema Design → API Design → Scalability Considerations.
 
-### Priority 6 - PostgreSQL Runner in ShiprHQWorker
+### Priority 6 - PostgreSQL Runner in ShipItHQWorker
 
-The current ShiprHQWorker supports JS, TS, Python, Java, C++, C. Backend practice needs SQL execution:
+The current ShipItHQWorker supports JS, TS, Python, Java, C++, C. Backend practice needs SQL execution:
 
-- [ ] **Add PostgreSQL runner to ShiprHQWorker**:
+- [ ] **Add PostgreSQL runner to ShipItHQWorker**:
   - New Docker runner: `postgresql.Dockerfile` - PostgreSQL + seeded test database.
   - Test database seeded with realistic data (users, orders, products, etc.) for SQL query problems.
   - Takes SQL query as input, returns result set as JSON.
@@ -193,13 +193,13 @@ apps/main/
 │
 ├── app/(main)/practice/_components/workspace/
 │   ├── practice-workspace.tsx                   ✅ exists
-│   ├── api-tester.tsx                           ⚠️  exists, needs ShiprHQWorker wiring
+│   ├── api-tester.tsx                           ⚠️  exists, needs ShipItHQWorker wiring
 │   └── sql-runner-panel.tsx                    ❌  needs to be CREATED
 │
 ├── actions/(main)/practice/
 │   └── assess.action.ts                        ⚠️  has WEB_BACKEND prompt, needs full backend evaluation
 │
-└── apps/shiprworker/docker/runners/
+└── apps/shipitworker/docker/runners/
     └── postgresql.Dockerfile                   ❌  needs to be CREATED
 ```
 
@@ -210,8 +210,8 @@ apps/main/
 1. Seed 60 backend problems across all categories
 2. `evaluateBackendCode()` - Node.js execution + AI quality + security evaluation
 3. SQL conceptual evaluation with Socratic follow-up
-4. Wire `api-tester.tsx` to ShiprHQWorker (sandboxed Express execution)
-5. PostgreSQL Dockerfile + seeded test DB in ShiprHQWorker
+4. Wire `api-tester.tsx` to ShipItHQWorker (sandboxed Express execution)
+5. PostgreSQL Dockerfile + seeded test DB in ShipItHQWorker
 6. SQL runner panel in workspace
 7. Spaced repetition scheduling
 8. Backend system design text-based problems

@@ -9,6 +9,7 @@ import {
 import { eq, and, desc, asc, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { toErrorMessage } from "@/lib/errors"
 
 interface ActionResponse {
     success: boolean;
@@ -166,9 +167,9 @@ export async function getProjectErrors(
                 }
             }
         };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[GET PROJECT ERRORS]:", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -219,9 +220,9 @@ export async function getErrorById(errorId: string): Promise<ActionResponse> {
                 votes: undefined,
             }
         };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[GET ERROR BY ID]:", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -309,12 +310,12 @@ export async function createProjectError(
             success: true,
             data: error,
         };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[CREATE PROJECT ERROR]:", error);
         if (error instanceof z.ZodError) {
             return { success: false, error: error.message };
         }
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -373,12 +374,12 @@ export async function updateProjectError(
         revalidatePath(`/projects/${existingError.project.slug}`);
 
         return { success: true, data: error };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[UPDATE PROJECT ERROR]:", error);
         if (error instanceof z.ZodError) {
             return { success: false, error: error.message };
         }
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -419,9 +420,9 @@ export async function deleteProjectError(errorId: string): Promise<ActionRespons
         revalidatePath(`/projects/${error.project.slug}`);
 
         return { success: true };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[DELETE PROJECT ERROR]:", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -525,9 +526,9 @@ export async function voteOnError(
                 encounteredCount: error.encounteredCount + (voteType === "encountered" ? 1 : 0),
             }
         };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[VOTE ON ERROR]:", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -577,9 +578,9 @@ export async function moderateError(
         revalidatePath(`/projects/${error.project.slug}`);
 
         return { success: true };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[MODERATE ERROR]:", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -621,9 +622,9 @@ export async function getPendingErrors(projectId: string): Promise<ActionRespons
         });
 
         return { success: true, data: errors };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[GET PENDING ERRORS]:", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -665,8 +666,8 @@ export async function getProjectErrorStats(projectId: string): Promise<ActionRes
                 topHelpful
             }
         };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[GET PROJECT ERROR STATS]:", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }

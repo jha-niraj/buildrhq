@@ -12,6 +12,7 @@ import {
 } from "@repo/db";
 import { eq, and, gte, inArray, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { toErrorMessage } from "@/lib/errors"
 
 interface ActionResponse {
     success: boolean;
@@ -68,9 +69,9 @@ export async function checkStandupConfig(projectId: string): Promise<ActionRespo
                 config: config || null,
             },
         };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[CHECK_STANDUP_CONFIG]", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -189,9 +190,9 @@ export async function createStandupConfig(input: StandupConfigInput): Promise<Ac
             data: config,
         };
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[CREATE_STANDUP_CONFIG]", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -275,9 +276,9 @@ export async function renewStandupConfig(projectId: string, projectSlug: string)
             data: { message: "Standup renewed for next week", config },
         };
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[RENEW_STANDUP_CONFIG]", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -318,9 +319,9 @@ export async function getUpcomingStandups(projectId: string): Promise<ActionResp
             },
         };
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[GET_UPCOMING_STANDUPS]", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -381,9 +382,9 @@ export async function submitStandup(input: StandupSubmission, projectSlug: strin
             data: { message: "Standup submitted successfully" },
         };
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[SUBMIT_STANDUP]", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -425,8 +426,8 @@ export async function deactivateStandupConfig(projectId: string, projectSlug: st
             data: { message: "Standup configuration deactivated" },
         };
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[DEACTIVATE_STANDUP_CONFIG]", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }

@@ -203,13 +203,13 @@ export const auth = betterAuth({
 
     // ─── App config ───────────────────────────────────────────────────────────
     baseURL: APP_URL,
-    secret: process.env.BETTER_AUTH_SECRET || process.env.NEXTAUTH_SECRET,
+    secret: process.env.BETTER_AUTH_SECRET,
     basePath: "/api/auth",
 
     // ─── Cross-subdomain cookies ─────────────────────────────────────────────
-    // The app (app.shiprhq.com) and the marketing site (shiprhq.com) are
+    // The app (app.shipithq.com) and the marketing site (shipithq.com) are
     // separate deploys. Setting AUTH_COOKIE_DOMAIN to the shared parent domain
-    // (".shiprhq.com") makes the session cookie readable across subdomains, so
+    // (".shipithq.com") makes the session cookie readable across subdomains, so
     // the marketing navbar can show "Go to Dashboard" for a logged-in visitor.
     // Left disabled on localhost (no shared parent domain).
     advanced: {
@@ -217,7 +217,7 @@ export const auth = betterAuth({
             enabled: Boolean(process.env.AUTH_COOKIE_DOMAIN),
             domain: process.env.AUTH_COOKIE_DOMAIN,
         },
-        cookiePrefix: "shiprhq",
+        cookiePrefix: "shipithq",
     },
 
     // Fallbacks match the `dev` ports in each app's package.json. They were wrong

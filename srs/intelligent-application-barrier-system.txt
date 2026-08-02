@@ -4,7 +4,7 @@ A Revolutionary Approach to Quality Job Applications
 ================================================================================
 
 Created: February 2026
-Platform: ShiprHQ - Main Platform & Hiring Platform
+Platform: ShipItHQ - Main Platform & Hiring Platform
 
 ================================================================================
 TABLE OF CONTENTS
@@ -433,7 +433,7 @@ FOR HR / COMPANIES
 ✓ Clear competitive landscape visibility
 ✓ Better candidate experience = better employer brand
 
-FOR THE PLATFORM (SHIPRHQ)
+FOR THE PLATFORM (SHIPITHQ)
 -------------------------
 ✓ Unique differentiator from LinkedIn
 ✓ Higher quality hiring outcomes
@@ -490,7 +490,7 @@ intelligent checkpoints that:
 3. EMPOWER serious candidates to stand out
 4. HELP HR focus on quality over quantity
 
-Combined with the gamified Swipe Mode, ShiprHQ can offer a hiring experience
+Combined with the gamified Swipe Mode, ShipItHQ can offer a hiring experience
 that is both more efficient and more humane than any existing platform.
 
 The key insight is: "Friction isn't the enemy - meaningless friction is."

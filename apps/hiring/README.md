@@ -1,10 +1,10 @@
-# ShiprHQ Hiring Platform
+# ShipItHQ Hiring Platform
 
 The intelligent hiring platform for tech companies to find pre-vetted engineers with verified skills.
 
 ## Overview
 
-ShiprHQ Hiring is a comprehensive recruitment platform designed specifically for tech companies. It leverages AI-powered assessments, real project verification, and smart candidate matching to streamline the hiring process.
+ShipItHQ Hiring is a comprehensive recruitment platform designed specifically for tech companies. It leverages AI-powered assessments, real project verification, and smart candidate matching to streamline the hiring process.
 
 ## Features
 
@@ -47,7 +47,7 @@ ShiprHQ Hiring is a comprehensive recruitment platform designed specifically for
 
 1. Clone the repository and navigate to the project root:
 ```bash
-cd shiprofficial
+cd shipitofficial
 ```
 
 2. Install dependencies:
@@ -106,8 +106,8 @@ Required environment variables:
 DATABASE_URL=
 
 # Authentication
-NEXTAUTH_SECRET=
-NEXTAUTH_URL=
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=
 
 # AI Services
 OPENAI_API_KEY=
@@ -146,6 +146,6 @@ Proprietary - All rights reserved.
 
 ## Support
 
-- Documentation: [docs.shiprhq.com](https://docs.shiprhq.com)
-- Email: support@shiprhq.com
+- Documentation: [docs.shipithq.com](https://docs.shipithq.com)
+- Email: support@shipithq.com
 - Discord: [Join our community](https://discord.gg/coderzai)

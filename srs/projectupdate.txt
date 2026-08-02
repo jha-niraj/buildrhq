@@ -1123,7 +1123,7 @@ PHASE 4: Advanced Features (Week 6+)
 ---------------------------
 
 Create new OpenAI Assistant with:
-- Name: "ShiprHQ Project Blueprint Generator V2"
+- Name: "ShipItHQ Project Blueprint Generator V2"
 - Model: gpt-4o (or gpt-4-turbo for cost efficiency)
 - Instructions: Enhanced prompt template (Section 5.1)
 - Response format: JSON mode enabled

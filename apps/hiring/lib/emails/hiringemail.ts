@@ -15,7 +15,7 @@ function fromEmail(): string {
 function appUrl(): string {
     return (
         process.env.NEXT_PUBLIC_HIRING_URL ||
-        process.env.NEXTAUTH_URL ||
+        process.env.BETTER_AUTH_URL ||
         "http://localhost:6004"
     );
 }
@@ -28,7 +28,7 @@ function appUrl(): string {
 export const hiringEmailTemplates = {
 
     verifyOTP: (name: string, otp: string) => ({
-        subject: "Verify your email - ShiprHQ Hiring",
+        subject: "Verify your email - ShipItHQ Hiring",
         html: shell({
             title: "Verify your email",
             subtitle: "Use this one-time code to complete your registration",
@@ -52,7 +52,7 @@ export const hiringEmailTemplates = {
     }),
 
     resetPasswordOTP: (name: string, otp: string) => ({
-        subject: "Reset your password - ShiprHQ Hiring",
+        subject: "Reset your password - ShipItHQ Hiring",
         html: shell({
             title: "Password reset request",
             subtitle: "Use this code to reset your password",
@@ -76,10 +76,10 @@ export const hiringEmailTemplates = {
     }),
 
     companyWelcome: (name: string, companyName: string) => ({
-        subject: "Your hiring workspace is ready - ShiprHQ",
+        subject: "Your hiring workspace is ready - ShipItHQ",
         html: shell({
             title: "Workspace ready",
-            subtitle: `${companyName} is now active on ShiprHQ Hiring`,
+            subtitle: `${companyName} is now active on ShipItHQ Hiring`,
             body: `
         <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello ${name},</p>
         <p style="margin:0 0 18px;font-size:14px;color:#525252;">
@@ -114,14 +114,14 @@ export const hiringEmailTemplates = {
         inviteUrl: string,
         message?: string,
     ) => ({
-        subject: `You've been invited to join ${companyName} - ShiprHQ Hiring`,
+        subject: `You've been invited to join ${companyName} - ShipItHQ Hiring`,
         html: shell({
             title: `Invitation to ${companyName}`,
             subtitle: "You've been invited to join a hiring team",
             body: `
         <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello,</p>
         <p style="margin:0 0 18px;font-size:14px;color:#525252;">
-          <strong>${inviterName}</strong> has invited you to join <strong>${companyName}</strong> as a <strong>${role}</strong> on ShiprHQ Hiring.
+          <strong>${inviterName}</strong> has invited you to join <strong>${companyName}</strong> as a <strong>${role}</strong> on ShipItHQ Hiring.
         </p>
 
         ${message ? `

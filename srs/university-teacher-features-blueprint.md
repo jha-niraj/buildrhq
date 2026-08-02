@@ -23,7 +23,7 @@
 
 ## Executive Summary
 
-This document outlines the comprehensive implementation plan for enabling university teachers to create and assign educational content to their students through the ShiprHQ platform. The key principle is that **we are NOT building a traditional university management system** (no attendance, no lecture scheduling) but rather focusing on **practical skill building** through:
+This document outlines the comprehensive implementation plan for enabling university teachers to create and assign educational content to their students through the ShipItHQ platform. The key principle is that **we are NOT building a traditional university management system** (no attendance, no lecture scheduling) but rather focusing on **practical skill building** through:
 
 - AI-generated projects
 - Mock interviews (voice)
@@ -1026,4 +1026,4 @@ The implementation should be done in phases, starting with the foundation (schem
 
 ---
 
-*Document maintained by the ShiprHQ development team.*
+*Document maintained by the ShipItHQ development team.*

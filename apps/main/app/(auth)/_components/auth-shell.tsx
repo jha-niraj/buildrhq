@@ -68,7 +68,7 @@ export function AuthShell({
                         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">
                             <Logo className="h-5 w-5 text-white" />
                         </span>
-                        <span className="text-lg font-semibold tracking-tight text-white">ShiprHQ</span>
+                        <span className="text-lg font-semibold tracking-tight text-white">ShipItHQ</span>
                     </Link>
 
                     {/* Copy block - high in the panel, left aligned. */}
@@ -113,7 +113,7 @@ export function AuthShell({
                                         <Logo className="h-[17px] w-[17px] text-white dark:text-neutral-900" />
                                     </span>
                                     <span className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">
-                                        ShiprHQ
+                                        ShipItHQ
                                     </span>
                                 </Link>
                                 <ThemeToggle />

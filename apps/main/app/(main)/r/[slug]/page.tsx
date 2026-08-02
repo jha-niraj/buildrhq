@@ -10,13 +10,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const { slug } = await params
     const res = await getResumeDraftBySlug(slug)
     if (!res.success || !res.draft) {
-        return { title: 'Resume | ShiprHQ' }
+        return { title: 'Resume | ShipItHQ' }
     }
     const user = res.draft.user as { name: string | null } | null
     const name = user?.name ?? 'Developer'
     return {
-        title: `${name}'s Resume | ShiprHQ`,
-        description: `View ${name}'s professional resume built with ShiprHQ.`,
+        title: `${name}'s Resume | ShipItHQ`,
+        description: `View ${name}'s professional resume built with ShipItHQ.`,
     }
 }
 
@@ -45,7 +45,7 @@ export default async function PublicResumePage({ params }: { params: Promise<{ s
                 <Link href="/">
                     <Button variant="ghost" size="sm" className="text-neutral-600">
                         <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
-                        Back to ShiprHQ
+                        Back to ShipItHQ
                     </Button>
                 </Link>
                 <div className="flex items-center gap-2">
@@ -145,7 +145,7 @@ export default async function PublicResumePage({ params }: { params: Promise<{ s
 
                 {/* Footer */}
                 <div style={{ marginTop: 24, borderTopWidth: 1, borderTopColor: '#f1f5f9', paddingTop: 8, textAlign: 'center', color: '#94a3b8', fontSize: 9 }}>
-                    Built with ShiprHQ Resume Builder
+                    Built with ShipItHQ Resume Builder
                 </div>
             </div>
         </div>

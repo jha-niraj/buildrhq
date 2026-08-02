@@ -160,4 +160,4 @@ Placement season is the most structured job search you will ever have. Nearly ev
 
 ---
 
-*ShiprHQ gives you DSA practice, guided projects and AI mock interviews for both technical and HR rounds - the full placement funnel in one place. [Start free](/pricing).*
+*ShipItHQ gives you DSA practice, guided projects and AI mock interviews for both technical and HR rounds - the full placement funnel in one place. [Start free](/pricing).*

@@ -4,7 +4,7 @@ import {
 } from '@/actions/(main)/mockvoice/voice.action'
 
 export const metadata: Metadata = {
-  title: 'AI Voice Mock Interviews | ShiprHQ',
+  title: 'AI Voice Mock Interviews | ShipItHQ',
   description: 'Practice with AI voice mock interviews. Get real-time feedback and detailed performance analysis.',
 }
 import { VoiceMainContent } from './_components/voice-main-content'

@@ -2,6 +2,7 @@ import { DurableObject } from "cloudflare:workers"
 import { eq } from "drizzle-orm"
 import type { Env } from "./env"
 import { createDb, schema } from "./db"
+import type { JobStatus } from "@repo/db/schema"
 import { runGeneration, type GenerationInput } from "./pipeline"
 
 const { backgroundJobs } = schema
@@ -70,7 +71,7 @@ export class ProjectGenerator extends DurableObject<Env> {
 
 	private async writeStatus(
 		jobId: string,
-		status: string,
+		status: JobStatus,
 		progress: number,
 		result?: unknown,
 		error?: string,

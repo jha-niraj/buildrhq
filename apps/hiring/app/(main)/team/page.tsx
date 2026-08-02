@@ -10,7 +10,7 @@ import { TeamContent } from "./team-content"
 export const dynamic = "force-dynamic"
 
 export const metadata = {
-    title: "Team | ShiprHQ Hiring",
+    title: "Team | ShipItHQ Hiring",
     description: "Manage your hiring team"
 }
 

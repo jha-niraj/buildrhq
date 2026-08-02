@@ -60,7 +60,7 @@ export function UniversitySidebar() {
     return (
         <AppSidebar
             brand={{
-                name: "ShiprHQ",
+                name: "ShipItHQ",
                 subtitle: "University",
                 homeHref: "/home",
                 logo: (

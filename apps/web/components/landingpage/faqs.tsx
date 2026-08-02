@@ -12,12 +12,12 @@ import Link from "next/link";
 const faqData = [
     {
         id: "item-1",
-        question: "How do I start learning a programming language on ShiprHQ?",
+        question: "How do I start learning a programming language on ShipItHQ?",
         answer: "To get started, simply create an account, choose a language you want to learn, and explore our resources. We offer beginner-friendly content for C, C++, Java, Python, and more. You can start with foundational topics and progress to advanced materials."
     },
     {
         id: "item-2",
-        question: "Are the resources on ShiprHQ suitable for beginners?",
+        question: "Are the resources on ShipItHQ suitable for beginners?",
         answer: "Yes! Our resources are designed to cater to all levels, from beginners to advanced learners. For each language, we provide structured content with easy-to-follow explanations, practical examples, and exercises to reinforce your learning."
     },
     {
@@ -32,7 +32,7 @@ const faqData = [
     },
     {
         id: "item-5",
-        question: "Is there a way to practice coding on ShiprHQ?",
+        question: "Is there a way to practice coding on ShipItHQ?",
         answer: "Absolutely! Many of our lessons include coding exercises you can complete directly on the platform. We also provide project-based exercises to help you apply what you've learned to real-world scenarios."
     },
     {
@@ -42,18 +42,18 @@ const faqData = [
     },
     {
         id: "item-7",
-        question: "Do I need any prior experience to start learning on ShiprHQ?",
+        question: "Do I need any prior experience to start learning on ShipItHQ?",
         answer: "No prior experience is needed! We offer beginner-friendly tutorials and step-by-step guides for every programming language. If you're new to coding, you can start with our foundational courses and work your way up."
     },
     {
         id: "item-8",
-        question: "Are there any costs associated with using ShiprHQ?",
-        answer: "ShiprHQ is credit-based - new accounts start with free credits, and you can top up whenever you want to run more AI generations, mock interviews, or assessments. See the pricing page for details."
+        question: "Are there any costs associated with using ShipItHQ?",
+        answer: "ShipItHQ is credit-based - new accounts start with free credits, and you can top up whenever you want to run more AI generations, mock interviews, or assessments. See the pricing page for details."
     },
     {
         id: "item-9",
-        question: "Can I access ShiprHQ on mobile devices?",
-        answer: "Yes, ShiprHQ is accessible on mobile devices, so you can learn on the go. The website is optimized for mobile, allowing you to access resources, watch tutorials, and even participate in coding exercises from your smartphone or tablet."
+        question: "Can I access ShipItHQ on mobile devices?",
+        answer: "Yes, ShipItHQ is accessible on mobile devices, so you can learn on the go. The website is optimized for mobile, allowing you to access resources, watch tutorials, and even participate in coding exercises from your smartphone or tablet."
     },
 ];
 
@@ -85,7 +85,7 @@ export default function FaqsAccrodian() {
                             <p className="text-lg text-neutral-500 dark:text-neutral-400 mb-8 leading-relaxed">
                                 Everything you need to know about the platform, certifications, and technical capabilities.
                             </p>
-                            <Link href="mailto:theshiprofficial@gmail.com">
+                            <Link href="mailto:theshipitofficial@gmail.com">
                                 <Button className="cursor-pointer h-12 px-6 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 font-medium transition-all">
                                     <MessageCircle className="w-4 h-4 mr-2" />
                                     Talk to Support

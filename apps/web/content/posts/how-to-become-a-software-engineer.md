@@ -117,4 +117,4 @@ There is no shortcut, and the people who make it are not the fastest learners - 
 
 ---
 
-*ShiprHQ gives new engineers a structured path: guided projects that produce something deployable, DSA practice, and AI mock interviews for when you start applying. [Start free](/pricing).*
+*ShipItHQ gives new engineers a structured path: guided projects that produce something deployable, DSA practice, and AI mock interviews for when you start applying. [Start free](/pricing).*

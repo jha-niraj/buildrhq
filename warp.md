@@ -1,4 +1,4 @@
-# ShiprHQOfficial - Project Reference
+# ShipItHQOfficial - Project Reference
 
 ## Project Overview
 Full-stack learning platform with monorepo structure (Turborepo + pnpm workspace)
@@ -10,7 +10,7 @@ Full-stack learning platform with monorepo structure (Turborepo + pnpm workspace
 ## Directory Structure
 
 ```
-/home/niraj/Documents/shiprhq/shiprofficial/
+/home/niraj/Documents/shipithq/shipitofficial/
 ├── apps/
 │   ├── main/                    # Main platform (student-facing)
 │   │   ├── app/
@@ -281,9 +281,9 @@ export async function actionName(params): Promise<Response> {
 DATABASE_URL="postgresql://..."
 
 # NextAuth
-NEXTAUTH_SECRET="..."
-NEXTAUTH_URL="http://localhost:3000"
-ADMIN_NEXTAUTH_URL="http://localhost:6002"
+BETTER_AUTH_SECRET="..."
+BETTER_AUTH_URL="http://localhost:3000"
+ADMIN_BETTER_AUTH_URL="http://localhost:6002"
 
 # Add others as needed
 ```
@@ -396,7 +396,7 @@ const users = await prisma.user.findMany()
 
 ### Super Admin Credentials
 ```
-Email: admin@theshiprhq.com
+Email: admin@theshipithq.com
 Password: Admin@123
 ```
 ⚠️ Change password after first login!

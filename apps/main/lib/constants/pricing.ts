@@ -41,6 +41,21 @@ export const CREDIT_RATES = {
 // -----------------------------------------------------------------------------
 // PATHFINDER-SPECIFIC COSTS
 // -----------------------------------------------------------------------------
+/**
+ * XP granted for completing a Pathfinder goal's verification.
+ *
+ * Scaled by the same weighted score the credit rebate uses, so a user who
+ * scrapes through gets the minimum and one who aces it gets the full base. The
+ * floor exists because passing four verification sections after weeks of work
+ * should never be worth nothing, however marginal the score.
+ */
+export const PATHFINDER_XP = {
+    /** Awarded at a 100% weighted score. */
+    verificationBase: 500,
+    /** Floor for any pass, however low the score. */
+    verificationMinimum: 100,
+} as const
+
 export const PATHFINDER_CREDITS = {
     /** Private goal creation */
     privateGoalCreation: 5,

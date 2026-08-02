@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ProjectIdeasClient from './_components/ProjectIdeasClient'
 
 export const metadata: Metadata = {
-  title: 'Project Ideas | ShiprHQ',
+  title: 'Project Ideas | ShipItHQ',
   description: 'Discover AI-generated project ideas tailored to your skill level and interests.',
 }
 

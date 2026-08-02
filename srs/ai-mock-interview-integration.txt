@@ -4,7 +4,7 @@ Cross-Platform Integration Between Main Platform & Hiring Platform
 ================================================================================
 
 Created: February 2026
-Platform: ShiprHQ - Main Platform & Hiring Platform
+Platform: ShipItHQ - Main Platform & Hiring Platform
 
 ================================================================================
 TABLE OF CONTENTS

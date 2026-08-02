@@ -1,5 +1,5 @@
 /**
- * The ShiprHQ mark.
+ * The ShipItHQ mark.
  *
  * Six blocks climbing a diagonal - a contribution grid, a passing build,
  * progress stacking up. Inline SVG rather than an <img> so it inherits
@@ -20,7 +20,7 @@ export function Logo({ className = "" }: { className?: string }) {
             className={className}
             fill="currentColor"
             role="img"
-            aria-label="ShiprHQ"
+            aria-label="ShipItHQ"
         >
             <rect x="91" y="327" width="94" height="94" rx="15" />
             <rect x="209" y="327" width="94" height="94" rx="15" />

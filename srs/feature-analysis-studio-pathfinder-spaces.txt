@@ -1,6 +1,6 @@
 ================================================================================
         FEATURE ANALYSIS: STUDIO vs PATHFINDER vs SPACES
-        The ShiprHQ Platform - Deep Dive Comparison & Recommendations
+        The ShipItHQ Platform - Deep Dive Comparison & Recommendations
 ================================================================================
 
 Document Created: February 14, 2026

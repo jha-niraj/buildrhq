@@ -765,7 +765,7 @@ export default function ProjectDetailsClient({
                 >
                     <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                         <TabsList className="w-full lg:w-auto bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm rounded-xl p-1 border border-neutral-200 dark:border-neutral-800 shadow-sm flex-wrap">
-                            <TabsTrigger value="overview" className="rounded-lg data-[state=active]:bg-neutral-900 dark:bg-white data-[state=active]:text-white dark:text-neutral-900 dark:data-[state=active]:bg-white dark:data-[state=active]:text-black">
+                            <TabsTrigger value="overview">
                                 Overview
                             </TabsTrigger>
                             <TabsTrigger value="pages">
@@ -776,7 +776,7 @@ export default function ProjectDetailsClient({
                             </TabsTrigger>
                             {
                                 isCreator && (
-                                    <TabsTrigger value="settings" className="rounded-lg data-[state=active]:bg-neutral-900 dark:bg-white data-[state=active]:text-white dark:text-neutral-900 dark:data-[state=active]:bg-white dark:data-[state=active]:text-black">
+                                    <TabsTrigger value="settings">
                                         <Settings className="w-4 h-4 mr-1" />
                                         Settings
                                     </TabsTrigger>

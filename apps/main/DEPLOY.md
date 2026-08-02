@@ -43,7 +43,7 @@ npx wrangler login
 # 2. Create the shared incremental-cache bucket. apps/web and apps/main both use it;
 #    they are namespaced apart by NEXT_INC_CACHE_R2_PREFIX in each wrangler.jsonc,
 #    so create it once and skip this if apps/web already did.
-npx wrangler r2 bucket create shiprhq-next-cache
+npx wrangler r2 bucket create shipithq-next-cache
 ```
 
 ## Secrets

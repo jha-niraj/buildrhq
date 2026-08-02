@@ -4,7 +4,7 @@
 // object - so `SHADER_PALETTES.emerald` would resolve to `undefined` during prerender
 // and crash on `colors[0]`. Keeping the data here lets both server and client import it.
 //
-// Curated for the ShiprHQ brand: professional / premium only. NO blue, indigo,
+// Curated for the ShipItHQ brand: professional / premium only. NO blue, indigo,
 // purple, or brown. Each palette is 4 colors ordered light -> deep (light palettes,
 // dark text on top) or near-black base -> bright accent (dark palettes, white text on top).
 export const SHADER_PALETTES = {

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import InterviewAssistantHubClient from './_components/InterviewAssistantHubClient'
 
 export const metadata: Metadata = {
-  title: 'Job Interview Assistant | ShiprHQ',
+  title: 'Job Interview Assistant | ShipItHQ',
   description: 'AI-powered interview prep that analyzes your resume and generates role-specific interview questions.',
 }
 

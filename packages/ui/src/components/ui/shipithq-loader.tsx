@@ -1,6 +1,6 @@
 "use client"
 
-// ShiprHQ full-page loader - the logo mark, then the "ShiprHQ" wordmark underneath
+// ShipItHQ full-page loader - the logo mark, then the "ShipItHQ" wordmark underneath
 // with a slow sweep travelling across it. Ink/neutral base with the brand orange as the
 // sweep highlight; light + dark aware.
 //
@@ -12,7 +12,7 @@
 const FONT_STACK =
     "var(--font-space-grotesk, 'Space Grotesk'), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
 
-export type ShiprHQLoaderProps = {
+export type ShipItHQLoaderProps = {
     /** Cover the viewport (default). Set false to render inline within a parent. */
     fullScreen?: boolean
     /** Optional caption under the wordmark, e.g. "Preparing your workspace". */
@@ -110,12 +110,12 @@ const STYLES = `
 }
 `
 
-export function ShiprHQLoader({
+export function ShipItHQLoader({
     fullScreen = true,
     label,
     logoSrc = "/logo.svg",
     className = "",
-}: ShiprHQLoaderProps) {
+}: ShipItHQLoaderProps) {
     const outer: React.CSSProperties = fullScreen
         ? { position: "fixed", inset: 0, zIndex: 50 }
         : { position: "relative", width: "100%" }
@@ -131,7 +131,7 @@ export function ShiprHQLoader({
                 justifyContent: "center",
             }}
             role="status"
-            aria-label="Loading ShiprHQ"
+            aria-label="Loading ShipItHQ"
         >
             <div className="bhq-logo-wrap">
                 <span className="bhq-glow" aria-hidden />
@@ -139,7 +139,7 @@ export function ShiprHQLoader({
                     package that must not depend on Next. */}
                 <img src={logoSrc} alt="" aria-hidden className="bhq-logo" />
             </div>
-            <div className="bhq-word" style={{ marginTop: "1.15rem" }}>ShiprHQ</div>
+            <div className="bhq-word" style={{ marginTop: "1.15rem" }}>ShipItHQ</div>
             <div className="bhq-track">
                 <div className="bhq-track-fill" />
             </div>
@@ -149,4 +149,4 @@ export function ShiprHQLoader({
     )
 }
 
-export default ShiprHQLoader
+export default ShipItHQLoader

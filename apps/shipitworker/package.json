@@ -1,0 +1,25 @@
+{
+	"name": "shipitworker",
+	"version": "2.0.0",
+	"description": "ShipItHQ code-execution service (Cloudflare Worker + Durable Object + Container)",
+	"private": true,
+	"type": "module",
+	"main": "src/index.ts",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy --secrets-file .env.production",
+		"check-types": "tsc --noEmit",
+		"cf-typegen": "wrangler types",
+		"deploy:no-secrets": "wrangler deploy",
+		"release": "wrangler deploy --secrets-file .env.production",
+		"release:no-secrets": "wrangler deploy"
+	},
+	"dependencies": {
+		"@cloudflare/containers": "^0.0.25"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20250510.0",
+		"typescript": "5.9.2",
+		"wrangler": "^4.116.0"
+	}
+}

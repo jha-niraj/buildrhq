@@ -86,7 +86,7 @@ Mock interviews with a real person are irreplaceable because they train the comm
 
 The protocol:
 
-1. Find a practice partner - a classmate, a colleague, someone from a study group, or use ShiprHQ's mock interview platform
+1. Find a practice partner - a classmate, a colleague, someone from a study group, or use ShipItHQ's mock interview platform
 2. Interviewer selects a problem without showing it to the candidate
 3. Candidate gets 45 minutes, timed
 4. Candidate must think out loud throughout - no silent periods longer than 30 seconds
@@ -151,7 +151,7 @@ Here is a realistic 12-week schedule for a CS student preparing for summer inter
 
 **Weeks 4-6:** 1 hour/day, timed solo practice. 1 medium problem per session with the 25-minute timer protocol.
 
-**Weeks 7-9:** 1 hour/day timed solo + 2 mock interviews per week with a partner or on ShiprHQ.
+**Weeks 7-9:** 1 hour/day timed solo + 2 mock interviews per week with a partner or on ShipItHQ.
 
 **Weeks 10-12:** 2 mock interviews per week, review weak patterns, system design review if targeting senior roles.
 
@@ -172,7 +172,7 @@ AI tools have significantly improved technical interview preparation. Used corre
 - Using it to check your code without first testing it yourself
 - Relying on it during timed practice sessions
 
-ShiprHQ's practice module includes AI-powered hints designed to help you learn rather than just give answers - it gives you the minimum hint needed to make progress rather than the full solution.
+ShipItHQ's practice module includes AI-powered hints designed to help you learn rather than just give answers - it gives you the minimum hint needed to make progress rather than the full solution.
 
 **Where to find human mock partners.** [Pramp](https://www.pramp.com/) pairs you with another candidate for free peer mocks, and [interviewing.io](https://interviewing.io/) offers anonymous mocks with engineers from large tech companies. Both are worth doing at least once - a stranger who owes you nothing gives you far better calibration than a friend does. The [Tech Interview Handbook](https://www.techinterviewhandbook.org/) has a good breakdown of what each round is actually scoring.
 

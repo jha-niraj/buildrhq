@@ -47,7 +47,7 @@ The Cover Letter module generates a personalized, tailored cover letter for a sp
 
 - [ ] **Smart questions**: Questions should be pre-filled with user's platform data where possible.
   - Instead of: "Tell us about your experience with React."
-  - Show: "You have 3 React projects on ShiprHQ. Would you like to mention [Project Name] in the letter? What specifically about it is most relevant?"
+  - Show: "You have 3 React projects on ShipItHQ. Would you like to mention [Project Name] in the letter? What specifically about it is most relevant?"
   - This dramatically improves quality vs. the current blank-slate question approach.
 
 - [ ] **Action update**: `generateCoverLetterQuestions(jobData, userContext)` - pass user context to OpenAI so it can pre-answer simple questions automatically and only ask the ones it can't answer from context.

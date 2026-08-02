@@ -1,6 +1,6 @@
-# ShiprHQ - working agreement
+# ShipItHQ - working agreement
 
-Turborepo. `apps/{main,web,uni,hiring,admin,shiprworker,generationworker}` and
+Turborepo. `apps/{main,web,uni,hiring,admin,shipitworker,generationworker}` and
 `packages/{auth,db,email,ui,eslint-config,typescript-config}`.
 
 ## Verification: what to run, and when
@@ -46,6 +46,34 @@ mounts inside a Sheet.
 The page card sets `--page-h: calc(100vh - 1rem)`, and a rule in
 `packages/ui/src/styles/globals.css` retargets `h-screen` / `min-h-screen` inside
 `[data-app-page]` at it, so full-height pages need no per-page change.
+
+## Deploying
+
+Each app and worker ships with `pnpm release`, which builds and uploads its
+secrets in one command:
+
+```bash
+cd apps/<app> && pnpm release      # build + wrangler deploy --secrets-file .env.production
+```
+
+**Use `release`, not `deploy`.** `pnpm deploy` is a built-in pnpm command that
+packs a workspace package into a directory; it silently shadows the script and
+fails with `ERR_PNPM_NOTHING_TO_DEPLOY` without deploying anything. `pnpm run
+deploy` works, but `release` avoids the trap entirely.
+
+Secrets live in each app's `.env.production` (gitignored). Copy the tracked
+`.env.production.example` beside it — every required key is listed there with
+what it is for.
+
+`--secrets-file` is **additive**: a secret already on the Worker but omitted from
+the file is left alone. The trap is the opposite one — a key present with an
+EMPTY value overwrites the live secret with an empty string. Delete the line
+rather than blanking it.
+
+For the Next apps, `NEXT_PUBLIC_*` values are **build-time** — inlined into the
+client bundle during `opennextjs-cloudflare build`. Setting one on the Worker
+afterwards changes nothing already compiled in. Everything else is a runtime
+secret and only needs a redeploy.
 
 ## Conventions
 

@@ -1,7 +1,7 @@
 "use client"
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Shared ShiprHQ app sidebar. One design across every app (main, uni, hiring,
+// Shared ShipItHQ app sidebar. One design across every app (main, uni, hiring,
 // admin) - a floating rounded card that collapses to an icon rail, with a
 // command-palette search (⌘K), collapsible nav sections, a theme toggle,
 // notifications, and a profile/sign-out footer. Each app renders a thin wrapper

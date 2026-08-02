@@ -24,7 +24,7 @@ SECTION 1: EXECUTIVE SUMMARY
 ================================================================================
 
 KnowMe is an innovative AI-powered personal knowledge assistant built as part of
-the ShiprHQ platform. It enables developers and professionals to create an 
+the ShipItHQ platform. It enables developers and professionals to create an 
 intelligent chatbot that knows everything about their professional profile, 
 allowing visitors to ask questions and receive instant, accurate answers 24/7.
 
@@ -119,7 +119,7 @@ KnowMe integrates multiple data sources to build a comprehensive knowledge base:
 │                           DATA SOURCES                                      │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  SHIPRHQ PROFILE DATA (Automatic)                                           │
+│  SHIPITHQ PROFILE DATA (Automatic)                                           │
 │  ├── Bio & Personal Information                                            │
 │  ├── Skills & Technologies                                                 │
 │  ├── Projects (with descriptions, tech stack, links)                       │
@@ -163,7 +163,7 @@ Users have full control over who can access their KnowMe:
 │  🌍 PUBLIC         - Anyone with the link can chat               │
 │                      Best for: Job seekers, networking            │
 │                                                                   │
-│  👥 REGISTERED     - Only logged-in ShiprHQ users                 │
+│  👥 REGISTERED     - Only logged-in ShipItHQ users                 │
 │                      Best for: Community engagement               │
 │                                                                   │
 │  💼 RECRUITERS     - Only verified recruiters                    │
@@ -292,7 +292,7 @@ START: User discovers KnowMe
 │                                                                             │
 │  Step 2: DATA SOURCES (40%)                                                 │
 │  ├── Select data to include:                                                │
-│  │   ✓ ShiprHQ Profile Data                                                 │
+│  │   ✓ ShipItHQ Profile Data                                                 │
 │  │   ✓ Projects                                                            │
 │  │   ✓ Assessments                                                         │
 │  └── Upload resume (optional)                                               │
@@ -695,7 +695,7 @@ For non-activated users:
 │  │  │                               │  │  │  ● Active               │  │  │
 │  │  │  🤖: Hi! I'm your AI. Ask me  │  │  │                         │  │  │
 │  │  │      anything about your work! │  │  │  SHARE LINK            │  │  │
-│  │  │                               │  │  │  [shiprhq.com/knowme/...]│  │  │
+│  │  │                               │  │  │  [shipithq.com/knowme/...]│  │  │
 │  │  │  You: What are my top skills? │  │  │  [Copy] [QR]            │  │  │
 │  │  │                               │  │  │                         │  │  │
 │  │  │  🤖: Based on your profile... │  │  │  QUICK STATS            │  │  │
@@ -793,7 +793,7 @@ Developers can embed KnowMe in their personal websites:
 HTML WIDGET:
 ```html
 <!-- Add to your portfolio website -->
-<script src="https://cdn.shiprhq.com/knowme/widget.js"></script>
+<script src="https://cdn.shipithq.com/knowme/widget.js"></script>
 <script>
   KnowMe.init({
     apiKey: 'your-api-key-here',
@@ -805,7 +805,7 @@ HTML WIDGET:
 
 REACT COMPONENT:
 ```jsx
-import { KnowMeChat } from '@shipr/knowme-react';
+import { KnowMeChat } from '@shipit/knowme-react';
 
 function Portfolio() {
   return (
@@ -819,7 +819,7 @@ function Portfolio() {
 
 9.2 REST API ENDPOINTS
 ----------------------
-Base URL: https://shiprhq.com/api/v1/knowme
+Base URL: https://shipithq.com/api/v1/knowme
 
 POST /chat
 - Send a question and receive AI response
@@ -840,7 +840,7 @@ SECTION 10: FUTURE ROADMAP
 
 PHASE 1 (Current) ✓
 - Basic profile chat
-- ShiprHQ data integration
+- ShipItHQ data integration
 - Public sharing
 
 PHASE 2 (Next)
@@ -873,7 +873,7 @@ SECTION 11: BUSINESS VALUE & APPLICATIONS
 • Reduce initial interview questions
 • Access candidate data without scheduling
 
-11.3 FOR PLATFORM (ShiprHQ)
+11.3 FOR PLATFORM (ShipItHQ)
 --------------------------
 • Unique differentiating feature
 • Increased user engagement
@@ -886,7 +886,7 @@ SECTION 11: BUSINESS VALUE & APPLICATIONS
 
 Document Version: 1.0
 Last Updated: February 2026
-Author: ShiprHQ Development Team
+Author: ShipItHQ Development Team
 
 For questions or feedback, contact the development team.
 ================================================================================

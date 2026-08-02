@@ -13,7 +13,9 @@
 		"preview": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare preview",
 		"deploy": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy --secrets-file .env.production",
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
-		"deploy:no-secrets": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy"
+		"deploy:no-secrets": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy",
+		"release": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy --secrets-file .env.production",
+		"release:no-secrets": "NODE_OPTIONS='--max-old-space-size=8192' opennextjs-cloudflare build && wrangler deploy"
 	},
 	"dependencies": {
 		"@repo/db": "workspace:*",

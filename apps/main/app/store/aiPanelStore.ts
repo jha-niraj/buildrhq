@@ -169,7 +169,7 @@ export const useAIPanelStore = create<AIPanelState>()(
 			setStreaming: (isStreaming) => set({ isStreaming }),
 		}),
 		{
-			name: "shiprhq.ai-panel",
+			name: "shipithq.ai-panel",
 			storage: createJSONStorage(() => localStorage),
 			// `isOpen`/`isStreaming` are deliberately NOT persisted: reopening the app
 			// into a panel you don't remember opening is disorienting, and a persisted

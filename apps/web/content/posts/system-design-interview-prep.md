@@ -154,13 +154,13 @@ For each problem: spend 45 minutes designing it alone with no references, then c
 Reading and thinking through designs alone is not enough. You need to practice explaining your design out loud in 45-minute sessions, because the communication component is heavily weighted.
 
 The protocol that works:
-1. Find a practice partner (a classmate, a mentor, or use ShiprHQ's AI tools for initial practice)
+1. Find a practice partner (a classmate, a mentor, or use ShipItHQ's AI tools for initial practice)
 2. One person plays interviewer, one plays candidate
 3. Use a shared whiteboard or drawing tool
 4. Interviewer asks follow-up questions to probe for depth
 5. Spend 10 minutes debrief after: what did the candidate do well, what did they miss
 
-ShiprHQ's mock interview platform includes structured system design practice sessions with AI feedback on your architecture decisions, communication clarity, and coverage of edge cases. Practice with AI before practicing with humans - the feedback loop is much faster.
+ShipItHQ's mock interview platform includes structured system design practice sessions with AI feedback on your architecture decisions, communication clarity, and coverage of edge cases. Practice with AI before practicing with humans - the feedback loop is much faster.
 
 ### Building the Mental Framework
 
@@ -208,6 +208,6 @@ If you have some backend experience: 6-8 weeks of focused preparation.
 
 If you are already working as a backend engineer: 2-4 weeks to fill gaps and practice the interview format specifically.
 
-System design cannot be crammed. The concepts need time to settle. Start now, even if your interviews are months away. Use ShiprHQ's AI mock interviews to get a structured learning path with checkpoints that keep you on track.
+System design cannot be crammed. The concepts need time to settle. Start now, even if your interviews are months away. Use ShipItHQ's AI mock interviews to get a structured learning path with checkpoints that keep you on track.
 
 The developers who crack FAANG system design interviews are not smarter than you. They practiced more deliberately. Start the repetitions.

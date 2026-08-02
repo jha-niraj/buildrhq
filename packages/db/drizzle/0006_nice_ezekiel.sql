@@ -1,0 +1,2 @@
+ALTER TABLE "background_job" ADD COLUMN "type" text DEFAULT 'project_generation' NOT NULL;--> statement-breakpoint
+CREATE INDEX "idx_background_job_user_type_status" ON "background_job" USING btree ("user_id","type","status");

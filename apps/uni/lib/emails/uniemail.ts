@@ -15,7 +15,7 @@ function fromEmail(): string {
 function appUrl(): string {
     return (
         process.env.NEXT_PUBLIC_UNI_URL ||
-        process.env.NEXTAUTH_URL ||
+        process.env.BETTER_AUTH_URL ||
         "http://localhost:6003"
     );
 }
@@ -28,7 +28,7 @@ function appUrl(): string {
 export const uniEmailTemplates = {
 
     verifyOTP: (name: string, otp: string) => ({
-        subject: "Verify your email - ShiprHQ University",
+        subject: "Verify your email - ShipItHQ University",
         html: shell({
             title: "Verify your email",
             subtitle: "Use this one-time code to complete your registration",
@@ -52,7 +52,7 @@ export const uniEmailTemplates = {
     }),
 
     resetPasswordOTP: (name: string, otp: string) => ({
-        subject: "Reset your password - ShiprHQ University",
+        subject: "Reset your password - ShipItHQ University",
         html: shell({
             title: "Password reset request",
             subtitle: "Use this code to reset your password",
@@ -76,7 +76,7 @@ export const uniEmailTemplates = {
     }),
 
     universityWelcome: (name: string, universityName: string) => ({
-        subject: `Welcome to ${universityName} - ShiprHQ University`,
+        subject: `Welcome to ${universityName} - ShipItHQ University`,
         html: shell({
             title: "Workspace ready",
             subtitle: `${universityName} is now active`,
@@ -113,7 +113,7 @@ export const uniEmailTemplates = {
         universityName: string,
         roleName: string,
     ) => ({
-        subject: `Your account at ${universityName} - ShiprHQ University`,
+        subject: `Your account at ${universityName} - ShipItHQ University`,
         html: shell({
             title: "Your account is ready",
             subtitle: `${universityName} - ${roleName}`,
@@ -159,14 +159,14 @@ export const uniEmailTemplates = {
         inviterName?: string,
         message?: string,
     ) => ({
-        subject: `You've been invited to join ${universityName} - ShiprHQ University`,
+        subject: `You've been invited to join ${universityName} - ShipItHQ University`,
         html: shell({
             title: `Invitation to ${universityName}`,
             subtitle: "You've been invited to join a university workspace",
             body: `
         <p style="margin:0 0 14px;font-size:15px;color:#111111;">Hello,</p>
         <p style="margin:0 0 18px;font-size:14px;color:#525252;">
-          ${inviterName ? `<strong>${inviterName}</strong> has invited you to join` : "You've been invited to join"} <strong>${universityName}</strong> as a <strong>${role}</strong> on ShiprHQ University.
+          ${inviterName ? `<strong>${inviterName}</strong> has invited you to join` : "You've been invited to join"} <strong>${universityName}</strong> as a <strong>${role}</strong> on ShipItHQ University.
         </p>
 
         ${message ? `

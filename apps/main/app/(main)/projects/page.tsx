@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ProjectsHubClient from './_components/ProjectsHubClient'
 
 export const metadata: Metadata = {
-  title: 'Projects | ShiprHQ',
+  title: 'Projects | ShipItHQ',
   description: 'Build real-world projects, explore project ideas, and track your progress with a portfolio.',
 }
 

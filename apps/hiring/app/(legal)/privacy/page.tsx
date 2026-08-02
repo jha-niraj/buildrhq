@@ -17,7 +17,7 @@ export default function PrivacyPage() {
                     <aside className="hidden lg:block w-[260px] shrink-0">
                         <div className="sticky top-24">
                             <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-2">
-                                ShiprHQ Hiring
+                                ShipItHQ Hiring
                             </p>
                             <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-6">
                                 Legal documents
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
                                     Privacy Policy
                                 </span>
                                 <a
-                                    href="mailto:privacy@shiprhq.com"
+                                    href="mailto:privacy@shipithq.com"
                                     className="block px-3 py-2 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white dark:text-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-900 dark:bg-white rounded-lg transition-colors"
                                 >
                                     Contact
@@ -44,10 +44,10 @@ export default function PrivacyPage() {
                                     Questions?
                                 </p>
                                 <a
-                                    href="mailto:privacy@shiprhq.com"
+                                    href="mailto:privacy@shipithq.com"
                                     className="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors break-all"
                                 >
-                                    privacy@shiprhq.com
+                                    privacy@shipithq.com
                                 </a>
                             </div>
                         </div>
@@ -61,7 +61,7 @@ export default function PrivacyPage() {
                                 Privacy <em>policy.</em>
                             </h1>
                             <p className="text-base text-neutral-500 dark:text-neutral-400 max-w-2xl leading-relaxed">
-                                ShiprHQ Hiring is committed to protecting your privacy. This policy explains how we collect,
+                                ShipItHQ Hiring is committed to protecting your privacy. This policy explains how we collect,
                                 use, disclose, and safeguard your information when you use our hiring platform services.
                             </p>
                         </div>
@@ -155,8 +155,8 @@ export default function PrivacyPage() {
                             <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                 <p className="text-sm text-neutral-500 dark:text-neutral-400">
                                     For privacy-related inquiries, contact us at{" "}
-                                    <a href="mailto:privacy@shiprhq.com" className="text-neutral-900 dark:text-white underline">
-                                        privacy@shiprhq.com
+                                    <a href="mailto:privacy@shipithq.com" className="text-neutral-900 dark:text-white underline">
+                                        privacy@shipithq.com
                                     </a>
                                 </p>
                             </div>

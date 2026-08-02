@@ -10,6 +10,7 @@ import {
 import { eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { openai } from "@/lib/openai-client";
+import { toErrorMessage } from "@/lib/errors"
 
 interface ActionResponse {
     success: boolean;
@@ -99,9 +100,9 @@ export async function checkTaskDetailExists(taskId: string): Promise<ActionRespo
                 taskDetailId: existingDetail.id,
             },
         };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[CHECK_TASK_DETAIL]", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }
 
@@ -317,12 +318,12 @@ Remember: Guide their learning journey, don't give them the solution!`;
 
         return { success: true, data: taskDetail };
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         const duration = Date.now() - startTime;
         console.error(`❌ [TASK DETAIL ERROR] Failed after ${duration}ms:`, error);
         return {
             success: false,
-            error: error.message || "Failed to generate task detail",
+            error: toErrorMessage(error) || "Failed to generate task detail",
         };
     }
 }
@@ -358,8 +359,8 @@ export async function getTaskDetail(taskId: string): Promise<ActionResponse> {
 
         return { success: true, data: taskDetail };
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error("[GET_TASK_DETAIL]", error);
-        return { success: false, error: error.message };
+        return { success: false, error: toErrorMessage(error) };
     }
 }

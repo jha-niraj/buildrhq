@@ -1,6 +1,6 @@
 ================================================================================
   LEARN MODULE - DEEP ANALYSIS, ISSUES & REDESIGN PROPOSAL
-  Platform: ShiprHQ (ShiprHQ)
+  Platform: ShipItHQ (ShipItHQ)
   Created: 2026-03-03
   Status: Analysis & Proposal Document
 ================================================================================

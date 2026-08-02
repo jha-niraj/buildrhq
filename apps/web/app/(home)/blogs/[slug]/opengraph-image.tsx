@@ -7,7 +7,7 @@ import { AUTHORS } from '@/content/authors'
 // 1200x630 card instead of the whole blog sharing one generic image.
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
-export const alt = 'ShiprHQ article'
+export const alt = 'ShipItHQ article'
 
 export function generateStaticParams() {
     return BLOG_SLUGS.map((slug) => ({ slug }))
@@ -17,9 +17,9 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
     const { slug } = await params
     const post = BLOG_POSTS[slug]
 
-    const title = post?.title ?? 'ShiprHQ'
+    const title = post?.title ?? 'ShipItHQ'
     const category = post ? BLOG_CATEGORIES[post.category] : 'Engineering Intelligence'
-    const author = post ? AUTHORS[post.author].name : 'ShiprHQ'
+    const author = post ? AUTHORS[post.author].name : 'ShipItHQ'
     const readingTime = post ? `${post.readingTime} min read` : ''
 
     return new ImageResponse(
@@ -54,7 +54,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ slu
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <span style={{ color: '#ffffff', fontSize: 26, fontWeight: 700, letterSpacing: -0.5 }}>
-                            ShiprHQ
+                            ShipItHQ
                         </span>
                         <span style={{ color: '#a3a3a3', fontSize: 15, letterSpacing: 1.5 }}>
                             {category.toUpperCase()}

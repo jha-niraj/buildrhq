@@ -1,4 +1,4 @@
-# ShiprHQ - Monorepo Restructure Plan
+# ShipItHQ - Monorepo Restructure Plan
 
 > Goal: split the public/marketing surface out of `apps/main` into a dedicated
 > `apps/web`, matching the proven convention used in **gurukulofficial** and
@@ -9,7 +9,7 @@
 
 ## 1. Where we are today
 
-`shiprhq` is already a **Turborepo + pnpm** monorepo. Stack: Next.js 15.4 (App
+`shipithq` is already a **Turborepo + pnpm** monorepo. Stack: Next.js 15.4 (App
 Router), React 19, Tailwind 4, **better-auth**, **Drizzle** ORM.
 
 **Apps**
@@ -19,7 +19,7 @@ Router), React 19, Tailwind 4, **better-auth**, **Drizzle** ORM.
 | `uni` | 3001 | University/institution side (faculty, departments, placements, students) | ok |
 | `hiring` | 3002 | Recruiter/company side (candidates, jobs, applications, interviews) | ok |
 | `admin` | 3003 | Internal admin console | ok |
-| `shiprworker` | - | Express + BullMQ + Dockerode code-execution worker (not Next.js) | ok |
+| `shipitworker` | - | Express + BullMQ + Dockerode code-execution worker (not Next.js) | ok |
 
 **Packages** - `auth` (better-auth), `db` (Drizzle, domain-split schema), `ui`
 (shadcn/Radix), `eslint-config`, `typescript-config`. All consumed via
@@ -29,7 +29,7 @@ Router), React 19, Tailwind 4, **better-auth**, **Drizzle** ORM.
 
 ```
 apps/main/app/
-├── page.tsx                 ← MARKETING landing (ShiprHQ hero/features/pricing)
+├── page.tsx                 ← MARKETING landing (ShipItHQ hero/features/pricing)
 ├── (home)/                  ← MARKETING  (aboutus, blogs)
 ├── (legal)/                 ← MARKETING  (privacypolicy, termsofservice)
 ├── (auth)/                  ← APP        (signin, register, onboarding, verify…)
@@ -53,12 +53,12 @@ separate subdomains, shared design system + auth + db.
 
 | App | Subdomain | Port | Contents |
 |---|---|---|---|
-| **`web`** *(new)* | `shiprhq.com` | 3004 | Marketing landing, about, blogs, legal, pricing, SEO. **No auth, no middleware, no DB writes.** Minimal deps. |
-| `main` | `app.shiprhq.com` | 3000 | The authenticated product: `(auth)`, `(main)`, `(jobs)`, `api`. Behind middleware + layout guards. |
-| `uni` | `uni.shiprhq.com` | 3001 | (unchanged) |
-| `hiring` | `hiring.shiprhq.com` | 3002 | (unchanged) |
-| `admin` | `admin.shiprhq.com` | 3003 | (unchanged) |
-| `shiprworker` | (internal) | - | (unchanged) |
+| **`web`** *(new)* | `shipithq.com` | 3004 | Marketing landing, about, blogs, legal, pricing, SEO. **No auth, no middleware, no DB writes.** Minimal deps. |
+| `main` | `app.shipithq.com` | 3000 | The authenticated product: `(auth)`, `(main)`, `(jobs)`, `api`. Behind middleware + layout guards. |
+| `uni` | `uni.shipithq.com` | 3001 | (unchanged) |
+| `hiring` | `hiring.shipithq.com` | 3002 | (unchanged) |
+| `admin` | `admin.shipithq.com` | 3003 | (unchanged) |
+| `shipitworker` | (internal) | - | (unchanged) |
 
 **How the two surfaces bridge** (identical to gurukul/synchq):
 1. **Shared `@repo/ui`** - both apps import the same `globals.css`, fonts,
@@ -69,8 +69,8 @@ separate subdomains, shared design system + auth + db.
    `/blogs`, `/privacypolicy`…) back to `NEXT_PUBLIC_WEB_URL`. **Query strings
    preserved** so pricing→checkout handoff survives.
 3. **Cross-subdomain better-auth cookies** - add `advanced.crossSubDomainCookies`
-   + `cookieDomain: .shiprhq.com` in `packages/auth` so a session set on
-   `app.shiprhq.com` is readable by `web` (lets the marketing navbar show
+   + `cookieDomain: .shipithq.com` in `packages/auth` so a session set on
+   `app.shipithq.com` is readable by `web` (lets the marketing navbar show
    "Go to Dashboard" when logged in). Distinct `cookiePrefix` per app avoids
    clobbering on shared localhost.
 4. **Env URLs** - `NEXT_PUBLIC_WEB_URL`, `NEXT_PUBLIC_APP_URL` (+ existing
@@ -109,7 +109,7 @@ them.)
 ## 4. Concrete wiring changes
 
 **`packages/auth/src/auth.ts`**
-- Add `advanced: { crossSubDomainCookies: { enabled: true, domain: process.env.AUTH_COOKIE_DOMAIN }, cookiePrefix: "shiprhq", useSecureCookies: <prod> }`.
+- Add `advanced: { crossSubDomainCookies: { enabled: true, domain: process.env.AUTH_COOKIE_DOMAIN }, cookiePrefix: "shipithq", useSecureCookies: <prod> }`.
 - Add `NEXT_PUBLIC_WEB_URL` / `NEXT_PUBLIC_APP_URL` to `trustedOrigins`.
 
 **`apps/web`** (new) - scaffold from `apps/main`'s config as the template:
@@ -148,7 +148,7 @@ them.)
 - **Phase 3 - Move the landing page** + `components/landingpage/*` +
   `components/homepage/*` + og images. This is the big visual one.
 - **Phase 4 - SEO** - move/author `sitemap.ts`, `robots.ts`, add `manifest.ts`,
-  `llms.txt`, JSON-LD. Point canonical URLs at `shiprhq.com`.
+  `llms.txt`, JSON-LD. Point canonical URLs at `shipithq.com`.
 - **Phase 5 - Auth cookies** - cross-subdomain cookie config; marketing navbar
   reads session to toggle "Sign in" ↔ "Dashboard".
 - **Phase 6 - Cleanup** - delete moved code from `main`, prune `main`'s deps,
@@ -161,7 +161,7 @@ click through moved pages + the redirect bounces, then commit.
 
 ## 6. Open decisions (need your call before/at implementation)
 
-1. **Production domains.** Assumed `shiprhq.com` (web) + `app.shiprhq.com`
+1. **Production domains.** Assumed `shipithq.com` (web) + `app.shipithq.com`
    (main), `uni.` / `hiring.` / `admin.` subdomains. Confirm the real domain +
    whether app lives at `app.` or a path.
 2. **Pricing page** - keep `/purchase` (checkout) in `main`, but put a marketing

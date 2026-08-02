@@ -46,7 +46,7 @@ export function ShareDialog({
     };
 
     const handleShareTwitter = () => {
-        const text = `Check out "${title}" on ShiprHQ!`;
+        const text = `Check out "${title}" on ShipItHQ!`;
         const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
         window.open(shareUrl, "_blank", "noopener,noreferrer");
     };

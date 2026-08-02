@@ -1,5 +1,5 @@
 # 🎓 UNIVERSITY PLATFORM PHASE 2 BLUEPRINT
-## ShiprHQ University: Advanced Features & Scale
+## ShipItHQ University: Advanced Features & Scale
 ### Version 1.0 | February 2026
 
 ---
@@ -552,7 +552,7 @@ Phase 1 established the foundation-university onboarding, basic assignments, and
 │                    COMPANY PORTAL ARCHITECTURE                           │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
-│  URL: hire.shipr.me/campus                                             │
+│  URL: hire.shipit.me/campus                                             │
 │                                                                          │
 │  ┌─────────────────────────────────────────────────────────────────────┐│
 │  │                                                                       ││
@@ -669,7 +669,7 @@ Phase 1 established the foundation-university onboarding, basic assignments, and
 │  ────────────────────                                                   │
 │                                                                          │
 │  ┌─────────────────────────────┐  ┌─────────────────────────────────┐  │
-│  │  📱 SHIPRHQ LEARN           │  │  📱 SHIPRHQ CAMPUS              │  │
+│  │  📱 SHIPITHQ LEARN           │  │  📱 SHIPITHQ CAMPUS              │  │
 │  │  (For Students)             │  │  (For Faculty & Admin)          │  │
 │  │                             │  │                                 │  │
 │  │  • Assignments              │  │  • Grading on-the-go            │  │
@@ -771,7 +771,7 @@ Phase 1 established the foundation-university onboarding, basic assignments, and
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │                        ┌─────────────────────┐                          │
-│                        │   SHIPRHQ PLATFORM  │                          │
+│                        │   SHIPITHQ PLATFORM  │                          │
 │                        │   (Core System)     │                          │
 │                        └──────────┬──────────┘                          │
 │                                   │                                      │
@@ -808,7 +808,7 @@ Phase 1 established the foundation-university onboarding, basic assignments, and
 │  STUDENT FLOW:                                                          │
 │  ─────────────                                                          │
 │                                                                          │
-│  1. Student visits uni.shipr.me/tech-university                        │
+│  1. Student visits uni.shipit.me/tech-university                        │
 │  2. Clicks "Sign in with University Account"                            │
 │  3. Redirected to university IdP (e.g., Azure AD, Okta)                 │
 │  4. Authenticates with university credentials                           │
@@ -856,13 +856,13 @@ Phase 1 established the foundation-university onboarding, basic assignments, and
 │                                                                          │
 │  DATA SYNCED:                                                           │
 │  ────────────                                                           │
-│  FROM ERP → SHIPRHQ:                                                     │
+│  FROM ERP → SHIPITHQ:                                                     │
 │  • Student list with demographics                                       │
 │  • Class/course enrollments                                             │
 │  • Faculty assignments                                                  │
 │  • Academic calendar                                                    │
 │                                                                          │
-│  FROM SHIPRHQ → ERP:                                                     │
+│  FROM SHIPITHQ → ERP:                                                     │
 │  • Assignment grades                                                    │
 │  • Attendance records                                                   │
 │  • Skill assessment results                                             │
@@ -1201,7 +1201,7 @@ Phase 1 established the foundation-university onboarding, basic assignments, and
 │  │  ❌ Custom domain│  │  ✅ Custom domain│  │  ✅ Custom domain│      │
 │  │  ❌ Custom emails│  │  ✅ Custom emails│  │  ✅ Custom emails│      │
 │  │  ❌ Remove "by   │  │  ❌ Remove "by   │  │  ✅ Remove "by   │      │
-│  │     ShiprHQ"     │  │     ShiprHQ"     │  │     ShiprHQ"     │      │
+│  │     ShipItHQ"     │  │     ShipItHQ"     │  │     ShipItHQ"     │      │
 │  │                  │  │                  │  │  ✅ API access   │      │
 │  │  ₹5L/year       │  │  ₹15L/year      │  │  ₹40L/year      │      │
 │  └──────────────────┘  └──────────────────┘  └──────────────────┘      │
@@ -1647,4 +1647,4 @@ enum StreakType {
 
 *Document Created: February 7, 2026*
 *Version: 1.0*
-*Author: ShiprHQ Product Team*
+*Author: ShipItHQ Product Team*

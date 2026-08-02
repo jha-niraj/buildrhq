@@ -17,17 +17,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     if (!result.success || !result.user) {
         return {
-            title: "Profile Not Found | ShiprHQ",
+            title: "Profile Not Found | ShipItHQ",
             description: "This profile could not be found.",
         };
     }
 
     const user = result.user;
-    const title = `${user.name || user.username} | ShiprHQ`;
+    const title = `${user.name || user.username} | ShipItHQ`;
     const description =
         user.userProfile?.tagline ||
         user.bio ||
-        `Check out ${user.name || user.username}'s profile on ShiprHQ`;
+        `Check out ${user.name || user.username}'s profile on ShipItHQ`;
 
     return {
         title,

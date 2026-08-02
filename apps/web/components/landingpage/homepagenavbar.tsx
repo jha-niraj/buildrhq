@@ -57,12 +57,12 @@ export default function Navbar() {
                     }`}
             >
                 <div className="flex items-center justify-between h-16 px-4 sm:px-6">
-                <Link href="/" className="flex items-center gap-2" aria-label="ShiprHQ home">
+                <Link href="/" className="flex items-center gap-2" aria-label="ShipItHQ home">
                     <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900">
                         <Logo className="h-[17px] w-[17px]" />
                     </span>
                     <span className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">
-                        ShiprHQ
+                        ShipItHQ
                     </span>
                 </Link>
 

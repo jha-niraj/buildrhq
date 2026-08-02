@@ -1,8 +1,8 @@
-# ShiprHQ - The Engineering Intelligence Suite
+# ShipItHQ - The Engineering Intelligence Suite
 
-## What is ShiprHQ?
+## What is ShipItHQ?
 
-ShiprHQ is a developer-first platform that helps computer science students and software engineers master their craft, build standout portfolios, and land their first (or next) engineering role. It combines AI-powered tools, structured learning, and community features in one place.
+ShipItHQ is a developer-first platform that helps computer science students and software engineers master their craft, build standout portfolios, and land their first (or next) engineering role. It combines AI-powered tools, structured learning, and community features in one place.
 
 ## Core Features
 
@@ -10,7 +10,7 @@ ShiprHQ is a developer-first platform that helps computer science students and s
 Generate ATS-optimized, recruiter-ready resumes. Paste a job description and the AI tailors your resume bullets to match the role. Supports multiple templates, live preview, and one-click PDF download.
 
 ### AI Cover Letter Generator
-Answer 5 targeted questions about yourself and the role. ShiprHQ writes a personalized, professional cover letter with your voice. Supports voice input (speak your answers) and PDF download.
+Answer 5 targeted questions about yourself and the role. ShipItHQ writes a personalized, professional cover letter with your voice. Supports voice input (speak your answers) and PDF download.
 
 ### Mock Interview Platform
 Practice technical interviews with AI. Get real-time feedback on your answers, tone, and structure. Covers system design, DSA, and behavioral rounds. Tracks your improvement over time.
@@ -30,7 +30,7 @@ Structured AI-generated learning paths for CS topics (DSA, System Design, Web De
 ### KnowMe AI Profile
 AI-powered developer profile that turns your resume, GitHub, and projects into a shareable intelligence page. Recruiters can ask the AI questions about you directly.
 
-## Who Uses ShiprHQ?
+## Who Uses ShipItHQ?
 
 - CS students (freshman → senior) preparing for internships and full-time roles
 - Bootcamp graduates breaking into software engineering
@@ -48,7 +48,7 @@ Built by Shunya Tech. Founded by Niraj Jha. Based in India.
 
 ## Links
 
-- Homepage: https://www.shiprhq.com
-- AI Tools: https://www.shiprhq.com/ai
-- Blog: https://www.shiprhq.com/blogs
-- About: https://www.shiprhq.com/aboutus
+- Homepage: https://www.shipithq.com
+- AI Tools: https://www.shipithq.com/ai
+- Blog: https://www.shipithq.com/blogs
+- About: https://www.shipithq.com/aboutus

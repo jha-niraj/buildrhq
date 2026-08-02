@@ -8,7 +8,7 @@ import { AnalyticsContent } from "./analytics-content"
 export const dynamic = "force-dynamic"
 
 export const metadata = {
-    title: "Analytics | ShiprHQ Hiring",
+    title: "Analytics | ShipItHQ Hiring",
     description: "Track your hiring pipeline performance"
 }
 

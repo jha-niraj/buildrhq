@@ -1,9 +1,9 @@
 import type { MetadataRoute } from 'next'
 
-// This is the app deploy (app.shiprhq.com). Public/marketing SEO + the sitemap
-// live on the web deploy (shiprhq.com). Keep the private product areas out of
+// This is the app deploy (app.shipithq.com). Public/marketing SEO + the sitemap
+// live on the web deploy (shipithq.com). Keep the private product areas out of
 // the index and point crawlers at the marketing sitemap.
-const WEB_URL = process.env.NEXT_PUBLIC_WEB_URL ?? 'https://www.shiprhq.com'
+const WEB_URL = process.env.NEXT_PUBLIC_WEB_URL ?? 'https://www.shipithq.com'
 
 export default function robots(): MetadataRoute.Robots {
     return {

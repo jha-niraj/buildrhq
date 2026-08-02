@@ -25,7 +25,7 @@ const nextConfig = {
         NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     },
 
-    // The marketing surface now lives on the web deploy (shiprhq.com). Any stale
+    // The marketing surface now lives on the web deploy (shipithq.com). Any stale
     // marketing path that lands on the app host is bounced back to web so old
     // links + shared URLs keep working.
     async redirects() {

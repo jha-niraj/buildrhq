@@ -154,7 +154,7 @@ export function BentoPricing({
                     </div>
                 </div>
                 <div className="flex items-center gap-3 p-5">
-                    <Badge className="bg-gradient-to-r from-neutral-900 to-neutral-900 text-white border-0">
+                    <Badge className="border-0 bg-gradient-to-r from-neutral-900 to-neutral-900 text-white dark:from-white dark:to-white dark:text-neutral-900">
                         MOST POPULAR
                     </Badge>
                     <Badge variant="outline" className="hidden lg:flex border-white/20 text-white dark:border-neutral-800 dark:text-neutral-900">
@@ -173,7 +173,7 @@ export function BentoPricing({
                             {prices.popular}
                         </span>
                         <span className="text-neutral-400 dark:text-neutral-600 text-sm ml-2">/one-time</span>
-                        <p className="text-neutral-900 dark:text-neutral-100 text-sm mt-2 font-medium">
+                        <p className="mt-2 text-sm font-medium text-white dark:text-neutral-900">
                             Save 12% vs regular
                         </p>
                     </div>

@@ -7,7 +7,7 @@ import { Providers } from "./providers/providers";
 
 // Canonical origin for this deploy. Overridable per environment so preview
 // builds emit their own absolute URLs instead of the production ones.
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://hiring.shiprhq.com'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://hiring.shipithq.com'
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -36,8 +36,8 @@ const bricolage = Bricolage_Grotesque({
 
 export const metadata: Metadata = {
 	title: {
-		default: "ShiprHQ Hiring | AI-Powered Recruitment Platform",
-		template: "%s | ShiprHQ Hiring"
+		default: "ShipItHQ Hiring | AI-Powered Recruitment Platform",
+		template: "%s | ShipItHQ Hiring"
 	},
 	description: "The intelligent hiring platform for tech companies. Find pre-vetted engineers with verified skills through real projects, AI-powered assessments, and smart candidate matching.",
 	keywords: [
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
 		"HR Tech",
 		"Applicant Tracking System"
 	],
-	authors: [{ name: "ShiprHQ Team" }],
-	creator: "ShiprHQ",
-	publisher: "ShiprHQ",
+	authors: [{ name: "ShipItHQ Team" }],
+	creator: "ShipItHQ",
+	publisher: "ShipItHQ",
 	metadataBase: new URL(BASE_URL),
 	alternates: {
 		canonical: "/",
@@ -63,24 +63,24 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en_US",
 		url: BASE_URL,
-		siteName: "ShiprHQ Hiring",
-		title: "ShiprHQ Hiring - AI-Powered Recruitment Platform",
+		siteName: "ShipItHQ Hiring",
+		title: "ShipItHQ Hiring - AI-Powered Recruitment Platform",
 		description: "The intelligent hiring platform for tech companies. Find pre-vetted engineers with verified skills through real projects and AI-powered assessments.",
 		images: [
 			{
 				url: "/hiring-og.png",
 				width: 1200,
 				height: 630,
-				alt: "ShiprHQ Hiring - AI-Powered Recruitment Platform",
+				alt: "ShipItHQ Hiring - AI-Powered Recruitment Platform",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "ShiprHQ Hiring - AI-Powered Recruitment Platform",
+		title: "ShipItHQ Hiring - AI-Powered Recruitment Platform",
 		description: "The intelligent hiring platform for tech companies. Find pre-vetted engineers with verified skills.",
 		images: ["/hiring-og.png"],
-		creator: "@shiprhq",
+		creator: "@shipithq",
 	},
 	robots: {
 		index: true,

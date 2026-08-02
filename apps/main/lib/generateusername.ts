@@ -6,7 +6,7 @@ function slugifyName(name: string) {
 }
 
 const platformTags = [
-    "shipr", "bravo", "cwords", "devs", "hackers", "geeks", "programmers", "techies", "innovators", "builders",
+    "shipit", "bravo", "cwords", "devs", "hackers", "geeks", "programmers", "techies", "innovators", "builders",
     "creators", "makers", "problemSolvers", "coders", "nerds", "engineers", "designers", "developers", "architects"
 ];
 

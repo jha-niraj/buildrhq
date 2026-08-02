@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "shiprhq-admin",
+	"name": "shipithq-admin",
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2025-11-01",
 	"compatibility_flags": [
@@ -13,18 +13,18 @@
 	},
 
 	// Shared incremental-cache bucket. Create it once for the whole account:
-	//     wrangler r2 bucket create shiprhq-next-cache
+	//     wrangler r2 bucket create shipithq-next-cache
 	// NEXT_INC_CACHE_R2_PREFIX namespaces this app's entries so main/web/uni/hiring/admin
 	// can all share the one bucket without colliding.
 	"r2_buckets": [
 		{
-			"bucket_name": "shiprhq-next-cache",
+			"bucket_name": "shipithq-next-cache",
 			"binding": "NEXT_INC_CACHE_R2_BUCKET"
 		}
 	],
 
 	"vars": {
-		"NEXT_INC_CACHE_R2_PREFIX": "shiprhq-admin-cache"
+		"NEXT_INC_CACHE_R2_PREFIX": "shipithq-admin-cache"
 	},
 
 	"observability": {

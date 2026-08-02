@@ -1,9 +1,9 @@
 ================================================================================
                     INTERVIEW ACCEPTANCE FLOW DOCUMENTATION
-                           ShiprHQ Hiring Platform
+                           ShipItHQ Hiring Platform
 ================================================================================
 
-This document outlines the complete interview acceptance flow for the ShiprHQ 
+This document outlines the complete interview acceptance flow for the ShipItHQ 
 hiring platform, covering both the HIRING app (for HR/recruiters) and the 
 MAIN app (for candidates).
 

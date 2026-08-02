@@ -117,7 +117,7 @@ export default function PurchasePage() {
 				key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
 				amount: amountInSmallestUnit,
 				currency: currency,
-				name: 'ShiprHQ',
+				name: 'ShipItHQ',
 				description: `Provision ${credits} Compute Credits`,
 				image: '/titlelogo.jpeg',
 				order_id: data.orderId,
@@ -529,7 +529,7 @@ export default function PurchasePage() {
 						<div className="flex gap-2.5 p-3.5 bg-neutral-50 dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
 							<AlertTriangle className="w-4 h-4 text-neutral-400 flex-shrink-0 mt-px" />
 							<p className="text-xs text-neutral-500 leading-relaxed">
-								Post must be public and mention <span className="font-semibold text-neutral-700 dark:text-neutral-300">@shiprhq</span> to pass verification.
+								Post must be public and mention <span className="font-semibold text-neutral-700 dark:text-neutral-300">@shipithq</span> to pass verification.
 							</p>
 						</div>
 

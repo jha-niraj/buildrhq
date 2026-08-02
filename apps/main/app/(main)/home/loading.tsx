@@ -4,7 +4,7 @@ import {
 } from "./_components/skeletons";
 
 // Mirrors the real page: the analytics dashboard, then the two surfaces below it.
-// Deliberately a SKELETON rather than the full-page ShiprHQLoader - the sidebar is
+// Deliberately a SKELETON rather than the full-page ShipItHQLoader - the sidebar is
 // already painted around this, so previewing the layout beats a centred spinner.
 export default function HomeLoading() {
     return (

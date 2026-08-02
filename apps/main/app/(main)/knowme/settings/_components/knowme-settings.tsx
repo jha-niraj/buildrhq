@@ -236,7 +236,7 @@ export default function KnowMeSettings({ profile, apiConfig, initialTab }: KnowM
                             </div>
                             <div className="space-y-4">
                                 <h3 className="font-medium text-slate-900 dark:text-white">
-                                    ShiprHQ Platform Data
+                                    ShipItHQ Platform Data
                                 </h3>
 
                                 <DataToggle

@@ -482,7 +482,7 @@ export function ResumeEditor({ draft, content: initialContent, templates }: Prop
                         className="h-7 text-xs"
                         disabled={syncing}
                         onClick={handleSyncProfile}
-                        title="Auto-fill from your ShiprHQ profile"
+                        title="Auto-fill from your ShipItHQ profile"
                     >
                         <RefreshCw className={cn("w-3 h-3 mr-1", syncing && "animate-spin")} />
                         {syncing ? 'Syncing…' : 'Sync Profile'}

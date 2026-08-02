@@ -72,7 +72,7 @@ The difference is **learning** vs **copying**.
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│                    SHIPRHQ PRACTICE MODULE                          │
+│                    SHIPITHQ PRACTICE MODULE                          │
 │                                                                      │
 │  ┌──────────────┐  ┌──────────────┐  ┌─────────────────────────┐    │
 │  │   PROBLEM    │  │    CODE      │  │     AI MENTOR           │    │
@@ -131,7 +131,7 @@ The difference is **learning** vs **copying**.
 
 ```
                     ┌─────────────────────────────────────┐
-                    │       SHIPRHQ PRACTICE              │
+                    │       SHIPITHQ PRACTICE              │
                     │                                     │
                     │   ✅ DSA Problems                    │
                     │   ✅ System Design (Excalidraw)      │
@@ -796,7 +796,7 @@ The Practice Module has **four distinct workspace types**, each with its own cen
 ```
 ┌──────────────────────────────────────────────────────────────────┐
 │                                                                  │
-│  🏆 WHY SHIPRHQ PRACTICE WILL BE DIFFERENT                     │
+│  🏆 WHY SHIPITHQ PRACTICE WILL BE DIFFERENT                     │
 │                                                                  │
 │  1. ZERO CONTEXT SWITCHING                                       │
 │     Everything on one screen. No copy-pasting to ChatGPT.       │

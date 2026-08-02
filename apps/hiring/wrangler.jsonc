@@ -2,7 +2,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 
 	// Worker name - this is what shows in the Cloudflare dashboard.
-	"name": "shiprhq-hiring",
+	"name": "shipithq-hiring",
 
 	// Entry point produced by `opennextjs-cloudflare build`.
 	"main": ".open-next/worker.js",
@@ -23,7 +23,7 @@
 	// ── Incremental cache (R2) ────────────────────────────────────────────────
 	// ONE-TIME SETUP before the first deploy (shared by every app in this monorepo,
 	// so it only has to be created once):
-	//     wrangler r2 bucket create shiprhq-next-cache
+	//     wrangler r2 bucket create shipithq-next-cache
 	//
 	// The binding name MUST be exactly NEXT_INC_CACHE_R2_BUCKET - that is the name
 	// r2IncrementalCache in open-next.config.ts looks up. Without it, OpenNext has
@@ -31,7 +31,7 @@
 	// every request (`x-nextjs-cache: MISS` on every hit, slow cold-start TTFB).
 	"r2_buckets": [
 		{
-			"bucket_name": "shiprhq-next-cache",
+			"bucket_name": "shipithq-next-cache",
 			"binding": "NEXT_INC_CACHE_R2_BUCKET"
 		}
 	],
@@ -39,7 +39,7 @@
 	"vars": {
 		// Namespaces this app's entries inside the shared bucket so the apps never
 		// collide in the keyspace.
-		"NEXT_INC_CACHE_R2_PREFIX": "shiprhq-hiring-cache"
+		"NEXT_INC_CACHE_R2_PREFIX": "shipithq-hiring-cache"
 	},
 
 	"observability": {

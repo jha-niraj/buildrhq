@@ -13,7 +13,7 @@ import {
 } from "./_components/skeletons";
 
 export const metadata = {
-    title: "Home | ShiprHQ",
+    title: "Home | ShipItHQ",
     description: "Your personalized learning dashboard",
 };
 

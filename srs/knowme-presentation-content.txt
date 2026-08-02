@@ -131,7 +131,7 @@ SLIDE 7: KEY FEATURES DEEP DIVE
 TITLE: Core Features
 
 FEATURE 1: Smart Data Integration
-• ShiprHQ profile (projects, skills, bio)
+• ShipItHQ profile (projects, skills, bio)
 • Resume upload (PDF, DOCX)
 • GitHub connection (repos, contributions)
 • Auto-syncing keeps AI updated
@@ -156,7 +156,7 @@ SCENARIO:
 "A recruiter wants to learn about a developer at midnight"
 
 STEP-BY-STEP:
-1. Recruiter visits: shiprhq.com/knowme/johndoe
+1. Recruiter visits: shipithq.com/knowme/johndoe
 2. Asks: "What are John's main skills?"
 3. AI responds with accurate, sourced information
 4. Recruiter clicks "Schedule Interview"
@@ -238,7 +238,7 @@ TITLE: Thank You!
 QUESTIONS?
 
 CONTACT:
-• Platform: shiprhq.com/knowme
+• Platform: shipithq.com/knowme
 • GitHub: [Your GitHub]
 • Email: [Your Email]
 

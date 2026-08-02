@@ -2,7 +2,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 
 	// Worker name - this is what shows in the Cloudflare dashboard.
-	"name": "shiprhq-main",
+	"name": "shipithq-main",
 
 	// Entry point produced by `opennextjs-cloudflare build`. Do NOT point this at .next/ -
 	// OpenNext compiles the Next server into a Worker bundle at this path.
@@ -28,7 +28,7 @@
 
 	// ── Incremental cache (R2) ────────────────────────────────────────────────
 	// ONE-TIME SETUP before the first deploy:
-	//     wrangler r2 bucket create shiprhq-next-cache
+	//     wrangler r2 bucket create shipithq-next-cache
 	//
 	// The binding name must be exactly NEXT_INC_CACHE_R2_BUCKET - that is what
 	// r2IncrementalCache in open-next.config.ts looks up.
@@ -39,15 +39,30 @@
 	// re-renders them from scratch on every cold request.
 	"r2_buckets": [
 		{
-			"bucket_name": "shiprhq-next-cache",
+			"bucket_name": "shipithq-next-cache",
 			"binding": "NEXT_INC_CACHE_R2_BUCKET"
+		}
+	],
+
+	// ── Service binding: generation worker ────────────────────────────────────
+	// Both this app and the generation worker run on Cloudflare, so they talk over
+	// a service binding rather than a public fetch to workers.dev. That means the
+	// request never leaves Cloudflare's network, there is no URL to keep in sync
+	// across environments, and the generation worker does not have to be publicly
+	// reachable at all.
+	//
+	// `service` is the deployed Worker name (see apps/generationworker/wrangler.jsonc).
+	"services": [
+		{
+			"binding": "GENERATION_WORKER",
+			"service": "shipithq-generation"
 		}
 	],
 
 	"vars": {
 		// Namespaces this app's cache entries inside the shared bucket so apps/web and
 		// apps/main never collide in the keyspace.
-		"NEXT_INC_CACHE_R2_PREFIX": "shiprhq-main-cache"
+		"NEXT_INC_CACHE_R2_PREFIX": "shipithq-main-cache"
 	},
 
 	"observability": {
