@@ -12,7 +12,7 @@ export function RelatedPosts({ posts }: { posts: BlogPostWithSlug[] }) {
         <section aria-labelledby="related-heading" className="pt-12">
             <h2
                 id="related-heading"
-                className="mb-8 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500"
+                className="mb-8 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400"
             >
                 Keep reading
             </h2>
@@ -23,7 +23,7 @@ export function RelatedPosts({ posts }: { posts: BlogPostWithSlug[] }) {
                         href={`/blogs/${post.slug}`}
                         className="group flex flex-col rounded-2xl border border-neutral-200 p-5 transition-colors hover:border-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-600"
                     >
-                        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-400 dark:text-neutral-500">
+                        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">
                             {BLOG_CATEGORIES[post.category]}
                         </p>
                         <h3 className="mb-2 text-[15px] font-semibold leading-snug tracking-tight text-neutral-900 group-hover:text-neutral-800 dark:text-white dark:group-hover:text-neutral-100">
@@ -32,7 +32,7 @@ export function RelatedPosts({ posts }: { posts: BlogPostWithSlug[] }) {
                         <p className="mb-4 line-clamp-2 text-[13px] leading-relaxed text-neutral-500 dark:text-neutral-400">
                             {post.description}
                         </p>
-                        <span className="mt-auto inline-flex items-center gap-1.5 font-mono text-[11px] text-neutral-400 dark:text-neutral-500">
+                        <span className="mt-auto inline-flex items-center gap-1.5 font-mono text-[11px] text-neutral-500 dark:text-neutral-400">
                             <Clock className="h-3 w-3" aria-hidden />
                             {post.readingTime} min read
                         </span>

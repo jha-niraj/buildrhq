@@ -55,7 +55,7 @@ function PricingCard({
                 {
                     credits && (
                         <Badge variant="outline" className="ml-auto text-xs">
-                            <Zap className="w-3 h-3 mr-1 text-neutral-900" />
+                            <Zap className="w-3 h-3 mr-1 text-neutral-900 dark:text-white" />
                             {credits} Credits
                         </Badge>
                     )
@@ -162,7 +162,7 @@ export function BentoPricing({
                     </Badge>
                     <div className="ml-auto flex items-center gap-2">
                         <Badge variant="secondary" className="bg-white/10 dark:bg-neutral-900/10 text-white dark:text-neutral-900">
-                            <Zap className="w-3 h-3 mr-1 text-neutral-800" />
+                            <Zap className="w-3 h-3 mr-1 text-white dark:text-neutral-900" />
                             150 Credits
                         </Badge>
                     </div>
@@ -172,7 +172,7 @@ export function BentoPricing({
                         <span className="font-mono text-5xl font-bold tracking-tight text-white dark:text-neutral-900">
                             {prices.popular}
                         </span>
-                        <span className="text-neutral-400 dark:text-neutral-600 text-sm ml-2">/one-time</span>
+                        <span className="ml-2 text-sm text-neutral-400 dark:text-neutral-600">/one-time</span>
                         <p className="mt-2 text-sm font-medium text-white dark:text-neutral-900">
                             Save 12% vs regular
                         </p>

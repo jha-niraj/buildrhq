@@ -50,7 +50,7 @@ const studioFeatures = [
 
 export default function StudioSection() {
     return (
-        <section className="py-32 relative bg-white dark:bg-neutral-950 border-t border-neutral-100 dark:border-neutral-800">
+        <section className="relative overflow-hidden border-t border-neutral-100 bg-white py-32 dark:border-neutral-800 dark:bg-neutral-950">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-neutral-100 dark:bg-neutral-900 rounded-[100%] blur-[80px] -z-10 opacity-60" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -63,13 +63,13 @@ export default function StudioSection() {
                 >
                     <div className="inline-flex items-center justify-center p-1 rounded-full bg-neutral-100 dark:bg-neutral-800 mb-8 border border-neutral-200 dark:border-neutral-700">
                         <Badge variant="secondary" className="px-6 py-2 rounded-full bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white border border-neutral-200 dark:border-neutral-800 font-medium text-sm shadow-sm">
-                            <Sparkles className="w-3.5 h-3.5 mr-2 text-neutral-500" />
+                            <Sparkles className="w-3.5 h-3.5 mr-2 text-neutral-500 dark:text-neutral-400" />
                             The Learning OS
                         </Badge>
                     </div>
                     <h2 className="text-5xl md:text-7xl font-bold mb-6 text-neutral-900 dark:text-white tracking-tighter">
                         Your Personal <br />
-                        <span className="text-neutral-400 dark:text-neutral-600">Learning Studio.</span>
+                        <span className="text-neutral-500 dark:text-neutral-400">Learning Studio.</span>
                     </h2>
                     <p className="text-xl text-neutral-500 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed font-light">
                         A unified workspace that combines note-taking, active recall, and AI assistance into a single, distraction-free environment.
@@ -139,7 +139,7 @@ export default function StudioSection() {
                         </div>
                         <div className="flex-1 flex flex-col items-center justify-center p-8 rounded-3xl border border-dashed border-neutral-300 dark:border-neutral-700 bg-neutral-50/50 dark:bg-neutral-900/50 text-center">
                             <h4 className="text-lg font-bold text-neutral-900 dark:text-white mb-2">Ready to ship your knowledge?</h4>
-                            <p className="text-sm text-neutral-500 mb-6">Join thousands of students building their second brain.</p>
+                            <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-6">Join thousands of students building their second brain.</p>
                             <Button asChild size="lg" className="w-full h-12 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:opacity-90 transition-opacity">
                                 <a href={APP_LINKS.signup}>
                                     <GraduationCap className="mr-2 h-4 w-4" />

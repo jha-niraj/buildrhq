@@ -41,12 +41,12 @@ export default function BlogsClient({ posts }: Props) {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.45 }}
                     >
-                        <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-400">
+                        <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                             The ShipItHQ Blog
                         </p>
                         <h1 className="mb-6 text-5xl font-bold leading-[0.95] tracking-tight text-neutral-900 dark:text-white md:text-7xl">
                             Engineering<br />
-                            <span className="text-neutral-300 dark:text-neutral-700">Intelligence.</span>
+                            <span className="text-neutral-500 dark:text-neutral-400">Intelligence.</span>
                         </h1>
                         <p className="max-w-xl text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
                             Deep dives into software careers, interview prep, portfolio building, and the
@@ -103,7 +103,7 @@ export default function BlogsClient({ posts }: Props) {
                                 <span className="rounded-full border border-neutral-200 bg-neutral-100 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400">
                                     {BLOG_CATEGORIES[featured.category]}
                                 </span>
-                                <span className="font-mono text-[11px] text-neutral-400 dark:text-neutral-500">
+                                <span className="font-mono text-[11px] text-neutral-500 dark:text-neutral-400">
                                     {publishDate(featured.datePublished)} · {featured.readingTime} min read
                                 </span>
                             </div>
@@ -133,7 +133,7 @@ export default function BlogsClient({ posts }: Props) {
                                 href={`/blogs/${post.slug}`}
                                 className="group flex h-full flex-col rounded-2xl border border-neutral-200 p-6 transition-colors hover:border-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-600"
                             >
-                                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-400 dark:text-neutral-500">
+                                <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">
                                     {BLOG_CATEGORIES[post.category]}
                                 </p>
                                 <h3 className="mb-3 text-lg font-semibold leading-snug tracking-tight text-neutral-900 group-hover:text-neutral-800 dark:text-white dark:group-hover:text-neutral-100">
@@ -142,7 +142,7 @@ export default function BlogsClient({ posts }: Props) {
                                 <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                                     {post.description}
                                 </p>
-                                <span className="mt-auto inline-flex items-center gap-1.5 font-mono text-[11px] text-neutral-400 dark:text-neutral-500">
+                                <span className="mt-auto inline-flex items-center gap-1.5 font-mono text-[11px] text-neutral-500 dark:text-neutral-400">
                                     <Clock className="h-3 w-3" aria-hidden />
                                     {post.readingTime} min read
                                 </span>
@@ -152,7 +152,7 @@ export default function BlogsClient({ posts }: Props) {
                 </div>
 
                 <div className="mt-20 border-t border-neutral-200 pt-8 dark:border-neutral-800">
-                    <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                    <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                         Browse by topic
                     </p>
                     <div className="flex flex-wrap gap-2">

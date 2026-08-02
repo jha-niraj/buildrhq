@@ -85,14 +85,14 @@ export default function Footer() {
                                             {link.external ? (
                                                 <a
                                                     href={link.href}
-                                                    className="text-sm text-neutral-500 transition-colors hover:text-neutral-900 dark:hover:text-white"
+                                                    className="text-sm text-neutral-500 dark:text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-white"
                                                 >
                                                     {link.name}
                                                 </a>
                                             ) : (
                                                 <Link
                                                     href={link.href}
-                                                    className="text-sm text-neutral-500 transition-colors hover:text-neutral-900 dark:hover:text-white"
+                                                    className="text-sm text-neutral-500 dark:text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-white"
                                                 >
                                                     {link.name}
                                                 </Link>
@@ -107,12 +107,12 @@ export default function Footer() {
 
                 <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-neutral-200 pt-8 dark:border-neutral-800 md:flex-row">
                     <div className="flex flex-col items-center gap-4 md:flex-row md:gap-8">
-                        <p className="text-xs text-neutral-500">
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400">
                             © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
                         </p>
                         <a
                             href={APP_LINKS.signin}
-                            className="text-xs text-neutral-500 transition-colors hover:text-neutral-900 dark:hover:text-white"
+                            className="text-xs text-neutral-500 dark:text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-white"
                         >
                             Sign in to the app →
                         </a>
@@ -125,7 +125,7 @@ export default function Footer() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={`${BRAND.name} on ${name}`}
-                                className="text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-white"
+                                className="text-neutral-500 dark:text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-white"
                             >
                                 <Icon className="h-4 w-4" />
                             </a>

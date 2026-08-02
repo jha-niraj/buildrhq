@@ -50,7 +50,7 @@ export default function AssessmentsSection() {
                             Learn & Prove
                         </Badge>
                         <h2 className="text-4xl md:text-5xl font-bold mb-4 text-neutral-900 dark:text-white tracking-tight">
-                            Mastery through <span className="text-neutral-400 dark:text-neutral-600">repetition.</span>
+                            Mastery through <span className="text-neutral-500 dark:text-neutral-400">repetition.</span>
                         </h2>
                         <p className="text-lg text-neutral-600 dark:text-neutral-400 font-light leading-relaxed">
                             Theory is optional. Practice is mandatory. Validate your skills with our rigorous assessment engine.
@@ -106,7 +106,7 @@ export default function AssessmentsSection() {
                                     <div className="w-3 h-3 rounded-full bg-neutral-300 dark:bg-neutral-700" />
                                     <div className="w-3 h-3 rounded-full bg-neutral-300 dark:bg-neutral-700" />
                                 </div>
-                                <div className="flex items-center gap-2 text-xs font-mono text-neutral-400">
+                                <div className="flex items-center gap-2 text-xs font-mono text-neutral-600 dark:text-neutral-400">
                                     <Code className="w-3 h-3" />
                                     <span>challenge_01.ts</span>
                                 </div>
@@ -114,7 +114,7 @@ export default function AssessmentsSection() {
                             </div>
                             <div className="flex h-[400px]">
                                 <div className="flex-1 p-6 font-mono text-sm overflow-hidden bg-neutral-50/50 dark:bg-neutral-900">
-                                    <div className="text-neutral-400 mb-2">Task: Optimize array traversal</div>
+                                    <div className="text-neutral-500 dark:text-neutral-400 mb-2">Task: Optimize array traversal</div>
                                     <div className="space-y-1">
                                         <div><span className="text-neutral-800 dark:text-neutral-100">interface</span> <span className="text-neutral-900 dark:text-white">User</span> {'{'}</div>
                                         <div className="pl-4">id: <span className="text-neutral-800 dark:text-neutral-100">string</span>;</div>
@@ -122,12 +122,12 @@ export default function AssessmentsSection() {
                                         <div>{'}'}</div>
                                         <br />
                                         <div><span className="text-neutral-800 dark:text-neutral-100">function</span> <span className="text-neutral-800 dark:text-neutral-100">rankUsers</span>(users: User[]): User[] {'{'}</div>
-                                        <div className="pl-4 text-neutral-400">TODO: Implement quicksort here</div>
+                                        <div className="pl-4 text-neutral-500 dark:text-neutral-400">TODO: Implement quicksort here</div>
                                         <div className="pl-4"><span className="text-neutral-800 dark:text-neutral-100">return</span> users.sort((a, b) =&gt; b.score - a.score);</div>
                                         <div>{'}'}</div>
                                     </div>
                                     <div className="mt-12 pt-4 border-t border-neutral-200 dark:border-neutral-800">
-                                        <div className="text-xs text-neutral-400 mb-2">TERMINAL</div>
+                                        <div className="text-xs text-neutral-500 dark:text-neutral-400 mb-2">TERMINAL</div>
                                         <div className="text-xs font-mono space-y-1">
                                             <div className="text-neutral-800 dark:text-neutral-100">➜  ~ npm run test</div>
                                             <div>&gt; running 3 tests...</div>
@@ -139,23 +139,23 @@ export default function AssessmentsSection() {
                                 </div>
                                 <div className="w-48 bg-white dark:bg-neutral-950 border-l border-neutral-200 dark:border-neutral-800 p-4 hidden sm:block">
                                     <div className="mb-6">
-                                        <div className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-2">Time Left</div>
+                                        <div className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">Time Left</div>
                                         <div className="flex items-center gap-2 text-neutral-900 dark:text-white font-mono font-medium">
-                                            <Timer className="w-4 h-4 text-neutral-400" />
+                                            <Timer className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
                                             14:20
                                         </div>
                                     </div>
                                     <div className="mb-6">
-                                        <div className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-2">Difficulty</div>
+                                        <div className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">Difficulty</div>
                                         <Badge variant="outline" className="border-neutral-200 bg-neutral-50 text-neutral-700 dark:border-neutral-800/30 dark:bg-neutral-800/20 dark:text-neutral-100">
                                             Hard
                                         </Badge>
                                     </div>
                                     <div>
-                                        <div className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-2">Stats</div>
+                                        <div className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">Stats</div>
                                         <div className="space-y-2">
                                             <div className="flex items-center justify-between text-xs">
-                                                <span className="text-neutral-500">Tests</span>
+                                                <span className="text-neutral-500 dark:text-neutral-400">Tests</span>
                                                 <span className="text-neutral-900 dark:text-white font-medium">3/5</span>
                                             </div>
                                             <div className="w-full bg-neutral-100 dark:bg-neutral-800 h-1.5 rounded-full overflow-hidden">

@@ -160,11 +160,11 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="min-h-screen bg-white dark:bg-neutral-950">
                 <div className="mx-auto max-w-5xl px-6 pt-10">
                     <nav aria-label="Breadcrumb" className="mb-8">
-                        <ol className="flex flex-wrap items-center gap-2 text-[13px] text-neutral-400 dark:text-neutral-500">
+                        <ol className="flex flex-wrap items-center gap-2 text-[13px] text-neutral-500 dark:text-neutral-400">
                             <li><Link href="/" className="transition-colors hover:text-neutral-900 dark:hover:text-white">Home</Link></li>
-                            <li aria-hidden className="text-neutral-300 dark:text-neutral-700">/</li>
+                            <li aria-hidden className="text-neutral-500 dark:text-neutral-400">/</li>
                             <li><Link href="/blogs" className="transition-colors hover:text-neutral-900 dark:hover:text-white">Blog</Link></li>
-                            <li aria-hidden className="text-neutral-300 dark:text-neutral-700">/</li>
+                            <li aria-hidden className="text-neutral-500 dark:text-neutral-400">/</li>
                             <li>
                                 <Link href={`/blogs/topics/${category}`} className="transition-colors hover:text-neutral-900 dark:hover:text-white">
                                     {BLOG_CATEGORIES[category]}
@@ -192,9 +192,9 @@ export default async function BlogPostPage({ params }: Props) {
                         <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b border-t border-neutral-100 py-5 dark:border-neutral-800">
                             <p className="text-sm text-neutral-600 dark:text-neutral-400">
                                 By <span className="font-semibold text-neutral-900 dark:text-white">{author.name}</span>
-                                <span className="text-neutral-400 dark:text-neutral-500"> · {author.role}</span>
+                                <span className="text-neutral-500 dark:text-neutral-400"> · {author.role}</span>
                             </p>
-                            <div className="flex items-center gap-4 font-mono text-xs text-neutral-400 dark:text-neutral-500">
+                            <div className="flex items-center gap-4 font-mono text-xs text-neutral-500 dark:text-neutral-400">
                                 <span className="flex items-center gap-1.5">
                                     <Calendar className="h-3.5 w-3.5" aria-hidden />
                                     <time dateTime={post.datePublished}>{fullDate(post.datePublished)}</time>
@@ -220,13 +220,13 @@ export default async function BlogPostPage({ params }: Props) {
                     <FaqSection faqs={post.faqs} />
 
                     <Reveal className="mt-16 rounded-2xl border border-neutral-800 bg-neutral-950 p-8 text-center dark:bg-neutral-900">
-                        <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-900">
+                        <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400">
                             {BRAND.name}
                         </p>
                         <h2 className="mb-3 text-2xl font-bold tracking-tight text-white">
                             Stop reading about it. Start practising.
                         </h2>
-                        <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-neutral-400">
+                        <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                             AI mock interviews, DSA practice, a portfolio builder and an ATS resume checker -
                             in one place, free to start.
                         </p>
@@ -253,7 +253,7 @@ export default async function BlogPostPage({ params }: Props) {
                     <div className="mt-8">
                         <Link
                             href="/blogs"
-                            className="font-mono text-sm text-neutral-400 transition-colors hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-white"
+                            className="font-mono text-sm text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
                         >
                             ← Back to all posts
                         </Link>

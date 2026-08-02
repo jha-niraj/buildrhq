@@ -32,7 +32,7 @@ export default function CreditsSection() {
                         </Badge>
                         <h2 className="text-4xl font-bold text-neutral-900 dark:text-white mb-6 tracking-tight">
                             Pay for impact. <br />
-                            <span className="text-neutral-400">Not idle time.</span>
+                            <span className="text-neutral-500 dark:text-neutral-400">Not idle time.</span>
                         </h2>
                         <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8 leading-relaxed">
                             We rejected the subscription model. Purchase <strong>Compute Credits</strong> once and spend them only when you use our high-cost AI agents or take certifications.
@@ -53,7 +53,7 @@ export default function CreditsSection() {
                                         </div>
                                         <div>
                                             <h4 className="font-bold text-neutral-900 dark:text-white text-sm">{item.title}</h4>
-                                            <p className="text-sm text-neutral-500">{item.desc}</p>
+                                            <p className="text-sm text-neutral-500 dark:text-neutral-400">{item.desc}</p>
                                         </div>
                                     </motion.div>
                                 ))
@@ -83,18 +83,18 @@ export default function CreditsSection() {
                                     </div>
                                     <div>
                                         <div className="text-sm font-bold text-neutral-900 dark:text-white">John Doe</div>
-                                        <div className="text-xs text-neutral-500">Free Tier</div>
+                                        <div className="text-xs text-neutral-500 dark:text-neutral-400">Free Tier</div>
                                     </div>
                                 </div>
                                 <div className="text-right">
-                                    <div className="text-xs text-neutral-500 uppercase tracking-wider font-medium">Balance</div>
+                                    <div className="text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-wider font-medium">Balance</div>
                                     <div className="text-xl font-bold text-neutral-900 dark:text-white font-mono">250 CR</div>
                                 </div>
                             </div>
                             <div className="space-y-6">
                                 <div>
                                     <div className="flex justify-between text-xs font-medium mb-2">
-                                        <span className="text-neutral-500">Reputation (XP)</span>
+                                        <span className="text-neutral-500 dark:text-neutral-400">Reputation (XP)</span>
                                         <span className="text-neutral-900 dark:text-white">1,250 / 2,000</span>
                                     </div>
                                     <div className="h-2 bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
@@ -105,17 +105,17 @@ export default function CreditsSection() {
                                     <div className="p-4 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl border border-neutral-100 dark:border-neutral-800">
                                         <Zap className="w-5 h-5 text-neutral-900 dark:text-white mb-2" />
                                         <div className="text-2xl font-bold text-neutral-900 dark:text-white">12</div>
-                                        <div className="text-xs text-neutral-500">Simulations Run</div>
+                                        <div className="text-xs text-neutral-500 dark:text-neutral-400">Simulations Run</div>
                                     </div>
                                     <div className="p-4 bg-neutral-50 dark:bg-neutral-800/50 rounded-xl border border-neutral-100 dark:border-neutral-800">
                                         <Activity className="w-5 h-5 text-neutral-900 dark:text-white mb-2" />
                                         <div className="text-2xl font-bold text-neutral-900 dark:text-white">85%</div>
-                                        <div className="text-xs text-neutral-500">Success Rate</div>
+                                        <div className="text-xs text-neutral-500 dark:text-neutral-400">Success Rate</div>
                                     </div>
                                 </div>
                             </div>
                             <div className="mt-8">
-                                <div className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-4">Recent Usage</div>
+                                <div className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-4">Recent Usage</div>
                                 <div className="space-y-3">
                                     <div className="flex justify-between items-center text-sm">
                                         <span className="text-neutral-600 dark:text-neutral-300">System Design Agent</span>

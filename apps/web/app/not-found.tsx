@@ -16,7 +16,7 @@ export default function NotFound() {
             <main className="flex flex-1 items-center justify-center px-6 pt-20">
                 <Reveal>
                 <div className="max-w-md text-center">
-                    <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-900">
+                    <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                         404
                     </p>
                     <h1 className="mb-4 text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">

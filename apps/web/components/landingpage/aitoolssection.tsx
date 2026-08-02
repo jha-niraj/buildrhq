@@ -34,7 +34,7 @@ const tools = [
 
 export default function AIToolsSection() {
     return (
-        <section id="ai-tools" className="w-full relative py-24 bg-white dark:bg-neutral-950 border-t border-neutral-100 dark:border-neutral-800">
+        <section id="ai-tools" className="relative w-full overflow-hidden border-t border-neutral-100 bg-white py-24 dark:border-neutral-800 dark:bg-neutral-950">
             <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]" />
             <div className="absolute right-0 top-0 -z-10 h-[500px] w-[500px] rounded-full bg-neutral-100 dark:bg-neutral-900 blur-[100px] opacity-50" />
 
@@ -52,7 +52,7 @@ export default function AIToolsSection() {
                             Intelligence Engine
                         </Badge>
                         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-neutral-900 dark:text-white tracking-tight">
-                            Tools that make you <span className="text-neutral-400 dark:text-neutral-600">dangerous.</span>
+                            Tools that make you <span className="text-neutral-500 dark:text-neutral-400">dangerous.</span>
                         </h2>
                         <p className="text-lg text-neutral-600 dark:text-neutral-400 font-light leading-relaxed max-w-2xl">
                             We don&apos;t build generic wrappers. We build specialized agents that help you write a standout resume, ace technical interviews, and land high-impact roles.
@@ -124,7 +124,7 @@ export default function AIToolsSection() {
                         <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
                             Access the full <br className="hidden md:block" />Engineering Intelligence Suite
                         </h3>
-                        <p className="text-neutral-400 mb-10 max-w-lg mx-auto leading-relaxed">
+                        <p className="text-neutral-500 dark:text-neutral-400 mb-10 max-w-lg mx-auto leading-relaxed">
                             Stop using generic tools. Get access to the entire suite of specialized developer agents with a single plan.
                         </p>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">

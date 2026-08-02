@@ -41,7 +41,7 @@ export default function PricingClient() {
 						</span>
 						<h1 className="mt-7 text-[44px] font-bold leading-[1.05] tracking-[-2px] text-neutral-950 dark:text-white sm:text-[56px]">
 							Pay only for what you{" "}
-							<span className="text-neutral-900">run.</span>
+							<span className="text-neutral-900 dark:text-white">run.</span>
 						</h1>
 						<p className="mx-auto mt-5 max-w-xl text-[16px] leading-relaxed text-neutral-600 dark:text-white/50">
 							ShipItHQ is credit-based - no subscriptions, no idle-time charges.
@@ -51,7 +51,7 @@ export default function PricingClient() {
 
 						{/* currency toggle */}
 						<div className="mx-auto mt-8 flex w-fit items-center gap-4 rounded-full border border-neutral-200 bg-neutral-100/80 py-2 pl-4 pr-2 backdrop-blur dark:border-neutral-800 dark:bg-neutral-900">
-							<span className={`font-mono text-sm font-bold transition-colors ${currency === "INR" ? "text-neutral-900 dark:text-white" : "text-neutral-400"}`}>
+							<span className={`font-mono text-sm font-bold transition-colors ${currency === "INR" ? "text-neutral-900 dark:text-white" : "text-neutral-600 dark:text-neutral-400"}`}>
 								INR
 							</span>
 							<button
@@ -63,7 +63,7 @@ export default function PricingClient() {
 									className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-all dark:bg-neutral-900 ${currency === "USD" ? "left-6" : "left-0.5"}`}
 								/>
 							</button>
-							<span className={`font-mono text-sm font-bold transition-colors ${currency === "USD" ? "text-neutral-900 dark:text-white" : "text-neutral-400"}`}>
+							<span className={`font-mono text-sm font-bold transition-colors ${currency === "USD" ? "text-neutral-900 dark:text-white" : "text-neutral-600 dark:text-neutral-400"}`}>
 								USD
 							</span>
 						</div>
@@ -87,7 +87,7 @@ export default function PricingClient() {
 							className="rounded-2xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
 						>
 							<div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-50 dark:bg-neutral-200/10">
-								<v.icon className="h-5 w-5 text-neutral-900" />
+								<v.icon className="h-5 w-5 text-neutral-900 dark:text-white" />
 							</div>
 							<h3 className="text-base font-bold text-neutral-900 dark:text-white">{v.title}</h3>
 							<p className="mt-2 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">{v.desc}</p>
@@ -100,12 +100,12 @@ export default function PricingClient() {
 			<section className="border-t border-neutral-100 py-20 dark:border-neutral-800">
 				<div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr]">
 					<div className="lg:sticky lg:top-24 lg:h-fit">
-						<span className="font-mono text-[11px] uppercase tracking-widest text-neutral-400">
+						<span className="font-mono text-[11px] uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
 							FAQ
 						</span>
 						<h2 className="mt-3 text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
 							Questions,{" "}
-							<span className="text-neutral-400 dark:text-neutral-600">answered.</span>
+							<span className="text-neutral-500 dark:text-neutral-400">answered.</span>
 						</h2>
 						<p className="mt-4 text-sm text-neutral-500 dark:text-neutral-400">
 							Everything about how credits, billing, and access work on ShipItHQ.
@@ -140,10 +140,10 @@ export default function PricingClient() {
 			{/* ── CTA ──────────────────────────────────────────────────────────── */}
 			<section className="border-t border-neutral-100 py-20 dark:border-neutral-800">
 				<div className="mx-auto max-w-3xl px-6 text-center">
-					<Sparkles className="mx-auto mb-5 h-7 w-7 text-neutral-900" />
+					<Sparkles className="mx-auto mb-5 h-7 w-7 text-neutral-900 dark:text-white" />
 					<h2 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
 						Start building for{" "}
-						<span className="text-neutral-900">free.</span>
+						<span className="text-neutral-900 dark:text-white">free.</span>
 					</h2>
 					<p className="mx-auto mt-4 max-w-lg text-neutral-500 dark:text-neutral-400">
 						Create an account, claim your starter credits, and run your first AI

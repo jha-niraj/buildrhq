@@ -70,7 +70,7 @@ export default function AboutUs() {
                         </Badge>
                         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-neutral-900 dark:text-white mb-8">
                             We are building the <br />
-                            <span className="text-neutral-400 dark:text-neutral-600">operating system</span> for students.
+                            <span className="text-neutral-500 dark:text-neutral-400">operating system</span> for students.
                         </h1>
                         <p className="text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed font-light">
                             The Coder&apos;z is not just an ed-tech platform. It is an engineering ecosystem designed to bridge the gap between academic theory and production-grade software development.
@@ -148,14 +148,14 @@ export default function AboutUs() {
                                             {leader.bio}
                                         </p>
                                         <div className="flex gap-4">
-                                            <a href={leader.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${leader.name} on LinkedIn`} className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                            <a href={leader.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${leader.name} on LinkedIn`} className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                                 <Linkedin className="w-4 h-4" />
                                             </a>
-                                            <a href={leader.links.github} target="_blank" rel="noopener noreferrer" aria-label={`${leader.name} on GitHub`} className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                            <a href={leader.links.github} target="_blank" rel="noopener noreferrer" aria-label={`${leader.name} on GitHub`} className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                                 <Github className="w-4 h-4" />
                                             </a>
                                             {leader.links.twitter && (
-                                                <a href={leader.links.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${leader.name} on X`} className="text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
+                                                <a href={leader.links.twitter} target="_blank" rel="noopener noreferrer" aria-label={`${leader.name} on X`} className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors">
                                                     <Twitter className="w-4 h-4" />
                                                 </a>
                                             )}
@@ -204,7 +204,7 @@ export default function AboutUs() {
 
                             <div className="space-y-6 text-sm">
                                 <div>
-                                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                                         Email
                                     </p>
                                     <a
@@ -216,13 +216,13 @@ export default function AboutUs() {
                                     </a>
                                 </div>
                                 <div>
-                                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                                         Response time
                                     </p>
                                     <p className="text-neutral-600 dark:text-neutral-400">Within two working days.</p>
                                 </div>
                                 <div>
-                                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                                    <p className="mb-1 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                                         Account &amp; billing
                                     </p>
                                     <p className="text-neutral-600 dark:text-neutral-400">

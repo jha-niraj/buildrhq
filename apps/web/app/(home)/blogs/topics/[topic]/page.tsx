@@ -94,7 +94,7 @@ export default async function TopicPage({ params }: Props) {
                 <div className="border-b border-neutral-100 dark:border-neutral-900">
                     <Reveal className="mx-auto max-w-6xl px-6 py-16">
                         <nav aria-label="Breadcrumb" className="mb-8">
-                            <ol className="flex flex-wrap items-center gap-2 text-[13px] text-neutral-400 dark:text-neutral-500">
+                            <ol className="flex flex-wrap items-center gap-2 text-[13px] text-neutral-500 dark:text-neutral-400">
                                 <li><Link href="/" className="transition-colors hover:text-neutral-900 dark:hover:text-white">Home</Link></li>
                                 <li aria-hidden className="text-neutral-300 dark:text-neutral-700">/</li>
                                 <li><Link href="/blogs" className="transition-colors hover:text-neutral-900 dark:hover:text-white">Blog</Link></li>
@@ -132,7 +132,7 @@ export default async function TopicPage({ params }: Props) {
                                     <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
                                         {post.description}
                                     </p>
-                                    <span className="mt-auto inline-flex items-center gap-1.5 font-mono text-[11px] text-neutral-400 dark:text-neutral-500">
+                                    <span className="mt-auto inline-flex items-center gap-1.5 font-mono text-[11px] text-neutral-500 dark:text-neutral-400">
                                         <Clock className="h-3 w-3" aria-hidden />
                                         {post.readingTime} min read
                                     </span>
@@ -143,7 +143,7 @@ export default async function TopicPage({ params }: Props) {
                     )}
 
                     <Reveal className="mt-16 border-t border-neutral-200 pt-8 dark:border-neutral-800">
-                        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                             Other topics
                         </p>
                         <div className="flex flex-wrap gap-2">

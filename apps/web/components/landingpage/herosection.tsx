@@ -199,11 +199,11 @@ export default function HeroSection() {
                         >
                             The Engineering
                             <br />
-                            <span className="text-neutral-400 dark:text-white/30">Intelligence Suite.</span>
+                            <span className="text-neutral-500 dark:text-white/55">Intelligence Suite.</span>
                         </motion.h1>
 
                         <motion.p
-                            className="mt-5 max-w-[480px] text-[15px] leading-relaxed text-neutral-500 dark:text-white/45"
+                            className="mt-5 max-w-[480px] text-[15px] leading-relaxed text-neutral-600 dark:text-white/65"
                             variants={reduced ? undefined : item}
                         >
                             Build real projects, practice DSA & system design, ace AI mock
@@ -230,7 +230,7 @@ export default function HeroSection() {
                                 className="inline-flex items-center gap-1.5 rounded-xl border border-neutral-300 bg-transparent px-7 py-3.5 text-[14px] font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-400 hover:bg-neutral-100 dark:border-white/10 dark:text-white/70 dark:hover:bg-white/5"
                             >
                                 Sign in
-                                <span className="text-neutral-400 dark:text-white/30">→</span>
+                                <span className="text-neutral-600 dark:text-white/60">→</span>
                             </a>
                         </motion.div>
 
@@ -238,7 +238,7 @@ export default function HeroSection() {
                             className="mt-5 flex items-center gap-6"
                             variants={reduced ? undefined : item}
                         >
-                            <p className="text-[12px] text-neutral-400 dark:text-white/25">
+                            <p className="text-[12px] text-neutral-600 dark:text-white/55">
                                 Trusted by developers · No credit card required
                             </p>
                             <div className="flex items-center gap-1.5">
@@ -269,7 +269,7 @@ export default function HeroSection() {
                             <div className="grid grid-cols-2 divide-x divide-y divide-neutral-100 dark:divide-white/10">
                                 {statItems.map((s) => (
                                     <div key={s.eyebrow} className="px-6 py-5">
-                                        <p className="mb-3 flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-neutral-400 dark:text-neutral-500">
+                                        <p className="mb-3 flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.18em] text-neutral-500 dark:text-neutral-400">
                                             <span className={`h-1 w-1 shrink-0 rounded-full ${s.accent}`} />
                                             {s.eyebrow}
                                         </p>

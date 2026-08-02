@@ -120,7 +120,7 @@ export default function ProjectsSection() {
                         Project Foundry
                     </Badge>
                     <h2 className="text-4xl md:text-5xl font-bold mb-6 text-neutral-900 dark:text-white tracking-tight">
-                        From Prompt to <span className="text-neutral-400 dark:text-neutral-600">Production.</span>
+                        From Prompt to <span className="text-neutral-500 dark:text-neutral-400">Production.</span>
                     </h2>
                     <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed font-light">
                         Don&apos;t just watch tutorials. Generate full-stack project scaffolds, follow execution plans, and deploy real software to your portfolio.
@@ -137,7 +137,7 @@ export default function ProjectsSection() {
                                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                                 className="group bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-8 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
                             >
-                                <div className="font-mono text-5xl font-bold text-neutral-200 dark:text-neutral-800 leading-none mb-4 select-none">
+                                <div className="font-mono text-5xl font-bold text-neutral-500 dark:text-neutral-500 leading-none mb-4 select-none">
                                     {String(index + 1).padStart(2, '0')}
                                 </div>
                                 <feature.icon className="w-7 h-7 text-neutral-900 dark:text-white mb-4" />
@@ -160,7 +160,7 @@ export default function ProjectsSection() {
                 >
                     <div>
                         <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2 flex items-center gap-2">
-                            <Globe className="w-5 h-5 text-neutral-500" />
+                            <Globe className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
                             Public Registry
                         </h3>
                         <p className="text-neutral-500 dark:text-neutral-400 text-sm">
@@ -189,7 +189,7 @@ export default function ProjectsSection() {
                             className="group rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors"
                         >
                             <div className="flex items-center justify-between mb-4">
-                                <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 dark:text-neutral-500">
+                                <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
                                     {p.tag}
                                 </span>
                                 <span className="h-1.5 w-1.5 rounded-full bg-neutral-900" />
@@ -222,7 +222,7 @@ export default function ProjectsSection() {
                                             {stat.value}
                                         </div>
                                     )}
-                                    <div className="text-xs text-neutral-500 uppercase tracking-widest font-medium">
+                                    <div className="text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-widest font-medium">
                                         {stat.label}
                                     </div>
                                 </div>

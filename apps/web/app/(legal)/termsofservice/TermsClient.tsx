@@ -13,7 +13,7 @@ export default function TermsOfService() {
                         {/* Sidebar */}
                         <aside className="hidden lg:block w-[260px] shrink-0">
                             <div className="sticky top-24">
-                                <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-6">
+                                <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-6">
                                     Legal documents
                                 </p>
                                 <nav className="space-y-1 mb-10">
@@ -34,12 +34,12 @@ export default function TermsOfService() {
                                     </a>
                                 </nav>
                                 <div className="border-t border-neutral-200 dark:border-neutral-800 pt-8">
-                                    <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-3">
+                                    <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-3">
                                         Questions?
                                     </p>
                                     <a
                                         href="mailto:legal@shipithq.com"
-                                        className="text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors break-all"
+                                        className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors break-all"
                                     >
                                         legal@shipithq.com
                                     </a>
@@ -50,7 +50,7 @@ export default function TermsOfService() {
                         {/* Main content */}
                         <main className="flex-1 min-w-0">
                             <div className="mb-12">
-                                <p className="text-sm text-neutral-400 mb-6">Effective May 13, 2026</p>
+                                <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-6">Effective May 13, 2026</p>
                                 <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-neutral-900 dark:text-white leading-none mb-6">
                                     Terms of <em>service.</em>
                                 </h1>
@@ -61,7 +61,7 @@ export default function TermsOfService() {
 
                             {/* TL;DR */}
                             <div className="mb-12 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-6">
-                                <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-3">TL;DR</p>
+                                <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-3">TL;DR</p>
                                 <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
                                     You own everything you create. Credits are purchased one-time and don&apos;t expire. You pay for what you use. If we make mistakes, our liability is capped at what you paid us.
                                 </p>
@@ -71,7 +71,7 @@ export default function TermsOfService() {
                                 {/* Section 01 */}
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <h2 className="flex items-center text-lg font-bold text-neutral-900 dark:text-white mb-4">
-                                        <span className="font-mono text-xs text-neutral-400 mr-4">01</span>
+                                        <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mr-4">01</span>
                                         Your Account
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
@@ -82,7 +82,7 @@ export default function TermsOfService() {
                                 {/* Section 02 */}
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <h2 className="flex items-center text-lg font-bold text-neutral-900 dark:text-white mb-4">
-                                        <span className="font-mono text-xs text-neutral-400 mr-4">02</span>
+                                        <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mr-4">02</span>
                                         Credits &amp; Billing
                                     </h2>
                                     <div className="pl-8 space-y-3 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
@@ -100,7 +100,7 @@ export default function TermsOfService() {
                                 {/* Section 03 */}
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <h2 className="flex items-center text-lg font-bold text-neutral-900 dark:text-white mb-4">
-                                        <span className="font-mono text-xs text-neutral-400 mr-4">03</span>
+                                        <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mr-4">03</span>
                                         Your Content &amp; Projects
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
@@ -111,7 +111,7 @@ export default function TermsOfService() {
                                 {/* Section 04 */}
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <h2 className="flex items-center text-lg font-bold text-neutral-900 dark:text-white mb-4">
-                                        <span className="font-mono text-xs text-neutral-400 mr-4">04</span>
+                                        <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mr-4">04</span>
                                         AI Outputs
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
@@ -122,7 +122,7 @@ export default function TermsOfService() {
                                 {/* Section 05 */}
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <h2 className="flex items-center text-lg font-bold text-neutral-900 dark:text-white mb-4">
-                                        <span className="font-mono text-xs text-neutral-400 mr-4">05</span>
+                                        <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mr-4">05</span>
                                         Acceptable Use
                                     </h2>
                                     <div className="pl-8 space-y-3 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
@@ -140,7 +140,7 @@ export default function TermsOfService() {
                                 {/* Section 06 */}
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <h2 className="flex items-center text-lg font-bold text-neutral-900 dark:text-white mb-4">
-                                        <span className="font-mono text-xs text-neutral-400 mr-4">06</span>
+                                        <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mr-4">06</span>
                                         Termination
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
@@ -151,7 +151,7 @@ export default function TermsOfService() {
                                 {/* Section 07 */}
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <h2 className="flex items-center text-lg font-bold text-neutral-900 dark:text-white mb-4">
-                                        <span className="font-mono text-xs text-neutral-400 mr-4">07</span>
+                                        <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mr-4">07</span>
                                         Disclaimers &amp; Liability
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
@@ -162,7 +162,7 @@ export default function TermsOfService() {
                                 {/* Section 08 */}
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <h2 className="flex items-center text-lg font-bold text-neutral-900 dark:text-white mb-4">
-                                        <span className="font-mono text-xs text-neutral-400 mr-4">08</span>
+                                        <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mr-4">08</span>
                                         Governing Law
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">
@@ -173,7 +173,7 @@ export default function TermsOfService() {
                                 {/* Section 09 */}
                                 <div className="py-10 border-t border-neutral-200 dark:border-neutral-800">
                                     <h2 className="flex items-center text-lg font-bold text-neutral-900 dark:text-white mb-4">
-                                        <span className="font-mono text-xs text-neutral-400 mr-4">09</span>
+                                        <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mr-4">09</span>
                                         Changes
                                     </h2>
                                     <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed pl-8">

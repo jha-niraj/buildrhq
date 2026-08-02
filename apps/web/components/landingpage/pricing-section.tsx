@@ -49,13 +49,13 @@ export default function PricingSection() {
                         Flexible Compute
                     </Badge>
                     <h2 className="text-4xl md:text-5xl font-bold mb-6 text-neutral-900 dark:text-white tracking-tight">
-                        Pay for <span className="text-neutral-400 dark:text-neutral-600">execution.</span>
+                        Pay for <span className="text-neutral-500 dark:text-neutral-400">execution.</span>
                     </h2>
                     <p className="text-lg text-neutral-600 dark:text-neutral-400 font-light leading-relaxed mb-8">
                         We don&apos;t charge for idle time. Purchase credits and only spend them when you run our specialized agents or take certifications.
                     </p>
                     <div className="flex justify-center items-center gap-4 p-2 pl-4 pr-2 bg-neutral-100 dark:bg-neutral-900 rounded-full border border-neutral-200 dark:border-neutral-800 w-fit mx-auto">
-                        <span className={`text-sm font-bold font-mono transition-colors ${currency === "INR" ? "text-neutral-900 dark:text-white" : "text-neutral-400"}`}>
+                        <span className={`text-sm font-bold font-mono transition-colors ${currency === "INR" ? "text-neutral-900 dark:text-white" : "text-neutral-600 dark:text-neutral-400"}`}>
                             INR
                         </span>
                         <Switch
@@ -63,7 +63,7 @@ export default function PricingSection() {
                             onCheckedChange={() => setCurrency(currency === "INR" ? "USD" : "INR")}
                             className="data-[state=checked]:bg-neutral-900 dark:data-[state=checked]:bg-white"
                         />
-                        <span className={`text-sm font-bold font-mono transition-colors ${currency === "USD" ? "text-neutral-900 dark:text-white" : "text-neutral-400"}`}>
+                        <span className={`text-sm font-bold font-mono transition-colors ${currency === "USD" ? "text-neutral-900 dark:text-white" : "text-neutral-600 dark:text-neutral-400"}`}>
                             USD
                         </span>
                     </div>
@@ -104,7 +104,7 @@ export default function PricingSection() {
                 >
                     <div className="relative z-10">
                         <h3 className="text-2xl font-bold mb-4 text-white dark:text-neutral-900">Need High-Volume Compute?</h3>
-                        <p className="text-neutral-400 dark:text-neutral-600 mb-8 max-w-2xl mx-auto">
+                        <p className="text-neutral-500 dark:text-neutral-400 mb-8 max-w-2xl mx-auto">
                             For universities and bootcamps requiring bulk credit allocation and dedicated API throughput.
                         </p>
                         <Button

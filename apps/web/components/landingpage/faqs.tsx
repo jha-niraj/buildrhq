@@ -80,7 +80,7 @@ export default function FaqsAccrodian() {
                             </Badge>
                             <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-6 tracking-tight">
                                 Common <br />
-                                <span className="text-neutral-400 dark:text-neutral-600">Questions.</span>
+                                <span className="text-neutral-500 dark:text-neutral-400">Questions.</span>
                             </h2>
                             <p className="text-lg text-neutral-500 dark:text-neutral-400 mb-8 leading-relaxed">
                                 Everything you need to know about the platform, certifications, and technical capabilities.

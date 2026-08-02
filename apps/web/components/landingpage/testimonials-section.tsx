@@ -79,7 +79,7 @@ const Testimonials = () => {
                         Student Success Stories
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white mb-4">
-                        Loved by <span className="text-neutral-400 dark:text-neutral-600">learners</span>
+                        Loved by <span className="text-neutral-500 dark:text-neutral-400">learners</span>
                     </h2>
                     <p className="text-lg text-neutral-600 dark:text-neutral-400">
                         See how students are transforming their careers with our engineering intelligence suite.
